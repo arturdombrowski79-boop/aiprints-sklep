@@ -1,0 +1,93 @@
+---
+// Kreator produktu: tekst, czcionki, logo/zdjęcie, emotki, grafiki, kolor produktu, strony.
+const { p, cfg } = Astro.props;
+const price = p.tiers ? p.tiers[0].p : (p.price || 0);
+const T = [['tekst', 'Tekst', 'M5 5h14M12 5v14M9 19h6'], ['obraz', 'Logo / zdjęcie', 'M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4M15 9h.01'], ['emoji', 'Emotki', 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M8.5 14.5s1.3 2 3.5 2 3.5-2 3.5-2M9 9.5h.01M15 9.5h.01'], ['grafiki', 'Grafiki', 'M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z'], ['produkt', 'Produkt', 'M8 4 4 7l2 3 2-1v11h8V9l2 1 2-3-4-3a4 4 0 0 1-8 0']];
+---
+<link rel="stylesheet" href="creator/fonts.css" />
+<button id="crOpen" type="button" class="btn btn-ink w-full mt-3 gap-3" data-slug={p.slug}>
+  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4z"/></svg>
+  Zaprojektuj w kreatorze
+</button>
+<p class="text-[13px] text-mute mt-2 text-center">Tekst, czcionki, Twoje logo, emotki i grafiki – widzisz efekt na produkcie.</p>
+
+<div id="cr" class="hidden fixed inset-0 z-[95] bg-[#eceeef] text-ink flex-col" role="dialog" aria-modal="true" aria-label={`Kreator: ${p.name}`}
+  data-cfg={JSON.stringify(cfg)} data-name={p.name} data-price={price} data-slug={p.slug}>
+  <header class="h-16 shrink-0 bg-white border-b border-line flex items-center gap-2 px-3 md:px-5">
+    <button id="crClose" class="w-10 h-10 rounded-full hover:bg-paper grid place-items-center" aria-label="Zamknij kreator"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <b class="truncate text-[15px] md:text-[16px]">{p.name}</b>
+    <div class="ml-auto flex items-center gap-1">
+      <button id="crUndo" class="crb" aria-label="Cofnij" title="Cofnij (Ctrl+Z)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-2"/></svg></button>
+      <button id="crRedo" class="crb" aria-label="Ponów" title="Ponów (Ctrl+Shift+Z)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h2"/></svg></button>
+      <button id="crReset" class="crb hidden sm:grid" aria-label="Wyczyść projekt" title="Wyczyść stronę"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+    </div>
+  </header>
+
+  <div class="flex-1 min-h-0 flex flex-col lg:flex-row">
+    <!-- narzędzia -->
+    <nav class="order-3 lg:order-1 shrink-0 bg-white border-t lg:border-t-0 lg:border-r border-line flex lg:flex-col justify-around lg:justify-start lg:w-[92px] lg:pt-3" aria-label="Narzędzia">
+      {T.map(([k, t, d]) => <button class="crt" data-tab={k} aria-pressed="false"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d={d} /></svg><span>{t}</span></button>)}
+    </nav>
+    <!-- panel narzędzia -->
+    <aside id="crPanel" class="order-2 lg:order-2 hidden lg:block lg:w-[320px] shrink-0 bg-white lg:border-r border-line overflow-y-auto max-h-[44vh] lg:max-h-none"></aside>
+    <!-- scena -->
+    <main class="order-1 lg:order-3 flex-1 min-h-0 relative flex flex-col">
+      <div id="crStageWrap" class="flex-1 min-h-0 grid place-items-center p-3 md:p-6 relative overflow-hidden">
+        <div id="crStage" class="relative rounded-[22px] overflow-hidden shadow-[0_20px_60px_-24px_rgba(17,18,20,.35)]">
+          <canvas id="crMock" class="block w-full h-full"></canvas>
+          <div id="crArea" class="absolute"><canvas id="crCv"></canvas><i id="crGv" class="crg v"></i><i id="crGh" class="crg h"></i></div>
+        </div>
+        <div id="crSides" class="absolute left-1/2 -translate-x-1/2 bottom-3 flex gap-2"></div>
+        <p id="crHint" class="absolute top-3 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-4 py-2 text-[12.5px] text-mute shadow-sm pointer-events-none">Przerywana linia to pole nadruku</p>
+      </div>
+      <!-- właściwości zaznaczonego elementu -->
+      <div id="crProps" class="hidden shrink-0 bg-white border-t border-line px-3 md:px-5 py-3 overflow-x-auto"></div>
+    </main>
+  </div>
+
+  <footer class="shrink-0 bg-white border-t border-line px-3 md:px-5 py-3 flex flex-wrap items-center gap-3">
+    <div id="crColors" class="flex gap-1.5 items-center"></div>
+    <select id="crSize" class="hidden h-11 rounded-full border border-line px-4 text-[14px] bg-white" aria-label="Rozmiar"></select>
+    <div class="flex items-center border border-line rounded-full h-11"><button id="crMinus" class="w-10 h-full" aria-label="Mniej">−</button><input id="crQty" value="1" inputmode="numeric" aria-label="Ilość" class="w-10 text-center outline-none bg-transparent tabular" /><button id="crPlus" class="w-10 h-full" aria-label="Więcej">+</button></div>
+    <div class="ml-auto flex items-center gap-4">
+      <div class="text-right leading-tight"><b id="crPrice" class="block text-[20px] tabular"></b><span id="crPriceNote" class="text-[12px] text-mute"></span></div>
+      <button id="crAdd" class="btn btn-ink h-12">Dodaj do koszyka</button>
+    </div>
+  </footer>
+  <div id="crInk"></div>
+  <input type="file" id="crFile" accept="image/png,image/jpeg,image/webp,image/svg+xml" class="hidden" />
+</div>
+
+<style is:global>
+  #cr.on { display: flex; }
+  .crb { width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; }
+  .crb:hover { background: var(--color-paper); } .crb:disabled { opacity: .35; }
+  .crt { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; font-size: 11.5px; font-weight: 600; color: #5c6064; }
+  .crt[aria-pressed=true] { color: var(--color-ink); background: var(--color-paper); }
+  @media (min-width:1024px) { .crt { flex: none; padding: 14px 4px; } }
+  #crArea { outline: 1.5px dashed rgba(17,18,20,.45); outline-offset: 0; }
+  #crArea.dark { outline-color: rgba(255,255,255,.6); }
+  #crArea.round { border-radius: 50%; }
+  #crArea .canvas-container { position: absolute !important; inset: 0; }
+  .crg { position: absolute; display: none; pointer-events: none; background: #d1196f; }
+  .crg.v { top: 0; bottom: 0; left: 50%; width: 1px; } .crg.h { left: 0; right: 0; top: 50%; height: 1px; }
+  .crg.on { display: block; }
+  .crsec { padding: 18px 18px 8px; } .crsec h3 { font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+  .crchip { height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--color-line); background: #fff; font-size: 13px; white-space: nowrap; }
+  .crchip:hover, .crchip[aria-pressed=true] { border-color: var(--color-ink); }
+  .crsw { width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(0,0,0,.15); flex: none; }
+  .crsw[aria-pressed=true] { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-ink); }
+  .crgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .crgrid button { aspect-ratio: 1; border-radius: 12px; display: grid; place-items: center; padding: 7px; }
+  .crgrid button:hover { background: var(--color-paper); }
+  .crgrid svg { width: 100%; height: 100%; }
+  .crprop { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .crprop select, .crprop input[type=number] { height: 38px; border: 1px solid var(--color-line); border-radius: 10px; padding: 0 10px; background: #fff; font-size: 13.5px; }
+  .crwarn { background: #fff4d6; color: #7a5200; border-radius: 10px; padding: 6px 10px; font-size: 12.5px; }
+</style>
+<script>
+  // kreator ładuje się dopiero po kliknięciu (biblioteka edytora ~300 kB)
+  const b = document.getElementById('crOpen');
+  b && b.addEventListener('click', async () => { b.disabled = true; b.textContent = 'Otwieram kreator…'; const m = await import('../scripts/creator.js'); m.openCreator(); b.disabled = false; b.innerHTML = 'Zaprojektuj w kreatorze'; });
+  if (location.hash === '#kreator' && b) b.click();
+</script>

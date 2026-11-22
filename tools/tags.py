@@ -2,7 +2,7 @@ import re
 # Filtry w stylu sklepów z prezentami: okazja, dla kogo, rodzaj personalizacji, materiał
 OKAZJE = [
  ('Urodziny', [
-  ('urodziny', 'Urodziny', r'naszyjnik|bransolet|krysztal-zdjecie|krysztal-pupil|swieca|poduszka|akryl-|zdjecie-na|lupek|etui|puzzle|litofania|szklo-ramka|kieliszki|karafka|whisky|kufel|deska|niesmiertelnik|brelok|kubek|tumbler|okladka|portret|mapa|obraz|fotopanel|odbitki|magnesy|plakat|kliker|smok|bidon|ksiazeczka|dioram|szkielet|pupil-figurka|fine-art|skrzynka-wino|butelka'),
+  ('urodziny', 'Urodziny', r'nadrukiem|naszyjnik|bransolet|krysztal-zdjecie|krysztal-pupil|swieca|poduszka|akryl-|zdjecie-na|lupek|etui|puzzle|litofania|szklo-ramka|kieliszki|karafka|whisky|kufel|deska|niesmiertelnik|brelok|kubek|tumbler|okladka|portret|mapa|obraz|fotopanel|odbitki|magnesy|plakat|kliker|smok|bidon|ksiazeczka|dioram|szkielet|pupil-figurka|fine-art|skrzynka-wino|butelka'),
   ('okragle-urodziny', '18, 30, 40, 50 urodziny', r'krysztal-zdjecie|okladka|akryl-piosenka|akryl-plakat|karafka|whisky|kieliszki|mapa-nieba|fotoksiazka|butelka|naszyjnik|bransolet|statuetka-krysztal'),
  ]),
  ('Śluby i rocznice', [
@@ -30,8 +30,8 @@ OKAZJE = [
 ]
 DLA = [
  ('Rodzina', [
-  ('mama', 'Mamy', r'naszyjnik|bransolet|krysztal-zdjecie|swieca|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|akryl-led|fotoksiazka|tumbler|deska'),
-  ('tata', 'Taty', r'karafka|whisky|kufel|deska|niesmiertelnik|brelok-drewno|tablica-rejestracyjna|kubek-termiczny|etui-grawer'),
+  ('mama', 'Mamy', r'kubek-z-nadrukiem|naszyjnik|bransolet|krysztal-zdjecie|swieca|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|akryl-led|fotoksiazka|tumbler|deska'),
+  ('tata', 'Taty', r'kubek-z-nadrukiem|koszulka-z|karafka|whisky|kufel|deska|niesmiertelnik|brelok-drewno|tablica-rejestracyjna|kubek-termiczny|etui-grawer'),
   ('babcia-dziadek', 'Babci i dziadka', r'krysztal-zdjecie|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|fotoksiazka|kalendarz|magnesy|obraz|puzzle-zdjecie'),
   ('dziecko', 'Dziecka', r'inicjal|bidon|ksiazeczka|nauka-imienia|naklejki-scienne|lamibook|smok|kliker|puzzle-imie|brelok-3d|figurka|ruchomy|dioram|kalendarz-adwentowy'),
  ]),
@@ -39,12 +39,12 @@ DLA = [
   ('dla-niej', 'Dla niej', r'naszyjnik|bransolet|krysztal-zdjecie|swieca|poduszka|akryl-piosenka|akryl-polaroid|zdjecie-na|lupek|etui-telefon|puzzle-akryl|litofania|szklo-ramka|kieliszki|tumbler'),
   ('dla-niego', 'Dla niego', r'kufel|whisky|karafka|deska|brelok-drewno|niesmiertelnik|tablica-rejestracyjna|etui-grawer|kubek-termiczny|skrzynka-wino|okleiny'),
   ('para', 'Dla pary', r'krysztal-zdjecie|krysztal-slub|mapa-nieba|mapa-poznalismy|nasza-data|piosenka|kieliszki|puzzle-akryl|maz-zona|okladka|akryl-bilet|akryl-plakat'),
-  ('przyjaciel', 'Przyjaciółki i przyjaciela', r'akryl-polaroid|odbitki|magnesy|brelok|kubek|tumbler|swieca|okladka|puzzle-zdjecie|etui'),
+  ('przyjaciel', 'Przyjaciółki i przyjaciela', r'nadrukiem|akryl-polaroid|odbitki|magnesy|brelok|kubek|tumbler|swieca|okladka|puzzle-zdjecie|etui'),
  ]),
  ('Okolicznościowe', [
   ('nauczyciel', 'Nauczyciela', r'dyplom|dlugopisy|kubek-termiczny|statuetka|deska|brelok-drewno'),
   ('goscie', 'Gości weselnych', r'winietki|medalik|brelok|magnesy|podziekowania'),
-  ('pracownik', 'Pracownika i klienta', r'statuetka|dlugopisy|notesy|kubek-termiczny|termos|pudelko-grawer|skrzynka-wino|kartka-drewniana|breloki|medale|dyplom'),
+  ('pracownik', 'Pracownika i klienta', r'nadrukiem|statuetka|dlugopisy|notesy|kubek-termiczny|termos|pudelko-grawer|skrzynka-wino|kartka-drewniana|breloki|medale|dyplom'),
  ]),
  ('Z pasją', [
   ('psiarze', 'Miłośników psów', r'psa|pupil|adresowka'),
@@ -55,17 +55,17 @@ DLA = [
  ]),
 ]
 PERS = [
- ('zdjecie', 'Ze zdjęciem', r'zdjec|foto|polaroid|puzzle-zdjecie|puzzle-akryl|obraz|litofan|portret|okladka|plakat-filmowy|magnes|fototapet|bilet|etui-telefon|krysztal|kalendarz|pupil-figurka|znicz|lupek|poduszka|akryl-led|akryl-blok|akryl-obrys|odbitki|fine-art|nasza-data|bombka-zdjecie|ksiazeczka'),
+ ('zdjecie', 'Ze zdjęciem', r'nadrukiem|zdjec|foto|polaroid|puzzle-zdjecie|puzzle-akryl|obraz|litofan|portret|okladka|plakat-filmowy|magnes|fototapet|bilet|etui-telefon|krysztal|kalendarz|pupil-figurka|znicz|lupek|poduszka|akryl-led|akryl-blok|akryl-obrys|odbitki|fine-art|nasza-data|bombka-zdjecie|ksiazeczka'),
  ('grawer', 'Z grawerem', r'grawer|deska|karafka|whisky|kieliszki|kufel|naszyjnik|bransolet|niesmiertelnik|adresowka|lupek|brelok-drewno|pudelko|skrzynka|podkladki|dyplom|medal|kartka-drewniana|etui-grawer|plakietki-qr-grawer|bombka-dab|swieca|termos|kubek-termiczny|dlugopisy|krysztal'),
  ('imie', 'Z imieniem lub tekstem', r'.'),
- ('logo', 'Z logo firmy', r'logo|szyld|witryna|wizytowk|ulotki|vouchery|bony|rollup|banery|naklejki|folia|statuetka|termos|dlugopisy|notesy|pudelko|skrzynka|breloki|stojak|tabliczka-scienna|plakietki|lusterko|cennik|pakiet|karty-stalego|butelka|zegar-z-logo|kartka-drewniana|certyfikaty|terminarzyki'),
+ ('logo', 'Z logo firmy', r'nadrukiem|logo|szyld|witryna|wizytowk|ulotki|vouchery|bony|rollup|banery|naklejki|folia|statuetka|termos|dlugopisy|notesy|pudelko|skrzynka|breloki|stojak|tabliczka-scienna|plakietki|lusterko|cennik|pakiet|karty-stalego|butelka|zegar-z-logo|kartka-drewniana|certyfikaty|terminarzyki'),
 ]
 MAT = [
  ('drewno', 'Drewno i sklejka', r'drewn|deska|sklejk|dab|jelen|napis-scienny|inicjal|puzzle-imie|nauka-imienia|pudelko|skrzynka|podkladki|dyplom|kartka-drewniana|koperta|maz-zona|inicjaly-scianka|numery-stol-podstawka|zegar'),
  ('szklo', 'Szkło i kryształ', r'kryszt|szklank|whisky|karafka|kieliszki|kufel|szklo|swieca|statuetka-krysztal|znicz'),
  ('akryl', 'Akryl, plexi i lustro', r'akryl|plexi|lustr|winietki|topper|ihs-litery|logo-na|szyld-okragly|numery-stol-lustro|tablica-|plan-stolow|ksiega-gosci|napis-recepcja|tabliczk|wizytownik|cennik|dekoracje|podziekowania|stojak|statuetka-3'),
  ('metal', 'Metal i stal', r'naszyjnik|bransolet|niesmiertelnik|adresowka|medal|termos|kubek-termiczny|tumbler|bidon|dlugopisy|fotopanel|plakietki-qr-grawer|dystanse|numer-domu|etui-grawer|lusterko'),
- ('druk', 'Druk, papier i folia', r'druk|plakat|kalendarz|fotoksiazka|odbitki|wizytowk|ulotki|voucher|bony|certyfikat|skrypt|notesy|terminarzyki|karty-stalego|naklejk|foli|okleiny|fototapet|obraz|banery|rollup|magnesy|puzzle-zdjecie|ksiazeczka|lamibook|regulamin|witryna|godziny|lokal|pchac|piktogram|zaproszenia|poduszka|okladka|portret|mapa-nieba|fine-art'),
+ ('druk', 'Druk, papier i folia', r'nadrukiem|druk|plakat|kalendarz|fotoksiazka|odbitki|wizytowk|ulotki|voucher|bony|certyfikat|skrypt|notesy|terminarzyki|karty-stalego|naklejk|foli|okleiny|fototapet|obraz|banery|rollup|magnesy|puzzle-zdjecie|ksiazeczka|lamibook|regulamin|witryna|godziny|lokal|pchac|piktogram|zaproszenia|poduszka|okladka|portret|mapa-nieba|fine-art'),
  ('3d', 'Druk 3D', r'3d|flexi|smok|figurk|kliker|szkielet|dioram|litofan|choinka|balwanek|breloki-klub|kalendarz-adwentowy'),
 ]
 FIRMA_CATS = {'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie'}
@@ -77,7 +77,7 @@ def tag(p):
     for _, opts in OKAZJE:
         for k, _, rx in opts:
             if k == 'firma':
-                if b2b or re.search(r'statuetka|dlugopisy|notesy|termos|pudelko-grawer|kartka-drewniana|skrzynka-wino|breloki-klub|medale|dyplom', s): out['okazja'].append(k)
+                if b2b or re.search(r'nadrukiem|statuetka|dlugopisy|notesy|termos|pudelko-grawer|kartka-drewniana|skrzynka-wino|breloki-klub|medale|dyplom', s): out['okazja'].append(k)
             elif not b2b and re.search(rx, s): out['okazja'].append(k)
     for _, opts in DLA:
         for k, _, rx in opts:

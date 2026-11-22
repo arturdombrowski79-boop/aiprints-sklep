@@ -1114,5 +1114,23 @@
    "img/hf/szyld-ramka-znaki-1.jpg"
   ],
   "card": "img/hf/szyld-ramka-znaki-1.jpg"
+ },
+ "koszulka-z-nadrukiem": {
+  "gallery": [
+   "img/hf/koszulka-z-nadrukiem-1.jpg"
+  ],
+  "card": "img/hf/koszulka-z-nadrukiem-1.jpg"
+ },
+ "bluza-z-nadrukiem": {
+  "gallery": [
+   "img/hf/bluza-z-nadrukiem-1.jpg"
+  ],
+  "card": "img/hf/bluza-z-nadrukiem-1.jpg"
+ },
+ "kubek-z-nadrukiem": {
+  "gallery": [
+   "img/hf/kubek-z-nadrukiem-1.jpg"
+  ],
+  "card": "img/hf/kubek-z-nadrukiem-1.jpg"
  }
 }

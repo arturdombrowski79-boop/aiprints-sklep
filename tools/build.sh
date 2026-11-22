@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-cd /home/claude/sklep
+cd "$(dirname "$0")/.."
 python3 tools/catalog.py >/dev/null
-npx astro build >/tmp/build.log 2>&1 || { tail -30 /tmp/build.log; exit 1; }
+npx astro build > build.log 2>&1 || { tail -30 build.log; exit 1; }
 sed -i 's#="/assets/#="./assets/#g; s#url(/assets/#url(./assets/#g' dist/*.html
 echo "built $(ls dist/*.html | wc -l) pages"
 # wersja produkcyjna: czyste adresy + sitemap
@@ -23,4 +23,5 @@ urls.sort(key=lambda u:(u!='',u))
 open('prod/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>https://aiprints.pl/{u}</loc><lastmod>{d}</lastmod></url>\n' for u in urls)+'</urlset>\n')
 print('prod',len(urls),'adresów w sitemap')
 PY
-cp tools/WDROZENIE.txt prod/ && rm -f /home/claude/AiPrints-sklep-do-wgrania.zip && (cd prod && zip -qr /home/claude/AiPrints-sklep-do-wgrania.zip .)
+cp tools/WDROZENIE.txt prod/
+if [ -d /home/claude ] && command -v zip >/dev/null; then rm -f /home/claude/AiPrints-sklep-do-wgrania.zip && (cd prod && zip -qr /home/claude/AiPrints-sklep-do-wgrania.zip .); fi

@@ -22,10 +22,11 @@
 "Dla dzieci",
 "Dla fotografów",
 "Dom i dekoracje",
+"Odzież i kubki",
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 34
+"count": 37
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -1488,8 +1489,11 @@
 "okazja": [
 "firma"
 ],
-"dla": [],
+"dla": [
+"pracownik"
+],
 "pers": [
+"zdjecie",
 "imie",
 "logo"
 ],
@@ -3078,15 +3082,19 @@
 "tags": {
 "okazja": [
 "urodziny",
-"dzien-mamy"
+"dzien-mamy",
+"firma"
 ],
 "dla": [
 "mama",
 "dla-niej",
-"przyjaciel"
+"przyjaciel",
+"pracownik"
 ],
 "pers": [
-"imie"
+"zdjecie",
+"imie",
+"logo"
 ],
 "mat": [
 "metal",
@@ -5367,8 +5375,11 @@
 "okazja": [
 "firma"
 ],
-"dla": [],
+"dla": [
+"pracownik"
+],
 "pers": [
+"zdjecie",
 "imie",
 "logo"
 ],
@@ -6898,6 +6909,126 @@
 ],
 "mat": [
 "drewno"
+]
+}
+},
+{
+"slug": "koszulka-z-nadrukiem",
+"name": "Koszulka z własnym nadrukiem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Odzież i kubki",
+"variants": "9 kolorów, S–3XL, nadruk przód i tył",
+"priceText": "69 zł",
+"price": 69,
+"tiers": null,
+"machine": "DTF + prasa",
+"score": 1005.0,
+"xmas": false,
+"img": "img/hf/koszulka-z-nadrukiem-1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/koszulka-z-nadrukiem-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"tata",
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "bluza-z-nadrukiem",
+"name": "Bluza z kapturem z własnym nadrukiem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Odzież i kubki",
+"variants": "9 kolorów, S–3XL, przód i tył",
+"priceText": "149 zł",
+"price": 149,
+"tiers": null,
+"machine": "DTF + prasa",
+"score": 1005.0,
+"xmas": false,
+"img": "img/hf/bluza-z-nadrukiem-1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/bluza-z-nadrukiem-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kubek-z-nadrukiem",
+"name": "Kubek ceramiczny z nadrukiem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Odzież i kubki",
+"variants": "330 ml, 5 kolorów, zdjęcie, logo lub tekst",
+"priceText": "45 zł",
+"price": 45,
+"tiers": null,
+"machine": "Sublimacja / GoArt UV A3",
+"score": 1005.0,
+"xmas": false,
+"img": "img/hf/kubek-z-nadrukiem-1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/kubek-z-nadrukiem-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"mama",
+"tata",
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },

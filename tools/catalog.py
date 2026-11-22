@@ -1,6 +1,6 @@
 import csv, json, re, os
-B='/home/claude/sklep'
-rows=list(csv.DictReader(open('/home/claude/plexi/baza-produktow.csv',encoding='utf-8-sig'),delimiter=';'))
+B=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+rows=list(csv.DictReader(open(B+'/data/baza-produktow.csv',encoding='utf-8-sig'),delimiter=';'))
 CATS=[
  ('na-swieta','Na święta','Bombki z imieniem, kryształy z zimowym motywem i kalendarze 2027. Zamów do 15 grudnia, a zdążymy przed Wigilią.','#7a2e2a'),
  ('prezenty-ze-zdjeciem','Prezenty ze zdjęciem','Wasze zdjęcie w szkle, na akrylu, płótnie i drewnie. Przed produkcją wysyłamy podgląd do akceptacji.','#2f4a6b'),
@@ -68,6 +68,12 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     prods.append(dict(slug=r['slug'],name=r['nazwa'],cat=cat,sub=sub,variants=r['warianty'],priceText=r['nasza_cena'],price=p,tiers=tiers(r['nasza_cena']),
         machine=r['maszyna'],score=float(r['ocena'] or 0),xmas=r['zdazy_na_swieta']=='tak',img=('img/'+im+'.jpg') if im else None,fields=fields(r),
         quote=p is None or cat in('wspolnoty-i-spoldzielnie',) and 'pakiet' in r['slug'], unit=unit))
+
+# produkty z kreatorem (odzież i kubki) – projekt robi klient w kreatorze
+for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadrukiem',69,'9 kolorów, S–3XL, nadruk przód i tył','DTF + prasa'),
+    ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
+    ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
+    prods.append(dict(slug=slug,name=name,cat='prezenty-ze-zdjeciem',sub='Odzież i kubki',variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
 GAL=json.load(open(B+'/src/data/gallery.json'))
 for p in prods:
     g=GAL.get(p['slug'])
