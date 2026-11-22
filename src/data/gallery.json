@@ -1,0 +1,1118 @@
+{
+ "deska-do-krojenia": {
+  "gallery": [
+   "img/hf/deska-do-krojenia-1.jpg",
+   "img/hf/deska-do-krojenia-2.jpg"
+  ],
+  "card": "img/hf/deska-do-krojenia-sq.jpg"
+ },
+ "numer-domu": {
+  "gallery": [
+   "img/hf/numer-domu-1.jpg",
+   "img/hf/numer-domu-2.jpg",
+   "img/hf/numer-domu-3.jpg"
+  ],
+  "card": "img/hf/numer-domu-sq.jpg"
+ },
+ "niesmiertelnik": {
+  "gallery": [
+   "img/hf/niesmiertelnik-1.jpg",
+   "img/hf/niesmiertelnik-2.jpg",
+   "img/hf/niesmiertelnik-3.jpg"
+  ],
+  "card": "img/hf/niesmiertelnik-sq.jpg"
+ },
+ "naszyjnik-grawer": {
+  "gallery": [
+   "img/hf/naszyjnik-grawer-1.jpg",
+   "img/hf/naszyjnik-grawer-2.jpg",
+   "img/hf/naszyjnik-grawer-3.jpg"
+  ],
+  "card": "img/hf/naszyjnik-grawer-sq.jpg"
+ },
+ "karafka-grawer": {
+  "gallery": [
+   "img/hf/karafka-grawer-1.jpg",
+   "img/hf/karafka-grawer-2.jpg",
+   "img/hf/karafka-grawer-3.jpg"
+  ],
+  "card": "img/hf/karafka-grawer-sq.jpg"
+ },
+ "szklanki-whisky": {
+  "gallery": [
+   "img/hf/szklanki-whisky-1.jpg",
+   "img/hf/szklanki-whisky-2.jpg",
+   "img/hf/szklanki-whisky-3.jpg"
+  ],
+  "card": "img/hf/szklanki-whisky-sq.jpg"
+ },
+ "obraz-plotno": {
+  "gallery": [
+   "img/hf/obraz-plotno-1.jpg",
+   "img/hf/obraz-plotno-2.jpg",
+   "img/hf/obraz-plotno-3.jpg"
+  ],
+  "card": "img/hf/obraz-plotno-sq.jpg"
+ },
+ "poduszka-zdjecie": {
+  "gallery": [
+   "img/hf/poduszka-zdjecie-1.jpg",
+   "img/hf/poduszka-zdjecie-2.jpg",
+   "img/hf/poduszka-zdjecie-3.jpg"
+  ],
+  "card": "img/hf/poduszka-zdjecie-sq.jpg"
+ },
+ "sylwetka-psa": {
+  "gallery": [
+   "img/hf/sylwetka-psa-1.jpg",
+   "img/hf/sylwetka-psa-2.jpg"
+  ],
+  "card": "img/hf/sylwetka-psa-sq.jpg"
+ },
+ "adresowka-psa": {
+  "gallery": [
+   "img/hf/adresowka-psa-1.jpg",
+   "img/hf/adresowka-psa-2.jpg",
+   "img/hf/adresowka-psa-3.jpg"
+  ],
+  "card": "img/hf/adresowka-psa-sq.jpg"
+ },
+ "akryl-piosenka": {
+  "gallery": [
+   "img/hf/akryl-piosenka-1.jpg",
+   "img/hf/akryl-piosenka-2.jpg",
+   "img/hf/akryl-piosenka-3.jpg"
+  ],
+  "card": "img/hf/akryl-piosenka-sq.jpg"
+ },
+ "mapa-nieba": {
+  "gallery": [
+   "img/hf/mapa-nieba-1.jpg",
+   "img/hf/mapa-nieba-2.jpg",
+   "img/hf/mapa-nieba-3.jpg"
+  ],
+  "card": "img/hf/mapa-nieba-sq.jpg"
+ },
+ "tablica-wejscie-zarzadca": {
+  "gallery": [
+   "img/hf/tablica-wejscie-zarzadca-1.jpg",
+   "img/hf/tablica-wejscie-zarzadca-2.jpg"
+  ],
+  "card": "img/hf/tablica-wejscie-zarzadca-sq.jpg"
+ },
+ "termos-logo": {
+  "gallery": [
+   "img/hf/termos-logo-1.jpg",
+   "img/hf/termos-logo-2.jpg"
+  ],
+  "card": "img/hf/termos-logo-sq.jpg"
+ },
+ "krysztal-zimowy-led": {
+  "gallery": [
+   "img/hf/krysztal-zimowy-led-1.jpg"
+  ],
+  "card": "img/hf/krysztal-zimowy-led-1.jpg"
+ },
+ "numeracja-lokali": {
+  "gallery": [
+   "img/hf/numeracja-lokali-1.jpg"
+  ],
+  "card": "img/hf/numeracja-lokali-1.jpg"
+ },
+ "breloki-klub": {
+  "gallery": [
+   "img/hf/breloki-klub-1.jpg"
+  ],
+  "card": "img/hf/breloki-klub-1.jpg"
+ },
+ "plakat-mapa-2d": {
+  "gallery": [
+   "img/hf/plakat-mapa-2d-1.jpg"
+  ],
+  "card": "img/hf/plakat-mapa-2d-1.jpg"
+ },
+ "tabliczki-skrzynki": {
+  "gallery": [
+   "img/hf/tabliczki-skrzynki-1.jpg"
+  ],
+  "card": "img/hf/tabliczki-skrzynki-1.jpg"
+ },
+ "odbitki-polaroid": {
+  "gallery": [
+   "img/hf/odbitki-polaroid-1.jpg"
+  ],
+  "card": "img/hf/odbitki-polaroid-1.jpg"
+ },
+ "akryl-polaroid": {
+  "gallery": [
+   "img/hf/akryl-polaroid-1.jpg"
+  ],
+  "card": "img/hf/akryl-polaroid-1.jpg"
+ },
+ "krysztal-pupil": {
+  "gallery": [
+   "img/hf/krysztal-pupil-1.jpg"
+  ],
+  "card": "img/hf/krysztal-pupil-1.jpg"
+ },
+ "swieca-szklo-imie": {
+  "gallery": [
+   "img/hf/swieca-szklo-imie-1.jpg"
+  ],
+  "card": "img/hf/swieca-szklo-imie-1.jpg"
+ },
+ "krysztal-pamiatkowy": {
+  "gallery": [
+   "img/hf/krysztal-pamiatkowy-1.jpg"
+  ],
+  "card": "img/hf/krysztal-pamiatkowy-1.jpg"
+ },
+ "akryl-nasza-data": {
+  "gallery": [
+   "img/hf/akryl-nasza-data-1.jpg"
+  ],
+  "card": "img/hf/akryl-nasza-data-1.jpg"
+ },
+ "bransoletka-stal": {
+  "gallery": [
+   "img/hf/bransoletka-stal-1.jpg"
+  ],
+  "card": "img/hf/bransoletka-stal-1.jpg"
+ },
+ "lupek-zdjecie": {
+  "gallery": [
+   "img/hf/lupek-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/lupek-zdjecie-1.jpg"
+ },
+ "puzzle-zdjecie": {
+  "gallery": [
+   "img/hf/puzzle-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/puzzle-zdjecie-1.jpg"
+ },
+ "portret-pupila-plakat": {
+  "gallery": [
+   "img/hf/portret-pupila-plakat-1.jpg"
+  ],
+  "card": "img/hf/portret-pupila-plakat-1.jpg"
+ },
+ "statuetka-krysztal": {
+  "gallery": [
+   "img/hf/statuetka-krysztal-1.jpg"
+  ],
+  "card": "img/hf/statuetka-krysztal-1.jpg"
+ },
+ "fototapeta": {
+  "gallery": [
+   "img/hf/fototapeta-1.jpg"
+  ],
+  "card": "img/hf/fototapeta-1.jpg"
+ },
+ "oznakowanie-piwnic": {
+  "gallery": [
+   "img/hf/oznakowanie-piwnic-1.jpg"
+  ],
+  "card": "img/hf/oznakowanie-piwnic-1.jpg"
+ },
+ "znaki-zakazu": {
+  "gallery": [
+   "img/hf/znaki-zakazu-1.jpg"
+  ],
+  "card": "img/hf/znaki-zakazu-1.jpg"
+ },
+ "bony-podarunkowe": {
+  "gallery": [
+   "img/hf/bony-podarunkowe-1.jpg"
+  ],
+  "card": "img/hf/bony-podarunkowe-1.jpg"
+ },
+ "puzzle-akryl-serce": {
+  "gallery": [
+   "img/hf/puzzle-akryl-serce-1.jpg"
+  ],
+  "card": "img/hf/puzzle-akryl-serce-1.jpg"
+ },
+ "pakiet-budynek": {
+  "gallery": [
+   "img/hf/pakiet-budynek-1.jpg"
+  ],
+  "card": "img/hf/pakiet-budynek-1.jpg"
+ },
+ "choinka-3d": {
+  "gallery": [
+   "img/hf/choinka-3d-1.jpg"
+  ],
+  "card": "img/hf/choinka-3d-1.jpg"
+ },
+ "balwanek-3d": {
+  "gallery": [
+   "img/hf/balwanek-3d-1.jpg"
+  ],
+  "card": "img/hf/balwanek-3d-1.jpg"
+ },
+ "tablica-nauka-imienia": {
+  "gallery": [
+   "img/hf/tablica-nauka-imienia-1.jpg"
+  ],
+  "card": "img/hf/tablica-nauka-imienia-1.jpg"
+ },
+ "tabliczki-pomieszczenia": {
+  "gallery": [
+   "img/hf/tabliczki-pomieszczenia-1.jpg"
+  ],
+  "card": "img/hf/tabliczki-pomieszczenia-1.jpg"
+ },
+ "brelok-akryl-zdjecie": {
+  "gallery": [
+   "img/hf/brelok-akryl-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/brelok-akryl-zdjecie-1.jpg"
+ },
+ "bidon-dziecko-uv": {
+  "gallery": [
+   "img/hf/bidon-dziecko-uv-1.jpg"
+  ],
+  "card": "img/hf/bidon-dziecko-uv-1.jpg"
+ },
+ "kufel-grawer": {
+  "gallery": [
+   "img/hf/kufel-grawer-1.jpg"
+  ],
+  "card": "img/hf/kufel-grawer-1.jpg"
+ },
+ "tablica-ogloszen": {
+  "gallery": [
+   "img/hf/tablica-ogloszen-1.jpg"
+  ],
+  "card": "img/hf/tablica-ogloszen-1.jpg"
+ },
+ "logo-lustro": {
+  "gallery": [
+   "img/hf/logo-lustro-1.jpg"
+  ],
+  "card": "img/hf/logo-lustro-1.jpg"
+ },
+ "banery-rollupy": {
+  "gallery": [
+   "img/hf/banery-rollupy-1.jpg"
+  ],
+  "card": "img/hf/banery-rollupy-1.jpg"
+ },
+ "regulamin-porzadku": {
+  "gallery": [
+   "img/hf/regulamin-porzadku-1.jpg"
+  ],
+  "card": "img/hf/regulamin-porzadku-1.jpg"
+ },
+ "tabliczki-domofon": {
+  "gallery": [
+   "img/hf/tabliczki-domofon-1.jpg"
+  ],
+  "card": "img/hf/tabliczki-domofon-1.jpg"
+ },
+ "statuetka-3-kody": {
+  "gallery": [
+   "img/hf/statuetka-3-kody-1.jpg"
+  ],
+  "card": "img/hf/statuetka-3-kody-1.jpg"
+ },
+ "akryl-bilet": {
+  "gallery": [
+   "img/hf/akryl-bilet-1.jpg"
+  ],
+  "card": "img/hf/akryl-bilet-1.jpg"
+ },
+ "okladka-magazynu": {
+  "gallery": [
+   "img/hf/okladka-magazynu-1.jpg"
+  ],
+  "card": "img/hf/okladka-magazynu-1.jpg"
+ },
+ "butelka-personalizacja": {
+  "gallery": [
+   "img/hf/butelka-personalizacja-1.jpg"
+  ],
+  "card": "img/hf/butelka-personalizacja-1.jpg"
+ },
+ "fotopanel-aluminium": {
+  "gallery": [
+   "img/hf/fotopanel-aluminium-1.jpg"
+  ],
+  "card": "img/hf/fotopanel-aluminium-1.jpg"
+ },
+ "tabliczka-opinie-sciana": {
+  "gallery": [
+   "img/hf/tabliczka-opinie-sciana-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-opinie-sciana-1.jpg"
+ },
+ "stojak-opinie-qr-nfc": {
+  "gallery": [
+   "img/hf/stojak-opinie-qr-nfc-1.jpg"
+  ],
+  "card": "img/hf/stojak-opinie-qr-nfc-1.jpg"
+ },
+ "lusterko-logo": {
+  "gallery": [
+   "img/hf/lusterko-logo-1.jpg"
+  ],
+  "card": "img/hf/lusterko-logo-1.jpg"
+ },
+ "inicjal-dziecko": {
+  "gallery": [
+   "img/hf/inicjal-dziecko-1.jpg"
+  ],
+  "card": "img/hf/inicjal-dziecko-1.jpg"
+ },
+ "tabliczka-drzwi": {
+  "gallery": [
+   "img/hf/tabliczka-drzwi-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-drzwi-1.jpg"
+ },
+ "zdjecie-na-drewnie": {
+  "gallery": [
+   "img/hf/zdjecie-na-drewnie-1.jpg"
+  ],
+  "card": "img/hf/zdjecie-na-drewnie-1.jpg"
+ },
+ "kartka-drewniana": {
+  "gallery": [
+   "img/hf/kartka-drewniana-1.jpg"
+  ],
+  "card": "img/hf/kartka-drewniana-1.jpg"
+ },
+ "tabliczka-adres-dystanse": {
+  "gallery": [
+   "img/hf/tabliczka-adres-dystanse-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-adres-dystanse-1.jpg"
+ },
+ "pudelko-grawer": {
+  "gallery": [
+   "img/hf/pudelko-grawer-1.jpg"
+  ],
+  "card": "img/hf/pudelko-grawer-1.jpg"
+ },
+ "vouchery-salon": {
+  "gallery": [
+   "img/hf/vouchery-salon-1.jpg"
+  ],
+  "card": "img/hf/vouchery-salon-1.jpg"
+ },
+ "tabliczka-scienna-qr": {
+  "gallery": [
+   "img/hf/tabliczka-scienna-qr-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-scienna-qr-1.jpg"
+ },
+ "ksiazeczka-dziecko": {
+  "gallery": [
+   "img/hf/ksiazeczka-dziecko-1.jpg"
+  ],
+  "card": "img/hf/ksiazeczka-dziecko-1.jpg"
+ },
+ "akryl-obrys": {
+  "gallery": [
+   "img/hf/akryl-obrys-1.jpg"
+  ],
+  "card": "img/hf/akryl-obrys-1.jpg"
+ },
+ "etui-grawer": {
+  "gallery": [
+   "img/hf/etui-grawer-1.jpg"
+  ],
+  "card": "img/hf/etui-grawer-1.jpg"
+ },
+ "napis-scienny": {
+  "gallery": [
+   "img/hf/napis-scienny-1.jpg"
+  ],
+  "card": "img/hf/napis-scienny-1.jpg"
+ },
+ "kieliszki-para": {
+  "gallery": [
+   "img/hf/kieliszki-para-1.jpg"
+  ],
+  "card": "img/hf/kieliszki-para-1.jpg"
+ },
+ "zegar-diy-komplet": {
+  "gallery": [
+   "img/hf/zegar-diy-komplet-1.jpg"
+  ],
+  "card": "img/hf/zegar-diy-komplet-1.jpg"
+ },
+ "smok-flexi": {
+  "gallery": [
+   "img/hf/smok-flexi-1.jpg"
+  ],
+  "card": "img/hf/smok-flexi-1.jpg"
+ },
+ "figurka-swieta": {
+  "gallery": [
+   "img/hf/figurka-swieta-1.jpg"
+  ],
+  "card": "img/hf/figurka-swieta-1.jpg"
+ },
+ "etui-telefon-uv": {
+  "gallery": [
+   "img/hf/etui-telefon-uv-1.jpg"
+  ],
+  "card": "img/hf/etui-telefon-uv-1.jpg"
+ },
+ "numery-stol-podstawka": {
+  "gallery": [
+   "img/hf/numery-stol-podstawka-1.jpg"
+  ],
+  "card": "img/hf/numery-stol-podstawka-1.jpg"
+ },
+ "naklejki-scienne-dziecko": {
+  "gallery": [
+   "img/hf/naklejki-scienne-dziecko-1.jpg"
+  ],
+  "card": "img/hf/naklejki-scienne-dziecko-1.jpg"
+ },
+ "dystanse": {
+  "gallery": [
+   "img/hf/dystanse-1.jpg"
+  ],
+  "card": "img/hf/dystanse-1.jpg"
+ },
+ "kliker-3d": {
+  "gallery": [
+   "img/hf/kliker-3d-1.jpg"
+  ],
+  "card": "img/hf/kliker-3d-1.jpg"
+ },
+ "tablica-rejestracyjna": {
+  "gallery": [
+   "img/hf/tablica-rejestracyjna-1.jpg"
+  ],
+  "card": "img/hf/tablica-rejestracyjna-1.jpg"
+ },
+ "tumbler-uv-kolor": {
+  "gallery": [
+   "img/hf/tumbler-uv-kolor-1.jpg"
+  ],
+  "card": "img/hf/tumbler-uv-kolor-1.jpg"
+ },
+ "podziekowania-rodzice": {
+  "gallery": [
+   "img/hf/podziekowania-rodzice-1.jpg"
+  ],
+  "card": "img/hf/podziekowania-rodzice-1.jpg"
+ },
+ "napis-recepcja": {
+  "gallery": [
+   "img/hf/napis-recepcja-1.jpg"
+  ],
+  "card": "img/hf/napis-recepcja-1.jpg"
+ },
+ "ruchomy-szkielet": {
+  "gallery": [
+   "img/hf/ruchomy-szkielet-1.jpg"
+  ],
+  "card": "img/hf/ruchomy-szkielet-1.jpg"
+ },
+ "zestaw-higieniczny": {
+  "gallery": [
+   "img/hf/zestaw-higieniczny-1.jpg"
+  ],
+  "card": "img/hf/zestaw-higieniczny-1.jpg"
+ },
+ "wc-komplet": {
+  "gallery": [
+   "img/hf/wc-komplet-1.jpg"
+  ],
+  "card": "img/hf/wc-komplet-1.jpg"
+ },
+ "naklejki-promocyjne": {
+  "gallery": [
+   "img/hf/naklejki-promocyjne-1.jpg"
+  ],
+  "card": "img/hf/naklejki-promocyjne-1.jpg"
+ },
+ "wizytowki-lakier-3d": {
+  "gallery": [
+   "img/hf/wizytowki-lakier-3d-1.jpg"
+  ],
+  "card": "img/hf/wizytowki-lakier-3d-1.jpg"
+ },
+ "akryl-plakat-filmowy": {
+  "gallery": [
+   "img/hf/akryl-plakat-filmowy-1.jpg"
+  ],
+  "card": "img/hf/akryl-plakat-filmowy-1.jpg"
+ },
+ "rollup-salon": {
+  "gallery": [
+   "img/hf/rollup-salon-1.jpg"
+  ],
+  "card": "img/hf/rollup-salon-1.jpg"
+ },
+ "szyld-okragly-logo": {
+  "gallery": [
+   "img/hf/szyld-okragly-logo-1.jpg"
+  ],
+  "card": "img/hf/szyld-okragly-logo-1.jpg"
+ },
+ "folia-mrozona-wymiar": {
+  "gallery": [
+   "img/hf/folia-mrozona-wymiar-1.jpg"
+  ],
+  "card": "img/hf/folia-mrozona-wymiar-1.jpg"
+ },
+ "karty-stalego-klienta": {
+  "gallery": [
+   "img/hf/karty-stalego-klienta-1.jpg"
+  ],
+  "card": "img/hf/karty-stalego-klienta-1.jpg"
+ },
+ "tabliczka-logo-salon": {
+  "gallery": [
+   "img/hf/tabliczka-logo-salon-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-logo-salon-1.jpg"
+ },
+ "szyld-czarny-nazwa": {
+  "gallery": [
+   "img/hf/szyld-czarny-nazwa-1.jpg"
+  ],
+  "card": "img/hf/szyld-czarny-nazwa-1.jpg"
+ },
+ "numery-stol-lustro": {
+  "gallery": [
+   "img/hf/numery-stol-lustro-1.jpg"
+  ],
+  "card": "img/hf/numery-stol-lustro-1.jpg"
+ },
+ "winietki": {
+  "gallery": [
+   "img/hf/winietki-1.jpg"
+  ],
+  "card": "img/hf/winietki-1.jpg"
+ },
+ "logo-na-sciane": {
+  "gallery": [
+   "img/hf/logo-na-sciane-1.jpg"
+  ],
+  "card": "img/hf/logo-na-sciane-1.jpg"
+ },
+ "skrzynka-wino": {
+  "gallery": [
+   "img/hf/skrzynka-wino-1.jpg"
+  ],
+  "card": "img/hf/skrzynka-wino-1.jpg"
+ },
+ "bombka-zdjecie": {
+  "gallery": [
+   "img/hf/bombka-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/bombka-zdjecie-1.jpg"
+ },
+ "logo-na-lade": {
+  "gallery": [
+   "img/hf/logo-na-lade-1.jpg"
+  ],
+  "card": "img/hf/logo-na-lade-1.jpg"
+ },
+ "zaproszenia-akryl": {
+  "gallery": [
+   "img/hf/zaproszenia-akryl-1.jpg"
+  ],
+  "card": "img/hf/zaproszenia-akryl-1.jpg"
+ },
+ "naklejki-okragle-logo": {
+  "gallery": [
+   "img/hf/naklejki-okragle-logo-1.jpg"
+  ],
+  "card": "img/hf/naklejki-okragle-logo-1.jpg"
+ },
+ "magnesy-zdjecia": {
+  "gallery": [
+   "img/hf/magnesy-zdjecia-1.jpg"
+  ],
+  "card": "img/hf/magnesy-zdjecia-1.jpg"
+ },
+ "stojak-wizytowki-qr": {
+  "gallery": [
+   "img/hf/stojak-wizytowki-qr-1.jpg"
+  ],
+  "card": "img/hf/stojak-wizytowki-qr-1.jpg"
+ },
+ "puzzle-imie": {
+  "gallery": [
+   "img/hf/puzzle-imie-1.jpg"
+  ],
+  "card": "img/hf/puzzle-imie-1.jpg"
+ },
+ "kubek-termiczny-grawer": {
+  "gallery": [
+   "img/hf/kubek-termiczny-grawer-1.jpg"
+  ],
+  "card": "img/hf/kubek-termiczny-grawer-1.jpg"
+ },
+ "witryna-logo-tel-qr": {
+  "gallery": [
+   "img/hf/witryna-logo-tel-qr-1.jpg"
+  ],
+  "card": "img/hf/witryna-logo-tel-qr-1.jpg"
+ },
+ "medalik-ihs": {
+  "gallery": [
+   "img/hf/medalik-ihs-1.jpg"
+  ],
+  "card": "img/hf/medalik-ihs-1.jpg"
+ },
+ "mapa-poznalismy": {
+  "gallery": [
+   "img/hf/mapa-poznalismy-1.jpg"
+  ],
+  "card": "img/hf/mapa-poznalismy-1.jpg"
+ },
+ "ihs-litery": {
+  "gallery": [
+   "img/hf/ihs-litery-1.jpg"
+  ],
+  "card": "img/hf/ihs-litery-1.jpg"
+ },
+ "litofania-lampka": {
+  "gallery": [
+   "img/hf/litofania-lampka-1.jpg"
+  ],
+  "card": "img/hf/litofania-lampka-1.jpg"
+ },
+ "wizytowki-salon": {
+  "gallery": [
+   "img/hf/wizytowki-salon-1.jpg"
+  ],
+  "card": "img/hf/wizytowki-salon-1.jpg"
+ },
+ "plakietki-qr-nfc": {
+  "gallery": [
+   "img/hf/plakietki-qr-nfc-1.jpg"
+  ],
+  "card": "img/hf/plakietki-qr-nfc-1.jpg"
+ },
+ "tabliczka-wc-kwadrat": {
+  "gallery": [
+   "img/hf/tabliczka-wc-kwadrat-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-wc-kwadrat-1.jpg"
+ },
+ "topper-bok-tortu": {
+  "gallery": [
+   "img/hf/topper-bok-tortu-1.jpg"
+  ],
+  "card": "img/hf/topper-bok-tortu-1.jpg"
+ },
+ "brelok-3d-imie": {
+  "gallery": [
+   "img/hf/brelok-3d-imie-1.jpg"
+  ],
+  "card": "img/hf/brelok-3d-imie-1.jpg"
+ },
+ "szyld-okragly-led": {
+  "gallery": [
+   "img/hf/szyld-okragly-led-1.jpg"
+  ],
+  "card": "img/hf/szyld-okragly-led-1.jpg"
+ },
+ "tabliczka-przedszkole": {
+  "gallery": [
+   "img/hf/tabliczka-przedszkole-1.jpg"
+  ],
+  "card": "img/hf/tabliczka-przedszkole-1.jpg"
+ },
+ "godziny-otwarcia": {
+  "gallery": [
+   "img/hf/godziny-otwarcia-1.jpg"
+  ],
+  "card": "img/hf/godziny-otwarcia-1.jpg"
+ },
+ "ulotki-salon": {
+  "gallery": [
+   "img/hf/ulotki-salon-1.jpg"
+  ],
+  "card": "img/hf/ulotki-salon-1.jpg"
+ },
+ "dlugopisy-grawer": {
+  "gallery": [
+   "img/hf/dlugopisy-grawer-1.jpg"
+  ],
+  "card": "img/hf/dlugopisy-grawer-1.jpg"
+ },
+ "diorama-3d": {
+  "gallery": [
+   "img/hf/diorama-3d-1.jpg"
+  ],
+  "card": "img/hf/diorama-3d-1.jpg"
+ },
+ "brelok-drewno-skora": {
+  "gallery": [
+   "img/hf/brelok-drewno-skora-1.jpg"
+  ],
+  "card": "img/hf/brelok-drewno-skora-1.jpg"
+ },
+ "topper-tort": {
+  "gallery": [
+   "img/hf/topper-tort-1.jpg"
+  ],
+  "card": "img/hf/topper-tort-1.jpg"
+ },
+ "akryl-led-zdjecie": {
+  "gallery": [
+   "img/hf/akryl-led-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/akryl-led-zdjecie-1.jpg"
+ },
+ "znicz-zdjecie": {
+  "gallery": [
+   "img/hf/znicz-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/znicz-zdjecie-1.jpg"
+ },
+ "ksiega-gosci-tabliczka": {
+  "gallery": [
+   "img/hf/ksiega-gosci-tabliczka-1.jpg"
+  ],
+  "card": "img/hf/ksiega-gosci-tabliczka-1.jpg"
+ },
+ "tablica-komunia": {
+  "gallery": [
+   "img/hf/tablica-komunia-1.jpg"
+  ],
+  "card": "img/hf/tablica-komunia-1.jpg"
+ },
+ "stojak-wifi-qr": {
+  "gallery": [
+   "img/hf/stojak-wifi-qr-1.jpg"
+  ],
+  "card": "img/hf/stojak-wifi-qr-1.jpg"
+ },
+ "folia-mrozona-logo": {
+  "gallery": [
+   "img/hf/folia-mrozona-logo-1.jpg"
+  ],
+  "card": "img/hf/folia-mrozona-logo-1.jpg"
+ },
+ "bombka-dab": {
+  "gallery": [
+   "img/hf/bombka-dab-1.jpg"
+  ],
+  "card": "img/hf/bombka-dab-1.jpg"
+ },
+ "mapa-miasta": {
+  "gallery": [
+   "img/hf/mapa-miasta-1.jpg"
+  ],
+  "card": "img/hf/mapa-miasta-1.jpg"
+ },
+ "dyplom-drewniany": {
+  "gallery": [
+   "img/hf/dyplom-drewniany-1.jpg"
+  ],
+  "card": "img/hf/dyplom-drewniany-1.jpg"
+ },
+ "lokal-wynajem": {
+  "gallery": [
+   "img/hf/lokal-wynajem-1.jpg"
+  ],
+  "card": "img/hf/lokal-wynajem-1.jpg"
+ },
+ "inicjaly-scianka": {
+  "gallery": [
+   "img/hf/inicjaly-scianka-1.jpg"
+  ],
+  "card": "img/hf/inicjaly-scianka-1.jpg"
+ },
+ "medale-grawer": {
+  "gallery": [
+   "img/hf/medale-grawer-1.jpg"
+  ],
+  "card": "img/hf/medale-grawer-1.jpg"
+ },
+ "folia-mrozona-nadruk": {
+  "gallery": [
+   "img/hf/folia-mrozona-nadruk-1.jpg"
+  ],
+  "card": "img/hf/folia-mrozona-nadruk-1.jpg"
+ },
+ "podkladki-zestaw": {
+  "gallery": [
+   "img/hf/podkladki-zestaw-1.jpg"
+  ],
+  "card": "img/hf/podkladki-zestaw-1.jpg"
+ },
+ "napis-pudelko-koperty": {
+  "gallery": [
+   "img/hf/napis-pudelko-koperty-1.jpg"
+  ],
+  "card": "img/hf/napis-pudelko-koperty-1.jpg"
+ },
+ "szklo-ramka-zdjecie": {
+  "gallery": [
+   "img/hf/szklo-ramka-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/szklo-ramka-zdjecie-1.jpg"
+ },
+ "pchac-ciagnac": {
+  "gallery": [
+   "img/hf/pchac-ciagnac-1.jpg"
+  ],
+  "card": "img/hf/pchac-ciagnac-1.jpg"
+ },
+ "kalendarz-biurkowy": {
+  "gallery": [
+   "img/hf/kalendarz-biurkowy-1.jpg"
+  ],
+  "card": "img/hf/kalendarz-biurkowy-1.jpg"
+ },
+ "napisy-maz-zona": {
+  "gallery": [
+   "img/hf/napisy-maz-zona-1.jpg"
+  ],
+  "card": "img/hf/napisy-maz-zona-1.jpg"
+ },
+ "ihs-kolo-scianka": {
+  "gallery": [
+   "img/hf/ihs-kolo-scianka-1.jpg"
+  ],
+  "card": "img/hf/ihs-kolo-scianka-1.jpg"
+ },
+ "naklejki-paczki-qr": {
+  "gallery": [
+   "img/hf/naklejki-paczki-qr-1.jpg"
+  ],
+  "card": "img/hf/naklejki-paczki-qr-1.jpg"
+ },
+ "plakietki-qr-grawer": {
+  "gallery": [
+   "img/hf/plakietki-qr-grawer-1.jpg"
+  ],
+  "card": "img/hf/plakietki-qr-grawer-1.jpg"
+ },
+ "piktogram-wc": {
+  "gallery": [
+   "img/hf/piktogram-wc-1.jpg"
+  ],
+  "card": "img/hf/piktogram-wc-1.jpg"
+ },
+ "piktogramy-info": {
+  "gallery": [
+   "img/hf/piktogramy-info-1.jpg"
+  ],
+  "card": "img/hf/piktogramy-info-1.jpg"
+ },
+ "pakiet-social": {
+  "gallery": [
+   "img/hf/pakiet-social-1.jpg"
+  ],
+  "card": "img/hf/pakiet-social-1.jpg"
+ },
+ "folia-mrozona-salon": {
+  "gallery": [
+   "img/hf/folia-mrozona-salon-1.jpg"
+  ],
+  "card": "img/hf/folia-mrozona-salon-1.jpg"
+ },
+ "naklejki-qr-social": {
+  "gallery": [
+   "img/hf/naklejki-qr-social-1.jpg"
+  ],
+  "card": "img/hf/naklejki-qr-social-1.jpg"
+ },
+ "kalendarz-2027-a3": {
+  "gallery": [
+   "img/hf/kalendarz-2027-a3-1.jpg"
+  ],
+  "card": "img/hf/kalendarz-2027-a3-1.jpg"
+ },
+ "akryl-blok-zdjecie": {
+  "gallery": [
+   "img/hf/akryl-blok-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/akryl-blok-zdjecie-1.jpg"
+ },
+ "cennik-salon": {
+  "gallery": [
+   "img/hf/cennik-salon-1.jpg"
+  ],
+  "card": "img/hf/cennik-salon-1.jpg"
+ },
+ "zegar-z-logo": {
+  "gallery": [
+   "img/hf/zegar-z-logo-1.jpg"
+  ],
+  "card": "img/hf/zegar-z-logo-1.jpg"
+ },
+ "tablica-inicjaly": {
+  "gallery": [
+   "img/hf/tablica-inicjaly-1.jpg"
+  ],
+  "card": "img/hf/tablica-inicjaly-1.jpg"
+ },
+ "topper-ihs": {
+  "gallery": [
+   "img/hf/topper-ihs-1.jpg"
+  ],
+  "card": "img/hf/topper-ihs-1.jpg"
+ },
+ "logo-gotowe": {
+  "gallery": [
+   "img/hf/logo-gotowe-1.jpg"
+  ],
+  "card": "img/hf/logo-gotowe-1.jpg"
+ },
+ "plan-stolow": {
+  "gallery": [
+   "img/hf/plan-stolow-1.jpg"
+  ],
+  "card": "img/hf/plan-stolow-1.jpg"
+ },
+ "tablica-witamy-gosci": {
+  "gallery": [
+   "img/hf/tablica-witamy-gosci-1.jpg"
+  ],
+  "card": "img/hf/tablica-witamy-gosci-1.jpg"
+ },
+ "notesy-logo": {
+  "gallery": [
+   "img/hf/notesy-logo-1.jpg"
+  ],
+  "card": "img/hf/notesy-logo-1.jpg"
+ },
+ "wizytownik-lustro": {
+  "gallery": [
+   "img/hf/wizytownik-lustro-1.jpg"
+  ],
+  "card": "img/hf/wizytownik-lustro-1.jpg"
+ },
+ "fotoksiazka-a5": {
+  "gallery": [
+   "img/hf/fotoksiazka-a5-1.jpg"
+  ],
+  "card": "img/hf/fotoksiazka-a5-1.jpg"
+ },
+ "logo-indywidualne": {
+  "gallery": [
+   "img/hf/logo-indywidualne-1.jpg"
+  ],
+  "card": "img/hf/logo-indywidualne-1.jpg"
+ },
+ "zestaw-montazowy": {
+  "gallery": [
+   "img/hf/zestaw-montazowy-1.jpg"
+  ],
+  "card": "img/hf/zestaw-montazowy-1.jpg"
+ },
+ "pakiet-startowy-salon": {
+  "gallery": [
+   "img/hf/pakiet-startowy-salon-1.jpg"
+  ],
+  "card": "img/hf/pakiet-startowy-salon-1.jpg"
+ },
+ "kalendarz-adwentowy-3d": {
+  "gallery": [
+   "img/hf/kalendarz-adwentowy-3d-1.jpg"
+  ],
+  "card": "img/hf/kalendarz-adwentowy-3d-1.jpg"
+ },
+ "lamibook-imie": {
+  "gallery": [
+   "img/hf/lamibook-imie-1.jpg"
+  ],
+  "card": "img/hf/lamibook-imie-1.jpg"
+ },
+ "dekoracje-lustrzane": {
+  "gallery": [
+   "img/hf/dekoracje-lustrzane-1.jpg"
+  ],
+  "card": "img/hf/dekoracje-lustrzane-1.jpg"
+ },
+ "pupil-figurka-3d": {
+  "gallery": [
+   "img/hf/pupil-figurka-3d-1.jpg"
+  ],
+  "card": "img/hf/pupil-figurka-3d-1.jpg"
+ },
+ "okleiny-motocross": {
+  "gallery": [
+   "img/hf/okleiny-motocross-1.jpg"
+  ],
+  "card": "img/hf/okleiny-motocross-1.jpg"
+ },
+ "indeksy-wskazowki": {
+  "gallery": [
+   "img/hf/indeksy-wskazowki-1.jpg"
+  ],
+  "card": "img/hf/indeksy-wskazowki-1.jpg"
+ },
+ "skrypt-szkoleniowy": {
+  "gallery": [
+   "img/hf/skrypt-szkoleniowy-1.jpg"
+  ],
+  "card": "img/hf/skrypt-szkoleniowy-1.jpg"
+ },
+ "strona-one-page": {
+  "gallery": [
+   "img/hf/strona-one-page-1.jpg"
+  ],
+  "card": "img/hf/strona-one-page-1.jpg"
+ },
+ "folia-dekor-kropki": {
+  "gallery": [
+   "img/hf/folia-dekor-kropki-1.jpg"
+  ],
+  "card": "img/hf/folia-dekor-kropki-1.jpg"
+ },
+ "tablica-powitalna": {
+  "gallery": [
+   "img/hf/tablica-powitalna-1.jpg"
+  ],
+  "card": "img/hf/tablica-powitalna-1.jpg"
+ },
+ "fine-art-druk": {
+  "gallery": [
+   "img/hf/fine-art-druk-1.jpg"
+  ],
+  "card": "img/hf/fine-art-druk-1.jpg"
+ },
+ "jelen-sklejka": {
+  "gallery": [
+   "img/hf/jelen-sklejka-1.jpg"
+  ],
+  "card": "img/hf/jelen-sklejka-1.jpg"
+ },
+ "tabliczki-drzwi-salon": {
+  "gallery": [
+   "img/hf/tabliczki-drzwi-salon-1.jpg"
+  ],
+  "card": "img/hf/tabliczki-drzwi-salon-1.jpg"
+ },
+ "terminarzyki-wizyt": {
+  "gallery": [
+   "img/hf/terminarzyki-wizyt-1.jpg"
+  ],
+  "card": "img/hf/terminarzyki-wizyt-1.jpg"
+ },
+ "certyfikaty-szkolen": {
+  "gallery": [
+   "img/hf/certyfikaty-szkolen-1.jpg"
+  ],
+  "card": "img/hf/certyfikaty-szkolen-1.jpg"
+ },
+ "cyfry-zegar": {
+  "gallery": [
+   "img/hf/cyfry-zegar-1.jpg"
+  ],
+  "card": "img/hf/cyfry-zegar-1.jpg"
+ },
+ "szyld-ramka-znaki": {
+  "gallery": [
+   "img/hf/szyld-ramka-znaki-1.jpg"
+  ],
+  "card": "img/hf/szyld-ramka-znaki-1.jpg"
+ }
+}

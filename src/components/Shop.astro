@@ -1,0 +1,124 @@
+---
+// Lista produktów z filtrami po lewej (okazja, dla kogo, personalizacja, materiał, cena)
+import Card from './Card.astro';
+import cat from '../data/catalog.json';
+const { items, cslug = '', subs = [] } = Astro.props;
+const F = cat.facets;
+const cnt = (k, v) => items.filter((p) => p.tags && p.tags[k].includes(v)).length;
+const PRICE = [['p1', 'do 50 zł', 0, 50], ['p2', '50–100 zł', 50, 100], ['p3', '100–200 zł', 100, 200], ['p4', 'powyżej 200 zł', 200, 1e9], ['wycena', 'Wycena indywidualna', -1, -1]];
+const pv = (p) => (p.tiers ? p.tiers[0].p : p.price);
+const pcnt = (a, b) => items.filter((p) => (a < 0 ? !pv(p) || p.quote : pv(p) && !p.quote && pv(p) >= a && pv(p) < b)).length;
+const groups = [
+  ['okazja', 'Okazja', F.okazja, true],
+  ['dla', 'Dla kogo', F.dla, true],
+  ['pers', 'Personalizacja', [['', F.pers]], false],
+  ['mat', 'Materiał', [['', F.mat]], false],
+];
+---
+<section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-10" id="shop">
+  <div class="grid lg:grid-cols-[260px_1fr] gap-10">
+    <aside id="fpanel" class="fixed lg:static inset-0 z-[60] lg:z-auto bg-paper lg:bg-transparent overflow-y-auto lg:overflow-visible p-6 lg:p-0 hidden lg:block">
+      <div class="lg:sticky lg:top-[96px] lg:max-h-[calc(100vh-110px)] lg:overflow-y-auto lg:pr-3 fscroll">
+        <div class="flex items-center justify-between lg:hidden mb-4"><b class="hd text-[34px]">Filtry</b><button id="fclose" class="w-11 h-11 rounded-full bg-white border border-line" aria-label="Zamknij">✕</button></div>
+        {subs.length > 1 && (
+          <details open class="fg border-b border-line py-4"><summary class="flex justify-between items-center cursor-pointer font-semibold text-[14.5px]">Rodzaj<span class="chev">+</span></summary>
+            <div class="mt-3 space-y-1">{subs.map((s) => <label class="fo"><input type="checkbox" data-k="sub" value={s} /><span>{s}</span><i>{items.filter((p) => p.sub === s).length}</i></label>)}</div>
+          </details>)}
+        {groups.map(([k, title, gs, grouped]) => {
+          const any = gs.some(([, o]) => o.some(([v]) => cnt(k, v)));
+          return any && (
+          <details open={k !== 'mat'} class="fg border-b border-line py-4"><summary class="flex justify-between items-center cursor-pointer font-semibold text-[14.5px]">{title}<span class="chev">+</span></summary>
+            <div class="mt-3">{gs.map(([g, opts]) => {
+              const os = opts.filter(([v]) => cnt(k, v));
+              return os.length > 0 && <div class="mb-2">{grouped && <p class="text-[11px] uppercase tracking-[.12em] text-mute mt-3 mb-1.5">{g}</p>}
+                {os.map(([v, n]) => <label class="fo"><input type="checkbox" data-k={k} value={v} /><span>{n}</span><i>{cnt(k, v)}</i></label>)}</div>;
+            })}</div>
+          </details>);
+        })}
+        <details open class="fg border-b border-line py-4"><summary class="flex justify-between items-center cursor-pointer font-semibold text-[14.5px]">Cena<span class="chev">+</span></summary>
+          <div class="mt-3 space-y-1">{PRICE.filter(([, , a, b]) => pcnt(a, b)).map(([v, n, a, b]) => <label class="fo"><input type="checkbox" data-k="cena" value={v} data-a={a} data-b={b} /><span>{n}</span><i>{pcnt(a, b)}</i></label>)}</div>
+        </details>
+        <button id="fclear" class="mt-5 text-[13.5px] underline text-mute">Wyczyść wszystkie filtry</button>
+        <button id="fapply" class="lg:hidden mt-6 w-full h-14 rounded-full bg-ink text-white font-semibold">Pokaż wyniki</button>
+      </div>
+    </aside>
+
+    <div>
+      <div class="flex flex-wrap items-center gap-3 justify-between">
+        <div class="flex items-center gap-3">
+          <button id="fopen" class="lg:hidden h-11 px-5 rounded-full bg-ink text-white text-[14px] font-semibold flex items-center gap-2"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filtry <span id="fnum"></span></button>
+          <p class="text-[14px] text-mute"><b id="fcount" class="text-ink">{items.length}</b> produktów</p>
+        </div>
+        <select id="sort" class="h-11 rounded-full border border-line bg-white px-4 text-[13.5px]" aria-label="Sortowanie"><option value="score">Polecane</option><option value="asc">Cena: od najniższej</option><option value="desc">Cena: od najwyższej</option><option value="name">Nazwa A–Z</option></select>
+      </div>
+      <div id="fchips" class="flex flex-wrap gap-2 mt-4 empty:hidden"></div>
+      <div id="grid" class="grid grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-10 mt-6">{items.map((x) => <Card p={x} c={cslug} />)}</div>
+      <div id="fempty" hidden class="rounded-[28px] bg-white border border-line p-10 text-center mt-6">
+        <p class="hd text-[34px]">Nic tu nie pasuje… jeszcze.</p>
+        <p class="text-mute mt-2">Zmień filtry albo napisz – zrobimy prezent na zamówienie.</p>
+        <a href="kontakt.html#wycena" class="btn btn-ink mt-6 inline-flex">Zapytaj o projekt</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .fo { display: flex; align-items: center; gap: 10px; padding: 6px 8px; margin: 0 -8px; border-radius: 12px; cursor: pointer; font-size: 14px; }
+  .fo:hover { background: rgba(0,0,0,.035); }
+  .fo input { appearance: none; width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid rgba(18,17,16,.3); display: grid; place-items: center; flex: none; transition: .15s; }
+  .fo input:checked { background: #121110; border-color: #121110; }
+  .fo input:checked::after { content: ''; width: 9px; height: 5px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px,-1px); }
+  .fo span { flex: 1; }
+  .fo i { font-style: normal; font-size: 12px; color: #5c6064; font-variant-numeric: tabular-nums; }
+  .fo.zero { opacity: .35; }
+  details[open] .chev { transform: rotate(45deg); }
+  .chev { transition: transform .2s; font-weight: 400; font-size: 20px; line-height: 1; }
+  summary::-webkit-details-marker { display: none; } summary { list-style: none; }
+  .fscroll::-webkit-scrollbar { width: 4px; } .fscroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 4px; }
+</style>
+<script>
+  const g = document.getElementById('grid'); const cards = [...g.children];
+  const boxes = [...document.querySelectorAll('#fpanel input[type=checkbox]')];
+  const sel = () => { const s = {}; boxes.filter((b) => b.checked).forEach((b) => (s[b.dataset.k] ||= []).push(b)); return s; };
+  const price = (el) => +el.dataset.price;
+  function match(el, s, skip) {
+    for (const k in s) {
+      if (k === skip) continue;
+      const vs = s[k];
+      if (k === 'sub') { if (!vs.some((b) => b.value === el.dataset.sub)) return false; }
+      else if (k === 'cena') { const p = price(el), q = el.dataset.quote === '1'; if (!vs.some((b) => (+b.dataset.a < 0 ? p >= 99999 || q : !q && p < 99999 && p >= +b.dataset.a && p < +b.dataset.b))) return false; }
+      else { const t = (el.dataset.t || '').split(' '); if (!vs.some((b) => t.includes(k + ':' + b.value))) return false; }
+    }
+    return true;
+  }
+  function draw(push = true) {
+    const s = sel(); const so = document.getElementById('sort').value;
+    cards.sort((a, b) => so === 'name' ? a.querySelector('b').textContent.localeCompare(b.querySelector('b').textContent, 'pl') : so === 'score' ? (b.dataset.i - a.dataset.i) || (b.dataset.score - a.dataset.score) : so === 'asc' ? price(a) - price(b) : (price(b) % 99999) - (price(a) % 99999));
+    let n = 0;
+    cards.forEach((el) => { const ok = match(el, s); el.style.display = ok ? '' : 'none'; if (ok) n++; g.appendChild(el); });
+    document.getElementById('fcount').textContent = n;
+    document.getElementById('fempty').hidden = n > 0;
+    // liczniki: ile wyników po dodaniu danej opcji (w obrębie grupy OR)
+    boxes.forEach((b) => {
+      const k = b.dataset.k; const t = { ...s, [k]: [b] };
+      const c = cards.filter((el) => match(el, t)).length;
+      b.closest('label').querySelector('i').textContent = c; b.closest('label').classList.toggle('zero', !c && !b.checked);
+    });
+    const on = boxes.filter((b) => b.checked);
+    document.getElementById('fnum').textContent = on.length ? `(${on.length})` : '';
+    document.getElementById('fchips').innerHTML = on.map((b, i) => `<button data-x="${i}" class="h-9 pl-4 pr-3 rounded-full bg-ink text-white text-[13px] flex items-center gap-2">${b.nextElementSibling.textContent}<span class="opacity-60">✕</span></button>`).join('') + (on.length ? '<button id="fclr2" class="h-9 px-3 text-[13px] underline text-mute">Wyczyść</button>' : '');
+    document.querySelectorAll('#fchips [data-x]').forEach((x) => x.onclick = () => { on[+x.dataset.x].checked = false; draw(); });
+    const c2 = document.getElementById('fclr2'); if (c2) c2.onclick = clear;
+    if (push) { const q = new URLSearchParams(); for (const k in s) q.set(k, s[k].map((b) => b.value).join(',')); if (so !== 'score') q.set('sort', so); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash); }
+  }
+  function clear() { boxes.forEach((b) => (b.checked = false)); draw(); }
+  boxes.forEach((b) => (b.onchange = () => draw()));
+  document.getElementById('sort').onchange = () => draw();
+  document.getElementById('fclear').onclick = clear;
+  const P = document.getElementById('fpanel');
+  document.getElementById('fopen').onclick = () => { P.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+  const close = () => { P.classList.add('hidden'); document.body.style.overflow = ''; };
+  document.getElementById('fclose').onclick = close; document.getElementById('fapply').onclick = close;
+  const q = new URLSearchParams(location.search);
+  q.forEach((v, k) => { if (k === 'sort') document.getElementById('sort').value = v; else v.split(',').forEach((x) => { const b = boxes.find((b) => b.dataset.k === k && b.value === x); if (b) b.checked = true; }); });
+  draw(false);
+</script>

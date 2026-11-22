@@ -1,0 +1,58 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CartCheckout from '../components/CartCheckout.astro';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/inter-tight';
+import '@fontsource/great-vibes/latin-ext-400.css';
+import '@fontsource/great-vibes/latin-400.css';
+import '../styles/global.css';
+import { GA4_ID, META_PIXEL } from '../data/config.js';
+const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '' } = Astro.props;
+const site = 'https://aiprints.pl/';
+const fullTitle = title.includes('AiPrints') ? title : `${title} | AiPrints.pl`;
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={site + canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={site + image} />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="theme-color" content="#f4f1ec" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="img/logo-mark.svg" />
+  <link rel="apple-touch-icon" href="img/site/apple-touch-icon.png" />
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  <!-- Consent Mode v2: domyślnie brak zgody; nic nie śledzi przed decyzją klienta -->
+  <script is:inline define:vars={{ GA4_ID, META_PIXEL }}>
+    window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } window.gtag = gtag;
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+    window.__ids = { ga: GA4_ID, px: META_PIXEL };
+    window.applyConsent = function (c) {
+      gtag('consent', 'update', { analytics_storage: c.stat ? 'granted' : 'denied', ad_storage: c.ads ? 'granted' : 'denied', ad_user_data: c.ads ? 'granted' : 'denied', ad_personalization: c.ads ? 'granted' : 'denied' });
+      if ((c.stat || c.ads) && GA4_ID && !window.__ga) { window.__ga = 1; var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID; document.head.appendChild(s); gtag('js', new Date()); gtag('config', GA4_ID); }
+      if (c.ads && META_PIXEL && !window.fbq) { !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', META_PIXEL); fbq('track', 'PageView'); }
+    };
+    try { var c = JSON.parse(localStorage.getItem('aiprints-consent')); if (c) applyConsent(c); } catch (e) {}
+  </script>
+</head>
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-white px-4 py-2 rounded">Przejdź do treści</a>
+  <Header active={active} />
+  <main id="main"><slot /></main>
+  <Footer />
+  <CartCheckout />
+  <script>
+    import { initPage } from '../scripts/common.js';
+    initPage();
+  </script>
+</body>
+</html>

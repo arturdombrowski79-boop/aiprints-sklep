@@ -1,0 +1,74 @@
+---
+---
+  <!-- koszyk -->
+  <div id="scrim" class="scrim fixed inset-0 z-50 bg-black/35 backdrop-blur-[2px] lg:bg-transparent lg:backdrop-blur-none lg:pointer-events-none"></div>
+  <aside id="drawer" class="drawer fixed top-0 right-0 z-50 h-full w-full max-w-[440px] bg-paper flex flex-col shadow-[-30px_0_80px_rgba(18,17,16,.18)] lg:border-l lg:border-line">
+    <div class="flex justify-between items-center px-6 py-5"><b class="font-display text-[30px] leading-none">Koszyk</b><button id="close" class="w-10 h-10 rounded-full hover:bg-black/5 text-[22px]">×</button></div>
+    <a id="lastOrd" href="konto.html" class="hidden mx-6 mb-3 rounded-2xl bg-ink text-white px-4 py-3 text-[13px] items-center gap-3"></a>
+    <div id="fs" class="mx-6 rounded-2xl bg-white border border-line px-4 py-3 text-[13px]"></div>
+    <div id="items" class="flex-1 overflow-auto px-6 py-3"></div>
+    <div class="px-6 py-5 border-t border-line bg-white/60">
+      <div class="flex justify-between text-[14px] text-mute"><span>Produkty</span><span id="sSub">0 zł</span></div>
+      <div id="rDisc" class="hidden flex justify-between text-[14px] text-emerald-700 mt-1"><span>Rabat WITAMY10</span><span id="sDisc"></span></div>
+      <div class="flex justify-between text-[19px] font-semibold mt-3 mb-4"><span>Razem</span><span id="sTot">0 zł</span></div>
+      <button id="toCo" class="w-full h-14 rounded-full bg-ink text-white font-semibold text-[15.5px] hover:scale-[1.01] transition">Przejdź do kasy →</button>
+      <p class="text-[11.5px] text-mute text-center mt-2.5">Dostawę i płatność wybierzesz w następnym kroku</p>
+    </div>
+  </aside>
+
+  <!-- kasa (styl Stripe) -->
+  <div id="co" class="co fixed inset-0 z-[60] bg-[#f6f8fa] text-[#1a1f36] overflow-auto">
+    <div class="bg-white border-b border-[#e3e8ee]"><div class="max-w-[1080px] mx-auto flex items-center gap-4 px-6 py-4">
+      <button id="coBack" class="text-[#635bff] font-semibold text-[14px]">← Sklep</button>
+      <img src="img/logo.svg" alt="AiPrints.pl" class="h-8 w-auto" />
+      <span class="ml-auto text-[11.5px] font-semibold bg-[#fff4d6] text-[#7a5600] border border-[#f2d48a] rounded-md px-2 py-1">TRYB TESTOWY – nic nie jest pobierane</span>
+    </div></div>
+    <div id="coForm" class="max-w-[1080px] mx-auto px-6 py-10 grid lg:grid-cols-[1.25fr_1fr] gap-10">
+      <div>
+        <div class="grid grid-cols-2 gap-2.5"><button data-x class="h-12 rounded-lg bg-black text-white font-semibold"> Pay</button><button data-x class="h-12 rounded-lg bg-black text-white font-semibold">G Pay</button></div>
+        <div class="flex items-center gap-3 text-[12.5px] text-[#8792a2] my-5"><span class="flex-1 h-px bg-[#e3e8ee]"></span>lub zapłać inaczej<span class="flex-1 h-px bg-[#e3e8ee]"></span></div>
+        <h2 class="font-semibold text-[16px] mb-3">Kontakt</h2>
+        <input id="em" type="email" autocomplete="email" aria-label="E-mail" placeholder="E-mail – wyślemy podgląd do akceptacji" class="w-full rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3 text-[15px] outline-none focus:border-[#635bff] focus:ring-4 focus:ring-[#635bff]/15" />
+        <p id="emErr" class="hidden text-[#df1b41] text-[12.5px] mt-1.5">Podaj poprawny e-mail.</p>
+        <div class="grid grid-cols-2 gap-2.5 mt-2.5"><input autocomplete="name" aria-label="Imię i nazwisko" placeholder="Imię i nazwisko" class="rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3 text-[15px] outline-none focus:border-[#635bff]" /><input type="tel" autocomplete="tel" aria-label="Telefon" placeholder="Telefon" class="rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3 text-[15px] outline-none focus:border-[#635bff]" /></div>
+        <h2 class="font-semibold text-[16px] mt-8 mb-3">Dostawa</h2>
+        <div class="grid gap-2.5" id="dl">
+          {[['15.99', 'InPost Paczkomat 24/7', 'Wybierzesz paczkomat na mapie', '15,99 zł'], ['19.99', 'Kurier DPD', 'Doręczenie 1–2 dni robocze', '19,99 zł'], ['0', 'Odbiór w pracowni', 'Chorzów, ul. Okrężna 98B', '0 zł']].map(([v, t, d, p], i) => (
+            <label class="dopt flex items-center gap-3 rounded-lg border border-[#d5dbe1] bg-white px-4 py-3.5 cursor-pointer"><input type="radio" name="d" value={v} checked={i === 0} class="accent-[#635bff]" /><span class="flex-1"><b class="text-[14px] font-semibold block">{t}</b><span class="text-[12.5px] text-[#697386]">{d}</span></span><b class="text-[14px]">{p}</b></label>))}
+        </div>
+        <h2 class="font-semibold text-[16px] mt-8 mb-3">Płatność</h2>
+        <div class="grid grid-cols-3 gap-2" id="ptabs">
+          {[['blik', 'BLIK', 'kod z aplikacji'], ['card', 'Karta', 'Visa, Mastercard'], ['p24', 'Przelewy24', 'szybki przelew']].map(([k, t, d], i) => <button data-p={k} aria-pressed={i === 0 ? 'true' : 'false'} class="ptab rounded-lg border border-[#d5dbe1] bg-white p-3 text-left text-[13.5px] font-semibold">{t}<span class="block text-[11.5px] font-normal text-[#697386]">{d}</span></button>)}
+        </div>
+        <div id="p-blik" class="pane mt-3"><input id="blik" inputmode="numeric" autocomplete="one-time-code" aria-label="Kod BLIK" maxlength="6" placeholder="••••••" class="w-full rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3 text-[24px] tracking-[.6em] text-center outline-none focus:border-[#635bff]" /><p class="text-[12.5px] text-[#697386] mt-2">Tryb testowy: wpisz dowolne 6 cyfr. Normalnie potwierdzasz w aplikacji banku.</p><p id="blErr" class="hidden text-[#df1b41] text-[12.5px] mt-1">Kod BLIK ma 6 cyfr.</p></div>
+        <div id="p-card" class="pane mt-3 hidden"><input placeholder="4242 4242 4242 4242 (karta testowa)" class="w-full rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3 text-[15px]" /><div class="grid grid-cols-2 gap-2.5 mt-2.5"><input placeholder="MM / RR" class="rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3" /><input placeholder="CVC" class="rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3" /></div><p class="text-[12.5px] text-[#697386] mt-2">W sklepie to pole wyświetla Stripe – dane karty nie trafiają na nasz serwer.</p></div>
+        <div id="p-p24" class="pane mt-3 hidden"><select class="w-full rounded-lg border border-[#d5dbe1] bg-white px-3.5 py-3"><option>Wybierz bank…</option><option>PKO BP</option><option>mBank</option><option>ING Bank Śląski</option><option>Santander</option><option>Pekao SA</option></select></div>
+        <div id="coBrk" class="hidden rounded-lg bg-[#fff4d6] border border-[#f2d48a] text-[#7a5600] text-[13px] px-4 py-3 mt-6">Pracownia ma przerwę od 21 grudnia do 7 stycznia. Twoje zamówienie zaczniemy realizować od 8 stycznia.</div>
+        <label class="flex gap-2.5 items-start text-[13px] text-[#30313d] mt-6"><input id="tos" type="checkbox" class="mt-0.5 accent-[#635bff]" /><span>Akceptuję regulamin. Produkt jest wykonywany według mojego projektu, więc nie przysługuje mi zwrot bez podania przyczyny (art. 38 ustawy o prawach konsumenta).</span></label>
+        <p id="tosErr" class="hidden text-[#df1b41] text-[12.5px] mt-1.5">Zaakceptuj regulamin, aby zapłacić.</p>
+        <button id="pay" class="w-full h-[52px] rounded-lg bg-[#635bff] hover:bg-[#5249e8] text-white font-semibold text-[16px] mt-5 flex items-center justify-center gap-2.5 transition"><span id="spin" class="hidden w-[18px] h-[18px] rounded-full border-[2.5px] border-white/40 border-t-white animate-spin"></span><span id="payT">Zapłać</span></button>
+        <p class="text-center text-[12px] text-[#8792a2] mt-3">🔒 Płatność obsługiwana przez Stripe</p>
+      </div>
+      <div><div class="rounded-xl bg-white border border-[#e3e8ee] p-6 lg:sticky lg:top-6">
+        <b class="text-[15px]">Twoje zamówienie</b><div id="coItems" class="mt-3"></div>
+        <div class="flex justify-between text-[14px] text-[#697386] mt-4"><span>Produkty</span><span id="cSub"></span></div>
+        <div id="cDiscR" class="hidden flex justify-between text-[14px] text-emerald-700 mt-1"><span>Rabat</span><span id="cDisc"></span></div>
+        <div class="flex justify-between text-[14px] text-[#697386] mt-1"><span>Dostawa</span><span id="cShip"></span></div>
+        <div class="flex justify-between text-[18px] font-semibold mt-3 pt-3 border-t border-[#e3e8ee]"><span>Do zapłaty</span><span id="cTot"></span></div>
+        <p class="text-[12px] text-[#8792a2] mt-1">Cena zawiera VAT 23%.</p>
+      </div></div>
+    </div>
+    <div id="ok" class="hidden max-w-[620px] mx-auto my-14 rounded-2xl bg-white border border-[#e3e8ee] p-9 text-center">
+      <div class="w-16 h-16 rounded-full bg-[#e8f8ee] text-[#1f9d55] grid place-items-center text-[30px] mx-auto">✓</div>
+      <h2 class="font-display text-[40px] leading-tight mt-4">Dziękujemy!</h2>
+      <p class="text-[#697386]">Zamówienie <b id="ordNo" class="text-[#1a1f36]"></b> opłacone. Potwierdzenie wysłaliśmy na <b id="ordEm" class="text-[#1a1f36]"></b>.</p>
+      <ol class="text-left mt-8 space-y-5">
+        {[['Opłacone', 'Przed chwilą', 'done'], ['Podgląd do akceptacji', 'Wizualizację wyślemy na e-mail – klikniesz „Akceptuję” albo poprosisz o poprawkę', 'now'], ['Produkcja w pracowni', 'Wykonanie po akceptacji projektu i staranne pakowanie', ''], ['Wysyłka', 'Numer paczki dostaniesz SMS-em i mailem', '']].map(([t, d, s]) => (
+          <li class="flex gap-4"><span class={`w-3.5 h-3.5 rounded-full mt-1 shrink-0 ${s === 'done' ? 'bg-[#1f9d55]' : s === 'now' ? 'bg-[#635bff] ring-4 ring-[#635bff]/20' : 'bg-[#d5dbe1]'}`}></span><span><b class="block text-[15px]">{t}</b><span class="text-[13.5px] text-[#697386]">{d}</span></span></li>))}
+      </ol>
+      <a id="ordLink" href="konto.html" class="w-full h-12 rounded-lg bg-[#635bff] text-white font-semibold mt-8 grid place-items-center">Zobacz zamówienie i akceptuj projekt</a>
+      <button id="again" class="w-full h-12 rounded-lg border border-[#d5dbe1] font-semibold mt-2">Wróć do sklepu</button>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed left-1/2 bottom-8 -translate-x-1/2 translate-y-4 opacity-0 z-[90] rounded-full bg-ink text-white text-[14px] font-medium px-5 py-3 transition-all duration-300 pointer-events-none"></div>

@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+const machines = [
+  ['Grawer laserowy', 'xTool – lasery CO₂, MOPA 60 W i UV + przystawka obrotowa RA3', 'Drewno, skóra, akryl, stal, aluminium, wnętrze szkła. Także kubki, butelki i termosy dzięki przystawce do przedmiotów okrągłych.'],
+  ['Druk UV', 'GoArt UV A3 – głowice i3200, biały, lakier i CMYK', 'Druk na płaskich i obłych przedmiotach: etui, drewno, szkło, akryl, metal. Lakier daje efekt 3D i połysk w wybranych miejscach.'],
+  ['Druk wielkoformatowy', 'HP Latex 375 + ploter tnący Summa S3', 'Banery, folie na witryny, naklejki po obrysie, fototapety. Farby bez zapachu, odporne na słońce i deszcz.'],
+  ['Druk fotograficzny', 'Epson SureColor P9500, Epson SureLab D1000, Epson F500', 'Fine art do 44 cali, odbitki fotograficzne, druk sublimacyjny. Kolor sprawdzamy na skalibrowanym monitorze Eizo ColorEdge CG319.'],
+  ['Druk 3D', 'Bambu Lab H2C, X1C, A2L, A1 mini', 'Figurki, ozdoby świąteczne, mapy 3D, organizery i części na zamówienie – także w kilku kolorach naraz.'],
+  ['Druk cyfrowy i introligatornia', 'Xerox C75 z finisherem, broszurownica, bigówka', 'Wizytówki, kalendarze, katalogi, zaproszenia i dyplomy – z bigowaniem, zszywaniem i broszurowaniem.'],
+];
+const steps = [['Zamówienie', 'Personalizujesz produkt w sklepie albo wysyłasz zapytanie o wycenę.'], ['Projekt', 'Grafik przygotowuje projekt w skali 1:1 – z Twoim tekstem, zdjęciem albo logo.'], ['Akceptacja', 'W ciągu 24 h wysyłamy podgląd na e-mail. Poprawki przed akceptacją są bezpłatne.'], ['Produkcja', 'Grawer, druk UV, druk 3D lub druk wielkoformatowy – na naszych maszynach.'], ['Kontrola', 'Każdy produkt sprawdzamy: pisownię, kolor, krawędzie, mocowania.'], ['Pakowanie i wysyłka', 'Szkło w pudełkach z pianką EVA, płaskie produkty między kartonem. Numer paczki dostajesz SMS-em.']];
+---
+<Base title="Pracownia – park maszynowy i jak pracujemy" description="Pracownia AiPrints.pl w Chorzowie: lasery xTool, druk UV GoArt, HP Latex, Epson, Bambu Lab, Xerox. Zobacz, jak powstaje Twoje zamówienie." canonical="pracownia" active="pracownia">
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-14">
+    <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">ul. Okrężna 98B, Chorzów</p>
+    <h1 class="reveal hd text-[58px] md:text-[96px] mt-5 max-w-[1000px]">Wszystko powstaje <em class="text-gold">u nas</em>.</h1>
+    <p class="reveal text-[18px] text-mute leading-relaxed mt-7 max-w-[640px]">Nie zlecamy produkcji podwykonawcom. Projekt, grawer, druk, kontrola i pakowanie odbywają się w jednej pracowni w Chorzowie – dlatego możemy pokazać Ci projekt przed produkcją i odpowiadamy za każdy egzemplarz.</p>
+    <img src="img/site/pracownia.jpg" alt="Budynek pracowni AiPrints.pl w Chorzowie" class="reveal mt-12 w-full aspect-[16/8] object-cover rounded-[36px]" />
+  </section>
+
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Park maszynowy</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      {machines.map(([t, m, d], i) => (
+        <article class="reveal rounded-[30px] bg-white border border-line p-7 flex flex-col">
+          <span class="font-display text-[56px] leading-none text-gold/60">0{i + 1}</span>
+          <h3 class="font-display text-[30px] leading-tight mt-4">{t}</h3>
+          <p class="text-[13.5px] font-semibold mt-2">{m}</p>
+          <p class="text-mute text-[14.5px] leading-relaxed mt-3">{d}</p>
+        </article>))}
+    </div>
+    <p class="reveal text-mute text-[14px] mt-6">Projekty przygotowujemy na Mac Studio i sprawdzamy kolory na monitorze Eizo ColorEdge z kalibracją sprzętową.</p>
+  </section>
+
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <div class="rounded-[36px] bg-night text-white p-8 md:p-14">
+      <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Jak powstaje zamówienie</h2>
+      <ol class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 mt-12">
+        {steps.map(([t, d], i) => <li class="reveal border-t border-white/15 pt-6"><span class="text-gold2 text-[13px] font-semibold tracking-[.2em]">KROK {i + 1}</span><b class="block font-display text-[30px] leading-tight mt-2">{t}</b><p class="text-[#b9b1a7] mt-2 leading-relaxed">{d}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <h2 class="reveal font-display text-[44px] md:text-[56px] leading-none">Odwiedź nas</h2>
+      <p class="reveal text-mute text-[17px] leading-relaxed mt-5">Możesz odebrać zamówienie osobiście albo przyjechać z pomysłem – pokażemy próbki materiałów i doradzimy.</p>
+      <address class="reveal not-italic mt-6 text-[16px] leading-relaxed"><b>AiPrints.pl</b><br />ul. Okrężna 98B, 41-500 Chorzów<br />pn–pt 9:00–17:00<br /><a class="underline" href="tel:+48609040274">+48 609 040 274</a> · <a class="underline" href="mailto:kontakt@aiprints.pl">kontakt@aiprints.pl</a></address>
+      <a href="https://www.google.com/maps/search/?api=1&query=Okr%C4%99%C5%BCna+98B+41-500+Chorz%C3%B3w" target="_blank" rel="noopener" class="reveal inline-grid place-items-center whitespace-nowrap px-7 py-3.5 rounded-full bg-ink text-white font-semibold mt-8">Wyznacz trasę →</a>
+    </div>
+    <img src="img/site/pracownia-noc.jpg" alt="Pracownia AiPrints.pl wieczorem" loading="lazy" class="reveal rounded-[36px] w-full aspect-[4/3] object-cover" />
+  </section>
+</Base>

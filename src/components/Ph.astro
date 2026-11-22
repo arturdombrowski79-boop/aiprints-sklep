@@ -1,0 +1,18 @@
+---
+// Projektowana plansza zamiast brakującego zdjęcia – spójna z kartami z hero.
+const { p, cls = '', size = 'md' } = Astro.props;
+const tint = { 'prezenty-ze-zdjeciem': ['#e9eef5', '#2f4a6b'], 'prezenty-z-grawerem': ['#f1e7da', '#6b4423'], 'slub-i-okazje': ['#f3e9ea', '#7a4a52'], 'dla-firm': ['#e7e7e4', '#2a2a2a'], 'wspolnoty-i-spoldzielnie': ['#e3ece7', '#2f5143'], 'salony-beauty': ['#f4e6ee', '#7a3a5a'], 'na-swieta': ['#f2e4e1', '#7a2e2a'] }[p.cat] || ['#ece8e1', '#121110'];
+const m = p.machine || '';
+const tech = /UV 5|szkle/.test(m) ? 'Grawer w szkle' : /MOPA/.test(m) ? 'Grawer w stali' : /CO/.test(m) ? 'Grawer laserowy' : /GoArt|UV A3/.test(m) ? 'Druk UV' : /Latex/.test(m) ? 'Druk wielkoformatowy' : /Bambu/.test(m) ? 'Druk 3D' : /Epson/.test(m) ? 'Druk fotograficzny' : 'Pracownia AiPrints';
+const title = p.name.replace(/\s*[–(].*$/, '');
+---
+<div class={`relative w-full h-full overflow-hidden ${cls}`} style={`background:${tint[0]}`}>
+  <div class="absolute inset-0" style={`background:radial-gradient(80% 60% at 70% 20%,rgba(255,255,255,.7),transparent 60%)`}></div>
+  <div class="absolute left-[9%] right-[9%] top-[9%] flex justify-between items-center text-[11px] tracking-[.18em] font-semibold" style={`color:${tint[1]};opacity:.9`}><span>AIPRINTS</span><span class="inline-flex gap-[3px]"><i class="w-1.5 h-1.5 rounded-full bg-cy"></i><i class="w-1.5 h-1.5 rounded-full bg-acc"></i><i class="w-1.5 h-1.5 rounded-full bg-ye"></i><i class="w-1.5 h-1.5 rounded-full bg-ink"></i></span></div>
+  <div class="absolute left-[9%] right-[9%] bottom-[10%]" style={`color:${tint[1]}`}>
+    <b class={`hd block line-clamp-3 ${size === 'lg' ? 'text-[52px] md:text-[64px]' : 'text-[26px] md:text-[30px]'}`}>{title}</b>
+    <span class="inline-block mt-3 rounded-full bg-white/80 text-[11px] font-bold tracking-[.1em] px-2.5 py-1 uppercase" style={`color:${tint[1]}`}>{tech}</span>
+  </div>
+  <div class="absolute right-[9%] top-[22%] w-[26%] aspect-square rounded-full border" style={`border-color:${tint[1]}22`}></div>
+  <div class="absolute right-[15%] top-[28%] w-[14%] aspect-square rounded-full" style={`background:${tint[1]}10`}></div>
+</div>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /konto
+
+Sitemap: https://aiprints.pl/sitemap.xml

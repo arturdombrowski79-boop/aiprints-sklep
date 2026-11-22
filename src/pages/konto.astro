@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Moje konto" description="Zamówienia, projekty do akceptacji i śledzenie przesyłek w AiPrints.pl. Logowanie bez hasła – link na e-mail." canonical="konto" active="konto">
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-10 min-h-[70vh]">
+    <!-- logowanie bez hasła -->
+    <div id="login" class="hidden max-w-[520px] mx-auto pt-10">
+      <h1 class="hd text-[56px] md:text-[80px]">Zaloguj się<br />bez hasła</h1>
+      <p class="text-ink/65 mt-5 leading-relaxed">Podaj e-mail z zamówienia. Wyślemy Ci link i 6-cyfrowy kod – nie musisz pamiętać żadnego hasła, a my żadnego nie przechowujemy.</p>
+      <form id="lf" class="mt-8 grid gap-3">
+        <input id="lem" type="email" aria-label="Twój e-mail" required placeholder="twoj@email.pl" class="inp text-[17px] py-4" autocomplete="email" />
+        <button class="btn btn-ink">Wyślij link do logowania</button>
+      </form>
+      <div id="sent" class="hidden mt-8 rounded-[28px] bg-white border border-line p-7">
+        <span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[22px]">✉</span>
+        <b class="block text-[18px] mt-4">Sprawdź skrzynkę</b>
+        <p class="text-ink/65 text-[14.5px] mt-1">Wysłaliśmy link na <b id="sentTo" class="text-ink"></b>. Link działa 15 minut. Możesz też wpisać kod z wiadomości:</p>
+        <div class="flex gap-2 mt-5" id="code">{[0, 1, 2, 3, 4, 5].map(() => <input maxlength="1" inputmode="numeric" class="inp w-12 h-14 text-center text-[22px] font-semibold p-0" />)}</div>
+        <button id="demoIn" class="mt-6 text-[13.5px] underline">Tryb demo: zaloguj bez e-maila</button>
+      </div>
+    </div>
+
+    <!-- panel klienta -->
+    <div id="acct" class="hidden grid lg:grid-cols-[240px_1fr] gap-10">
+      <aside>
+        <b id="who" class="block mt-2 text-[15px] truncate"></b>
+        <nav class="mt-6 grid gap-1 text-[15px]">
+          <a href="#zamowienia" data-nav="zamowienia" class="nv flex justify-between rounded-xl px-3 py-2.5 hover:bg-black/[.04]">Zamówienia <span id="nO" class="text-mute"></span></a>
+          <a href="#akceptacja" data-nav="akceptacja" class="nv flex justify-between rounded-xl px-3 py-2.5 hover:bg-black/[.04]">Do akceptacji <span id="nA" class="min-w-6 h-6 px-2 rounded-full bg-acc text-white text-[12px] font-bold grid place-items-center"></span></a>
+          <a href="#dane" data-nav="dane" class="nv rounded-xl px-3 py-2.5 hover:bg-black/[.04]">Adresy i faktura</a>
+          <button id="out" class="text-left rounded-xl px-3 py-2.5 hover:bg-black/[.04] text-mute mt-4">↪ Wyloguj</button>
+        </nav>
+      </aside>
+      <div id="view"></div>
+    </div>
+  </section>
+  <script>
+    import { addRaw, zl } from '../scripts/cart.js';
+    import { toast } from '../scripts/common.js';
+    const $ = (i) => document.getElementById(i);
+    const KEY = 'aiprints-orders';
+    const get = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
+    const put = (o) => { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) { } };
+    const sess = () => { try { return localStorage.getItem('aiprints-session'); } catch (e) { return null; } };
+    const STEPS = ['Opłacone', 'Projekt zaakceptowany', 'W produkcji', 'Wysłane', 'Doręczone'];
+    const d = (iso) => new Date(iso).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+    function seed() {
+      if (get().length) return;
+      put([
+        { no: 'AP-26017', demo: true, date: new Date(Date.now() - 864e5).toISOString(), items: [{ title: 'Kryształ 3D ze zdjęciem', lines: ['M', '„Anna i Tomek · 2026”'], img: 'img/f/krysztal-para-sq.jpg', qty: 1, price: 289 }, { title: 'Koperta na pieniądze z grawerem', lines: ['„Ania”'], img: 'img/f/koperta-drewniana-sq.jpg', qty: 2, price: 35 }], sub: 359, ship: 0, total: 359, pay: 'blik', delivery: 'InPost Paczkomat 24/7', status: 0, proof: 'img/f/krysztal-para.jpg' },
+        { no: 'AP-25988', demo: true, date: new Date(Date.now() - 12 * 864e5).toISOString(), items: [{ title: 'Deska do krojenia z grawerem', lines: ['buk', '„Kuchnia Babci Basi”'], img: 'img/hf/deska-do-krojenia-sq.jpg', qty: 1, price: 79 }], sub: 79, ship: 15.99, total: 94.99, pay: 'card', delivery: 'InPost Paczkomat 24/7', status: 4, tracking: '6200 1234 5678 9012' },
+      ]);
+    }
+    function nav(r) { document.querySelectorAll('.nv').forEach((a) => a.classList.toggle('bg-black/[.05]', a.dataset.nav === r || (r === 'zamowienie' && a.dataset.nav === 'zamowienia'))); }
+    function counts() { const O = get().filter((o) => !o.cust); $('nO').textContent = O.length; const a = O.filter((o) => o.status === 0).length; $('nA').textContent = a; $('nA').style.display = a ? '' : 'none'; }
+    const pill = (o) => o.status === 0 ? '<span class="rounded-full bg-acc/10 text-acc px-3 py-1 text-[12px] font-semibold">Czeka na Twoją akceptację</span>' : `<span class="rounded-full bg-paper2 px-3 py-1 text-[12px] font-semibold">${STEPS[o.status]}</span>`;
+    function list(onlyProof) {
+      const O = get().filter((o) => !o.cust && (!onlyProof || o.status === 0));
+      $('view').innerHTML = `<h1 class="hd text-[48px] md:text-[64px]">${onlyProof ? 'Do akceptacji' : 'Zamówienia'}</h1>` + (O.length ? `<div class="grid gap-3 mt-8">${O.map((o) => `<a href="#zamowienie/${o.no}" class="rounded-[26px] bg-white border border-line p-5 flex items-center gap-5 hover:border-ink/40 transition"><div class="flex -space-x-4">${o.items.slice(0, 3).map((i) => `<img src="${i.img}" class="w-16 h-16 rounded-2xl object-cover border-2 border-white bg-paper2">`).join('')}</div><div class="flex-1 min-w-0"><b class="block">#${o.no}${o.demo ? ' <span class="text-mute font-normal text-[12px]">(przykład)</span>' : ''}</b><span class="text-[13px] text-mute">${d(o.date)} · ${o.items.length} ${o.items.length === 1 ? 'produkt' : 'produkty'}</span></div>${pill(o)}<b class="hidden sm:block w-24 text-right">${zl(o.total)}</b></a>`).join('')}</div>` : `<p class="text-mute mt-6">Nie ma tu nic do zrobienia. ✓</p>`);
+    }
+    function order(no) {
+      const O = get(), o = O.find((x) => x.no === no); if (!o) return list();
+      const st = o.status;
+      $('view').innerHTML = `
+      <a href="#zamowienia" class="text-[13.5px] text-mute">← Zamówienia</a>
+      <div class="flex flex-wrap items-end justify-between gap-4 mt-3"><h1 class="hd text-[48px] md:text-[64px]">#${o.no}</h1><span class="text-mute text-[14px] pb-2">${d(o.date)}</span></div>
+      <div class="grid xl:grid-cols-[1.4fr_1fr] gap-5 mt-8">
+        <div class="grid gap-5 content-start">
+          ${st === 0 && !o.proof ? `<div class="rounded-[28px] bg-white border border-line p-6 md:p-7"><div class="flex items-center gap-3"><i class="w-2.5 h-2.5 rounded-full bg-ye"></i><b class="text-[18px]">Przygotowujemy Twój projekt</b></div><p class="text-ink/65 text-[14.5px] mt-2">Pokażemy go tutaj i wyślemy e-mail w ciągu 2 dni roboczych. Nic nie produkujemy bez Twojej akceptacji.</p>${o.fix ? `<p class="text-[13.5px] mt-3 rounded-2xl bg-paper px-4 py-3">Twoje uwagi: „${o.fix}”</p>` : ''}</div>` : ''}${st === 0 && o.proof ? `<div class="rounded-[28px] bg-white border-2 border-acc/40 p-6 md:p-7">
+            <div class="flex items-center gap-3"><i class="w-2.5 h-2.5 rounded-full bg-acc"></i><b class="text-[18px]">Projekt czeka na Twoją akceptację</b></div>
+            <p class="text-ink/65 text-[14.5px] mt-2">Sprawdź pisownię, daty i kadrowanie. Produkcję zaczynamy dopiero po akceptacji – poprawki są bezpłatne.</p>
+            <div class="relative mt-5 rounded-[20px] overflow-hidden bg-paper2" style="aspect-ratio:4/3"><img src="${o.proof || o.items[0].img}" class="absolute inset-0 w-full h-full object-cover"><span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11.5px] font-semibold">Wizualizacja · wersja ${o.proofV || 1}</span></div>
+            <div class="flex flex-wrap gap-3 mt-5"><button id="acc" class="btn btn-ink flex-1">✓ Akceptuję projekt</button><button id="fix" class="btn btn-out flex-1">Poproś o poprawkę</button></div>
+            <div id="fixBox" class="hidden mt-4 grid gap-3"><textarea id="fixT" rows="3" class="inp" placeholder="Co zmienić? np. większa czcionka, inna data"></textarea><button id="fixS" class="btn btn-ink">Wyślij uwagi</button></div>
+          </div>` : ''}
+          <div class="rounded-[28px] bg-white border border-line p-6 md:p-7">
+            <b class="hd text-[32px]">Status</b>
+            <div class="flex items-start mt-6">${STEPS.map((s, i) => `<div class="flex-1 relative text-center">${i ? `<span class="absolute right-1/2 top-[9px] w-full h-[3px] ${i <= st ? 'bg-emerald-600' : 'bg-line'}"></span>` : ''}<span class="relative z-10 mx-auto block w-[21px] h-[21px] rounded-full border-[3px] border-white ${i <= st ? 'bg-emerald-600' : i === st + 1 ? 'bg-acc' : 'bg-line'} shadow"></span><span class="block text-[12px] mt-2 leading-tight ${i <= st ? 'font-semibold' : 'text-mute'}">${s}</span></div>`).join('')}</div>
+            <p class="text-[13.5px] text-mute mt-6">${st === 0 ? 'Czekamy na akceptację projektu.' : st < 3 ? 'Numer przesyłki wyślemy SMS-em i mailem, gdy paczka wyjedzie z pracowni.' : `Numer przesyłki: <b class="text-ink">${o.tracking || '—'}</b> · ${o.delivery}`}</p>
+          </div>
+          <div class="flex flex-wrap gap-3"><button id="again" class="btn btn-out h-12">↻ Zamów ponownie</button><button id="inv" class="btn btn-out h-12">⎙ Faktura PDF</button><a href="kontakt.html" class="btn btn-out h-12">Pomoc</a></div>
+        </div>
+        <div class="rounded-[28px] bg-white border border-line p-6 md:p-7 self-start">
+          <b class="hd text-[32px]">Podsumowanie</b>
+          <div class="mt-5 grid gap-4">${o.items.map((i) => `<div class="flex gap-4 items-center"><span class="relative"><img src="${i.img}" class="w-16 h-16 rounded-2xl object-cover bg-paper2"><span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-ink text-white text-[11px] font-bold grid place-items-center">${i.qty}</span></span><span class="flex-1 min-w-0"><b class="block text-[14.5px] font-medium">${i.title}</b><span class="text-[12.5px] text-mute">${(i.lines || []).join(' · ')}</span></span><b class="text-[14.5px]">${zl(i.price * i.qty)}</b></div>`).join('')}</div>
+          <div class="border-t border-line mt-6 pt-4 grid gap-1.5 text-[14.5px]"><div class="flex justify-between text-mute"><span>Produkty</span><span>${zl(o.sub)}</span></div><div class="flex justify-between text-mute"><span>Dostawa</span><span>${o.ship ? zl(o.ship) : '0 zł'}</span></div></div>
+          <div class="flex justify-between items-baseline border-t border-line mt-4 pt-4"><b>Razem</b><b class="text-[30px] tracking-tight">${zl(o.total)}</b></div>
+          <p class="text-[13px] text-mute mt-3">${({ blik: 'BLIK', card: 'Karta', p24: 'Przelewy24', wallet: 'Apple Pay / Google Pay' })[o.pay] || 'Płatność online'} · ${o.delivery}</p>
+        </div>
+      </div>`;
+      const save = (fn) => { const A = get(); const x = A.find((y) => y.no === no); fn(x); put(A); counts(); order(no); };
+      $('acc') && ($('acc').onclick = () => save((x) => { x.status = 2; x.fix = null; (x.log ||= []).push({ t: new Date().toISOString(), m: 'Klient zaakceptował projekt' }); toast('Dziękujemy! Projekt przekazany do produkcji'); }));
+      $('fix') && ($('fix').onclick = () => $('fixBox').classList.toggle('hidden'));
+      $('fixS') && ($('fixS').onclick = () => save((x) => { x.fix = $('fixT').value.trim() || 'Proszę o poprawkę'; x.proof = null; (x.log ||= []).push({ t: new Date().toISOString(), m: 'Klient poprosił o poprawkę: ' + x.fix }); toast('Uwagi wysłane – nowa wersja projektu w ciągu 2 dni roboczych'); }));
+      $('again').onclick = () => addRaw(o.items.map((i) => ({ ...i, boxable: true })));
+      $('inv').onclick = () => toast('Faktura będzie dostępna po podłączeniu systemu płatności');
+      nav('zamowienie');
+    }
+    function dane() {
+      $('view').innerHTML = `<h1 class="hd text-[48px] md:text-[64px]">Adresy i faktura</h1><div class="grid md:grid-cols-2 gap-4 mt-8"><div class="rounded-[26px] bg-white border border-line p-6"><b>Adres dostawy</b><p class="text-mute text-[14px] mt-2">Zapiszemy go przy pierwszym zamówieniu.</p></div><div class="rounded-[26px] bg-white border border-line p-6"><b>Dane do faktury</b><p class="text-mute text-[14px] mt-2">Dla firm, wspólnot i spółdzielni: NIP i adres. Stałym klientom dajemy przelew z terminem.</p></div></div>`;
+    }
+    function route() {
+      const s = sess(); $('login').classList.toggle('hidden', !!s); $('acct').classList.toggle('hidden', !s); if (!s) return;
+      seed(); counts(); $('who').textContent = s;
+      const [r, id] = location.hash.slice(1).split('/');
+      if (r === 'zamowienie') order(id); else if (r === 'akceptacja') { list(true); nav(r); } else if (r === 'dane') { dane(); nav(r); } else { list(); nav('zamowienia'); }
+      scrollTo(0, 0);
+    }
+    $('lf').onsubmit = (e) => { e.preventDefault(); $('sentTo').textContent = $('lem').value; $('sent').classList.remove('hidden'); $('lf').classList.add('hidden'); $('code').querySelector('input').focus(); };
+    const login = () => { try { localStorage.setItem('aiprints-session', $('lem').value || 'demo@aiprints.pl'); } catch (e) { } route(); toast('Zalogowano ✓'); };
+    $('demoIn').onclick = login;
+    const ci = [...$('code').querySelectorAll('input')];
+    ci.forEach((x, i) => x.oninput = () => { x.value = x.value.replace(/\D/g, ''); if (x.value && ci[i + 1]) ci[i + 1].focus(); if (ci.every((y) => y.value)) login(); });
+    $('out').onclick = () => { try { localStorage.removeItem('aiprints-session'); } catch (e) { } route(); };
+    addEventListener('hashchange', route); route();
+  </script>
+</Base>

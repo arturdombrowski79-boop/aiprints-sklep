@@ -1,0 +1,111 @@
+---
+import cat from '../data/catalog.json';
+import { SEASON, BREAK } from '../data/config.js';
+const { active = '' } = Astro.props;
+const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
+const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
+const thumb = (s) => (cat.products.find((p) => p.cat === s && p.img) || {}).img || `img/ph/${s}.svg`;
+const idx = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ s: p.slug, n: p.name, c: C[p.cat].name, p: p.priceText, i: p.img || `img/ph/${p.cat}.svg` }));
+const nav = [['prezenty-ze-zdjeciem', 'Ze zdjęciem'], ['prezenty-z-grawerem', 'Z grawerem'], ['dla-firm', 'Dla firm'], ['wspolnoty-i-spoldzielnie', 'Wspólnoty']];
+const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
+const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.facets.dla]];
+---
+<div id="brk" hidden class="bg-ye text-ink text-[13px] text-center px-4 py-2.5 font-medium" data-show={BREAK.show} data-to={BREAK.to}>Przerwa w pracy pracowni od 21 grudnia do 7 stycznia. Zamówienia złożone w tym czasie zaczniemy realizować od {BREAK.resume}.</div>
+<script is:inline>(function(){var b=document.getElementById("brk"),n=new Date().toISOString().slice(0,10);if(n>=b.dataset.show&&n<=b.dataset.to)b.hidden=false;})()</script>
+<div class="bg-ink text-white/90 text-[12.5px] text-center px-4 py-2.5 tracking-[.01em]">Każdy projekt najpierw <b class="text-white">pokazujemy do akceptacji</b> – dopiero potem produkujemy</div>
+
+<header id="hdr" class="sticky top-0 z-40 transition-[background,box-shadow] duration-300">
+  <div class="max-w-[1360px] mx-auto px-5 md:px-10 h-[76px] flex items-center gap-8">
+    <a href="index.html" aria-label="AiPrints.pl – strona główna" class="shrink-0"><img src="img/logo.svg" alt="AiPrints.pl" width="150" height="50" class="h-[42px] w-auto" /></a>
+    <nav class="hidden xl:flex items-center gap-1 text-[14.5px]" aria-label="Główne menu">
+      <div class="dd relative">
+        <button class="h-10 px-3.5 rounded-full hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">Sklep <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
+        <div class="ddm absolute left-0 top-full pt-3">
+          <div class="w-[720px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,17,16,.14)] p-3 grid grid-cols-3 gap-1.5">
+            {cats.map((c) => (
+              <a href={`${c.slug}.html`} class="group flex items-center gap-3.5 rounded-2xl p-2.5 hover:bg-paper transition">
+                <img src={thumb(c.slug)} alt="" class="w-14 h-14 rounded-xl object-cover bg-paper2" loading="lazy" />
+                <span><b class="block text-[14.5px] font-semibold leading-tight">{c.name}</b><span class="text-[12.5px] text-mute">{c.count} produktów</span></span>
+              </a>))}
+            <a href="kontakt.html#wycena" class="col-span-3 mt-1 rounded-2xl bg-paper px-5 py-4 flex items-center justify-between text-[14px]"><span><b>Nie widzisz tego, czego szukasz?</b> <span class="text-mute">Zrobimy to na zamówienie.</span></span><span class="font-semibold">Zapytaj o wycenę →</span></a>
+          </div>
+        </div>
+      </div>
+      {MEGA.map(([k, t, gs]) => (
+      <div class="dd relative">
+        <button class="h-10 px-3.5 rounded-full hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">{t} <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
+        <div class="ddm absolute left-0 top-full pt-3">
+          <div class="w-[860px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,17,16,.14)] p-7 grid gap-6" style={`grid-template-columns:repeat(${gs.length},minmax(0,1fr))`}>
+            {gs.map(([g, os]) => <div><p class="text-[11px] uppercase tracking-[.14em] text-mute mb-3">{g}</p>{os.filter(([v]) => cntF(k, v)).map(([v, n]) => <a href={`sklep.html?${k}=${v}`} class="block py-1.5 text-[14.5px] hover:text-acc transition">{n}</a>)}</div>)}
+            <a href="sklep.html" class="col-span-full rounded-2xl bg-paper px-5 py-4 flex items-center justify-between text-[14px]"><span><b>Wszystkie prezenty</b> <span class="text-mute">– filtruj po okazji, osobie, materiale i cenie</span></span><span class="font-semibold">Przeglądaj →</span></a>
+          </div>
+        </div>
+      </div>))}
+      {nav.map(([h, t]) => <a href={`${h}.html`} class={`h-10 px-3.5 rounded-full grid place-items-center hover:bg-black/[.04] transition ${active === h ? 'bg-black/[.05] font-semibold' : 'text-ink/80'}`}>{t}</a>)}
+    </nav>
+    <div class="ml-auto flex items-center gap-1.5">
+      <button id="srchBtn" class="hidden md:flex items-center gap-3 h-11 w-[260px] rounded-full border border-line bg-white/70 px-4 text-[14px] text-mute hover:border-ink/30 transition" aria-label="Szukaj">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="flex-1 text-left">Szukaj „kryształ”…</span><kbd class="text-[11px] border border-line rounded-md px-1.5 py-0.5 bg-white">/</kbd>
+      </button>
+      <button id="srchBtn2" class="md:hidden w-11 h-11 rounded-full hover:bg-black/5 grid place-items-center" aria-label="Szukaj"><svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a href="konto.html" class="hidden sm:grid w-11 h-11 rounded-full hover:bg-black/5 place-items-center" aria-label="Moje konto"><svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <button id="cartBtn" class="relative w-11 h-11 rounded-full hover:bg-black/5 grid place-items-center" aria-label="Koszyk">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span id="cnt" class="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 rounded-full bg-acc text-white text-[11px] font-bold grid place-items-center scale-0 transition-transform duration-300">0</span>
+      </button>
+      <button id="burger" class="xl:hidden w-11 h-11 rounded-full hover:bg-black/5 grid place-items-center" aria-label="Menu"><svg width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div id="mnav" class="scrim fixed inset-0 z-50 bg-paper overflow-auto">
+  <div class="flex justify-between items-center px-5 h-[76px]"><img src="img/logo.svg" alt="AiPrints.pl" class="h-10 w-auto" /><button id="mclose" class="w-11 h-11 rounded-full hover:bg-black/5 text-[26px]" aria-label="Zamknij">×</button></div>
+  <nav class="px-6 pb-10 grid gap-1">
+    {cats.map((c) => <a href={`${c.slug}.html`} class="hd text-[42px] py-1.5 border-b border-line">{c.name}</a>)}
+    <div class="grid grid-cols-2 gap-2 mt-6">
+      {[['sklep', 'Znajdź prezent'], ['pracownia', 'Pracownia'], ['kontakt', 'Kontakt'], ['dostawa-i-platnosci', 'Dostawa'], ['zwroty-i-reklamacje', 'Reklamacje']].map(([h, t]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3.5 text-[15px] font-medium">{t}</a>)}
+    </div>
+  </nav>
+</div>
+
+<div id="srch" class="scrim fixed inset-0 z-[55] bg-black/35 backdrop-blur-sm grid place-items-start justify-center pt-[12vh] px-4">
+  <div class="w-full max-w-[660px] rounded-[28px] bg-white shadow-2xl overflow-hidden">
+    <div class="flex items-center gap-3 px-6 border-b border-line"><svg width="20" height="20" fill="none" stroke="#5c6064" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" aria-label="Szukaj produktów" placeholder="Czego szukasz? np. kryształ, deska, numer domu" class="flex-1 py-5 text-[17px] outline-none" autocomplete="off" /><kbd class="text-[11px] text-mute border border-line rounded px-1.5 py-0.5">Esc</kbd></div>
+    <div id="qres" class="max-h-[60vh] overflow-auto p-2"></div>
+  </div>
+</div>
+<script id="sidx" type="application/json" set:html={JSON.stringify(idx)}></script>
+<style>
+  .dd .ddm { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(6px); transition: opacity .2s, transform .25s, visibility 0s .25s; }
+  .dd:hover .ddm, .dd.open .ddm { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+  #hdr.sc { background: rgba(242,243,243,.85); backdrop-filter: blur(18px) saturate(1.5); -webkit-backdrop-filter: blur(18px) saturate(1.5); box-shadow: 0 1px 0 var(--color-line); }
+</style>
+<script>
+  const $ = (i) => document.getElementById(i);
+  const idx = JSON.parse($('sidx').textContent);
+  const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+  const open = (el) => { el.classList.add('on'); document.body.style.overflow = 'hidden'; };
+  const close = (el) => { el.classList.remove('on'); document.body.style.overflow = ''; };
+  // menu rozwijane: klawiatura (Enter/Spacja otwiera, Esc zamyka), bez łapania Tabem ukrytych linków
+  document.querySelectorAll('.dd').forEach((dd) => {
+    const b = dd.querySelector('button');
+    const set = (on) => { dd.classList.toggle('open', on); b.setAttribute('aria-expanded', String(on)); };
+    b.addEventListener('click', () => set(!dd.classList.contains('open')));
+    dd.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); b.focus(); } });
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) set(false); });
+    dd.addEventListener('mouseleave', () => set(false));
+  });
+  const hdr = $('hdr'); const onS = () => hdr.classList.toggle('sc', scrollY > 10); addEventListener('scroll', onS, { passive: true }); onS();
+  $('burger').onclick = () => open($('mnav')); $('mclose').onclick = () => close($('mnav'));
+  const os = () => { open($('srch')); setTimeout(() => $('q').focus(), 50); render($('q').value); };
+  $('srchBtn').onclick = os; $('srchBtn2').onclick = os; window.openSearch = os;
+  $('srch').onclick = (e) => { if (e.target === $('srch')) close($('srch')); };
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') close($('srch')); if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); os(); } });
+  function render(q) {
+    const t = norm(q.trim()).split(/\s+/).filter(Boolean);
+    const r = (t.length ? idx.filter((p) => t.every((w) => norm(p.n + ' ' + p.c).includes(w))) : idx).slice(0, 12);
+    $('qres').innerHTML = r.length ? r.map((p) => `<a href="${p.s}.html" class="flex items-center gap-4 rounded-2xl p-2.5 hover:bg-paper"><img src="${p.i}" alt="" class="w-14 h-14 rounded-xl object-cover bg-paper2"><span class="flex-1"><b class="block text-[15px] font-medium">${p.n}</b><span class="text-[12.5px] text-mute">${p.c}</span></span><span class="text-[13.5px] font-semibold whitespace-nowrap">${p.p}</span></a>`).join('') : `<p class="p-6 text-mute">Nie mamy tego w katalogu – <a class="underline" href="kontakt.html">napisz do nas</a>, zrobimy na zamówienie.</p>`;
+  }
+  $('q').oninput = (e) => render(e.target.value);
+</script>

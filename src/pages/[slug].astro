@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import Ph from '../components/Ph.astro';
+import Gallery from '../components/Gallery.astro';
+import Shop from '../components/Shop.astro';
+import cat from '../data/catalog.json';
+import { machineText, describe, optionsOf, qtyTiers, B2B } from '../data/copy.js';
+import { SEASON, LEAD, PREVIEW, BREAK } from '../data/config.js';
+import { PREVIEW as PV, RECIPIENTS } from '../data/preview.js';
+export function getStaticPaths() {
+  return [
+    ...cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta').map((c) => ({ params: { slug: c.slug }, props: { kind: 'cat', c } })),
+    ...cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ params: { slug: p.slug }, props: { kind: 'prod', p } })),
+    ...RECIPIENTS.map(([slug, name, lead, re]) => ({ params: { slug }, props: { kind: 'cat', rec: true, c: { slug, name, lead, subs: [...new Set(cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && re.test(p.slug)).map((p) => cat.cats.find((x) => x.slug === p.cat).name))], color: '#333' }, re: re.source } })),
+  ];
+}
+const { kind, c, p, rec = false, re = '' } = Astro.props;
+const pv = kind === 'prod' ? PV[p.slug] : null;
+const C = Object.fromEntries(cat.cats.map((x) => [x.slug, x]));
+const site = 'https://aiprints.pl/';
+let d = {};
+if (kind === 'cat') {
+  const items = cat.products.filter((x) => rec ? (SEASON || x.cat !== 'na-swieta') && new RegExp(re).test(x.slug) : x.cat === c.slug).map((x) => rec ? { ...x, sub: cat.cats.find((k) => k.slug === x.cat).name } : x).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0));
+  d = { items, b2b: B2B.includes(c.slug) };
+} else {
+  const cc = C[p.cat];
+  const opts = optionsOf(p);
+  const qt = qtyTiers(p.priceText);
+  const rel = cat.products.filter((x) => x.cat === p.cat && x.slug !== p.slug).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0)).slice(0, 4);
+  d = { cc, opts, qt, rel, img: p.img || `img/ph/${p.cat}.svg`, desc: describe(p, cc.name), mt: machineText(p.machine), b2b: B2B.includes(p.cat) };
+}
+const crumbs = kind === 'cat' ? [['Sklep', 'sklep.html'], [c.name, `${c.slug}.html`]] : [['Sklep', 'sklep.html'], [d.cc.name, `${p.cat}.html`], [p.name, `${p.slug}.html`]];
+const bc = { '@type': 'BreadcrumbList', itemListElement: crumbs.map(([n, u], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: site + u })) };
+const schema = kind === 'cat'
+  ? { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'CollectionPage', name: c.name, description: c.lead }] }
+  : { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'Product', name: p.name, description: d.desc.join(' '), image: site + d.img, sku: p.slug, brand: { '@type': 'Brand', name: 'AiPrints.pl' }, ...(p.price ? { offers: { '@type': 'Offer', price: (p.tiers ? p.tiers[0].p : p.price).toFixed(2), priceCurrency: 'PLN', availability: 'https://schema.org/MadeToOrder', url: site + p.slug + '.html', seller: { '@type': 'Organization', name: 'AiPrints.pl' } } } : {}) }] };
+const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
+---
+{kind === 'cat' ? (
+<Base title={`${c.name} – personalizowane, z pracowni w Chorzowie`} description={c.lead} canonical={`${c.slug}`} schema={schema} active={c.slug}>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-8">
+    <div class="relative rounded-[40px] overflow-hidden px-7 md:px-14 pt-10 pb-12 md:py-16" style={`background:${({ 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1' })[c.slug] || '#efe7ee'}`}>
+      <nav class="text-[13px] text-ink/75 relative z-10" aria-label="Okruszki">{crumbs.map(([n, u], i) => <>{i > 0 && <span class="mx-2">/</span>}<a href={u} class="hover:text-ink">{n}</a></>)}</nav>
+      <div class="relative z-10 max-w-[620px] mt-8">
+        <h1 class="hd text-[60px] md:text-[96px]">{c.name}</h1>
+        <p class="text-[17px] text-ink/65 leading-relaxed mt-6 max-w-[520px]">{c.lead}</p>
+      </div>
+      <div class="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-[40%] h-[86%]">
+        {d.items.filter((x) => x.img).slice(0, 3).map((x, i) => <img src={x.img} alt="" class="absolute rounded-[26px] object-cover shadow-[0_30px_60px_-20px_rgba(0,0,0,.35)]" style={['right:0;top:0;width:52%;aspect-ratio:1;transform:rotate(6deg)', 'left:4%;top:14%;width:46%;aspect-ratio:1;transform:rotate(-7deg)', 'left:30%;bottom:0;width:44%;aspect-ratio:1;transform:rotate(2deg)'][i]} />)}
+      </div>
+    </div>
+  </section>
+
+  {d.b2b && (
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-12">
+    <div class="reveal rounded-[32px] text-white p-8 md:p-10 grid md:grid-cols-4 gap-8" style={`background:${c.color}`}>
+      {(c.slug === 'wspolnoty-i-spoldzielnie'
+        ? [['Jeden styl dla wszystkich budynków', 'Projektujemy szablon z logo zarządcy raz. Każda kolejna wspólnota to tylko zmiana adresu.'], ['Zamówienie z listy', 'Wgrywasz listę lokali lub nazwisk (Excel, CSV), a my robimy z niej komplet tabliczek.'], ['Pakiet za cały budynek', 'Tablica przy wejściu, regulamin, numeracja, skrzynki i piwnice w jednej wycenie.'], ['Faktura z terminem', 'Dla zarządców i spółdzielni płatność przelewem w terminie z faktury.']]
+        : [['Wycena w 24 h', 'Napisz, czego potrzebujesz, dołącz logo i zdjęcie miejsca – odpiszemy następnego dnia roboczego.'], ['Projekt w cenie', 'Przygotujemy projekt i pokażemy wizualizację, zanim cokolwiek wyprodukujemy.'], ['Powtarzalne zamówienia', 'Zapisujemy szablon. Kolejne zamówienie złożysz mailem w minutę.'], ['Faktura VAT', 'Płatność kartą, BLIK-iem albo przelewem z terminem dla stałych klientów.']]
+      ).map(([t, x]) => <div><b class="block font-display text-[26px] leading-tight">{t}</b><p class="text-white/75 text-[14px] mt-2 leading-relaxed">{x}</p></div>)}
+      <div class="md:col-span-4 flex flex-wrap gap-3 pt-2"><a href="kontakt.html#wycena" class="h-12 px-7 rounded-full bg-white text-ink font-semibold grid place-items-center">Poproś o wycenę</a><a href="tel:+48609040274" class="h-12 px-7 rounded-full border border-white/50 font-semibold grid place-items-center">Zadzwoń: 609 040 274</a></div>
+    </div>
+  </section>)}
+
+  <Shop items={d.items} subs={c.subs} cslug={c.slug} />
+
+
+  <section class="max-w-[68ch] mx-auto px-6 mt-24 text-mute leading-relaxed text-[15px]">
+    <h2 class="font-display text-[34px] text-ink leading-tight">{c.name} z pracowni AiPrints.pl</h2>
+    <p class="mt-4">{c.lead} Każdy produkt z tej kategorii robimy w naszej pracowni przy ul. Okrężnej 98B w Chorzowie – grawerujemy laserem, drukujemy w technologii UV i w 3D. Przed produkcją dostajesz projekt do akceptacji, a gotowe zamówienie wysyłamy Paczkomatem InPost lub kurierem w całej Polsce. Możesz też odebrać je osobiście.</p>
+  </section>
+
+</Base>
+) : (
+<Base title={`${p.name}${p.price ? ' – ' + (p.tiers ? 'od ' + p.tiers[0].p + ' zł' : p.priceText) : ''}`} description={`${d.desc[0]} Robimy w pracowni w Chorzowie, podgląd przed produkcją, wysyłka w całej Polsce.`.slice(0, 300)} canonical={p.slug} schema={schema} image={d.img} active={p.cat}>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-10">
+    <nav class="text-[13px] text-mute" aria-label="Okruszki">{crumbs.map(([n, u], i) => <>{i > 0 && <span class="mx-2">/</span>}<a href={u} class="hover:text-ink">{n}</a></>)}</nav>
+    <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 mt-6">
+      <!-- galeria -->
+      <Gallery p={p} pv={pv} />
+
+      <!-- konfigurator -->
+      <div>
+        <h1 class="hd text-[48px] md:text-[68px]">{p.name}</h1>
+        {p.variants && <p class="text-mute mt-3">{p.variants}</p>}
+        <div class="flex items-baseline gap-3 mt-6">
+          <b id="price" class="text-[34px] font-semibold tracking-tight" data-base={p.tiers ? p.tiers[0].p : (p.price || 0)}>{p.price ? (p.tiers ? fmt(p.tiers[0].p) : (/^od/.test(p.priceText) ? p.priceText : fmt(p.price))) : 'Wycena indywidualna'}</b>
+          {p.price && <span class="text-[13px] text-mute">{/szt|m²|\/ 50|\(/.test(p.priceText) && !p.tiers ? p.priceText.replace(/^[^(/]*/, '').trim() : 'z VAT'}</span>}
+        </div>
+
+        {(p.quote || !p.price) ? (
+          <form id="quote" class="mt-8 grid gap-3 rounded-[28px] bg-white border border-line p-6">
+            <b class="font-display text-[28px] leading-none">Poproś o wycenę</b>
+            <p class="text-[14px] text-mute -mt-1">Odpowiemy w ciągu 24 h w dni robocze.</p>
+            <div class="grid sm:grid-cols-2 gap-3"><input required name="n" placeholder="Imię i nazwisko / firma" class="inp" /><input required type="email" name="e" placeholder="E-mail" class="inp" /></div>
+            <input name="t" placeholder="Telefon (opcjonalnie)" class="inp" />
+            <textarea required name="m" rows="4" placeholder={p.cat === 'wspolnoty-i-spoldzielnie' ? 'Adres budynku, liczba klatek i lokali, co ma się znaleźć na tablicach…' : 'Opisz, czego potrzebujesz: ilość, wymiary, termin…'} class="inp"></textarea>
+            <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" name="f" /><span>📎 Dołącz logo, listę lokali lub zdjęcie miejsca</span></label>
+            <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie wyceny. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
+            <button class="h-14 rounded-full bg-ink text-white font-semibold">Wyślij zapytanie</button>
+            <p id="qok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
+          </form>
+        ) : (
+          <div class="mt-8 grid gap-6" id="cfg" data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''}>
+            {d.opts && (
+              <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">{d.opts.label}</b>
+                <div class="flex flex-wrap gap-2 mt-3">{d.opts.opts.map((o, i) => <button class="seg opt h-12 px-5 rounded-2xl border border-line bg-white text-[14px] font-medium" aria-pressed={i === 0 ? 'true' : 'false'} data-k={o.k} data-p={o.p ?? ''}>{o.k}{o.p && <span class="sub text-mute font-normal ml-1.5">{o.p} zł</span>}</button>)}</div></div>)}
+            {(p.fields.includes('text') || pv?.text) && (
+              <div><label for="txt" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Tekst do personalizacji</label>
+                <input id="txt" maxlength={pv ? 28 : 60} data-req={pv?.photo ? '' : '1'} placeholder={pv?.text ? 'np. ' + pv.text.ph : /numer|lokal/.test(p.slug) ? 'np. 12A' : /firm|logo|szyld/.test(p.slug) ? 'Nazwa firmy lub hasło' : 'np. Zosia 2026'} class="inp mt-3 w-full text-[17px]" />
+                <p class="text-[12.5px] text-mute mt-1.5">Sprawdź pisownię – grawer robimy dokładnie według tego tekstu.</p></div>)}
+            {p.fields.includes('photo') && (
+              <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Twoje zdjęcie</b>
+                <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-5 cursor-pointer hover:border-ink transition"><input id="photo" type="file" accept="image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">↑</span><span><b class="block text-[15px] font-medium" id="photoName">Dodaj zdjęcie</b><span class="text-[12.5px] text-mute">JPG lub PNG, najlepiej powyżej 1500 px. Możesz też dosłać je mailem.</span></span></label></div>)}
+            {p.fields.includes('logo') && (
+              <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Logo</b>
+                <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-4 cursor-pointer hover:border-ink transition"><input id="logo" type="file" accept=".svg,.pdf,.ai,.eps,.png,image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">◆</span><span><b class="block text-[15px] font-medium" id="logoName">Dodaj logo</b><span class="text-[12.5px] text-mute">Najlepiej SVG, PDF lub AI. Jeśli nie masz wektora – przerysujemy.</span></span></label></div>)}
+            {p.fields.includes('list') && (
+              <div><label for="list" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Lista (lokale, nazwiska, goście)</label><textarea id="list" rows="3" placeholder="Każda pozycja w nowej linii albo dołącz plik w uwagach" class="inp mt-3 w-full"></textarea></div>)}
+            <div><label for="notes" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Uwagi do projektu <span class="normal-case tracking-normal font-normal">(opcjonalnie)</span></label><textarea id="notes" rows="2" placeholder="np. czcionka pisana, motyw świąteczny, data na odwrocie" class="inp mt-3 w-full"></textarea></div>
+
+            <div class="flex gap-3 items-stretch">
+              <div class="flex items-center rounded-full border border-line bg-white"><button id="qm" class="w-12 h-14 text-[20px]" aria-label="Mniej">−</button><input id="qty" value="1" inputmode="numeric" class="w-10 text-center font-semibold outline-none bg-transparent" aria-label="Ilość" /><button id="qp" class="w-12 h-14 text-[20px]" aria-label="Więcej">+</button></div>
+              <button id="add" class="flex-1 h-14 rounded-full bg-ink text-white font-semibold text-[15.5px] hover:scale-[1.01] transition">Dodaj do koszyka · <span id="addP"></span></button>
+            </div>
+            <div class="rounded-2xl bg-white border border-line px-5 py-4 flex items-center gap-4 text-[14px]"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span id="eta" data-bfrom={BREAK.from} data-bto={BREAK.to}></span></div>
+            {d.qt.length > 0 && <p class="text-[13px] text-mute -mt-3">Taniej w większej ilości: {d.qt.map((t) => `od ${t.q} szt. – ${t.p} zł/szt.`).join(' · ')}</p>}
+            <ul class="grid sm:grid-cols-3 gap-2 text-[12.5px]">
+              {[['👁', `Podgląd do akceptacji w ${PREVIEW}`], ['📦', `Wykonanie ${LEAD} od akceptacji`], ['🏭', 'Robimy w Chorzowie']].map(([i, t]) => <li class="rounded-2xl bg-white/70 border border-line px-3 py-3 flex gap-2 items-center"><span>{i}</span>{t}</li>)}
+            </ul>
+          </div>
+        )}
+
+        <!-- opis -->
+        <div class="mt-12 divide-y divide-line border-y border-line">
+          <details open class="py-5"><summary class="flex justify-between cursor-pointer list-none font-semibold text-[16px]">Opis<span class="chev text-[22px] transition-transform">+</span></summary><div class="text-mute leading-relaxed mt-3 grid gap-3">{d.desc.map((x) => <p>{x}</p>)}</div></details>
+          <details class="py-5"><summary class="flex justify-between cursor-pointer list-none font-semibold text-[16px]">Jak to robimy<span class="chev text-[22px] transition-transform">+</span></summary><div class="mt-3 grid gap-3">{d.mt.map(([t, x]) => <p class="text-mute leading-relaxed"><b class="text-ink">{t}.</b> {x}</p>)}<a href="pracownia.html" class="text-[14px] underline">Zobacz naszą pracownię →</a></div></details>
+          <details class="py-5"><summary class="flex justify-between cursor-pointer list-none font-semibold text-[16px]">Dostawa i płatność<span class="chev text-[22px] transition-transform">+</span></summary><div class="text-mute leading-relaxed mt-3"><p>Paczkomat InPost 15,99 zł, kurier DPD 19,99 zł, odbiór osobisty w Chorzowie – 0 zł. Od 199 zł dostawa gratis. Płacisz BLIK-iem, kartą, Apple Pay, Google Pay lub szybkim przelewem.</p><a href="dostawa-i-platnosci.html" class="text-[14px] underline text-ink">Szczegóły dostawy →</a></div></details>
+          <details class="py-5"><summary class="flex justify-between cursor-pointer list-none font-semibold text-[16px]">Zwroty i reklamacje<span class="chev text-[22px] transition-transform">+</span></summary><div class="text-mute leading-relaxed mt-3"><p>Produkt jest wykonywany według Twojego projektu, dlatego nie przysługuje prawo odstąpienia od umowy bez podania przyczyny (art. 38 pkt 3 ustawy o prawach konsumenta). Jeśli produkt jest uszkodzony albo niezgodny z zamówieniem – złóż reklamację, a my go poprawimy lub wymienimy.</p><a href="zwroty-i-reklamacje.html" class="text-[14px] underline text-ink">Jak złożyć reklamację →</a></div></details>
+          <details class="py-5"><summary class="flex justify-between cursor-pointer list-none font-semibold text-[16px]">Producent i bezpieczeństwo<span class="chev text-[22px] transition-transform">+</span></summary><div class="text-mute leading-relaxed mt-3 text-[14px]"><p>Producent: AiPrints.pl Artur Dombrowski, ul. Okrężna 98B, 41-500 Chorzów, Polska, kontakt@aiprints.pl, +48 609 040 274.</p><p class="mt-2">Produkt dekoracyjny, nie jest zabawką. {/szkl|kryszt|karaf|kiel|szklan/.test(p.slug) ? 'Szkło – chronić przed upadkiem, myć ręcznie.' : /drewn|desk|dab|sklejk/.test(p.slug + p.variants) ? 'Drewno – chronić przed długotrwałą wilgocią.' : 'Przechowywać w suchym miejscu.'}</p></div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {d.rel.length > 0 && (
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Z tej samej kategorii</h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{d.rel.map((x) => <Card p={x} c={x.cat} />)}</div>
+  </section>)}
+
+  {!(p.quote || !p.price) && (
+  <div id="sticky" style="transform:translateY(110%)" class="fixed bottom-0 left-0 right-0 z-30 glass border-t border-white/70 transition-transform duration-500">
+    <div class="max-w-[1320px] mx-auto px-6 py-3 flex items-center gap-4"><img src={d.img} alt="" class="w-12 h-12 rounded-xl object-cover" /><b class="flex-1 text-[15px] font-medium line-clamp-1">{p.name}</b><button onclick="document.getElementById('add').scrollIntoView({behavior:'smooth',block:'center'})" class="h-11 px-6 rounded-full bg-ink text-white font-semibold text-[14px]">Personalizuj</button></div>
+  </div>)}
+  <script>
+    import { addItem, zl } from '../scripts/cart.js';
+    import { toast, priceAnim } from '../scripts/common.js';
+    const $ = (i) => document.getElementById(i);
+    const q = $('quote');
+    if (q) q.onsubmit = (e) => { e.preventDefault(); $('qok').classList.remove('hidden'); toast('Zapytanie przyjęte ✓'); };
+    const cfg = $('cfg');
+    if (cfg) {
+      const base = +$('price').dataset.base; const qt = JSON.parse(cfg.dataset.qt || '[]');
+      let opt = cfg.querySelector('.opt[aria-pressed=true]'); let photoUrl = null;
+      const unitPrice = () => { const n = +$('qty').value || 1; let u = opt && opt.dataset.p ? +opt.dataset.p : base; qt.forEach((t) => { if (n >= t.q) u = t.p; }); return u; };
+      const upd = () => { const n = Math.max(1, +$('qty').value || 1); $('qty').value = n; const u = unitPrice(); $('addP').textContent = zl(u * n); if (opt && opt.dataset.p) $('price').textContent = zl(u); };
+      cfg.querySelectorAll('.opt').forEach((b) => b.onclick = () => { opt = b; cfg.querySelectorAll('.opt').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); upd(); priceAnim('price'); });
+      $('qm').onclick = () => { $('qty').value = Math.max(1, +$('qty').value - 1); upd(); };
+      $('qp').onclick = () => { $('qty').value = +$('qty').value + 1; upd(); };
+      $('qty').oninput = upd;
+      const ph = $('photo'); if (ph) ph.onchange = () => { const f = ph.files[0]; if (!f) return; $('photoName').textContent = f.name; const r = new FileReader(); r.onload = () => { photoUrl = r.result; if ($('pvPh')) { $('pvImg').src = photoUrl; $('pvPh').classList.remove('hidden'); window.galleryFirst && window.galleryFirst(); } else { const pv = $('photoPrev'); pv.querySelector('img').src = photoUrl; pv.classList.remove('hidden'); } }; r.readAsDataURL(f); };
+      const txs = [...document.querySelectorAll('.pvTx')]; if (txs.length && $('txt')) $('txt').addEventListener('input', (e) => { txs.forEach((tx) => tx.textContent = e.target.value.trim() || tx.dataset.ph); window.galleryFirst && window.galleryFirst(); });
+      const eta = $('eta'); if (eta) { const bf = eta.dataset.bfrom, bt = eta.dataset.bto; const iso = (d) => d.toISOString().slice(0, 10);
+        const add = (d, n) => { d = new Date(d); while (n > 0) { d.setDate(d.getDate() + 1); const w = d.getDay(); if (w && w < 6 && !(iso(d) >= bf && iso(d) <= bt)) n--; } return d; };
+        const f = (d) => d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' }); const now = new Date();
+        eta.innerHTML = `Zamówisz dziś → podgląd do <b>${f(add(now, 2))}</b>, wysyłka ok. <b>${f(add(now, 7))}–${f(add(now, 12))}</b>`; }
+      const lg = $('logo'); if (lg) lg.onchange = () => { if (lg.files[0]) $('logoName').textContent = lg.files[0].name; };
+      $('add').onclick = () => {
+        const t = $('txt'); if (t && t.dataset.req && !t.value.trim()) { t.focus(); t.classList.add('ring-2', 'ring-red-400'); toast('Wpisz tekst do personalizacji'); return; }
+        const n = +$('qty').value, u = unitPrice();
+        const lines = [opt ? opt.dataset.k : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', $('notes').value.trim() ? 'z uwagami' : ''].filter(Boolean);
+        addItem({ title: cfg.dataset.name, lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit }, $("gal"));
+      };
+      upd();
+    }
+  </script>
+</Base>
+)}

@@ -1,0 +1,194 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+import { SEASON } from '../data/config.js';
+import { RECIPIENTS } from '../data/preview.js';
+const P = cat.products;
+const by = (s) => P.find((p) => p.slug === s);
+const best = ['krysztal-zdjecie', 'naszyjnik-grawer', 'deska-do-krojenia', 'karafka-grawer', 'numer-domu', 'mapa-nieba', 'niesmiertelnik', 'akryl-piosenka', 'adresowka-psa', 'szklanki-whisky', 'poduszka-zdjecie', 'koperta-drewniana'].map(by).filter(Boolean);
+const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
+const tint = { 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1' };
+const pick = { 'prezenty-ze-zdjeciem': 'f/krysztal-para-sq', 'prezenty-z-grawerem': 'f/koperta-drewniana-sq', 'slub-i-okazje': 'hf/kieliszki-para-1', 'dla-firm': 'hf/termos-logo-sq', 'wspolnoty-i-spoldzielnie': 'hf/tablica-wejscie-zarzadca-sq', 'salony-beauty': 'hf/logo-lustro-1', 'na-swieta': 'bombka/glowne' };
+const schema = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Organization', name: 'AiPrints.pl', url: 'https://aiprints.pl/', logo: 'https://aiprints.pl/img/logo.svg', telephone: '+48609040274', email: 'kontakt@aiprints.pl' },
+  { '@type': 'LocalBusiness', name: 'AiPrints.pl – pracownia druku i graweru', image: 'https://aiprints.pl/img/site/pracownia.jpg', telephone: '+48609040274', address: { '@type': 'PostalAddress', streetAddress: 'ul. Okrężna 98B', postalCode: '41-500', addressLocality: 'Chorzów', addressCountry: 'PL' }, openingHours: 'Mo-Fr 09:00-17:00', priceRange: '$$' },
+  { '@type': 'WebSite', name: 'AiPrints.pl', url: 'https://aiprints.pl/' }] };
+const faq = [
+  ['Czy zobaczę projekt przed produkcją?', 'Tak. Do 2 dni roboczych od zamówienia wysyłamy podgląd na e-mail. Produkcję zaczynamy dopiero po Twojej akceptacji, a poprawki przed akceptacją są bezpłatne.'],
+  ['Ile trwa realizacja?', 'Zwykle 5–10 dni roboczych od akceptacji projektu, plus 1–2 dni dostawy. Dokładny termin potwierdzamy razem z podglądem. Jeśli potrzebujesz produktu na konkretną datę – napisz przed zamówieniem.'],
+  ['Czy mogę zwrócić produkt?', 'Produkty personalizowane robimy według Twojego projektu, dlatego nie można ich zwrócić bez podania przyczyny. Jeśli coś jest niezgodne z zamówieniem albo uszkodzone, złóż reklamację – naprawimy to.'],
+  ['Czy wystawiacie faktury VAT?', 'Tak, dla każdej firmy, wspólnoty i spółdzielni. NIP wpiszesz w kasie. Stałym klientom firmowym dajemy płatność przelewem z terminem.'],
+  ['Czy mogę odebrać zamówienie osobiście?', 'Tak, w pracowni przy ul. Okrężnej 98B w Chorzowie, od poniedziałku do piątku w godz. 9:00–17:00.'],
+];
+const materials = [['Drewno bukowe', 'url(img/hf/deska-do-krojenia-1.jpg) 30% 60%/400%'], ['Szkło K9', 'linear-gradient(135deg,#e9f1f4,#b9cbd3 60%,#f7fbfc)'], ['Akryl lustrzany', 'linear-gradient(135deg,#f3e3b5,#c9a24f 45%,#fff1c7 55%,#a8843a)'], ['Stal nierdzewna', 'linear-gradient(135deg,#e6e7e8,#a9adb1 50%,#f1f2f3)'], ['Czarny akryl', 'linear-gradient(135deg,#2a2a2a,#050505 60%,#3a3a3a)'], ['Sklejka', 'linear-gradient(135deg,#e8cfa4,#d7b57d)'], ['Dibond', 'linear-gradient(135deg,#fafafa,#dcdcdc)'], ['Płótno', 'url(img/hf/obraz-plotno-1.jpg) 50% 50%/500%']];
+---
+<Base title="AiPrints.pl – prezenty personalizowane, grawer i druk UV z Chorzowa" description="Prezenty ze zdjęciem i grawerem, kryształy 3D, szyldy dla firm i oznakowanie dla wspólnot. Robimy w pracowni w Chorzowie, podgląd projektu przed produkcją, wysyłka w całej Polsce." schema={schema}>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+        <div class="relative max-w-[1360px] mx-auto px-5 md:px-10 pt-14 md:pt-20 pb-20 md:pb-28 grid lg:grid-cols-[1.02fr_1fr] gap-14 items-center">
+      <div>
+        <h1 class="hd text-[64px] sm:text-[88px] lg:text-[96px]"><span class="h-in block">Prezenty, które</span><span class="h-in block">ktoś <em class="text-acc">naprawdę</em></span><span class="h-in block">zachowa.</span></h1>
+        <p class="h-in text-[18.5px] text-ink/70 leading-relaxed mt-8 max-w-[520px]">Grawer laserowy w drewnie, stali i we wnętrzu szkła. Druk UV i 3D. Wszystko robimy u siebie – i zanim cokolwiek powstanie, pokazujemy Ci projekt.</p>
+        <div class="h-in flex flex-wrap gap-3 mt-10">
+          <a href="prezenty-ze-zdjeciem.html" class="btn btn-ink">Zobacz prezenty <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button onclick="window.openSearch&&openSearch()" class="btn btn-out"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg> Znajdź prezent</button>
+        </div>
+        <div class="h-in flex flex-wrap items-center gap-x-6 gap-y-2 mt-10 text-[13.5px] text-ink/70">
+          <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Podgląd przed produkcją</span>
+          <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg>Własna pracownia w Chorzowie</span>
+          <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Faktura VAT</span>
+        </div>
+      </div>
+
+      <!-- hero: zdjęcie + próbna personalizacja -->
+      <div id="stack" class="relative">
+        <div class="card-s relative rounded-[34px] overflow-hidden shadow-[0_50px_100px_-30px_rgba(10,12,20,.55)]" style="aspect-ratio:1408/900">
+          <img src="img/f/krysztal-para.jpg" alt="Kryształ 3D ze zdjęciem pary na podstawce LED" class="absolute inset-0 w-full h-full object-cover scale-[1.02]" />
+          <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute left-6 top-6 text-white"><span class="text-[11px] tracking-[.22em] font-semibold text-white/70">GRAWER LASEROWY W SZKLE K9</span><b class="hd block text-[34px] md:text-[44px] mt-1">Kryształ 3D ze zdjęciem</b></div>
+          <a href="krysztal-zdjecie.html" class="absolute right-5 bottom-6 h-11 px-5 rounded-full bg-white text-ink text-[13.5px] font-semibold grid place-items-center hover:-translate-y-0.5 transition">od 229 zł →</a>
+        </div>
+        <!-- spróbuj -->
+        <div data-d="18" class="card-s relative sm:absolute sm:-left-10 lg:-left-16 sm:-bottom-24 mt-5 sm:mt-0 sm:w-[340px] rounded-[26px] bg-white p-3 shadow-[0_30px_70px_-20px_rgba(18,17,16,.35)]">
+          <div class="relative rounded-[18px] overflow-hidden" style="aspect-ratio:1408/768;container-type:inline-size">
+            <img src="img/f/koperta-drewniana.jpg" alt="Drewniana koperta na pieniądze z grawerem" class="absolute inset-0 w-full h-full object-cover" />
+            <span id="heroName" class="absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap leading-none" style="left:50.6%;top:36.4%;font-size:2.9cqw;color:#6e4420;mix-blend-mode:multiply;font-family:'Great Vibes',cursive;text-shadow:0 .1cqw 0 rgba(255,255,255,.35)">Ania</span>
+          </div>
+          <div class="flex items-center gap-2 mt-3 px-1">
+            <input id="heroIn" maxlength="14" aria-label="Imię do podglądu na kopercie" placeholder="Wpisz imię…" class="flex-1 min-w-0 h-11 rounded-full border border-line px-4 text-[14px] outline-none focus:border-ink" />
+            <a href="koperta-drewniana.html" class="h-11 px-4 rounded-full bg-ink text-white text-[13px] font-semibold grid place-items-center whitespace-nowrap">Zamów</a>
+          </div>
+          <p class="text-[12px] text-mute px-2 pt-2 pb-1"><b class="text-ink">Spróbuj:</b> imię pojawi się na kopercie – tak działa podgląd na żywo.</p>
+        </div>
+        <div data-d="26" class="card-s hidden sm:flex absolute -right-4 -top-6 rounded-2xl bg-white shadow-[0_20px_50px_rgba(18,17,16,.16)] pl-3 pr-5 py-3 items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-ink text-white grid place-items-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span><b class="block text-[14px]">Najpierw podgląd</b><span class="text-[12px] text-mute">produkujemy po Twojej akceptacji</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- materiały -->
+  <section class="border-y border-line bg-white" aria-label="Materiały, na których pracujemy">
+    <ul class="max-w-[1360px] mx-auto px-5 md:px-10 flex flex-wrap justify-center gap-x-9 gap-y-4 py-7">
+      {materials.map(([n, bg]) => <li class="inline-flex items-center gap-3 text-[15px] font-medium text-ink/80"><i class="w-9 h-9 rounded-full border border-black/10 shadow-inner" style={`background:${bg}`}></i>{n}</li>)}
+    </ul>
+  </section>
+
+  <!-- kategorie -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <div class="flex items-end justify-between gap-8 flex-wrap">
+      <div><h2 class="hd text-[52px] md:text-[80px] reveal">Czego szukasz?</h2></div>
+      <p class="reveal text-ink/65 max-w-[400px] text-[16px] leading-relaxed">Ułożyliśmy sklep według okazji, a nie maszyn. Wybierz, dla kogo albo na co – resztą zajmie się pracownia.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+      {cats.map((c) => (
+        <a href={`${c.slug}.html`} class="reveal lift group relative rounded-[30px] overflow-hidden p-7 min-h-[330px] flex flex-col justify-between" style={`background:${tint[c.slug]}`}>
+          <div class="flex justify-between items-start relative z-10">
+            <span class="text-[12.5px] font-semibold text-ink/75">{c.count} produktów</span>
+            <span class="w-11 h-11 rounded-full bg-white grid place-items-center transition group-hover:bg-ink group-hover:text-white"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <img src={`img/${pick[c.slug]}.jpg`} alt="" loading="lazy" class="absolute right-[-8%] bottom-[-12%] w-[50%] aspect-square object-cover rounded-[28px] rotate-[6deg] shadow-[0_30px_60px_-20px_rgba(0,0,0,.35)] transition duration-700 group-hover:rotate-[2deg] group-hover:scale-105" />
+          <div class="relative z-10 max-w-[52%]"><b class="hd text-[36px] md:text-[40px] block">{c.name}</b><p class="text-[13.5px] text-ink/60 mt-3 leading-snug line-clamp-3">{c.lead}</p></div>
+        </a>))}
+    </div>
+  </section>
+
+  <!-- dla kogo -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24">
+    <div class="rounded-[34px] bg-white border border-line px-7 md:px-10 py-8 flex flex-wrap items-center gap-x-8 gap-y-5">
+      <b class="hd text-[40px] md:text-[48px] mr-2">Dla kogo?</b>
+      <div class="flex flex-wrap gap-2">
+        {RECIPIENTS.map(([s, n]) => <a href={`${s}.html`} class="h-12 px-6 rounded-full border border-line bg-paper text-[15px] font-medium grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition">{n}</a>)}
+        <a href="dla-firm.html" class="h-12 px-6 rounded-full border border-line bg-paper text-[15px] font-medium grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition">Dla firmy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- bestsellery: poziomy rail -->
+  <section class="mt-32">
+    <div class="max-w-[1360px] mx-auto px-5 md:px-10 flex items-end justify-between gap-6">
+      <div><h2 class="hd text-[52px] md:text-[80px] reveal">Na początek</h2></div>
+      <div class="hidden md:flex gap-2"><button data-rail="-1" class="w-12 h-12 rounded-full border border-line bg-white grid place-items-center hover:bg-ink hover:text-white transition" aria-label="Wstecz">←</button><button data-rail="1" class="w-12 h-12 rounded-full border border-line bg-white grid place-items-center hover:bg-ink hover:text-white transition" aria-label="Dalej">→</button></div>
+    </div>
+    <div id="rail" class="rail flex gap-4 overflow-x-auto mt-12 px-5 md:px-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))] pb-4 scroll-px-5 md:scroll-px-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))]">
+      {best.map((p) => <div class="shrink-0 w-[72vw] sm:w-[300px] lg:w-[330px]"><Card p={p} c={p.cat} /></div>)}
+      <a href="prezenty-ze-zdjeciem.html" class="shrink-0 w-[72vw] sm:w-[300px] lg:w-[330px] aspect-square rounded-[26px] bg-ink text-white p-8 flex flex-col justify-between"><span class="eyebrow !text-ye">Cały sklep</span><b class="hd text-[48px]">Zobacz wszystkie 180+ produktów →</b></a>
+    </div>
+  </section>
+
+  <!-- lookbook bento -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-32">
+    <div class="flex items-end justify-between gap-6 flex-wrap"><div><h2 class="hd text-[52px] md:text-[80px] reveal">Tak wyglądają<br />u Was w domu</h2></div><p class="reveal text-ink/65 max-w-[380px]">Każdy z tych przedmiotów robimy z imieniem, datą albo zdjęciem, które nam przyślesz.</p></div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-[300px_300px_300px] gap-3 md:gap-4 mt-12">
+      {[['naszyjnik-grawer', 'img/hf/naszyjnik-grawer-3.jpg', 'Naszyjnik z imieniem', 'col-span-2 row-span-2 aspect-square lg:aspect-auto'], ['numer-domu', 'img/hf/numer-domu-3.jpg', 'Numer domu', 'col-span-2 aspect-[4/3] lg:aspect-auto'], ['karafka-grawer', 'img/hf/karafka-grawer-3.jpg', 'Karafka w pudełku', 'aspect-square lg:aspect-auto'], ['sylwetka-psa', 'img/hf/sylwetka-psa-2.jpg', 'Sylwetka pupila', 'aspect-square lg:aspect-auto'], ['mapa-nieba', 'img/hf/mapa-nieba-3.jpg', 'Mapa nieba', 'col-span-2 aspect-[4/3] lg:aspect-auto'], ['akryl-piosenka', 'img/hf/akryl-piosenka-2.jpg', 'Akryl ze zdjęciem', 'col-span-2 aspect-[4/3] lg:aspect-auto']].map(([s2, im, t, c]) => (
+        <a href={`${s2}.html`} class={`sv group relative rounded-[28px] overflow-hidden bg-paper2 ${c}`}>
+          <img src={im} alt={t} loading="lazy" class="parallax absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <span class="absolute left-4 bottom-4 right-4 flex items-center justify-between text-white"><b class="text-[15px] font-semibold [text-shadow:0_1px_8px_rgba(0,0,0,.45)]">{t}</b><span class="w-9 h-9 rounded-full bg-white text-ink grid place-items-center text-[14px] translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition">→</span></span>
+        </a>))}
+    </div>
+  </section>
+
+  <!-- jak to działa -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-36">
+    <div class="rounded-[40px] bg-white border border-line p-8 md:p-14 relative overflow-hidden">
+      <div class="grid lg:grid-cols-[.9fr_1.6fr] gap-12">
+        <div><h2 class="hd text-[52px] md:text-[72px] reveal">Od pomysłu<br />do <em class="text-acc">paczki</em></h2><p class="reveal text-ink/65 mt-6 leading-relaxed max-w-[360px]">Żadnych niespodzianek. Widzisz projekt, zanim powstanie – a my robimy go dokładnie tak, jak zaakceptujesz.</p></div>
+        <ol class="grid sm:grid-cols-2 gap-4">
+          {[['01', 'Personalizujesz', 'Wpisujesz imię albo datę, dodajesz zdjęcie lub logo – prosto na stronie produktu.'], ['02', 'Akceptujesz podgląd', 'W ciągu 2 dni roboczych dostajesz projekt na e-mail. Poprawki są bezpłatne.'], ['03', 'Robimy w pracowni', 'Grawer, druk UV albo druk 3D – na naszych maszynach w Chorzowie.'], ['04', 'Wysyłamy', 'InPost, kurier albo odbiór osobisty. Numer paczki dostajesz SMS-em.']].map(([n, t, d]) => (
+            <li class="reveal rounded-[26px] bg-paper p-6"><span class="hd text-[56px] text-acc block" aria-hidden="true">{n}</span><b class="block text-[18px] font-semibold mt-2">{t}</b><p class="text-ink/65 mt-2 text-[14.5px] leading-relaxed">{d}</p></li>))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-8">
+    <div class="rounded-[40px] bg-night text-white p-8 md:p-14 relative overflow-hidden">
+      <div class="relative grid lg:grid-cols-[1fr_1.5fr] gap-12 items-end">
+        <div><h2 class="hd text-[52px] md:text-[72px]">Firmy, wspólnoty<br />i salony</h2><p class="text-white/60 mt-6 leading-relaxed max-w-[420px]">Szyldy, oznakowanie budynków, upominki z logo i druk. Jeden projekt, który potem powtarzamy dla kolejnych budynków i oddziałów.</p><div class="flex flex-wrap gap-3 mt-8"><a href="kontakt.html#wycena" class="btn bg-white text-ink">Poproś o wycenę</a><a href="tel:+48609040274" class="btn border border-white/25">609 040 274</a></div></div>
+        <div class="grid sm:grid-cols-3 gap-3">
+          {['dla-firm', 'wspolnoty-i-spoldzielnie', 'salony-beauty'].map((s) => { const c = cat.cats.find((x) => x.slug === s); return (
+            <a href={`${s}.html`} class="group rounded-[26px] bg-white/[.06] border border-white/10 overflow-hidden hover:bg-white/[.1] transition"><div class="aspect-[4/3] overflow-hidden"><img src={`img/${pick[s]}.jpg`} alt="" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" /></div><div class="p-5"><b class="hd text-[30px] block">{c.name}</b><span class="text-[13px] text-white/50 mt-1 block">{c.count} produktów →</span></div></a>); })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pracownia -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-36 grid lg:grid-cols-[1.15fr_1fr] gap-14 items-center">
+    <div class="reveal relative crop"><img src="img/site/pracownia.jpg" alt="Pracownia AiPrints.pl przy ul. Okrężnej w Chorzowie" loading="lazy" class="rounded-[34px] w-full aspect-[4/3] object-cover" /><span class="absolute left-5 bottom-5 rounded-full glass px-4 py-2 text-[13px] font-medium">ul. Okrężna 98B · Chorzów</span></div>
+    <div>
+      
+      <h2 class="reveal hd text-[52px] md:text-[72px]">Wszystko robimy <em class="text-acc">sami</em></h2>
+      <p class="reveal text-ink/65 text-[17px] leading-relaxed mt-6">Bez pośredników i podwykonawców. Dlatego możemy pokazać Ci projekt przed produkcją i odpowiadamy za każdy egzemplarz.</p>
+      <div class="reveal flex flex-wrap gap-2 mt-8">{['Lasery xTool: CO₂ · MOPA · UV', 'Druk UV GoArt', 'HP Latex 375', 'Ploter Summa S3', 'Bambu Lab ×4', 'Epson P9500', 'Xerox C75'].map((m) => <span class="rounded-full border border-line bg-white px-4 py-2 text-[13.5px]">{m}</span>)}</div>
+      <a href="pracownia.html" class="reveal btn btn-ink mt-10">Zajrzyj do pracowni →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-36 grid lg:grid-cols-[.8fr_1.4fr] gap-12">
+    <div><h2 class="reveal hd text-[52px] md:text-[72px]">Zanim<br />zamówisz</h2><p class="reveal text-ink/65 mt-6">Nie ma tu odpowiedzi? <a href="kontakt.html" class="underline underline-offset-4 text-ink">Napisz do nas</a>.</p></div>
+    <div class="divide-y divide-line border-y border-line">
+      {faq.map(([q, a]) => <details class="reveal group py-6"><summary class="flex justify-between items-center gap-6 cursor-pointer list-none text-[18px] font-medium">{q}<span class="chev w-9 h-9 shrink-0 rounded-full border border-line grid place-items-center text-[20px] transition-transform">+</span></summary><p class="text-ink/65 mt-3 leading-relaxed max-w-[640px]">{a}</p></details>)}
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) })} />
+  <script>
+    import gsap from 'gsap';
+    gsap.from('.h-in', { y: 40, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .08, delay: .1 });
+    const cards = [...document.querySelectorAll('.card-s')];
+    const rail = document.getElementById('rail'); document.querySelectorAll('[data-rail]').forEach((b) => b.onclick = () => rail.scrollBy({ left: +b.dataset.rail * rail.clientWidth * .8, behavior: 'smooth' }));
+    const hi = document.getElementById('heroIn'), hn = document.getElementById('heroName'); hi.addEventListener('input', () => { hn.textContent = hi.value.trim() || 'Ania'; }); const demo = ['Ania', 'Tomek', 'Babcia Zosia', 'Kuba']; let di = 0; const iv = setInterval(() => { if (hi.value) return clearInterval(iv); di = (di + 1) % demo.length; hn.textContent = demo[di]; }, 2200); hi.addEventListener('focus', () => clearInterval(iv));
+    gsap.from(cards, { y: 80, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .1, delay: .3 });
+    const st = document.getElementById('stack');
+    if (matchMedia('(pointer:fine)').matches) st.parentElement.addEventListener('mousemove', (e) => {
+      const r = st.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      cards.forEach((c) => { const d = +c.dataset.d || 0; gsap.to(c, { x: x * d, y: y * d, duration: 1.2, ease: 'power3.out' }); });
+    });
+  </script>
+</Base>

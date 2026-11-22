@@ -1,0 +1,74 @@
+---
+import Ph from './Ph.astro';
+const { p, pv } = Astro.props;
+const gal = (p.gallery || []).filter((g) => !pv || g !== pv.img);
+const ratio = pv ? pv.ratio : gal.length && gal[0].includes('/hf/') ? '4/3' : '1/1';
+const pos = pv?.text ? (pv.texts || [[pv.text.x, pv.text.y]]) : [];
+const font = (t) => t.font === 'script' ? '"Great Vibes",cursive' : t.font === 'sans' ? 'var(--font-sans)' : 'var(--font-display)';
+const shadow = (t) => t.shadow === 'none' ? 'none' : t.shadow ? t.shadow : t.blend === 'screen' ? '0 0 .35cqw rgba(255,255,255,.5)' : '0 .08cqw 0 rgba(255,255,255,.35)';
+let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+const stars = pv?.stars ? Array.from({ length: 90 }, () => [rnd() * 100, rnd() * 100, rnd() * 0.9 + 0.2]).filter(([x, y]) => (x - 50) ** 2 + (y - 50) ** 2 < 2200) : [];
+const lines = pv?.stars ? Array.from({ length: 7 }, (_, i) => stars.slice(i * 4, i * 4 + 4)) : [];
+const slides = (pv ? 1 : 0) + (gal.length || (pv ? 0 : 1));
+const vt = `view-transition-name:vt-${p.slug}`;
+---
+<div class="lg:sticky lg:top-24 self-start" id="galWrap">
+  <div class="relative rounded-[32px] overflow-hidden bg-paper2">
+    <div id="track" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {pv && (
+        <div class="relative shrink-0 w-full snap-center" id="gal" style={`aspect-ratio:${ratio};container-type:inline-size`}>
+          <img src={pv.img} alt={p.name} class="absolute inset-0 w-full h-full object-cover" style={vt} />
+          {pv.photo && <div id="pvPh" class="absolute hidden" style={`left:${pv.photo.l}%;top:${pv.photo.t}%;width:${pv.photo.w}%;height:${pv.photo.h}%`}>
+            {pv.photo.mask !== false && <div class="absolute -inset-[4%]" style="background:#0a0c0f;-webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000 62%,transparent 100%)"></div>}
+            <img id="pvImg" alt="Twoje zdjęcie" class="absolute inset-0 w-full h-full object-cover" style={pv.photo.mask !== false ? 'filter:grayscale(1) contrast(1.35) brightness(1.08);mix-blend-mode:screen;opacity:.9;-webkit-mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 58%,transparent 100%)' : `mix-blend-mode:${pv.photo.blend || 'multiply'};opacity:.95`} />
+          </div>}
+          {pv.stars && (
+            <svg class="absolute -translate-x-1/2 -translate-y-1/2" style={`left:${pv.stars.x}%;top:${pv.stars.y}%;width:${pv.stars.d}%`} viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="49" fill="#0f1c3a" stroke="#e9e3d6" stroke-width=".8" />
+              {lines.map((l) => <polyline points={l.map(([x, y]) => `${x},${y}`).join(' ')} fill="none" stroke="#c9d4ee" stroke-width=".25" opacity=".7" />)}
+              {stars.map(([x, y, r]) => <circle cx={x} cy={y} r={r} fill="#fff" />)}
+            </svg>)}
+          {pos.map(([x, y]) => (
+            <span class="pvTx absolute pointer-events-none -translate-x-1/2 -translate-y-1/2 leading-[1.05] text-center" data-ph={pv.text.ph}
+              style={`left:${x}%;top:${y}%;font-size:${pv.text.size}cqw;color:${pv.text.color};mix-blend-mode:${pv.text.blend};font-family:${font(pv.text)};font-weight:${pv.text.weight || 400};text-shadow:${shadow(pv.text)};${pv.text.rotate ? `rotate:${pv.text.rotate}deg;` : ''}${pv.text.wrap ? `width:${pv.text.wrap}ch;white-space:normal` : 'white-space:nowrap'}`}>{pv.text.ph}</span>))}
+          <span class="absolute left-4 top-4 rounded-full bg-white/90 backdrop-blur px-3 py-1.5 text-[12px] font-semibold flex items-center gap-2"><i class="w-2 h-2 rounded-full bg-acc"></i>Podgląd na żywo</span>
+        </div>)}
+      {gal.map((g, i) => (
+        <div class="zoom relative shrink-0 w-full snap-center overflow-hidden" style={`aspect-ratio:${ratio}`} id={!pv && i === 0 ? 'gal' : undefined}>
+          <img src={g} alt={`${p.name} – zdjęcie ${i + 1}`} loading={i ? 'lazy' : 'eager'} class="absolute inset-0 w-full h-full object-cover transition-transform duration-300" style={!pv && i === 0 ? vt : ''} />
+        </div>))}
+      {!pv && !gal.length && <div class="relative shrink-0 w-full aspect-square" id="gal"><Ph p={p} size="lg" /></div>}
+    </div>
+    <div id="photoPrev" class="hidden absolute right-4 bottom-4 w-28 h-28 rounded-2xl overflow-hidden border-4 border-white shadow-xl"><img alt="Twoje zdjęcie" class="w-full h-full object-cover" /></div>
+    {slides > 1 && <>
+      <button id="gPrev" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass grid place-items-center shadow-lg opacity-0 transition" aria-label="Poprzednie zdjęcie">←</button>
+      <button id="gNext" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass grid place-items-center shadow-lg transition" aria-label="Następne zdjęcie">→</button>
+      <span id="gCnt" class="absolute right-4 top-4 rounded-full bg-black/55 text-white backdrop-blur px-3 py-1 text-[12px] font-semibold tabular-nums">1 / {slides}</span>
+    </>}
+  </div>
+  {slides > 1 && (
+    <div class="flex gap-2.5 mt-3" id="thumbs">
+      {pv && <button class="th w-[72px] aspect-square rounded-2xl overflow-hidden ring-2 ring-ink ring-offset-2 ring-offset-paper" data-i="0"><img src={pv.img} alt="" class="w-full h-full object-cover" /></button>}
+      {gal.map((g, i) => <button class={`th w-[72px] aspect-square rounded-2xl overflow-hidden ring-offset-2 ring-offset-paper ${!pv && i === 0 ? 'ring-2 ring-ink' : 'opacity-70 hover:opacity-100'}`} data-i={(pv ? 1 : 0) + i}><img src={g} alt="" loading="lazy" class="w-full h-full object-cover" /></button>)}
+    </div>)}
+  <p class="text-[12.5px] text-mute mt-3">{pv ? 'Wpisz tekst' + (pv.photo ? ' albo dodaj zdjęcie' : '') + ' – podgląd zmienia się na żywo. Projekt w skali 1:1 dostaniesz do akceptacji przed produkcją.' : p.img ? 'Zdjęcia poglądowe – Twój produkt będzie miał Twoją personalizację.' : 'Zdjęcia tego produktu dodamy wkrótce. Wizualizację z Twoim projektem dostaniesz przed produkcją.'}</p>
+</div>
+<style>
+  .zoom:hover img { transform: scale(1.6); cursor: zoom-in; }
+  @media (pointer: coarse) { .zoom:hover img { transform: none; } }
+</style>
+<script>
+  const tr = document.getElementById('track');
+  if (tr) {
+    const n = tr.children.length, th = [...document.querySelectorAll('#thumbs .th')];
+    const go = (i) => tr.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * tr.clientWidth, behavior: 'smooth' });
+    const cur = () => Math.round(tr.scrollLeft / tr.clientWidth);
+    const upd = () => { const c = cur(); const cnt = document.getElementById('gCnt'); if (cnt) cnt.textContent = `${c + 1} / ${n}`; th.forEach((b, i) => { b.classList.toggle('ring-2', i === c); b.classList.toggle('ring-ink', i === c); b.classList.toggle('opacity-70', i !== c); }); const pr = document.getElementById('gPrev'), nx = document.getElementById('gNext'); if (pr) pr.style.opacity = c ? '1' : '0'; if (nx) nx.style.opacity = c < n - 1 ? '1' : '0'; };
+    tr.addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true });
+    th.forEach((b) => b.onclick = () => go(+b.dataset.i));
+    document.getElementById('gPrev')?.addEventListener('click', () => go(cur() - 1));
+    document.getElementById('gNext')?.addEventListener('click', () => go(cur() + 1));
+    tr.querySelectorAll('.zoom').forEach((z) => z.addEventListener('mousemove', (e) => { const r = z.getBoundingClientRect(); z.querySelector('img').style.transformOrigin = `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`; }));
+    window.galleryFirst = () => go(0);
+  }
+</script>

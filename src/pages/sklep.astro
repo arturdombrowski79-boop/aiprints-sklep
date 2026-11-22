@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Shop from '../components/Shop.astro';
+import cat from '../data/catalog.json';
+import { SEASON } from '../data/config.js';
+const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
+const items = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ ...p, sub: C[p.cat].name }));
+const subs = [...new Set(items.map((p) => p.sub))];
+---
+<Base title="Wszystkie prezenty personalizowane – wybierz okazję i osobę" description="Prezenty personalizowane z pracowni w Chorzowie: filtruj po okazji, osobie, rodzaju personalizacji, materiale i cenie." canonical="sklep" active="sklep">
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-10">
+    <nav class="text-[13px] text-mute" aria-label="Okruszki"><a href="index.html" class="hover:text-ink">Strona główna</a><span class="mx-2">/</span><span>Wszystkie produkty</span></nav>
+    <div class="flex flex-wrap items-end justify-between gap-6 mt-6">
+      <h1 class="hd text-[56px] md:text-[92px] leading-[.9]">Znajdź prezent</h1>
+      <p class="text-mute max-w-[420px] text-[15.5px] leading-relaxed">Wybierz okazję i osobę, a pokażemy tylko to, co pasuje. Każdy projekt dostajesz do akceptacji przed produkcją.</p>
+    </div>
+    <div class="flex gap-2 overflow-x-auto rail mt-8 pb-1" id="quick">
+      {[['okazja', 'urodziny', 'Urodziny'], ['okazja', 'rocznica', 'Rocznica'], ['okazja', 'slub', 'Ślub'], ['okazja', 'komunia', 'Komunia'], ['dla', 'mama', 'Dla mamy'], ['dla', 'tata', 'Dla taty'], ['dla', 'dziecko', 'Dla dziecka'], ['dla', 'babcia-dziadek', 'Dla babci i dziadka'], ['pers', 'zdjecie', 'Ze zdjęciem'], ['pers', 'grawer', 'Z grawerem'], ['okazja', 'firma', 'Dla firm']].map(([k, v, n]) => <a href={`sklep.html?${k}=${v}`} class="shrink-0 h-10 px-4 rounded-full border border-line bg-white text-[13.5px] grid place-items-center hover:border-ink/40">{n}</a>)}
+    </div>
+  </section>
+  <Shop items={items} subs={subs} />
+</Base>

@@ -1,0 +1,7226 @@
+{
+"cats": [
+{
+"slug": "na-swieta",
+"name": "Na święta",
+"lead": "Bombki z imieniem, kryształy z zimowym motywem i kalendarze 2027. Zamów do 15 grudnia, a zdążymy przed Wigilią.",
+"color": "#7a2e2a",
+"subs": [
+"Bombki",
+"Kalendarze 2027",
+"Kryształy",
+"Ozdoby 3D"
+],
+"count": 8
+},
+{
+"slug": "prezenty-ze-zdjeciem",
+"name": "Prezenty ze zdjęciem",
+"lead": "Wasze zdjęcie w szkle, na akrylu, płótnie i drewnie. Przed produkcją wysyłamy podgląd do akceptacji.",
+"color": "#2f4a6b",
+"subs": [
+"Dla dzieci",
+"Dla fotografów",
+"Dom i dekoracje",
+"Pamiątki ze zdjęciem",
+"Prezenty ze zdjęciem"
+],
+"count": 34
+},
+{
+"slug": "prezenty-z-grawerem",
+"name": "Prezenty z grawerem",
+"lead": "Imię, data albo dedykacja wypalona laserem w drewnie, szkle i stali. Na lata, nie do szuflady.",
+"color": "#6b4a2a",
+"subs": [
+"Dla dzieci",
+"Dom i dekoracje",
+"Grawer",
+"Zegary ścienne",
+"Zwierzaki"
+],
+"count": 38
+},
+{
+"slug": "slub-i-okazje",
+"name": "Ślub i okazje",
+"lead": "Tablice powitalne, plany stołów, winietki, pamiątki komunijne i podziękowania dla rodziców.",
+"color": "#8a6a5a",
+"subs": [
+"Komunia i chrzest",
+"Pamiątki",
+"Ślub i wesele"
+],
+"count": 24
+},
+{
+"slug": "dla-firm",
+"name": "Dla firm",
+"lead": "Upominki z logo, szyldy, oznakowanie, witryny i druk. Faktura VAT, wycena w 24 h.",
+"color": "#2a2a2a",
+"subs": [
+"Oznakowanie pomieszczeń",
+"Projekty i grafika",
+"QR, opinie i social media",
+"Szkoły i kluby",
+"Upominki z logo",
+"Witryny i folie"
+],
+"count": 46
+},
+{
+"slug": "wspolnoty-i-spoldzielnie",
+"name": "Wspólnoty i spółdzielnie",
+"lead": "Tablice przy wejściu, regulaminy, numeracja lokali i tabliczki na skrzynki – w jednym stylu dla wszystkich budynków zarządcy.",
+"color": "#3d5a4f",
+"subs": [
+"Oznakowanie",
+"Pakiety",
+"Tablice",
+"Tabliczki i numeracja"
+],
+"count": 9
+},
+{
+"slug": "salony-beauty",
+"name": "Salony beauty",
+"lead": "Szyldy z lustra, bony podarunkowe, stojaki QR i komplet oznakowania gabinetu.",
+"color": "#a06a7a",
+"subs": [
+"Druk dla salonów",
+"Szyldy i logo"
+],
+"count": 29
+}
+],
+"products": [
+{
+"slug": "krysztal-zimowy-led",
+"name": "Kryształ zimowy 3D + LED",
+"cat": "na-swieta",
+"sub": "Kryształy",
+"variants": "5×5×8 / 6×6×10, podstawka LED",
+"priceText": "259 zł",
+"price": 259.0,
+"tiers": null,
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1466.0,
+"xmas": true,
+"img": "img/hf/krysztal-zimowy-led-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/krysztal-zimowy-led-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"szklo",
+"3d"
+]
+}
+},
+{
+"slug": "fine-art-druk",
+"name": "Wydruk fine art / Digigraphie",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dla fotografów",
+"variants": "do 112 cm szerokości, kalibracja na Eizo",
+"priceText": "od 249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "Epson P9500 + Eizo",
+"score": 1366.0,
+"xmas": true,
+"img": "img/hf/fine-art-druk-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-druk-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "karafka-grawer",
+"name": "Karafka z grawerem + 2 szklanki",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "monogram, imię, motyw",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 + RA3",
+"score": 1293.0,
+"xmas": true,
+"img": "img/hf/karafka-grawer-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/karafka-grawer-1.jpg",
+"img/hf/karafka-grawer-2.jpg",
+"img/hf/karafka-grawer-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego",
+"wino"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "numeracja-lokali",
+"name": "Numery lokali i klatek",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "plexi, aluminium, cyfry 3D, komplet budynku",
+"priceText": "od 15 zł/szt.",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1289.0,
+"xmas": true,
+"img": "img/hf/numeracja-lokali-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/numeracja-lokali-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "termos-logo",
+"name": "Termos stalowy z grawerem logo",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "",
+"priceText": "79 zł/szt., firmy od 20 szt. 69 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1263.0,
+"xmas": true,
+"img": "img/hf/termos-logo-sq.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/termos-logo-1.jpg",
+"img/hf/termos-logo-2.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "tablica-wejscie-zarzadca",
+"name": "Tablica przy wejściu z danymi zarządcy",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "aluminium szczotkowane / dibond / plexi, A4–A3, logo, telefony, dystanse",
+"priceText": "od 189 zł",
+"price": 189.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1244.0,
+"xmas": true,
+"img": "img/hf/tablica-wejscie-zarzadca-sq.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-wejscie-zarzadca-1.jpg",
+"img/hf/tablica-wejscie-zarzadca-2.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "breloki-klub",
+"name": "Breloki 3D z logo klubu",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1240.0,
+"xmas": true,
+"img": "img/hf/breloki-klub-1.jpg",
+"fields": [
+"logo"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/breloki-klub-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"logo"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "plakat-mapa-2d",
+"name": "Plakat minimalistyczna mapa miasta",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "A3 / 50×70, rama opcjonalnie",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson P9500",
+"score": 1229.0,
+"xmas": true,
+"img": "img/hf/plakat-mapa-2d-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakat-mapa-2d-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczki-skrzynki",
+"name": "Tabliczki na skrzynki pocztowe, komplet",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "plexi/laminat grawerski, wg listy lokali",
+"priceText": "od 6 zł/szt.",
+"price": 6.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1227.0,
+"xmas": true,
+"img": "img/hf/tabliczki-skrzynki-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/tabliczki-skrzynki-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "odbitki-polaroid",
+"name": "Zdjęcia w stylu polaroid, 24 szt.",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "pudełko, sznurek i klipsy",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson D1000L",
+"score": 1221.0,
+"xmas": true,
+"img": "img/hf/odbitki-polaroid-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/odbitki-polaroid-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"pamiatka"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "akryl-polaroid",
+"name": "Akrylowy „polaroid” ze zdjęciem i podpisem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "10×12 / 15×18, podstawka",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1215.0,
+"xmas": true,
+"img": "img/hf/akryl-polaroid-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-polaroid-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki"
+],
+"dla": [
+"dla-niej",
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "krysztal-pupil",
+"name": "Kryształ 3D z pupilem",
+"cat": "prezenty-z-grawerem",
+"sub": "Zwierzaki",
+"variants": "",
+"priceText": "229 zł",
+"price": 229.0,
+"tiers": null,
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1211.0,
+"xmas": true,
+"img": "img/hf/krysztal-pupil-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/krysztal-pupil-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"pamiatka"
+],
+"dla": [
+"psiarze",
+"kociarze"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"szklo",
+"3d"
+]
+}
+},
+{
+"slug": "swieca-szklo-imie",
+"name": "Świeca w szkle z imieniem lub zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "sojowa, 3 zapachy",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "GoArt UV A3 (obrotowa)",
+"score": 1209.0,
+"xmas": true,
+"img": "img/hf/swieca-szklo-imie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/swieca-szklo-imie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki",
+"dzien-mamy"
+],
+"dla": [
+"mama",
+"dla-niej",
+"przyjaciel"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "krysztal-pamiatkowy",
+"name": "Kryształ pamiątkowy 3D",
+"cat": "slub-i-okazje",
+"sub": "Pamiątki",
+"variants": "serce / blok",
+"priceText": "229 zł",
+"price": 229.0,
+"tiers": null,
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1204.0,
+"xmas": true,
+"img": "img/hf/krysztal-pamiatkowy-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/krysztal-pamiatkowy-1.jpg"
+],
+"tags": {
+"okazja": [
+"rocznica",
+"podziekowania",
+"chrzest",
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"szklo",
+"3d"
+]
+}
+},
+{
+"slug": "akryl-nasza-data",
+"name": "Tabliczka „Nasza data” z kalendarzem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "miesiąc z zaznaczonym sercem dniem, zdjęcie",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1203.0,
+"xmas": true,
+"img": "img/hf/akryl-nasza-data-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-nasza-data-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki",
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek",
+"para"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "naszyjnik-grawer",
+"name": "Naszyjnik stalowy z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "serce, krążek, imiona/data",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1200.0,
+"xmas": true,
+"img": "img/hf/naszyjnik-grawer-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naszyjnik-grawer-1.jpg",
+"img/hf/naszyjnik-grawer-2.jpg",
+"img/hf/naszyjnik-grawer-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"walentynki",
+"dzien-mamy"
+],
+"dla": [
+"mama",
+"dla-niej"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "bransoletka-stal",
+"name": "Bransoletka stalowa z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1200.0,
+"xmas": true,
+"img": "img/hf/bransoletka-stal-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bransoletka-stal-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"walentynki",
+"dzien-mamy"
+],
+"dla": [
+"mama",
+"dla-niej"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "lupek-zdjecie",
+"name": "Zdjęcie na łupku",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "20×20 / 20×30, stojak",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1193.0,
+"xmas": true,
+"img": "img/hf/lupek-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/lupek-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci",
+"pamiatka"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "puzzle-zdjecie",
+"name": "Puzzle ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "A4 120 el. / A3 300 el., pudełko",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1191.0,
+"xmas": true,
+"img": "img/hf/puzzle-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/puzzle-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek",
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "portret-pupila-plakat",
+"name": "Ilustrowany portret pupila",
+"cat": "prezenty-z-grawerem",
+"sub": "Zwierzaki",
+"variants": "A4 / A3, papier fine art",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "Epson P9500",
+"score": 1188.0,
+"xmas": true,
+"img": "img/hf/portret-pupila-plakat-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/portret-pupila-plakat-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"pamiatka"
+],
+"dla": [
+"psiarze",
+"kociarze"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "statuetka-krysztal",
+"name": "Statuetka kryształowa z grawerem",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "",
+"priceText": "249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1184.0,
+"xmas": true,
+"img": "img/hf/statuetka-krysztal-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/statuetka-krysztal-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "fototapeta",
+"name": "Fototapeta na wymiar",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "flizelina bez PCV, z Twojego zdjęcia",
+"priceText": "od 79 zł/m²",
+"price": 79.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1182.0,
+"xmas": true,
+"img": "img/hf/fototapeta-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/fototapeta-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "oznakowanie-piwnic",
+"name": "Oznakowanie piwnic i pomieszczeń",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "tabliczki: piwnica, suszarnia, rowerownia, węzeł cieplny",
+"priceText": "od 25 zł/szt.",
+"price": 25.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1181.0,
+"xmas": true,
+"img": "img/hf/oznakowanie-piwnic-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/oznakowanie-piwnic-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "znaki-zakazu",
+"name": "Znaki zakazu i informacyjne",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "zakaz palenia, monitoring, zakaz wstępu; naklejki lub PCV",
+"priceText": "od 19 zł/szt.",
+"price": 19.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1177.0,
+"xmas": true,
+"img": "img/hf/znaki-zakazu-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/znaki-zakazu-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "bony-podarunkowe",
+"name": "Bony podarunkowe z logo",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "149 zł / 50 szt.",
+"price": 149.0,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1176.0,
+"xmas": true,
+"img": "img/hf/bony-podarunkowe-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/bony-podarunkowe-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "puzzle-akryl-serce",
+"name": "Puzzle akrylowe ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "serce lub prostokąt, 12–20 el., podstawka",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1176.0,
+"xmas": true,
+"img": "img/hf/puzzle-akryl-serce-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/puzzle-akryl-serce-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki"
+],
+"dla": [
+"dla-niej",
+"para"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "szklanki-whisky",
+"name": "Szklanki do whisky z grawerem, zestaw 2 szt.",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "inicjały, motyw",
+"priceText": "99 zł (2 szt.)",
+"price": 99.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) / GoArt UV A3",
+"score": 1174.0,
+"xmas": true,
+"img": "img/hf/szklanki-whisky-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szklanki-whisky-1.jpg",
+"img/hf/szklanki-whisky-2.jpg",
+"img/hf/szklanki-whisky-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego",
+"wino"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "pakiet-budynek",
+"name": "Pakiet oznakowania budynku",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Pakiety",
+"variants": "tablica wejściowa + regulamin + numeracja + skrzynki + piwnice",
+"priceText": "od 990 zł",
+"price": 990.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1172.0,
+"xmas": true,
+"img": "img/hf/pakiet-budynek-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/pakiet-budynek-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "choinka-3d",
+"name": "Choinka 3D z imieniem",
+"cat": "na-swieta",
+"sub": "Ozdoby 3D",
+"variants": "kolory, tabliczka",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1168.0,
+"xmas": true,
+"img": "img/hf/choinka-3d-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/choinka-3d-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "balwanek-3d",
+"name": "Bałwanek 3D z imieniem",
+"cat": "na-swieta",
+"sub": "Ozdoby 3D",
+"variants": "",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1168.0,
+"xmas": true,
+"img": "img/hf/balwanek-3d-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/balwanek-3d-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "tablica-nauka-imienia",
+"name": "Drewniana tablica do nauki pisania imienia",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "sklejka, rowek do śledzenia palcem, 2 kroje",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1168.0,
+"xmas": true,
+"img": "img/hf/tablica-nauka-imienia-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-nauka-imienia-1.jpg"
+],
+"tags": {
+"okazja": [
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno",
+"akryl"
+]
+}
+},
+{
+"slug": "tabliczki-pomieszczenia",
+"name": "Tabliczki na drzwi (gabinet, sala, socjalne, szatnia)",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "złote/srebrne lustro na bieli/czerni, numer",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1167.0,
+"xmas": true,
+"img": "img/hf/tabliczki-pomieszczenia-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczki-pomieszczenia-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "krysztal-slub",
+"name": "Kryształ 3D z datą ślubu",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "289 zł",
+"price": 289.0,
+"tiers": null,
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1165.0,
+"xmas": true,
+"img": "img/f/krysztal-para-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/f/krysztal-para.jpg"
+],
+"tags": {
+"okazja": [
+"slub",
+"rocznica"
+],
+"dla": [
+"para"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"szklo",
+"3d"
+]
+}
+},
+{
+"slug": "brelok-akryl-zdjecie",
+"name": "Brelok akrylowy ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "druk dwustronny",
+"priceText": "25 zł",
+"price": 25.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1162.0,
+"xmas": true,
+"img": "img/hf/brelok-akryl-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/brelok-akryl-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"koniec-roku"
+],
+"dla": [
+"przyjaciel",
+"goscie",
+"kierowca"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "bidon-dziecko-uv",
+"name": "Bidon dla dziecka z imieniem i motywem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "stal, kolorowy nadruk dookoła",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "GoArt UV A3 (obrotowa)",
+"score": 1161.0,
+"xmas": true,
+"img": "img/hf/bidon-dziecko-uv-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bidon-dziecko-uv-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "kufel-grawer",
+"name": "Kufel do piwa z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "imię + motyw",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1161.0,
+"xmas": true,
+"img": "img/hf/kufel-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kufel-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego",
+"kuchnia"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "tablica-ogloszen",
+"name": "Tablica ogłoszeń z nadrukiem i logo",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "korkowa / magnetyczna z ramką, nagłówek UV",
+"priceText": "od 229 zł",
+"price": 229.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1160.0,
+"xmas": true,
+"img": "img/hf/tablica-ogloszen-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-ogloszen-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "logo-lustro",
+"name": "Logo ze złotego lustra dla salonu",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "290 zł",
+"price": 290.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1160.0,
+"xmas": true,
+"img": "img/hf/logo-lustro-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-lustro-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "deska-do-krojenia",
+"name": "Deska do krojenia z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "buk/dąb, 2 rozmiary, imię + motyw",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1157.0,
+"xmas": true,
+"img": "img/hf/deska-do-krojenia-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/deska-do-krojenia-1.jpg",
+"img/hf/deska-do-krojenia-2.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-taty",
+"dzien-babci",
+"nowy-dom"
+],
+"dla": [
+"mama",
+"tata",
+"dla-niego",
+"nauczyciel",
+"kuchnia"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "banery-rollupy",
+"name": "Banery i rollupy",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1156.0,
+"xmas": true,
+"img": "img/hf/banery-rollupy-1.jpg",
+"fields": [
+"logo"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/banery-rollupy-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "regulamin-porzadku",
+"name": "Regulamin porządku domowego",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "A3/A2, dibond lub plexi, tekst od zarządcy",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1154.0,
+"xmas": true,
+"img": "img/hf/regulamin-porzadku-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/regulamin-porzadku-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczki-domofon",
+"name": "Opisy do domofonu i listy lokatorów",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "laminat grawerski / druk UV, na wymiar panelu",
+"priceText": "od 79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1152.0,
+"xmas": true,
+"img": "img/hf/tabliczki-domofon-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczki-domofon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "niesmiertelnik",
+"name": "Nieśmiertelnik ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "stal",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1152.0,
+"xmas": true,
+"img": "img/hf/niesmiertelnik-sq.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/niesmiertelnik-1.jpg",
+"img/hf/niesmiertelnik-2.jpg",
+"img/hf/niesmiertelnik-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "statuetka-3-kody",
+"name": "Statuetka social media, 3 kody",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1152.0,
+"xmas": true,
+"img": "img/hf/statuetka-3-kody-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/statuetka-3-kody-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "akryl-bilet",
+"name": "Pamiątkowy bilet lub karta pokładowa",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "akryl, z podróży, koncertu, meczu",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1152.0,
+"xmas": true,
+"img": "img/hf/akryl-bilet-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-bilet-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica"
+],
+"dla": [
+"para"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "okladka-magazynu",
+"name": "Okładka magazynu z Twoim zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "akryl lub plakat A3, własny tytuł",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 / Epson P9500",
+"score": 1152.0,
+"xmas": true,
+"img": "img/hf/okladka-magazynu-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/okladka-magazynu-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"rocznica"
+],
+"dla": [
+"para",
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "butelka-personalizacja",
+"name": "Personalizacja butelek (etykieta UV lub grawer)",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "na butelkach dostarczonych przez klienta lub firmę",
+"priceText": "od 59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "GoArt UV A3 / xTool X1 + RA3",
+"score": 1150.0,
+"xmas": true,
+"img": "img/hf/butelka-personalizacja-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/butelka-personalizacja-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "fotopanel-aluminium",
+"name": "Fotopanel aluminiowy ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "20×30 / 30×40 / 40×60, połysk lub mat",
+"priceText": "149 zł (30×40)",
+"price": 149.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1146.0,
+"xmas": true,
+"img": "img/hf/fotopanel-aluminium-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fotopanel-aluminium-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "tabliczka-opinie-sciana",
+"name": "Tabliczka ścienna „Oceń nas” na dystansach",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "satyna + złoto/srebro",
+"priceText": "159 zł",
+"price": 159.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1146.0,
+"xmas": true,
+"img": "img/hf/tabliczka-opinie-sciana-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-opinie-sciana-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "stojak-opinie-qr-nfc",
+"name": "Stojak „Oceń nas” QR + NFC",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "bez NFC 89 zł",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1143.0,
+"xmas": true,
+"img": "img/hf/stojak-opinie-qr-nfc-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/stojak-opinie-qr-nfc-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "lusterko-logo",
+"name": "Lusterko kosmetyczne z logo",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "różne kształty, uchwyt, grawer",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1143.0,
+"xmas": true,
+"img": "img/hf/lusterko-logo-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/lusterko-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "inicjal-dziecko",
+"name": "Inicjał do pokoju dziecka",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "złoty, różowy, z kropką",
+"priceText": "45 zł",
+"price": 45.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1143.0,
+"xmas": true,
+"img": "img/hf/inicjal-dziecko-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/inicjal-dziecko-1.jpg"
+],
+"tags": {
+"okazja": [
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "mapa-nieba",
+"name": "Mapa nieba z ważnej daty",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "A3 / 50×70, papier fine art, rama opcjonalnie",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson P9500",
+"score": 1140.0,
+"xmas": true,
+"img": "img/hf/mapa-nieba-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/mapa-nieba-1.jpg",
+"img/hf/mapa-nieba-2.jpg",
+"img/hf/mapa-nieba-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"rocznica",
+"walentynki"
+],
+"dla": [
+"para"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczka-drzwi",
+"name": "Tabliczki na drzwi i lokale",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W) / GoArt UV A3",
+"score": 1140.0,
+"xmas": true,
+"img": "img/hf/tabliczka-drzwi-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-drzwi-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "zdjecie-na-drewnie",
+"name": "Zdjęcie na drewnie",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "20×30, druk UV",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1140.0,
+"xmas": true,
+"img": "img/hf/zdjecie-na-drewnie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zdjecie-na-drewnie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "kartka-drewniana",
+"name": "Drewniana kartka świąteczna z logo",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "",
+"priceText": "9 zł/szt. (od 50 szt.)",
+"price": 9.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1139.0,
+"xmas": true,
+"img": "img/hf/kartka-drewniana-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/kartka-drewniana-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "tabliczka-adres-dystanse",
+"name": "Tabliczka adresowa na dystansach",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "bezbarwna / biała, numer + ulica",
+"priceText": "159 zł",
+"price": 159.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1138.0,
+"xmas": true,
+"img": "img/hf/tabliczka-adres-dystanse-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-adres-dystanse-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl",
+"metal"
+]
+}
+},
+{
+"slug": "pudelko-grawer",
+"name": "Pudełko upominkowe z grawerem",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1136.0,
+"xmas": true,
+"img": "img/hf/pudelko-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pudelko-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "vouchery-salon",
+"name": "Vouchery / bony podarunkowe (druk)",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "laminowane, soft touch, złocone; koperty",
+"priceText": "od 139 zł",
+"price": 139.0,
+"tiers": null,
+"machine": "Xerox C75 + GoArt UV A3",
+"score": 1136.0,
+"xmas": true,
+"img": "img/hf/vouchery-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/vouchery-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczka-scienna-qr",
+"name": "Tabliczka ścienna z logo i QR",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "dystanse",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1134.0,
+"xmas": true,
+"img": "img/hf/tabliczka-scienna-qr-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-scienna-qr-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "ksiazeczka-dziecko",
+"name": "Bajka z imieniem i zdjęciem dziecka",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dla dzieci",
+"variants": "A5, 24 strony, 5 historii do wyboru",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Xerox C75 + broszurownica",
+"score": 1128.0,
+"xmas": true,
+"img": "img/hf/ksiazeczka-dziecko-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ksiazeczka-dziecko-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "numer-domu",
+"name": "Tabliczka z numerem domu, Dibond",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "GoArt UV A3 / HP Latex 375",
+"score": 1127.0,
+"xmas": true,
+"img": "img/hf/numer-domu-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/numer-domu-1.jpg",
+"img/hf/numer-domu-2.jpg",
+"img/hf/numer-domu-3.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl",
+"metal"
+]
+}
+},
+{
+"slug": "akryl-obrys",
+"name": "Zdjęcie na akrylu po obrysie",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1126.0,
+"xmas": true,
+"img": "img/hf/akryl-obrys-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-obrys-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "jelen-sklejka",
+"name": "Jeleń geometryczny na ścianę",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka / czarna plexi / lustro",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1126.0,
+"xmas": true,
+"img": "img/hf/jelen-sklejka-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/jelen-sklejka-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "poduszka-zdjecie",
+"name": "Poduszka ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "40×40, poszewka z wkładem",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1125.0,
+"xmas": true,
+"img": "img/hf/poduszka-zdjecie-sq.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/poduszka-zdjecie-1.jpg",
+"img/hf/poduszka-zdjecie-2.jpg",
+"img/hf/poduszka-zdjecie-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "etui-grawer",
+"name": "Etui na telefon z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "drewno, skóra ekologiczna; imię, inicjały, motyw",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1125.0,
+"xmas": true,
+"img": "img/hf/etui-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/etui-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego",
+"przyjaciel"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "napis-scienny",
+"name": "Napis na ścianę (HOME lub dowolne słowo)",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "złote/srebrne lustro, czarny, 40–120 cm",
+"priceText": "od 75 zł",
+"price": 75.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1124.0,
+"xmas": true,
+"img": "img/hf/napis-scienny-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napis-scienny-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "kieliszki-para",
+"name": "Kieliszki do wina lub szampana z grawerem, para",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "imiona, data, motyw dookoła",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 + RA3",
+"score": 1122.0,
+"xmas": true,
+"img": "img/hf/kieliszki-para-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kieliszki-para-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"slub",
+"rocznica",
+"walentynki",
+"podziekowania"
+],
+"dla": [
+"dla-niej",
+"para",
+"wino"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "zegar-diy-komplet",
+"name": "Zegar ścienny DIY, komplet",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "cyfry rzymskie/arabskie lub indeksy, wskazówki, cichy mechanizm, szablon",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1121.0,
+"xmas": true,
+"img": "img/hf/zegar-diy-komplet-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zegar-diy-komplet-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "smok-flexi",
+"name": "Smok flexi 3D z imieniem na podstawce",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "14 / 27 cm; zimowy, piernikowy, renifer; świecący w ciemności",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1120.0,
+"xmas": true,
+"img": "img/hf/smok-flexi-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/smok-flexi-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "figurka-swieta",
+"name": "Figurki świąteczne 3D (renifer, smok w jajku, scenka z pieskami)",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "z imieniem na podstawce",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1120.0,
+"xmas": true,
+"img": "img/hf/figurka-swieta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/figurka-swieta-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "etui-telefon-uv",
+"name": "Etui na telefon z Twoim zdjęciem (druk UV)",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "popularne modele iPhone/Samsung, druk z białym",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1114.0,
+"xmas": true,
+"img": "img/hf/etui-telefon-uv-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/etui-telefon-uv-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [
+"dla-niej",
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "numery-stol-podstawka",
+"name": "Numery na stół z drewnianą podstawką",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "6 kolorów, dąb/buk",
+"priceText": "36 zł/szt.",
+"price": 36.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1114.0,
+"xmas": false,
+"img": "img/hf/numery-stol-podstawka-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/numery-stol-podstawka-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "naklejki-scienne-dziecko",
+"name": "Naklejki ścienne z imieniem dziecka",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "zwierzaki, kosmos, las",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "HP HP Latex 375 + Summa S3",
+"score": 1114.0,
+"xmas": true,
+"img": "img/hf/naklejki-scienne-dziecko-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-scienne-dziecko-1.jpg"
+],
+"tags": {
+"okazja": [
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "dystanse",
+"name": "Dystanse montażowe",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "złote, srebrne, czarne; 12–15 mm",
+"priceText": "15 zł/szt.",
+"price": 15.0,
+"tiers": null,
+"machine": "zakup",
+"score": 1113.0,
+"xmas": true,
+"img": "img/hf/dystanse-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/dystanse-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "krysztal-zdjecie",
+"name": "Kryształ 3D ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "S 5×5×8 cm, M 6×6×10 cm, L 8×8×12 cm; podstawka LED +49 zł",
+"priceText": "S 229 / M 289 / L 359 zł",
+"price": 229.0,
+"tiers": [
+{
+"k": "S",
+"p": 229
+},
+{
+"k": "M",
+"p": 289
+},
+{
+"k": "L",
+"p": 359
+}
+],
+"machine": "xTool X1 (UV 5 W, grawer w szkle)",
+"score": 1111.0,
+"xmas": true,
+"img": "img/f/krysztal-para-sq.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/f/krysztal-para.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"rocznica",
+"walentynki",
+"podziekowania",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej",
+"para"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"szklo",
+"3d"
+]
+}
+},
+{
+"slug": "kliker-3d",
+"name": "Kliker / fidget 3D z imieniem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "pierniczek w kubeczku, serce-spinner, kolory",
+"priceText": "od 22 zł",
+"price": 22.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1111.0,
+"xmas": true,
+"img": "img/hf/kliker-3d-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kliker-3d-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "tablica-rejestracyjna",
+"name": "Tablica rejestracyjna z imieniem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "lustro różowe/złote/srebrne",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1110.0,
+"xmas": true,
+"img": "img/hf/tablica-rejestracyjna-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-rejestracyjna-1.jpg"
+],
+"tags": {
+"okazja": [
+"dzien-taty"
+],
+"dla": [
+"tata",
+"dla-niego",
+"kierowca"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tumbler-uv-kolor",
+"name": "Kubek termiczny z kolorowym nadrukiem dookoła",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "zdjęcie, wzór, logo firmy",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 (obrotowa)",
+"score": 1109.0,
+"xmas": true,
+"img": "img/hf/tumbler-uv-kolor-1.jpg",
+"fields": [
+"photo",
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tumbler-uv-kolor-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy"
+],
+"dla": [
+"mama",
+"dla-niej",
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"metal",
+"druk"
+]
+}
+},
+{
+"slug": "podziekowania-rodzice",
+"name": "Podziękowania dla rodziców, akryl LED",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "199 zł",
+"price": 199.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1109.0,
+"xmas": false,
+"img": "img/hf/podziekowania-rodzice-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/podziekowania-rodzice-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub",
+"podziekowania"
+],
+"dla": [
+"goscie"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "napis-recepcja",
+"name": "Napis „recepcja” na ladę",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1108.0,
+"xmas": true,
+"img": "img/hf/napis-recepcja-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napis-recepcja-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "ruchomy-szkielet",
+"name": "Ruchome szkielety 3D (człowiek, kot, pies, wąż, dinozaur)",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "tęczowe, świecące w ciemności, do 58 cm",
+"priceText": "od 39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1108.0,
+"xmas": true,
+"img": "img/hf/ruchomy-szkielet-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ruchomy-szkielet-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "zestaw-higieniczny",
+"name": "Zestaw tabliczek higienicznych dla salonu",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "199 zł",
+"price": 199.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1106.0,
+"xmas": true,
+"img": "img/hf/zestaw-higieniczny-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zestaw-higieniczny-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "wc-komplet",
+"name": "Tabliczki WC damska + męska, komplet",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "czarne, biało-złote",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1106.0,
+"xmas": true,
+"img": "img/hf/wc-komplet-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wc-komplet-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "naklejki-promocyjne",
+"name": "Naklejki promocyjne (SALE, nowa kolekcja, 2. produkt taniej)",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "koła, napisy, kolory",
+"priceText": "od 16 zł",
+"price": 16.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1103.0,
+"xmas": true,
+"img": "img/hf/naklejki-promocyjne-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-promocyjne-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "wizytowki-lakier-3d",
+"name": "Wizytówki premium z wypukłym lakierem",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "lakier wybiórczy 3D na logo, 250 szt.",
+"priceText": "199 zł / 250 szt.",
+"price": 199.0,
+"tiers": null,
+"machine": "Xerox C75 + GoArt UV A3 (lakier)",
+"score": 1102.0,
+"xmas": true,
+"img": "img/hf/wizytowki-lakier-3d-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wizytowki-lakier-3d-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk",
+"3d"
+]
+}
+},
+{
+"slug": "akryl-plakat-filmowy",
+"name": "Tabliczka „Plakat filmowy” z Waszym zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "akryl 15×20 / 20×30, podstawka lub LED; tytuł, opis, „odcinek”",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1101.0,
+"xmas": true,
+"img": "img/hf/akryl-plakat-filmowy-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-plakat-filmowy-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"rocznica"
+],
+"dla": [
+"para"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "rollup-salon",
+"name": "Roll-up ze stelażem i torbą",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "85×200 / 100×200",
+"priceText": "od 349 zł",
+"price": 349.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1101.0,
+"xmas": true,
+"img": "img/hf/rollup-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/rollup-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "szyld-okragly-logo",
+"name": "Okrągły szyld z logo, złote lustro",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "30/40/50/60 cm: 249/339/439/549 zł; dystanse",
+"priceText": "269 zł",
+"price": 269.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1100.0,
+"xmas": true,
+"img": "img/hf/szyld-okragly-logo-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szyld-okragly-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "folia-mrozona-wymiar",
+"name": "Folia mrożona na szybę na wymiar",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "matowa, mleczna",
+"priceText": "od 69 zł/m²",
+"price": 69.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1100.0,
+"xmas": true,
+"img": "img/hf/folia-mrozona-wymiar-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/folia-mrozona-wymiar-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "karty-stalego-klienta",
+"name": "Karty stałego klienta z pieczątką",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "soft touch, lakier UV, złocenie",
+"priceText": "od 159 zł",
+"price": 159.0,
+"tiers": null,
+"machine": "Xerox C75 + GoArt UV A3",
+"score": 1099.0,
+"xmas": true,
+"img": "img/hf/karty-stalego-klienta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/karty-stalego-klienta-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczka-logo-salon",
+"name": "Tabliczka z logo salonu, projekt indywidualny",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "biała/czarna/bezbarwna, dystanse",
+"priceText": "279 zł",
+"price": 279.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1097.0,
+"xmas": true,
+"img": "img/hf/tabliczka-logo-salon-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-logo-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "szyld-czarny-nazwa",
+"name": "Czarny szyld z nazwą firmy",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "czarna plexi, napis złote lustro",
+"priceText": "279 zł",
+"price": 279.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1097.0,
+"xmas": true,
+"img": "img/hf/szyld-czarny-nazwa-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szyld-czarny-nazwa-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "numery-stol-lustro",
+"name": "Numery na stół, cyfry lustrzane",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "złote/srebrne/różowe lustro, 1–30",
+"priceText": "17 zł/szt.",
+"price": 17.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1096.0,
+"xmas": false,
+"img": "img/hf/numery-stol-lustro-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/numery-stol-lustro-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "winietki",
+"name": "Winietki akrylowe",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "9 zł/szt.",
+"price": 9.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1095.0,
+"xmas": false,
+"img": "img/hf/winietki-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/winietki-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [
+"goscie"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "logo-na-sciane",
+"name": "Logo na ścianę z lustra",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "lustro na dystansach, 50–120 cm",
+"priceText": "od 299 zł",
+"price": 299.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1095.0,
+"xmas": true,
+"img": "img/hf/logo-na-sciane-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-na-sciane-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "skrzynka-wino",
+"name": "Skrzynka na wino z grawerem logo",
+"cat": "dla-firm",
+"sub": "Upominki z logo",
+"variants": "sosna/dąb",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1092.0,
+"xmas": true,
+"img": "img/hf/skrzynka-wino-1.jpg",
+"fields": [
+"logo",
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/skrzynka-wino-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "bombka-zdjecie",
+"name": "Bombka ze zdjęciem, akryl dwustronny",
+"cat": "na-swieta",
+"sub": "Bombki",
+"variants": "druk UV dwustronny",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1092.0,
+"xmas": true,
+"img": "img/hf/bombka-zdjecie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bombka-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "logo-na-lade",
+"name": "Logo na ladę (napis przestrzenny)",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "złote/srebrne/różowe lustro, 40–100 cm",
+"priceText": "od 249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1092.0,
+"xmas": true,
+"img": "img/hf/logo-na-lade-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-na-lade-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "zaproszenia-akryl",
+"name": "Zaproszenia ślubne na przezroczystym akrylu",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "biały + kolor, 30 szt., koperty",
+"priceText": "od 13 zł/szt.",
+"price": 13.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1092.0,
+"xmas": false,
+"img": "img/hf/zaproszenia-akryl-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/zaproszenia-akryl-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-okragle-logo",
+"name": "Naklejki okrągłe z logo",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "1,5–10 cm, folia biała/transparent/złota",
+"priceText": "od 99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1091.0,
+"xmas": true,
+"img": "img/hf/naklejki-okragle-logo-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-okragle-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "magnesy-zdjecia",
+"name": "Magnesy ze zdjęciami, 9 szt.",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "kwadrat 6×6, pudełko",
+"priceText": "29 zł (9 szt.)",
+"price": 29.0,
+"tiers": null,
+"machine": "D1000L / F500",
+"score": 1090.0,
+"xmas": true,
+"img": "img/hf/magnesy-zdjecia-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/magnesy-zdjecia-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek",
+"przyjaciel",
+"goscie"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "stojak-wizytowki-qr",
+"name": "Stojak z wizytówkami + QR/NFC",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1089.0,
+"xmas": true,
+"img": "img/hf/stojak-wizytowki-qr-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/stojak-wizytowki-qr-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "puzzle-imie",
+"name": "Puzzle drewniane z imieniem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "literki z kolorowej sklejki na podstawie",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1088.0,
+"xmas": true,
+"img": "img/hf/puzzle-imie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/puzzle-imie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "kubek-termiczny-grawer",
+"name": "Kubek termiczny z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "stal malowana, imię + motyw",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1088.0,
+"xmas": true,
+"img": "img/hf/kubek-termiczny-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kubek-termiczny-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-taty",
+"koniec-roku"
+],
+"dla": [
+"tata",
+"dla-niego",
+"przyjaciel",
+"nauczyciel",
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "witryna-logo-tel-qr",
+"name": "Naklejka na witrynę: logo, telefon, QR",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "biała/złota/kolor",
+"priceText": "95 zł",
+"price": 95.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1087.0,
+"xmas": true,
+"img": "img/hf/witryna-logo-tel-qr-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/witryna-logo-tel-qr-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "medalik-ihs",
+"name": "Zawieszki IHS na pamiątkę (min. 10 szt.)",
+"cat": "slub-i-okazje",
+"sub": "Komunia i chrzest",
+"variants": "złote/srebrne lustro",
+"priceText": "6 zł/szt.",
+"price": 6.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1086.0,
+"xmas": false,
+"img": "img/hf/medalik-ihs-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/medalik-ihs-1.jpg"
+],
+"tags": {
+"okazja": [
+"komunia",
+"chrzest"
+],
+"dla": [
+"goscie"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "akryl-piosenka",
+"name": "Tabliczka „Nasza piosenka” ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "akryl, pasek odtwarzania, tytuł i wykonawca, kod QR do utworu",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1085.0,
+"xmas": true,
+"img": "img/hf/akryl-piosenka-sq.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-piosenka-1.jpg",
+"img/hf/akryl-piosenka-2.jpg",
+"img/hf/akryl-piosenka-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"okragle-urodziny",
+"rocznica",
+"walentynki"
+],
+"dla": [
+"dla-niej",
+"para"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "mapa-poznalismy",
+"name": "Mapa 3D „tu się poznaliśmy”",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "189 zł",
+"price": 189.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1085.0,
+"xmas": true,
+"img": "img/hf/mapa-poznalismy-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/mapa-poznalismy-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki"
+],
+"dla": [
+"para"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "ihs-litery",
+"name": "Litery IHS lustrzane",
+"cat": "slub-i-okazje",
+"sub": "Komunia i chrzest",
+"variants": "złote/srebrne lustro, 3 rozmiary",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1085.0,
+"xmas": false,
+"img": "img/hf/ihs-litery-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ihs-litery-1.jpg"
+],
+"tags": {
+"okazja": [
+"komunia",
+"chrzest"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "litofania-lampka",
+"name": "Lampka litofania 3D ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "",
+"priceText": "119 zł",
+"price": 119.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1083.0,
+"xmas": true,
+"img": "img/hf/litofania-lampka-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/litofania-lampka-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki",
+"dzien-mamy",
+"dzien-babci",
+"pamiatka"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "wizytowki-salon",
+"name": "Wizytówki dla salonu",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "matowe, soft touch, lakier wybiórczy UV, złocenie; 100–500 szt.",
+"priceText": "119 zł / 250 szt.",
+"price": 119.0,
+"tiers": null,
+"machine": "Xerox C75 + GoArt UV A3",
+"score": 1083.0,
+"xmas": true,
+"img": "img/hf/wizytowki-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wizytowki-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "plakietki-qr-nfc",
+"name": "Plakietki QR/NFC samoprzylepne",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "złote/srebrne",
+"priceText": "29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1081.0,
+"xmas": true,
+"img": "img/hf/plakietki-qr-nfc-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakietki-qr-nfc-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "tabliczka-wc-kwadrat",
+"name": "Tabliczki WC kwadratowe",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "biała/czarna, złote litery",
+"priceText": "29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1080.0,
+"xmas": true,
+"img": "img/hf/tabliczka-wc-kwadrat-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-wc-kwadrat-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "topper-bok-tortu",
+"name": "Topper na bok tortu",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "młoda para, rocznica, urodziny; lustro/czarny",
+"priceText": "22 zł",
+"price": 22.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1079.0,
+"xmas": true,
+"img": "img/hf/topper-bok-tortu-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/topper-bok-tortu-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "brelok-3d-imie",
+"name": "Brelok 3D świąteczny z imieniem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "lisek, pierniczek, bałwanek flexi, Mikołaj; wielokolor",
+"priceText": "19 zł",
+"price": 19.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1078.0,
+"xmas": true,
+"img": "img/hf/brelok-3d-imie-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/brelok-3d-imie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka",
+"koniec-roku"
+],
+"dla": [
+"dziecko",
+"przyjaciel",
+"goscie",
+"kierowca"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "szyld-okragly-led",
+"name": "Okrągły szyld z logo, podświetlenie LED",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "jak wyżej + LED",
+"priceText": "349 zł",
+"price": 349.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1075.0,
+"xmas": true,
+"img": "img/hf/szyld-okragly-led-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szyld-okragly-led-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tabliczka-przedszkole",
+"name": "Tabliczki na sale w przedszkolu",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1075.0,
+"xmas": false,
+"img": "img/hf/tabliczka-przedszkole-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-przedszkole-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "godziny-otwarcia",
+"name": "Naklejka z godzinami otwarcia",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "z logo / bez logo, biała/złota",
+"priceText": "od 59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1075.0,
+"xmas": true,
+"img": "img/hf/godziny-otwarcia-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/godziny-otwarcia-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "ulotki-salon",
+"name": "Ulotki A6 / A5",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "kreda mat/błysk, 100–1000 szt.",
+"priceText": "od 169 zł",
+"price": 169.0,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1075.0,
+"xmas": true,
+"img": "img/hf/ulotki-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ulotki-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "dlugopisy-grawer",
+"name": "Długopisy z grawerem logo",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "metalowe, kolory; od 25 szt.",
+"priceText": "od 199 zł / 25 szt.",
+"price": 199.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1075.0,
+"xmas": true,
+"img": "img/hf/dlugopisy-grawer-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dlugopisy-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "diorama-3d",
+"name": "Mini dioramy 3D (akwarium z rybką, terrarium, domek, remiza)",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "z imieniem dziecka na tabliczce",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1075.0,
+"xmas": true,
+"img": "img/hf/diorama-3d-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/diorama-3d-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "brelok-drewno-skora",
+"name": "Brelok drewniany lub skórzany z imieniem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "dąb, orzech, skóra",
+"priceText": "19 zł",
+"price": 19.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1072.0,
+"xmas": true,
+"img": "img/hf/brelok-drewno-skora-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/brelok-drewno-skora-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-taty",
+"koniec-roku"
+],
+"dla": [
+"tata",
+"dla-niego",
+"przyjaciel",
+"nauczyciel",
+"goscie",
+"kierowca"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "topper-tort",
+"name": "Topper na tort, akryl lustrzany",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1072.0,
+"xmas": true,
+"img": "img/hf/topper-tort-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/topper-tort-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tabliczki-drzwi-salon",
+"name": "Tabliczki na drzwi salonu, komplet",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "239 zł",
+"price": 239.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1072.0,
+"xmas": true,
+"img": "img/hf/tabliczki-drzwi-salon-1.jpg",
+"fields": [
+"logo",
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczki-drzwi-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "akryl-led-zdjecie",
+"name": "Tabliczka akrylowa LED ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "",
+"priceText": "119 zł",
+"price": 119.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1071.0,
+"xmas": true,
+"img": "img/hf/akryl-led-zdjecie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-led-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"walentynki",
+"dzien-mamy"
+],
+"dla": [
+"mama"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "sylwetka-psa",
+"name": "Sylwetka psa ze zdjęcia",
+"cat": "prezenty-z-grawerem",
+"sub": "Zwierzaki",
+"variants": "czarny akryl / sklejka",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1071.0,
+"xmas": true,
+"img": "img/hf/sylwetka-psa-sq.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/sylwetka-psa-1.jpg",
+"img/hf/sylwetka-psa-2.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [
+"psiarze"
+],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "znicz-zdjecie",
+"name": "Znicz ze zdjęciem",
+"cat": "slub-i-okazje",
+"sub": "Pamiątki",
+"variants": "",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1071.0,
+"xmas": false,
+"img": "img/hf/znicz-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/znicz-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "ksiega-gosci-tabliczka",
+"name": "Tabliczka „Księga gości”",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "złote/srebrne lustro na plexi",
+"priceText": "95 zł",
+"price": 95.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1071.0,
+"xmas": false,
+"img": "img/hf/ksiega-gosci-tabliczka-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ksiega-gosci-tabliczka-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tablica-komunia",
+"name": "Tablica powitalna na komunię z imieniem i datą",
+"cat": "slub-i-okazje",
+"sub": "Komunia i chrzest",
+"variants": "IHS / hostia / kielich; złota, srebrna",
+"priceText": "109 zł",
+"price": 109.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1071.0,
+"xmas": false,
+"img": "img/hf/tablica-komunia-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-komunia-1.jpg"
+],
+"tags": {
+"okazja": [
+"komunia"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "stojak-wifi-qr",
+"name": "Stojak Wi-Fi z kodem QR",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂) + GoArt UV A3",
+"score": 1070.0,
+"xmas": true,
+"img": "img/hf/stojak-wifi-qr-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/stojak-wifi-qr-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "folia-mrozona-logo",
+"name": "Folia mrożona z wyciętym logo",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "mleczna, logo wycięte",
+"priceText": "95 zł",
+"price": 95.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1066.0,
+"xmas": true,
+"img": "img/hf/folia-mrozona-logo-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/folia-mrozona-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "terminarzyki-wizyt",
+"name": "Terminarzyki wizyt",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "jak wizytówki, składane / jednostronne",
+"priceText": "od 159 zł",
+"price": 159.0,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1066.0,
+"xmas": true,
+"img": "img/hf/terminarzyki-wizyt-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/terminarzyki-wizyt-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "bombka-dab",
+"name": "Bombka z imieniem, dąb",
+"cat": "na-swieta",
+"sub": "Bombki",
+"variants": "sklejka dębowa, grawer",
+"priceText": "29 zł (3+ 25, 10+ 19, 30+ 14)",
+"price": 29.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1065.0,
+"xmas": true,
+"img": "img/hf/bombka-dab-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bombka-dab-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "adresowka-psa",
+"name": "Adresówka dla psa",
+"cat": "prezenty-z-grawerem",
+"sub": "Zwierzaki",
+"variants": "stal, grawer 2 strony",
+"priceText": "29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1062.0,
+"xmas": true,
+"img": "img/hf/adresowka-psa-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/adresowka-psa-1.jpg",
+"img/hf/adresowka-psa-2.jpg",
+"img/hf/adresowka-psa-3.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [
+"psiarze"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "mapa-miasta",
+"name": "Mapa 3D miasta w ramie",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "kolory, rozmiar ramy, zaznaczony budynek",
+"priceText": "199 zł",
+"price": 199.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1062.0,
+"xmas": true,
+"img": "img/hf/mapa-miasta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/mapa-miasta-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "dyplom-drewniany",
+"name": "Statuetki i dyplomy na koniec roku",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1062.0,
+"xmas": false,
+"img": "img/hf/dyplom-drewniany-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dyplom-drewniany-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "lokal-wynajem",
+"name": "Naklejka „Lokal do wynajęcia”",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "z telefonem",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1062.0,
+"xmas": true,
+"img": "img/hf/lokal-wynajem-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/lokal-wynajem-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "certyfikaty-szkolen",
+"name": "Certyfikaty ukończenia szkolenia",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "A4, papier ozdobny, złocenie, lakier UV",
+"priceText": "od 129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "Xerox C75 + GoArt UV A3",
+"score": 1062.0,
+"xmas": true,
+"img": "img/hf/certyfikaty-szkolen-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/certyfikaty-szkolen-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "inicjaly-scianka",
+"name": "Inicjały na ściankę fotograficzną",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "4 kroje, poziom/pion, 9 kolorów, 60–100 cm",
+"priceText": "od 259 zł",
+"price": 259.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1061.0,
+"xmas": false,
+"img": "img/hf/inicjaly-scianka-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/inicjaly-scianka-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub",
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "medale-grawer",
+"name": "Medale z grawerem",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1059.0,
+"xmas": true,
+"img": "img/hf/medale-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/medale-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "folia-mrozona-nadruk",
+"name": "Folia mrożona z nadrukiem",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "kolor / skala szarości",
+"priceText": "109 zł",
+"price": 109.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1059.0,
+"xmas": true,
+"img": "img/hf/folia-mrozona-nadruk-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/folia-mrozona-nadruk-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "obraz-plotno",
+"name": "Obraz na płótnie ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "30×40 do 60×90, krosno",
+"priceText": "99 zł (40×60)",
+"price": 99.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1056.0,
+"xmas": true,
+"img": "img/hf/obraz-plotno-sq.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/obraz-plotno-1.jpg",
+"img/hf/obraz-plotno-2.jpg",
+"img/hf/obraz-plotno-3.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "podkladki-zestaw",
+"name": "Podkładki pod kubki z grawerem, 4 szt.",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "drewno lub łupek",
+"priceText": "49 zł (4 szt.)",
+"price": 49.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1055.0,
+"xmas": true,
+"img": "img/hf/podkladki-zestaw-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/podkladki-zestaw-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [
+"kuchnia"
+],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "napis-pudelko-koperty",
+"name": "Napis na pudełko na koperty",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "inicjały / imiona / „dziękujemy”, 5 kolorów",
+"priceText": "od 55 zł",
+"price": 55.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1053.0,
+"xmas": false,
+"img": "img/hf/napis-pudelko-koperty-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napis-pudelko-koperty-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "szklo-ramka-zdjecie",
+"name": "Szklana ramka ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "szkło do sublimacji, kilka kształtów",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1052.0,
+"xmas": true,
+"img": "img/hf/szklo-ramka-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szklo-ramka-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "pchac-ciagnac",
+"name": "Naklejki „Pchać / Ciągnąć”",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "białe, złote, czarne",
+"priceText": "15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1052.0,
+"xmas": true,
+"img": "img/hf/pchac-ciagnac-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pchac-ciagnac-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kalendarz-biurkowy",
+"name": "Kalendarz biurkowy 2027 ze zdjęciami",
+"cat": "na-swieta",
+"sub": "Kalendarze 2027",
+"variants": "stojący, 13 kart",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "Xerox C75 / D1000L",
+"score": 1051.0,
+"xmas": true,
+"img": "img/hf/kalendarz-biurkowy-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kalendarz-biurkowy-1.jpg"
+],
+"tags": {
+"okazja": [
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "napisy-maz-zona",
+"name": "Napisy „Mąż” i „Żona” na krzesła",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "złote/srebrne/różowe lustro, czarny, biały",
+"priceText": "24 zł/para",
+"price": 24.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1051.0,
+"xmas": false,
+"img": "img/hf/napisy-maz-zona-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napisy-maz-zona-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [
+"para"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "ihs-kolo-scianka",
+"name": "IHS w kole na ściankę",
+"cat": "slub-i-okazje",
+"sub": "Komunia i chrzest",
+"variants": "60 / 80 cm, złote lustro",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1049.0,
+"xmas": false,
+"img": "img/hf/ihs-kolo-scianka-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ihs-kolo-scianka-1.jpg"
+],
+"tags": {
+"okazja": [
+"komunia",
+"chrzest"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "naklejki-paczki-qr",
+"name": "Naklejki na paczki z QR (arkusz)",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "40–80 szt./arkusz",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1049.0,
+"xmas": true,
+"img": "img/hf/naklejki-paczki-qr-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-paczki-qr-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "plakietki-qr-grawer",
+"name": "Plakietki QR grawerowane, zestaw",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "złote/srebrne",
+"priceText": "25 zł",
+"price": 25.0,
+"tiers": null,
+"machine": "xTool X1",
+"score": 1047.0,
+"xmas": true,
+"img": "img/hf/plakietki-qr-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakietki-qr-grawer-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"metal"
+]
+}
+},
+{
+"slug": "piktogram-wc",
+"name": "Piktogramy WC na drzwi",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "5 stylów, samoprzylepne, lustro",
+"priceText": "od 15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1047.0,
+"xmas": true,
+"img": "img/hf/piktogram-wc-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/piktogram-wc-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "piktogramy-info",
+"name": "Piktogramy informacyjne (monitoring, zakaz palenia itp.)",
+"cat": "dla-firm",
+"sub": "Oznakowanie pomieszczeń",
+"variants": "lustro, samoprzylepne",
+"priceText": "15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1047.0,
+"xmas": true,
+"img": "img/hf/piktogramy-info-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/piktogramy-info-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "pakiet-social",
+"name": "Pakiet social media dla salonu",
+"cat": "dla-firm",
+"sub": "Projekty i grafika",
+"variants": "tło FB, okładki relacji, szablony postów i relacji",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "projekt",
+"score": 1047.0,
+"xmas": true,
+"img": "img/hf/pakiet-social-1.jpg",
+"fields": [
+"photo",
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pakiet-social-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "folia-mrozona-salon",
+"name": "Folia mrożona z logo na witrynę",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1046.0,
+"xmas": true,
+"img": "img/hf/folia-mrozona-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/folia-mrozona-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-qr-social",
+"name": "Naklejki z kodem QR na szybę (Instagram, Booksy itp.)",
+"cat": "dla-firm",
+"sub": "QR, opinie i social media",
+"variants": "samoprzylepne, kolor",
+"priceText": "22 zł",
+"price": 22.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1046.0,
+"xmas": true,
+"img": "img/hf/naklejki-qr-social-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-qr-social-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kalendarz-2027-a3",
+"name": "Kalendarz 2027 ze zdjęciami A3",
+"cat": "na-swieta",
+"sub": "Kalendarze 2027",
+"variants": "spirala, 13 stron",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1045.0,
+"xmas": true,
+"img": "img/hf/kalendarz-2027-a3-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kalendarz-2027-a3-1.jpg"
+],
+"tags": {
+"okazja": [
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "akryl-blok-zdjecie",
+"name": "Blok akrylowy ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Pamiątki ze zdjęciem",
+"variants": "gruby 15–20 mm, druk od tyłu, efekt głębi",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1044.0,
+"xmas": true,
+"img": "img/hf/akryl-blok-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/akryl-blok-zdjecie-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "cennik-salon",
+"name": "Cennik usług (druk lub plexi)",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "A4/A3 papier, plexi na dystansach",
+"priceText": "od 89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "Xerox C75 / GoArt UV A3",
+"score": 1044.0,
+"xmas": true,
+"img": "img/hf/cennik-salon-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/cennik-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "zegar-z-logo",
+"name": "Zegar ścienny z logo lub imieniem (gotowy)",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "tarcza plexi/dąb, 30–60 cm",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1043.0,
+"xmas": true,
+"img": "img/hf/zegar-z-logo-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zegar-z-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "tablica-inicjaly",
+"name": "Tablica powitalna z inicjałami pary",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "plexi bezbarwna/mleczna, dodatki lustro",
+"priceText": "od 299 zł",
+"price": 299.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1043.0,
+"xmas": false,
+"img": "img/hf/tablica-inicjaly-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-inicjaly-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub",
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno",
+"akryl"
+]
+}
+},
+{
+"slug": "cyfry-zegar",
+"name": "Cyfry do zegara, komplet 12 szt.",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "rzymskie/arabskie, złote/srebrne lustro, czarny mat",
+"priceText": "32 zł",
+"price": 32.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1043.0,
+"xmas": true,
+"img": "img/hf/cyfry-zegar-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/cyfry-zegar-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "topper-ihs",
+"name": "Topper na tort IHS",
+"cat": "slub-i-okazje",
+"sub": "Komunia i chrzest",
+"variants": "złote/srebrne lustro",
+"priceText": "15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1042.0,
+"xmas": false,
+"img": "img/hf/topper-ihs-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/topper-ihs-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub",
+"komunia",
+"chrzest"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "logo-gotowe",
+"name": "Logo z gotowego wzoru (personalizacja)",
+"cat": "dla-firm",
+"sub": "Projekty i grafika",
+"variants": "złote, lustrzane, minimalistyczne; pliki PNG/SVG/PDF",
+"priceText": "od 99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "projekt",
+"score": 1042.0,
+"xmas": true,
+"img": "img/hf/logo-gotowe-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-gotowe-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "plan-stolow",
+"name": "Plan stołów plexi",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "399 zł",
+"price": 399.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1041.0,
+"xmas": false,
+"img": "img/hf/plan-stolow-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plan-stolow-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tablica-witamy-gosci",
+"name": "Tablica „Witamy gości”",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "plexi bezbarwna/mleczna, 40×60 / 50×70",
+"priceText": "od 219 zł",
+"price": 219.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1039.0,
+"xmas": false,
+"img": "img/hf/tablica-witamy-gosci-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-witamy-gosci-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "notesy-logo",
+"name": "Notesy z logo",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "A6, A5, planer podłużny 10×21",
+"priceText": "od 199 zł / 25 szt.",
+"price": 199.0,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1039.0,
+"xmas": true,
+"img": "img/hf/notesy-logo-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/notesy-logo-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "szyld-ramka-znaki",
+"name": "Szyld z ramką, logo i znakami informacyjnymi",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "złota ramka, ikony usług",
+"priceText": "289 zł",
+"price": 289.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)+GoArt UV A3",
+"score": 1037.0,
+"xmas": true,
+"img": "img/hf/szyld-ramka-znaki-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szyld-ramka-znaki-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "wizytownik-lustro",
+"name": "Wizytownik z plexi lustrzanej",
+"cat": "salony-beauty",
+"sub": "Szyldy i logo",
+"variants": "złoty, srebrny, różowy",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1037.0,
+"xmas": true,
+"img": "img/hf/wizytownik-lustro-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wizytownik-lustro-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "fotoksiazka-a5",
+"name": "Fotoksiążka A5 „Nasz rok 2026”",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Prezenty ze zdjęciem",
+"variants": "24–48 stron, szyta, miękka okładka soft touch",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "Xerox C75 + broszurownica",
+"score": 1036.0,
+"xmas": true,
+"img": "img/hf/fotoksiazka-a5-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fotoksiazka-a5-1.jpg"
+],
+"tags": {
+"okazja": [
+"okragle-urodziny",
+"rocznica",
+"dzien-mamy",
+"dzien-babci",
+"pamiatka"
+],
+"dla": [
+"mama",
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "logo-indywidualne",
+"name": "Logo indywidualne + mini księga znaku",
+"cat": "dla-firm",
+"sub": "Projekty i grafika",
+"variants": "3 propozycje, 2 poprawki",
+"priceText": "od 690 zł",
+"price": 690.0,
+"tiers": null,
+"machine": "projekt",
+"score": 1036.0,
+"xmas": true,
+"img": "img/hf/logo-indywidualne-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-indywidualne-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "zestaw-montazowy",
+"name": "Zestaw do montażu folii na mokro + rakla",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "rakla z filcem, spryskiwacz, płyn",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "zakup",
+"score": 1035.0,
+"xmas": true,
+"img": "img/hf/zestaw-montazowy-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zestaw-montazowy-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "pakiet-startowy-salon",
+"name": "Pakiet startowy salonu: logo + druki + szyld",
+"cat": "dla-firm",
+"sub": "Projekty i grafika",
+"variants": "logo, wizytówki, karty, vouchery, cennik, tabliczka QR, szyld na ścianę",
+"priceText": "od 1 490 zł",
+"price": 1.0,
+"tiers": null,
+"machine": "projekt + produkcja",
+"score": 1033.0,
+"xmas": true,
+"img": "img/hf/pakiet-startowy-salon-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pakiet-startowy-salon-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kalendarz-adwentowy-3d",
+"name": "Kalendarz adwentowy 3D z imieniem dziecka",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "domek lub choinka, 24 szufladki z figurkami 3D",
+"priceText": "od 499 zł",
+"price": 499.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini) + xTool X1 (CO₂)",
+"score": 1029.0,
+"xmas": false,
+"img": "img/hf/kalendarz-adwentowy-3d-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kalendarz-adwentowy-3d-1.jpg"
+],
+"tags": {
+"okazja": [
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek",
+"dziecko"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk",
+"3d"
+]
+}
+},
+{
+"slug": "lamibook-imie",
+"name": "Lamibook edukacyjny z imieniem dziecka",
+"cat": "prezenty-z-grawerem",
+"sub": "Dla dzieci",
+"variants": "alfabet, sylabki, farma, pojazdy; rzepy, laminat",
+"priceText": "od 129 zł / zestaw 4 – 389 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "Xerox C75 + laminator",
+"score": 1029.0,
+"xmas": true,
+"img": "img/hf/lamibook-imie-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/lamibook-imie-1.jpg"
+],
+"tags": {
+"okazja": [
+"chrzest",
+"dzien-dziecka"
+],
+"dla": [
+"dziecko"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "bombka-akryl-zloty",
+"name": "Bombka z imieniem, akryl lustrzany",
+"cat": "na-swieta",
+"sub": "Bombki",
+"variants": "złote/srebrne/różowe złoto; 1–2 linie",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1028.0,
+"xmas": true,
+"img": "img/f/bombka-zlota-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/f/bombka-zlota.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "dekoracje-lustrzane",
+"name": "Lustrzane serca, gwiazdki, nutki (zestawy)",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "złote/srebrne, brokat",
+"priceText": "od 15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1024.0,
+"xmas": true,
+"img": "img/hf/dekoracje-lustrzane-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dekoracje-lustrzane-1.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "pupil-figurka-3d",
+"name": "Figurka 3D Twojego pupila ze zdjęcia",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dla dzieci",
+"variants": "10 / 15 cm, malowana wielokolorowo",
+"priceText": "129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 1023.0,
+"xmas": true,
+"img": "img/hf/pupil-figurka-3d-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pupil-figurka-3d-1.jpg"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"pamiatka"
+],
+"dla": [
+"dziecko",
+"psiarze",
+"kociarze"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"3d"
+]
+}
+},
+{
+"slug": "okleiny-motocross",
+"name": "Okleiny motocross",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "799 zł",
+"price": 799.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3",
+"score": 1022.0,
+"xmas": true,
+"img": "img/hf/okleiny-motocross-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/okleiny-motocross-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "indeksy-wskazowki",
+"name": "Indeksy i wskazówki do zegara",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "sztylety, kreski, strzałki, kropki; 3 kształty wskazówek",
+"priceText": "od 12 zł",
+"price": 12.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1020.0,
+"xmas": true,
+"img": "img/hf/indeksy-wskazowki-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/indeksy-wskazowki-1.jpg"
+],
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "skrypt-szkoleniowy",
+"name": "Skrypt szkoleniowy (druk + oprawa)",
+"cat": "salony-beauty",
+"sub": "Druk dla salonów",
+"variants": "A4/A5, spirala lub zszywki",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Xerox C75",
+"score": 1020.0,
+"xmas": true,
+"img": "img/hf/skrypt-szkoleniowy-1.jpg",
+"fields": [
+"text"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/skrypt-szkoleniowy-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "strona-one-page",
+"name": "Strona WWW one page dla salonu",
+"cat": "dla-firm",
+"sub": "Projekty i grafika",
+"variants": "z rezerwacją Booksy, mapą, cennikiem",
+"priceText": "od 1 290 zł",
+"price": 1.0,
+"tiers": null,
+"machine": "projekt",
+"score": 1020.0,
+"xmas": true,
+"img": "img/hf/strona-one-page-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/strona-one-page-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "folia-dekor-kropki",
+"name": "Folie dekoracyjne: kropki, paski",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "mrożone",
+"priceText": "od 15 zł",
+"price": 15.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 1019.0,
+"xmas": true,
+"img": "img/hf/folia-dekor-kropki-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/folia-dekor-kropki-1.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "koperta-drewniana",
+"name": "Koperta na pieniądze z grawerem",
+"cat": "prezenty-z-grawerem",
+"sub": "Grawer",
+"variants": "sklejka brzozowa",
+"priceText": "35 zł",
+"price": 35.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1007.0,
+"xmas": true,
+"img": "img/f/koperta-drewniana-sq.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/f/koperta-drewniana.jpg"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
+]
+}
+},
+{
+"slug": "tablica-powitalna",
+"name": "Tablica powitalna plexi 60×80 + sztaluga",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "",
+"priceText": "199 zł (60×80 + sztaluga)",
+"price": 199.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 999.0,
+"xmas": false,
+"img": "img/hf/tablica-powitalna-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-powitalna-1.jpg"
+],
+"tags": {
+"okazja": [
+"slub"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "folia-mrozona-zlote-logo",
+"name": "Folia mrożona ze złotym logo i napisami",
+"cat": "dla-firm",
+"sub": "Witryny i folie",
+"variants": "złota folia na mrożonej",
+"priceText": "109 zł",
+"price": 109.0,
+"tiers": null,
+"machine": "Summa S3",
+"score": 37.0,
+"xmas": true,
+"img": "img/p/folia-mrozona-z-logo.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/p/folia-mrozona-z-logo.jpg"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "mechanizm-cichy",
+"name": "Cichy mechanizm kwarcowy",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "gwint 9 / 11 / 14 / 24 mm",
+"priceText": "19 zł",
+"price": 19.0,
+"tiers": null,
+"machine": "zakup",
+"score": 12.0,
+"xmas": true,
+"img": null,
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+}
+],
+"facets": {
+"okazja": [
+[
+"Urodziny",
+[
+[
+"urodziny",
+"Urodziny"
+],
+[
+"okragle-urodziny",
+"18, 30, 40, 50 urodziny"
+]
+]
+],
+[
+"Śluby i rocznice",
+[
+[
+"slub",
+"Ślub i wesele"
+],
+[
+"rocznica",
+"Rocznica"
+],
+[
+"walentynki",
+"Walentynki"
+],
+[
+"podziekowania",
+"Podziękowania dla rodziców"
+]
+]
+],
+[
+"Chrzty i Komunie",
+[
+[
+"komunia",
+"Komunia"
+],
+[
+"chrzest",
+"Chrzest i narodziny"
+]
+]
+],
+[
+"Święta w kalendarzu",
+[
+[
+"dzien-mamy",
+"Dzień Mamy"
+],
+[
+"dzien-taty",
+"Dzień Ojca"
+],
+[
+"dzien-babci",
+"Dzień Babci i Dziadka"
+],
+[
+"dzien-dziecka",
+"Dzień Dziecka"
+],
+[
+"koniec-roku",
+"Dzień Nauczyciela i koniec roku"
+]
+]
+],
+[
+"Inne okazje",
+[
+[
+"nowy-dom",
+"Nowy dom i parapetówka"
+],
+[
+"pamiatka",
+"Pamiątka i upamiętnienie"
+],
+[
+"firma",
+"Dla firmy i klientów"
+]
+]
+]
+],
+"dla": [
+[
+"Rodzina",
+[
+[
+"mama",
+"Mamy"
+],
+[
+"tata",
+"Taty"
+],
+[
+"babcia-dziadek",
+"Babci i dziadka"
+],
+[
+"dziecko",
+"Dziecka"
+]
+]
+],
+[
+"Ukochani i przyjaciele",
+[
+[
+"dla-niej",
+"Dla niej"
+],
+[
+"dla-niego",
+"Dla niego"
+],
+[
+"para",
+"Dla pary"
+],
+[
+"przyjaciel",
+"Przyjaciółki i przyjaciela"
+]
+]
+],
+[
+"Okolicznościowe",
+[
+[
+"nauczyciel",
+"Nauczyciela"
+],
+[
+"goscie",
+"Gości weselnych"
+],
+[
+"pracownik",
+"Pracownika i klienta"
+]
+]
+],
+[
+"Z pasją",
+[
+[
+"psiarze",
+"Miłośników psów"
+],
+[
+"kociarze",
+"Miłośników kotów"
+],
+[
+"kierowca",
+"Kierowcy i motocyklisty"
+],
+[
+"kuchnia",
+"Kucharza i grillmistrza"
+],
+[
+"wino",
+"Miłośnika wina i whisky"
+]
+]
+]
+],
+"pers": [
+[
+"zdjecie",
+"Ze zdjęciem"
+],
+[
+"grawer",
+"Z grawerem"
+],
+[
+"imie",
+"Z imieniem lub tekstem"
+],
+[
+"logo",
+"Z logo firmy"
+]
+],
+"mat": [
+[
+"drewno",
+"Drewno i sklejka"
+],
+[
+"szklo",
+"Szkło i kryształ"
+],
+[
+"akryl",
+"Akryl, plexi i lustro"
+],
+[
+"metal",
+"Metal i stal"
+],
+[
+"druk",
+"Druk, papier i folia"
+],
+[
+"3d",
+"Druk 3D"
+]
+]
+}
+}

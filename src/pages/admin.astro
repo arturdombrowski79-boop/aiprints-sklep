@@ -1,0 +1,356 @@
+---
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource-variable/inter-tight';
+import '../styles/global.css';
+import cat from '../data/catalog.json';
+import { BREAK, LEAD, PREVIEW } from '../data/config.js';
+const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c.name]));
+const P = cat.products.map((p) => ({ s: p.slug, n: p.name, c: C[p.cat], k: p.cat, p: p.tiers ? p.tiers[0].p : p.price, t: p.priceText, i: p.img || `img/ph/${p.cat}.svg`, m: p.machine }));
+const NAV = [
+  ['', [['pulpit', 'Pulpit', 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z'], ['zamowienia', 'Zamówienia', 'M4 7h16l-1.5 12a2 2 0 0 1-2 1.8h-9A2 2 0 0 1 5.5 19zM9 7a3 3 0 0 1 6 0'], ['projekty', 'Projekty', 'M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4'], ['produkty', 'Produkty', 'M20.6 13.4 12 22l-9-9V3h10z M7.5 7.5h.01'], ['klienci', 'Klienci', 'M16 19a4 4 0 0 0-8 0M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19a3.5 3.5 0 0 0-4-3.4M3 19a3.5 3.5 0 0 1 4-3.4']]],
+  ['Marketing', [['rabaty', 'Kody rabatowe', 'M9 15 15 9M9.5 9.5h.01M14.5 14.5h.01M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0'], ['koszyki', 'Porzucone koszyki', 'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0'], ['opinie', 'Opinie', 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z']]],
+  ['Pracownia', [['raporty', 'Raporty', 'M3 3v18h18M7 15l4-4 3 3 5-6'], ['ustawienia', 'Ustawienia', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1']]],
+];
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel · AiPrints.pl</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="img/logo-mark.svg" />
+  <style is:global>
+    body { background: #f7f6f3; }
+    .card { background: #fff; border: 1px solid #e8e5df; border-radius: 18px; }
+    .nv { display: flex; align-items: center; gap: 12px; height: 42px; padding: 0 12px; border-radius: 12px; font-size: 14.5px; color: rgba(18,17,16,.78); }
+    .nv:hover { background: rgba(0,0,0,.04); } .nv.on { background: #ecebf7; color: #121110; font-weight: 600; }
+    .nv svg { flex: none; } .nv .bd.hidden { display: none; } .nv .bd { margin-left: auto; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 99px; background: #5b4bd6; color: #fff; font-size: 11.5px; font-weight: 700; display: grid; place-items: center; }
+    .bg { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 99px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .b-ok { background: #e7f6ec; color: #17733a; } .b-wait { background: #fdeef5; color: #b0175f; } .b-todo { background: #fff4d6; color: #8a5b00; } .b-prod { background: #ecebf7; color: #4636c4; } .b-ship { background: #e6f1fb; color: #1d5fa3; } .b-mute { background: #f0eee9; color: #6b665e; } .b-red { background: #fde8e8; color: #b42318; }
+    .ab { height: 40px; padding: 0 16px; border-radius: 12px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e0ddd6; background: #fff; }
+    .ab:hover { border-color: #b9b5ac; } .ab.pr { background: #5b4bd6; border-color: #5b4bd6; color: #fff; } .ab.pr:hover { background: #4c3dc4; } .ab.dk { background: #121110; color: #fff; border-color: #121110; }
+    .fi { height: 42px; border: 1px solid #e0ddd6; border-radius: 12px; padding: 0 14px; font-size: 14px; background: #fff; outline: none; width: 100%; } .fi:focus { border-color: #5b4bd6; box-shadow: 0 0 0 3px rgba(91,75,214,.15); }
+    textarea.fi { height: auto; padding: 10px 14px; }
+    .th { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: rgba(18,17,16,.5); font-weight: 600; }
+    .tr { display: grid; align-items: center; gap: 14px; padding: 14px 20px; border-top: 1px solid #efece6; font-size: 14px; }
+    a.tr:hover { background: #faf9f6; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .tab { height: 34px; padding: 0 14px; border-radius: 10px; font-size: 13.5px; color: rgba(18,17,16,.7); } .tab.on { background: #121110; color: #fff; font-weight: 600; }
+    @media print { aside, .np { display: none !important; } main { margin: 0 !important; } }
+  </style>
+</head>
+<body class="text-ink">
+  <!-- logowanie: tylko e-mail + kod, bez hasła -->
+  <div id="gate" class="hidden min-h-screen grid place-items-center p-6">
+    <div class="card w-full max-w-[420px] p-8">
+      <img src="img/logo.svg" alt="AiPrints.pl" class="h-9" />
+      <h1 class="text-[26px] font-bold mt-8">Panel pracowni</h1>
+      <p class="text-[14px] text-ink/60 mt-1">Bez hasła. Wyślemy kod na adres właściciela sklepu.</p>
+      <form id="gf" class="mt-6 grid gap-3">
+        <input id="gem" type="email" required class="fi" placeholder="artur@aiprints.pl" autocomplete="email" />
+        <button class="ab pr justify-center h-11">Wyślij kod logowania</button>
+      </form>
+      <div id="gcode" class="hidden mt-6">
+        <p class="text-[14px]">Kod wysłany na <b id="gto"></b>. Wpisz 6 cyfr:</p>
+        <input id="gc" inputmode="numeric" maxlength="6" class="fi mt-3 text-center text-[22px] tracking-[.5em] font-bold h-14" placeholder="••••••" />
+        <p class="text-[12px] text-ink/50 mt-3">Podgląd demo: zadziała dowolne 6 cyfr. Po podłączeniu serwera kod przyjdzie tylko na skonfigurowany adres i wygaśnie po 10 minutach.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <aside class="fixed inset-y-0 left-0 w-[264px] bg-white border-r border-line flex flex-col z-30 -translate-x-full lg:translate-x-0 transition-transform" id="side">
+      <a href="#pulpit" class="flex items-center gap-3 px-6 h-[76px]"><img src="img/logo-mark.svg" alt="" class="w-9 h-9" /><span class="font-display text-[24px] leading-none">AiPrints<span class="text-ink/40">.pl</span></span></a>
+      <nav class="flex-1 overflow-y-auto px-3 pb-4">
+        {NAV.map(([g, items]) => <>
+          {g && <p class="th px-3 mt-6 mb-2">{g}</p>}
+          {items.map(([k, t, d]) => <a href={`#${k}`} class="nv" data-nav={k}><svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d={d} /></svg>{t}<span class="bd hidden" id={`bd-${k}`}></span></a>)}
+        </>)}
+        <p class="th px-3 mt-6 mb-2">Połączone</p>
+        <a href="index.html" target="_blank" class="nv"><svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></svg>Zobacz sklep</a>
+        <a href="konto.html" target="_blank" class="nv"><svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></svg>Konto klienta</a>
+      </nav>
+      <div class="border-t border-line p-4 flex items-center gap-3">
+        <span class="w-10 h-10 rounded-full bg-[#5b4bd6] text-white grid place-items-center font-bold">A</span>
+        <span class="flex-1 min-w-0"><b class="block text-[14px]">Artur</b><span class="block text-[12px] text-ink/55 truncate">Właściciel · AiPrints.pl</span></span>
+        <button id="logout" class="text-[12px] underline text-ink/55">Wyloguj</button>
+      </div>
+    </aside>
+    <div id="scrim" class="fixed inset-0 bg-black/30 z-20 hidden lg:hidden"></div>
+    <main class="lg:ml-[264px] min-h-screen">
+      <div class="lg:hidden sticky top-0 z-10 bg-white border-b border-line h-14 flex items-center px-4 gap-3 np"><button id="burger" class="w-10 h-10 grid place-items-center" aria-label="Menu">☰</button><b>Panel AiPrints</b></div>
+      <div id="demo" class="bg-[#fff4d6] text-[#8a5b00] text-[13px] px-6 py-2.5 np">Podgląd panelu – dane trzymane w tej przeglądarce. Zamówienia złożone w sklepie (tryb testowy) pojawiają się tutaj. Po wdrożeniu na LH.pl dane będą w bazie MySQL.</div>
+      <div id="view" class="max-w-[1320px] mx-auto px-5 md:px-10 py-8"></div>
+    </main>
+  </div>
+  <div id="tst" class="fixed left-1/2 bottom-6 -translate-x-1/2 bg-ink text-white rounded-full px-5 py-3 text-[14px] opacity-0 transition pointer-events-none z-50"></div>
+  <input type="file" id="proofIn" accept="image/*" class="hidden" />
+  <script id="catdata" type="application/json" set:html={JSON.stringify({ P, BREAK, LEAD, PREVIEW })}></script>
+
+  <script>
+    const $ = (i) => document.getElementById(i);
+    const D = JSON.parse($('catdata').textContent);
+    const KEY = 'aiprints-orders';
+    const ls = { get: (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } }, set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { toast('Brak miejsca w pamięci przeglądarki'); } } };
+    const get = () => ls.get(KEY, []);
+    const put = (v) => ls.set(KEY, v);
+    const zl = (v) => (Math.round(v * 100) / 100).toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' zł';
+    const dt = (iso, t = true) => new Date(iso).toLocaleString('pl-PL', t ? { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' } : { day: 'numeric', month: 'short', year: 'numeric' });
+    const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+    function toast(m) { const t = $('tst'); t.textContent = m; t.style.opacity = 1; clearTimeout(toast.t); toast.t = setTimeout(() => (t.style.opacity = 0), 2600); }
+    const PAY = { blik: 'BLIK', card: 'Karta', p24: 'Przelewy24', wallet: 'Apple Pay / Google Pay', transfer: 'Przelew 14 dni' };
+    const ago = (h) => new Date(Date.now() - h * 36e5).toISOString();
+    const img = (s) => (D.P.find((p) => p.s === s) || {}).i;
+
+    // ——— przykładowe dane (tylko do podglądu) ———
+    function seed() {
+      const O = get(); const has = (no) => O.some((o) => o.no === no);
+      const add = (o) => { if (!has(o.no)) O.push({ cust: true, demo: true, log: [{ t: o.date, m: 'Zamówienie złożone · płatność przyjęta' }], notes: [], ...o }); };
+      add({ no: 'AP-26021', date: ago(3), name: 'Karolina Wójcik', email: 'karolina.wojcik@gmail.com', phone: '601 222 333', addr: 'Paczkomat KAT01M, Katowice, ul. Mariacka 12', items: [{ title: 'Mapa nieba z dnia, w którym się poznaliście', slug: 'mapa-nieba', lines: ['30×40 cm, rama dębowa', '„Tu zaczęło się nasze wszystko” · 14.02.2021 · Gliwice'], img: img('mapa-nieba'), qty: 1, price: 149 }], sub: 149, ship: 15.99, total: 164.99, pay: 'blik', delivery: 'InPost Paczkomat 24/7', status: 0 });
+      add({ no: 'AP-26020', date: ago(9), name: 'Marek Nowak', email: 'm.nowak@onet.pl', phone: '502 111 908', addr: 'ul. Lipowa 8, 41-500 Chorzów', items: [{ title: 'Karafka z grawerem', slug: 'karafka-grawer', lines: ['z 2 szklankami', '„Tata · 60 lat”'], img: img('karafka-grawer'), qty: 1, price: 189 }, { title: 'Pudełko premium z wkładką', lines: ['czarne, EVA'], img: 'img/hf/pudelko-grawer-sq.jpg', qty: 1, price: 19 }], sub: 208, ship: 0, total: 208, pay: 'card', delivery: 'Kurier InPost', status: 0, proof: 'img/hf/karafka-grawer-2.jpg', proofV: 1, fix: null });
+      add({ no: 'AP-26019', date: ago(28), name: 'Spółdzielnia Mieszkaniowa „Zielone Wzgórze”', company: true, nip: '6340001122', email: 'administracja@smzw.pl', phone: '32 245 10 10', addr: 'ul. Wolności 40, 41-500 Chorzów', items: [{ title: 'Pakiet oznakowania budynku', slug: 'pakiet-budynek', lines: ['3 klatki, 42 lokale', 'logo spółdzielni'], img: img('pakiet-budynek'), qty: 1, price: 1290 }], sub: 1290, ship: 0, total: 1290, pay: 'transfer', delivery: 'Montaż / odbiór osobisty', status: 2, machine: 'xTool X1 (CO₂)+GoArt UV A3' });
+      add({ no: 'AP-26018', date: ago(52), name: 'Ewelina Kaczmarek', email: 'ewelina.k@wp.pl', phone: '693 450 129', addr: 'Paczkomat GLI05A, Gliwice', items: [{ title: 'Naszyjnik z grawerem', slug: 'naszyjnik-grawer', lines: ['złoty', '„Zosia”'], img: img('naszyjnik-grawer'), qty: 2, price: 89 }], sub: 178, ship: 15.99, total: 193.99, pay: 'p24', delivery: 'InPost Paczkomat 24/7', status: 3, tracking: '6800 9123 4410 2231 0098 12' });
+      add({ no: 'AP-26016', date: ago(96), name: 'Studio Urody Bella', company: true, nip: '6272233445', email: 'kontakt@studiobella.pl', phone: '511 300 400', addr: 'ul. Wolności 5, 41-500 Chorzów', items: [{ title: 'Okrągły szyld z logo, złote lustro', slug: 'szyld-okragly-logo', lines: ['Ø 60 cm', 'logo klienta (PDF)'], img: img('szyld-okragly-logo'), qty: 1, price: 390 }, { title: 'Wizytówki dla salonu', slug: 'wizytowki-salon', lines: ['250 szt.'], img: img('wizytowki-salon'), qty: 1, price: 119 }], sub: 509, ship: 0, total: 509, pay: 'card', delivery: 'Odbiór osobisty – Chorzów', status: 4 });
+      add({ no: 'AP-26014', date: ago(140), name: 'Tomasz Lis', email: 'tomek.lis@gmail.com', phone: '788 001 002', addr: 'Paczkomat BYT02M, Bytom', items: [{ title: 'Adresówka dla psa', slug: 'adresowka-psa', lines: ['kość, stal', '„Bruno · 601 234 567”'], img: img('adresowka-psa'), qty: 1, price: 39 }], sub: 39, ship: 15.99, total: 54.99, pay: 'blik', delivery: 'InPost Paczkomat 24/7', status: 4 });
+      add({ no: 'AP-26011', date: ago(230), name: 'Karolina Wójcik', email: 'karolina.wojcik@gmail.com', phone: '601 222 333', addr: 'Paczkomat KAT01M, Katowice', items: [{ title: 'Deska do krojenia z grawerem', slug: 'deska-do-krojenia', lines: ['buk', '„Kuchnia Babci Basi”'], img: img('deska-do-krojenia'), qty: 1, price: 79 }], sub: 79, ship: 15.99, total: 94.99, pay: 'blik', delivery: 'InPost Paczkomat 24/7', status: 4 });
+      O.sort((a, b) => b.date.localeCompare(a.date)); put(O);
+    }
+
+    // ——— statusy ———
+    const ST = (o) => o.status < 0 ? ['Zwrócone', 'b-red'] : o.status === 0 ? (o.proof ? ['Czeka na klienta', 'b-wait'] : ['Projekt do zrobienia', 'b-todo']) : [['', ''], ['Zaakceptowany', 'b-prod'], ['W produkcji', 'b-prod'], ['Wysłane', 'b-ship'], ['Doręczone', 'b-ok']][o.status];
+    const badge = (o) => { const [t, c] = ST(o); return `<span class="bg ${c}"><i class="w-1.5 h-1.5 rounded-full bg-current"></i>${t}</span>`; };
+    const todo = (O) => O.filter((o) => o.status === 0 && !o.proof);
+    function badges() {
+      const O = get(); const t = todo(O).length, p = O.filter((o) => o.status === 2 || o.status === 1).length;
+      [['zamowienia', t + O.filter((o) => o.status === 2).length], ['projekty', t], ['opinie', ls.get('aiprints-reviews', REV).filter((r) => !r.ok && !r.hid).length], ['koszyki', 2]].forEach(([k, n]) => { const b = $('bd-' + k); b.textContent = n; b.classList.toggle('hidden', !n); });
+    }
+    const head = (t, sub = '', right = '') => `<div class="flex flex-wrap items-end justify-between gap-4"><div><h1 class="text-[30px] font-bold tracking-tight">${t}</h1>${sub ? `<p class="text-[14px] text-ink/55 mt-1">${sub}</p>` : ''}</div><div class="flex gap-2 np">${right}</div></div>`;
+    const custOf = (O) => { const m = {}; O.forEach((o) => { const e = o.email || 'bez e-maila'; (m[e] ||= { e, n: o.name || e, ph: o.phone, co: o.company, orders: [], spent: 0 }); m[e].orders.push(o); if (o.status >= 0) m[e].spent += o.total; }); return Object.values(m); };
+    const ini = (n) => (n || '?').replace(/[„”"]/g, '').split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+
+    // ——— PULPIT ———
+    function pulpit() {
+      const O = get(), now = Date.now();
+      const r30 = O.filter((o) => o.status >= 0 && now - new Date(o.date) < 30 * 864e5);
+      const rev = r30.reduce((s, o) => s + o.total, 0);
+      const days = [...Array(14)].map((_, i) => { const d0 = new Date(); d0.setHours(0, 0, 0, 0); d0.setDate(d0.getDate() - 13 + i); const s = O.filter((o) => o.status >= 0 && new Date(o.date) >= d0 && new Date(o.date) < new Date(+d0 + 864e5)).reduce((a, o) => a + o.total, 0); return [d0, s]; });
+      const mx = Math.max(1, ...days.map((d) => d[1]));
+      const h = new Date().getHours();
+      const T = todo(O), W = O.filter((o) => o.status === 0 && o.proof), PR = O.filter((o) => o.status === 2 || o.status === 1);
+      $('view').innerHTML = head(`${h < 12 ? 'Dzień dobry' : h < 18 ? 'Cześć' : 'Dobry wieczór'}, Artur`, new Date().toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }), `<a href="#zamowienia" class="ab">Wszystkie zamówienia</a>`) + `
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
+        ${[['Przychód (30 dni)', zl(rev), `${r30.length} zamówień`], ['Projekty do zrobienia', T.length, 'czekają na Twój projekt'], ['Czeka na klienta', W.length, 'wysłane do akceptacji'], ['W produkcji', PR.length, 'do zrobienia i wysyłki']].map(([a, b, c], i) => `<a href="${['#raporty', '#projekty', '#zamowienia?f=wait', '#zamowienia?f=prod'][i]}" class="card p-5 hover:border-[#b9b5ac] transition"><p class="text-[13px] text-ink/55">${a}</p><p class="text-[30px] font-bold mt-2 tracking-tight">${b}</p><p class="text-[12.5px] text-ink/50 mt-1">${c}</p></a>`).join('')}
+      </div>
+      <div class="grid xl:grid-cols-[1.5fr_1fr] gap-4 mt-4">
+        <div class="card p-6"><div class="flex justify-between"><b class="h2">Sprzedaż – ostatnie 14 dni</b><span class="text-[13px] text-ink/50">${zl(days.reduce((a, d) => a + d[1], 0))}</span></div>
+          <div class="flex items-end gap-2 h-[180px] mt-6">${days.map(([d, s]) => `<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end" title="${d.toLocaleDateString('pl-PL')}: ${zl(s)}"><div class="w-full rounded-t-md ${s ? 'bg-[#5b4bd6]' : 'bg-[#ecebf7]'}" style="height:${Math.max(3, s / mx * 150)}px"></div><span class="text-[10.5px] text-ink/45">${d.getDate()}</span></div>`).join('')}</div>
+        </div>
+        <div class="card p-6"><b class="h2">Do zrobienia</b>
+          <div class="mt-4 grid gap-2">${[...T.map((o) => [o, 'Przygotuj projekt i wyślij do akceptacji']), ...O.filter((o) => o.fix && o.status === 0).map((o) => [o, 'Klient prosi o poprawkę']), ...PR.map((o) => [o, 'Wyprodukuj i nadaj przesyłkę'])].slice(0, 6).map(([o, t]) => `<a href="#zamowienie/${o.no}" class="flex items-center gap-3 rounded-xl p-2.5 hover:bg-[#faf9f6]"><img src="${o.items[0].img}" class="w-11 h-11 rounded-lg object-cover bg-paper2"><span class="flex-1 min-w-0"><b class="block text-[14px] truncate">#${o.no} · ${esc(o.name || o.email || 'Klient')}</b><span class="text-[12.5px] text-ink/55">${t}</span></span><span class="text-ink/40">→</span></a>`).join('') || '<p class="text-[14px] text-ink/55">Wszystko zrobione ✓</p>'}</div>
+        </div>
+      </div>
+      <div class="card p-6 mt-4 flex flex-wrap items-center gap-4"><span class="w-10 h-10 rounded-full bg-[#fff4d6] grid place-items-center">✈</span><div class="flex-1 min-w-[240px]"><b>Przerwa świąteczna: ${D.BREAK.from.split('-').reverse().join('.')} – ${D.BREAK.to.split('-').reverse().join('.')}</b><p class="text-[13.5px] text-ink/55">Od ${D.BREAK.show.split('-').reverse().join('.')} sklep pokazuje klientom komunikat, a szacowany termin realizacji przesuwa się na po ${D.BREAK.resume}.</p></div><a href="#ustawienia" class="ab">Zmień</a></div>`;
+    }
+
+    // ——— ZAMÓWIENIA ———
+    const FILTERS = [['', 'Wszystkie'], ['todo', 'Projekt do zrobienia'], ['wait', 'Czeka na klienta'], ['prod', 'W produkcji'], ['ship', 'Wysłane'], ['done', 'Doręczone']];
+    const fOk = (o, f) => !f || (f === 'todo' && o.status === 0 && !o.proof) || (f === 'wait' && o.status === 0 && o.proof) || (f === 'prod' && (o.status === 1 || o.status === 2)) || (f === 'ship' && o.status === 3) || (f === 'done' && o.status === 4);
+    function zamowienia(q) {
+      const f = new URLSearchParams(q).get('f') || ''; const O = get(); const s = (zamowienia.s || '').toLowerCase();
+      const L = O.filter((o) => fOk(o, f) && (!s || JSON.stringify([o.no, o.name, o.email, o.items.map((i) => i.title)]).toLowerCase().includes(s)));
+      $('view').innerHTML = head('Zamówienia', `${O.length} zamówień`, `<button class="ab" id="csv">Eksport CSV</button>`) + `
+      <div class="flex flex-wrap gap-2 items-center justify-between mt-6"><div class="flex flex-wrap gap-1">${FILTERS.map(([k, t]) => `<a href="#zamowienia${k ? '?f=' + k : ''}" class="tab grid place-items-center ${k === f ? 'on' : ''}">${t} <span class="opacity-60 ml-1">${O.filter((o) => fOk(o, k)).length}</span></a>`).join('')}</div><input id="qs" class="fi max-w-[280px]" placeholder="Szukaj: numer, klient, produkt" value="${esc(zamowienia.s || '')}"></div>
+      <div class="card mt-4 overflow-hidden"><div class="tr th" style="grid-template-columns:110px 1.4fr 2fr 110px 150px 110px;border:0"><span>Numer</span><span>Klient</span><span>Produkty</span><span>Płatność</span><span>Status</span><span class="text-right">Kwota</span></div>
+      ${L.map((o) => `<a href="#zamowienie/${o.no}" class="tr" style="grid-template-columns:110px 1.4fr 2fr 110px 150px 110px"><span><b>#${o.no}</b><span class="block text-[12px] text-ink/50">${dt(o.date)}</span></span><span class="min-w-0"><b class="block truncate font-medium">${esc(o.name || '—')}</b><span class="block text-[12.5px] text-ink/50 truncate">${esc(o.email || '')}</span></span><span class="flex items-center gap-2 min-w-0"><span class="flex -space-x-3 shrink-0">${o.items.slice(0, 3).map((i) => `<img src="${i.img}" class="w-9 h-9 rounded-lg object-cover border-2 border-white bg-paper2">`).join('')}</span><span class="truncate text-ink/75">${esc(o.items.map((i) => i.title).join(', '))}</span></span><span><span class="bg ${o.status < 0 ? 'b-red' : 'b-ok'}">${o.status < 0 ? 'Zwrot' : 'Opłacone'}</span></span><span>${badge(o)}</span><b class="text-right">${zl(o.total)}</b></a>`).join('') || '<p class="p-8 text-center text-ink/55">Brak zamówień w tym widoku.</p>'}</div>`;
+      $('qs').oninput = (e) => { zamowienia.s = e.target.value; const p = e.target.selectionStart; zamowienia(q); $('qs').focus(); $('qs').setSelectionRange(p, p); };
+      $('csv').onclick = () => { const rows = [['numer', 'data', 'klient', 'email', 'telefon', 'produkty', 'kwota', 'status']].concat(O.map((o) => [o.no, o.date, o.name, o.email, o.phone, o.items.map((i) => `${i.qty}× ${i.title}`).join(' | '), o.total, ST(o)[0]])); const b = new Blob(['﻿' + rows.map((r) => r.map((x) => `"${String(x ?? '').replace(/"/g, '""')}"`).join(';')).join('\n')], { type: 'text/csv' }); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'zamowienia-aiprints.csv'; a.click(); };
+    }
+
+    // ——— SZCZEGÓŁY ZAMÓWIENIA (jak na zrzucie) ———
+    function zamowienie(no) {
+      const O = get(), o = O.find((x) => x.no === no); if (!o) return zamowienia('');
+      const save = (fn, msg) => { const A = get(); const x = A.find((y) => y.no === no); fn(x); put(A); badges(); zamowienie(no); if (msg) toast(msg); };
+      const log = (x, m) => (x.log ||= []).push({ t: new Date().toISOString(), m });
+      const cu = custOf(O).find((c) => c.e === (o.email || 'bez e-maila'));
+      const vat = o.total * 23 / 123;
+      const steps = ['Opłacone', 'Projekt', 'Akceptacja', 'Produkcja', 'Wysłane', 'Doręczone'];
+      const at = o.status < 0 ? -1 : o.status === 0 ? (o.proof ? 2 : 1) : o.status === 1 ? 3 : o.status + 1;
+      const machines = [...new Set(D.P.map((p) => p.m).filter(Boolean).flatMap((m) => m.split(/\s*\+\s*/)))].sort();
+      const tl = [...(o.log || [{ t: o.date, m: 'Zamówienie złożone · płatność przyjęta' }]), ...(o.notes || []).map((n) => ({ ...n, note: true }))].sort((a, b) => b.t.localeCompare(a.t));
+      $('view').innerHTML = `
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div><p class="text-[26px] font-bold tracking-tight"><a href="#zamowienia" class="text-ink/45 hover:text-ink font-semibold">Zamówienia</a> <span class="text-ink/30">/</span> Zamówienie #${o.no}</p><p class="text-[14px] text-ink/55 mt-1">${dt(o.date)} · ${PAY[o.pay] || 'Płatność online'} · ${esc(o.delivery || '')}${o.demo ? ' · <i>przykład</i>' : ''}</p></div>
+        <div class="flex flex-wrap items-center gap-2 np"><span class="bg ${o.status < 0 ? 'b-red' : 'b-ok'} h-8">${o.status < 0 ? 'Zwrócone' : 'Opłacone'}</span>${badge(o).replace('class="bg', 'class="bg h-8')}<button class="ab" onclick="print()">Karta produkcji</button>${o.status >= 0 && o.status < 3 ? '<button class="ab" id="refund">← Zwrot</button>' : ''}</div>
+      </div>
+      <div class="card px-6 py-5 mt-6 np"><div class="flex items-start">${steps.map((s, i) => `<div class="flex-1 relative text-center">${i ? `<span class="absolute right-1/2 top-[8px] w-full h-[3px] ${i <= at ? 'bg-[#5b4bd6]' : 'bg-[#ecebf7]'}"></span>` : ''}<span class="relative z-10 mx-auto block w-[19px] h-[19px] rounded-full border-[3px] border-white shadow ${i < at ? 'bg-[#5b4bd6]' : i === at ? 'bg-[#5b4bd6] ring-4 ring-[#5b4bd6]/20' : 'bg-[#ecebf7]'}"></span><span class="block text-[12px] mt-2 ${i <= at ? 'font-semibold' : 'text-ink/45'}">${s}</span></div>`).join('')}</div></div>
+      <div class="grid xl:grid-cols-[1fr_380px] gap-5 mt-5">
+        <div class="grid gap-5 content-start">
+          <div class="card"><div class="px-6 py-4 flex items-baseline gap-2"><b class="h2">Pozycje</b><span class="text-[13px] text-ink/50">${o.items.length} ${o.items.length === 1 ? 'pozycja' : 'pozycje'}</span></div>
+            ${o.items.map((i) => `<div class="tr" style="grid-template-columns:64px 1fr auto auto"><img src="${i.img}" class="w-16 h-16 rounded-xl object-cover bg-paper2"><span><b class="block font-semibold">${esc(i.title)}</b>${(i.lines || []).map((l) => `<span class="block text-[13px] text-ink/60">${esc(l)}</span>`).join('')}${i.slug ? `<a href="${i.slug}.html" target="_blank" class="text-[12px] text-[#5b4bd6] underline">karta produktu</a>` : ''}</span><span class="text-ink/60 text-[14px]">${zl(i.price)} × ${i.qty}</span><b class="w-24 text-right">${zl(i.price * i.qty)}</b></div>`).join('')}
+          </div>
+
+          <div class="card ${o.status === 0 ? 'ring-2 ' + (o.proof ? 'ring-[#f5c2da]' : 'ring-[#ffe08a]') : ''}"><div class="px-6 py-4 flex flex-wrap items-baseline gap-2 justify-between"><span><b class="h2">Projekt do akceptacji</b> <span class="text-[13px] text-ink/50">${o.proof ? 'wersja ' + (o.proofV || 1) : 'jeszcze nie wysłany'}</span></span>${o.status === 0 ? `<span class="text-[12.5px] text-ink/55">Obiecany termin podglądu: ${D.PREVIEW}</span>` : ''}</div>
+            <div class="px-6 pb-6">
+              ${o.fix ? `<div class="rounded-xl bg-[#fdeef5] text-[#8c1149] px-4 py-3 text-[14px] mb-4"><b>Klient prosi o poprawkę:</b> „${esc(o.fix)}”</div>` : ''}
+              ${o.proof ? `<div class="relative rounded-xl overflow-hidden bg-paper2 max-w-[520px]" style="aspect-ratio:4/3"><img src="${o.proof}" class="absolute inset-0 w-full h-full object-cover"></div>` : `<label for="proofIn" class="block rounded-xl border-2 border-dashed border-[#d9d5cc] p-8 text-center cursor-pointer hover:border-[#5b4bd6] hover:bg-[#faf9ff] transition"><b class="block">Wgraj wizualizację projektu</b><span class="text-[13px] text-ink/55">JPG lub PNG – klient zobaczy ją w swoim koncie i dostanie e-mail</span></label>`}
+              ${o.status === 0 ? `<div class="flex flex-wrap gap-2 mt-4">${o.proof ? `<label for="proofIn" class="ab cursor-pointer">Wgraj nową wersję</label><button class="ab" id="remind">Przypomnij klientowi</button><button class="ab pr" id="okPhone">Klient zaakceptował (telefon / e-mail)</button>` : ''}</div>` : `<p class="text-[13.5px] text-ink/55 mt-3">${o.status > 0 ? '✓ Projekt zaakceptowany przez klienta' : ''}</p>`}
+            </div>
+          </div>
+
+          <div class="card"><div class="px-6 py-4"><b class="h2">Produkcja i wysyłka</b></div>
+            <div class="px-6 pb-6 grid md:grid-cols-2 gap-4">
+              <label class="text-[13px] text-ink/60">Maszyna<select id="mach" class="fi mt-1">${['— wybierz —', ...machines].map((m) => `<option ${o.machine && o.machine.includes(m) ? 'selected' : ''}>${m}</option>`).join('')}</select></label>
+              <label class="text-[13px] text-ink/60">Numer przesyłki${o.delivery && /Odbi|Monta/.test(o.delivery) ? ' (nie dotyczy)' : ''}<input id="trk" class="fi mt-1" placeholder="np. 6800 9123 4410…" value="${esc(o.tracking || '')}"></label>
+              <div class="md:col-span-2 flex flex-wrap gap-2">
+                ${o.status === 1 ? '<button class="ab pr" data-st="2">Rozpocznij produkcję</button>' : ''}
+                ${o.status === 2 || o.status === 1 ? '<button class="ab pr" data-st="3">Oznacz jako wysłane</button>' : ''}
+                ${o.status === 3 ? '<button class="ab pr" data-st="4">Oznacz jako doręczone</button>' : ''}
+                ${o.status === 0 ? '<span class="text-[13.5px] text-ink/55 py-2">Produkcja ruszy po akceptacji projektu przez klienta.</span>' : ''}
+                ${o.tracking ? `<a class="ab" target="_blank" rel="noopener" href="https://inpost.pl/sledzenie-przesylek?number=${encodeURIComponent(o.tracking.replace(/\s/g, ''))}">Śledź w InPost ↗</a>` : ''}
+                <button class="ab" id="saveP">Zapisz</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card"><div class="px-6 py-4 flex items-baseline gap-2"><b class="h2">Płatność</b><span class="text-[13px] text-ink/50">${PAY[o.pay] || 'online'}${o.pay === 'transfer' ? ' · termin 14 dni' : ''}</span></div>
+            <div class="px-6 pb-6 grid grid-cols-[160px_1fr] gap-y-2.5 text-[14px]"><span class="text-ink/60">Produkty</span><span>${zl(o.sub)}</span><span class="text-ink/60">Dostawa</span><span>${o.ship ? zl(o.ship) : 'gratis'}</span><span class="text-ink/60">w tym VAT 23%</span><span>${zl(vat)}</span><b>Razem</b><b>${zl(o.total)}</b></div>
+          </div>
+
+          <div class="card"><div class="px-6 py-4"><b class="h2">Historia</b></div>
+            <div class="px-6 pb-6"><div class="flex gap-2"><input id="note" class="fi" placeholder="Dodaj notatkę wewnętrzną (klient jej nie widzi)"><button class="ab pr" id="addN">Dodaj</button></div>
+              <div class="mt-5 grid gap-4">${tl.map((e) => `<div class="flex gap-3"><span class="w-8 h-8 rounded-full ${e.note ? 'bg-[#fff4d6]' : 'bg-[#f0eee9]'} grid place-items-center text-[13px] shrink-0">${e.note ? '✎' : '✓'}</span><div class="text-[14px] pt-1"><span class="${e.note ? 'italic' : 'font-medium'}">${esc(e.m)}</span> <span class="text-ink/45 text-[12.5px] ml-1">${dt(e.t)}</span></div></div>`).join('')}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-5 content-start">
+          <div class="card p-6"><div class="flex justify-between items-center"><b class="th">Klient</b>${cu ? `<a href="#klienci" class="text-[13px] underline">Wszyscy klienci →</a>` : ''}</div>
+            <div class="flex items-center gap-3 mt-4"><span class="w-12 h-12 rounded-full ${o.company ? 'bg-[#121110]' : 'bg-[#c2185b]'} text-white grid place-items-center font-bold">${ini(o.name || o.email)}</span><span class="min-w-0"><b class="block truncate">${esc(o.name || 'Klient')}</b><a href="mailto:${esc(o.email)}" class="block text-[13px] text-ink/60 truncate hover:underline">${esc(o.email || '—')}</a></span></div>
+            <div class="grid grid-cols-[110px_1fr] gap-y-2.5 text-[14px] mt-5"><span class="text-ink/55">Telefon</span>${o.phone ? `<a href="tel:${o.phone.replace(/\s/g, '')}" class="hover:underline">${esc(o.phone)}</a>` : '<span>—</span>'}${o.nip ? `<span class="text-ink/55">NIP</span><span>${o.nip}</span>` : ''}<span class="text-ink/55">Zamówienia</span><span>${cu ? cu.orders.length : 1}</span><span class="text-ink/55">Wydał(a)</span><span>${zl(cu ? cu.spent : o.total)}</span><span class="text-ink/55">Tagi</span><span class="flex flex-wrap gap-1.5">${[o.company ? 'firma' : 'klient-indywidualny', (cu && cu.orders.length > 1) ? 'powracający' : 'nowy', o.pay === 'transfer' ? 'przelew-z-terminem' : null].filter(Boolean).map((t) => `<code class="text-[12px] bg-[#f0eee9] rounded-md px-2 py-0.5">${t}</code>`).join('')}</span></div>
+          </div>
+          <div class="card p-6"><b class="th">Dostawa</b><p class="text-[14px] mt-3 font-medium">${esc(o.delivery || '—')}</p><p class="text-[14px] text-ink/65 mt-1">${esc(o.addr || 'Adres z formularza zamówienia')}</p></div>
+          <div class="card p-6"><b class="th">Dokumenty</b><div class="grid gap-2 mt-4"><button class="ab justify-center" id="inv">${o.company ? 'Wystaw fakturę VAT' : 'Wystaw paragon / fakturę'}</button><button class="ab justify-center" id="mail">Napisz do klienta</button></div><p class="text-[12px] text-ink/50 mt-3">Faktury: do podłączenia z Fakturownią / inFaktem po wdrożeniu.</p></div>
+        </div>
+      </div>`;
+      // akcje
+      $('proofIn').onchange = (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { const k = Math.min(1, 1400 / im.width); const c = document.createElement('canvas'); c.width = im.width * k; c.height = im.height * k; c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); const url = c.toDataURL('image/jpeg', .82); save((x) => { x.proof = url; x.proofV = (x.proofV || 0) + 1; x.fix = null; log(x, `Projekt v${x.proofV} wysłany klientowi do akceptacji`); }, 'Projekt wysłany – klient zobaczy go w swoim koncie'); }; im.src = r.result; }; r.readAsDataURL(f); e.target.value = ''; };
+      $('okPhone') && ($('okPhone').onclick = () => save((x) => { x.status = 1; x.fix = null; log(x, 'Projekt zaakceptowany (potwierdzenie poza sklepem)'); }, 'Zaakceptowany – możesz produkować'));
+      $('remind') && ($('remind').onclick = () => { save((x) => log(x, 'Wysłano przypomnienie o akceptacji projektu')); toast('Przypomnienie zapisane – e-mail wyjdzie po podłączeniu serwera poczty'); });
+      document.querySelectorAll('[data-st]').forEach((b) => b.onclick = () => { const s = +b.dataset.st; const tr = $('trk').value.trim(); if (s === 3 && !tr && !/Odbi|Monta/.test(o.delivery || '')) { $('trk').focus(); return toast('Wpisz numer przesyłki'); } save((x) => { x.status = s; x.tracking = tr || x.tracking; x.machine = $('mach').value.startsWith('—') ? x.machine : $('mach').value; log(x, ['', '', 'Produkcja rozpoczęta' + (x.machine ? ' · ' + x.machine : ''), 'Wysłane' + (tr ? ' · nr ' + tr : ''), 'Doręczone'][s]); }, ['', '', 'W produkcji', 'Wysłane – klient widzi numer w koncie', 'Doręczone ✓'][s]); });
+      $('saveP').onclick = () => save((x) => { x.tracking = $('trk').value.trim() || x.tracking; if (!$('mach').value.startsWith('—')) x.machine = $('mach').value; }, 'Zapisano');
+      $('addN').onclick = () => { const v = $('note').value.trim(); if (!v) return; save((x) => (x.notes ||= []).push({ t: new Date().toISOString(), m: v }), 'Notatka dodana'); };
+      $('refund') && ($('refund').onclick = () => { if (confirm(`Zwrócić ${zl(o.total)} klientowi i anulować zamówienie #${o.no}?`)) save((x) => { x.status = -1; log(x, 'Zamówienie anulowane, zwrot ' + zl(x.total)); }, 'Zwrot zapisany – po podłączeniu płatności pójdzie automatycznie'); });
+      $('inv').onclick = () => toast('Faktury ruszą po podłączeniu systemu fakturowego');
+      $('mail').onclick = () => { location.href = `mailto:${o.email}?subject=${encodeURIComponent('Zamówienie #' + o.no + ' – AiPrints.pl')}`; };
+    }
+
+    // ——— PROJEKTY (kolejka) ———
+    function projekty() {
+      const O = get(); const T = todo(O), W = O.filter((o) => o.status === 0 && o.proof);
+      const col = (t, L, c) => `<div><p class="th mb-3">${t} · ${L.length}</p><div class="grid gap-3">${L.map((o) => `<a href="#zamowienie/${o.no}" class="card p-4 flex gap-3 hover:border-[#b9b5ac]"><img src="${o.proof || o.items[0].img}" class="w-20 h-20 rounded-xl object-cover bg-paper2"><span class="min-w-0"><b class="block">#${o.no}</b><span class="block text-[13px] text-ink/60 truncate">${esc(o.items[0].title)}</span><span class="block text-[12.5px] text-ink/50 truncate">${esc((o.items[0].lines || []).join(' · '))}</span>${o.fix ? '<span class="bg b-wait mt-1">poprawka</span>' : ''}</span></a>`).join('') || `<p class="card p-6 text-[14px] text-ink/50">${c}</p>`}</div></div>`;
+      $('view').innerHTML = head('Projekty', `Obiecujemy podgląd w ${D.PREVIEW}. Produkcja tylko po akceptacji.`) + `<div class="grid md:grid-cols-2 gap-6 mt-8">${col('Do przygotowania', T, 'Brak – wszystko wysłane ✓')}${col('Czeka na klienta', W, 'Nikt nie czeka')}</div>`;
+    }
+
+    // ——— PRODUKTY ———
+    function produkty() {
+      const ov = ls.get('aiprints-admin-products', {}); const s = (produkty.s || '').toLowerCase(); const k = produkty.k || '';
+      const L = D.P.filter((p) => (!k || p.k === k) && (!s || (p.n + p.s).toLowerCase().includes(s)));
+      const cats = [...new Map(D.P.map((p) => [p.k, p.c])).entries()];
+      $('view').innerHTML = head('Produkty', `${D.P.length} produktów w katalogu`, `<a class="ab" href="sklep.html" target="_blank">Zobacz w sklepie</a>`) + `
+      <div class="flex flex-wrap gap-2 mt-6"><input id="ps" class="fi max-w-[300px]" placeholder="Szukaj produktu" value="${esc(produkty.s || '')}"><select id="pk" class="fi max-w-[260px]"><option value="">Wszystkie kategorie</option>${cats.map(([a, b]) => `<option value="${a}" ${a === k ? 'selected' : ''}>${b}</option>`).join('')}</select></div>
+      <div class="card mt-4 overflow-hidden"><div class="tr th" style="grid-template-columns:56px 2fr 1.2fr 1.4fr 120px 90px;border:0"><span></span><span>Produkt</span><span>Kategoria</span><span>Maszyna</span><span>Cena od</span><span>Widoczny</span></div>
+      ${L.map((p) => { const o = ov[p.s] || {}; return `<div class="tr" style="grid-template-columns:56px 2fr 1.2fr 1.4fr 120px 90px"><img src="${p.i}" class="w-12 h-12 rounded-lg object-cover bg-paper2"><span class="min-w-0"><a href="${p.s}.html" target="_blank" class="block font-medium truncate hover:underline">${esc(p.n)}</a><span class="block text-[12px] text-ink/50 truncate">${esc(p.t)}</span></span><span class="text-ink/65 text-[13.5px]">${p.c}</span><span class="text-ink/55 text-[12.5px]">${esc(p.m || '')}</span><span><input data-pp="${p.s}" class="fi h-9 w-[100px]" value="${o.p ?? p.p ?? ''}" placeholder="wycena"></span><label class="relative inline-block w-11 h-6"><input type="checkbox" data-pv="${p.s}" class="peer sr-only" ${o.h ? '' : 'checked'}><span class="absolute inset-0 rounded-full bg-[#d9d5cc] peer-checked:bg-[#5b4bd6] transition"></span><span class="absolute left-0.5 top-0.5 w-5 h-5 rounded-full bg-white transition peer-checked:translate-x-5"></span></label></div>`; }).join('')}</div>
+      <p class="text-[12.5px] text-ink/50 mt-3">Zmiany cen i widoczności zapisują się w podglądzie. Po wdrożeniu trafią do bazy i od razu na stronę.</p>`;
+      $('ps').oninput = (e) => { produkty.s = e.target.value; const p = e.target.selectionStart; produkty(); $('ps').focus(); $('ps').setSelectionRange(p, p); };
+      $('pk').onchange = (e) => { produkty.k = e.target.value; produkty(); };
+      const upd = (s, f) => { const v = ls.get('aiprints-admin-products', {}); v[s] = { ...(v[s] || {}), ...f }; ls.set('aiprints-admin-products', v); toast('Zapisano'); };
+      document.querySelectorAll('[data-pp]').forEach((i) => i.onchange = () => upd(i.dataset.pp, { p: i.value ? +i.value.replace(',', '.') : null }));
+      document.querySelectorAll('[data-pv]').forEach((i) => i.onchange = () => upd(i.dataset.pv, { h: !i.checked }));
+    }
+
+    // ——— KLIENCI ———
+    function klienci() {
+      const L = custOf(get()).sort((a, b) => b.spent - a.spent);
+      $('view').innerHTML = head('Klienci', `${L.length} klientów · logowanie tylko e-mailem, bez haseł`) + `
+      <div class="card mt-6 overflow-hidden"><div class="tr th" style="grid-template-columns:2fr 1fr 90px 120px 1fr;border:0"><span>Klient</span><span>Telefon</span><span>Zamówień</span><span>Wydał(a)</span><span>Ostatnie</span></div>
+      ${L.map((c) => { const last = c.orders.sort((a, b) => b.date.localeCompare(a.date))[0]; return `<a href="#zamowienie/${last.no}" class="tr" style="grid-template-columns:2fr 1fr 90px 120px 1fr"><span class="flex items-center gap-3 min-w-0"><span class="w-9 h-9 rounded-full ${c.co ? 'bg-[#121110]' : 'bg-[#c2185b]'} text-white grid place-items-center text-[12px] font-bold shrink-0">${ini(c.n)}</span><span class="min-w-0"><b class="block truncate font-medium">${esc(c.n)}</b><span class="block text-[12.5px] text-ink/50 truncate">${esc(c.e)}</span></span></span><span class="text-ink/65">${esc(c.ph || '—')}</span><span>${c.orders.length}</span><b>${zl(c.spent)}</b><span class="text-ink/60 text-[13px]">#${last.no} · ${dt(last.date, false)}</span></a>`; }).join('')}</div>`;
+    }
+
+    // ——— RABATY ———
+    function rabaty() {
+      const L = ls.get('aiprints-codes', [{ c: 'WITAMY10', v: 10, t: '%', on: true, used: 4, note: 'Pierwsze zakupy (newsletter)' }]);
+      $('view').innerHTML = head('Kody rabatowe', 'Kody działają w koszyku sklepu') + `
+      <div class="card p-6 mt-6"><b class="h2">Nowy kod</b><form id="nf" class="grid md:grid-cols-[1fr_120px_110px_2fr_auto] gap-2 mt-4"><input id="nc" class="fi uppercase" placeholder="np. DZIENMATKI15" required><input id="nv" class="fi" type="number" min="1" placeholder="15" required><select id="nt" class="fi"><option>%</option><option>zł</option></select><input id="nn" class="fi" placeholder="Opis (dla Ciebie)"><button class="ab pr">Dodaj</button></form></div>
+      <div class="card mt-4 overflow-hidden">${L.map((x, i) => `<div class="tr" style="grid-template-columns:1.2fr 100px 2fr 90px 90px"><b class="font-mono">${esc(x.c)}</b><span>−${x.v}${x.t === '%' ? '%' : ' zł'}</span><span class="text-ink/60">${esc(x.note || '')}</span><span class="text-ink/55 text-[13px]">${x.used || 0} użyć</span><label class="relative inline-block w-11 h-6"><input type="checkbox" data-ci="${i}" class="peer sr-only" ${x.on ? 'checked' : ''}><span class="absolute inset-0 rounded-full bg-[#d9d5cc] peer-checked:bg-[#5b4bd6] transition"></span><span class="absolute left-0.5 top-0.5 w-5 h-5 rounded-full bg-white transition peer-checked:translate-x-5"></span></label></div>`).join('')}</div>`;
+      $('nf').onsubmit = (e) => { e.preventDefault(); L.unshift({ c: $('nc').value.trim().toUpperCase(), v: +$('nv').value, t: $('nt').value, on: true, used: 0, note: $('nn').value }); ls.set('aiprints-codes', L); rabaty(); toast('Kod dodany'); };
+      document.querySelectorAll('[data-ci]').forEach((b) => b.onchange = () => { L[+b.dataset.ci].on = b.checked; ls.set('aiprints-codes', L); toast(b.checked ? 'Kod włączony' : 'Kod wyłączony'); });
+    }
+
+    // ——— PORZUCONE KOSZYKI ———
+    function koszyki() {
+      const L = [{ e: 'ania.m@gmail.com', t: ago(5), it: ['Kryształ 3D ze zdjęciem (M)'], v: 289 }, { e: 'piotr.zielinski@o2.pl', t: ago(30), it: ['Szklanki do whisky z grawerem', 'Pudełko premium'], v: 158 }];
+      $('view').innerHTML = head('Porzucone koszyki', 'Klienci, którzy podali e-mail w kasie, ale nie zapłacili') + `<div class="card mt-6 overflow-hidden">${L.map((c) => `<div class="tr" style="grid-template-columns:1.4fr 2fr 110px 140px"><span><b class="block font-medium">${c.e}</b><span class="text-[12.5px] text-ink/50">${dt(c.t)}</span></span><span class="text-ink/65">${c.it.join(', ')}</span><b>${zl(c.v)}</b><button class="ab" data-rm>Przypomnij</button></div>`).join('')}</div><p class="text-[12.5px] text-ink/50 mt-3">Przykładowe dane. Automatyczne przypomnienie (np. po 24 h z kodem −5%) włączymy razem z wysyłką e-maili.</p>`;
+      document.querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { b.textContent = 'Zaplanowane ✓'; b.disabled = true; });
+    }
+
+    // ——— OPINIE ———
+    const REV = [{ id: 1, n: 'Karolina W.', s: 5, p: 'Mapa nieba', t: 'Piękne wykonanie, a podgląd przed produkcją to świetna sprawa. Mąż się wzruszył.', ok: false }, { id: 2, n: 'Studio Urody Bella', s: 5, p: 'Szyld z logo', t: 'Szyld wygląda obłędnie, klientki robią sobie przy nim zdjęcia.', ok: false }, { id: 3, n: 'Tomasz L.', s: 5, p: 'Adresówka dla psa', t: 'Szybko i solidnie, grawer głęboki i czytelny.', ok: true }];
+    function opinie() {
+      const L = ls.get('aiprints-reviews', REV);
+      $('view').innerHTML = head('Opinie', 'Zatwierdź, zanim pokażą się na stronie produktu') + `<div class="grid gap-3 mt-6">${L.map((r, i) => `<div class="card p-5 flex flex-wrap gap-4 items-start ${r.hid ? 'opacity-50' : ''}"><div class="flex-1 min-w-[260px]"><div class="flex items-center gap-2"><b>${esc(r.n)}</b><span class="text-[#f5a623]">${'★'.repeat(r.s)}</span><span class="text-[12.5px] text-ink/50">· ${esc(r.p)}</span></div><p class="text-[14.5px] text-ink/75 mt-2">„${esc(r.t)}”</p></div>${r.ok ? '<span class="bg b-ok">Opublikowana</span>' : r.hid ? '<span class="bg b-mute">Ukryta</span>' : `<div class="flex gap-2"><button class="ab" data-hide="${i}">Ukryj</button><button class="ab pr" data-ok="${i}">Opublikuj</button></div>`}</div>`).join('')}</div>`;
+      document.querySelectorAll('[data-ok]').forEach((b) => b.onclick = () => { L[+b.dataset.ok].ok = true; ls.set('aiprints-reviews', L); badges(); opinie(); });
+      document.querySelectorAll('[data-hide]').forEach((b) => b.onclick = () => { L[+b.dataset.hide].hid = true; ls.set('aiprints-reviews', L); badges(); opinie(); });
+    }
+
+    // ——— RAPORTY ———
+    function raporty() {
+      const O = get().filter((o) => o.status >= 0);
+      const tot = O.reduce((s, o) => s + o.total, 0);
+      const by = {}; O.forEach((o) => o.items.forEach((i) => { const k = i.title; by[k] = (by[k] || 0) + i.price * i.qty; }));
+      const top = Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 8); const mx = Math.max(1, ...top.map((t) => t[1]));
+      const firm = O.filter((o) => o.company).reduce((s, o) => s + o.total, 0);
+      $('view').innerHTML = head('Raporty', 'Na podstawie zamówień w panelu') + `
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mt-8">${[['Przychód', zl(tot)], ['Zamówienia', O.length], ['Średni koszyk', zl(O.length ? tot / O.length : 0)], ['Udział firm', (tot ? Math.round(firm / tot * 100) : 0) + '%']].map(([a, b]) => `<div class="card p-5"><p class="text-[13px] text-ink/55">${a}</p><p class="text-[28px] font-bold mt-2">${b}</p></div>`).join('')}</div>
+      <div class="card p-6 mt-4"><b class="h2">Najlepiej sprzedające się</b><div class="grid gap-3 mt-5">${top.map(([n, v]) => `<div class="grid grid-cols-[1fr_2fr_110px] items-center gap-4 text-[14px]"><span class="truncate">${esc(n)}</span><span class="h-2.5 rounded-full bg-[#ecebf7] overflow-hidden"><span class="block h-full bg-[#5b4bd6] rounded-full" style="width:${v / mx * 100}%"></span></span><b class="text-right">${zl(v)}</b></div>`).join('')}</div></div>`;
+    }
+
+    // ——— USTAWIENIA ———
+    function ustawienia() {
+      const S = ls.get('aiprints-settings', { from: D.BREAK.from, to: D.BREAK.to, lead: D.LEAD, prev: D.PREVIEW });
+      const row = (t, d, r) => `<div class="tr" style="grid-template-columns:1fr 1.4fr"><span><b class="block font-medium">${t}</b><span class="text-[12.5px] text-ink/50">${d}</span></span><span>${r}</span></div>`;
+      $('view').innerHTML = head('Ustawienia') + `
+      <div class="card mt-6 overflow-hidden"><div class="px-6 py-4"><b class="h2">Realizacja</b></div>
+        ${row('Przerwa w pracy', 'komunikat w sklepie i przesunięcie terminów', `<span class="flex gap-2"><input type="date" id="sf" class="fi" value="${S.from}"><input type="date" id="stt" class="fi" value="${S.to}"></span>`)}
+        ${row('Czas realizacji', 'pokazywany przy produktach', `<input id="sl" class="fi" value="${esc(S.lead)}">`)}
+        ${row('Podgląd projektu', 'ile czekasz na wizualizację', `<input id="sp" class="fi" value="${esc(S.prev)}">`)}
+        <div class="px-6 py-4 border-t border-line"><button class="ab pr" id="ss">Zapisz</button></div></div>
+      <div class="card mt-4 overflow-hidden"><div class="px-6 py-4"><b class="h2">Firma</b></div>
+        ${row('Nazwa', '', 'AiPrints.pl Artur Dombrowski')}${row('Miejsce wykonywania działalności', '', 'ul. Okrężna 98B, 41-500 Chorzów')}${row('NIP / REGON', '', '626 257 96 94 / 526091225')}${row('Telefon', '', '609 040 274')}</div>
+      <div class="card mt-4 overflow-hidden"><div class="px-6 py-4"><b class="h2">Połączenia</b></div>
+        ${[['Płatności', 'Stripe lub PayU (BLIK, karty, Przelewy24)'], ['Wysyłka', 'InPost ShipX – etykiety i numery przesyłek'], ['E-mail', 'potwierdzenia, link logowania, projekty do akceptacji'], ['Faktury', 'Fakturownia lub inFakt'], ['Hosting', 'LH.pl – PHP + MySQL']].map(([a, b]) => row(a, b, '<span class="bg b-mute">Do podłączenia</span>')).join('')}</div>`;
+      $('ss').onclick = () => { ls.set('aiprints-settings', { from: $('sf').value, to: $('stt').value, lead: $('sl').value, prev: $('sp').value }); toast('Zapisano – na stronie zmieni się po wdrożeniu backendu'); };
+    }
+
+    // ——— router ———
+    const V = { pulpit, zamowienia, zamowienie, projekty, produkty, klienci, rabaty, koszyki, opinie, raporty, ustawienia };
+    function route() {
+      if (!ls.get('aiprints-admin', null)) { $('gate').classList.remove('hidden'); $('app').classList.add('hidden'); return; }
+      $('gate').classList.add('hidden'); $('app').classList.remove('hidden');
+      seed(); badges();
+      const [path, q = ''] = (location.hash.slice(1) || 'pulpit').split('?'); const [r, id] = path.split('/');
+      (V[r] || pulpit)(id || q);
+      document.querySelectorAll('.nv[data-nav]').forEach((a) => a.classList.toggle('on', a.dataset.nav === r || (r === 'zamowienie' && a.dataset.nav === 'zamowienia') || (!V[r] && a.dataset.nav === 'pulpit')));
+      $('side').classList.add('-translate-x-full'); $('scrim').classList.add('hidden');
+      scrollTo(0, 0);
+    }
+    addEventListener('hashchange', route);
+    $('gf').onsubmit = (e) => { e.preventDefault(); $('gto').textContent = $('gem').value; $('gcode').classList.remove('hidden'); $('gc').focus(); };
+    $('gc').oninput = (e) => { if (/^\d{6}$/.test(e.target.value)) { ls.set('aiprints-admin', { e: $('gem').value, t: Date.now() }); route(); toast('Zalogowano'); } };
+    $('logout').onclick = () => { localStorage.removeItem('aiprints-admin'); route(); };
+    $('burger').onclick = () => { $('side').classList.remove('-translate-x-full'); $('scrim').classList.remove('hidden'); };
+    $('scrim').onclick = () => { $('side').classList.add('-translate-x-full'); $('scrim').classList.add('hidden'); };
+    route();
+  </script>
+</body>
+</html>

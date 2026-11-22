@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Kontakt i wycena" description="Kontakt z pracownią AiPrints.pl w Chorzowie: telefon 609 040 274, kontakt@aiprints.pl. Wycena dla firm, wspólnot i spółdzielni w 24 h." canonical="kontakt" active="kontakt">
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-14 grid lg:grid-cols-[1fr_1.15fr] gap-14">
+    <div>
+      <h1 class="reveal hd text-[58px] md:text-[104px]">Napisz do nas</h1>
+      <p class="reveal text-[17px] text-mute leading-relaxed mt-6 max-w-[460px]">Odpowiadamy w dni robocze w ciągu kilku godzin. W sprawie wycen dla firm, wspólnot i spółdzielni – najpóźniej w 24 h.</p>
+      <div class="grid gap-3 mt-10">
+        {[['Telefon i WhatsApp', '+48 609 040 274', 'tel:+48609040274'], ['Ogólne pytania', 'kontakt@aiprints.pl', 'mailto:kontakt@aiprints.pl'], ['Firmy i wspólnoty', 'firmy@aiprints.pl', 'mailto:firmy@aiprints.pl'], ['Reklamacje', 'reklamacje@aiprints.pl', 'mailto:reklamacje@aiprints.pl']].map(([t, v, h]) => <a href={h} class="reveal rounded-[24px] bg-white border border-line px-6 py-5 flex justify-between items-center hover:border-ink transition"><span><span class="block text-[12.5px] text-mute">{t}</span><b class="text-[18px] font-medium">{v}</b></span><span>→</span></a>)}
+      </div>
+      <address class="reveal not-italic text-[14px] text-mute mt-8 leading-relaxed">AiPrints.pl Artur Dombrowski<br />Pracownia: ul. Okrężna 98B, 41-500 Chorzów (pn–pt 9:00–17:00)<br />Adres do doręczeń: ul. Okrężna 146, 41-500 Chorzów<br />NIP 6262579694 · REGON 526091225</address>
+    </div>
+    <form id="wycena" class="reveal rounded-[34px] bg-white border border-line p-7 md:p-9 grid gap-3 self-start scroll-mt-28">
+      <b class="font-display text-[36px] leading-none">Zapytanie o wycenę</b>
+      <div class="flex flex-wrap gap-2 mt-2" id="who">{['Klient indywidualny', 'Firma', 'Wspólnota / spółdzielnia', 'Salon beauty'].map((t, i) => <button type="button" class="seg h-10 px-4 rounded-full border border-line text-[13.5px]" aria-pressed={i === 0 ? 'true' : 'false'}>{t}</button>)}</div>
+      <div class="grid sm:grid-cols-2 gap-3 mt-2"><input required placeholder="Imię i nazwisko" class="inp" /><input placeholder="Firma / wspólnota (opcjonalnie)" class="inp" /></div>
+      <div class="grid sm:grid-cols-2 gap-3"><input required type="email" placeholder="E-mail" class="inp" /><input placeholder="Telefon" class="inp" /></div>
+      <textarea required rows="5" placeholder="Czego potrzebujesz? Ilość, wymiary, materiał, termin. Dla wspólnot: adres budynku, liczba klatek i lokali." class="inp"></textarea>
+      <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" /><span>📎 Dołącz pliki (logo, lista lokali, zdjęcie miejsca)</span></label>
+      <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie zapytania. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
+      <button class="h-14 rounded-full bg-ink text-white font-semibold mt-1">Wyślij zapytanie</button>
+      <p id="wok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
+    </form>
+  </section>
+  <script>
+    const f = document.getElementById('wycena');
+    f.onsubmit = (e) => { e.preventDefault(); document.getElementById('wok').classList.remove('hidden'); };
+    document.querySelectorAll('#who button').forEach((b) => b.onclick = () => document.querySelectorAll('#who button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))));
+  </script>
+</Base>

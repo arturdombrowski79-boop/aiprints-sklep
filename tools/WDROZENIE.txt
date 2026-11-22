@@ -1,0 +1,13 @@
+AiPrints.pl – paczka do wgrania na LH.pl
+========================================
+UWAGA: NIE podmieniaj jeszcze obecnej strony! Koszyk działa w trybie testowym
+(płatności nie są pobierane). Płatności, formularze i panel zamówień podłączamy w kolejnym kroku.
+
+Gdy będzie gotowe:
+1. W panelu LH.pl: Dostęp SSH -> Włącz (hasło ustawiasz sam, nie wysyłaj go nikomu).
+2. Wgraj CAŁĄ zawartość tego folderu (razem z ukrytym plikiem .htaccess) do public_html/aiprints
+   przez SFTP (FileZilla/Cyberduck; adres serwera i login są w panelu LH.pl, port 22).
+3. Adresy działają bez ".html" (np. aiprints.pl/pracownia).
+4. W Google Search Console dodaj mapę strony: https://aiprints.pl/sitemap.xml
+
+Ustawienia (czas realizacji, przerwa urlopowa, dział świąteczny): src/data/config.js w źródłach.
