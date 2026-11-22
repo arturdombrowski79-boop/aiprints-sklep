@@ -75,6 +75,9 @@ export async function renderSide(json, side, { dpi = 300, mono = false, scale } 
   return { canvas: sc.toCanvasElement(mult), svg: () => sc.toSVG(), dispose: () => sc.dispose() };
 }
 
+// tryb nakładania nadruku: na jasnym materiale przenika faktura (drewno, płótno, tkanina)
+export const blendOf = (cfg, color) => cfg.blend || (cfg.mock && lum(color || '#ffffff') > .55 ? 'multiply' : 'source-over');
+
 // podgląd: makieta + projekt (JPG do koszyka, maila i akceptacji)
 export async function renderPreview(cfg, design, sideId, px = 900) {
   const side = cfg.sides.find((s) => s.id === sideId); const img = await loadImg(side.img);
@@ -87,14 +90,18 @@ export async function renderPreview(cfg, design, sideId, px = 900) {
   const json = design.sides[sideId]; if (!json) return cv.toDataURL('image/jpeg', .85);
   const mono = cfg.mode !== 'print';
   const r = await renderSide(json, side, { mono, scale: a.w / sizeOf(side)[0] });
+  // projekt tylko na powierzchni produktu (otwór aparatu, zaokrąglone rogi, kształt zawieszki)
+  const lay = document.createElement('canvas'); lay.width = px; lay.height = H; const lc = lay.getContext('2d');
+  lc.drawImage(r.canvas, a.x, a.y, a.w, a.h);
+  if (cfg.mask) { lc.globalCompositeOperation = 'destination-in'; lc.drawImage(base, 0, 0); }
   ctx.save();
   if (mono) {
     const id = 'pf' + Math.random().toString(36).slice(2); const holder = document.createElement('div'); holder.innerHTML = inkFilterSVG(id, cfg.ink || (cfg.mode === 'frost' ? '#ffffff' : '#3b2614'), cfg.mode === 'frost'); document.body.appendChild(holder);
     ctx.filter = `url(#${id})`; ctx.globalCompositeOperation = cfg.mode === 'frost' ? 'screen' : (lum(cfg.ink || '#000') > .5 ? 'source-over' : 'multiply');
-    ctx.drawImage(r.canvas, a.x, a.y, a.w, a.h); holder.remove();
+    ctx.drawImage(lay, 0, 0); holder.remove();
   } else {
-    ctx.globalCompositeOperation = cfg.mock && lum(design.color || '#ffffff') > .55 ? 'multiply' : 'source-over';
-    ctx.drawImage(r.canvas, a.x, a.y, a.w, a.h);
+    ctx.globalCompositeOperation = blendOf(cfg, design.color);
+    ctx.drawImage(lay, 0, 0);
   }
   ctx.restore(); r.dispose();
   return cv.toDataURL('image/jpeg', .86);

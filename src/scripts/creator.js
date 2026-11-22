@@ -1,6 +1,6 @@
 // Kreator produktu (edytor na Fabric.js)
 import { Canvas, Textbox, FabricImage, Circle, loadSVGFromString, util, filters, ActiveSelection } from 'fabric';
-import { UNIT, sizeOf, loadImg, lum, viewOf, areaPx, drawMock, inkFilterSVG, renderPreview, saveDesign } from './creator-core.js';
+import { UNIT, sizeOf, loadImg, lum, viewOf, areaPx, drawMock, inkFilterSVG, renderPreview, saveDesign, blendOf } from './creator-core.js';
 import { addRaw, zl } from './cart.js';
 import { toast } from './common.js';
 
@@ -88,7 +88,14 @@ function layout() {
   // jak projekt wygląda na materiale
   const low = cv.lowerCanvasEl;
   if (mono()) { low.style.filter = 'url(#crInkF)'; low.style.mixBlendMode = cfg.mode === 'frost' ? 'screen' : (lum(cfg.ink || '#000') > .5 ? 'normal' : 'multiply'); }
-  else low.style.mixBlendMode = cfg.mock && lum(S.color || '#fff') > .55 ? 'multiply' : 'normal';
+  else { const b = blendOf(cfg, S.color); low.style.mixBlendMode = b === 'source-over' ? 'normal' : b; }
+  // maska z kształtu produktu: projekt nie wychodzi poza etui, zawieszkę, poduszkę
+  if (cfg.mask) {
+    const k = w / view[2], url = `url(${side().img})`;
+    Object.assign(low.style, { maskImage: url, webkitMaskImage: url, maskRepeat: 'no-repeat', webkitMaskRepeat: 'no-repeat',
+      maskSize: `${mockImg.naturalWidth * k}px ${mockImg.naturalHeight * k}px`, webkitMaskSize: `${mockImg.naturalWidth * k}px ${mockImg.naturalHeight * k}px`,
+      maskPosition: `${-view[0] * k - area.x}px ${-view[1] * k - area.y}px`, webkitMaskPosition: `${-view[0] * k - area.x}px ${-view[1] * k - area.y}px` });
+  } else Object.assign(low.style, { maskImage: '', webkitMaskImage: '' });
   cv.requestRenderAll();
 }
 // nowy element nie ląduje na poprzednim: kolejne pozycje w pionie

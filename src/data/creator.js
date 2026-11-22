@@ -7,6 +7,7 @@ const GARMENT = [
 ];
 const TUMBLER = [['Biały', '#ffffff'], ['Czarny', '#232325'], ['Granatowy', '#24324f'], ['Miętowy', '#a8dcc8'], ['Różowy', '#f2b8c6'], ['Grafitowy', '#55585c']];
 const PLATE = [['Biały akryl', '#ffffff'], ['Czarny akryl', '#151515'], ['Złote lustro', '#d4ab45'], ['Srebrne lustro', '#c3c7cc'], ['Grafit', '#4a4d52']];
+const CASE = [['Biały', '#ffffff'], ['Czarny', '#1d1d1f'], ['Pudrowy róż', '#e8b4b8'], ['Miętowy', '#a8dcc8'], ['Lawendowy', '#c9b8e6'], ['Granatowy', '#24324f']];
 const MUG = [['Biały', '#ffffff'], ['Czarny', '#232325'], ['Różowy', '#f2b8c6'], ['Błękitny', '#9fd0ee'], ['Miętowy', '#a8dcc8']];
 
 const tee = { mock: true, colors: GARMENT, sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'], mode: 'print',
@@ -22,6 +23,10 @@ const plate = { mock: true, colors: PLATE, mode: 'print', bg: 'linear-gradient(1
 const round = { mock: true, colors: PLATE, mode: 'print', bg: 'linear-gradient(180deg,#e9eaeb,#d9dadc)',
   sides: [{ id: 'front', name: 'Szyld', img: 'img/mk/szyld-okragly.webp', area: [14, 14, 72, 72], mm: [500, 500], clip: 'circle' }] };
 
+const BG = 'linear-gradient(180deg,#eef0f1,#dfe2e4)';
+const STEEL = '#3d4043', WOOD = '#4a2a12';
+const one = (img, area, mm, o = {}) => ({ bg: BG, mask: true, ...o, sides: [{ id: 'front', name: o.name || 'Przód', img: 'img/mk/' + img + '.webp', area, mm, ...(o.clip ? { clip: o.clip } : {}) }] });
+
 export const CREATOR = {
   'koszulka-z-nadrukiem': tee,
   'bluza-z-nadrukiem': hoodie,
@@ -31,6 +36,24 @@ export const CREATOR = {
   'kubek-termiczny-grawer': tumbler('laser'),
   'tabliczka-drzwi': plate, 'tabliczka-logo-salon': plate, 'tabliczka-adres-dystanse': plate, 'tabliczka-scienna-qr': plate, 'tabliczki-pomieszczenia': plate,
   'szyld-okragly-logo': round, 'szyld-okragly-led': round,
+  // etui, foto, drewno, stal (makiety bez tła, projekt przycinany do kształtu produktu)
+  'etui-telefon-uv': one('etui-bialy', [29.8, 8, 40.5, 84], [75, 156], { mock: true, colors: CASE, mode: 'print', name: 'Tył etui' }),
+  'etui-grawer': one('etui-drewno', [28.7, 8, 42.6, 84], [76, 150], { mode: 'laser', ink: WOOD, name: 'Tył etui' }),
+  'bidon-dziecko-uv': one('bidon', [37, 32, 25.6, 52], [70, 142], { mock: true, colors: TUMBLER, mode: 'print', name: 'Bidon' }),
+  'tabliczka-wc-kwadrat': { ...one('tabliczka-kw', [14, 14, 72, 72], [150, 150], { mock: true, colors: PLATE, mode: 'print', name: 'Tabliczka' }) },
+  'tabliczka-przedszkole': plate,
+  'poduszka-zdjecie': one('poduszka', [14, 14, 72, 72], [380, 380], { mode: 'print', blend: 'multiply', name: 'Poszewka' }),
+  'obraz-plotno': one('plotno', [19, 11.7, 53.6, 71.5], [300, 400], { mode: 'print', blend: 'multiply', name: 'Płótno' }),
+  'fotopanel-aluminium': one('fotopanel', [8, 20.6, 84, 58.8], [300, 210], { mode: 'print', name: 'Fotopanel' }),
+  'puzzle-zdjecie': one('puzzle', [8, 18.4, 84, 63.1], [280, 210], { mode: 'print', blend: 'multiply', name: 'Puzzle' }),
+  'zdjecie-na-drewnie': one('sklejka', [8, 17.6, 84, 64.8], [300, 231], { mode: 'print', blend: 'multiply', name: 'Deska' }),
+  'lupek-zdjecie': one('lupek', [12, 25, 76, 50], [300, 197], { mode: 'print', defColor: '#ffffff', name: 'Łupek' }),
+  'podkladki-zestaw': one('podkladka', [12, 12, 76, 76], [95, 95], { mode: 'laser', ink: WOOD, clip: 'circle', name: 'Podkładka' }),
+  'pudelko-grawer': one('pudelko', [12, 21, 76, 58], [250, 190], { mode: 'laser', ink: WOOD, name: 'Wieczko' }),
+  'brelok-drewno-skora': one('brelok-drewno', [47, 40, 41, 17.5], [56, 24], { mode: 'laser', ink: WOOD, zoom: 1.5, name: 'Brelok' }),
+  'adresowka-psa': one('adresowka', [22, 40, 56, 34], [33, 20], { mode: 'laser', ink: STEEL, name: 'Adresówka' }),
+  'niesmiertelnik': one('niesmiertelnik', [37, 45, 25, 41], [26, 43], { mode: 'laser', ink: STEEL, zoom: 1.6, name: 'Blaszka' }),
+  'bransoletka-stal': one('bransoletka', [18, 45.5, 68, 9], [48, 6.4], { mode: 'laser', ink: STEEL, zoom: 1.4, name: 'Blaszka' }),
   // produkty na prawdziwych zdjęciach (bez zmiany koloru)
   'deska-do-krojenia': { mode: 'laser', ink: '#4a2a12', sides: [{ id: 'front', name: 'Deska', img: 'img/hf/deska-do-krojenia-1.jpg', area: [36, 30, 28, 42], mm: [180, 200] }] },
   'naszyjnik-grawer': { mode: 'laser', ink: '#4b3510', zoom: 3.2, sides: [{ id: 'front', name: 'Zawieszka', img: 'img/hf/naszyjnik-grawer-1.jpg', area: [59, 49.5, 11, 14.5], mm: [20, 20], clip: 'circle' }] },
