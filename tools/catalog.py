@@ -2,7 +2,7 @@ import csv, json, re, os
 B=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rows=list(csv.DictReader(open(B+'/data/baza-produktow.csv',encoding='utf-8-sig'),delimiter=';'))
 CATS=[
- ('na-swieta','Na święta','Bombki z imieniem, kryształy z zimowym motywem i kalendarze 2027. Zamów do 15 grudnia, a zdążymy przed Wigilią.','#7a2e2a'),
+ ('na-swieta','Na święta','Bombki z imieniem, kryształy z zimowym motywem i kalendarze 2027. Ozdoby z imieniem i zdjęciem na kolejny sezon.','#7a2e2a'),
  ('prezenty-ze-zdjeciem','Prezenty ze zdjęciem','Wasze zdjęcie w szkle, na akrylu, płótnie i drewnie. Przed produkcją wysyłamy podgląd do akceptacji.','#2f4a6b'),
  ('prezenty-z-grawerem','Prezenty z grawerem','Imię, data albo dedykacja wypalona laserem w drewnie, szkle i stali. Na lata, nie do szuflady.','#6b4a2a'),
  ('slub-i-okazje','Ślub i okazje','Tablice powitalne, plany stołów, winietki, pamiątki komunijne i podziękowania dla rodziców.','#8a6a5a'),
@@ -82,6 +82,40 @@ for p in prods:
     else: p['gallery']=[p['img']] if p['img'] else []
 import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods: p['tags']=tag(p)
+
+# ——— historia cen (Omnibus) i promocja z src/data/config.js ———
+import datetime as _dt
+try:
+    from zoneinfo import ZoneInfo; TODAY=_dt.datetime.now(ZoneInfo('Europe/Warsaw')).date()
+except Exception: TODAY=_dt.date.today()
+if os.environ.get('AIP_TODAY'): TODAY=_dt.date.fromisoformat(os.environ['AIP_TODAY'])
+base_price=lambda p: (p['tiers'][0]['p'] if p['tiers'] else p['price'])
+HP=B+'/data/price-history.json'
+H=json.load(open(HP)) if os.path.exists(HP) else {}
+for p in prods:
+    bp=base_price(p)
+    if bp is None: continue
+    h=H.setdefault(p['slug'],[])
+    if not h or h[-1][1]!=bp: h.append([TODAY.isoformat(),bp])
+open(HP,'w').write('{\n'+',\n'.join(json.dumps(k)+': '+json.dumps(v) for k,v in sorted(H.items()))+'\n}\n')
+CJ=open(B+'/src/data/config.js',encoding='utf-8').read()
+m=re.search(r'export const PROMO = \{(.*?)\n\};',CJ,re.S)
+PR=None
+if m:
+    body=m.group(1); g=lambda k: re.search(k+r":\s*'([^']*)'",body).group(1)
+    PR=dict(on='on: true' in body,pct=float(re.search(r'pct:\s*([\d.]+)',body).group(1)),start=g('from'),until=g('until'),name=g('name'),slugs=json.loads(re.search(r'slugs:\s*(\[.*?\])',body,re.S).group(1)))
+def low30(slug,start):
+    h=sorted(H.get(slug,[])); s=_dt.date.fromisoformat(start); ws=(s-_dt.timedelta(days=30)).isoformat(); st=s.isoformat()
+    eff=[pr for d,pr in h if d<=ws][-1:]+[pr for d,pr in h if ws<d<=st]
+    return min(eff) if eff else (h[0][1] if h else None)
+if PR and PR['on'] and PR['start']<=TODAY.isoformat()<=PR['until']:
+    k=1-PR['pct']/100
+    for p in prods:
+        if p['slug'] in PR['slugs'] and base_price(p):
+            p['promo']=dict(pct=PR['pct'],k=k,until=PR['until'],name=PR['name'],low30=low30(p['slug'],PR['start']),regular=base_price(p))
+            p['tags']['promo']=['5']; p['score']+=1500
+    print('promocja aktywna:',sum('promo' in p for p in prods),'produktów do',PR['until'])
+else: print('promocja nieaktywna')
 prods.sort(key=lambda p:-p['score'])
 cats=[dict(slug=s,name=n,lead=l,color=c,subs=sorted({p['sub'] for p in prods if p['cat']==s}),count=sum(p['cat']==s for p in prods)) for s,n,l,c in CATS]
 json.dump(dict(cats=cats,products=prods,facets=facets()),open(B+'/src/data/catalog.json','w'),ensure_ascii=False,indent=0)

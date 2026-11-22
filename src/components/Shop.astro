@@ -4,11 +4,13 @@ import Card from './Card.astro';
 import cat from '../data/catalog.json';
 const { items, cslug = '', subs = [] } = Astro.props;
 const F = cat.facets;
-const cnt = (k, v) => items.filter((p) => p.tags && p.tags[k].includes(v)).length;
+const cnt = (k, v) => items.filter((p) => p.tags && (p.tags[k] || []).includes(v)).length;
 const PRICE = [['p1', 'do 50 zł', 0, 50], ['p2', '50–100 zł', 50, 100], ['p3', '100–200 zł', 100, 200], ['p4', 'powyżej 200 zł', 200, 1e9], ['wycena', 'Wycena indywidualna', -1, -1]];
 const pv = (p) => (p.tiers ? p.tiers[0].p : p.price);
 const pcnt = (a, b) => items.filter((p) => (a < 0 ? !pv(p) || p.quote : pv(p) && !p.quote && pv(p) >= a && pv(p) < b)).length;
+const hasPromo = items.some((p) => p.promo);
 const groups = [
+  ...(hasPromo ? [['promo', 'Promocje', [['', [['5', 'Na koniec roku −5%']]]], false]] : []),
   ['okazja', 'Okazja', F.okazja, true],
   ['dla', 'Dla kogo', F.dla, true],
   ['pers', 'Personalizacja', [['', F.pers]], false],

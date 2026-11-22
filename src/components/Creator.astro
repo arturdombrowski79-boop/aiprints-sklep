@@ -1,7 +1,7 @@
 ---
 // Kreator produktu: tekst, czcionki, logo/zdjęcie, emotki, grafiki, kolor produktu, strony.
 const { p, cfg } = Astro.props;
-const price = p.tiers ? p.tiers[0].p : (p.price || 0);
+const price = Math.round((p.tiers ? p.tiers[0].p : (p.price || 0)) * (p.promo ? p.promo.k : 1) * 100) / 100;
 const T = [['tekst', 'Tekst', 'M5 5h14M12 5v14M9 19h6'], ['obraz', 'Logo / zdjęcie', 'M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4M15 9h.01'], ['emoji', 'Emotki', 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M8.5 14.5s1.3 2 3.5 2 3.5-2 3.5-2M9 9.5h.01M15 9.5h.01'], ['grafiki', 'Grafiki', 'M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z'], ['produkt', 'Produkt', 'M8 4 4 7l2 3 2-1v11h8V9l2 1 2-3-4-3a4 4 0 0 1-8 0']];
 ---
 <link rel="stylesheet" href="creator/fonts.css" />

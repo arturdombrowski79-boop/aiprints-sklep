@@ -18,6 +18,8 @@ export function getStaticPaths() {
   ];
 }
 const { kind, c, p, rec = false, re = '' } = Astro.props;
+const K = kind === 'prod' && p.promo ? p.promo.k : 1;
+const until = kind === 'prod' && p.promo ? new Date(p.promo.until).toLocaleDateString('pl-PL', { day: 'numeric', month: 'numeric' }) : '';
 const pv = kind === 'prod' ? PV[p.slug] : null;
 const cr = kind === 'prod' ? CREATOR[p.slug] : null;
 const crOnly = kind === 'prod' && !!p.creatorOnly;
@@ -38,7 +40,7 @@ const crumbs = kind === 'cat' ? [['Sklep', 'sklep.html'], [c.name, `${c.slug}.ht
 const bc = { '@type': 'BreadcrumbList', itemListElement: crumbs.map(([n, u], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: site + u })) };
 const schema = kind === 'cat'
   ? { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'CollectionPage', name: c.name, description: c.lead }] }
-  : { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'Product', name: p.name, description: d.desc.join(' '), image: site + d.img, sku: p.slug, brand: { '@type': 'Brand', name: 'AiPrints.pl' }, ...(p.price ? { offers: { '@type': 'Offer', price: (p.tiers ? p.tiers[0].p : p.price).toFixed(2), priceCurrency: 'PLN', availability: 'https://schema.org/MadeToOrder', url: site + p.slug + '.html', seller: { '@type': 'Organization', name: 'AiPrints.pl' } } } : {}) }] };
+  : { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'Product', name: p.name, description: d.desc.join(' '), image: site + d.img, sku: p.slug, brand: { '@type': 'Brand', name: 'AiPrints.pl' }, ...(p.price ? { offers: { '@type': 'Offer', price: ((p.tiers ? p.tiers[0].p : p.price) * K).toFixed(2), ...(p.promo ? { priceValidUntil: p.promo.until } : {}), priceCurrency: 'PLN', availability: 'https://schema.org/MadeToOrder', url: site + p.slug + '.html', seller: { '@type': 'Organization', name: 'AiPrints.pl' } } } : {}) }] };
 const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
 ---
 {kind === 'cat' ? (
@@ -89,9 +91,10 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
         <h1 class="hd text-[48px] md:text-[68px]">{p.name}</h1>
         {p.variants && <p class="text-mute mt-3">{p.variants}</p>}
         <div class="flex items-baseline gap-3 mt-6">
-          <b id="price" class="text-[34px] font-semibold tracking-tight" data-base={p.tiers ? p.tiers[0].p : (p.price || 0)}>{p.price ? (p.tiers ? fmt(p.tiers[0].p) : (/^od/.test(p.priceText) ? p.priceText : fmt(p.price))) : 'Wycena indywidualna'}</b>
+          <b id="price" class="text-[34px] font-semibold tracking-tight" data-base={p.tiers ? p.tiers[0].p : (p.price || 0)}>{p.price ? (p.tiers ? fmt(p.tiers[0].p * K) : (/^od/.test(p.priceText) ? 'od ' + fmt(p.price * K) : fmt(p.price * K))) : 'Wycena indywidualna'}</b>
           {p.price && <span class="text-[13px] text-mute">{/szt|m²|\/ 50|\(/.test(p.priceText) && !p.tiers ? p.priceText.replace(/^[^(/]*/, '').trim() : 'z VAT'}</span>}
         </div>
+        {p.promo && <p class="promo-on mt-2 text-[13px] text-mute"><span class="inline-flex items-center rounded-full bg-[#c8102e] text-white text-[12px] font-semibold px-2.5 h-6 mr-2">−{p.promo.pct}% do {until}</span>Najniższa cena z 30 dni przed obniżką: {fmt(p.promo.low30)}{p.tiers || /^od/.test(p.priceText) ? ' (cena od)' : ''}</p>}
 
         {cr && (
           <div class="mt-7 rounded-[28px] bg-white border border-line p-5">
@@ -111,10 +114,10 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
             <p id="qok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
           </form>
         ) : (
-          <div class="mt-8 grid gap-6" id="cfg" data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''}>
+          <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''}>
             {d.opts && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">{d.opts.label}</b>
-                <div class="flex flex-wrap gap-2 mt-3">{d.opts.opts.map((o, i) => <button class="seg opt h-12 px-5 rounded-2xl border border-line bg-white text-[14px] font-medium" aria-pressed={i === 0 ? 'true' : 'false'} data-k={o.k} data-p={o.p ?? ''}>{o.k}{o.p && <span class="sub text-mute font-normal ml-1.5">{o.p} zł</span>}</button>)}</div></div>)}
+                <div class="flex flex-wrap gap-2 mt-3">{d.opts.opts.map((o, i) => <button class="seg opt h-12 px-5 rounded-2xl border border-line bg-white text-[14px] font-medium" aria-pressed={i === 0 ? 'true' : 'false'} data-k={o.k} data-p={o.p ?? ''}>{o.k}{o.p && <span class="sub text-mute font-normal ml-1.5">{fmt(o.p * K)}</span>}</button>)}</div></div>)}
             {(p.fields.includes('text') || pv?.text) && (
               <div><label for="txt" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Tekst do personalizacji</label>
                 <input id="txt" maxlength={pv ? 28 : 60} data-req={pv?.photo ? '' : '1'} placeholder={pv?.text ? 'np. ' + pv.text.ph : /numer|lokal/.test(p.slug) ? 'np. 12A' : /firm|logo|szyld/.test(p.slug) ? 'Nazwa firmy lub hasło' : 'np. Zosia 2026'} class="inp mt-3 w-full text-[17px]" />
@@ -173,8 +176,9 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
     if (cfg) {
       const base = +$('price').dataset.base; const qt = JSON.parse(cfg.dataset.qt || '[]');
       let opt = cfg.querySelector('.opt[aria-pressed=true]'); let photoUrl = null;
-      const unitPrice = () => { const n = +$('qty').value || 1; let u = opt && opt.dataset.p ? +opt.dataset.p : base; qt.forEach((t) => { if (n >= t.q) u = t.p; }); return u; };
-      const upd = () => { const n = Math.max(1, +$('qty').value || 1); $('qty').value = n; const u = unitPrice(); $('addP').textContent = zl(u * n); if (opt && opt.dataset.p) $('price').textContent = zl(u); };
+      const K = document.documentElement.classList.contains('promo-off') ? 1 : (+cfg.dataset.k || 1);
+      const unitPrice = () => { const n = +$('qty').value || 1; let u = opt && opt.dataset.p ? +opt.dataset.p : base; qt.forEach((t) => { if (n >= t.q) u = t.p; }); return Math.round(u * K * 100) / 100; };
+      const upd = () => { const n = Math.max(1, +$('qty').value || 1); $('qty').value = n; const u = unitPrice(); $('addP').textContent = zl(u * n); if ((opt && opt.dataset.p) || (K === 1 && cfg.dataset.k !== '1')) $('price').textContent = zl(u); };
       cfg.querySelectorAll('.opt').forEach((b) => b.onclick = () => { opt = b; cfg.querySelectorAll('.opt').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); upd(); priceAnim('price'); });
       $('qm').onclick = () => { $('qty').value = Math.max(1, +$('qty').value - 1); upd(); };
       $('qp').onclick = () => { $('qty').value = +$('qty').value + 1; upd(); };
@@ -189,8 +193,10 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
       $('add').onclick = () => {
         const t = $('txt'); if (t && t.dataset.req && !t.value.trim()) { t.focus(); t.classList.add('ring-2', 'ring-red-400'); toast('Wpisz tekst do personalizacji'); return; }
         const n = +$('qty').value, u = unitPrice();
-        const lines = [opt ? opt.dataset.k : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', $('notes').value.trim() ? 'z uwagami' : ''].filter(Boolean);
-        addItem({ title: cfg.dataset.name, lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit }, $("gal"));
+        const hasLogo = !!(lg && lg.files[0]);
+        const pers = !!((t && t.value.trim()) || photoUrl || hasLogo);
+        const lines = [opt ? opt.dataset.k : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
+        addItem({ title: cfg.dataset.name, lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers }, $("gal"));
       };
       upd();
     }

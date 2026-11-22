@@ -7,3 +7,12 @@ export const BREAK = { show: '2026-12-01', from: '2026-12-21', to: '2027-01-07',
 // Statystyki i reklamy – wpisz identyfikatory, gdy założysz konta. Puste = nic się nie ładuje.
 export const GA4_ID = '';      // np. 'G-XXXXXXXXXX' (Google Analytics 4 / Google Ads przez gtag)
 export const META_PIXEL = '';  // np. '123456789012345'
+
+// Promocja (Omnibus): przy obniżce pokazujemy najniższą cenę z 30 dni przed jej startem – liczona z data/price-history.json.
+// Po `until` promocja znika sama (przebudowa sklepu o północy przez GitHub Actions + zabezpieczenie w przeglądarce).
+// Uwaga: obniżka ma sens prawny dopiero, gdy produkt był wcześniej sprzedawany w cenie regularnej (min. 30 dni na żywej stronie).
+export const PROMO = {
+  on: true, pct: 5, from: '2026-11-23', until: '2026-12-31', name: 'Na koniec roku −5%',
+  // 40 produktów o najwyższym zysku na godzinę pracy (data/baza-produktow.csv)
+  slugs: ["fine-art-druk", "krysztal-slub", "numery-stol-podstawka", "plakat-mapa-2d", "karafka-grawer", "fotopanel-aluminium", "numeracja-lokali", "lusterko-logo", "krysztal-zdjecie", "krysztal-pupil", "mapa-nieba", "numery-stol-lustro", "krysztal-pamiatkowy", "naszyjnik-grawer", "bransoletka-stal", "lupek-zdjecie", "jelen-sklejka", "statuetka-krysztal", "tablica-wejscie-zarzadca", "fototapeta", "oznakowanie-piwnic", "znaki-zakazu", "puzzle-akryl-serce", "tabliczki-skrzynki", "statuetka-3-kody", "tablica-nauka-imienia", "tabliczki-pomieszczenia", "odbitki-polaroid", "tablica-rejestracyjna", "napis-recepcja", "akryl-polaroid", "logo-lustro", "tablica-ogloszen", "zestaw-higieniczny", "wc-komplet", "termos-logo", "swieca-szklo-imie", "podziekowania-rodzice", "regulamin-porzadku", "wizytowki-lakier-3d"],
+};

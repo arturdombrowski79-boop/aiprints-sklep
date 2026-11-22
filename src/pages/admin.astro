@@ -9,7 +9,7 @@ const P = cat.products.map((p) => ({ s: p.slug, n: p.name, c: C[p.cat], k: p.cat
 const NAV = [
   ['', [['pulpit', 'Pulpit', 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z'], ['zamowienia', 'Zamówienia', 'M4 7h16l-1.5 12a2 2 0 0 1-2 1.8h-9A2 2 0 0 1 5.5 19zM9 7a3 3 0 0 1 6 0'], ['projekty', 'Projekty', 'M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4'], ['produkty', 'Produkty', 'M20.6 13.4 12 22l-9-9V3h10z M7.5 7.5h.01'], ['klienci', 'Klienci', 'M16 19a4 4 0 0 0-8 0M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6M21 19a3.5 3.5 0 0 0-4-3.4M3 19a3.5 3.5 0 0 1 4-3.4']]],
   ['Marketing', [['rabaty', 'Kody rabatowe', 'M9 15 15 9M9.5 9.5h.01M14.5 14.5h.01M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0'], ['koszyki', 'Porzucone koszyki', 'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0'], ['opinie', 'Opinie', 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z']]],
-  ['Pracownia', [['raporty', 'Raporty', 'M3 3v18h18M7 15l4-4 3 3 5-6'], ['ustawienia', 'Ustawienia', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1']]],
+  ['Pracownia', [['raporty', 'Raporty', 'M3 3v18h18M7 15l4-4 3 3 5-6'], ['maile', 'Maile do klientów', 'M4 6h16v12H4zM4 7l8 6 8-6'], ['ustawienia', 'Ustawienia', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1']]],
 ];
 ---
 <!doctype html>
@@ -89,6 +89,7 @@ const NAV = [
   <script id="catdata" type="application/json" set:html={JSON.stringify({ P, BREAK, LEAD, PREVIEW, CREATOR })}></script>
 
   <script>
+    import { TEMPLATES, render } from '../data/emails.js';
     const $ = (i) => document.getElementById(i);
     const D = JSON.parse($('catdata').textContent);
     const KEY = 'aiprints-orders';
@@ -337,6 +338,14 @@ const NAV = [
     }
 
     // ——— USTAWIENIA ———
+    function maile(id) {
+      const ids = Object.keys(TEMPLATES); const cur = TEMPLATES[id] ? id : ids[0]; const r = render(cur); const t = TEMPLATES[cur];
+      $('view').innerHTML = head('Maile do klientów', 'Wysyła je automatycznie sklep z adresu zamowienia@aiprints.pl. Podgląd na przykładowym zamówieniu.') + `<div class="grid lg:grid-cols-[280px_1fr] gap-4 mt-6">
+        <div class="card p-2 self-start">${ids.map((k) => `<a href="#maile/${k}" class="block rounded-xl px-3 py-2.5 ${k === cur ? 'bg-black/[.05]' : 'hover:bg-black/[.03]'}"><b class="block text-[14px] font-medium">${TEMPLATES[k].name}</b><span class="text-[12px] text-ink/50">${TEMPLATES[k].when}</span></a>`).join('')}</div>
+        <div class="card p-5"><div class="text-[13px] text-ink/55">Temat</div><b class="block text-[16px]">${r.subject}</b>${t.attach ? `<div class="text-[13px] text-ink/55 mt-3">Załączniki</div><div class="text-[13.5px]">📎 ${t.attach.join('<br>📎 ')}</div>` : ''}
+          <iframe id="mailF" title="Podgląd maila" class="w-full mt-4 rounded-xl border border-black/10 bg-[#e7e9ea]" style="height:760px"></iframe></div></div>`;
+      $('mailF').srcdoc = r.html;
+    }
     function ustawienia() {
       const S = ls.get('aiprints-settings', { from: D.BREAK.from, to: D.BREAK.to, lead: D.LEAD, prev: D.PREVIEW });
       const row = (t, d, r) => `<div class="tr" style="grid-template-columns:1fr 1.4fr"><span><b class="block font-medium">${t}</b><span class="text-[12.5px] text-ink/50">${d}</span></span><span>${r}</span></div>`;
@@ -349,12 +358,12 @@ const NAV = [
       <div class="card mt-4 overflow-hidden"><div class="px-6 py-4"><b class="h2">Firma</b></div>
         ${row('Nazwa', '', 'AiPrints.pl Artur Dombrowski')}${row('Miejsce wykonywania działalności', '', 'ul. Okrężna 98B, 41-500 Chorzów')}${row('NIP / REGON', '', '626 257 96 94 / 526091225')}${row('Telefon', '', '609 040 274')}</div>
       <div class="card mt-4 overflow-hidden"><div class="px-6 py-4"><b class="h2">Połączenia</b></div>
-        ${[['Płatności', 'Stripe lub PayU (BLIK, karty, Przelewy24)'], ['Wysyłka', 'InPost ShipX – etykiety i numery przesyłek'], ['E-mail', 'potwierdzenia, link logowania, projekty do akceptacji'], ['Faktury', 'Fakturownia lub inFakt'], ['Hosting', 'LH.pl – PHP + MySQL']].map(([a, b]) => row(a, b, '<span class="bg b-mute">Do podłączenia</span>')).join('')}</div>`;
+        ${[['Płatności', 'Stripe lub PayU (BLIK, karty, Przelewy24)'], ['Wysyłka', 'Apaczka.pl (InPost, DPD, DHL, Poczta) – etykiety, numery przesyłek, statusy'], ['E-mail', 'potwierdzenia, link logowania, projekty do akceptacji'], ['Faktury', 'Fakturownia lub inFakt'], ['Hosting', 'LH.pl – PHP + MySQL']].map(([a, b]) => row(a, b, '<span class="bg b-mute">Do podłączenia</span>')).join('')}</div>`;
       $('ss').onclick = () => { ls.set('aiprints-settings', { from: $('sf').value, to: $('stt').value, lead: $('sl').value, prev: $('sp').value }); toast('Zapisano – na stronie zmieni się po wdrożeniu backendu'); };
     }
 
     // ——— router ———
-    const V = { pulpit, zamowienia, zamowienie, projekty, produkty, klienci, rabaty, koszyki, opinie, raporty, ustawienia };
+    const V = { pulpit, zamowienia, zamowienie, projekty, produkty, klienci, rabaty, koszyki, opinie, raporty, maile, ustawienia };
     function route() {
       if (!ls.get('aiprints-admin', null)) { $('gate').classList.remove('hidden'); $('app').classList.add('hidden'); return; }
       $('gate').classList.add('hidden'); $('app').classList.remove('hidden');

@@ -82,3 +82,7 @@ summary::-webkit-details-marker{display:none}
   .btn:hover,.lift:hover{transform:none}
   *,*::before,*::after{transition-duration:.01s!important;scroll-behavior:auto!important}
 }
+/* promocja: po terminie przeglądarka sama wraca do cen regularnych (html.promo-off) */
+.promo-reg{display:none}
+html.promo-off .promo-on{display:none!important}
+html.promo-off .promo-reg{display:revert}

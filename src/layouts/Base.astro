@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import CartCheckout from '../components/CartCheckout.astro';
 import '../styles/fonts.css';
 import '../styles/global.css';
-import { GA4_ID, META_PIXEL } from '../data/config.js';
+import { GA4_ID, META_PIXEL, PROMO } from '../data/config.js';
 const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '' } = Astro.props;
 const site = 'https://aiprints.pl/';
 const fullTitle = title.includes('AiPrints') ? title : `${title} | AiPrints.pl`;
@@ -28,6 +28,7 @@ const fullTitle = title.includes('AiPrints') ? title : `${title} | AiPrints.pl`;
   <link rel="apple-touch-icon" href="img/site/apple-touch-icon.png" />
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   <!-- Consent Mode v2: domyślnie brak zgody; nic nie śledzi przed decyzją klienta -->
+  <script is:inline define:vars={{ PU: PROMO.until }}>if (Date.now() > new Date(PU + 'T23:59:59+01:00').getTime()) document.documentElement.classList.add('promo-off');</script>
   <script is:inline define:vars={{ GA4_ID, META_PIXEL }}>
     window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } window.gtag = gtag;
     gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });

@@ -78,7 +78,7 @@ import Base from '../layouts/Base.astro';
             <div class="flex items-start mt-6">${STEPS.map((s, i) => `<div class="flex-1 relative text-center">${i ? `<span class="absolute right-1/2 top-[9px] w-full h-[3px] ${i <= st ? 'bg-emerald-600' : 'bg-line'}"></span>` : ''}<span class="relative z-10 mx-auto block w-[21px] h-[21px] rounded-full border-[3px] border-white ${i <= st ? 'bg-emerald-600' : i === st + 1 ? 'bg-acc' : 'bg-line'} shadow"></span><span class="block text-[12px] mt-2 leading-tight ${i <= st ? 'font-semibold' : 'text-mute'}">${s}</span></div>`).join('')}</div>
             <p class="text-[13.5px] text-mute mt-6">${st === 0 ? 'Czekamy na akceptację projektu.' : st < 3 ? 'Numer przesyłki wyślemy SMS-em i mailem, gdy paczka wyjedzie z pracowni.' : `Numer przesyłki: <b class="text-ink">${o.tracking || '—'}</b> · ${o.delivery}`}</p>
           </div>
-          <div class="flex flex-wrap gap-3"><button id="again" class="btn btn-out h-12">↻ Zamów ponownie</button><button id="inv" class="btn btn-out h-12">⎙ Faktura PDF</button><a href="kontakt.html" class="btn btn-out h-12">Pomoc</a></div>
+          <div class="flex flex-wrap gap-3"><button id="again" class="btn btn-out h-12">↻ Zamów ponownie</button><button id="inv" class="btn btn-out h-12">⎙ Faktura PDF</button><a href="kontakt.html" class="btn btn-out h-12">Pomoc</a><a href="zwroty-i-reklamacje.html?nr=${encodeURIComponent(o.no)}&em=${encodeURIComponent(o.email || '')}#odstap" class="btn btn-out h-12">Odstąp od umowy</a></div>
         </div>
         <div class="rounded-[28px] bg-white border border-line p-6 md:p-7 self-start">
           <b class="hd text-[32px]">Podsumowanie</b>
