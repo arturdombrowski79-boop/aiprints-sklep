@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Uploader from '../components/Uploader.astro';
+---
+<Base title="Prześlij pliki do zamówienia" description="Prześlij zdjęcia i pliki do druku do swojego zamówienia w AiPrints.pl." canonical="pliki" noindex>
+  <section class="max-w-[760px] mx-auto px-5 md:px-10 pt-32 pb-24">
+    <h1 class="hd text-[44px] md:text-[60px]">Prześlij pliki</h1>
+    <p class="text-mute text-[16px] mt-3">Zdjęcia do odbitek, pliki do druku, logo – bez limitu liczby plików, do 2 GB na plik. Link działa tylko dla Twojego zamówienia.</p>
+    <Uploader />
+    <p id="noLink" class="hidden mt-8 text-[15px]">Ten adres otwiera się z linku w mailu z potwierdzeniem zamówienia. Nie masz maila? Napisz na <a class="underline" href="mailto:kontakt@aiprints.pl">kontakt@aiprints.pl</a>.</p>
+  </section>
+  <script>const q = new URLSearchParams(location.search); if (!q.get('no') || !q.get('t')) document.getElementById('noLink').classList.remove('hidden');</script>
+</Base>

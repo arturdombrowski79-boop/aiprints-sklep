@@ -89,7 +89,7 @@ function tpl(string $name, array $vars): string {
     $rows = ''; foreach ($vars['items'] ?? [] as $it) $rows .= strtr($m[1], $it);
     $h = str_replace($m[0], $rows, $h);
   }
-  foreach (['DISC', 'RET', 'BRK', 'PRS', 'GEN'] as $blk) if (empty($vars['show_' . strtolower($blk)])) $h = preg_replace('/<!--' . $blk . '-->.*?<!--\/' . $blk . '-->/s', '', $h);
+  foreach (['DISC', 'RET', 'BRK', 'PRS', 'GEN', 'FIL', 'UPL'] as $blk) if (empty($vars['show_' . strtolower($blk)])) $h = preg_replace('/<!--' . $blk . '-->.*?<!--\/' . $blk . '-->/s', '', $h);
   $rep = []; foreach ($vars as $k => $v) if (is_scalar($v)) $rep['{{' . $k . '}}'] = htmlspecialchars((string)$v, ENT_QUOTES);
   return strtr($h, $rep);
 }

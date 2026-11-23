@@ -16,3 +16,6 @@ export const PROMO = {
   // 40 produktów o najwyższym zysku na godzinę pracy (data/baza-produktow.csv); bez cennika dla zarządców
   slugs: ["fine-art-druk", "krysztal-slub", "numery-stol-podstawka", "plakat-mapa-2d", "karafka-grawer", "fotopanel-aluminium", "lusterko-logo", "krysztal-zdjecie", "krysztal-pupil", "mapa-nieba", "numery-stol-lustro", "krysztal-pamiatkowy", "naszyjnik-grawer", "bransoletka-stal", "lupek-zdjecie", "jelen-sklejka", "statuetka-krysztal", "fototapeta", "puzzle-akryl-serce", "statuetka-3-kody", "tablica-nauka-imienia", "tabliczki-pomieszczenia", "odbitki-polaroid", "tablica-rejestracyjna", "napis-recepcja", "akryl-polaroid", "logo-lustro", "zestaw-higieniczny", "wc-komplet", "termos-logo", "swieca-szklo-imie", "podziekowania-rodzice", "wizytowki-lakier-3d", "fine-art-bawelna", "wydruk-w-ramie", "wydruk-wystawowy", "koc-ze-zdjeciem", "portfolio-box", "kubek-magiczny", "plakat-wielkoformatowy"],
 };
+
+// profile w mediach społecznościowych (puste = ukryte); używane w stopce, na stronie kontakt i w danych dla Google (sameAs)
+export const SOCIAL = { facebook: 'https://www.facebook.com/AIPrintsPL/', instagram: '', tiktok: '', youtube: '' };

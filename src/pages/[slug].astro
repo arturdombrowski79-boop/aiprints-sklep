@@ -114,14 +114,23 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
             <p id="qok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
           </form>
         ) : (
-          <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''} data-m2={kind === 'prod' && isM2(p) ? '1' : ''}>
+          <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''} data-m2={kind === 'prod' && isM2(p) ? '1' : ''} data-kind={kind === 'prod' ? p.kind : ''}>
             {d.opts && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">{d.opts.label}</b>
                 <div class="flex flex-wrap gap-2 mt-3">{d.opts.opts.map((o, i) => <button class="seg opt h-12 px-5 rounded-2xl border border-line bg-white text-[14px] font-medium" aria-pressed={i === 0 ? 'true' : 'false'} data-k={o.k} data-p={o.p ?? ''}>{o.k}{o.p && <span class="sub text-mute font-normal ml-1.5">{fmt(o.p * K)}</span>}</button>)}</div></div>)}
             {(p.fields.includes('text') || pv?.text) && (
               <div><label for="txt" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Tekst do personalizacji</label>
-                <input id="txt" maxlength={pv ? 28 : 60} data-req={pv?.photo ? '' : '1'} placeholder={pv?.text ? 'np. ' + pv.text.ph : /numer|lokal/.test(p.slug) ? 'np. 12A' : /firm|logo|szyld/.test(p.slug) ? 'Nazwa firmy lub hasło' : 'np. Zosia 2026'} class="inp mt-3 w-full text-[17px]" />
+                <input id="txt" maxlength={pv ? 28 : 60} data-req={(p.kind === 'gift' && !pv?.photo) ? '1' : ''} placeholder={pv?.text ? 'np. ' + pv.text.ph : /numer|lokal/.test(p.slug) ? 'np. 12A' : /firm|logo|szyld/.test(p.slug) ? 'Nazwa firmy lub hasło' : 'np. Zosia 2026'} class="inp mt-3 w-full text-[17px]" />
                 <p class="text-[12.5px] text-mute mt-1.5">Sprawdź pisownię – grawer robimy dokładnie według tego tekstu.</p></div>)}
+            {p.fields.includes('note') && (
+              <div><label for="txt" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Dopisek <span class="normal-case tracking-normal font-normal">(opcjonalnie)</span></label>
+                <input id="txt" maxlength="60" placeholder="np. numer, imię albo zostaw puste" class="inp mt-3 w-full text-[17px]" />
+                <p class="text-[12.5px] text-mute mt-1.5">Bez dopisku to gotowy produkt – możesz go zwrócić w 14 dni.</p></div>)}
+            {p.fields.includes('files') && (
+              <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Twoje pliki</b>
+                <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-5 cursor-pointer hover:border-ink transition"><input id="files" type="file" multiple accept="image/*,.pdf,.tif,.tiff,.psd,.ai,.eps,.svg,.heic,.zip" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">↑</span><span><b class="block text-[15px] font-medium" id="filesName">Wybierz pliki{p.many ? ` – ${p.many}` : ''}</b><span class="text-[12.5px] text-mute">JPG, PNG, TIFF, PDF, AI/EPS, ZIP – bez limitu liczby. Wyślemy je po opłaceniu zamówienia, na stronie potwierdzenia.</span></span></label>
+                <label class="mt-2.5 flex items-center gap-2.5 text-[13.5px] text-mute cursor-pointer"><input id="later" type="checkbox" class="w-[17px] h-[17px] accent-[#141210]" />Prześlę pliki później (link przyjdzie w mailu z potwierdzeniem)</label>
+                <input id="flink" type="url" placeholder="albo wklej link: Dysk Google, WeTransfer, Dropbox (opcjonalnie)" class="inp mt-2.5 w-full text-[14px]" /></div>)}
             {p.fields.includes('photo') && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Twoje zdjęcie</b>
                 <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-5 cursor-pointer hover:border-ink transition"><input id="photo" type="file" accept="image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">↑</span><span><b class="block text-[15px] font-medium" id="photoName">Dodaj zdjęcie</b><span class="text-[12.5px] text-mute">JPG lub PNG, najlepiej powyżej 1500 px. Możesz też dosłać je mailem.</span></span></label><label class="mt-2.5 flex items-center gap-2.5 text-[13.5px] text-mute cursor-pointer"><input id="later" type="checkbox" class="w-[17px] h-[17px] accent-[#141210]" />Doślę zdjęcie mailem po złożeniu zamówienia</label></div>)}
@@ -144,10 +153,10 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
               <div class="flex items-center rounded-full border border-line bg-white"><button id="qm" class="w-12 h-14 text-[20px]" aria-label="Mniej">−</button><input id="qty" value="1" inputmode="numeric" class="w-10 text-center font-semibold outline-none bg-transparent" aria-label="Ilość" /><button id="qp" class="w-12 h-14 text-[20px]" aria-label="Więcej">+</button></div>
               <button id="add" class="flex-1 h-14 rounded-full bg-ink text-white font-semibold text-[15.5px] hover:scale-[1.01] transition">Dodaj do koszyka · <span id="addP"></span></button>
             </div>
-            <div class="rounded-2xl bg-white border border-line px-5 py-4 flex items-center gap-4 text-[14px]"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span id="eta" data-bfrom={BREAK.from} data-bto={BREAK.to}></span></div>
+            <div class="rounded-2xl bg-white border border-line px-5 py-4 flex items-center gap-4 text-[14px]"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span id="eta" data-kind={p.kind} data-bfrom={BREAK.from} data-bto={BREAK.to}></span></div>
             {d.qt.length > 0 && <p class="text-[13px] text-mute -mt-3">Taniej w większej ilości: {d.qt.map((t) => `od ${t.q} szt. – ${t.p} zł/szt.`).join(' · ')}</p>}
             <ul class="grid sm:grid-cols-3 gap-2 text-[12.5px]">
-              {[['👁', `Podgląd do akceptacji w ${PREVIEW}`], ['📦', `Wykonanie ${LEAD} od akceptacji`], ['🏭', 'Robimy w Chorzowie']].map(([i, t]) => <li class="rounded-2xl bg-white/70 border border-line px-3 py-3 flex gap-2 items-center"><span>{i}</span>{t}</li>)}
+              {(p.kind === 'files' ? [['🖼', 'Sprawdzamy pliki przed drukiem'], ['📦', 'Realizacja 2–7 dni roboczych'], ['🏭', 'Drukujemy w Chorzowie']] : p.kind === 'ready' ? [['📦', 'Wysyłka w 1–3 dni robocze'], ['↺', '14 dni na zwrot'], ['🏭', 'Z pracowni w Chorzowie']] : [['👁', `Podgląd do akceptacji w ${PREVIEW}`], ['📦', `Wykonanie ${LEAD} od akceptacji`], ['🏭', 'Robimy w Chorzowie']]).map(([i, t]) => <li class="rounded-2xl bg-white/70 border border-line px-3 py-3 flex gap-2 items-center"><span>{i}</span>{t}</li>)}
             </ul>
           </div>
         )}
@@ -202,18 +211,23 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
       const eta = $('eta'); if (eta) { const bf = eta.dataset.bfrom, bt = eta.dataset.bto; const iso = (d) => d.toISOString().slice(0, 10);
         const add = (d, n) => { d = new Date(d); while (n > 0) { d.setDate(d.getDate() + 1); const w = d.getDay(); if (w && w < 6 && !(iso(d) >= bf && iso(d) <= bt)) n--; } return d; };
         const f = (d) => d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' }); const now = new Date();
-        eta.innerHTML = `Zamówisz dziś → podgląd do <b>${f(add(now, 2))}</b>, wysyłka ok. <b>${f(add(now, 7))}–${f(add(now, 12))}</b>`; }
+        const ek = eta.dataset.kind; eta.innerHTML = ek === 'ready' ? `Zamówisz dziś → wysyłka ok. <b>${f(add(now, 1))}–${f(add(now, 3))}</b>` : ek === 'files' ? `Zamówisz dziś i wyślesz pliki → wysyłka ok. <b>${f(add(now, 2))}–${f(add(now, 7))}</b>` : `Zamówisz dziś → podgląd do <b>${f(add(now, 2))}</b>, wysyłka ok. <b>${f(add(now, 7))}–${f(add(now, 12))}</b>`; }
+      const KIND = cfg.dataset.kind; const fi = $('files'); let fl = [];
+      const mb = (n) => (n / 1048576).toFixed(n < 1048576 * 10 ? 1 : 0).replace('.', ',') + ' MB';
+      if (fi) fi.onchange = () => { fl = [...fi.files]; const tot = fl.reduce((a, f) => a + f.size, 0); if (fl.length && cfg.dataset.unit && /odbit|polaroid/.test(cfg.dataset.slug)) { $('qty').value = fl.length; upd(); } $('filesName').textContent = fl.length ? `Wybrano ${fl.length} ${fl.length === 1 ? 'plik' : fl.length < 5 ? 'pliki' : 'plików'} · ${mb(tot)}` : 'Wybierz pliki'; };
       let logoUrl = null; const lg = $('logo'); if (lg) lg.onchange = () => { const f = lg.files[0]; if (!f) return; $('logoName').textContent = f.name; const r = new FileReader(); r.onload = () => { logoUrl = r.result; }; r.readAsDataURL(f); };
       $('add').onclick = () => {
         const t = $('txt'); if (t && t.dataset.req && !t.value.trim()) { t.focus(); t.classList.add('ring-2', 'ring-red-400'); toast('Wpisz tekst do personalizacji'); return; }
         if (M2 && !area()) { const e = dim('mw') ? $('mh') : $('mw'); e.focus(); e.classList.add('ring-2', 'ring-red-400'); toast('Podaj szerokość i wysokość w cm'); return; }
-        const later = $('later') && $('later').checked;
+        const later = $('later') && $('later').checked; const flink = (($('flink') || {}).value || '').trim();
+        if (fi && !fl.length && !later && !flink) { toast('Wybierz pliki, wklej link albo zaznacz, że prześlesz je później'); fi.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+        if (flink && !/^https?:\/\/\S+\.\S+/.test(flink)) { toast('Link powinien zaczynać się od https://'); $('flink').focus(); return; }
         if (ph && !photoUrl && !later && !(t && t.value.trim())) { toast('Dodaj zdjęcie albo zaznacz, że doślesz je mailem'); ph.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
         const n = +$('qty').value, u = unitPrice();
         const hasLogo = !!(lg && lg.files[0]);
-        const pers = !!((t && t.value.trim()) || photoUrl || hasLogo || later || M2);
-        const lines = [opt ? opt.dataset.k : '', M2 ? `${dim('mw')} × ${dim('mh')} cm (${String(area()).replace('.', ',')} m²)` : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', later ? 'zdjęcie dośle mailem' : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
-        addItem({ title: cfg.dataset.name, slug: cfg.dataset.slug, opt: opt ? opt.dataset.k : null, w: M2 ? dim('mw') : undefined, h: M2 ? dim('mh') : undefined, text: t ? t.value.trim() : '', notes: ($('notes').value.trim() + (later ? '\n[Klient dośle zdjęcie mailem]' : '')).trim(), lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers, photo: photoUrl, logo: logoUrl }, $("gal"));
+        const pers = KIND === 'ready' ? !!(t && t.value.trim()) : KIND === 'files' ? true : !!((t && t.value.trim()) || photoUrl || hasLogo || later || M2);
+        const lines = [opt ? opt.dataset.k : '', M2 ? `${dim('mw')} × ${dim('mh')} cm (${String(area()).replace('.', ',')} m²)` : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', fl.length ? `${fl.length} ${fl.length === 1 ? 'plik' : fl.length < 5 ? 'pliki' : 'plików'} (${mb(fl.reduce((a, f) => a + f.size, 0))})` : '', flink ? 'pliki z linku' : '', later ? (fi ? 'pliki prześle później' : 'zdjęcie dośle mailem') : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
+        addItem({ title: cfg.dataset.name, slug: cfg.dataset.slug, opt: opt ? opt.dataset.k : null, w: M2 ? dim('mw') : undefined, h: M2 ? dim('mh') : undefined, text: t ? t.value.trim() : '', notes: ($('notes').value.trim() + (flink ? '\nLink do plików: ' + flink : '') + (later ? (fi ? '\n[Klient prześle pliki później]' : '\n[Klient dośle zdjęcie mailem]') : '')).trim(), kind: KIND, uplFiles: fl.length ? fl : undefined, lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: KIND === 'gift', pers, photo: photoUrl, logo: logoUrl }, $("gal"));
       };
       upd();
     }

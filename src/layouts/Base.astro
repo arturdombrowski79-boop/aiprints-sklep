@@ -5,7 +5,7 @@ import CartCheckout from '../components/CartCheckout.astro';
 import '../styles/fonts.css';
 import '../styles/global.css';
 import { GA4_ID, META_PIXEL, PROMO } from '../data/config.js';
-const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '' } = Astro.props;
+const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '', noindex = false } = Astro.props;
 const site = 'https://aiprints.pl/';
 // SEO: tytuł do ~62 znaków (marka tylko gdy się mieści), opis do ~158 znaków ucięty na zdaniu lub słowie
 const fitT = (t) => { if (t.length <= 66) return t; const parts = t.split(' – '); while (parts.length > 1 && parts.join(' – ').length > 62) parts.pop(); const c = parts.join(' – '); return c.length <= 62 ? c : c.slice(0, 61).replace(/\s+\S*$/, '') + '…'; };
@@ -19,6 +19,7 @@ const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <=
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={fitD(description)} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={site + canonical} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />

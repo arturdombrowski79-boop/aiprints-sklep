@@ -1,0 +1,43 @@
+---
+// Wysyłanie plików do zamówienia: automatycznie pliki wybrane przy produkcie (z tej przeglądarki) + ręcznie dowolne kolejne.
+const { auto = false } = Astro.props;
+---
+<div id="upl" class="hidden text-left mt-10 rounded-[24px] bg-white border border-line p-6" data-auto={auto ? '1' : ''}>
+  <b class="block text-[18px]">Pliki do zamówienia <span id="uplNo"></span></b>
+  <p id="uplMsg" class="text-[14px] text-mute mt-1">Dodaj zdjęcia lub pliki do druku – bez limitu liczby, do 2 GB na plik.</p>
+  <div class="h-2 rounded-full bg-paper2 mt-4 overflow-hidden hidden" id="uplBarW"><div id="uplBar" class="h-full bg-ink rounded-full transition-all" style="width:0"></div></div>
+  <label class="mt-4 inline-flex items-center gap-3 rounded-full border border-ink px-5 h-11 cursor-pointer text-[14px] font-medium"><input id="uplIn" type="file" multiple accept="image/*,.pdf,.tif,.tiff,.psd,.ai,.eps,.svg,.heic,.zip,.dng" class="hidden" />+ Dodaj pliki</label>
+  <ul id="uplList" class="mt-4 text-[13.5px] text-mute grid gap-1"></ul>
+  <p class="text-[12.5px] text-mute mt-3">Plik większy niż 2 GB albo cały folder? Wyślij link (WeTransfer, Dysk Google) w odpowiedzi na mail z potwierdzeniem.</p>
+</div>
+<script>
+  import { sendFiles, listFiles } from '../scripts/upload.js';
+  const $ = (i) => document.getElementById(i);
+  const q = new URLSearchParams(location.search); const no = q.get('no'), t = q.get('t');
+  const mb = (n) => (n / 1048576).toFixed(1).replace('.', ',') + ' MB';
+  const IDB = () => new Promise((ok, ko) => { const r = indexedDB.open('aiprints', 1); r.onupgradeneeded = () => r.result.createObjectStore('designs', { keyPath: 'id' }); r.onsuccess = () => ok(r.result); r.onerror = () => ko(r.error); });
+  const idb = async (mode, fn) => { try { const db = await IDB(); return await new Promise((ok) => { const tx = db.transaction('designs', mode); const r = fn(tx.objectStore('designs')); tx.oncomplete = () => ok(r && r.result); tx.onerror = () => ok(null); }); } catch (e) { return null; } };
+  async function refresh() { const L = await listFiles(no, t); $('uplList').innerHTML = L.map((f) => `<li>✓ ${f.name} · ${mb(f.size)}</li>`).join(''); return L; }
+  let busy = false;
+  async function run(groups, after) {
+    if (busy) return; busy = true; $('uplBarW').classList.remove('hidden'); $('uplMsg').textContent = 'Wysyłam pliki – nie zamykaj tej strony…';
+    const r = await sendFiles(no, t, groups, (p, n) => { $('uplBar').style.width = Math.round(p * 100) + '%'; $('uplMsg').textContent = `Wysyłam ${Math.round(p * 100)}% – ${n}`; });
+    busy = false; after && (await after());
+    $('uplMsg').innerHTML = r.errors.length ? `Wysłano ${r.count}, nie udało się: ${r.errors.length}.<br><span class="text-red-700">${r.errors.slice(0, 5).join('<br>')}</span>` : `Gotowe – wysłano ${r.count} ${r.count === 1 ? 'plik' : (r.count % 10 >= 2 && r.count % 10 <= 4 && (r.count % 100 < 12 || r.count % 100 > 14)) ? 'pliki' : 'plików'}. Możesz dodać kolejne.`;
+    refresh();
+  }
+  (async () => {
+    if (!no || !t) return;
+    $('upl').classList.remove('hidden'); $('uplNo').textContent = no;
+    const L = await refresh();
+    $('uplIn').onchange = () => { const f = [...$('uplIn').files]; if (f.length) run([{ i: -1, files: f }]); $('uplIn').value = ''; };
+    // pliki wybrane przy produkcie (zapisane w tej przeglądarce)
+    let O = []; try { O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); } catch (e) { }
+    const o = O.find((x) => x.no === no); const groups = [], ids = [];
+    if (o) for (const [i, it] of (o.items || []).entries()) if (it.upl) { const rec = await idb('readonly', (s) => s.get(it.upl)); if (rec && rec.files && rec.files.length) { groups.push({ i, files: rec.files }); ids.push(it.upl); } }
+    if (groups.length) { if (!L.length) $('uplMsg').textContent = 'Wysyłam pliki wybrane przy zamówieniu…'; run(groups, async () => { for (const id of ids) await idb('readwrite', (s) => s.delete(id)); }); }
+    else if (!$('upl').dataset.auto && !L.length) $('uplMsg').textContent = 'Wybierz pliki do tego zamówienia – bez limitu liczby, do 2 GB na plik.';
+    else if ($('upl').dataset.auto && !L.length && !(o && o.items.some((x) => x.upl || (x.lines || []).some((l) => /plik/.test(l))))) $('upl').classList.add('hidden');
+  })();
+  addEventListener('beforeunload', (e) => { if (busy) { e.preventDefault(); e.returnValue = ''; } });
+</script>

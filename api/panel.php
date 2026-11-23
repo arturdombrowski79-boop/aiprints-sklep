@@ -31,6 +31,21 @@ if (isset($_GET['f'], $_GET['i'])) {
   echo base64_decode($m[2]); exit;
 }
 
+// pliki przesłane przez klienta po zamówieniu (upload.php) – pobieranie bez ładowania do pamięci
+$updir = API . "/data/files/$no/up";
+$uploaded = []; foreach (glob("$updir/*") ?: [] as $f) if (!str_ends_with($f, '.part')) $uploaded[basename($f)] = filesize($f);
+if (isset($_GET['u']) && isset($uploaded[(string)$_GET['u']])) {
+  $f = "$updir/" . basename((string)$_GET['u']);
+  header('Content-Type: application/octet-stream'); header('Content-Length: ' . filesize($f));
+  header('Content-Disposition: attachment; filename="' . $no . '-' . basename($f) . '"'); readfile($f); exit;
+}
+if (isset($_GET['zip']) && $uploaded && class_exists('ZipArchive')) {
+  $tmp = tempnam(sys_get_temp_dir(), 'zip'); $z = new ZipArchive(); $z->open($tmp, ZipArchive::OVERWRITE);
+  foreach ($uploaded as $n => $_) $z->addFile("$updir/$n", $n); $z->close();
+  header('Content-Type: application/zip'); header('Content-Length: ' . filesize($tmp)); header('Content-Disposition: attachment; filename="' . $no . '-pliki.zip"');
+  readfile($tmp); unlink($tmp); exit;
+}
+
 // ——— akcje ———
 const CARRIERS = ['InPost' => 'https://inpost.pl/sledzenie-przesylek?number=', 'DPD' => 'https://tracktrace.dpd.com.pl/parcelDetails?typ=1&p1=', 'DHL' => 'https://www.dhl.com/pl-pl/home/sledzenie.html?tracking-id=', 'GLS' => 'https://gls-group.com/PL/pl/sledzenie-paczek?match=', 'UPS' => 'https://www.ups.com/track?loc=pl_PL&tracknum=', 'Poczta Polska' => 'https://emonitoring.poczta-polska.pl/?numer=', 'FedEx' => 'https://www.fedex.com/fedextrack/?trknbr='];
 $msg = '';
@@ -70,6 +85,11 @@ $pickup = (float)($d['ship'] ?? 1) == 0 && str_contains((string)($d['shipName'] 
 <?= !empty($it['text']) ? '<br>Tekst: „' . $esc($it['text']) . '”' : '' ?><?= !empty($it['notes']) ? '<br>Uwagi: ' . nl2br($esc($it['notes'])) : '' ?><br>
 <?php if ($fs): foreach ($fs as $n => $_): ?><a class="f" href="<?= $esc($self . '&i=' . $i . '&f=' . rawurlencode($n)) ?>">⬇ <?= $esc($n) ?></a><?php endforeach; else: ?><span class="m">brak plików od klienta</span><?php endif; ?></li>
 <?php endforeach; ?></ol></div>
+<div class="c"><h2>Pliki przesłane przez klienta (<?= count($uploaded) ?>)</h2>
+<?php if ($uploaded): ?><p><a class="b" href="<?= $esc($self . '&zip=1') ?>">⬇ Pobierz wszystkie (ZIP, <?= number_format(array_sum($uploaded) / 1048576, 1, ',', ' ') ?> MB)</a></p>
+<?php foreach ($uploaded as $n => $sz): ?><a class="f" href="<?= $esc($self . '&u=' . rawurlencode($n)) ?>">⬇ <?= $esc($n) ?> <span class="m"><?= number_format($sz / 1048576, 1, ',', ' ') ?> MB</span></a><?php endforeach; ?>
+<?php else: ?><p class="m">Jeszcze brak. Klient dostał w mailu link „Prześlij pliki” – gdy coś wyśle, przyjdzie mail na kontakt@.</p><?php endif; ?>
+<p class="m">Link dla klienta (gdyby zgubił maila): <?= $esc(rtrim((string)cfg('base_url', 'https://aiprints.pl/'), '/') . '/pliki?no=' . rawurlencode($no) . '&t=' . $o['token']) ?></p></div>
 <?php if ($o['status'] !== 'pending'): ?>
 <div class="c"><h2>Wysyłka</h2>
 <?php if (!empty($d['shipping']['tracking'])): ?><p class="m">Wysłano: <?= $esc($d['shipping']['carrier'] . ' ' . $d['shipping']['tracking']) ?> (<?= $esc(date('d.m.Y H:i', strtotime($d['shipping']['at']))) ?>). Możesz poprawić numer i wysłać mail ponownie.</p><?php endif; ?>

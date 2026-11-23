@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Uploader from '../components/Uploader.astro';
 ---
 <Base title="Dziękujemy za zamówienie" description="Potwierdzenie płatności w AiPrints.pl." canonical="dziekujemy">
   <section class="max-w-[760px] mx-auto px-5 md:px-10 pt-36 pb-24 text-center">
@@ -9,7 +10,8 @@ import Base from '../layouts/Base.astro';
       <p id="tyMsg" class="text-mute text-[17px] mt-3">Sprawdzamy płatność…</p>
       <div id="tyItems" class="text-left mt-8 grid gap-2"></div>
       <div class="mt-10 flex flex-wrap gap-3 justify-center"><a id="tyAcc" href="konto.html" class="btn btn-ink">Moje zamówienia</a><a href="sklep.html" class="btn btn-out">Wróć do sklepu</a></div>
-      <p class="text-[13px] text-mute mt-8">Potwierdzenie z regulaminem w PDF wysłaliśmy na Twój e-mail. Podgląd projektu dostaniesz do akceptacji – produkcję zaczynamy dopiero po Twojej zgodzie.</p>
+      <Uploader auto />
+      <p class="text-[13px] text-mute mt-8">Potwierdzenie z regulaminem w PDF wysłaliśmy na Twój e-mail. Jeśli zamówienie wymaga projektu, wyślemy Ci podgląd do akceptacji przed produkcją.</p>
     </div>
   </section>
   <script>

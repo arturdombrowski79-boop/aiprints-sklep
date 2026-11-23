@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import cat from '../data/catalog.json';
-import { SEASON, PROMO, BREAK } from '../data/config.js';
+import { SEASON, PROMO, BREAK, SOCIAL } from '../data/config.js';
 import { RECIPIENTS } from '../data/preview.js';
 const P = cat.products;
 const by = (s) => P.find((p) => p.slug === s);
@@ -13,7 +13,7 @@ const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const tint = { 'druk-wielkoformatowy': '#e4ebf2', 'dla-fotografow': '#ecebe7', 'sublimacja': '#ece9f4', 'szkoly-i-przedszkola': '#e6f1ea', 'cmentarz-i-pogrzeb': '#ececec', 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1' };
 const pick = { 'druk-wielkoformatowy': 'hf/baner-reklamowy-1', 'dla-fotografow': 'hf/fine-art-bawelna-1', 'sublimacja': 'hf/koszulka-sportowa-sublimacja-1', 'szkoly-i-przedszkola': 'hf/plakaty-grup-przedszkolnych-1', 'cmentarz-i-pogrzeb': 'hf/zdjecie-nagrobne-porcelana-1', 'prezenty-ze-zdjeciem': 'f/krysztal-para-sq', 'prezenty-z-grawerem': 'f/koperta-drewniana-sq', 'slub-i-okazje': 'hf/kieliszki-para-1', 'dla-firm': 'hf/termos-logo-sq', 'wspolnoty-i-spoldzielnie': 'hf/tablica-wejscie-zarzadca-sq', 'salony-beauty': 'hf/logo-lustro-1', 'na-swieta': 'bombka/glowne' };
 const schema = { '@context': 'https://schema.org', '@graph': [
-  { '@type': 'Organization', name: 'AiPrints.pl', url: 'https://aiprints.pl/', logo: 'https://aiprints.pl/img/logo.svg', telephone: '+48609040274', email: 'kontakt@aiprints.pl' },
+  { '@type': 'Organization', name: 'AiPrints.pl', url: 'https://aiprints.pl/', sameAs: Object.values(SOCIAL).filter(Boolean), logo: 'https://aiprints.pl/img/logo.svg', telephone: '+48609040274', email: 'kontakt@aiprints.pl' },
   { '@type': 'LocalBusiness', name: 'AiPrints.pl – pracownia druku i graweru', image: 'https://aiprints.pl/img/site/pracownia.jpg', telephone: '+48609040274', address: { '@type': 'PostalAddress', streetAddress: 'ul. Okrężna 98B', postalCode: '41-500', addressLocality: 'Chorzów', addressCountry: 'PL' }, openingHours: 'Mo-Fr 09:00-17:00', priceRange: '$$' },
   { '@type': 'WebSite', name: 'AiPrints.pl', url: 'https://aiprints.pl/' }] };
 const faq = [

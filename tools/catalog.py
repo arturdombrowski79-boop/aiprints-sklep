@@ -113,6 +113,33 @@ for p in prods:
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     p['also']=[x for x in a if x!=p['cat']]
+# ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
+# gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
+# files – usługa z plików klienta (odbitki, druk fine art, banery, folie z gotowej grafiki), wiele i duże pliki
+# b2b   – oznakowanie, szyldy, druki firmowe: projekt z logo/tekstem, bez dodatków prezentowych
+# ready – gotowy towar bez personalizacji (akcesoria, gotowe znaki) – 14 dni na zwrot, dopisek opcjonalny
+KIND_READY={'mechanizm-cichy','indeksy-wskazowki','zestaw-montazowy','pchac-ciagnac','folia-dekor-kropki','dystanse','piktogram-wc','piktogramy-info',
+  'cyfry-zegar','dekoracje-lustrzane','smok-flexi','kliker-3d','ruchomy-szkielet','znaki-ppoz','znaki-zakazu','oznakowanie-piwnic','segregacja-odpadow',
+  'instrukcja-ppoz','tablica-ogloszen','regulamin-porzadku','zegar-diy-komplet','napisy-maz-zona','topper-ihs','ihs-litery','medalik-ihs'}
+KIND_FILES={'odbitki-drylab','powiekszenia-zdjec','fine-art-druk','fine-art-bawelna','wydruk-w-ramie','wydruk-wystawowy','digigraphie-edycja',
+  'reprodukcja-obrazu','retusz-starych-zdjec','wydruk-probny','plakat-wielkoformatowy','siatka-mesh','baner-reklamowy','baner-blockout','baner-tekstylny',
+  'wydruk-backlit','folia-samoprzylepna-druk','folia-owv-witryna','tablica-pcv-dibond','naklejki-po-obrysie','fototapeta','fotoksiazka-a5',
+  'kalendarz-scienny-zdjecia','kalendarz-2027-a3','kalendarz-biurkowy','odbitki-polaroid','magnesy-zdjecia','koc-ze-zdjeciem','portfolio-box',
+  'obraz-plotno','fotopanel-aluminium','folia-mrozona-nadruk','potykacz-a1','obrazki-pamiatkowe-pogrzeb','naklejki-promocyjne'}
+KIND_B2B_CATS={'dla-firm','salony-beauty','druk-wielkoformatowy','wspolnoty-i-spoldzielnie','szkoly-i-przedszkola'}
+# ile zdjęć zwykle potrzeba (opis przy polu plików)
+MANY={'fotoksiazka-a5':'24–48 zdjęć','kalendarz-scienny-zdjecia':'13 zdjęć (12 miesięcy + okładka)','kalendarz-2027-a3':'13 zdjęć','kalendarz-biurkowy':'13 zdjęć',
+  'magnesy-zdjecia':'9 zdjęć','odbitki-polaroid':'tyle zdjęć, ile odbitek','koc-ze-zdjeciem':'do 12 zdjęć do kolażu','portfolio-box':'20 zdjęć',
+  'odbitki-drylab':'tyle zdjęć, ile odbitek (możesz wysłać nawet kilkaset)','obrazki-pamiatkowe-pogrzeb':'1 zdjęcie + treść'}
+for p in prods:
+    s_=p['slug']
+    if s_ in KIND_READY: p['kind']='ready'; p['fields']=['note']
+    elif s_ in KIND_FILES:
+        p['kind']='files'; p['fields']=['files']+(['text'] if s_ in ('obrazki-pamiatkowe-pogrzeb','kalendarz-scienny-zdjecia','kalendarz-2027-a3') else [])
+    elif p.get('creator'): p['kind']='gift'
+    elif p['cat'] in KIND_B2B_CATS: p['kind']='b2b'
+    else: p['kind']='gift'
+    if s_ in MANY: p['many']=MANY[s_]
 for p in prods: p['tags']=tag(p)
 
 # ——— historia cen (Omnibus) i promocja z src/data/config.js ———

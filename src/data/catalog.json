@@ -168,7 +168,7 @@
 "xmas": true,
 "img": "img/hf/fine-art-druk-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -176,6 +176,7 @@
 "img/hf/fine-art-druk-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -225,6 +226,7 @@
 "img/hf/karafka-grawer-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -291,7 +293,7 @@
 "xmas": false,
 "img": "img/hf/plakat-wielkoformatowy-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -299,6 +301,7 @@
 "img/hf/plakat-wielkoformatowy-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
@@ -347,6 +350,7 @@
 "img/hf/termos-logo-2.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -399,6 +403,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -438,7 +443,7 @@
 "xmas": true,
 "img": "img/hf/odbitki-polaroid-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -448,6 +453,8 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "files",
+"many": "tyle zdjęć, ile odbitek",
 "tags": {
 "okazja": [
 "urodziny",
@@ -499,6 +506,7 @@
 "img/hf/akryl-polaroid-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -551,6 +559,7 @@
 "img/hf/krysztal-pupil-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -605,6 +614,7 @@
 "img/hf/swieca-szklo-imie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -659,6 +669,7 @@
 "img/hf/krysztal-pamiatkowy-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "rocznica",
@@ -713,6 +724,7 @@
 "img/hf/naszyjnik-grawer-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -766,6 +778,7 @@
 "img/hf/bransoletka-stal-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -824,8 +837,7 @@
 "xmas": false,
 "img": "img/hf/wydruk-wystawowy-1.jpg",
 "fields": [
-"photo",
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -833,6 +845,7 @@
 "img/hf/wydruk-wystawowy-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -879,6 +892,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -945,7 +959,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-bawelna-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -953,6 +967,7 @@
 "img/hf/fine-art-bawelna-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -1000,6 +1015,7 @@
 "img/hf/statuetka-krysztal-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -1043,7 +1059,7 @@
 "xmas": true,
 "img": "img/hf/fototapeta-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -1053,6 +1069,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "files",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -1100,6 +1117,7 @@
 "img/hf/puzzle-akryl-serce-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -1152,6 +1170,7 @@
 "img/hf/tablica-nauka-imienia-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "chrzest",
@@ -1202,6 +1221,7 @@
 "img/hf/tabliczki-pomieszczenia-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -1249,6 +1269,7 @@
 "img/f/krysztal-para.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub",
@@ -1301,6 +1322,7 @@
 "img/hf/logo-lustro-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -1347,6 +1369,7 @@
 "img/hf/statuetka-3-kody-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -1388,7 +1411,7 @@
 "xmas": true,
 "img": "img/hf/fotopanel-aluminium-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -1398,6 +1421,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -1450,7 +1474,7 @@
 "xmas": false,
 "img": "img/hf/wydruk-w-ramie-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -1458,6 +1482,7 @@
 "img/hf/wydruk-w-ramie-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -1503,6 +1528,7 @@
 "img/hf/lusterko-logo-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -1554,6 +1580,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -1597,7 +1624,7 @@
 "xmas": false,
 "img": "img/hf/koc-ze-zdjeciem-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -1605,6 +1632,8 @@
 "img/hf/koc-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "do 12 zdjęć do kolażu",
 "tags": {
 "okazja": [],
 "dla": [
@@ -1651,6 +1680,7 @@
 "img/hf/kubek-magiczny-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -1697,6 +1727,7 @@
 "img/hf/jelen-sklejka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -1743,6 +1774,7 @@
 "img/hf/numery-stol-podstawka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -1802,6 +1834,7 @@
 "img/f/krysztal-para.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -1862,6 +1895,7 @@
 "img/hf/tablica-rejestracyjna-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "dzien-taty"
@@ -1912,6 +1946,7 @@
 "img/hf/podziekowania-rodzice-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub",
@@ -1962,6 +1997,7 @@
 "img/hf/napis-recepcja-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2010,6 +2046,7 @@
 "img/hf/zestaw-higieniczny-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2056,6 +2093,7 @@
 "img/hf/wc-komplet-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2103,6 +2141,7 @@
 "img/hf/wizytowki-lakier-3d-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2150,6 +2189,7 @@
 "img/hf/numery-stol-lustro-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -2188,8 +2228,7 @@
 "xmas": false,
 "img": "img/hf/portfolio-box-1.jpg",
 "fields": [
-"photo",
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -2197,6 +2236,8 @@
 "img/hf/portfolio-box-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "20 zdjęć",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2233,7 +2274,7 @@
 "xmas": false,
 "img": "img/hf/znaki-ppoz-1.jpg",
 "fields": [
-"photo"
+"note"
 ],
 "quote": false,
 "unit": true,
@@ -2241,6 +2282,7 @@
 "img/hf/znaki-ppoz-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
@@ -2274,6 +2316,7 @@
 "img/hf/numery-pieter-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2308,6 +2351,7 @@
 "img/hf/krysztal-zimowy-led-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2336,7 +2380,7 @@
 "xmas": false,
 "img": "img/hf/siatka-mesh-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -2344,13 +2388,13 @@
 "img/hf/siatka-mesh-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -2372,7 +2416,7 @@
 "xmas": false,
 "img": "img/hf/baner-reklamowy-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -2380,13 +2424,13 @@
 "img/hf/baner-reklamowy-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -2417,6 +2461,7 @@
 "img/hf/numeracja-lokali-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2445,7 +2490,7 @@
 "xmas": false,
 "img": "img/hf/folia-samoprzylepna-druk-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -2453,13 +2498,13 @@
 "img/hf/folia-samoprzylepna-druk-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -2481,7 +2526,7 @@
 "xmas": false,
 "img": "img/hf/folia-owv-witryna-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -2489,13 +2534,13 @@
 "img/hf/folia-owv-witryna-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -2552,6 +2597,7 @@
 "img/hf/tablica-wejscie-zarzadca-2.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2588,6 +2634,7 @@
 "img/hf/breloki-klub-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2638,7 +2685,7 @@
 "xmas": false,
 "img": "img/hf/tablica-pcv-dibond-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -2646,6 +2693,7 @@
 "img/hf/tablica-pcv-dibond-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
@@ -2655,7 +2703,6 @@
 ],
 "pers": [
 "zdjecie",
-"imie",
 "logo"
 ],
 "mat": [
@@ -2689,6 +2736,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2726,6 +2774,7 @@
 "img/hf/tabliczki-skrzynki-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -2763,6 +2812,7 @@
 "img/hf/akryl-nasza-data-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -2798,7 +2848,7 @@
 "xmas": false,
 "img": "img/hf/potykacz-a1-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -2806,6 +2856,7 @@
 "img/hf/potykacz-a1-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
@@ -2833,7 +2884,7 @@
 "xmas": false,
 "img": "img/hf/naklejki-po-obrysie-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -2841,13 +2892,13 @@
 "img/hf/naklejki-po-obrysie-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -2879,6 +2930,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -2921,6 +2973,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -2972,6 +3025,7 @@
 "img/hf/tabliczka-aluminium-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2998,7 +3052,7 @@
 "xmas": true,
 "img": "img/hf/oznakowanie-piwnic-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": true,
@@ -3006,13 +3060,13 @@
 "img/hf/oznakowanie-piwnic-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": []
@@ -3041,6 +3095,7 @@
 "img/hf/dane-zarzadcy-tabliczka-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3069,7 +3124,7 @@
 "xmas": false,
 "img": "img/hf/segregacja-odpadow-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -3077,13 +3132,13 @@
 "img/hf/segregacja-odpadow-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": []
@@ -3103,7 +3158,7 @@
 "xmas": false,
 "img": "img/hf/baner-blockout-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -3111,13 +3166,13 @@
 "img/hf/baner-blockout-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -3147,6 +3202,7 @@
 "img/hf/litery-z-folii-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3188,7 +3244,7 @@
 "xmas": true,
 "img": "img/hf/znaki-zakazu-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -3198,13 +3254,13 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": []
@@ -3232,6 +3288,7 @@
 "img/hf/bony-podarunkowe-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3269,6 +3326,7 @@
 "img/hf/szklanki-whisky-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3311,6 +3369,7 @@
 "img/hf/logo-z-folii-na-szybe-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3347,6 +3406,7 @@
 "img/hf/pakiet-budynek-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3381,6 +3441,7 @@
 "img/hf/choinka-3d-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -3414,6 +3475,7 @@
 "img/hf/balwanek-3d-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -3439,7 +3501,7 @@
 "xmas": false,
 "img": "img/hf/wydruk-backlit-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -3447,13 +3509,13 @@
 "img/hf/wydruk-backlit-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -3483,6 +3545,7 @@
 "img/hf/brelok-akryl-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3524,6 +3587,7 @@
 "img/hf/bidon-dziecko-uv-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3562,6 +3626,7 @@
 "img/hf/kufel-grawer-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3608,7 +3673,7 @@
 "xmas": true,
 "img": "img/hf/tablica-ogloszen-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -3616,13 +3681,13 @@
 "img/hf/tablica-ogloszen-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -3652,6 +3717,7 @@
 "img/hf/kubek-zloty-rant-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -3688,6 +3754,7 @@
 "img/hf/deska-do-krojenia-2.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3736,6 +3803,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3774,6 +3842,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3800,7 +3869,7 @@
 "xmas": true,
 "img": "img/hf/regulamin-porzadku-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -3808,13 +3877,13 @@
 "img/hf/regulamin-porzadku-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -3844,6 +3913,7 @@
 "img/hf/tabliczki-domofon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -3882,6 +3952,7 @@
 "img/hf/niesmiertelnik-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3922,6 +3993,7 @@
 "img/hf/akryl-bilet-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -3963,6 +4035,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -4006,6 +4079,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4043,6 +4117,7 @@
 "img/hf/butelka-personalizacja-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4079,6 +4154,7 @@
 "img/hf/napis-na-samochod-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4120,6 +4196,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4156,6 +4233,7 @@
 "img/hf/tabliczka-opinie-sciana-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4184,7 +4262,7 @@
 "xmas": false,
 "img": "img/hf/instrukcja-ppoz-1.jpg",
 "fields": [
-"photo"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -4192,6 +4270,7 @@
 "img/hf/instrukcja-ppoz-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
@@ -4225,6 +4304,7 @@
 "img/hf/stojak-opinie-qr-nfc-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4261,6 +4341,7 @@
 "img/hf/inicjal-dziecko-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "chrzest",
@@ -4300,6 +4381,7 @@
 "img/hf/tabliczka-drzwi-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4337,6 +4419,7 @@
 "img/hf/zdjecie-na-drewnie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -4379,6 +4462,7 @@
 "img/hf/kartka-drewniana-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4417,6 +4501,7 @@
 "img/hf/tabliczka-adres-dystanse-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4454,6 +4539,7 @@
 "img/hf/pudelko-grawer-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4493,6 +4579,7 @@
 "img/hf/vouchery-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4520,7 +4607,7 @@
 "xmas": false,
 "img": "img/hf/digigraphie-edycja-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -4528,6 +4615,7 @@
 "img/hf/digigraphie-edycja-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -4570,7 +4658,7 @@
 "xmas": false,
 "img": "img/hf/odbitki-drylab-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -4578,6 +4666,8 @@
 "img/hf/odbitki-drylab-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "tyle zdjęć, ile odbitek (możesz wysłać nawet kilkaset)",
 "tags": {
 "okazja": [
 "urodziny",
@@ -4618,6 +4708,7 @@
 "img/hf/tablica-urzedowa-szkola-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4655,6 +4746,7 @@
 "img/hf/tabliczka-scienna-qr-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4700,7 +4792,7 @@
 "xmas": false,
 "img": "img/hf/powiekszenia-zdjec-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -4708,6 +4800,7 @@
 "img/hf/powiekszenia-zdjec-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -4742,6 +4835,7 @@
 "img/hf/magnes-na-samochod-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4780,6 +4874,7 @@
 "img/hf/naklejki-wycinane-logo-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4815,6 +4910,7 @@
 "img/hf/telefony-alarmowe-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4852,6 +4948,7 @@
 "img/hf/ksiazeczka-dziecko-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -4896,6 +4993,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -4933,6 +5031,7 @@
 "img/hf/akryl-obrys-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -4973,6 +5072,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5017,6 +5117,7 @@
 "img/hf/etui-grawer-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5058,6 +5159,7 @@
 "img/hf/napis-scienny-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -5093,6 +5195,7 @@
 "img/hf/kieliszki-para-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5138,6 +5241,7 @@
 "img/hf/tabliczka-nagrobna-grawer-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -5166,8 +5270,7 @@
 "xmas": true,
 "img": "img/hf/zegar-diy-komplet-1.jpg",
 "fields": [
-"text",
-"list"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -5175,6 +5278,7 @@
 "img/hf/zegar-diy-komplet-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -5211,6 +5315,7 @@
 "img/hf/tabliczki-sale-komplet-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5239,7 +5344,7 @@
 "xmas": true,
 "img": "img/hf/smok-flexi-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -5247,6 +5352,7 @@
 "img/hf/smok-flexi-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5285,6 +5391,7 @@
 "img/hf/figurka-swieta-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5323,6 +5430,7 @@
 "img/hf/napis-na-sciane-folia-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5376,6 +5484,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5413,6 +5522,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5449,6 +5559,7 @@
 "img/hf/etui-telefon-uv-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -5490,6 +5601,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "chrzest",
@@ -5532,6 +5644,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5558,7 +5671,7 @@
 "xmas": true,
 "img": "img/hf/dystanse-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": true,
@@ -5566,13 +5679,13 @@
 "img/hf/dystanse-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -5594,7 +5707,7 @@
 "xmas": true,
 "img": "img/hf/kliker-3d-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -5602,6 +5715,7 @@
 "img/hf/kliker-3d-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5632,7 +5746,7 @@
 "xmas": false,
 "img": "img/hf/baner-tekstylny-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": true,
@@ -5640,13 +5754,13 @@
 "img/hf/baner-tekstylny-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -5677,6 +5791,7 @@
 "img/hf/koszulka-sportowa-sublimacja-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5718,6 +5833,7 @@
 "img/hf/podkladka-pod-mysz-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -5753,6 +5869,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -5790,6 +5907,7 @@
 "img/hf/tumbler-uv-kolor-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5836,6 +5954,7 @@
 "img/hf/mis-z-koszulka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -5859,7 +5978,7 @@
 "xmas": true,
 "img": "img/hf/ruchomy-szkielet-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -5867,6 +5986,7 @@
 "img/hf/ruchomy-szkielet-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "urodziny",
@@ -5897,7 +6017,7 @@
 "xmas": true,
 "img": "img/hf/naklejki-promocyjne-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -5905,13 +6025,13 @@
 "img/hf/naklejki-promocyjne-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -5942,6 +6062,7 @@
 "img/hf/recznik-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -5987,6 +6108,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -6032,6 +6154,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6069,6 +6192,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -6104,6 +6228,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6139,6 +6264,7 @@
 "img/hf/akryl-plakat-filmowy-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -6182,6 +6308,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6217,6 +6344,7 @@
 "img/hf/szyld-okragly-logo-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6252,6 +6380,7 @@
 "img/hf/folia-mrozona-wymiar-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6288,6 +6417,7 @@
 "img/hf/karty-stalego-klienta-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6324,6 +6454,7 @@
 "img/hf/kamien-pamieci-pupil-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -6361,6 +6492,7 @@
 "img/hf/tabliczka-logo-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6398,6 +6530,7 @@
 "img/hf/szyld-czarny-nazwa-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6435,6 +6568,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6475,6 +6609,7 @@
 "img/hf/kubek-szklany-nadruk-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -6513,6 +6648,7 @@
 "img/hf/winietki-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -6550,6 +6686,7 @@
 "img/hf/logo-na-sciane-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6587,6 +6724,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6622,6 +6760,7 @@
 "img/hf/tabliczka-na-krzyz-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -6659,6 +6798,7 @@
 "img/hf/skrzynka-wino-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6699,6 +6839,7 @@
 "img/hf/bombka-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -6734,6 +6875,7 @@
 "img/hf/logo-na-lade-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6770,6 +6912,7 @@
 "img/hf/zaproszenia-akryl-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -6808,6 +6951,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -6843,6 +6987,7 @@
 "img/hf/kafel-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -6881,6 +7026,7 @@
 "img/hf/flaga-szal-kibica-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -6924,6 +7070,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -6951,7 +7098,7 @@
 "xmas": true,
 "img": "img/hf/magnesy-zdjecia-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -6962,6 +7109,8 @@
 "sublimacja",
 "dla-fotografow"
 ],
+"kind": "files",
+"many": "9 zdjęć",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7004,6 +7153,7 @@
 "img/hf/stojak-wizytowki-qr-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7041,6 +7191,7 @@
 "img/hf/puzzle-imie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7080,6 +7231,7 @@
 "img/hf/kubek-termiczny-grawer-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7124,6 +7276,7 @@
 "img/hf/witryna-logo-tel-qr-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7151,7 +7304,7 @@
 "xmas": false,
 "img": "img/hf/medalik-ihs-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": true,
@@ -7159,6 +7312,7 @@
 "img/hf/medalik-ihs-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "komunia",
@@ -7201,6 +7355,7 @@
 "img/hf/akryl-piosenka-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7242,6 +7397,7 @@
 "img/hf/mapa-poznalismy-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7273,7 +7429,7 @@
 "xmas": false,
 "img": "img/hf/ihs-litery-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -7281,6 +7437,7 @@
 "img/hf/ihs-litery-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "komunia",
@@ -7309,7 +7466,7 @@
 "xmas": false,
 "img": "img/hf/reprodukcja-obrazu-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -7317,6 +7474,7 @@
 "img/hf/reprodukcja-obrazu-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7358,6 +7516,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7396,6 +7555,7 @@
 "img/hf/lampion-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -7432,6 +7592,7 @@
 "img/hf/litofania-lampka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7477,6 +7638,7 @@
 "img/hf/wizytowki-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7504,7 +7666,8 @@
 "xmas": false,
 "img": "img/hf/kalendarz-scienny-zdjecia-1.jpg",
 "fields": [
-"photo"
+"files",
+"text"
 ],
 "quote": false,
 "unit": false,
@@ -7512,6 +7675,8 @@
 "img/hf/kalendarz-scienny-zdjecia-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "13 zdjęć (12 miesięcy + okładka)",
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -7552,6 +7717,7 @@
 "img/hf/fartuch-z-nadrukiem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7593,6 +7759,7 @@
 "img/hf/plakietki-qr-nfc-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7627,6 +7794,7 @@
 "img/hf/tabliczka-wc-kwadrat-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7663,6 +7831,7 @@
 "img/hf/topper-bok-tortu-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -7698,6 +7867,7 @@
 "img/hf/brelok-3d-imie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -7740,6 +7910,7 @@
 "img/hf/torba-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -7764,7 +7935,7 @@
 "xmas": false,
 "img": "img/hf/retusz-starych-zdjec-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -7772,6 +7943,7 @@
 "img/hf/retusz-starych-zdjec-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [
@@ -7806,6 +7978,7 @@
 "img/hf/szyld-okragly-led-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7841,6 +8014,7 @@
 "img/hf/tabliczka-przedszkole-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7877,6 +8051,7 @@
 "img/hf/godziny-otwarcia-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7912,6 +8087,7 @@
 "img/hf/ulotki-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7948,6 +8124,7 @@
 "img/hf/dlugopisy-grawer-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -7987,6 +8164,7 @@
 "img/hf/diorama-3d-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -8017,7 +8195,8 @@
 "xmas": false,
 "img": "img/hf/obrazki-pamiatkowe-pogrzeb-1.jpg",
 "fields": [
-"photo"
+"files",
+"text"
 ],
 "quote": false,
 "unit": false,
@@ -8027,6 +8206,8 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "files",
+"many": "1 zdjęcie + treść",
 "tags": {
 "okazja": [
 "urodziny",
@@ -8067,6 +8248,7 @@
 "img/hf/brelok-drewno-skora-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -8112,6 +8294,7 @@
 "img/hf/topper-tort-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -8149,6 +8332,7 @@
 "img/hf/tabliczki-drzwi-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8186,6 +8370,7 @@
 "img/hf/akryl-led-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -8227,6 +8412,7 @@
 "img/hf/sylwetka-psa-2.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -8260,6 +8446,7 @@
 "img/hf/znicz-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "pamiatka"
@@ -8296,6 +8483,7 @@
 "img/hf/ksiega-gosci-tabliczka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -8331,6 +8519,7 @@
 "img/hf/tablica-komunia-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "komunia"
@@ -8366,6 +8555,7 @@
 "img/hf/stojak-wifi-qr-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8402,6 +8592,7 @@
 "img/hf/reklama-na-auto-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8438,6 +8629,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8471,6 +8663,7 @@
 "img/hf/folia-mrozona-logo-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8506,6 +8699,7 @@
 "img/hf/terminarzyki-wizyt-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8541,6 +8735,7 @@
 "img/hf/bombka-dab-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -8577,6 +8772,7 @@
 "img/hf/adresowka-psa-3.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -8613,6 +8809,7 @@
 "img/hf/mapa-miasta-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -8649,6 +8846,7 @@
 "img/hf/dyplom-drewniany-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8690,6 +8888,7 @@
 "img/hf/lokal-wynajem-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8726,6 +8925,7 @@
 "img/hf/certyfikaty-szkolen-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8754,7 +8954,7 @@
 "xmas": false,
 "img": "img/hf/wydruk-probny-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -8762,6 +8962,7 @@
 "img/hf/wydruk-probny-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -8797,6 +8998,7 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub",
@@ -8838,6 +9040,7 @@
 "img/hf/inicjaly-scianka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub",
@@ -8878,6 +9081,7 @@
 "img/hf/skarpetki-ze-zdjeciem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [
@@ -8912,6 +9116,7 @@
 "img/hf/medale-grawer-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -8943,7 +9148,7 @@
 "xmas": true,
 "img": "img/hf/folia-mrozona-nadruk-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -8951,6 +9156,7 @@
 "img/hf/folia-mrozona-nadruk-1.jpg"
 ],
 "also": [],
+"kind": "files",
 "tags": {
 "okazja": [
 "firma"
@@ -8960,7 +9166,6 @@
 ],
 "pers": [
 "zdjecie",
-"imie",
 "logo"
 ],
 "mat": [
@@ -8982,7 +9187,7 @@
 "xmas": true,
 "img": "img/hf/obraz-plotno-sq.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -8994,6 +9199,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny",
@@ -9033,6 +9239,7 @@
 "img/hf/podkladki-zestaw-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -9071,6 +9278,7 @@
 "img/hf/napis-pudelko-koperty-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -9110,6 +9318,7 @@
 "also": [
 "sublimacja"
 ],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -9144,7 +9353,7 @@
 "xmas": true,
 "img": "img/hf/pchac-ciagnac-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9152,13 +9361,13 @@
 "img/hf/pchac-ciagnac-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -9180,7 +9389,7 @@
 "xmas": true,
 "img": "img/hf/kalendarz-biurkowy-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -9190,6 +9399,8 @@
 "also": [
 "dla-fotografow"
 ],
+"kind": "files",
+"many": "13 zdjęć",
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -9220,7 +9431,7 @@
 "xmas": false,
 "img": "img/hf/napisy-maz-zona-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9228,6 +9439,7 @@
 "img/hf/napisy-maz-zona-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "slub"
@@ -9265,6 +9477,7 @@
 "img/hf/ihs-kolo-scianka-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "komunia",
@@ -9301,6 +9514,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9338,6 +9552,7 @@
 "img/hf/montaz-oznakowania-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9372,6 +9587,7 @@
 "img/hf/plakietki-qr-grawer-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9401,7 +9617,7 @@
 "xmas": true,
 "img": "img/hf/piktogram-wc-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9409,13 +9625,13 @@
 "img/hf/piktogram-wc-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -9437,7 +9653,7 @@
 "xmas": true,
 "img": "img/hf/piktogramy-info-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9445,13 +9661,13 @@
 "img/hf/piktogramy-info-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -9482,6 +9698,7 @@
 "img/hf/pakiet-social-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9517,6 +9734,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9554,6 +9772,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9582,7 +9801,8 @@
 "xmas": true,
 "img": "img/hf/kalendarz-2027-a3-1.jpg",
 "fields": [
-"photo"
+"files",
+"text"
 ],
 "quote": false,
 "unit": false,
@@ -9590,6 +9810,8 @@
 "img/hf/kalendarz-2027-a3-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "13 zdjęć",
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -9628,6 +9850,7 @@
 "img/hf/akryl-blok-zdjecie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -9664,6 +9887,7 @@
 "img/hf/cennik-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9701,6 +9925,7 @@
 "img/hf/zegar-z-logo-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -9737,6 +9962,7 @@
 "img/hf/tablica-inicjaly-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub",
@@ -9769,8 +9995,7 @@
 "xmas": true,
 "img": "img/hf/cyfry-zegar-1.jpg",
 "fields": [
-"text",
-"list"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9778,6 +10003,7 @@
 "img/hf/cyfry-zegar-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -9805,7 +10031,7 @@
 "xmas": false,
 "img": "img/hf/topper-ihs-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -9813,6 +10039,7 @@
 "img/hf/topper-ihs-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "slub",
@@ -9850,6 +10077,7 @@
 "img/hf/logo-gotowe-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9883,6 +10111,7 @@
 "img/hf/plan-stolow-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -9918,6 +10147,7 @@
 "img/hf/tablica-witamy-gosci-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -9953,6 +10183,7 @@
 "img/hf/notesy-logo-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -9990,6 +10221,7 @@
 "img/hf/szyld-ramka-znaki-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10023,6 +10255,7 @@
 "img/hf/wizytownik-lustro-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10050,7 +10283,7 @@
 "xmas": true,
 "img": "img/hf/fotoksiazka-a5-1.jpg",
 "fields": [
-"photo"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -10058,6 +10291,8 @@
 "img/hf/fotoksiazka-a5-1.jpg"
 ],
 "also": [],
+"kind": "files",
+"many": "24–48 zdjęć",
 "tags": {
 "okazja": [
 "okragle-urodziny",
@@ -10101,6 +10336,7 @@
 "img/hf/logo-indywidualne-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10126,7 +10362,7 @@
 "xmas": true,
 "img": "img/hf/zestaw-montazowy-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -10134,13 +10370,13 @@
 "img/hf/zestaw-montazowy-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -10171,6 +10407,7 @@
 "img/hf/pakiet-startowy-salon-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10207,6 +10444,7 @@
 "img/hf/kalendarz-adwentowy-3d-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -10247,6 +10485,7 @@
 "img/hf/lamibook-imie-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "chrzest",
@@ -10285,6 +10524,7 @@
 "img/f/bombka-zlota.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny"
@@ -10312,7 +10552,7 @@
 "xmas": true,
 "img": "img/hf/dekoracje-lustrzane-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -10320,6 +10560,7 @@
 "img/hf/dekoracje-lustrzane-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -10353,6 +10594,7 @@
 "img/hf/pupil-figurka-3d-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -10396,6 +10638,7 @@
 "also": [
 "druk-wielkoformatowy"
 ],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10424,7 +10667,7 @@
 "xmas": true,
 "img": "img/hf/indeksy-wskazowki-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -10432,6 +10675,7 @@
 "img/hf/indeksy-wskazowki-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -10467,6 +10711,7 @@
 "img/hf/skrypt-szkoleniowy-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10503,6 +10748,7 @@
 "img/hf/strona-one-page-1.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"
@@ -10528,7 +10774,7 @@
 "xmas": true,
 "img": "img/hf/folia-dekor-kropki-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -10536,13 +10782,13 @@
 "img/hf/folia-dekor-kropki-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -10564,7 +10810,7 @@
 "xmas": true,
 "img": "img/hf/mechanizm-cichy-1.jpg",
 "fields": [
-"text"
+"note"
 ],
 "quote": false,
 "unit": false,
@@ -10572,6 +10818,7 @@
 "img/hf/mechanizm-cichy-1.jpg"
 ],
 "also": [],
+"kind": "ready",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -10603,6 +10850,7 @@
 "img/f/koperta-drewniana.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [],
 "dla": [],
@@ -10636,6 +10884,7 @@
 "img/hf/koszulka-z-nadrukiem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -10677,6 +10926,7 @@
 "img/hf/bluza-z-nadrukiem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -10717,6 +10967,7 @@
 "img/hf/kubek-z-nadrukiem-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "urodziny",
@@ -10760,6 +11011,7 @@
 "img/hf/tablica-powitalna-1.jpg"
 ],
 "also": [],
+"kind": "gift",
 "tags": {
 "okazja": [
 "slub"
@@ -10796,6 +11048,7 @@
 "img/p/folia-mrozona-z-logo.jpg"
 ],
 "also": [],
+"kind": "b2b",
 "tags": {
 "okazja": [
 "firma"

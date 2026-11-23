@@ -15,7 +15,11 @@ export const B2B = ['dla-firm', 'wspolnoty-i-spoldzielnie', 'salony-beauty', 'dr
 export function describe(p, catName) {
   const b2b = B2B.includes(p.cat);
   const a = `${p.name}${p.variants ? ' – ' + p.variants.charAt(0).toLowerCase() + p.variants.slice(1) : ''}.`;
-  const b = b2b
+  const b = p.kind === 'files'
+    ? `Wgrywasz własne zdjęcia lub pliki do druku – bez limitu liczby, do 2 GB na plik (albo podajesz link do Dysku Google czy WeTransfer).${p.many ? ' Potrzebne: ' + p.many + '.' : ''} Przed drukiem sprawdzamy rozdzielczość i kolory – jeśli coś trzeba poprawić, napiszemy. Realizacja zwykle 2–7 dni roboczych.`
+    : p.kind === 'ready'
+    ? 'Gotowy produkt z naszej pracowni – wysyłamy zwykle w 1–3 dni robocze. Bez personalizacji możesz go zwrócić w ciągu 14 dni.'
+    : b2b
     ? 'Przygotujemy projekt według Twoich danych i logo, a przed produkcją wyślemy go do akceptacji. Przy kolejnych zamówieniach korzystamy z tego samego szablonu, więc nie płacisz drugi raz za projekt. Wystawiamy fakturę VAT.'
     : 'Po zamówieniu przygotujemy projekt i wyślemy go do akceptacji na e-mail. Produkcję zaczynamy dopiero, gdy go zatwierdzisz – poprawki przed akceptacją są bezpłatne. Wykonanie trwa zwykle 5–10 dni roboczych od akceptacji.';
   return [a, b];
