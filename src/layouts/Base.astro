@@ -22,6 +22,7 @@ const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <=
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={site + canonical} />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={site + canonical} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={fitD(description)} />
   <meta property="og:image" content={site + image} />
