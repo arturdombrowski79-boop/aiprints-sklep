@@ -29,7 +29,7 @@ foreach ($d['items'] as $it) {
 }
 $wd = function (int $n) { $t = time(); while ($n > 0) { $t += 86400; if ((int)date('N', $t) < 6) $n--; } return date('d.m.Y', $t); };
 $vars = ['no' => $no, 'first' => explode(' ', trim($o['name'] ?: 'Kliencie'))[0], 'date' => date('d.m.Y', strtotime($o['created'])), 'pay' => strtoupper((string)($d['payment']['method'] ?? 'online')),
-  'delivery' => $d['shipName'] . ($d['locker'] ? ' ' . $d['locker'] : ''), 'ship' => zl($d['ship']), 'disc' => zl($d['disc']), 'total' => zl($d['total']), 'address' => $d['address'] ?? ($d['locker'] ? 'Paczkomat ' . $d['locker'] : 'Odbiór w pracowni'),
+  'delivery' => $d['shipName'] . ($d['locker'] ? ' ' . $d['locker'] : ''), 'ship' => zl($d['ship']), 'disc' => zl($d['disc']), 'total' => zl($d['total']), 'address' => $d['address'] ?? ($d['locker'] ? 'Paczkomat ' . $d['locker'] : 'Chorzów, ul. Okrężna 98B'),
   'proofBy' => $wd(2), 'lead' => '5–10 dni roboczych', 'breakNote' => cfg('break_note', ''), 'items' => $items, 'show_disc' => $d['disc'] > 0, 'show_ret' => $anyRet, 'show_brk' => (bool)cfg('break_note', '')];
 $files = ['Regulamin-AiPrints.pdf' => API . '/../docs/regulamin-aiprints.pdf'];
 if ($anyRet) $files['Formularz-odstapienia.pdf'] = API . '/../docs/formularz-odstapienia.pdf';
