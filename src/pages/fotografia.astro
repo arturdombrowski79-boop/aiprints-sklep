@@ -13,15 +13,17 @@ const S = [
   ['fotografia-architektury', 'Architektura i wnętrza', 'Mieszkania na sprzedaż i wynajem, lokale, hotele, biura i realizacje wykonawców – z prostymi liniami i naturalnym światłem.'],
   ['zdjecia-z-drona', 'Zdjęcia i filmy z drona', 'Nieruchomości i działki, postęp budowy, wydarzenia, krajobrazy. Loty planujemy zgodnie z przepisami i strefami.'],
 ];
+const P = [['01', 'Portret studyjny dziewczyny na jasnym tle'], ['02', 'Para z wózkiem w parku o zachodzie słońca'], ['03', 'Sesja plenerowa w ogrodzie – kobieta w spódnicy w grochy'], ['04', 'Świąteczna sesja niemowlaka w stroju Mikołaja'], ['05', 'Portret w białej koszuli, studio'], ['06', 'Dziewczynka w sukience w kwiaty nad jeziorem'], ['07', 'Plener w ogrodzie przy drewnianej ścianie'], ['08', 'Rodzice z dzieckiem w chuście nad wodą'], ['09', 'Portret studyjny – zbliżenie'], ['10', 'Niemowlę w czapce Mikołaja, sesja świąteczna'], ['11', 'Sesja w ogrodzie przy płocie z trzciny'], ['12', 'Portret kobiety w plenerze'], ['13', 'Plener – portret w ogrodzie'], ['14', 'Sesja świąteczna niemowlaka – zbliżenie'], ['15', 'Portret studyjny z kolorowym światłem']];
 const faq = [
   ['Ile kosztuje sesja?', 'Ceny pakietów znajdziesz wyżej, w sekcji „Pakiety i ceny”. Sesję w innym zakresie (więcej osób, dłuższy plener, dojazd dalej niż 20 km) wycenimy indywidualnie w ciągu 24 h w dni robocze.'],
   ['Czy zdjęcia do dokumentów zrobię bez umawiania?', 'Najlepiej zadzwoń przed przyjazdem: 609 040 274 – upewnimy się, że ktoś będzie w pracowni. Zdjęcie drukujemy od ręki.'],
   ['W jakiej formie dostanę zdjęcia?', 'Obrobione zdjęcia w wysokiej rozdzielczości przez link do pobrania. Wybrane ujęcia możesz od razu zamówić u nas jako odbitki, fine art, fotoksiążkę, obraz na płótnie albo fotopanel.'],
-  ['Czy korzystacie z AI?', 'Do retuszu i porządkowania zdjęć używamy też narzędzi z AI (np. usuwanie drobnych zabrudzeń, wyrównanie tła). Nie zmieniamy wyglądu osób bez Twojej zgody. Zdjęcia poglądowe na tej stronie to wizualizacje – portfolio z naszych sesji pokażemy na życzenie.'],
+  ['Czy korzystacie z AI?', 'Do retuszu i porządkowania zdjęć używamy też narzędzi z AI (np. usuwanie drobnych zabrudzeń, wyrównanie tła). Nie zmieniamy wyglądu osób bez Twojej zgody. Zdjęcia w portfolio pochodzą z naszych sesji (publikujemy je za zgodą osób na zdjęciach). Wizualizacje AI oznaczamy jako „poglądowe”.'],
+  ['Na jakim sprzęcie fotografujecie?', 'Sesje realizujemy na profesjonalnym bezlusterkowcu Sony A7R V (61 Mpx) z obiektywami Sony G Master. Duża rozdzielczość pozwala bez problemu drukować zdjęcia w dużym formacie – na płótnie, w fine art czy na fototapecie.'],
 ];
 ---
 <Base title="Fotograf Chorzów – sesje, zdjęcia do dokumentów, dron" description="Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona – pracownia AiPrints.pl w Chorzowie. Wydruk zdjęć na miejscu." canonical="fotografia" active="fotografia">
-  <ServiceHero eyebrow="Fotografia · Chorzów i Śląsk" title={'Zdjęcia, które <em class="text-gold">od razu</em> wydrukujemy.'} lead="Od zdjęcia do dowodu po sesję rodzinną i zdjęcia z drona. Robimy je w pracowni w Chorzowie albo w plenerze – a najlepsze ujęcia drukujemy u siebie: od odbitki po fine art na papierze muzealnym." img="img/hf/sesja-portretowa-1.jpg" alt="Studio fotograficzne z oświetleniem" shop="fotografia.html#cennik" shopLabel="Pakiety i ceny" />
+  <ServiceHero eyebrow="Fotografia · Chorzów i Śląsk" title={'Zdjęcia, które <em class="text-gold">od razu</em> wydrukujemy.'} lead="Od zdjęcia do dowodu po sesję rodzinną i zdjęcia z drona. Robimy je w pracowni w Chorzowie albo w plenerze, na profesjonalnym Sony A7R V z obiektywami G Master – a najlepsze ujęcia drukujemy u siebie: od odbitki po fine art na papierze muzealnym." img="img/hf/sesja-portretowa-1.jpg" alt="Portret studyjny – kobieta w białej koszuli na jasnym tle" caption="Z naszej sesji portretowej · Sony A7R V + G Master" shop="fotografia.html#cennik" shopLabel="Pakiety i ceny" />
   <section id="uslugi" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Co fotografujemy</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
@@ -31,14 +33,20 @@ const faq = [
           <div class="p-6 flex-1 flex flex-col"><h3 class="font-display text-[28px] leading-tight">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-3 flex-1">{d}</p><span class="text-[14px] font-semibold mt-4">Zapytaj o termin →</span></div>
         </a>))}
     </div>
-    <p class="reveal text-[13px] text-mute mt-5">Zdjęcia na tej stronie są poglądowe – portfolio z naszych sesji wkrótce.</p>
+    <p class="reveal text-[13px] text-mute mt-5">Portret, sesja rodzinna i plenerowa – zdjęcia z naszych sesji. Pozostałe kafelki są poglądowe.</p>
+  </section>
+  <section id="portfolio" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
+    <div class="flex flex-wrap items-end justify-between gap-4"><h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Z naszych sesji</h2><p class="reveal text-mute text-[14.5px] max-w-[440px]">Portrety w studiu, sesja świąteczna niemowlaka, rodzina i plener. Sony A7R V + obiektywy G Master. Publikujemy za zgodą osób na zdjęciach.</p></div>
+    <div class="columns-2 md:columns-3 lg:columns-4 gap-4 mt-10 [&>img]:mb-4">
+      {P.map(([i, a]) => <img src={`img/portfolio/sesja-${i}.jpg`} alt={a} loading="lazy" decoding="async" class="reveal w-full rounded-[22px] break-inside-avoid" />)}
+    </div>
   </section>
   <section id="cennik" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Pakiety i ceny</h2>
     <div class="grid gap-14 mt-10">{S.map(([s, t]) => <div class="reveal"><Pakiety slug={s} title={t} /></div>)}</div>
   </section>
-  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid lg:grid-cols-3 gap-4">
-    {[['Sesja i wydruk w jednym miejscu', 'Po sesji wybierasz zdjęcia, a my od razu drukujemy je na papierze fotograficznym, płótnie, aluminium albo w fotoksiążce.'], ['Kolor pod kontrolą', 'Obróbkę robimy na skalibrowanym monitorze EIZO ColorEdge, więc wydruk wygląda tak jak na ekranie.'], ['Dla firm z fakturą VAT', 'Zdjęcia produktów, wnętrz i zespołu – z prawami do użycia w sklepie, katalogu i reklamie.']].map(([t, d]) => (
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {[['Sesja i wydruk w jednym miejscu', 'Po sesji wybierasz zdjęcia, a my od razu drukujemy je na papierze fotograficznym, płótnie, aluminium albo w fotoksiążce.'], ['Kolor pod kontrolą', 'Obróbkę robimy na skalibrowanym monitorze EIZO ColorEdge, więc wydruk wygląda tak jak na ekranie.'], ['Sony A7R V + G Master', 'Fotografujemy na pełnoklatkowym Sony A7R V (61 Mpx) z jasnymi obiektywami G Master – ostro, z pięknym rozmyciem tła i zapasem na duże wydruki.'], ['Dla firm z fakturą VAT', 'Zdjęcia produktów, wnętrz i zespołu – z prawami do użycia w sklepie, katalogu i reklamie.']].map(([t, d]) => (
       <div class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[26px] leading-tight">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-3">{d}</p></div>))}
   </section>
   <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Fotografia / sesja" title="Zapytaj o sesję lub zdjęcia" hint="Jaka sesja, ile osób, gdzie (studio, plener, adres), preferowany termin. Dla firm: ile produktów lub pomieszczeń." /></section>

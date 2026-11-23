@@ -1,6 +1,7 @@
 ---
 import Ph from './Ph.astro';
 const { p, pv } = Astro.props;
+const REAL = ['sesja-portretowa', 'sesja-rodzinna', 'sesja-plenerowa'];
 const gal = (p.gallery || []).filter((g) => !pv || g !== pv.img);
 const ratio = pv ? pv.ratio : gal.length && gal[0].includes('/hf/') ? '4/3' : '1/1';
 const pos = pv?.text ? (pv.texts || [[pv.text.x, pv.text.y]]) : [];
@@ -51,7 +52,7 @@ const vt = `view-transition-name:vt-${p.slug}`;
       {pv && <button class="th w-[72px] aspect-square rounded-2xl overflow-hidden ring-2 ring-ink ring-offset-2 ring-offset-paper" data-i="0"><img src={pv.img} alt="" class="w-full h-full object-cover" /></button>}
       {gal.map((g, i) => <button class={`th w-[72px] aspect-square rounded-2xl overflow-hidden ring-offset-2 ring-offset-paper ${!pv && i === 0 ? 'ring-2 ring-ink' : 'opacity-70 hover:opacity-100'}`} data-i={(pv ? 1 : 0) + i}><img src={g} alt="" loading="lazy" class="w-full h-full object-cover" /></button>)}
     </div>)}
-  <p class="text-[12.5px] text-mute mt-3">{pv ? 'Wpisz tekst' + (pv.photo ? ' albo dodaj zdjęcie' : '') + ' – podgląd zmienia się na żywo. Projekt w skali 1:1 dostaniesz do akceptacji przed produkcją.' : p.img ? (p.kind === 'service' ? 'Zdjęcie poglądowe.' : p.kind === 'ready' ? 'Zdjęcia poglądowe.' : p.kind === 'files' ? 'Zdjęcia poglądowe – wydrukujemy Twoje pliki.' : 'Zdjęcia poglądowe – Twój produkt będzie miał Twoją personalizację.') : 'Zdjęcia tego produktu dodamy wkrótce. Wizualizację z Twoim projektem dostaniesz przed produkcją.'}</p>
+  <p class="text-[12.5px] text-mute mt-3">{pv ? 'Wpisz tekst' + (pv.photo ? ' albo dodaj zdjęcie' : '') + ' – podgląd zmienia się na żywo. Projekt w skali 1:1 dostaniesz do akceptacji przed produkcją.' : p.img ? (p.kind === 'service' ? (REAL.includes(p.slug) ? 'Zdjęcie z naszej sesji (Sony A7R V + G Master), publikowane za zgodą.' : 'Zdjęcie poglądowe.') : p.kind === 'ready' ? 'Zdjęcia poglądowe.' : p.kind === 'files' ? 'Zdjęcia poglądowe – wydrukujemy Twoje pliki.' : 'Zdjęcia poglądowe – Twój produkt będzie miał Twoją personalizację.') : 'Zdjęcia tego produktu dodamy wkrótce. Wizualizację z Twoim projektem dostaniesz przed produkcją.'}</p>
 </div>
 <style>
   .zoom:hover img { transform: scale(1.6); cursor: zoom-in; }

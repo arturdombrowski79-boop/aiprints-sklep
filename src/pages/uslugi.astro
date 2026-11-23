@@ -7,7 +7,7 @@ const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repla
 const inCat = (c) => (p) => p.cat === c || (p.also || []).includes(c);
 const U = [
   ['Prezenty personalizowane', 'Grawer, zdjęcie, kryształy 3D, akryl, drewno – z podglądem projektu przed produkcją.', 'sklep.html', 'Laser xTool CO₂, MOPA i UV · druk UV GoArt', from((p) => p.kind === 'gift' && inCat('prezenty-z-grawerem')(p)), 'img/f/krysztal-para-sq.jpg'],
-  ['Fotografia i sesje', 'Zdjęcia do dokumentów, portret, sesje rodzinne i plenerowe, produkty, architektura, dron.', 'fotografia.html', 'Studio w pracowni · plener · dron', 30, 'img/hf/sesja-rodzinna-1.jpg'],
+  ['Fotografia i sesje', 'Zdjęcia do dokumentów, portret, sesje rodzinne i plenerowe, produkty, architektura, dron.', 'fotografia.html', 'Sony A7R V + G Master · studio · plener · dron', 30, 'img/hf/sesja-rodzinna-1.jpg'],
   ['Druk cyfrowy', 'Prace dyplomowe, zaproszenia, kartki, wizytówki, ulotki składane, broszury zszywane.', 'druk-cyfrowy.html', 'Xerox C75 z finiszerem · do SRA3', from((p) => /Xerox/.test(p.machine || '')), 'img/hf/druk-cyfrowy-1.jpg'],
   ['Druk wielkoformatowy i reklama', 'Banery, siatki, folie, fototapety, naklejki po obrysie, witryny, litery z plotera.', 'druk-wielkoformatowy.html', 'HP Latex 375 · ploter tnący Summa S3', from(inCat('druk-wielkoformatowy')), 'img/hf/baner-reklamowy-1.jpg'],
   ['Fine art i Digigraphie®', 'Wydruki muzealne, reprodukcje, limitowane edycje dla artystów i fotografów, odbitki.', 'druk-dla-artystow.html', 'Epson SureColor P9500 · SureLab D1000 · EIZO CG319X', from((p) => inCat('dla-fotografow')(p) && /fine-art|digigraphie|wydruk/.test(p.slug)), 'img/hf/druk-dla-artystow-1.jpg'],
