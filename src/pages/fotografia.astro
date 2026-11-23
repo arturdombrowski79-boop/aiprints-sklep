@@ -23,13 +23,13 @@ const faq = [
 ];
 ---
 <Base title="Fotograf Chorzów – sesje, zdjęcia do dokumentów, dron" description="Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona – pracownia AiPrints.pl w Chorzowie. Wydruk zdjęć na miejscu." canonical="fotografia" active="fotografia">
-  <ServiceHero eyebrow="Fotografia · Chorzów i Śląsk" title={'Zdjęcia, które <em class="text-gold">od razu</em> wydrukujemy.'} lead="Od zdjęcia do dowodu po sesję rodzinną i zdjęcia z drona. Robimy je w pracowni w Chorzowie albo w plenerze, na profesjonalnym Sony A7R V z obiektywami G Master – a najlepsze ujęcia drukujemy u siebie: od odbitki po fine art na papierze muzealnym." img="img/hf/sesja-portretowa-1.jpg" alt="Portret studyjny – kobieta w białej koszuli na jasnym tle" caption="Z naszej sesji portretowej · Sony A7R V + G Master" shop="fotografia.html#cennik" shopLabel="Pakiety i ceny" />
+  <ServiceHero eyebrow="Fotografia · Chorzów i Śląsk" title={'Zdjęcia, które <em class="text-gold">od razu</em> wydrukujemy.'} lead="Od zdjęcia do dowodu po sesję rodzinną i zdjęcia z drona. Robimy je w pracowni w Chorzowie albo w plenerze, na profesjonalnym Sony A7R V z obiektywami G Master – a najlepsze ujęcia drukujemy u siebie: od odbitki po fine art na papierze muzealnym." img="img/hf/sesja-portretowa-1.jpg?v=2" alt="Portret studyjny – kobieta w białej koszuli na jasnym tle" caption="Z naszej sesji portretowej · Sony A7R V + G Master" shop="fotografia.html#cennik" shopLabel="Pakiety i ceny" />
   <section id="uslugi" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Co fotografujemy</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
       {S.map(([s, t, d]) => (
         <a href={`${s}.html`} class="reveal group rounded-[30px] bg-white border border-line overflow-hidden flex flex-col hover:border-ink transition">
-          <img src={`img/hf/${s}-1.jpg`} alt={t} loading="lazy" class="aspect-[4/3] object-cover w-full" />
+          <img src={`img/hf/${s}-1.jpg?v=2`} alt={t} loading="lazy" class="aspect-[4/3] object-cover w-full" />
           <div class="p-6 flex-1 flex flex-col"><h3 class="font-display text-[28px] leading-tight">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-3 flex-1">{d}</p><span class="text-[14px] font-semibold mt-4">Zapytaj o termin →</span></div>
         </a>))}
     </div>

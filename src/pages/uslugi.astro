@@ -7,7 +7,7 @@ const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repla
 const inCat = (c) => (p) => p.cat === c || (p.also || []).includes(c);
 const U = [
   ['Prezenty personalizowane', 'Grawer, zdjęcie, kryształy 3D, akryl, drewno – z podglądem projektu przed produkcją.', 'sklep.html', 'Laser xTool CO₂, MOPA i UV · druk UV GoArt', from((p) => p.kind === 'gift' && inCat('prezenty-z-grawerem')(p)), 'img/f/krysztal-para-sq.jpg'],
-  ['Fotografia i sesje', 'Zdjęcia do dokumentów, portret, sesje rodzinne i plenerowe, produkty, architektura, dron.', 'fotografia.html', 'Sony A7R V + G Master · studio · plener · dron', 30, 'img/hf/sesja-rodzinna-1.jpg'],
+  ['Fotografia i sesje', 'Zdjęcia do dokumentów, portret, sesje rodzinne i plenerowe, produkty, architektura, dron.', 'fotografia.html', 'Sony A7R V + G Master · studio · plener · dron', 30, 'img/portfolio/sesja-08.jpg'],
   ['Druk cyfrowy', 'Prace dyplomowe, zaproszenia, kartki, wizytówki, ulotki składane, broszury zszywane.', 'druk-cyfrowy.html', 'Xerox C75 z finiszerem · do SRA3', from((p) => /Xerox/.test(p.machine || '')), 'img/hf/druk-cyfrowy-1.jpg'],
   ['Druk wielkoformatowy i reklama', 'Banery, siatki, folie, fototapety, naklejki po obrysie, witryny, litery z plotera.', 'druk-wielkoformatowy.html', 'HP Latex 375 · ploter tnący Summa S3', from(inCat('druk-wielkoformatowy')), 'img/hf/baner-reklamowy-1.jpg'],
   ['Fine art i Digigraphie®', 'Wydruki muzealne, reprodukcje, limitowane edycje dla artystów i fotografów, odbitki.', 'druk-dla-artystow.html', 'Epson SureColor P9500 · SureLab D1000 · EIZO CG319X', from((p) => inCat('dla-fotografow')(p) && /fine-art|digigraphie|wydruk/.test(p.slug)), 'img/hf/druk-dla-artystow-1.jpg'],
@@ -17,12 +17,45 @@ const U = [
   ['Wspólnoty i zarządcy', 'Tablice przy wejściu, regulaminy, numeracja lokali, tabliczki na skrzynki – w jednym stylu.', 'wspolnoty-i-spoldzielnie.html', 'Druk UV · laser · montaż', from(inCat('wspolnoty-i-spoldzielnie')), 'img/hf/tablica-wejscie-zarzadca-1.jpg'],
   ['Szkoły i przedszkola', 'Grafika na drzwi i okna, banery na ogrodzenie, plakaty grup, tabliczki sal, dyplomy.', 'szkoly-i-przedszkola.html', 'HP Latex · Summa · Xerox · laser', from(inCat('szkoly-i-przedszkola')), 'img/hf/plakaty-grup-przedszkolnych-1.jpg'],
 ];
+// Park maszynowy: co na której maszynie zrobimy. Produkty dobierane z katalogu po polu „machine”.
+const pick = (rx, n = 6) => cat.products.filter((p) => rx.test(p.machine || '') && p.cat !== 'na-swieta').sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, n);
+const MACH = [
+  { id: 'laser', t: 'Lasery xTool', sub: 'CO₂ · MOPA 60 W · UV 5 W · przystawka obrotowa RA3', img: 'img/hf/karafka-grawer-1.jpg', href: 'prezenty-z-grawerem.html',
+    lead: 'Trzy źródła lasera do różnych materiałów. CO₂ graweruje i tnie materiały organiczne i akryl, MOPA znakuje metal – także w kolorze na stali – a laser UV graweruje wewnątrz szkła i kryształu.',
+    can: ['Grawer i cięcie drewna, sklejki, MDF, bambusa', 'Cięcie i grawer akrylu (plexi) – szyldy, statuetki, tabliczki', 'Grawer na skórze, korku, kartonie, filcu', 'Znakowanie stali, aluminium, anodu – termosy, długopisy, biżuteria, tabliczki znamionowe', 'Grawer 3D wewnątrz kryształu i szkła', 'Kubki, butelki, karafki, szklanki dookoła (RA3)'],
+    no: 'Ze względów bezpieczeństwa nie tniemy PVC ani pianki PU.' },
+  { id: 'uv', t: 'Drukarka UV GoArt A3', sub: 'Głowice i3200 · CMYK + biały + lakier · druk na obłych przedmiotach', img: 'img/hf/etui-telefon-uv-1.jpg', href: 'dla-firm.html',
+    lead: 'Druk bezpośrednio na przedmiocie – farba utwardzana światłem UV od razu jest odporna na ścieranie. Biały podkład pozwala drukować na ciemnym i przezroczystym, a lakier daje wypukły efekt 3D.',
+    can: ['Etui, powerbanki, gadżety firmowe z logo', 'Akryl, szkło, lustro – tabliczki, statuetki, „polaroidy”', 'Drewno, sklejka, łupek, metal, tworzywa', 'Tabliczki na drzwi, oznakowanie sal i gabinetów', 'Wizytówki i vouchery z wypukłym lakierem', 'Butelki, kubki, świece – druk dookoła'] },
+  { id: 'latex', t: 'HP Latex 375 + ploter Summa S3', sub: 'Druk do 1,6 m szerokości · cięcie po obrysie', img: 'img/hf/baner-reklamowy-1.jpg', href: 'druk-wielkoformatowy.html',
+    lead: 'Druk wielkoformatowy farbami lateksowymi: bez zapachu, od razu suchy, odporny na słońce i deszcz – nadaje się do wnętrz, także sal dziecięcych. Ploter Summa wycina naklejki po obrysie i litery z folii.',
+    can: ['Banery z oczkami, siatki mesh, banery na ogrodzenie', 'Fototapety na wymiar, tapety, grafika ścienna', 'Folie samoprzylepne, folia OWV na witryny, mrożone', 'Naklejki po obrysie, etykiety, oklejanie aut i witryn', 'Plakaty A2–B0, tablice PCV i Dibond, potykacze, roll-upy', 'Litery i logo z folii, szablony'] },
+  { id: 'fineart', t: 'Epson SureColor P9500 + EIZO CG319X', sub: 'Druk 12-kolorowy do 44 cali · Digigraphie® by Epson', img: 'img/hf/fine-art-bawelna-1.jpg', href: 'druk-dla-artystow.html',
+    lead: 'Najwyższa jakość druku fotograficznego i artystycznego. Kolor przygotowujemy na monitorze EIZO ColorEdge CG319X z kalibracją sprzętową, a dla artystów wydajemy certyfikowane edycje Digigraphie®.',
+    can: ['Wydruki fine art na papierach bawełnianych i barytowych', 'Reprodukcje obrazów i grafik, limitowane edycje z certyfikatem', 'Wydruki wystawowe na piance i Dibond', 'Plakaty i fotografie w ramie z passe-partout', 'Portfolio i wydruki próbne dla fotografów', 'Mapy, plakaty dekoracyjne, mapy nieba'] },
+  { id: 'drylab', t: 'Epson SureLab D1000 (DryLab)', sub: 'Minilab fotograficzny · odbitki na papierze fotograficznym', img: 'img/hf/odbitki-drylab-1.jpg', href: 'dla-fotografow.html',
+    lead: 'Szybkie, trwałe odbitki fotograficzne – od jednej sztuki po setki zdjęć z wesela czy wycieczki. Papier błyszczący, satynowy lub matowy.',
+    can: ['Odbitki z telefonu i aparatu – od 10×15 do 20×30 cm', 'Zdjęcia w stylu polaroid, magnesy ze zdjęciami', 'Zdjęcia do dokumentów', 'Kalendarze i obrazki pamiątkowe', 'Przypinki (buttony), dyplomy ze zdjęciem grupy', 'Klepsydry i zdjęcia pamiątkowe'] },
+  { id: 'sub', t: 'Epson SureColor F500 + prasy', sub: 'Sublimacja do 24 cali · nadruk wtopiony w materiał', img: 'img/hf/kubek-magiczny-1.jpg', href: 'sublimacja.html',
+    lead: 'W sublimacji farba wnika w materiał pod wpływem temperatury – nadruk nie pęka, nie odkleja się i nie schodzi w praniu. Drukujemy na poliestrze i przedmiotach z powłoką do sublimacji.',
+    can: ['Koszulki sportowe i stroje drużyn – pełny nadruk', 'Kubki (także magiczne i ze złotym rantem)', 'Koce, poduszki, ręczniki, worki', 'Fotopanele i tabliczki aluminiowe ze zdjęciem', 'Zdjęcia na łupku, puzzle, podkładki', 'Odblaski i gadżety z logo szkoły lub firmy'] },
+  { id: 'xerox', t: 'Xerox C75 z finiszerem', sub: 'Druk cyfrowy kolor i cz-b do SRA3 · składanie Z i C · broszury', img: 'img/hf/druk-cyfrowy-1.jpg', href: 'druk-cyfrowy.html',
+    lead: 'Druk cyfrowy w krótkich nakładach – od jednej sztuki. Finiszer zszywa i składa broszury oraz ulotki, a wizytówki i vouchery możemy dodatkowo uszlachetnić lakierem UV.',
+    can: ['Prace dyplomowe i magisterskie', 'Zaproszenia, kartki, podziękowania', 'Wizytówki, vouchery, karty stałego klienta', 'Ulotki składane, cenniki, menu', 'Broszury zszywane, katalogi, programy', 'Dyplomy, certyfikaty, plakaty A3'] },
+  { id: '3d', t: 'Drukarki 3D Bambu Lab', sub: 'H2C · X1C · A2L · A1 mini · druk wielokolorowy', img: 'img/hf/druk-3d-czesci-prototypy-1.jpg', href: 'druk-3d.html',
+    lead: 'Druk 3D z Twojego pliku albo według zdjęcia i wymiarów. Automatyczna zmiana filamentu pozwala drukować kilka kolorów w jednym wydruku.',
+    can: ['Części zamienne i uchwyty (PET-G, ABS, ASA)', 'Prototypy i obudowy elektroniki', 'Figurki, makiety, dioramy (PLA)', 'Lekkie, sztywne elementy z PLA-CF', 'Elastyczne uszczelki i odboje z TPU', 'Breloki i gadżety z logo, litofanie ze zdjęciem'] },
+  { id: 'foto', t: 'Sony A7R V + obiektywy G Master', sub: 'Pełna klatka 61 Mpx · studio · plener · dron', img: 'img/portfolio/sesja-02.jpg', href: 'fotografia.html',
+    lead: 'Profesjonalny aparat z obiektywami G Master: ostre, szczegółowe zdjęcia z zapasem na duże wydruki. Robimy zdjęcia i od razu drukujemy je na naszych maszynach.',
+    can: ['Zdjęcia do dokumentów od ręki', 'Portret, CV, LinkedIn, zdjęcia zespołu', 'Sesje rodzinne, plenerowe, świąteczne, niemowlęce', 'Packshoty i zdjęcia aranżowane do sklepów', 'Wnętrza i architektura', 'Zdjęcia i filmy z drona'], svc: true },
+];
+for (const m of MACH) m.prods = m.svc ? cat.products.filter((p) => p.cat === 'sesje-i-zdjecia').slice(0, 7) : pick({ laser: /xTool/, uv: /GoArt/, latex: /Latex|Summa/, fineart: /P9500/, drylab: /D1000/, sub: /F500/, xerox: /Xerox/, '3d': /Bambu/ }[m.id]);
 ---
 <Base title="Usługi pracowni – druk, grawer, fotografia, druk 3D | Chorzów" description="Usługi pracowni AiPrints.pl w Chorzowie: prezenty personalizowane, fotografia, druk cyfrowy i wielkoformatowy, fine art i Digigraphie, druk 3D, sublimacja, szyldy i oznakowanie. Ceny od, wycena w 24 h." canonical="uslugi" active="uslugi">
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-14">
     <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">Pracownia w Chorzowie · ul. Okrężna 98B</p>
     <h1 class="reveal hd text-[52px] md:text-[88px] mt-5 max-w-[1000px]">Wszystko, co robimy <em class="text-gold">u siebie</em>.</h1>
-    <p class="reveal text-[18px] text-mute leading-relaxed mt-7 max-w-[640px]">Grawer i druk UV, druk cyfrowy i wielkoformatowy, fine art, druk 3D, sublimacja i fotografia – na własnych maszynach, bez podwykonawców. Ceny „od” pochodzą wprost z naszego sklepu; większe zlecenia wyceniamy w 24 h.</p>
+    <p class="reveal text-[18px] text-mute leading-relaxed mt-7 max-w-[640px]">Grawer i druk UV, druk cyfrowy i wielkoformatowy, fine art, druk 3D, sublimacja i fotografia – na własnych maszynach, bez podwykonawców. Ceny „od” pochodzą wprost z naszego sklepu; większe zlecenia wyceniamy w 24 h. <a href="#maszyny" class="underline">Zobacz, co robimy na której maszynie</a>.</p>
   </section>
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
     {U.map(([t, d, href, m, f, img]) => (
@@ -35,7 +68,28 @@ const U = [
         </div>
       </a>))}
   </section>
-  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-20 grid lg:grid-cols-[1fr_1fr] gap-4">
+  <section id="maszyny" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
+    <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">Park maszynowy</p>
+    <h2 class="reveal font-display text-[44px] md:text-[64px] leading-none mt-4">Co zrobimy na naszych maszynach</h2>
+    <p class="reveal text-mute text-[16px] leading-relaxed mt-5 max-w-[720px]">Każda usługa zaczyna się od konkretnej maszyny. Poniżej znajdziesz, co na której wykonujemy – i przykłady gotowych produktów z naszego sklepu.</p>
+    <nav class="reveal flex flex-wrap gap-2 mt-8">{MACH.map((m) => <a href={`#m-${m.id}`} class="px-4 py-2 rounded-full border border-line bg-white text-[13.5px] hover:border-ink">{m.t}</a>)}</nav>
+    <div class="grid gap-6 mt-12">
+      {MACH.map((m, i) => (
+        <article id={`m-${m.id}`} class="reveal scroll-mt-24 rounded-[32px] bg-white border border-line overflow-hidden grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+          <img src={m.img} alt={m.t} loading="lazy" class={`w-full h-full min-h-[260px] object-cover ${i % 2 ? 'lg:order-2' : ''}`} />
+          <div class="p-7 md:p-10">
+            <h3 class="font-display text-[32px] md:text-[40px] leading-tight">{m.t}</h3>
+            <p class="text-[13.5px] font-semibold mt-2">{m.sub}</p>
+            <p class="text-mute text-[15px] leading-relaxed mt-4">{m.lead}</p>
+            <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2 mt-6 text-[14.5px]">{m.can.map((c) => <li class="flex gap-2"><span class="text-gold">●</span><span>{c}</span></li>)}</ul>
+            {m.no && <p class="text-[13px] text-mute mt-4">{m.no}</p>}
+            {m.prods.length > 0 && <div class="mt-7 border-t border-line pt-5"><p class="text-[12px] tracking-[.18em] uppercase text-mute font-semibold">{m.svc ? 'Usługi' : 'Przykłady ze sklepu'}</p><div class="flex flex-wrap gap-2 mt-3">{m.prods.map((p) => <a href={`${p.slug}.html`} class="px-3 py-1.5 rounded-full bg-[#f3f2ef] text-[13px] hover:bg-ink hover:text-white transition">{p.name}</a>)}</div></div>}
+            <a href={m.href} class="inline-block text-[14px] font-semibold mt-6">Więcej i wycena →</a>
+          </div>
+        </article>))}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24 grid lg:grid-cols-[1fr_1fr] gap-4">
     <div class="reveal rounded-[30px] bg-ink text-white p-8"><h2 class="font-display text-[32px] leading-tight">Nie widzisz swojej usługi?</h2><p class="text-white/70 mt-3">Laser tnie i graweruje drewno, sklejkę, akryl, skórę, karton i metal; druk UV nadrukuje prawie wszystko płaskiego i obłego. Opisz, czego potrzebujesz – powiemy, czy i jak to zrobimy.</p><a href="kontakt.html#wycena" class="btn bg-white text-ink mt-6 inline-flex">Zapytaj o wycenę →</a></div>
     <div class="reveal rounded-[30px] bg-white border border-line p-8"><h2 class="font-display text-[32px] leading-tight">Projekty: AI, Adobe Stock i grafik</h2><p class="text-mute mt-3">Projekty przygotowujemy sami, korzystając otwarcie z narzędzi AI, licencjonowanych grafik i zdjęć Adobe Stock oraz gotowych cyfrowych aranżacji. Część zdjęć w sklepie to wizualizacje – pokazują, jak będzie wyglądał produkt; sam produkt zawsze powstaje fizycznie w naszej pracowni. <a href="pracownia.html#projekty" class="underline">Więcej o tym, jak pracujemy</a>.</p></div>
   </section>
