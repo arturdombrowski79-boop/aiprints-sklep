@@ -48,10 +48,10 @@ function unit_price(array $it): float {
 function order_no(): string { return 'AP-' . date('ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 4)); }
 
 // ——— Stripe (REST, bez biblioteki) ———
-function stripe(string $method, string $path, array $params = []): array {
+function stripe(string $method, string $path, array $params = [], ?string $idem = null): array {
   $ch = curl_init('https://api.stripe.com/v1/' . $path);
   curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_USERPWD => cfg('stripe_secret') . ':', CURLOPT_CUSTOMREQUEST => $method, CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTPHEADER => ['Stripe-Version: 2024-06-20'], CURLOPT_POSTFIELDS => $method === 'GET' ? null : http_build_query($params)]);
+    CURLOPT_HTTPHEADER => array_filter(['Stripe-Version: 2026-10-28.endive', $idem ? 'Idempotency-Key: ' . $idem : null]), CURLOPT_POSTFIELDS => $method === 'GET' ? null : http_build_query($params)]);
   $res = curl_exec($ch); $code = curl_getinfo($ch, CURLINFO_HTTP_CODE); $err = curl_error($ch); curl_close($ch);
   if ($res === false || !$code) throw new Exception('Brak połączenia z bramką płatności' . ($err ? " ($err)" : ''));
   $j = json_decode((string)$res, true) ?: [];

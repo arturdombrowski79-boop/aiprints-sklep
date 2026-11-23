@@ -115,7 +115,7 @@
 "Fine art",
 "Odbitki i powiększenia"
 ],
-"count": 24
+"count": 25
 },
 {
 "slug": "sublimacja",
@@ -126,7 +126,7 @@
 "Gadżety",
 "Tekstylia"
 ],
-"count": 19
+"count": 24
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -138,7 +138,7 @@
 "Sale i korytarze",
 "Wejście i ogrodzenie"
 ],
-"count": 16
+"count": 18
 },
 {
 "slug": "cmentarz-i-pogrzeb",
@@ -2941,6 +2941,50 @@
 }
 },
 {
+"slug": "tabliczka-aluminium-zdjecie",
+"name": "Tabliczka aluminiowa ze zdjęciem do ogrodu i na zewnątrz",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "aluminium ChromaLuxe Outdoor, odporne na słońce i deszcz, 20×25 lub 28×36 cm",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "20×25",
+"p": 149.0
+},
+{
+"k": "28×36",
+"p": 219.0
+}
+],
+"machine": "Epson SureColor F500 + prasa",
+"score": 1182.0,
+"xmas": false,
+"img": "img/hf/tabliczka-aluminium-zdjecie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-aluminium-zdjecie-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
 "slug": "oznakowanie-piwnic",
 "name": "Oznakowanie piwnic i pomieszczeń",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -3587,6 +3631,41 @@
 }
 },
 {
+"slug": "kubek-zloty-rant",
+"name": "Kubek ze złotym rantem i uchem ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "porcelana z powłoką, złoty rant i ucho, pudełko prezentowe",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1160.0,
+"xmas": false,
+"img": "img/hf/kubek-zloty-rant-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kubek-zloty-rant-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "deska-do-krojenia",
 "name": "Deska do krojenia z grawerem",
 "cat": "prezenty-z-grawerem",
@@ -3668,6 +3747,43 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "odblaski-z-logo",
+"name": "Odblaski z logo szkoły lub firmy",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "zawieszki odblaskowe z nadrukiem, kształt do wyboru, od 50 szt.",
+"priceText": "od 249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1155.0,
+"xmas": false,
+"img": "img/hf/odblaski-z-logo-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/odblaski-z-logo-1.jpg"
+],
+"also": [
+"sublimacja"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -5698,6 +5814,38 @@
 }
 },
 {
+"slug": "mis-z-koszulka",
+"name": "Miś z koszulką ze zdjęciem lub imieniem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "pluszowy miś 25 cm, koszulka z nadrukiem do zdjęcia",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1109.0,
+"xmas": false,
+"img": "img/hf/mis-z-koszulka-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/mis-z-koszulka-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "ruchomy-szkielet",
 "name": "Ruchome szkielety 3D (człowiek, kot, pies, wąż, dinozaur)",
 "cat": "prezenty-z-grawerem",
@@ -5928,6 +6076,42 @@
 "dla": [],
 "pers": [
 "imie"
+],
+"mat": []
+}
+},
+{
+"slug": "przypinki-buttony",
+"name": "Przypinki (buttony) z własnym projektem",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "średnica 38 lub 58 mm, agrafka lub magnes, od 25 szt.",
+"priceText": "od 99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1102.0,
+"xmas": false,
+"img": "img/hf/przypinki-buttony-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/przypinki-buttony-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
 ],
 "mat": []
 }
@@ -6265,6 +6449,43 @@
 ],
 "mat": [
 "drewno",
+"druk"
+]
+}
+},
+{
+"slug": "kubek-szklany-nadruk",
+"name": "Kubek szklany matowy ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "szkło satynowe 330 ml, nadruk widoczny pod światło",
+"priceText": "55 zł",
+"price": 55.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1096.0,
+"xmas": false,
+"img": "img/hf/kubek-szklany-nadruk-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kubek-szklany-nadruk-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": [
 "druk"
 ]
 }

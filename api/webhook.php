@@ -9,6 +9,7 @@ $no = $s['client_reference_id'] ?? ($s['metadata']['no'] ?? '');
 $st = db()->prepare('SELECT * FROM orders WHERE no=?'); $st->execute([$no]); $o = $st->fetch();
 if (!$o) out(['ok' => true, 'unknown' => $no]);
 
+if ($type === 'checkout.session.expired' && $o['status'] === 'pending') { db()->prepare("UPDATE orders SET status='expired' WHERE no=?")->execute([$no]); out(['ok' => true]); }
 if ($type === 'checkout.session.async_payment_failed') { db()->prepare("UPDATE orders SET status='failed' WHERE no=?")->execute([$no]); out(['ok' => true]); }
 $paid = ($type === 'checkout.session.completed' && ($s['payment_status'] ?? '') === 'paid') || $type === 'checkout.session.async_payment_succeeded';
 if (!$paid || $o['status'] === 'paid') out(['ok' => true]);

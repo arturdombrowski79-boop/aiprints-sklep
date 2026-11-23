@@ -42,14 +42,14 @@ try {
     ->execute([$no, date('c'), $email, mb_substr((string)($in['name'] ?? ''), 0, 120), mb_substr((string)($in['phone'] ?? ''), 0, 40), 'pending', $total, json_encode($data, JSON_UNESCAPED_UNICODE), $token]);
 
   $base = rtrim((string)cfg('base_url', 'https://aiprints.pl/'), '/') . '/';
-  $q = ['mode' => 'payment', 'currency' => 'pln', 'locale' => 'pl', 'customer_email' => $email, 'client_reference_id' => $no, 'metadata' => ['no' => $no],
+  $q = ['mode' => 'payment', 'currency' => 'pln', 'locale' => 'pl', 'integration_identifier' => 'aiprints-sklep-kqzwtrmb', 'customer_email' => $email, 'client_reference_id' => $no, 'metadata' => ['no' => $no],
     'payment_intent_data' => ['description' => "Zamówienie $no", 'metadata' => ['no' => $no]],
     'success_url' => $base . "dziekujemy?no=$no&t=$token", 'cancel_url' => $base . 'sklep?platnosc=anulowana', 'line_items' => []];
   foreach ($lines as $l) $q['line_items'][] = ['quantity' => $l['qty'], 'price_data' => ['currency' => 'pln', 'unit_amount' => $l['amount'], 'product_data' => array_filter(['name' => $l['name'], 'description' => $l['desc'] ?: null])]];
   if ($ship > 0) $q['line_items'][] = ['quantity' => 1, 'price_data' => ['currency' => 'pln', 'unit_amount' => (int)round($ship * 100), 'product_data' => ['name' => 'Dostawa: ' . $C['ship'][$sk] . ($locker ? " ($locker)" : '')]]];
-  if ($disc > 0) { $cp = stripe('POST', 'coupons', ['amount_off' => (int)round($disc * 100), 'currency' => 'pln', 'duration' => 'once', 'name' => "Kod $code"]); $q['discounts'] = [['coupon' => $cp['id']]]; }
+  if ($disc > 0) { $cp = stripe('POST', 'coupons', ['amount_off' => (int)round($disc * 100), 'currency' => 'pln', 'duration' => 'once', 'name' => "Kod $code"], "coupon-$no"); $q['discounts'] = [['coupon' => $cp['id']]]; }
   if (str_contains($C['ship'][$sk], 'Kurier')) { $q['shipping_address_collection'] = ['allowed_countries' => ['PL']]; $q['phone_number_collection'] = ['enabled' => 'true']; }
-  $s = stripe('POST', 'checkout/sessions', $q); if (empty($s['url'])) throw new Exception('Bramka płatności nie zwróciła adresu');
+  $s = stripe('POST', 'checkout/sessions', $q, "checkout-$no"); if (empty($s['url'])) throw new Exception('Bramka płatności nie zwróciła adresu');
   db()->prepare('UPDATE orders SET session=? WHERE no=?')->execute([$s['id'], $no]);
   out(['url' => $s['url'], 'no' => $no, 'sub' => $after, 'ship' => $ship, 'total' => $total]);
 } catch (Throwable $e) { error_log('checkout: ' . $e->getMessage()); fail($e->getMessage(), 422); }

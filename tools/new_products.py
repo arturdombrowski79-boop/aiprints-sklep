@@ -87,6 +87,13 @@ NEW = [
  ('Wspólnoty i spółdzielnie', 'segregacja-odpadow', 'Tablica segregacji odpadów', '30×40 cm, papier, szkło, metale i tworzywa, bio, zmieszane (40 zł netto)', f'{br(40)} zł', UV, br(40), 10, 8, 4, ''),
  ('Wspólnoty i spółdzielnie', 'numery-pieter', 'Numery pięter', '15×15 cm, ten sam styl co tablica przy wejściu (15 zł netto)', f'{br(15)} zł/szt', UV, br(15) * 5, 3, 4, 4, ''),
  ('Wspólnoty i spółdzielnie', 'montaz-oznakowania', 'Montaż oznakowania w budynku', 'montaż od 50 zł netto, dojazd 20 zł netto za lokalizację, Śląsk', f'od {br(50)} zł', '—', br(70), 10, 60, 4, ''),
+ # ——— z hurtowni agawa.pl / sublimacja.biz – tylko pozycje z wysoką marżą (półprodukt kilka–kilkadziesiąt zł) ———
+ ('Sublimacja', 'kubek-zloty-rant', 'Kubek ze złotym rantem i uchem ze zdjęciem', 'porcelana z powłoką, złoty rant i ucho, pudełko prezentowe', '69 zł', F500, 69, 16, 12, 4, 'półprodukt: agawa.pl'),
+ ('Sublimacja', 'kubek-szklany-nadruk', 'Kubek szklany matowy ze zdjęciem', 'szkło satynowe 330 ml, nadruk widoczny pod światło', '55 zł', F500, 55, 13, 12, 3, 'półprodukt: agawa.pl / sublimacja.biz'),
+ ('Sublimacja', 'mis-z-koszulka', 'Miś z koszulką ze zdjęciem lub imieniem', 'pluszowy miś 25 cm, koszulka z nadrukiem do zdjęcia', '69 zł', F500, 69, 22, 15, 4, 'maskotki: sublimacja.biz'),
+ ('Sublimacja', 'tabliczka-aluminium-zdjecie', 'Tabliczka aluminiowa ze zdjęciem do ogrodu i na zewnątrz', 'aluminium ChromaLuxe Outdoor, odporne na słońce i deszcz, 20×25 lub 28×36 cm', '20×25=149 | 28×36=219', F500, 149, 45, 20, 4, 'blachy: sublimacja.biz'),
+ ('Szkoły i przedszkola', 'odblaski-z-logo', 'Odblaski z logo szkoły lub firmy', 'zawieszki odblaskowe z nadrukiem, kształt do wyboru, od 50 szt.', 'od 249 zł', F500, 349, 90, 60, 4, 'odblaski: agawa.pl'),
+ ('Szkoły i przedszkola', 'przypinki-buttony', 'Przypinki (buttony) z własnym projektem', 'średnica 38 lub 58 mm, agrafka lub magnes, od 25 szt.', 'od 99 zł', D1000, 149, 25, 45, 4, 'elementy: agawa.pl – wymaga maszynki do buttonów'),
 ]
 UPDATE = {
  'tablica-wejscie-zarzadca': ('Tablica z numerem domu i nazwą zarządcy', 'PCV 30×40 + tabliczka 30×8=147.6 | PCV 40×60 + tabliczka 40×10=221.4 | LED 230 V 30×40=356.7 | LED 230 V 40×60=479.7 | Solarna 30×40=393.6 | Solarna 40×60=516.6', 'od 147,6 zł'),
