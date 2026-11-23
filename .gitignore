@@ -6,3 +6,6 @@ prod/
 .env.*
 *.log
 .DS_Store
+api/config.php
+api/data/*.sqlite*
+api/data/files/

@@ -23,6 +23,8 @@ jobs:
         with: { python-version: '3.12' }
       - run: npm ci
       - run: bash tools/build.sh
+        env:
+          BASE: ${{ vars.LH_BASE || '/' }}   # dla wdrożenia testowego ustaw zmienną LH_BASE = /test/
       - uses: actions/upload-artifact@v4
         with: { name: strona, path: prod, retention-days: 7 }
       - name: Wyślij na LH.pl (SSH/rsync)
@@ -35,6 +37,6 @@ jobs:
         run: |
           mkdir -p ~/.ssh && echo "$LH_SSH_KEY" > ~/.ssh/id_lh && chmod 600 ~/.ssh/id_lh
           ssh-keyscan -H "$LH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          rsync -az --delete --exclude '.well-known' -e "ssh -i ~/.ssh/id_lh" prod/ "$LH_USER@$LH_HOST:$LH_PATH/"
+          rsync -az --delete --exclude '.well-known' --exclude 'api/config.php' --exclude 'api/data/' -e "ssh -i ~/.ssh/id_lh" prod/ "$LH_USER@$LH_HOST:$LH_PATH/"
     env:
       LH_HOST: ${{ secrets.LH_HOST }}

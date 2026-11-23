@@ -189,14 +189,14 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
         const add = (d, n) => { d = new Date(d); while (n > 0) { d.setDate(d.getDate() + 1); const w = d.getDay(); if (w && w < 6 && !(iso(d) >= bf && iso(d) <= bt)) n--; } return d; };
         const f = (d) => d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' }); const now = new Date();
         eta.innerHTML = `Zamówisz dziś → podgląd do <b>${f(add(now, 2))}</b>, wysyłka ok. <b>${f(add(now, 7))}–${f(add(now, 12))}</b>`; }
-      const lg = $('logo'); if (lg) lg.onchange = () => { if (lg.files[0]) $('logoName').textContent = lg.files[0].name; };
+      let logoUrl = null; const lg = $('logo'); if (lg) lg.onchange = () => { const f = lg.files[0]; if (!f) return; $('logoName').textContent = f.name; const r = new FileReader(); r.onload = () => { logoUrl = r.result; }; r.readAsDataURL(f); };
       $('add').onclick = () => {
         const t = $('txt'); if (t && t.dataset.req && !t.value.trim()) { t.focus(); t.classList.add('ring-2', 'ring-red-400'); toast('Wpisz tekst do personalizacji'); return; }
         const n = +$('qty').value, u = unitPrice();
         const hasLogo = !!(lg && lg.files[0]);
         const pers = !!((t && t.value.trim()) || photoUrl || hasLogo);
         const lines = [opt ? opt.dataset.k : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
-        addItem({ title: cfg.dataset.name, lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers }, $("gal"));
+        addItem({ title: cfg.dataset.name, slug: cfg.dataset.slug, opt: opt ? opt.dataset.k : null, text: t ? t.value.trim() : '', notes: $('notes').value.trim(), lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers, photo: photoUrl, logo: logoUrl }, $("gal"));
       };
       upd();
     }

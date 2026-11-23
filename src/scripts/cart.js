@@ -43,8 +43,14 @@ export function addRaw(items) { items.forEach((i) => S.items.push(i)); save(); r
 export function openCart() { renderCart(); $('drawer').classList.add('on'); $('scrim').classList.add('on'); if (innerWidth < 1024) lenis && lenis.stop(); }
 export function closeCart() { $('drawer').classList.remove('on'); $('scrim').classList.remove('on'); lenis && lenis.start(); }
 
+// pliki klienta (zdjęcie, logo) w pełnej rozdzielczości – w IndexedDB, w koszyku tylko identyfikator
+const IDB = () => new Promise((ok, no) => { const r = indexedDB.open('aiprints', 1); r.onupgradeneeded = () => r.result.createObjectStore('designs', { keyPath: 'id' }); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); });
+const idbPut = async (o) => { try { const db = await IDB(); await new Promise((ok) => { const t = db.transaction('designs', 'readwrite'); t.objectStore('designs').put(o); t.oncomplete = ok; t.onerror = ok; }); } catch (e) { } };
+const idbGet = async (id) => { try { const db = await IDB(); return await new Promise((ok) => { const r = db.transaction('designs').objectStore('designs').get(id); r.onsuccess = () => ok(r.result || null); r.onerror = () => ok(null); }); } catch (e) { return null; } };
 export async function addItem(item, fromEl, then) {
-  const full = item.img; item.img = await thumb(full); S.items.push(item); save();
+  const full = item.img; item.img = await thumb(full);
+  if (item.photo || item.logo) { const id = 'F' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); await idbPut({ id, photo: item.photo, logo: item.logo }); item.files = id; }
+  delete item.photo; delete item.logo; S.items.push(item); save();
   const r = fromEl.getBoundingClientRect(), c = $('cartBtn').getBoundingClientRect();
   const f = Object.assign(document.createElement('img'), { src: full }); f.className = 'fixed z-[95] rounded-3xl object-cover shadow-2xl pointer-events-none';
   Object.assign(f.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' }); document.body.appendChild(f);
@@ -62,7 +68,20 @@ function renderCo() {
   $('persBox').classList.toggle('hidden', !P.length); $('persList').textContent = P.length === S.items.length ? (P.length > 1 ? 'wszystkie produkty z tego zamówienia' : 'ten produkt') : P.map((i) => i.title).join(', ');
   $('retInfo').classList.toggle('hidden', !G.length); $('retInfo').textContent = G.length ? `Bez personalizacji: ${G.map((i) => i.title).join(', ')} – możesz odstąpić od umowy w ciągu 14 dni od odbioru, bez podania przyczyny.` : '';
 }
-export function openCo() { const b = document.getElementById('brk'); $('coBrk').classList.toggle('hidden', !b || b.hidden); $('co').classList.add('on'); $('coForm').classList.remove('hidden'); $('ok').classList.add('hidden'); lenis && lenis.stop(); document.body.style.overflow = 'hidden'; renderCo(); $('co').scrollTop = 0; }
+// tryb produkcyjny: serwer PHP na LH.pl + Stripe Checkout. Bez serwera (podgląd) – symulacja płatności.
+let LIVE = null;
+async function live() { if (LIVE !== null) return LIVE; try { const r = await fetch('api/ping.php', { cache: 'no-store' }); const j = await r.json(); LIVE = !!(j && j.ok && j.stripe); } catch (e) { LIVE = false; } return LIVE; }
+async function goStripe(em) {
+  const att = {}; for (const [ix, i] of S.items.entries()) { if (i.design) att[ix] = { design: await idbGet(i.design) }; if (i.files) att[ix] = { ...(att[ix] || {}), files: await idbGet(i.files) }; }
+  const d = document.querySelector('[name=d]:checked');
+  const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? 'WITAMY10' : '', add: S.add,
+    items: S.items.map((i) => ({ slug: i.slug, opt: i.opt || null, sides: i.sides || null, qty: i.qty, title: i.title, lines: i.lines, text: i.text || '', notes: i.notes || '', pers: i.pers !== false, img: i.img })), att, consent: { tos: true, pers: $('pers').checked } };
+  const r = await fetch('api/checkout.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({})); if (!r.ok || !j.url) throw new Error(j.error || 'Nie udało się rozpocząć płatności');
+  try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); O.unshift({ no: j.no, date: new Date().toISOString(), email: em, items: S.items.map((i) => ({ title: i.title, lines: i.lines, img: i.img, qty: i.qty, price: i.price, pers: i.pers !== false })), sub: j.sub, ship: j.ship, total: j.total, pay: 'stripe', delivery: body.deliveryName, status: 0, pending: true }); localStorage.setItem('aiprints-orders', JSON.stringify(O)); localStorage.setItem('aiprints-session', em); } catch (e) { }
+  location.href = j.url;
+}
+export function openCo() { const b = document.getElementById('brk'); $('coBrk').classList.toggle('hidden', !b || b.hidden); $('co').classList.add('on'); $('coForm').classList.remove('hidden'); $('ok').classList.add('hidden'); lenis && lenis.stop(); document.body.style.overflow = 'hidden'; renderCo(); $('co').scrollTop = 0; live().then((on) => { $('liveNote').classList.toggle('hidden', !on); $('demoPay').classList.toggle('hidden', on); $('walletRow').classList.toggle('hidden', on); }); }
 function closeCo() { $('co').classList.remove('on'); document.body.style.overflow = ''; lenis && lenis.start(); }
 
 export function initCart(opts) {
@@ -70,7 +89,7 @@ export function initCart(opts) {
   $('cartBtn').onclick = () => $('drawer').classList.contains('on') ? closeCart() : openCart(); addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCart(); }); $('close').onclick = closeCart; $('scrim').onclick = closeCart;
   $('toCo').onclick = () => { if (S.items.length) { closeCart(); openCo(); } };
   $('coBack').onclick = closeCo; $('again').onclick = closeCo;
-  $$('[name=d]').forEach((r) => r.onchange = renderCo);
+  $$('[name=d]').forEach((r) => r.onchange = () => { $('lkBox').classList.toggle('hidden', !/Paczkomat/.test(document.querySelector('[name=d]:checked').closest('label').textContent)); renderCo(); });
   let pm = 'blik';
   $$('[data-p]').forEach((b) => b.onclick = () => { pm = b.dataset.p; $$('[data-p]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); $$('.pane').forEach((p) => p.classList.toggle('hidden', p.id !== 'p-' + pm)); });
   $('blik').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });
@@ -81,6 +100,7 @@ export function initCart(opts) {
     const emOk = /^\S+@\S+\.\S+$/.test(em) || m === 'wallet'; $('emErr').classList.toggle('hidden', emOk); if (!emOk) bad = true;
     $('tosErr').classList.toggle('hidden', $('tos').checked); if (!$('tos').checked) bad = true;
     const needP = !$('persBox').classList.contains('hidden'); $('persErr').classList.toggle('hidden', !needP || $('pers').checked); if (needP && !$('pers').checked) bad = true;
+    if (LIVE) { if (bad) return; $('pay').disabled = true; $('spin').classList.remove('hidden'); $('payT').textContent = 'Przekierowuję do płatności…'; goStripe(em).catch((e) => { $('pay').disabled = false; $('spin').classList.add('hidden'); renderCo(); toastFn(e.message); }); return; }
     if (m === 'blik') { const ok = /^\d{6}$/.test($('blik').value); $('blErr').classList.toggle('hidden', ok); if (!ok) bad = true; }
     if (bad) return;
     $('pay').disabled = true; $('spin').classList.remove('hidden'); $('payT').textContent = m === 'blik' ? 'Potwierdź w aplikacji banku…' : 'Przetwarzanie…';
@@ -95,4 +115,5 @@ export function initCart(opts) {
     }, m === 'blik' ? 2600 : 1700);
   }
   renderCart();
+  if (/platnosc=anulowana/.test(location.search)) { toastFn('Płatność anulowana – Twój koszyk czeka'); openCart(); }
 }

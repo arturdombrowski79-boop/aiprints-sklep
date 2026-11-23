@@ -272,7 +272,7 @@ async function addToCart() {
     await saveDesign(design);
     const thumb = await renderPreview(cfg, design, u[0].id, 360);
     const lines = [design.colorName, design.size && 'rozmiar ' + design.size, 'projekt z kreatora: ' + u.map((s) => s.name.toLowerCase()).join(' + ')].filter(Boolean);
-    addRaw([{ title: el.dataset.name, lines, img: thumb, qty: S.qty, price: unit(), design: id, pers: true }]);
+    addRaw([{ title: el.dataset.name, slug: el.dataset.slug, sides: u.map((s) => s.id), lines, img: thumb, qty: S.qty, price: unit(), design: id, pers: true }]);
     closeCreator(); toast('Dodano do koszyka – projekt zobaczysz jeszcze do akceptacji');
   } catch (e) { console.error(e); toast('Nie udało się zapisać projektu. Spróbuj mniejszego pliku.'); }
   b.disabled = false; b.textContent = 'Dodaj do koszyka';

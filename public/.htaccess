@@ -5,15 +5,14 @@ RewriteEngine On
 # HTTPS i bez www
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://aiprints.pl/$1 [L,R=301]
+RewriteRule ^ https://aiprints.pl%{REQUEST_URI} [L,R=301]
 # /strona.html -> /strona
-RewriteCond %{THE_REQUEST} \s/([^.\s?]+)\.html[\s?]
-RewriteRule ^ /%1 [L,R=301]
-RewriteRule ^index$ / [L,R=301]
+RewriteCond %{THE_REQUEST} \s(/[^.\s?]*?)([^/.\s?]+)\.html[\s?]
+RewriteRule ^ %1%2 [L,R=301]
 # /strona -> strona.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^/.]+)/?$ $1.html [L]
 ErrorDocument 404 /404.html
 <IfModule mod_headers.c>

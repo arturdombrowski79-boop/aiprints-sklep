@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Dziękujemy za zamówienie" description="Potwierdzenie płatności w AiPrints.pl." canonical="dziekujemy">
+  <section class="max-w-[760px] mx-auto px-5 md:px-10 pt-36 pb-24 text-center">
+    <div id="ty" aria-live="polite">
+      <span class="inline-grid place-items-center w-16 h-16 rounded-full bg-emerald-600 text-white text-[30px]">✓</span>
+      <h1 class="hd text-[52px] md:text-[72px] mt-6">Dziękujemy!</h1>
+      <p id="tyMsg" class="text-mute text-[17px] mt-3">Sprawdzamy płatność…</p>
+      <div id="tyItems" class="text-left mt-8 grid gap-2"></div>
+      <div class="mt-10 flex flex-wrap gap-3 justify-center"><a id="tyAcc" href="konto.html" class="btn btn-ink">Moje zamówienia</a><a href="sklep.html" class="btn btn-out">Wróć do sklepu</a></div>
+      <p class="text-[13px] text-mute mt-8">Potwierdzenie z regulaminem w PDF wysłaliśmy na Twój e-mail. Podgląd projektu dostaniesz do akceptacji – produkcję zaczynamy dopiero po Twojej zgodzie.</p>
+    </div>
+  </section>
+  <script>
+    const q = new URLSearchParams(location.search); const no = q.get('no'), t = q.get('t'); const $ = (i) => document.getElementById(i);
+    const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
+    try { const c = JSON.parse(localStorage.getItem('aiprints-cart-v1') || '{}'); c.items = []; c.disc = false; c.add = { box: false, card: false, exp: false }; localStorage.setItem('aiprints-cart-v1', JSON.stringify(c)); const n = document.getElementById('cnt'); if (n) { n.textContent = '0'; n.style.transform = 'scale(0)'; } } catch (e) { }
+    let tries = 0;
+    async function check() {
+      if (!no || !t) { $('tyMsg').textContent = 'Zamówienie przyjęte.'; return; }
+      try {
+        const r = await fetch(`api/order.php?no=${encodeURIComponent(no)}&t=${encodeURIComponent(t)}`, { cache: 'no-store' }); const o = await r.json();
+        if (!r.ok) throw 0;
+        $('tyAcc').href = 'konto.html#zamowienie/' + o.no;
+        $('tyItems').innerHTML = o.items.map((i) => `<div class="flex justify-between rounded-2xl bg-white border border-line px-4 py-3 text-[14.5px]"><span>${i.title} × ${i.qty}${i.pers ? '' : ' <span class="text-emerald-700 text-[12px]">· 14 dni na zwrot</span>'}</span><b>${zl(i.price * i.qty)}</b></div>`).join('') + `<div class="flex justify-between px-4 pt-2 text-[16px]"><b>Razem</b><b>${zl(o.total)}</b></div>`;
+        if (o.status === 'paid') { $('tyMsg').innerHTML = `Płatność za zamówienie <b>${o.no}</b> przyjęta. Potwierdzenie wysłaliśmy na <b>${o.email}</b>.`; mark(o.no, 0); }
+        else if (o.status === 'failed') $('tyMsg').textContent = 'Płatność nie doszła do skutku. Spróbuj ponownie albo napisz do nas.';
+        else { $('tyMsg').innerHTML = `Zamówienie <b>${o.no}</b> przyjęte – czekamy na potwierdzenie płatności z banku${tries > 5 ? ' (przy przelewie może to potrwać do kilku godzin, damy znać mailem)' : '…'}`; if (tries++ < 20) setTimeout(check, 3000); }
+      } catch (e) { $('tyMsg').textContent = 'Zamówienie przyjęte. Potwierdzenie przyjdzie e-mailem.'; }
+    }
+    function mark(n) { try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); const x = O.find((o) => o.no === n); if (x) { x.pending = false; localStorage.setItem('aiprints-orders', JSON.stringify(O)); } } catch (e) { } }
+    check();
+  </script>
+</Base>

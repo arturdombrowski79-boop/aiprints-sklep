@@ -21,20 +21,23 @@ export function layout({ title, pre = '', body }) {
 </table></td></tr></table></body></html>`;
 }
 
-const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
-const items = (d) => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;margin:14px 0">${d.items.map((i) => `<tr><td style="padding:10px 0;border-bottom:1px solid #eceef0"><b>${esc(i.title)}</b><br><span style="color:#5c6064">${esc(i.lines.join(' · '))}${i.lines.length ? ' · ' : ''}${i.qty} szt. × ${zl(i.price)}</span><br><span style="font-size:12.5px;color:${i.pers ? '#7a5600' : '#1f6b46'}">${i.pers ? '✎ Produkt personalizowany – bez prawa odstąpienia (art. 38 ust. 1 pkt 3 u.p.k.)' : '↺ Bez personalizacji – 14 dni na odstąpienie od umowy'}</span></td><td align="right" valign="top" style="padding:10px 0;border-bottom:1px solid #eceef0;white-space:nowrap"><b>${zl(i.price * i.qty)}</b></td></tr>`).join('')}
+const zl = (v) => typeof v === 'string' ? v : (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
+// tryb szablonu dla serwera (d.__tpl): pola {{…}} i bloki <!--ITEMS-->, <!--DISC-->, <!--RET-->, <!--BRK--> obsługuje api/lib.php
+const blk = (d, name, html) => d.__tpl ? `<!--${name}-->${html}<!--/${name}-->` : html;
+export const persNote = (pers) => `<span style="font-size:12.5px;color:${pers ? '#7a5600' : '#1f6b46'}">${pers ? '✎ Produkt personalizowany – bez prawa odstąpienia (art. 38 ust. 1 pkt 3 u.p.k.)' : '↺ Bez personalizacji – 14 dni na odstąpienie od umowy'}</span>`;
+const items = (d) => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;margin:14px 0">${blk(d, 'ITEMS', d.items.map((i) => `<tr><td style="padding:10px 0;border-bottom:1px solid #eceef0"><b>${esc(i.title)}</b><br><span style="color:#5c6064">${esc(i.lines.join(' · '))}${i.lines.length && !d.__tpl ? ' · ' : ''}${i.qty} szt. × ${zl(i.price)}</span><br>${i.persHtml ?? persNote(i.pers)}</td><td align="right" valign="top" style="padding:10px 0;border-bottom:1px solid #eceef0;white-space:nowrap"><b>${zl(i.sum ?? i.price * i.qty)}</b></td></tr>`).join(''))}
 <tr><td style="padding:10px 0 2px;color:#5c6064">Dostawa: ${esc(d.delivery)}</td><td align="right" style="color:#5c6064">${zl(d.ship)}</td></tr>
-${d.disc ? `<tr><td style="color:#5c6064">Rabat</td><td align="right" style="color:#5c6064">−${zl(d.disc)}</td></tr>` : ''}
-<tr><td style="padding-top:8px;font-size:17px"><b>Razem (z VAT)</b></td><td align="right" style="padding-top:8px;font-size:17px"><b>${zl(d.total)}</b></td></tr></table>`;
+${d.disc ? blk(d, 'DISC', `<tr><td style="color:#5c6064">Rabat</td><td align="right" style="color:#5c6064">−${zl(d.disc)}</td></tr>`) : ''}
+<tr><td style="padding-top:8px;font-size:17px"><b>Razem (z VAT)</b></td><td align="right" style="padding-top:8px;font-size:17px;white-space:nowrap"><b>${zl(d.total)}</b></td></tr></table>`;
 
 export const TEMPLATES = {
   potwierdzenie: {
     name: 'Potwierdzenie zamówienia (umowy)', when: 'zaraz po opłaceniu', attach: ['Regulamin-AiPrints.pdf (wersja z dnia zamówienia)', 'Formularz-odstapienia.pdf – gdy w zamówieniu jest produkt bez personalizacji'],
     subject: (d) => `Zamówienie ${d.no} przyjęte – potwierdzenie`,
     body: (d) => `<h1 style="font-size:24px;margin:10px 0 4px">Dziękujemy, ${esc(d.first)}!</h1><p style="margin:0;color:#5c6064">Zamówienie <b style="color:#121110">${d.no}</b> z ${d.date} · zapłacono: ${esc(d.pay)}</p>${items(d)}
-${box(`<b>Co dalej?</b><br>1. Do ${d.proofBy} wyślemy podgląd projektu do akceptacji.<br>2. Produkcję zaczynamy dopiero po Twojej akceptacji – poprawki są bezpłatne.<br>3. Wysyłka zwykle ${d.lead} od akceptacji.${d.breakNote ? `<br><br>${esc(d.breakNote)}` : ''}`)}
+${box(`<b>Co dalej?</b><br>1. Do ${d.proofBy} wyślemy podgląd projektu do akceptacji.<br>2. Produkcję zaczynamy dopiero po Twojej akceptacji – poprawki są bezpłatne.<br>3. Wysyłka zwykle ${d.lead} od akceptacji.${d.breakNote ? blk(d, 'BRK', `<br><br>${esc(d.breakNote)}`) : ''}`)}
 <p style="font-size:14px"><b>Adres dostawy:</b> ${esc(d.address)}<br><b>Dokument sprzedaży:</b> ${d.nip ? 'faktura VAT na NIP ' + esc(d.nip) : 'faktura / dowód zakupu e-mailem'}</p>
-${d.items.some((i) => !i.pers) ? `<p style="font-size:14px"><b>Odstąpienie od umowy:</b> produkty oznaczone ↺ możesz zwrócić w ciągu 14 dni od odbioru bez podania przyczyny – przyciskiem <a href="https://aiprints.pl/zwroty-i-reklamacje?nr=${d.no}#odstap" style="color:#121110">Odstąp od umowy tutaj</a>, mailem lub na formularzu z załącznika.</p>` : ''}
+${d.__tpl || d.items.some((i) => !i.pers) ? blk(d, 'RET', `<p style="font-size:14px"><b>Odstąpienie od umowy:</b> produkty oznaczone ↺ możesz zwrócić w ciągu 14 dni od odbioru bez podania przyczyny – przyciskiem <a href="https://aiprints.pl/zwroty-i-reklamacje?nr=${d.no}#odstap" style="color:#121110">Odstąp od umowy tutaj</a>, mailem lub na formularzu z załącznika.</p>`) : ''}
 <p style="font-size:14px"><b>Reklamacje</b> przysługują przy wszystkich produktach, także personalizowanych: reklamacje@aiprints.pl. W załączniku przesyłamy regulamin w wersji obowiązującej w dniu zamówienia.</p>
 ${btn(`https://aiprints.pl/konto#zamowienie/${d.no}`, 'Zobacz zamówienie')}`,
   },

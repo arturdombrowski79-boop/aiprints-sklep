@@ -11,3 +11,16 @@ Gdy będzie gotowe:
 4. W Google Search Console dodaj mapę strony: https://aiprints.pl/sitemap.xml
 
 Ustawienia (czas realizacji, przerwa urlopowa, dział świąteczny): src/data/config.js w źródłach.
+
+=== PŁATNOŚCI STRIPE (BLIK, Przelewy24, karty, Apple Pay, Google Pay) ===
+1. Załóż konto na stripe.com (firma: JDG, NIP, konto 06 1050 1243 1000 0090 8262 3951). Stripe zweryfikuje firmę i stronę.
+2. Dashboard → Settings → Payment methods: włącz BLIK, Przelewy24, Cards, Apple Pay, Google Pay (waluta PLN).
+3. Dashboard → Developers → Webhooks → Add endpoint: https://aiprints.pl/api/webhook.php (testowo: https://aiprints.pl/test/api/webhook.php)
+   Zdarzenia: checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed.
+4. Na serwerze (FTP/menedżer plików LH.pl) skopiuj api/config.example.php jako api/config.php i wpisz SAM:
+   stripe_secret (sk_test_… na początek), stripe_webhook (whsec_…), base_url. Kluczy nie wysyłaj nikomu mailem ani w czacie.
+5. Skrzynki w panelu LH.pl: zamowienia@ (nadawca maili), kontakt@, artur@; aliasy reklamacje@, zwroty@, konta@ → kontakt@.
+   W DNS włącz SPF i DKIM (panel LH.pl), DMARC: _dmarc TXT "v=DMARC1; p=none; rua=mailto:kontakt@aiprints.pl".
+6. Test: zamówienie z kartą testową 4242 4242 4242 4242 → strona „Dziękujemy” → mail z PDF regulaminu → mail do pracowni.
+7. Gdy wszystko działa: klucze sk_live_… i nowy whsec_… z trybu Live w config.php.
+Zamówienia i pliki klientów: api/data (zablokowany dla przeglądarki; nie nadpisuje go wdrożenie z GitHuba).

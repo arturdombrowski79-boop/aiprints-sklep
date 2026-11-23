@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "^(config|lib)\.php$|\.(sqlite|json|md)$">
+  Require all denied
+</FilesMatch>
+<Files "catalog.json">
+  Require all denied
+</Files>

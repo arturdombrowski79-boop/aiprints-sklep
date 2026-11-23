@@ -48,7 +48,7 @@ import Doc from '../layouts/Doc.astro';
       if (part && o) $('wdItems').innerHTML = o.items.map((i, ix) => `<label class="flex gap-2 items-center ${i.pers ? 'opacity-50' : ''}"><input type="checkbox" value="${ix}" ${i.pers ? 'disabled' : ''}/> ${i.title} · ${i.qty} szt.${i.pers ? ' <span class="text-mute">(personalizowany – nie podlega zwrotowi)</span>' : ''}</label>`).join('');
     }
     document.querySelectorAll('[name=wdScope]').forEach((r) => (r.onchange = scope)); $('wdNo').onchange = scope;
-    let data = null;
+    let data = null; const alertBox = (m) => { $('wdErr').textContent = m || 'Nie udało się wysłać – napisz na zwroty@aiprints.pl'; $('wdErr').classList.remove('hidden'); $('wdConfirm').classList.add('hidden'); $('wdForm').classList.remove('hidden'); };
     $('wdForm').onsubmit = (e) => {
       e.preventDefault(); const ok = $('wdNo').value.trim() && /^\S+@\S+\.\S+$/.test($('wdEm').value.trim()) && $('wdName').value.trim();
       $('wdErr').classList.toggle('hidden', !!ok); if (!ok) return;
@@ -62,8 +62,9 @@ import Doc from '../layouts/Doc.astro';
     $('wdBack').onclick = () => { $('wdConfirm').classList.add('hidden'); $('wdForm').classList.remove('hidden'); };
     $('wdYes').onclick = () => {
       // po wdrożeniu: POST /api/odstapienie → zapis w bazie + mail z potwierdzeniem do klienta i do sklepu
-      try { const L = JSON.parse(localStorage.getItem('aiprints-withdrawals') || '[]'); L.unshift(data); localStorage.setItem('aiprints-withdrawals', JSON.stringify(L)); } catch (e) { }
-      $('wdConfirm').classList.add('hidden'); $('wdDone').classList.remove('hidden'); $('wdDoneEm').textContent = data.email;
+      const done = () => { $('wdConfirm').classList.add('hidden'); $('wdDone').classList.remove('hidden'); $('wdDoneEm').textContent = data.email; };
+      fetch('api/withdraw.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then((r) => { if (r.status === 404 || r.status === 405 || r.status === 503) throw 0; return r.json().then((j) => { if (!r.ok) { alertBox(j.error); throw 1; } done(); }); })
+        .catch((e) => { if (e === 1) return; try { const L = JSON.parse(localStorage.getItem('aiprints-withdrawals') || '[]'); L.unshift(data); localStorage.setItem('aiprints-withdrawals', JSON.stringify(L)); } catch (x) { } done(); });
     };
     scope();
   </script>
