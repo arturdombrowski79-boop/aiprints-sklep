@@ -105,6 +105,9 @@ for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadru
     ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
     ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
     prods.append(dict(slug=slug,name=name,cat='prezenty-ze-zdjeciem',sub='Odzież i kubki',variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
+# usługi (formularz zapytania / rezerwacji zamiast koszyka); ceny „od” = najtańszy pakiet z src/data/pakiety.js
+SVC_PRICE={'zdjecia-do-dokumentow':'30 zł','sesja-portretowa':'od 249 zł','sesja-rodzinna':'od 499 zł','sesja-plenerowa':'od 549 zł',
+  'fotografia-produktowa':'od 35 zł/zdjęcie','fotografia-architektury':'od 449 zł','zdjecia-z-drona':'od 399 zł'}
 # usługi (wycena indywidualna – formularz zapytania zamiast koszyka)
 for slug,name,cat,sub,var,mach in [
     ('zdjecia-do-dokumentow','Zdjęcia do dokumentów','sesje-i-zdjecia','Zdjęcia','dowód osobisty, paszport, prawo jazdy, legitymacja, wiza – zgodnie z wymaganiami urzędów, wydruk od ręki','Studio + Epson SureLab D1000'),
@@ -116,7 +119,8 @@ for slug,name,cat,sub,var,mach in [
     ('zdjecia-z-drona','Zdjęcia i filmy z drona','sesje-i-zdjecia','Dla firm','nieruchomości, inwestycje i postęp budowy, wydarzenia, krajobrazy – zgodnie z przepisami o lotach','Dron'),
     ('druk-3d-z-pliku','Druk 3D z Twojego pliku','wydruki-3d','Na zamówienie','PLA, PET-G, ASA, ABS, PLA-CF, TPU; pliki STL, 3MF, STEP, OBJ; pojedyncze sztuki i małe serie','Bambu (H2C, X1C, A2L, A1 mini)'),
     ('druk-3d-czesci-prototypy','Części zamienne i prototypy 3D','wydruki-3d','Na zamówienie','uchwyty, obudowy, zaślepki, elementy maszyn – według wzoru, zdjęcia z wymiarami albo szkicu','Bambu (H2C, X1C, A2L, A1 mini)')]:
-    prods.append(dict(slug=slug,name=name,cat=cat,sub=sub,variants=var,priceText='wycena',price=None,tiers=None,machine=mach,score=3.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=True,unit=False,kind='service'))
+    pt=SVC_PRICE.get(slug,'wycena')
+    prods.append(dict(slug=slug,name=name,cat=cat,sub=sub,variants=var,priceText=pt,price=price(pt),tiers=None,machine=mach,score=3.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=True,unit=False,kind='service'))
 GAL=json.load(open(B+'/src/data/gallery.json'))
 for p in prods:
     g=GAL.get(p['slug'])

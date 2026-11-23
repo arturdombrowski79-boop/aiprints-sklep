@@ -1,0 +1,18 @@
+---
+import { PAKIETY } from '../data/pakiety.js';
+const { slug, title = null } = Astro.props;
+const d = PAKIETY[slug];
+---
+{d && (
+  <div class="pakiety">
+    {title && <h3 class="font-display text-[30px] leading-tight">{title}</h3>}
+    <div class={`grid gap-3 mt-4 ${d.p.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+      {d.p.map(([n, c, items], i) => (
+        <div class={`rounded-[24px] border p-5 ${i === 0 && d.p.length > 1 ? 'bg-white border-line' : i === 1 ? 'bg-ink text-white border-ink' : 'bg-white border-line'}`}>
+          <p class="text-[14px] font-semibold">{n}</p>
+          <p class="font-display text-[34px] leading-none mt-2">{c}</p>
+          <ul class={`mt-4 grid gap-1.5 text-[13.5px] ${i === 1 ? 'text-white/75' : 'text-mute'}`}>{items.map((x) => <li>· {x}</li>)}</ul>
+        </div>))}
+    </div>
+    <p class="text-[12.5px] text-mute mt-3">{d.note} Ceny brutto. Termin rezerwujesz przez formularz albo telefonicznie: 609 040 274.</p>
+  </div>)}

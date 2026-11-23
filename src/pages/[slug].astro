@@ -7,6 +7,7 @@ import Shop from '../components/Shop.astro';
 import Creator from '../components/Creator.astro';
 import { CREATOR } from '../data/creator.js';
 import cat from '../data/catalog.json';
+import Pakiety from '../components/Pakiety.astro';
 import { machineText, describe, optionsOf, qtyTiers, B2B, isM2 } from '../data/copy.js';
 import { SEASON, LEAD, PREVIEW, BREAK } from '../data/config.js';
 import { PREVIEW as PV, RECIPIENTS } from '../data/preview.js';
@@ -101,14 +102,15 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
             <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-ink text-white grid place-items-center shrink-0"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4z"/></svg></span><span><b class="block text-[16px]">Zaprojektuj sam</b><span class="text-[13px] text-mute">{cr.colors ? `${cr.colors.length} kolorów produktu · ` : ''}{cr.sides.length > 1 ? 'przód i tył · ' : ''}{cr.mode === 'print' ? 'druk w pełnym kolorze' : 'grawer laserowy'}</span></span></div>
             <Creator p={p} cfg={cr} />
           </div>)}
+        {kind === 'prod' && p.kind === 'service' && <div class="mt-8"><Pakiety slug={p.slug} title="Pakiety i ceny" /></div>}
         {crOnly ? null : (p.quote || !p.price) ? (
           <form id="quote" data-about={p.name} class="mt-8 grid gap-3 rounded-[28px] bg-white border border-line p-6">
-            <b class="font-display text-[28px] leading-none">Poproś o wycenę</b>
+            <b class="font-display text-[28px] leading-none">{p.kind === 'service' ? 'Zarezerwuj termin' : 'Poproś o wycenę'}</b>
             <p class="text-[14px] text-mute -mt-1">Odpowiemy w ciągu 24 h w dni robocze.</p>
             <div class="grid sm:grid-cols-2 gap-3"><input required name="name" placeholder="Imię i nazwisko / firma" class="inp" /><input required type="email" name="email" placeholder="E-mail" class="inp" /></div>
             <input name="phone" placeholder="Telefon (opcjonalnie)" class="inp" />
-            <textarea required name="msg" rows="4" placeholder={p.cat === 'wspolnoty-i-spoldzielnie' ? 'Adres budynku, liczba klatek i lokali, co ma się znaleźć na tablicach…' : 'Opisz, czego potrzebujesz: ilość, wymiary, termin…'} class="inp"></textarea>
-            <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" name="files[]" /><span>📎 Dołącz logo, listę lokali lub zdjęcie miejsca – do 20 MB</span></label>
+            <textarea required name="msg" rows="4" placeholder={p.kind === 'service' ? (p.cat === 'sesje-i-zdjecia' ? 'Który pakiet, ile osób, preferowany termin i miejsce (studio, plener, adres)…' : 'Co drukujemy, materiał, ilość, wymiary, termin…') : p.cat === 'wspolnoty-i-spoldzielnie' ? 'Adres budynku, liczba klatek i lokali, co ma się znaleźć na tablicach…' : 'Opisz, czego potrzebujesz: ilość, wymiary, termin…'} class="inp"></textarea>
+            <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" name="files[]" /><span>{p.kind === 'service' ? '📎 Dołącz pliki (opcjonalnie) – do 20 MB' : '📎 Dołącz logo, listę lokali lub zdjęcie miejsca – do 20 MB'}</span></label>
             <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
             <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required name="consent" value="1" type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie wyceny. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
             <button class="h-14 rounded-full bg-ink text-white font-semibold">Wyślij zapytanie</button>
