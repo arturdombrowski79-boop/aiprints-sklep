@@ -5,6 +5,22 @@ const { active = '' } = Astro.props;
 const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
 const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const thumb = (s) => (cat.products.find((p) => p.cat === s && p.img) || {}).img || `img/ph/${s}.svg`;
+const PAGES = [
+  { h: 'pliki/katalog-aiprints.pdf', n: 'Katalog PDF – pełna oferta i ceny', d: 'Do pobrania i wysłania mailem', k: 'katalog pdf oferta cennik ceny ulotka broszura do pobrania hurt' },
+  { h: 'uslugi.html#wspolpraca', n: 'Współpraca dla firm i hurt', d: 'Rabaty, faktura VAT, stałe zlecenia', k: 'wspolpraca hurt hurtowo b2b firmy agencje reseller rabat faktura' },
+  { h: 'kontakt.html#wycena', n: 'Wycena i kontakt', d: 'Odpowiedź w dni robocze, firmy do 24 h', k: 'kontakt wycena zapytanie telefon email whatsapp adres mapa dojazd' },
+  { h: 'realizacje.html', n: 'Realizacje', d: 'Prawdziwe zdjęcia z naszych zleceń', k: 'realizacje portfolio zdjecia prace przyklady galeria' },
+  { h: 'uslugi.html', n: 'Usługi i maszyny', d: 'Wszystko, co robimy w pracowni', k: 'uslugi maszyny oferta druk grawer' },
+  { h: 'pracownia.html', n: 'Pracownia w Chorzowie', d: 'ul. Okrężna 98B, pn–pt 9–17', k: 'pracownia o nas firma adres godziny okrezna chorzow' },
+  { h: 'dostawa-i-platnosci.html', n: 'Dostawa i płatności', d: 'InPost, kurier, odbiór osobisty', k: 'dostawa wysylka platnosci paczkomat kurier odbior blik' },
+  { h: 'zwroty-i-reklamacje.html', n: 'Zwroty i reklamacje', d: '', k: 'zwrot zwroty reklamacja reklamacje' },
+  { h: 'regulamin.html', n: 'Regulamin sklepu', d: '', k: 'regulamin zasady' },
+  { h: 'grawer-laserowy.html', n: 'Grawer i cięcie laserowe', d: 'CO₂ · MOPA · UV', k: 'grawer grawerowanie laser ciecie laserowe' },
+  { h: 'druk-3d.html', n: 'Druk 3D na zamówienie', d: 'Od 1 sztuki, z Twojego pliku', k: 'druk 3d drukarka 3d prototyp czesci stl' },
+  { h: 'druk-dla-artystow.html', n: 'Fine art i Digigraphie®', d: 'Edycje dla artystów i fotografów', k: 'fine art digigraphie artysta wydruk muzealny giclee' },
+  { h: 'fotografia.html', n: 'Fotografia', d: 'Zdjęcia do dokumentów, sesje, dron', k: 'fotografia zdjecia do dokumentow sesja dron fotograf' },
+  { h: 'druk-cyfrowy.html', n: 'Druk cyfrowy', d: 'Dyplomy, zaproszenia, broszury, wizytówki', k: 'druk cyfrowy wizytowki ulotki zaproszenia dyplomy broszury' },
+];
 const idx = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ s: p.slug, n: p.name, c: C[p.cat].name, p: p.priceText, i: p.img || `img/ph/${p.cat}.svg` }));
 const nav = [['uslugi', 'Usługi'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
 const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
@@ -76,6 +92,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
   </div>
 </div>
 <script id="sidx" type="application/json" set:html={JSON.stringify(idx)}></script>
+<script id="spages" type="application/json" set:html={JSON.stringify(PAGES)}></script>
 <style>
   .dd .ddm { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(6px); transition: opacity .2s, transform .25s, visibility 0s .25s; }
   .dd:hover .ddm, .dd.open .ddm { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
@@ -84,6 +101,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
 <script>
   const $ = (i) => document.getElementById(i);
   const idx = JSON.parse($('sidx').textContent);
+  const pages = JSON.parse($('spages').textContent);
   const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
   const open = (el) => { el.classList.add('on'); document.body.style.overflow = 'hidden'; };
   const close = (el) => { el.classList.remove('on'); document.body.style.overflow = ''; };
@@ -104,8 +122,10 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
   addEventListener('keydown', (e) => { if (e.key === 'Escape') close($('srch')); if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); os(); } });
   function render(q) {
     const t = norm(q.trim()).split(/\s+/).filter(Boolean);
-    const r = (t.length ? idx.filter((p) => t.every((w) => norm(p.n + ' ' + p.c).includes(w))) : idx).slice(0, 12);
-    $('qres').innerHTML = r.length ? r.map((p) => `<a href="${p.s}.html" class="flex items-center gap-4 rounded-2xl p-2.5 hover:bg-paper"><img src="${p.i}" alt="" class="w-14 h-14 rounded-xl object-cover bg-paper2"><span class="flex-1"><b class="block text-[15px] font-medium">${p.n}</b><span class="text-[12.5px] text-mute">${p.c}</span></span><span class="text-[13.5px] font-semibold whitespace-nowrap">${p.p}</span></a>`).join('') : `<p class="p-6 text-mute">Nie mamy tego w katalogu – <a class="underline" href="kontakt.html">napisz do nas</a>, zrobimy na zamówienie.</p>`;
+    const r = (t.length ? idx.filter((p) => t.every((w) => norm(p.n + ' ' + p.c + ' ' + p.s.replace(/-/g, ' ')).includes(w))) : idx).slice(0, 12);
+    const pg = t.length ? pages.filter((p) => t.every((w) => norm(p.n + ' ' + p.k).includes(w))).slice(0, 4) : [];
+    const ph = pg.map((p) => `<a href="${p.h}" class="flex items-center gap-4 rounded-2xl p-2.5 hover:bg-paper"><span class="w-14 h-14 rounded-xl bg-ink text-white grid place-items-center text-[20px]">→</span><span class="flex-1"><b class="block text-[15px] font-medium">${p.n}</b><span class="text-[12.5px] text-mute">${p.d || 'Strona'}</span></span></a>`).join('');
+    $('qres').innerHTML = (r.length || pg.length) ? ph + r.map((p) => `<a href="${p.s}.html" class="flex items-center gap-4 rounded-2xl p-2.5 hover:bg-paper"><img src="${p.i}" alt="" class="w-14 h-14 rounded-xl object-cover bg-paper2"><span class="flex-1"><b class="block text-[15px] font-medium">${p.n}</b><span class="text-[12.5px] text-mute">${p.c}</span></span><span class="text-[13.5px] font-semibold whitespace-nowrap">${p.p}</span></a>`).join('') : `<p class="p-6 text-mute">Nie mamy tego w katalogu – <a class="underline" href="kontakt.html">napisz do nas</a>, zrobimy na zamówienie.</p>`;
   }
   $('q').oninput = (e) => render(e.target.value);
 </script>
