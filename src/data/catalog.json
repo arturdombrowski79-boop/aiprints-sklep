@@ -88,9 +88,10 @@
 "color": "#a06a7a",
 "subs": [
 "Druk dla salonów",
+"Oznakowanie gabinetu",
 "Szyldy i logo"
 ],
-"count": 29
+"count": 31
 },
 {
 "slug": "druk-wielkoformatowy",
@@ -3266,6 +3267,71 @@
 }
 },
 {
+"slug": "oznakowanie-higieniczne-gabinetu",
+"name": "Oznakowanie higieniczne gabinetu (stanowiska, strefy, mycie rąk)",
+"cat": "salony-beauty",
+"sub": "Oznakowanie gabinetu",
+"variants": "Bezpieczeństwo i higiena – A5 na stanowisko, Higieniczne mycie rąk A4, Higieniczna dezynfekcja rąk A4, Strefy: brudna, czysta, sterylna (3 szt.), Tabliczki na drzwi (3 szt.), Tabliczki informacyjne (5 szt.), Komplet higieniczny gabinetu",
+"priceText": "od 24,6 zł",
+"price": 24.6,
+"tiers": [
+{
+"k": "Bezpieczeństwo i higiena – A5 na stanowisko",
+"p": 24.6
+},
+{
+"k": "Higieniczne mycie rąk A4",
+"p": 30.75
+},
+{
+"k": "Higieniczna dezynfekcja rąk A4",
+"p": 30.75
+},
+{
+"k": "Strefy: brudna, czysta, sterylna (3 szt.)",
+"p": 49.2
+},
+{
+"k": "Tabliczki na drzwi (3 szt.)",
+"p": 49.2
+},
+{
+"k": "Tabliczki informacyjne (5 szt.)",
+"p": 79.0
+},
+{
+"k": "Komplet higieniczny gabinetu",
+"p": 199.0
+}
+],
+"machine": "GoArt UV A3",
+"score": 1181.0,
+"xmas": false,
+"img": "img/hf/oznakowanie-higieniczne-gabinetu-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/oznakowanie-higieniczne-gabinetu-1.jpg"
+],
+"also": [],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
 "slug": "segregacja-odpadow",
 "name": "Tablica segregacji odpadów",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -4035,6 +4101,71 @@
 ],
 "pers": [
 "imie"
+],
+"mat": []
+}
+},
+{
+"slug": "oznakowanie-gabinetu",
+"name": "Oznakowanie gabinetu kosmetycznego i laserowego",
+"cat": "salony-beauty",
+"sub": "Oznakowanie gabinetu",
+"variants": "Nakaz okularów ochronnych 10×10, Zakaz palenia i e-papierosów 15×20, Apteczka pierwszej pomocy 15×15, Etykiety odpadów medycznych 10×15 (20 szt.), Instrukcja pierwszej pomocy A4, Uwaga promieniowanie laserowe A4, Komplet gabinetu laserowego (6 pozycji)",
+"priceText": "od 14,76 zł",
+"price": 14.76,
+"tiers": [
+{
+"k": "Nakaz okularów ochronnych 10×10",
+"p": 14.76
+},
+{
+"k": "Zakaz palenia i e-papierosów 15×20",
+"p": 18.45
+},
+{
+"k": "Apteczka pierwszej pomocy 15×15",
+"p": 18.45
+},
+{
+"k": "Etykiety odpadów medycznych 10×15 (20 szt.)",
+"p": 24.6
+},
+{
+"k": "Instrukcja pierwszej pomocy A4",
+"p": 36.9
+},
+{
+"k": "Uwaga promieniowanie laserowe A4",
+"p": 36.9
+},
+{
+"k": "Komplet gabinetu laserowego (6 pozycji)",
+"p": 129.0
+}
+],
+"machine": "GoArt UV A3",
+"score": 1159.0,
+"xmas": false,
+"img": "img/hf/oznakowanie-gabinetu-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/oznakowanie-gabinetu-1.jpg"
+],
+"also": [],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
 ],
 "mat": []
 }

@@ -25,7 +25,7 @@ SUB2CAT={'Na święta':'na-swieta','Pamiątki ze zdjęciem':'prezenty-ze-zdjecie
  'Druk wielkoformatowy':'druk-wielkoformatowy','Ploter tnący':'druk-wielkoformatowy','Fine art i fotografia':'dla-fotografow',
  'Sublimacja':'sublimacja','Szkoły i przedszkola':'szkoly-i-przedszkola','Cmentarz i pogrzeb':'cmentarz-i-pogrzeb'}
 SUBNAME={'Wspólnoty, szkoły, sport':'Szkoły i kluby','Prezenty':None,'Salony beauty i firmy':None,'Pamięć':'Pamiątki'}
-SALON=re.compile(r'salon|lustr|bony|higien|recepc|szyld|wizytown|lusterk|dystans|logo-na',re.I)
+SALON=re.compile(r'salon|lustr|bony|higien|recepc|szyld|wizytown|lusterk|dystans|logo-na|gabinet',re.I)
 FIRMA=re.compile(r'termos|statuet|kartka-drewn|pudelko|skrzynka|butelka',re.I)
 IMG={'krysztal-zdjecie':'f/krysztal-para-sq','krysztal-slub':'f/krysztal-para-sq','koperta-drewniana':'f/koperta-drewniana-sq','bombka-akryl-zloty':'f/bombka-zlota-sq','krysztal-zimowy-led':'p/krysztal-k9-ze-zdjeciem','krysztal-pamiatkowy':'p/grawer-na-szkle',
  'bombka-zdjecie':'p/bombka-ze-zdjeciem','bombka-dab':'bombka/glowne','poduszka-zdjecie':'p/poduszka-ze-zdjeciem','puzzle-zdjecie':'p/puzzle-ze-zdjecia',
@@ -71,6 +71,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     sl=r['slug']
     if cat=='druk-wielkoformatowy' and k=='Druk wielkoformatowy': sub='Banery i flagi' if re.search('baner|siatka',sl) else 'Plakaty i tablice' if re.search('plakat|tablica|potykacz',sl) else 'Folie i naklejki'
     if k=='Ploter tnący': sub='Litery i napisy z folii'
+    if sl.startswith('oznakowanie-') and 'gabinet' in sl: sub='Oznakowanie gabinetu'
     if cat=='szkoly-i-przedszkola': sub='Wejście i ogrodzenie' if re.search('drzwi|rekrutacja|urzedowa',sl) else 'Dyplomy i odzież' if re.search('dyplom|koszulk',sl) else 'Sale i korytarze'
     if cat=='cmentarz-i-pogrzeb': sub='Na pogrzeb' if re.search('klepsydr|portret|obrazki|podziekowania|szarfa',sl) else 'Pamiątki' if re.search('krysztal|pupil',sl) else 'Na cmentarz'
     if cat=='dla-fotografow': sub='Odbitki i powiększenia' if re.search('odbitk|powieksz|kalendarz|retusz',sl) else 'Fine art'

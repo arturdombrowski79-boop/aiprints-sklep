@@ -12,6 +12,18 @@ export const machineText = (m) => {
   return t;
 };
 export const B2B = ['dla-firm', 'wspolnoty-i-spoldzielnie', 'salony-beauty', 'druk-wielkoformatowy', 'szkoly-i-przedszkola'];
+// Dłuższe opisy wybranych produktów (akapity między nazwą a informacją o realizacji).
+const EXTRA = {
+  'oznakowanie-gabinetu': [
+    'Podstawowe oznakowanie gabinetu kosmetycznego i gabinetu z laserem: zakaz palenia tytoniu i e-papierosów (przy wejściu lub recepcji, 15×20 cm), apteczka pierwszej pomocy (nad apteczką, 15×15 cm), instrukcja udzielania pierwszej pomocy z numerami 112 i 999 oraz listą osób przeszkolonych (przy apteczce, A4), ostrzeżenie o promieniowaniu laserowym (na drzwiach gabinetu, A4), nakaz stosowania okularów ochronnych (drzwi i stanowisko lasera, 10×10 cm) i etykiety odpadów medycznych na pojemniki i worki (ok. 10×15 cm).',
+    'Na tablicy przy laserze umieszczamy tekst: „UWAGA! PROMIENIOWANIE LASEROWE. Wstęp podczas wykonywania zabiegu wyłącznie dla osób upoważnionych. Obowiązek stosowania odpowiednio dobranych okularów ochronnych.” oraz klasę lasera i długość fali – przepisujemy je dokładnie z instrukcji lub tabliczki znamionowej Twojego urządzenia (prześlij jej zdjęcie), nigdy z domysłu. To, czy trzeba wyznaczyć i oznakować strefę laserową, zależy od oceny ryzyka w gabinecie.',
+  ],
+  'oznakowanie-higieniczne-gabinetu': [
+    'Na każde stanowisko zabiegowe – tabliczka A5 „BEZPIECZEŃSTWO I HIGIENA: Narzędzia, sprzęt, przybory i akcesoria używane podczas zabiegu są czyste, zdezynfekowane, a jeżeli jest to wymagane – wysterylizowane. Pakiety sterylne otwieramy bezpośrednio przed zabiegiem w obecności klienta.” Taką informację przy stanowisku pracy wskazują aktualne zalecenia GIS dla gabinetów.',
+    'W komplecie także: instrukcja higienicznego mycia rąk (A4 nad umywalką) i higienicznej dezynfekcji rąk (A4 przy dozowniku); oznaczenia stref: brudna – narzędzia użyte, czysta – narzędzia umyte i zdezynfekowane, sterylna – pakiety po sterylizacji; tabliczki: pakiety sterylne – przechowywać w suchym i zamkniętym miejscu, narzędzia jednorazowe, bielizna czysta, bielizna brudna, środki czystości i preparaty chemiczne – dostęp tylko dla personelu; tabliczki na drzwi: pomieszczenie gospodarcze, zaplecze personelu, WC.',
+    'Wszystko w jednym stylu z logo i kolorami salonu, na PCV, plexi lub jako naklejki zmywalne. Liczbę stanowisk podaj w uwagach – tabliczkę A5 dostaje każde stanowisko. Wymagania sanepidu mogą się różnić – przed zamówieniem warto potwierdzić listę z inspektorem.',
+  ],
+};
 export function describe(p, catName) {
   const b2b = B2B.includes(p.cat);
   const a = `${p.name}${p.variants ? ' – ' + p.variants.charAt(0).toLowerCase() + p.variants.slice(1) : ''}.`;
@@ -22,7 +34,7 @@ export function describe(p, catName) {
     : b2b
     ? 'Przygotujemy projekt według Twoich danych i logo, a przed produkcją wyślemy go do akceptacji. Przy kolejnych zamówieniach korzystamy z tego samego szablonu, więc nie płacisz drugi raz za projekt. Wystawiamy fakturę VAT.'
     : 'Po zamówieniu przygotujemy projekt i wyślemy go do akceptacji na e-mail. Produkcję zaczynamy dopiero, gdy go zatwierdzisz – poprawki przed akceptacją są bezpłatne. Wykonanie trwa zwykle 5–10 dni roboczych od akceptacji.';
-  return [a, b];
+  return [a, ...(EXTRA[p.slug] || []), b];
 }
 export const optionsOf = (p) => {
   if (p.tiers) return { label: p.tiers.every((t) => /^[SML]$/.test(t.k)) ? 'Rozmiar' : 'Wariant', opts: p.tiers.map((t) => ({ k: t.k, p: t.p })) };
