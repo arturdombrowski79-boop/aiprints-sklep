@@ -7,6 +7,7 @@ const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const thumb = (s) => (cat.products.find((p) => p.cat === s && p.img) || {}).img || `img/ph/${s}.svg`;
 const PAGES = [
   { h: 'pliki/katalog-aiprints.pdf', n: 'Katalog PDF – pełna oferta i ceny', d: 'Do pobrania i wysłania mailem', k: 'katalog pdf oferta cennik ceny ulotka broszura do pobrania hurt' },
+  { h: 'pliki/katalog-firmy-aiprints.pdf', n: 'Katalog dla firm PDF – ceny netto', d: 'Wspólnoty, szyldy, witryny, szkoły, salony', k: 'katalog pdf firmy b2b netto hurt wspolnoty zarzadcy oznakowanie oferta dla firm' },
   { h: 'uslugi.html#wspolpraca', n: 'Współpraca dla firm i hurt', d: 'Rabaty, faktura VAT, stałe zlecenia', k: 'wspolpraca hurt hurtowo b2b firmy agencje reseller rabat faktura' },
   { h: 'kontakt.html#wycena', n: 'Wycena i kontakt', d: 'Odpowiedź w dni robocze, firmy do 24 h', k: 'kontakt wycena zapytanie telefon email whatsapp adres mapa dojazd' },
   { h: 'realizacje.html', n: 'Realizacje', d: 'Prawdziwe zdjęcia z naszych zleceń', k: 'realizacje portfolio zdjecia prace przyklady galeria' },

@@ -10,6 +10,11 @@ REAL = json.load(open(B + '/src/data/realizacje.json'))
 PAK = json.loads(subprocess.check_output(['node', '-e', "import('./src/data/pakiety.js').then(m=>console.log(JSON.stringify(m.PAKIETY)))"], cwd=B))
 E = lambda s: html.escape(str(s or ''))
 TODAY = datetime.date.today()
+B2B = os.environ.get('KAT') == 'b2b'   # KAT=b2b → katalog tylko dla firm (ceny netto), plik katalog-firmy
+def NET(t):
+    if not B2B: return t
+    t = re.sub(r'(\d+(?:[.,]\d+)?)(?=\s*(?:/\s*)?(?:\d+\s*)?zł)', lambda m: (lambda v: ('%d' % v) if abs(v - round(v)) < 0.005 else ('%.2f' % v).replace('.', ','))(float(m.group(1).replace(',', '.')) / 1.23), t)
+    return t.replace('zł', 'zł netto', 1) if 'zł' in t else t
 MIES = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia']
 DATA = f'{TODAY.day} {MIES[TODAY.month - 1]} {TODAY.year}'
 
@@ -27,7 +32,7 @@ zl = lambda v: (('%d' % v) if v == int(v) else ('%.2f' % v).replace('.', ',')) +
 prods = [p for p in cat['products'] if p['cat'] != 'na-swieta']
 def od(fn):
     v = [(p['tiers'][0]['p'] if p.get('tiers') else p['price']) for p in prods if p.get('price') and not p.get('quote') and fn(p)]
-    return ('od ' + zl(min(v))) if v else 'wycena'
+    return NET(('od ' + zl(min(v)))) if v else 'wycena'
 inc = lambda c: (lambda p: p['cat'] == c or c in (p.get('also') or []))
 mach = lambda rx: (lambda p: re.search(rx, p.get('machine') or ''))
 
@@ -35,7 +40,7 @@ def price_of(p):
     if not p.get('price') or p.get('quote'): return 'wycena'
     t = p['priceText'] or ''
     t = re.sub(r'\s*\(.*\)$', '', t)
-    return t if len(t) < 34 else ('od ' + zl(p['tiers'][0]['p']) if p.get('tiers') else t[:34])
+    return NET(t if len(t) < 34 else ('od ' + zl(p['tiers'][0]['p']) if p.get('tiers') else t[:34]))
 
 def short(t, n=80):
     t = re.sub(r'\s+', ' ', t or '').strip()
@@ -46,13 +51,17 @@ def page(body, cls='', num=True):
     pages.append((body, cls, num))
 
 # ——— 1. okładka ———
-cov = [thumb(x, 900) for x in ['img/realizacje/domix-powstancow-24.jpg', 'img/f/krysztal-para-sq.jpg', 'img/realizacje/przedszkole-zagladajace-dzieci.jpg', 'img/portfolio/sesja-02.jpg', 'img/realizacje/fototapeta-salon.jpg', 'img/hf/karafka-grawer-sq.jpg']]
+cov = [thumb(x, 900) for x in (['img/realizacje/domix-powstancow-24.jpg', 'img/realizacje/przedszkole-drzwi.jpg', 'img/realizacje/fototapeta-salon.jpg', 'img/realizacje/domix-szobiszowicka-1.jpg', 'img/realizacje/rollup-festyn.jpg', 'img/realizacje/druk-3d-wazon.jpg'] if B2B else ['img/realizacje/domix-powstancow-24.jpg', 'img/f/krysztal-para-sq.jpg', 'img/realizacje/przedszkole-zagladajace-dzieci.jpg', 'img/portfolio/sesja-02.jpg', 'img/realizacje/fototapeta-salon.jpg', 'img/hf/karafka-grawer-sq.jpg'])]
+COV_EY = 'Oferta dla firm, wspólnot i instytucji' if B2B else 'Katalog usług i produktów'
+COV_H = 'Oznakowanie, druk<br><em>i produkcja dla firm.</em>' if B2B else 'Twój pomysł,<br><em>nasza pracownia.</em>'
+COV_L = ('Tablice i oznakowanie budynków, szyldy, oklejanie witryn, banery i druk wielkoformatowy, grawer i cięcie laserowe, pieczątki, druk 3D i materiały dla szkół – wykonujemy we własnej pracowni w Chorzowie, z montażem na Śląsku. Ceny netto, faktura VAT, wycena w 24 h.' if B2B else
+         'Prezenty personalizowane, grawer i druk UV, druk cyfrowy i wielkoformatowy, fine art, sublimacja, druk 3D, pieczątki, oznakowanie i fotografia – wszystko wykonujemy we własnej pracowni w Chorzowie.')
 page(f'''
 <div class="cov">
   <img src="img/logo-white.svg" class="cov-logo" alt="AiPrints.pl">
-  <p class="eyebrow light">Katalog usług i produktów · {TODAY.year}/{TODAY.year + 1}</p>
-  <h1 class="cov-h">Twój pomysł,<br><em>nasza pracownia.</em></h1>
-  <p class="cov-lead">Prezenty personalizowane, grawer i druk UV, druk cyfrowy i wielkoformatowy, fine art, sublimacja, druk 3D, pieczątki, oznakowanie i fotografia – wszystko wykonujemy we własnej pracowni w Chorzowie.</p>
+  <p class="eyebrow light">{COV_EY} · {TODAY.year}/{TODAY.year + 1}</p>
+  <h1 class="cov-h">{COV_H}</h1>
+  <p class="cov-lead">{COV_L}</p>
   <div class="cov-grid">{''.join(f'<img src="{c}">' for c in cov if c)}</div>
   <div class="cov-foot"><b>AiPrints.pl</b> · ul. Okrężna 98B, 41-500 Chorzów · tel. 609 040 274 · kontakt@aiprints.pl · <b>aiprints.pl</b></div>
 </div>''', 'dark', False)
@@ -104,15 +113,16 @@ U = [
   ('Pamięć i pogrzeb', 'Zdjęcia nagrobne na porcelanie, tabliczki, klepsydry, portrety, obrazki pamiątkowe.', od(inc('cmentarz-i-pogrzeb')), 'aiprints.pl/cmentarz-i-pogrzeb'),
   ('Fotografia i sesje', 'Zdjęcia do dokumentów, portret, sesje rodzinne i plenerowe, produkty, architektura, dron.', 'od 30 zł', 'aiprints.pl/fotografia'),
 ]
+if B2B: U = [u for u in U if u[0] not in ('Prezenty personalizowane', 'Sublimacja', 'Pamięć i pogrzeb', 'Fotografia i sesje', 'Fine art i Digigraphie®')]
 page(f'''
 <p class="eyebrow">Usługi w skrócie</p>
 <h2 class="h2">Co dla Ciebie <em>zrobimy</em></h2>
 <table class="tbl">{''.join(f'<tr><td><b>{E(t)}</b><span>{E(d)}</span><i>{E(u)}</i></td><td class="pr">{E(c)}</td></tr>' for t, d, c, u in U)}</table>
-<p class="note">Ceny brutto (z VAT 23%) według stanu na {DATA}. Aktualne ceny, promocje i pełny opis każdego produktu znajdziesz na aiprints.pl. Większe zlecenia i serie wyceniamy indywidualnie w ciągu 24 h w dni robocze.</p>
+<p class="note">{'Ceny netto – do każdej ceny doliczamy VAT 23%. Stan na' if B2B else 'Ceny brutto (z VAT 23%) według stanu na'} {DATA}. Aktualne ceny, promocje i pełny opis każdego produktu znajdziesz na aiprints.pl. Większe zlecenia i serie wyceniamy indywidualnie w ciągu 24 h w dni robocze.</p>
 ''')
 
 # ——— 4. kategorie produktów ———
-ORDER = ['prezenty-ze-zdjeciem', 'prezenty-z-grawerem', 'slub-i-okazje', 'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'dla-fotografow', 'sublimacja', 'cmentarz-i-pogrzeb', 'wydruki-3d']
+ORDER = ['wspolnoty-i-spoldzielnie', 'dla-firm', 'salony-beauty', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'wydruki-3d'] if B2B else ['prezenty-ze-zdjeciem', 'prezenty-z-grawerem', 'slub-i-okazje', 'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'dla-fotografow', 'sublimacja', 'cmentarz-i-pogrzeb', 'wydruki-3d']
 CN = {c['slug']: c for c in cat['cats']}
 RG = {'wspolnoty-i-spoldzielnie': 'wspolnoty', 'szkoly-i-przedszkola': 'szkoly', 'druk-wielkoformatowy': 'wielkoformat', 'prezenty-ze-zdjeciem': 'zdjecia', 'sublimacja': 'zdjecia', 'wydruki-3d': 'druk3d'}
 def card(p):
@@ -137,14 +147,14 @@ def pak(s, t):
     if not d: return ''
     return f'<div class="pk"><h4>{E(t)}</h4><p class="pkn">{E(d["note"])}</p>' + ''.join(f'<div class="pkr"><div><b>{E(n)}</b><span>{E(" · ".join(f))}</span></div><em>{E(pr)}</em></div>' for n, pr, f in d['p']) + '</div>'
 pf = [thumb(f'img/portfolio/sesja-{i:02d}.jpg') for i in (1, 2, 4, 6, 7)]
-page(f'''<p class="eyebrow">Fotografia · Sony A7R V + obiektywy G Master</p><h2 class="h2">Sesje i zdjęcia, które <em>od razu wydrukujemy</em></h2>
+if not B2B: page(f'''<p class="eyebrow">Fotografia · Sony A7R V + obiektywy G Master</p><h2 class="h2">Sesje i zdjęcia, które <em>od razu wydrukujemy</em></h2>
 <div class="rstrip five">{''.join(f'<img src="{x}">' for x in pf)}</div><p class="cap">Zdjęcia z naszych sesji – publikowane za zgodą osób na zdjęciach</p>
 <div class="pks">{''.join(pak(s, t) for s, t in SV[:4])}</div>''')
-page(f'''<p class="eyebrow">Fotografia · pakiety (cd.)</p><div class="pks">{''.join(pak(s, t) for s, t in SV[4:])}</div>
+if not B2B: page(f'''<p class="eyebrow">Fotografia · pakiety (cd.)</p><div class="pks">{''.join(pak(s, t) for s, t in SV[4:])}</div>
 <p class="note">Najlepsze ujęcia możesz od razu zamówić u nas jako odbitki, fine art, fotoksiążkę, obraz na płótnie albo fotopanel. Obróbka na skalibrowanym monitorze EIZO ColorEdge.</p>''')
 
 # ——— 6. realizacje ———
-rr = REAL[:]
+rr = [r for r in REAL if r['g'] in ('wspolnoty', 'szkoly', 'wielkoformat', 'druk3d')] if B2B else REAL[:]
 for k in range(0, len(rr), 12):
     ch = rr[k:k + 12]
     page(('<p class="eyebrow">Realizacje</p><h2 class="h2">Zdjęcia z <em>naszych zleceń</em></h2>' if k == 0 else '<p class="eyebrow">Realizacje (cd.)</p>')
@@ -180,7 +190,7 @@ page(f'''<p class="eyebrow">Zamówienia, dostawa, kontakt</p><h2 class="h2">Jak 
   <p>Płatności online: BLIK, karta, Apple Pay, Google Pay (Stripe). Dla firm przelew na fakturę.</p></div>
  <div class="qrs"><div><img src="_katalog/qr.svg"><span>Sklep online<br><b>aiprints.pl/sklep</b></span></div><div><img src="_katalog/qr2.svg"><span>Zapytaj o wycenę<br><b>aiprints.pl/kontakt</b></span></div></div>
 </div>
-<p class="note">Katalog ma charakter informacyjny i nie stanowi oferty w rozumieniu Kodeksu cywilnego. Ceny brutto według stanu na {DATA}; obowiązują ceny podane w sklepie w chwili zamówienia. Zdjęcia oznaczone jako realizacje pochodzą z naszych zleceń (publikowane za zgodą klientów); pozostałe zdjęcia produktów są poglądowe.</p>
+<p class="note">Katalog ma charakter informacyjny i nie stanowi oferty w rozumieniu Kodeksu cywilnego. {'Ceny netto (+23% VAT)' if B2B else 'Ceny brutto'} według stanu na {DATA}; obowiązują ceny podane w sklepie w chwili zamówienia. Zdjęcia oznaczone jako realizacje pochodzą z naszych zleceń (publikowane za zgodą klientów); pozostałe zdjęcia produktów są poglądowe.</p>
 ''')
 
 # ——— składanie HTML ———
@@ -237,11 +247,13 @@ em{font-style:normal;color:#c8146e}
 .cov-grid img{width:100%;height:100%;object-fit:cover;border-radius:3mm;display:block;min-height:0}
 .cov-foot{margin-top:8mm;font-size:8.5pt;color:#c9c4bb}.cov-foot b{color:#fff}
 '''
+if B2B:  # współpraca zaraz po usługach
+    k = next(i for i, x in enumerate(pages) if 'dla Twoich klientów' in x[0]); pages.insert(3, pages.pop(k))
 out = []
 n = 0
 for body, cls, num in pages:
     n += 1
     foot = f'<div class="pn"><span>AiPrints.pl · Katalog usług i produktów · {DATA}</span><span>{n}</span></div>' if num else ''
     out.append(f'<section class="page {cls}">{body}{foot}</section>')
-open(P + '/_katalog.html', 'w', encoding='utf-8').write(f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Katalog AiPrints.pl</title><style>{CSS}</style></head><body>{"".join(out)}</body></html>')
+open(P + ('/_katalog-firmy.html' if B2B else '/_katalog.html'), 'w', encoding='utf-8').write(f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Katalog AiPrints.pl</title><style>{CSS}</style></head><body>{"".join(out)}</body></html>')
 print('stron', n)
