@@ -1,0 +1,21 @@
+---
+// Formularz zapytania (mail do pracowni z załącznikami) – do stron usług.
+const { about, title = 'Zapytaj o termin i wycenę', hint = 'Opisz, czego potrzebujesz: rodzaj, ilość, wymiary, termin.', accept = '' } = Astro.props;
+---
+<form class="quoteForm grid gap-3 rounded-[28px] bg-white border border-line p-6 md:p-8 scroll-mt-28" id="zapytanie" data-about={about}>
+  <b class="font-display text-[30px] leading-none">{title}</b>
+  <p class="text-[14px] text-mute -mt-1">Odpowiadamy w ciągu 24 h w dni robocze. Wolisz porozmawiać? <a class="underline" href="tel:+48609040274">609 040 274</a></p>
+  <div class="grid sm:grid-cols-2 gap-3"><input required name="name" placeholder="Imię i nazwisko / firma" class="inp" /><input required type="email" name="email" placeholder="E-mail" class="inp" /></div>
+  <input name="phone" placeholder="Telefon (opcjonalnie)" class="inp" />
+  <textarea required name="msg" rows="4" placeholder={hint} class="inp"></textarea>
+  <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" name="files[]" multiple accept={accept || undefined} class="hidden" /><span>📎 Dołącz pliki – do 20 MB</span></label>
+  <input name="link" type="url" placeholder="Większe pliki: link do WeTransfer / Dysku Google (opcjonalnie)" class="inp" />
+  <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+  <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required name="consent" value="1" type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie zapytania. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
+  <button class="h-14 rounded-full bg-ink text-white font-semibold">Wyślij zapytanie</button>
+  <p class="qOk text-[14px]" aria-live="polite"></p>
+</form>
+<script>
+  import { bindQuote } from '../scripts/contact.js';
+  document.querySelectorAll('.quoteForm').forEach((f) => bindQuote(f, f.querySelector('.qOk'), f.dataset.about));
+</script>

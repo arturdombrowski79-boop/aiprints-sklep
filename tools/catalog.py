@@ -14,6 +14,8 @@ CATS=[
  ('sublimacja','Sublimacja','Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
  ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki, klepsydry, portrety i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
+ ('sesje-i-zdjecia','Fotografia i sesje','Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.','#4a4038'),
+ ('wydruki-3d','Druk 3D na zamówienie','Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU – z Twojego pliku albo według szkicu. Także w kilku kolorach naraz.','#2f5560'),
 ]
 SUB2CAT={'Na święta':'na-swieta','Pamiątki ze zdjęciem':'prezenty-ze-zdjeciem','Dla fotografów':'dla-fotografow',
  'Zwierzaki':'prezenty-z-grawerem','Dla dzieci':'prezenty-z-grawerem','Dom i dekoracje':'prezenty-z-grawerem','Zegary ścienne':'prezenty-z-grawerem',
@@ -100,6 +102,18 @@ for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadru
     ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
     ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
     prods.append(dict(slug=slug,name=name,cat='prezenty-ze-zdjeciem',sub='Odzież i kubki',variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
+# usługi (wycena indywidualna – formularz zapytania zamiast koszyka)
+for slug,name,cat,sub,var,mach in [
+    ('zdjecia-do-dokumentow','Zdjęcia do dokumentów','sesje-i-zdjecia','Zdjęcia','dowód osobisty, paszport, prawo jazdy, legitymacja, wiza – zgodnie z wymaganiami urzędów, wydruk od ręki','Studio + Epson SureLab D1000'),
+    ('sesja-portretowa','Sesja portretowa','sesje-i-zdjecia','Sesje','w studiu lub w plenerze; portret indywidualny, biznesowy, na CV i LinkedIn','Studio'),
+    ('sesja-rodzinna','Sesja rodzinna','sesje-i-zdjecia','Sesje','w plenerze, w studiu albo u Was w domu; z dziećmi, dziadkami i zwierzakami','Studio / plener'),
+    ('sesja-plenerowa','Sesja plenerowa','sesje-i-zdjecia','Sesje','narzeczeńska, okolicznościowa, ciążowa, z pupilem – w wybranym miejscu na Śląsku','Plener'),
+    ('fotografia-produktowa','Fotografia produktowa','sesje-i-zdjecia','Dla firm','packshoty na białym tle, zdjęcia aranżowane i do sklepów internetowych, Allegro i social media','Studio produktowe'),
+    ('fotografia-architektury','Fotografia architektury i wnętrz','sesje-i-zdjecia','Dla firm','mieszkania na sprzedaż i wynajem, lokale, hotele, biura, realizacje wykonawców','Plener / wnętrza'),
+    ('zdjecia-z-drona','Zdjęcia i filmy z drona','sesje-i-zdjecia','Dla firm','nieruchomości, inwestycje i postęp budowy, wydarzenia, krajobrazy – zgodnie z przepisami o lotach','Dron'),
+    ('druk-3d-z-pliku','Druk 3D z Twojego pliku','wydruki-3d','Na zamówienie','PLA, PET-G, ASA, ABS, PLA-CF, TPU; pliki STL, 3MF, STEP, OBJ; pojedyncze sztuki i małe serie','Bambu (H2C, X1C, A2L, A1 mini)'),
+    ('druk-3d-czesci-prototypy','Części zamienne i prototypy 3D','wydruki-3d','Na zamówienie','uchwyty, obudowy, zaślepki, elementy maszyn – według wzoru, zdjęcia z wymiarami albo szkicu','Bambu (H2C, X1C, A2L, A1 mini)')]:
+    prods.append(dict(slug=slug,name=name,cat=cat,sub=sub,variants=var,priceText='wycena',price=None,tiers=None,machine=mach,score=3.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=True,unit=False,kind='service'))
 GAL=json.load(open(B+'/src/data/gallery.json'))
 for p in prods:
     g=GAL.get(p['slug'])
@@ -112,6 +126,7 @@ for p in prods:
     if 'F500' in m: a.append('sublimacja')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
+    if 'Bambu' in m: a.append('wydruki-3d')
     p['also']=[x for x in a if x!=p['cat']]
 # ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
 # gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
@@ -133,6 +148,7 @@ MANY={'fotoksiazka-a5':'24–48 zdjęć','kalendarz-scienny-zdjecia':'13 zdjęć
   'odbitki-drylab':'tyle zdjęć, ile odbitek (możesz wysłać nawet kilkaset)','obrazki-pamiatkowe-pogrzeb':'1 zdjęcie + treść'}
 for p in prods:
     s_=p['slug']
+    if p.get('kind')=='service': continue
     if s_ in KIND_READY: p['kind']='ready'; p['fields']=['note']
     elif s_ in KIND_FILES:
         p['kind']='files'; p['fields']=['files']+(['text'] if s_ in ('obrazki-pamiatkowe-pogrzeb','kalendarz-scienny-zdjecia','kalendarz-2027-a3') else [])

@@ -93,13 +93,13 @@ function tpl(string $name, array $vars): string {
   $rep = []; foreach ($vars as $k => $v) if (is_scalar($v)) $rep['{{' . $k . '}}'] = htmlspecialchars((string)$v, ENT_QUOTES);
   return strtr($h, $rep);
 }
-function send_mail(string $to, string $subject, string $html, array $files = [], ?string $bcc = null): bool {
-  $from = cfg('mail_from', 'zamowienia@aiprints.pl'); $reply = cfg('mail_reply', 'kontakt@aiprints.pl');
+function send_mail(string $to, string $subject, string $html, array $files = [], ?string $bcc = null, ?string $replyTo = null): bool {
+  $from = cfg('mail_from', 'zamowienia@aiprints.pl'); $reply = ($replyTo && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) ? $replyTo : cfg('mail_reply', 'kontakt@aiprints.pl');
   $b = 'b' . bin2hex(random_bytes(8));
   $hdr = "From: AiPrints.pl <$from>\r\nReply-To: $reply\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=\"$b\"\r\n" . ($bcc ? "Bcc: $bcc\r\n" : '');
   $body = "--$b\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html));
   foreach ($files as $name => $path) if (is_file($path))
-    $body .= "--$b\r\nContent-Type: application/pdf; name=\"$name\"\r\nContent-Disposition: attachment; filename=\"$name\"\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode((string)file_get_contents($path)));
+    $body .= "--$b\r\nContent-Type: " . (str_ends_with(strtolower($name), '.pdf') ? 'application/pdf' : 'application/octet-stream') . "; name=\"$name\"\r\nContent-Disposition: attachment; filename=\"$name\"\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode((string)file_get_contents($path)));
   $body .= "--$b--";
   return mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $hdr, '-f' . $from);
 }

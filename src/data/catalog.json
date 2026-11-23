@@ -115,7 +115,7 @@
 "Fine art",
 "Odbitki i powiększenia"
 ],
-"count": 25
+"count": 26
 },
 {
 "slug": "sublimacja",
@@ -151,6 +151,28 @@
 "Pamiątki"
 ],
 "count": 12
+},
+{
+"slug": "sesje-i-zdjecia",
+"name": "Fotografia i sesje",
+"lead": "Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.",
+"color": "#4a4038",
+"subs": [
+"Dla firm",
+"Sesje",
+"Zdjęcia"
+],
+"count": 7
+},
+{
+"slug": "wydruki-3d",
+"name": "Druk 3D na zamówienie",
+"lead": "Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU – z Twojego pliku albo według szkicu. Także w kilku kolorach naraz.",
+"color": "#2f5560",
+"subs": [
+"Na zamówienie"
+],
+"count": 16
 }
 ],
 "products": [
@@ -2633,7 +2655,9 @@
 "gallery": [
 "img/hf/breloki-klub-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "b2b",
 "tags": {
 "okazja": [
@@ -3440,7 +3464,9 @@
 "gallery": [
 "img/hf/choinka-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [],
@@ -3474,7 +3500,9 @@
 "gallery": [
 "img/hf/balwanek-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [],
@@ -5351,7 +5379,9 @@
 "gallery": [
 "img/hf/smok-flexi-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "ready",
 "tags": {
 "okazja": [
@@ -5390,7 +5420,9 @@
 "gallery": [
 "img/hf/figurka-swieta-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -5714,7 +5746,9 @@
 "gallery": [
 "img/hf/kliker-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "ready",
 "tags": {
 "okazja": [
@@ -5985,7 +6019,9 @@
 "gallery": [
 "img/hf/ruchomy-szkielet-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "ready",
 "tags": {
 "okazja": [
@@ -7396,7 +7432,9 @@
 "gallery": [
 "img/hf/mapa-poznalismy-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -7591,7 +7629,9 @@
 "gallery": [
 "img/hf/litofania-lampka-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -7866,7 +7906,9 @@
 "gallery": [
 "img/hf/brelok-3d-imie-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -8163,7 +8205,9 @@
 "gallery": [
 "img/hf/diorama-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -8808,7 +8852,9 @@
 "gallery": [
 "img/hf/mapa-miasta-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -10443,7 +10489,9 @@
 "gallery": [
 "img/hf/kalendarz-adwentowy-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -10593,7 +10641,9 @@
 "gallery": [
 "img/hf/pupil-figurka-3d-1.jpg"
 ],
-"also": [],
+"also": [
+"wydruki-3d"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -11060,6 +11110,293 @@
 ],
 "mat": [
 "druk"
+]
+}
+},
+{
+"slug": "zdjecia-do-dokumentow",
+"name": "Zdjęcia do dokumentów",
+"cat": "sesje-i-zdjecia",
+"sub": "Zdjęcia",
+"variants": "dowód osobisty, paszport, prawo jazdy, legitymacja, wiza – zgodnie z wymaganiami urzędów, wydruk od ręki",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Studio + Epson SureLab D1000",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/zdjecia-do-dokumentow-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/zdjecia-do-dokumentow-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "sesja-portretowa",
+"name": "Sesja portretowa",
+"cat": "sesje-i-zdjecia",
+"sub": "Sesje",
+"variants": "w studiu lub w plenerze; portret indywidualny, biznesowy, na CV i LinkedIn",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Studio",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/sesja-portretowa-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/sesja-portretowa-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "sesja-rodzinna",
+"name": "Sesja rodzinna",
+"cat": "sesje-i-zdjecia",
+"sub": "Sesje",
+"variants": "w plenerze, w studiu albo u Was w domu; z dziećmi, dziadkami i zwierzakami",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Studio / plener",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/sesja-rodzinna-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/sesja-rodzinna-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "sesja-plenerowa",
+"name": "Sesja plenerowa",
+"cat": "sesje-i-zdjecia",
+"sub": "Sesje",
+"variants": "narzeczeńska, okolicznościowa, ciążowa, z pupilem – w wybranym miejscu na Śląsku",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Plener",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/sesja-plenerowa-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/sesja-plenerowa-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "fotografia-produktowa",
+"name": "Fotografia produktowa",
+"cat": "sesje-i-zdjecia",
+"sub": "Dla firm",
+"variants": "packshoty na białym tle, zdjęcia aranżowane i do sklepów internetowych, Allegro i social media",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Studio produktowe",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/fotografia-produktowa-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/fotografia-produktowa-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "fotografia-architektury",
+"name": "Fotografia architektury i wnętrz",
+"cat": "sesje-i-zdjecia",
+"sub": "Dla firm",
+"variants": "mieszkania na sprzedaż i wynajem, lokale, hotele, biura, realizacje wykonawców",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Plener / wnętrza",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/fotografia-architektury-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/fotografia-architektury-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "zdjecia-z-drona",
+"name": "Zdjęcia i filmy z drona",
+"cat": "sesje-i-zdjecia",
+"sub": "Dla firm",
+"variants": "nieruchomości, inwestycje i postęp budowy, wydarzenia, krajobrazy – zgodnie z przepisami o lotach",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Dron",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/zdjecia-z-drona-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/zdjecia-z-drona-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "druk-3d-z-pliku",
+"name": "Druk 3D z Twojego pliku",
+"cat": "wydruki-3d",
+"sub": "Na zamówienie",
+"variants": "PLA, PET-G, ASA, ABS, PLA-CF, TPU; pliki STL, 3MF, STEP, OBJ; pojedyncze sztuki i małe serie",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/druk-3d-z-pliku-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/druk-3d-z-pliku-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk",
+"3d"
+]
+}
+},
+{
+"slug": "druk-3d-czesci-prototypy",
+"name": "Części zamienne i prototypy 3D",
+"cat": "wydruki-3d",
+"sub": "Na zamówienie",
+"variants": "uchwyty, obudowy, zaślepki, elementy maszyn – według wzoru, zdjęcia z wymiarami albo szkicu",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 3.0,
+"xmas": false,
+"img": "img/hf/druk-3d-czesci-prototypy-1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/druk-3d-czesci-prototypy-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk",
+"3d"
 ]
 }
 }

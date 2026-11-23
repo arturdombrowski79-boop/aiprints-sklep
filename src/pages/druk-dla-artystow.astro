@@ -1,0 +1,50 @@
+---
+import { existsSync } from 'node:fs';
+import Base from '../layouts/Base.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+// oficjalne logo programu – wgrać plik od Epson jako public/img/site/digigraphie.svg (albo .png); do tego czasu nazwa tekstem
+const logo = ['svg', 'png'].map((e) => `img/site/digigraphie.${e}`).find((f) => existsSync(new URL(`../../public/${f}`, import.meta.url)));
+const prods = ['digigraphie-edycja', 'fine-art-druk', 'fine-art-bawelna', 'reprodukcja-obrazu', 'wydruk-probny', 'wydruk-w-ramie', 'wydruk-wystawowy', 'portfolio-box'].map((s) => cat.products.find((p) => p.slug === s)).filter(Boolean);
+const steps = [
+  ['Konsultacja', 'Rozmawiamy o pracy, nakładzie edycji, papierze i formacie. Możesz przyjść z oryginałem albo przysłać plik.'],
+  ['Plik lub reprodukcja', 'Przyjmujemy pliki w pełnej rozdzielczości (TIFF, PSD, PDF). Obrazy i grafiki możemy zreprodukować w pracowni.'],
+  ['Soft proof na EIZO', 'Kolor oceniamy na monitorze EIZO ColorEdge CG319X z kalibracją sprzętową i profilami papierów – widzisz na ekranie, jak praca wyjdzie na wybranym papierze.'],
+  ['Wydruk próbny', 'Przed całą edycją drukujemy próbkę (np. A4 lub fragment 1:1) na docelowym papierze. Poprawiamy, aż zaakceptujesz.'],
+  ['Edycja', 'Drukujemy na Epson SureColor P9500 (do 44 cali) pigmentowymi tuszami UltraChrome. Każdy egzemplarz sprawdzamy w świetle o standardowej temperaturze barwowej.'],
+  ['Certyfikacja', 'Przy edycji Digigraphie®: numeracja i podpis artysty, tłoczona pieczęć oraz certyfikat autentyczności dla każdego egzemplarza.'],
+];
+const faq = [
+  ['Czym Digigraphie różni się od zwykłego wydruku fine art?', 'Digigraphie® to program Epson dla limitowanych edycji: wydruk na certyfikowanej drukarce Epson, tuszami UltraChrome, na papierze z listy zatwierdzonych, numerowany i podpisany przez artystę, z tłoczoną pieczęcią i certyfikatem. Kolekcjoner dostaje potwierdzenie, że kupuje oryginalny egzemplarz z ograniczonej serii.'],
+  ['Na jakich papierach drukujecie?', 'Na papierach fine art bawełnianych i alfa-celulozowych – matowych, satynowych i barytowych – m.in. Hahnemühle, Canson, Ilford i Epson. Do edycji Digigraphie używamy wyłącznie papierów zatwierdzonych w programie. Pomożemy dobrać papier do pracy – możesz zamówić wydruk próbny.'],
+  ['Czy zrobicie reprodukcję mojego obrazu?', 'Tak – reprodukujemy obrazy, rysunki i grafiki, a następnie drukujemy je w wybranym formacie. Wycenę podamy po obejrzeniu pracy (rozmiar, faktura, technika).'],
+  ['Ile to trwa?', 'Wydruk próbny zwykle w 2–3 dni robocze, cała edycja po akceptacji próbki – zależnie od nakładu i formatu.'],
+  ['Czy wystawiacie fakturę?', 'Tak, dla artystów, galerii i fotografów wystawiamy faktury VAT.'],
+];
+---
+<Base title="Druk dla artystów i Digigraphie® by Epson – Chorzów" description="Wydruki fine art i limitowane edycje Digigraphie® by Epson: Epson SureColor P9500, papiery bawełniane, soft proof na EIZO ColorEdge CG319X, wydruk próbny, numeracja i certyfikat. Pracownia w Chorzowie." canonical="druk-dla-artystow" active="druk-dla-artystow">
+  <ServiceHero eyebrow="Fine art · Digigraphie® by Epson" title={'Twoja praca w <em class="text-gold">edycji muzealnej</em>.'} lead="Drukujemy dla artystów, fotografów i galerii: reprodukcje, fine art na papierach bawełnianych i limitowane, certyfikowane edycje Digigraphie® by Epson. Kolor ustawiamy na skalibrowanym monitorze EIZO i zawsze zaczynamy od wydruku próbnego." img="img/hf/druk-dla-artystow-1.jpg" alt="Sprawdzanie wydruku fine art w pracowni" cta="Zapytaj o wydruk lub edycję" shop="dla-fotografow.html" shopLabel="Fine art w sklepie" />
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid lg:grid-cols-[1fr_1.2fr] gap-12 items-start">
+    <div class="reveal rounded-[34px] bg-ink text-white p-8 md:p-10">
+      {logo ? <img src={logo} alt="Digigraphie® by Epson" class="h-16 w-auto bg-white rounded-xl p-3" /> : <p class="font-display text-[40px] leading-none">Digigraphie<sup class="text-[18px]">®</sup> <span class="text-white/60">by Epson</span></p>}
+      <p class="text-white/75 leading-relaxed mt-6">Digigraphie® to certyfikowany przez Epson standard limitowanych edycji. Każdy egzemplarz drukujemy na certyfikowanej drukarce Epson, tuszami UltraChrome, na papierze z listy zatwierdzonych. Artysta numeruje i podpisuje odbitkę, a ta dostaje tłoczoną pieczęć i certyfikat autentyczności.</p>
+      <p class="text-white/75 leading-relaxed mt-4">Dla kolekcjonera to dowód, że kupuje egzemplarz z ograniczonej, kontrolowanej serii – a nie kolejną kopię.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4">
+      {[['Epson SureColor P9500', 'Drukarka wielkoformatowa do 44 cali (112 cm) z pigmentowymi tuszami UltraChrome – głęboka czerń, szeroki gamut i trwałość na dziesięciolecia.'], ['EIZO ColorEdge CG319X', '31-calowy monitor 4K z kalibracją sprzętową i wbudowanym czujnikiem – kolor na ekranie zgadza się z wydrukiem.'], ['Papiery muzealne', 'Bawełniane i alfa-celulozowe, matowe, satynowe i barytowe. Dobierzemy papier do techniki i charakteru pracy.'], ['Wydruk próbny', 'Zanim wydrukujemy edycję, akceptujesz próbkę na docelowym papierze.']].map(([t, d]) => (
+        <div class="reveal rounded-[28px] bg-white border border-line p-6"><h3 class="font-display text-[24px] leading-tight">{t}</h3><p class="text-mute text-[14px] leading-relaxed mt-2">{d}</p></div>))}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Jak pracujemy</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      {steps.map(([t, d], i) => (<article class="reveal rounded-[30px] bg-white border border-line p-7"><span class="font-display text-[48px] leading-none text-gold/60">0{i + 1}</span><h3 class="font-display text-[26px] leading-tight mt-3">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></article>))}
+    </div>
+  </section>
+  {prods.length > 0 && <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28"><h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Zamów online</h2><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{prods.map((p) => <Card p={p} c={p.cat} />)}</div></section>}
+  <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Druk dla artystów / Digigraphie" title="Zapytaj o wydruk lub edycję" hint="Rodzaj pracy (fotografia, obraz, grafika), format, liczba egzemplarzy, czy edycja ma być certyfikowana Digigraphie, preferowany papier." accept="image/*,.tif,.tiff,.psd,.pdf,.zip" /></section>
+  <Faq items={faq} />
+</Base>

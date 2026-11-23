@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+const S = [
+  ['Prace dyplomowe i magisterskie', 'Wydruk w kolorze i czerni, strony z wykresami i zdjęciami w dobrej jakości. Szybko, także na ostatnią chwilę – zadzwoń przed przyjazdem.'],
+  ['Zaproszenia i kartki', 'Ślubne, komunijne, urodzinowe, firmowe – na papierach ozdobnych i kartonie, z bigowaniem i składaniem. Projekt możemy przygotować za Ciebie.'],
+  ['Broszury i katalogi', 'Zszywane i składane automatycznie na finiszerze – menu, programy, katalogi produktów, instrukcje, zeszyty ćwiczeń.'],
+  ['Ulotki składane', 'Składanie Z i C (trzy panele) – ulotki, mapki, cenniki, foldery reklamowe.'],
+  ['Wizytówki, vouchery, karty', 'Wizytówki, karty stałego klienta, bony podarunkowe, zaproszenia i podziękowania – także z lakierem wybiórczym UV z drukarki UV.'],
+  ['Dyplomy, certyfikaty, plakaty A3', 'Dyplomy dla szkół i przedszkoli, certyfikaty szkoleń, plakaty A3, menu i cenniki do lokali.'],
+];
+const prods = cat.products.filter((p) => /Xerox/.test(p.machine || '') && p.cat !== 'na-swieta').sort((a, b) => b.score - a.score).slice(0, 8);
+const faq = [
+  ['Jaki największy format?', 'Drukujemy do formatu SRA3 (32 × 45 cm) – mieści się w nim A3 ze spadami albo kilka mniejszych druków (zaproszenia, kartki, wizytówki) na jednym arkuszu.'],
+  ['Na jakim papierze?', 'Od zwykłego papieru biurowego, przez kredę matową i błyszczącą, po kartony i papiery ozdobne (gramatury do kartonu na zaproszenia i wizytówki). Jeśli masz własny papier – przynieś, sprawdzimy, czy przejdzie przez maszynę.'],
+  ['Ile kosztuje wydruk?', 'Cena zależy od formatu, papieru, nakładu i wykończenia (bigowanie, składanie, zszywanie). Wyślij plik albo opis – podamy cenę w ciągu 24 h w dni robocze, prostsze wydruki wyceniamy od ręki w pracowni.'],
+  ['Czy przygotujecie projekt?', 'Tak – zaprojektujemy zaproszenia, kartki, ulotki czy menu. Projekt wyślemy do akceptacji przed drukiem.'],
+  ['W jakim formacie wysłać plik?', 'Najlepiej PDF w docelowym rozmiarze, ze spadami 2–3 mm i fontami osadzonymi w pliku. Pracę dyplomową możesz przysłać jako PDF z edytora tekstu.'],
+];
+---
+<Base title="Druk cyfrowy Chorzów – prace dyplomowe, zaproszenia, broszury" description="Druk cyfrowy w kolorze do formatu SRA3 w Chorzowie: prace dyplomowe, zaproszenia, kartki, wizytówki, ulotki składane i broszury zszywane na finiszerze. Wycena w 24 h." canonical="druk-cyfrowy" active="druk-cyfrowy">
+  <ServiceHero eyebrow="Druk cyfrowy · Xerox C75 · do SRA3" title={'Wydrukujemy, złożymy <em class="text-gold">i zszyjemy</em>.'} lead="Kolorowy druk cyfrowy do formatu SRA3 na Xerox C75 z finiszerem: prace dyplomowe, zaproszenia, kartki, wizytówki, ulotki składane w Z i broszury zszywane – od jednej sztuki do krótkich serii." img="img/hf/druk-cyfrowy-1.jpg" alt="Wydrukowane broszury, zaproszenia i wizytówki" cta="Wyślij plik do wyceny" />
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Co drukujemy</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      {S.map(([t, d]) => (<article class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[28px] leading-tight">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-3">{d}</p></article>))}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid md:grid-cols-3 gap-4">
+    {[['Format do SRA3', '32 × 45 cm – A3 ze spadami albo kilka mniejszych druków na arkuszu.'], ['Finiszer i składanie', 'Zszywanie broszur, składanie w Z i C, bigowanie kartonu – bez ręcznego składania.'], ['Od 1 sztuki', 'Druk cyfrowy nie wymaga matryc – opłaca się już przy pojedynczych egzemplarzach i krótkich seriach.']].map(([t, d]) => (
+      <div class="reveal rounded-[28px] bg-ink text-white p-7"><h3 class="font-display text-[26px] leading-tight">{t}</h3><p class="text-white/70 text-[14.5px] leading-relaxed mt-2">{d}</p></div>))}
+  </section>
+  {prods.length > 0 && <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28"><h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Zamów online</h2><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{prods.map((p) => <Card p={p} c={p.cat} />)}</div></section>}
+  <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Druk cyfrowy" title="Wyślij plik do wyceny" hint="Co drukujemy, format, liczba stron i egzemplarzy, papier, wykończenie (zszywanie, składanie, bigowanie), termin." accept=".pdf,image/*,.doc,.docx,.zip" /></section>
+  <Faq items={faq} />
+</Base>

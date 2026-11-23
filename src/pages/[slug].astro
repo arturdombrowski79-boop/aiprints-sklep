@@ -102,16 +102,17 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
             <Creator p={p} cfg={cr} />
           </div>)}
         {crOnly ? null : (p.quote || !p.price) ? (
-          <form id="quote" class="mt-8 grid gap-3 rounded-[28px] bg-white border border-line p-6">
+          <form id="quote" data-about={p.name} class="mt-8 grid gap-3 rounded-[28px] bg-white border border-line p-6">
             <b class="font-display text-[28px] leading-none">Poproś o wycenę</b>
             <p class="text-[14px] text-mute -mt-1">Odpowiemy w ciągu 24 h w dni robocze.</p>
-            <div class="grid sm:grid-cols-2 gap-3"><input required name="n" placeholder="Imię i nazwisko / firma" class="inp" /><input required type="email" name="e" placeholder="E-mail" class="inp" /></div>
-            <input name="t" placeholder="Telefon (opcjonalnie)" class="inp" />
-            <textarea required name="m" rows="4" placeholder={p.cat === 'wspolnoty-i-spoldzielnie' ? 'Adres budynku, liczba klatek i lokali, co ma się znaleźć na tablicach…' : 'Opisz, czego potrzebujesz: ilość, wymiary, termin…'} class="inp"></textarea>
-            <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" name="f" /><span>📎 Dołącz logo, listę lokali lub zdjęcie miejsca</span></label>
-            <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie wyceny. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
+            <div class="grid sm:grid-cols-2 gap-3"><input required name="name" placeholder="Imię i nazwisko / firma" class="inp" /><input required type="email" name="email" placeholder="E-mail" class="inp" /></div>
+            <input name="phone" placeholder="Telefon (opcjonalnie)" class="inp" />
+            <textarea required name="msg" rows="4" placeholder={p.cat === 'wspolnoty-i-spoldzielnie' ? 'Adres budynku, liczba klatek i lokali, co ma się znaleźć na tablicach…' : 'Opisz, czego potrzebujesz: ilość, wymiary, termin…'} class="inp"></textarea>
+            <label class="inp flex items-center gap-3 cursor-pointer text-mute"><input type="file" multiple class="hidden" name="files[]" /><span>📎 Dołącz logo, listę lokali lub zdjęcie miejsca – do 20 MB</span></label>
+            <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+            <label class="flex gap-2.5 items-start text-[12.5px] text-mute"><input required name="consent" value="1" type="checkbox" class="mt-0.5" /><span>Zgadzam się na kontakt w sprawie wyceny. Administratorem danych jest AiPrints.pl Artur Dombrowski – <a class="underline" href="polityka-prywatnosci.html">polityka prywatności</a>.</span></label>
             <button class="h-14 rounded-full bg-ink text-white font-semibold">Wyślij zapytanie</button>
-            <p id="qok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
+            <p id="qok" class="text-[14px]" aria-live="polite"></p>
           </form>
         ) : (
           <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''} data-m2={kind === 'prod' && isM2(p) ? '1' : ''} data-kind={kind === 'prod' ? p.kind : ''}>
@@ -186,9 +187,10 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
   <script>
     import { addItem, zl } from '../scripts/cart.js';
     import { toast, priceAnim } from '../scripts/common.js';
+    import { bindQuote } from '../scripts/contact.js';
     const $ = (i) => document.getElementById(i);
     const q = $('quote');
-    if (q) q.onsubmit = (e) => { e.preventDefault(); $('qok').classList.remove('hidden'); toast('Zapytanie przyjęte ✓'); };
+    if (q) bindQuote(q, $('qok'), q.dataset.about);
     const cfg = $('cfg');
     if (cfg) {
       const base = +$('price').dataset.base; const qt = JSON.parse(cfg.dataset.qt || '[]');

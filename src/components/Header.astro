@@ -6,7 +6,7 @@ const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
 const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const thumb = (s) => (cat.products.find((p) => p.cat === s && p.img) || {}).img || `img/ph/${s}.svg`;
 const idx = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ s: p.slug, n: p.name, c: C[p.cat].name, p: p.priceText, i: p.img || `img/ph/${p.cat}.svg` }));
-const nav = [['prezenty-ze-zdjeciem', 'Ze zdjęciem'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
+const nav = [['uslugi', 'Usługi'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
 const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
 const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.facets.dla]];
 ---
@@ -64,7 +64,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
   <nav class="px-6 pb-10 grid gap-1">
     {cats.map((c) => <a href={`${c.slug}.html`} class="hd text-[42px] py-1.5 border-b border-line">{c.name}</a>)}
     <div class="grid grid-cols-2 gap-2 mt-6">
-      {[['sklep', 'Znajdź prezent'], ['pracownia', 'Pracownia'], ['kontakt', 'Kontakt'], ['dostawa-i-platnosci', 'Dostawa'], ['zwroty-i-reklamacje', 'Reklamacje']].map(([h, t]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3.5 text-[15px] font-medium">{t}</a>)}
+      {[['sklep', 'Znajdź prezent'], ['uslugi', 'Usługi'], ['pracownia', 'Pracownia'], ['kontakt', 'Kontakt'], ['dostawa-i-platnosci', 'Dostawa'], ['zwroty-i-reklamacje', 'Reklamacje']].map(([h, t]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3.5 text-[15px] font-medium">{t}</a>)}
     </div>
   </nav>
 </div>

@@ -4,9 +4,10 @@ const machines = [
   ['Grawer laserowy', 'xTool – lasery CO₂, MOPA 60 W i UV + przystawka obrotowa RA3', 'Drewno, skóra, akryl, stal, aluminium, wnętrze szkła. Także kubki, butelki i termosy dzięki przystawce do przedmiotów okrągłych.'],
   ['Druk UV', 'GoArt UV A3 – głowice i3200, biały, lakier i CMYK', 'Druk na płaskich i obłych przedmiotach: etui, drewno, szkło, akryl, metal. Lakier daje efekt 3D i połysk w wybranych miejscach.'],
   ['Druk wielkoformatowy', 'HP Latex 375 + ploter tnący Summa S3', 'Banery, folie na witryny, naklejki po obrysie, fototapety. Farby bez zapachu, odporne na słońce i deszcz.'],
-  ['Druk fotograficzny', 'Epson SureColor P9500, Epson SureLab D1000, Epson F500', 'Fine art do 44 cali, odbitki fotograficzne, druk sublimacyjny. Kolor sprawdzamy na skalibrowanym monitorze Eizo ColorEdge CG319.'],
-  ['Druk 3D', 'Bambu Lab H2C, X1C, A2L, A1 mini', 'Figurki, ozdoby świąteczne, mapy 3D, organizery i części na zamówienie – także w kilku kolorach naraz.'],
-  ['Druk cyfrowy i introligatornia', 'Xerox C75 z finisherem, broszurownica, bigówka', 'Wizytówki, kalendarze, katalogi, zaproszenia i dyplomy – z bigowaniem, zszywaniem i broszurowaniem.'],
+  ['Druk fotograficzny', 'Epson SureColor P9500, Epson SureLab D1000, Epson F500', 'Fine art do 44 cali, odbitki fotograficzne, druk sublimacyjny. Kolor sprawdzamy na monitorze EIZO ColorEdge CG319X z kalibracją sprzętową. Edycje Digigraphie® by Epson.'],
+  ['Druk 3D', 'Bambu Lab H2C, X1C, A2L, A1 mini', 'Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU – także w kilku kolorach naraz.'],
+  ['Druk cyfrowy i introligatornia', 'Xerox C75 z finiszerem (składanie Z, broszury), bigówka', 'Do formatu SRA3: prace dyplomowe, zaproszenia, kartki, wizytówki, ulotki składane, broszury zszywane i katalogi.'],
+  ['Fotografia', 'Studio w pracowni, plener, dron', 'Zdjęcia do dokumentów, portrety, sesje rodzinne i plenerowe, fotografia produktowa, architektury i z drona.'],
 ];
 const steps = [['Zamówienie', 'Personalizujesz produkt w sklepie albo wysyłasz zapytanie o wycenę.'], ['Projekt', 'Grafik przygotowuje projekt w skali 1:1 – z Twoim tekstem, zdjęciem albo logo.'], ['Akceptacja', 'W ciągu 24 h wysyłamy podgląd na e-mail. Poprawki przed akceptacją są bezpłatne.'], ['Produkcja', 'Grawer, druk UV, druk 3D lub druk wielkoformatowy – na naszych maszynach.'], ['Kontrola', 'Każdy produkt sprawdzamy: pisownię, kolor, krawędzie, mocowania.'], ['Pakowanie i wysyłka', 'Szkło w pudełkach z pianką EVA, płaskie produkty między kartonem. Numer paczki dostajesz SMS-em.']];
 ---
@@ -38,6 +39,15 @@ const steps = [['Zamówienie', 'Personalizujesz produkt w sklepie albo wysyłasz
       <ol class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 mt-12">
         {steps.map(([t, d], i) => <li class="reveal border-t border-white/15 pt-6"><span class="text-gold2 text-[13px] font-semibold tracking-[.2em]">KROK {i + 1}</span><b class="block font-display text-[30px] leading-tight mt-2">{t}</b><p class="text-[#b9b1a7] mt-2 leading-relaxed">{d}</p></li>)}
       </ol>
+    </div>
+  </section>
+
+  <section id="projekty" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24 grid lg:grid-cols-[.9fr_1.1fr] gap-10">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Projekty, AI<br />i licencje</h2>
+    <div class="reveal text-mute text-[16px] leading-relaxed space-y-4">
+      <p>Mówimy o tym otwarcie: przy projektach korzystamy z narzędzi sztucznej inteligencji – do generowania i dopracowania grafik, retuszu zdjęć i wizualizacji produktów. Używamy też licencjonowanych grafik i zdjęć z Adobe Stock oraz gotowych cyfrowych aranżacji.</p>
+      <p>Na produktach, które sprzedajemy, stosujemy tylko materiały z licencją pozwalającą na taki użytek (w Adobe Stock – licencja Extended). Nie kopiujemy cudzych projektów ani znaków towarowych.</p>
+      <p>Część zdjęć w sklepie to wizualizacje: pokazują, jak będzie wyglądał produkt z Twoją personalizacją. Sam produkt zawsze powstaje fizycznie w naszej pracowni, a zanim go wykonamy, dostajesz projekt do akceptacji.</p>
     </div>
   </section>
 

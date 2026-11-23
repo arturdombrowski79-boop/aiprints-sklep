@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+const M = [
+  ['PLA', 'Najłatwiejszy i najdokładniejszy', 'Figurki, makiety, ozdoby, prototypy wizualne, gadżety. Duży wybór kolorów i wykończeń (mat, jedwab, marmur). Mięknie już w ok. 55–60 °C – nie do auta latem ani blisko źródeł ciepła.'],
+  ['PET-G', 'Wytrzymały do codziennego użytku', 'Uchwyty, obudowy, pojemniki, części do domu i warsztatu. Twardszy i bardziej odporny na wilgoć i temperaturę niż PLA, lekko elastyczny – mniej pęka.'],
+  ['ASA', 'Na zewnątrz – odporny na słońce', 'Elementy montowane na dworze: osłony, uchwyty, tabliczki, części do ogrodu i auta. Nie żółknie i nie kruszeje od promieni UV, znosi deszcz i mróz.'],
+  ['ABS', 'Odporny na temperaturę i uderzenia', 'Części techniczne, obudowy elektroniki, elementy pracujące w cieple. Wytrzymuje wyższą temperaturę niż PLA i PET-G.'],
+  ['PLA-CF', 'Sztywny, z włóknem węglowym', 'Lekkie, sztywne części: ramki, wsporniki, elementy dla modelarzy i dronów. Matowa, techniczna powierzchnia, która dobrze ukrywa warstwy.'],
+  ['TPU', 'Elastyczny jak guma', 'Uszczelki, odboje, nakładki, podkładki antypoślizgowe, etui i paski. Wygina się i wraca do kształtu.'],
+];
+const prods = cat.products.filter((p) => p.cat === 'wydruki-3d' || (p.also || []).includes('wydruki-3d')).filter((p) => p.cat !== 'na-swieta').slice(0, 8);
+const faq = [
+  ['Jakie pliki przyjmujecie?', 'STL, 3MF, STEP, OBJ. Nie masz pliku? Wyślij zdjęcie części z wymiarami albo szkic – ocenimy, czy możemy ją zaprojektować i wydrukować.'],
+  ['Ile kosztuje wydruk?', 'Cena zależy od materiału, ilości tworzywa i czasu druku. Po otrzymaniu pliku podamy dokładną cenę i termin – zwykle w ciągu 24 h w dni robocze.'],
+  ['Czy drukujecie w kilku kolorach?', 'Tak – na drukarkach z automatycznym podawaniem kilku filamentów drukujemy elementy wielokolorowe w jednym wydruku (np. logo, napisy, figurki).'],
+  ['Jaki materiał wybrać?', 'Do dekoracji – PLA. Do części używanych na co dzień – PET-G. Na zewnątrz – ASA. Do ciepła i uderzeń – ABS. Do sztywnych, lekkich elementów – PLA-CF. Do elementów giętkich – TPU. Jeśli nie wiesz, opisz zastosowanie – doradzimy.'],
+];
+---
+<Base title="Druk 3D na zamówienie Chorzów – PLA, PET-G, ASA, ABS, TPU" description="Druk 3D na zamówienie w Chorzowie: części zamienne, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU. Wydruk z Twojego pliku STL/3MF albo według szkicu." canonical="druk-3d" active="druk-3d">
+  <ServiceHero eyebrow="Druk 3D · Bambu Lab · 6 materiałów" title={'Wydrukujemy to <em class="text-gold">w 3D</em>.'} lead="Część zamienna, prototyp, obudowa, figurka czy seria gadżetów z logo – z Twojego pliku albo według zdjęcia i wymiarów. Drukujemy na drukarkach Bambu Lab, także w kilku kolorach naraz." img="img/hf/druk-3d-z-pliku-1.jpg" alt="Wydruki 3D z różnych materiałów na stole w pracowni" cta="Wyślij plik do wyceny" shop="wydruki-3d.html" shopLabel="Gotowe wydruki 3D" />
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Materiały</h2>
+    <p class="reveal text-mute mt-4 max-w-[640px]">Dobieramy tworzywo do zastosowania – nie do tego, co akurat jest w drukarce.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      {M.map(([n, t, d]) => (
+        <article class="reveal rounded-[30px] bg-white border border-line p-7"><span class="font-display text-[44px] leading-none">{n}</span><p class="text-[14px] font-semibold mt-3">{t}</p><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></article>))}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid md:grid-cols-4 gap-4">
+    {[['1', 'Wyślij plik albo zdjęcie z wymiarami'], ['2', 'Dostajesz cenę, materiał i termin'], ['3', 'Drukujemy i sprawdzamy wymiary'], ['4', 'Odbiór w Chorzowie albo wysyłka']].map(([n, t]) => (
+      <div class="reveal rounded-[26px] bg-white border border-line p-6"><span class="font-display text-[40px] text-gold/70 leading-none">{n}</span><p class="mt-3 font-medium">{t}</p></div>))}
+  </section>
+  {prods.length > 0 && <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28"><h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Gotowe wydruki 3D w sklepie</h2><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{prods.map((p) => <Card p={p} c={p.cat} />)}</div></section>}
+  <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Druk 3D na zamówienie" title="Wyślij plik do wyceny" hint="Co to za element, do czego służy, ile sztuk, preferowany materiał i kolor. Jeśli nie masz pliku – podaj wymiary." accept=".stl,.3mf,.step,.stp,.obj,image/*,.pdf,.zip" /></section>
+  <Faq items={faq} />
+</Base>
