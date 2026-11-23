@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { tooBig } from '../data/ship.js';
 const $ = (id) => document.getElementById(id);
 const $$ = (s) => [...document.querySelectorAll(s)];
 export const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
@@ -68,12 +69,27 @@ export async function addItem(item, fromEl, then) {
 }
 
 const shipVal = () => { const v = +document.querySelector('[name=d]:checked').value; return totals().after >= 199 && v > 0 ? 0 : v; };
+// dostawa: cena przy każdej metodzie (z darmową dostawą), paczkomat wyłączony dla dużych wydruków
+function syncShip() {
+  const free = totals().after >= 199, big = S.items.some(tooBig);
+  $$('[name=d]').forEach((r) => {
+    const v = +r.value, lab = r.closest('label'), pr = lab.querySelector('[data-pr]'), isL = v > 0 && /Paczkomat/.test(lab.textContent);
+    pr.innerHTML = v > 0 && free ? `<s class="font-normal text-[#8792a2] mr-1.5">${zl(v)}</s>0 zł` : (v ? zl(v) : '0 zł');
+    r.disabled = isL && big; lab.classList.toggle('opacity-50', r.disabled); lab.classList.toggle('cursor-not-allowed', r.disabled);
+    const ds = lab.querySelector('[data-ds]'); if (isL && ds) ds.textContent = big ? 'Niedostępny – duże wydruki nie zmieszczą się w paczkomacie' : 'Kod paczkomatu wpiszesz poniżej';
+  });
+  const cur = document.querySelector('[name=d]:checked');
+  if (cur.disabled) { const k = $$('[name=d]').find((r) => !r.disabled && /Kurier/.test(r.closest('label').textContent)); if (k) k.checked = true; }
+  $('lkBox').classList.toggle('hidden', !/Paczkomat/.test(document.querySelector('[name=d]:checked').closest('label').textContent));
+  $('bigNote').classList.toggle('hidden', !big);
+}
 function renderCo() {
+  syncShip();
   const t = totals();
   $('coItems').innerHTML = S.items.map((i) => `<div class="flex gap-3 py-3 border-b border-[#eef1f4]"><img src="${i.img}" class="w-14 h-14 rounded-lg object-cover"><div class="flex-1 text-[13.5px]"><b class="font-semibold">${i.title}</b><div class="text-[12px] text-[#697386]">${i.lines[0] || ''} · ${i.qty} szt.</div></div><b class="text-[13.5px]">${zl(i.price * i.qty)}</b></div>`).join('') +
     (S.add.box && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386] pt-2"><span>Pudełko premium</span><span>${zl(ADD.box * boxable())}</span></div>` : '') + (S.add.card && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Kartka</span><span>9 zł</span></div>` : '') + (S.add.exp ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Ekspres</span><span>19 zł</span></div>` : '');
   const s = shipVal(), tot = t.after + s;
-  $('cSub').textContent = zl(t.sub); $('cDiscR').classList.toggle('hidden', !S.disc); if ($('cDiscL')) $('cDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('cDisc').textContent = '−' + zl(t.d); $('cShip').textContent = s ? zl(s) : '0 zł'; $('cTot').textContent = zl(tot); $('payT').textContent = 'Zamawiam i płacę ' + zl(tot);
+  $('cSub').textContent = zl(t.sub); $('cDiscR').classList.toggle('hidden', !S.disc); if ($('cDiscL')) $('cDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('cDisc').textContent = '−' + zl(t.d); $('cShip').textContent = s ? zl(s) : (+document.querySelector('[name=d]:checked').value > 0 ? '0 zł (gratis od 199 zł)' : '0 zł'); $('cTot').textContent = zl(tot); $('payT').textContent = 'Zamawiam i płacę ' + zl(tot);
   const P = S.items.filter((i) => i.pers !== false), G = S.items.filter((i) => i.pers === false);
   $('persBox').classList.toggle('hidden', !P.length); $('persList').textContent = P.length === S.items.length ? (P.length > 1 ? 'wszystkie produkty z tego zamówienia' : 'ten produkt') : P.map((i) => i.title).join(', ');
   $('retInfo').classList.toggle('hidden', !G.length); $('retInfo').textContent = G.length ? `Bez personalizacji: ${G.map((i) => i.title).join(', ')} – możesz odstąpić od umowy w ciągu 14 dni od odbioru, bez podania przyczyny.` : '';
@@ -99,7 +115,7 @@ export function initCart(opts) {
   $('cartBtn').onclick = () => $('drawer').classList.contains('on') ? closeCart() : openCart(); addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCart(); }); $('close').onclick = closeCart; $('scrim').onclick = closeCart;
   $('toCo').onclick = () => { if (S.items.length) { closeCart(); openCo(); } };
   $('coBack').onclick = closeCo; $('again').onclick = closeCo;
-  $$('[name=d]').forEach((r) => r.onchange = () => { $('lkBox').classList.toggle('hidden', !/Paczkomat/.test(document.querySelector('[name=d]:checked').closest('label').textContent)); renderCo(); });
+  $$('[name=d]').forEach((r) => r.onchange = () => renderCo());
   let pm = 'blik';
   $$('#co [data-p]').forEach((b) => b.onclick = () => { pm = b.dataset.p; $$('#co [data-p]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); $$('.pane').forEach((p) => p.classList.toggle('hidden', p.id !== 'p-' + pm)); });
   $('blik').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });

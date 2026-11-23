@@ -103,3 +103,18 @@ function send_mail(string $to, string $subject, string $html, array $files = [],
   $body .= "--$b--";
   return mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $hdr, '-f' . $from);
 }
+
+// Czy pozycja nie zmieści się w paczkomacie (gabaryt C 41×38×64 cm). Ta sama reguła co src/data/ship.js.
+function too_big(array $it): bool {
+  $RIGID = ['tablica-pcv-dibond', 'wydruk-wystawowy', 'wydruk-w-ramie', 'tablica-ogloszen', 'tablica-wejscie-zarzadca', 'tablica-dla-rodzicow', 'tablica-urzedowa-szkola', 'regulamin-porzadku'];
+  $ALWAYS = ['potykacz-a1', 'baner-rekrutacja', 'plakaty-edukacyjne', 'pakiet-budynek', 'grafika-drzwi-wejsciowe', 'naklejki-podlogowe-gry', 'postacie-zagladajace-drzwi'];
+  $ISO = ['A2' => [42, 59.4], 'A1' => [59.4, 84.1], 'A0' => [84.1, 118.9], 'B1' => [70, 100], 'B0' => [100, 141]];
+  $slug = (string)($it['slug'] ?? ''); if (in_array($slug, $ALWAYS, true)) return true;
+  $d = null;
+  if (!empty($it['w']) && !empty($it['h'])) $d = [(float)$it['w'], (float)$it['h']];
+  else { $o = (string)($it['opt'] ?? '');
+    if (preg_match('/(\d+(?:[.,]\d+)?)\s*×\s*(\d+(?:[.,]\d+)?)/u', $o, $m)) $d = [(float)str_replace(',', '.', $m[1]), (float)str_replace(',', '.', $m[2])];
+    elseif (preg_match('/\b(A[0-2]|B[01])\b/', $o, $m)) $d = $ISO[$m[1]]; }
+  if (!$d) return false;
+  return in_array($slug, $RIGID, true) ? max($d) > 60 : min($d) > 60;
+}

@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+// Usługa graweru i cięcia laserowego w Chorzowie – dla osób prywatnych i firm (serie, logo, oznakowanie).
+const M = [
+  ['Drewno i sklejka', 'CO₂ · grawer i cięcie', 'Deski, pudełka, tabliczki, dyplomy, podziękowania, elementy wycinane na wymiar ze sklejki i MDF.'],
+  ['Akryl (plexi)', 'CO₂ · grawer i cięcie', 'Szyldy, statuetki, tabliczki, stojaki, litery i elementy wycinane po obrysie – z polerowaną krawędzią.'],
+  ['Stal i aluminium', 'MOPA 60 W · znakowanie', 'Termosy, kubki, długopisy, breloki, biżuteria, tabliczki znamionowe, oznakowanie narzędzi – trwale, bez farby.'],
+  ['Szkło i kryształ', 'CO₂ i UV · grawer', 'Szklanki, karafki, kufle, butelki (dookoła – przystawka RA3) oraz grawer 3D wewnątrz kryształu.'],
+  ['Skóra i korek', 'CO₂ · grawer', 'Breloki, portfele, okładki notesów, podkładki, etykiety skórzane z logo.'],
+  ['Karton, papier, filc', 'CO₂ · cięcie i grawer', 'Zaproszenia wycinane ażurowo, opakowania, szablony, dekoracje, prototypy.'],
+];
+const B = [
+  ['Serie z logo dla firm', 'Termosy, długopisy, breloki, deski i upominki z logo – od kilku do kilkuset sztuk, z tym samym projektem i rozmieszczeniem.'],
+  ['Oznakowanie i tabliczki', 'Tabliczki na drzwi, znamionowe, numeracja lokali, tabliczki na skrzynki – laminat grawerski, akryl, aluminium.'],
+  ['Cięcie na wymiar', 'Elementy z akrylu, sklejki i MDF wycinane według Twojego pliku (DXF, SVG, AI, PDF) – pojedyncze sztuki i serie.'],
+  ['Prezenty personalizowane', 'Imiona, daty, zdjęcia i dedykacje – zamówisz od ręki w naszym sklepie, z podglądem przed produkcją.'],
+];
+const prods = cat.products.filter((p) => /xTool/.test(p.machine || '') && p.cat !== 'na-swieta' && p.img).sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 8);
+const faq = [
+  ['Ile kosztuje grawer?', 'Cena zależy od materiału, wielkości pola graweru i liczby sztuk. Przy serii koszt przygotowania projektu rozkłada się na wszystkie sztuki. Wyślij opis albo plik – podamy cenę w ciągu 24 h w dni robocze. Gotowe prezenty z grawerem mają ceny podane w sklepie.'],
+  ['Czy mogę przynieść własny przedmiot?', 'Tak, często grawerujemy na przedmiotach klienta (np. termos, nóż, zegarek, szkło). Najpierw napisz lub zadzwoń – ocenimy, z czego jest wykonany i czy grawer będzie bezpieczny dla przedmiotu.'],
+  ['W jakim formacie wysłać logo lub rysunek?', 'Najlepiej wektorowo: SVG, AI, PDF, EPS albo DXF do cięcia. Jeśli masz tylko zdjęcie albo PNG – przygotujemy plik za Ciebie.'],
+  ['Czy zobaczę projekt przed grawerem?', 'Tak. Przed produkcją wysyłamy projekt z rozmieszczeniem na przedmiocie do akceptacji. Przy serii możemy najpierw wykonać jedną sztukę próbną.'],
+  ['Czego nie tniemy?', 'Ze względów bezpieczeństwa nie tniemy ani nie grawerujemy PVC i pianki PU (wydzielają szkodliwe gazy). Zamiast PVC proponujemy akryl albo laminat grawerski.'],
+  ['Ile to trwa?', 'Pojedyncze sztuki zwykle 3–7 dni roboczych od akceptacji projektu, serie – według ustaleń. Pilne zlecenia na miejscu w Chorzowie – zadzwoń: 609 040 274.'],
+];
+---
+<Base title="Grawer laserowy Chorzów – grawerowanie i cięcie laserem" description="Grawer i cięcie laserowe w Chorzowie: drewno, akryl, stal, aluminium, szkło, skóra. Serie z logo dla firm, tabliczki, prezenty, cięcie na wymiar z pliku. Wycena w 24 h." canonical="grawer-laserowy" active="grawer-laserowy">
+  <ServiceHero eyebrow="Grawer i cięcie laserem · Chorzów" title={'Grawer laserowy <em class="text-gold">na miejscu</em> w Chorzowie.'} lead="Grawerujemy i tniemy laserem drewno, akryl, stal, aluminium, szkło i skórę – pojedyncze prezenty, serie z logo dla firm, tabliczki i elementy wycinane z Twojego pliku. Lasery xTool: CO₂, MOPA 60 W i UV, z przystawką do przedmiotów okrągłych." img="img/hf/karafka-grawer-sq.jpg" alt="Karafka z grawerowanym monogramem" cta="Zapytaj o wycenę" shop="prezenty-z-grawerem.html" shopLabel="Prezenty z grawerem" />
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Na czym grawerujemy</h2>
+    <p class="reveal text-mute mt-4 max-w-[640px]">Do każdego materiału dobieramy odpowiedni laser i ustawienia – próbę robimy na skrawku, zanim zaczniemy na Twoim przedmiocie.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      {M.map(([n, t, d]) => (
+        <article class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[30px] leading-tight">{n}</h3><p class="text-[13.5px] font-semibold mt-2">{t}</p><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></article>))}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Dla kogo</h2>
+    <div class="grid md:grid-cols-2 gap-4 mt-10">
+      {B.map(([t, d]) => <div class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[28px] leading-tight">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></div>)}
+    </div>
+  </section>
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid md:grid-cols-4 gap-4">
+    {[['1', 'Opisz, co grawerujemy – albo wyślij plik lub logo'], ['2', 'Dostajesz cenę, termin i projekt do akceptacji'], ['3', 'Grawerujemy – przy serii najpierw sztuka próbna'], ['4', 'Odbiór w Chorzowie albo wysyłka, faktura VAT']].map(([n, t]) => (
+      <div class="reveal rounded-[26px] bg-white border border-line p-6"><span class="font-display text-[40px] text-gold/70 leading-none">{n}</span><p class="mt-3 font-medium">{t}</p></div>))}
+  </section>
+  {prods.length > 0 && <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28"><h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Przykłady z naszego sklepu</h2><p class="reveal text-[13px] text-mute mt-3">Zdjęcia poglądowe produktów, które grawerujemy na naszych laserach.</p><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{prods.map((p) => <Card p={p} c={p.cat} />)}</div></section>}
+  <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Grawer / cięcie laserowe" title="Wyceń grawer lub cięcie" hint="Co grawerujemy (materiał, przedmiot), ile sztuk, wielkość napisu lub logo, termin. Dla cięcia – wymiary i grubość materiału. Możesz dołączyć logo, plik lub zdjęcie." accept="image/*,.pdf,.svg,.ai,.eps,.dxf,.zip" /></section>
+  <Faq items={faq} />
+</Base>

@@ -6,7 +6,7 @@ const alt2 = p.gallery && p.gallery.length > 1 ? p.gallery[p.gallery.length - 1]
 const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
 const base = p.tiers ? p.tiers[0].p : p.price;
 const od = p.tiers || /^od/.test(p.priceText || '') ? 'od ' : '';
-const unitSuf = ((p.priceText || '').replace(/\s*\(.*\)$/, '').match(/\s*\/.*$/) || [''])[0];
+const unitSuf = ((p.priceText || '').match(/\s*\/\s*(m²|szt\.?|os\.?|komplet)\s*$/) || [''])[0]; // tylko jednostka (zł/m², zł/szt.), bez listy innych wariantów
 const promoPrice = p.promo && base ? od + zl(base * p.promo.k) + unitSuf : null;
 const price = p.price ? (/^od/.test(p.priceText) ? p.priceText : (p.tiers ? `od ${p.tiers[0].p} zł` : p.priceText.replace(/\s*\(.*\)$/, ''))) : 'Wycena';
 ---

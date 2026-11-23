@@ -9,7 +9,8 @@ RewriteRule ^ https://aiprints.pl%{REQUEST_URI} [L,R=301]
 # stare adresy (poprzednia strona) -> odpowiedniki w sklepie
 RewriteRule ^images/ /fototapeta [L,R=301]
 RewriteRule ^fototapety(-chorzow)?/?$ /fototapeta [L,R=301]
-RewriteRule ^grawer(-laserowy)?(-chorzow)?/?$ /prezenty-z-grawerem [L,R=301]
+RewriteRule ^grawer(-chorzow)?/?$ /grawer-laserowy [L,R=301]
+RewriteRule ^grawer-laserowy-chorzow/?$ /grawer-laserowy [L,R=301]
 RewriteRule ^druk-wielkoformatowy-chorzow/?$ /druk-wielkoformatowy [L,R=301]
 RewriteRule ^[a-z0-9-]+-chorzow/?$ /sklep [L,R=301]
 # /strona.html -> /strona
@@ -27,16 +28,19 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\.(jpg|jpeg|png|webp|svg|pdf)$">
-    Header set Cache-Control "public, max-age=2592000"
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
-  <FilesMatch "\.html$">
-    Header set Cache-Control "public, max-age=300"
+  # strony: przeglądarka zawsze pyta serwer o nowszą wersję (ETag), więc po wdrożeniu każdy widzi nową stronę
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
   </FilesMatch>
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Strict-Transport-Security "max-age=15552000"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Content-Security-Policy "frame-ancestors 'self'; upgrade-insecure-requests; object-src 'none'; base-uri 'self'"
+  # pełna polityka skryptów najpierw w trybie raportowania (nic nie blokuje, zgłasza naruszenia do api/csp.php)
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://www.google.com https://www.facebook.com; worker-src 'self' blob:; form-action 'self' https://checkout.stripe.com; report-uri /api/csp.php"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
 </IfModule>
 <IfModule mod_deflate.c>

@@ -16,7 +16,7 @@ export function describe(p, catName) {
   const b2b = B2B.includes(p.cat);
   const a = `${p.name}${p.variants ? ' – ' + p.variants.charAt(0).toLowerCase() + p.variants.slice(1) : ''}.`;
   const b = p.kind === 'files'
-    ? `Wgrywasz własne zdjęcia lub pliki do druku – bez limitu liczby, do 2 GB na plik (albo podajesz link do Dysku Google czy WeTransfer).${p.many ? ' Potrzebne: ' + p.many + '.' : ''} Przed drukiem sprawdzamy rozdzielczość i kolory – jeśli coś trzeba poprawić, napiszemy. Realizacja zwykle 2–7 dni roboczych.`
+    ? `Drukujemy z Twoich plików: wybierasz je tutaj (do 2 GB na plik), wgrywasz po zakupie z linku w mailu albo podajesz link do Dysku Google czy WeTransfer.${p.many ? ' Potrzebne: ' + p.many + '.' : ''} Przed drukiem sprawdzamy każdy plik – rozdzielczość, spady, kolory i kadr. Jeśli coś trzeba poprawić albo plik trzeba przyciąć do wymiaru, przed produkcją wyślemy Ci podgląd do akceptacji; gdy plik jest gotowy do druku, od razu drukujemy. Realizacja zwykle 2–7 dni roboczych.`
     : p.kind === 'ready'
     ? 'Gotowy produkt z naszej pracowni – wysyłamy zwykle w 1–3 dni robocze. Bez personalizacji możesz go zwrócić w ciągu 14 dni.'
     : b2b

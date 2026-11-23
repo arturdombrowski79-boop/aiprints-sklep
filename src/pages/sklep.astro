@@ -7,7 +7,7 @@ const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
 const items = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ ...p, sub: C[p.cat].name }));
 const subs = [...new Set(items.map((p) => p.sub))];
 ---
-<Base title="Wszystkie prezenty personalizowane – wybierz okazję i osobę" description="Prezenty personalizowane z pracowni w Chorzowie: filtruj po okazji, osobie, rodzaju personalizacji, materiale i cenie." canonical="sklep" active="sklep">
+<Base title="Wszystkie prezenty personalizowane – wybierz okazję i osobę" description="Sklep AiPrints.pl: ponad 250 prezentów z grawerem i zdjęciem – kryształy 3D, akryl, drewno, szkło i druk z pracowni w Chorzowie. Podgląd projektu przed produkcją." canonical="sklep" active="sklep" image="img/site/og-sklep.jpg">
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-10">
     <nav class="text-[13px] text-mute" aria-label="Okruszki"><a href="index.html" class="hover:text-ink">Strona główna</a><span class="mx-2">/</span><span>Wszystkie produkty</span></nav>
     <div class="flex flex-wrap items-end justify-between gap-6 mt-6">

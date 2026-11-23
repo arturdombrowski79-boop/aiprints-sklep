@@ -30,6 +30,8 @@ try {
   $sk = (string)($in['delivery'] ?? '15.99'); if (!isset($C['ship'][$sk])) $sk = '15.99';
   $ship = ($after >= $C['free'] && (float)$sk > 0) ? 0.0 : (float)$sk; $total = r2($after + $ship);
   $locker = preg_replace('/[^A-Z0-9-]/', '', strtoupper((string)($in['locker'] ?? '')));
+  $big = false; foreach ($items as $it) if (too_big($it)) $big = true;
+  if ($big && str_contains($C['ship'][$sk], 'Paczkomat')) fail('Duże wydruki nie zmieszczą się w paczkomacie – wybierz kuriera DPD albo odbiór w pracowni.');
   if (str_contains($C['ship'][$sk], 'Paczkomat') && !$locker) fail('Podaj kod paczkomatu');
 
   $no = order_no(); $token = bin2hex(random_bytes(16));
