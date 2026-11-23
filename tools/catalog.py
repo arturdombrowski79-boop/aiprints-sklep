@@ -72,6 +72,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     if cat=='druk-wielkoformatowy' and k=='Druk wielkoformatowy': sub='Banery i flagi' if re.search('baner|siatka',sl) else 'Plakaty i tablice' if re.search('plakat|tablica|potykacz',sl) else 'Folie i naklejki'
     if k=='Ploter tnący': sub='Litery i napisy z folii'
     if sl.startswith('oznakowanie-') and 'gabinet' in sl: sub='Oznakowanie gabinetu'
+    if sl=='pieczatki-firmowe': sub='Pieczątki'
     if cat=='szkoly-i-przedszkola': sub='Wejście i ogrodzenie' if re.search('drzwi|rekrutacja|urzedowa',sl) else 'Dyplomy i odzież' if re.search('dyplom|koszulk',sl) else 'Sale i korytarze'
     if cat=='cmentarz-i-pogrzeb': sub='Na pogrzeb' if re.search('klepsydr|portret|obrazki|podziekowania|szarfa',sl) else 'Pamiątki' if re.search('krysztal|pupil',sl) else 'Na cmentarz'
     if cat=='dla-fotografow': sub='Odbitki i powiększenia' if re.search('odbitk|powieksz|kalendarz|retusz',sl) else 'Fine art'
@@ -93,7 +94,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
             vt=sorted([{'k':a.strip(),'p':float(b)} for a,b in (x.split('=') for x in r[src].split('|'))],key=lambda t:t['p'])
             if src=='warianty': r['warianty']=', '.join(t['k'] for t in vt)
             else: r['warianty']=r['warianty']
-            r['nasza_cena']='od '+(('%g'%vt[0]['p']).replace('.',','))+' zł'+('/szt' if re.search('odbitk',r['slug']) else '')
+            r['nasza_cena']='od '+(('%d'%vt[0]['p']) if vt[0]['p']==int(vt[0]['p']) else ('%.2f'%vt[0]['p']).replace('.',','))+' zł'+('/szt' if re.search('odbitk',r['slug']) else '')
     r['nasza_cena']=re.sub(r'(\d+)\.(\d{1,2})(?=\s*zł)',lambda m:m.group(1)+','+m.group(2).ljust(2,'0'),r['nasza_cena'])
     p=price(r['nasza_cena'])
     unit=bool(re.search(r'/szt|/m²|/ 50|od \d+ szt',r['nasza_cena']))

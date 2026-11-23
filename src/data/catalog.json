@@ -59,12 +59,13 @@
 "color": "#2a2a2a",
 "subs": [
 "Oznakowanie pomieszczeń",
+"Pieczątki",
 "Projekty i grafika",
 "QR, opinie i social media",
 "Szkoły i kluby",
 "Upominki z logo"
 ],
-"count": 32
+"count": 33
 },
 {
 "slug": "wspolnoty-i-spoldzielnie",
@@ -2469,7 +2470,7 @@
 "cat": "wspolnoty-i-spoldzielnie",
 "sub": "Tablice",
 "variants": "PCV 30×40 + tabliczka 30×8, PCV 40×60 + tabliczka 40×10, LED 230 V 30×40, Solarna 30×40, LED 230 V 40×60, Solarna 40×60",
-"priceText": "od 147,6 zł",
+"priceText": "od 147,60 zł",
 "price": 147.6,
 "tiers": [
 {
@@ -3271,37 +3272,65 @@
 "name": "Oznakowanie higieniczne gabinetu (stanowiska, strefy, mycie rąk)",
 "cat": "salony-beauty",
 "sub": "Oznakowanie gabinetu",
-"variants": "Bezpieczeństwo i higiena – A5 na stanowisko, Higieniczne mycie rąk A4, Higieniczna dezynfekcja rąk A4, Strefy: brudna, czysta, sterylna (3 szt.), Tabliczki na drzwi (3 szt.), Tabliczki informacyjne (5 szt.), Komplet higieniczny gabinetu",
-"priceText": "od 24,6 zł",
+"variants": "Bezpieczeństwo i higiena A5 na stanowisko – PCV, Higieniczne mycie rąk A4 – PCV, Higieniczna dezynfekcja rąk A4 – PCV, Bezpieczeństwo i higiena A5 na stanowisko – plexi, Strefy brudna, czysta, sterylna (3 szt.) – PCV, Tabliczki na drzwi (3 szt.) – PCV, Higieniczne mycie rąk A4 – plexi, Higieniczna dezynfekcja rąk A4 – plexi, Tabliczki informacyjne (5 szt.) – PCV, Strefy brudna, czysta, sterylna (3 szt.) – plexi, Tabliczki na drzwi (3 szt.) – plexi, Tabliczki informacyjne (5 szt.) – plexi, Komplet higieniczny – PCV, Komplet higieniczny – plexi",
+"priceText": "od 24,60 zł",
 "price": 24.6,
 "tiers": [
 {
-"k": "Bezpieczeństwo i higiena – A5 na stanowisko",
+"k": "Bezpieczeństwo i higiena A5 na stanowisko – PCV",
 "p": 24.6
 },
 {
-"k": "Higieniczne mycie rąk A4",
+"k": "Higieniczne mycie rąk A4 – PCV",
 "p": 30.75
 },
 {
-"k": "Higieniczna dezynfekcja rąk A4",
+"k": "Higieniczna dezynfekcja rąk A4 – PCV",
 "p": 30.75
 },
 {
-"k": "Strefy: brudna, czysta, sterylna (3 szt.)",
+"k": "Bezpieczeństwo i higiena A5 na stanowisko – plexi",
+"p": 49.0
+},
+{
+"k": "Strefy brudna, czysta, sterylna (3 szt.) – PCV",
 "p": 49.2
 },
 {
-"k": "Tabliczki na drzwi (3 szt.)",
+"k": "Tabliczki na drzwi (3 szt.) – PCV",
 "p": 49.2
 },
 {
-"k": "Tabliczki informacyjne (5 szt.)",
+"k": "Higieniczne mycie rąk A4 – plexi",
+"p": 69.0
+},
+{
+"k": "Higieniczna dezynfekcja rąk A4 – plexi",
+"p": 69.0
+},
+{
+"k": "Tabliczki informacyjne (5 szt.) – PCV",
 "p": 79.0
 },
 {
-"k": "Komplet higieniczny gabinetu",
+"k": "Strefy brudna, czysta, sterylna (3 szt.) – plexi",
+"p": 99.0
+},
+{
+"k": "Tabliczki na drzwi (3 szt.) – plexi",
+"p": 99.0
+},
+{
+"k": "Tabliczki informacyjne (5 szt.) – plexi",
+"p": 159.0
+},
+{
+"k": "Komplet higieniczny – PCV",
 "p": 199.0
+},
+{
+"k": "Komplet higieniczny – plexi",
+"p": 399.0
 }
 ],
 "machine": "GoArt UV A3",
@@ -4026,7 +4055,7 @@
 "cat": "wspolnoty-i-spoldzielnie",
 "sub": "Tablice",
 "variants": "Korkowa 60×90, Korkowa 70×100, Korkowa 90×120",
-"priceText": "od 221,4 zł",
+"priceText": "od 221,40 zł",
 "price": 221.4,
 "tiers": [
 {
@@ -4110,20 +4139,20 @@
 "name": "Oznakowanie gabinetu kosmetycznego i laserowego",
 "cat": "salony-beauty",
 "sub": "Oznakowanie gabinetu",
-"variants": "Nakaz okularów ochronnych 10×10, Zakaz palenia i e-papierosów 15×20, Apteczka pierwszej pomocy 15×15, Etykiety odpadów medycznych 10×15 (20 szt.), Instrukcja pierwszej pomocy A4, Uwaga promieniowanie laserowe A4, Komplet gabinetu laserowego (6 pozycji)",
+"variants": "Nakaz okularów ochronnych 10×10 – PCV, Zakaz palenia i e-papierosów 15×20 – PCV, Apteczka 15×15 – PCV, Etykiety odpadów medycznych 10×15 (20 szt.), Nakaz okularów ochronnych 10×10 – plexi, Apteczka 15×15 – plexi, Instrukcja pierwszej pomocy A4 – PCV, Uwaga promieniowanie laserowe A4 – PCV, Zakaz palenia i e-papierosów 15×20 – plexi, Instrukcja pierwszej pomocy A4 – plexi, Uwaga promieniowanie laserowe A4 – plexi, Komplet gabinetu laserowego – PCV, Komplet gabinetu laserowego – plexi",
 "priceText": "od 14,76 zł",
 "price": 14.76,
 "tiers": [
 {
-"k": "Nakaz okularów ochronnych 10×10",
+"k": "Nakaz okularów ochronnych 10×10 – PCV",
 "p": 14.76
 },
 {
-"k": "Zakaz palenia i e-papierosów 15×20",
+"k": "Zakaz palenia i e-papierosów 15×20 – PCV",
 "p": 18.45
 },
 {
-"k": "Apteczka pierwszej pomocy 15×15",
+"k": "Apteczka 15×15 – PCV",
 "p": 18.45
 },
 {
@@ -4131,16 +4160,40 @@
 "p": 24.6
 },
 {
-"k": "Instrukcja pierwszej pomocy A4",
+"k": "Nakaz okularów ochronnych 10×10 – plexi",
+"p": 29.0
+},
+{
+"k": "Apteczka 15×15 – plexi",
+"p": 35.0
+},
+{
+"k": "Instrukcja pierwszej pomocy A4 – PCV",
 "p": 36.9
 },
 {
-"k": "Uwaga promieniowanie laserowe A4",
+"k": "Uwaga promieniowanie laserowe A4 – PCV",
 "p": 36.9
 },
 {
-"k": "Komplet gabinetu laserowego (6 pozycji)",
+"k": "Zakaz palenia i e-papierosów 15×20 – plexi",
+"p": 39.0
+},
+{
+"k": "Instrukcja pierwszej pomocy A4 – plexi",
+"p": 69.0
+},
+{
+"k": "Uwaga promieniowanie laserowe A4 – plexi",
+"p": 69.0
+},
+{
+"k": "Komplet gabinetu laserowego – PCV",
 "p": 129.0
+},
+{
+"k": "Komplet gabinetu laserowego – plexi",
+"p": 249.0
 }
 ],
 "machine": "GoArt UV A3",
@@ -4995,7 +5048,7 @@
 "cat": "dla-fotografow",
 "sub": "Odbitki i powiększenia",
 "variants": "papier błyszczący, matowy lub luster, od 1 szt., wydruk w 24 h",
-"priceText": "od 1,2 zł/szt",
+"priceText": "od 1,20 zł/szt",
 "price": 1.2,
 "tiers": [
 {
@@ -5046,6 +5099,75 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "pieczatki-firmowe",
+"name": "Pieczątki firmowe, imienne i okrągłe",
+"cat": "dla-firm",
+"sub": "Pieczątki",
+"variants": "Wymiana gumki tekstowej, Pieczątka w automacie 38×14 mm, Pieczątka imienna (lekarz, kosmetolog) 38×14 mm, Pieczątka w automacie 47×18 mm, Pieczątka w automacie 58×22 mm, Pieczątka kieszonkowa, Pieczątka okrągła Ø 40 mm, Datownik z treścią",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "Wymiana gumki tekstowej",
+"p": 29.0
+},
+{
+"k": "Pieczątka w automacie 38×14 mm",
+"p": 49.0
+},
+{
+"k": "Pieczątka imienna (lekarz, kosmetolog) 38×14 mm",
+"p": 49.0
+},
+{
+"k": "Pieczątka w automacie 47×18 mm",
+"p": 59.0
+},
+{
+"k": "Pieczątka w automacie 58×22 mm",
+"p": 69.0
+},
+{
+"k": "Pieczątka kieszonkowa",
+"p": 69.0
+},
+{
+"k": "Pieczątka okrągła Ø 40 mm",
+"p": 79.0
+},
+{
+"k": "Datownik z treścią",
+"p": 99.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 1136.0,
+"xmas": false,
+"img": "img/hf/pieczatki-firmowe-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/pieczatki-firmowe-1.jpg"
+],
+"also": [],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {

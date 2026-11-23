@@ -15,7 +15,7 @@ const U = [
   ['Fine art i Digigraphie®', 'Wydruki muzealne, reprodukcje, limitowane edycje dla artystów i fotografów, odbitki.', 'druk-dla-artystow.html', 'Epson SureColor P9500 · SureLab D1000 · EIZO CG319X', from((p) => inCat('dla-fotografow')(p) && /fine-art|digigraphie|wydruk/.test(p.slug)), 'img/hf/druk-dla-artystow-1.jpg'],
   ['Druk 3D na zamówienie', 'Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU.', 'druk-3d.html', 'Bambu Lab H2C, X1C, A2L, A1 mini', from(inCat('wydruki-3d')), 'img/hf/druk-3d-z-pliku-1.jpg'],
   ['Sublimacja', 'Koszulki sportowe, koce, ręczniki, kubki – pełny nadruk, który nie schodzi w praniu.', 'sublimacja.html', 'Epson SureColor F500 + prasa', from(inCat('sublimacja')), 'img/hf/koszulka-sportowa-sublimacja-1.jpg'],
-  ['Szyldy i oznakowanie firm', 'Szyldy z plexi i lustra, logo na ścianę, tabliczki, stojaki QR, upominki z logo.', 'dla-firm.html', 'Laser · druk UV · ploter', from(inCat('dla-firm')), 'img/hf/szyld-okragly-logo-1.jpg'],
+  ['Szyldy, pieczątki i oznakowanie firm', 'Szyldy z plexi i lustra, logo na ścianę, tabliczki, pieczątki firmowe i imienne, stojaki QR, upominki z logo.', 'dla-firm.html', 'Laser · druk UV · ploter', from(inCat('dla-firm')), 'img/hf/szyld-okragly-logo-1.jpg'],
   ['Wspólnoty i zarządcy', 'Tablice przy wejściu, regulaminy, numeracja lokali, tabliczki na skrzynki – w jednym stylu.', 'wspolnoty-i-spoldzielnie.html', 'Druk UV · laser · montaż', from(inCat('wspolnoty-i-spoldzielnie')), 'img/hf/tablica-wejscie-zarzadca-1.jpg'],
   ['Szkoły i przedszkola', 'Grafika na drzwi i okna, banery na ogrodzenie, plakaty grup, tabliczki sal, dyplomy.', 'szkoly-i-przedszkola.html', 'HP Latex · Summa · Xerox · laser', from(inCat('szkoly-i-przedszkola')), 'img/hf/plakaty-grup-przedszkolnych-1.jpg'],
 ];
@@ -24,7 +24,7 @@ const pick = (rx, n = 6) => cat.products.filter((p) => rx.test(p.machine || '') 
 const MACH = [
   { id: 'laser', t: 'Lasery xTool', sub: 'CO₂ · MOPA 60 W · UV 5 W · przystawka obrotowa RA3', img: 'img/hf/karafka-grawer-1.jpg', href: 'grawer-laserowy.html',
     lead: 'Trzy źródła lasera do różnych materiałów. CO₂ graweruje i tnie materiały organiczne i akryl, MOPA znakuje metal – także w kolorze na stali – a laser UV graweruje wewnątrz szkła i kryształu.',
-    can: ['Grawer i cięcie drewna, sklejki, MDF, bambusa', 'Cięcie i grawer akrylu (plexi) – szyldy, statuetki, tabliczki', 'Grawer na skórze, korku, kartonie, filcu', 'Znakowanie stali, aluminium, anodu – termosy, długopisy, biżuteria, tabliczki znamionowe', 'Grawer 3D wewnątrz kryształu i szkła', 'Kubki, butelki, karafki, szklanki dookoła (RA3)'],
+    can: ['Grawer i cięcie drewna, sklejki, MDF, bambusa', 'Cięcie i grawer akrylu (plexi) – szyldy, statuetki, tabliczki', 'Grawer na skórze, korku, kartonie, filcu', 'Znakowanie stali, aluminium, anodu – termosy, długopisy, biżuteria, tabliczki znamionowe', 'Grawer 3D wewnątrz kryształu i szkła', 'Kubki, butelki, karafki, szklanki dookoła (RA3)', 'Pieczątki – gumki grawerowane laserem, w automatach i okrągłe'],
     no: 'Ze względów bezpieczeństwa nie tniemy PVC ani pianki PU.' },
   { id: 'uv', t: 'Drukarka UV GoArt A3', sub: 'Głowice i3200 · CMYK + biały + lakier · druk na obłych przedmiotach', img: 'img/hf/etui-telefon-uv-1.jpg', href: 'dla-firm.html',
     lead: 'Druk bezpośrednio na przedmiocie – farba utwardzana światłem UV od razu jest odporna na ścieranie. Biały podkład pozwala drukować na ciemnym i przezroczystym, a lakier daje wypukły efekt 3D.',
@@ -71,6 +71,29 @@ for (const m of MACH) m.prods = m.svc ? cat.products.filter((p) => p.cat === 'se
       </a>))}
   </section>
   <Realizacje title="Nasze realizacje" lead="Prawdziwe zdjęcia zleceń z pracowni – oznakowanie budynków, grafiki dla przedszkoli, druk wielkoformatowy, prezenty ze zdjęciem i druk 3D." limit={8} />
+  <section id="do-pobrania" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24 scroll-mt-24">
+    <div class="reveal rounded-[32px] bg-ink text-white overflow-hidden grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <a href="pliki/katalog-aiprints.pdf" target="_blank" class="block bg-[#2a2622] p-8 md:p-10"><img src="img/site/katalog-okladka.jpg" alt="Okładka katalogu usług i produktów AiPrints.pl" loading="lazy" class="w-full max-w-[320px] mx-auto rounded-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,.6)] rotate-[-2deg]" /></a>
+      <div class="p-8 md:p-12 flex flex-col justify-center">
+        <p class="text-[12px] tracking-[.2em] uppercase text-[#ff7ab8] font-semibold">Do pobrania</p>
+        <h2 class="font-display text-[40px] md:text-[54px] leading-none mt-3">Katalog usług i produktów (PDF)</h2>
+        <p class="text-white/70 text-[15.5px] leading-relaxed mt-4 max-w-[560px]">Pełna oferta pracowni w jednym pliku: usługi z cenami „od”, wszystkie produkty ze zdjęciami i cenami, pakiety fotograficzne, nasze realizacje oraz warunki współpracy dla firm. Wygodny do wysłania mailem albo wydrukowania.</p>
+        <div class="flex flex-wrap gap-3 mt-7"><a href="pliki/katalog-aiprints.pdf" download class="btn bg-white text-ink">Pobierz katalog PDF ↓</a><a href="pliki/katalog-aiprints.pdf" target="_blank" class="btn border border-white/40 text-white">Otwórz w przeglądarce</a></div>
+        <p class="text-white/45 text-[12.5px] mt-4">PDF, ok. 8 MB, 35 stron · ceny brutto według stanu na dzień wydania – aktualne zawsze w sklepie.</p>
+      </div>
+    </div>
+  </section>
+  <section id="wspolpraca" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-16 scroll-mt-24">
+    <div class="reveal rounded-[32px] bg-white border border-line p-8 md:p-12">
+      <p class="text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Dla firm, agencji i zleceniodawców hurtowych</p>
+      <h2 class="font-display text-[40px] md:text-[54px] leading-none mt-3">Produkujemy <em class="text-gold">dla Twoich klientów</em>.</h2>
+      <p class="text-mute text-[15.5px] leading-relaxed mt-4 max-w-[760px]">Współpracujemy z agencjami reklamowymi, drukarniami, fotografami, sklepami, zarządcami nieruchomości, salonami i placówkami oświatowymi. Masz zlecenie, którego nie wykonasz na swoich maszynach? Zrobimy je u nas – od jednej sztuki po serie.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+        {[['Indywidualny cennik hurtowy', 'Przy stałej współpracy i większych nakładach – ceny zależne od ilości i regularności zamówień.'], ['Wycena w 24 h', 'Opis, plik albo zdjęcie wystarczy – odpowiadamy następnego dnia roboczego.'], ['Szablony i sztuka próbna', 'Projekt robimy raz; przy seriach najpierw egzemplarz do akceptacji.'], ['Faktura z terminem', 'Dla stałych zleceniodawców, zarządców i instytucji – przelew w terminie z faktury.']].map(([t, d]) => <div class="rounded-[22px] bg-paper p-5"><b class="block font-display text-[22px] leading-tight">{t}</b><p class="text-mute text-[14px] leading-relaxed mt-2">{d}</p></div>)}
+      </div>
+      <div class="flex flex-wrap gap-3 mt-8"><a href="mailto:firmy@aiprints.pl?subject=Wsp%C3%B3%C5%82praca" class="btn btn-ink">Napisz: firmy@aiprints.pl →</a><a href="tel:+48609040274" class="btn btn-out">609 040 274</a></div>
+    </div>
+  </section>
   <section id="maszyny" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
     <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">Park maszynowy</p>
     <h2 class="reveal font-display text-[44px] md:text-[64px] leading-none mt-4">Co zrobimy na naszych maszynach</h2>

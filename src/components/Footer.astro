@@ -21,7 +21,7 @@ import { SEASON, SOCIAL } from '../data/config.js';
       <div>
         <b class="text-white text-[13px] tracking-[.14em] uppercase">Informacje</b>
         <ul class="mt-4 grid gap-2 text-[14px]">
-          {[['uslugi', 'Usługi'], ['realizacje', 'Realizacje'], ['fotografia', 'Fotografia'], ['druk-cyfrowy', 'Druk cyfrowy'], ['druk-3d', 'Druk 3D'], ['grawer-laserowy', 'Grawer laserowy'], ['druk-dla-artystow', 'Fine art i Digigraphie'], ['pracownia', 'Pracownia'], ['dostawa-i-platnosci', 'Dostawa i płatności'], ['zwroty-i-reklamacje', 'Zwroty i reklamacje'], ['regulamin', 'Regulamin'], ['polityka-prywatnosci', 'Polityka prywatności'], ['kontakt', 'Kontakt']].map(([h, t]) => <li><a class="hover:text-white" href={`${h}.html`}>{t}</a></li>)}
+          {[['uslugi', 'Usługi'], ['realizacje', 'Realizacje'], ['uslugi#do-pobrania', 'Katalog PDF'], ['uslugi#wspolpraca', 'Współpraca dla firm'], ['fotografia', 'Fotografia'], ['druk-cyfrowy', 'Druk cyfrowy'], ['druk-3d', 'Druk 3D'], ['grawer-laserowy', 'Grawer laserowy'], ['druk-dla-artystow', 'Fine art i Digigraphie'], ['pracownia', 'Pracownia'], ['dostawa-i-platnosci', 'Dostawa i płatności'], ['zwroty-i-reklamacje', 'Zwroty i reklamacje'], ['regulamin', 'Regulamin'], ['polityka-prywatnosci', 'Polityka prywatności'], ['kontakt', 'Kontakt']].map(([h, t]) => <li><a class="hover:text-white" href={h.includes('#') ? h.replace('#', '.html#') : `${h}.html`}>{t}</a></li>)}
         </ul>
       </div>
       <div>
