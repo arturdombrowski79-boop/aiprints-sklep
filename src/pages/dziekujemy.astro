@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
         else { $('tyMsg').innerHTML = `Zamówienie <b>${o.no}</b> przyjęte – czekamy na potwierdzenie płatności z banku${tries > 5 ? ' (przy przelewie może to potrwać do kilku godzin, damy znać mailem)' : '…'}`; if (tries++ < 20) setTimeout(check, 3000); }
       } catch (e) { $('tyMsg').textContent = 'Zamówienie przyjęte. Potwierdzenie przyjdzie e-mailem.'; }
     }
-    function mark(n) { try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); const x = O.find((o) => o.no === n); if (x) { x.pending = false; localStorage.setItem('aiprints-orders', JSON.stringify(O)); } } catch (e) { } }
+    function mark(n) { try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); const x = O.find((o) => o.no === n); if (x) { x.pending = false; x.t = t; localStorage.setItem('aiprints-orders', JSON.stringify(O)); } } catch (e) { } }
     check();
   </script>
 </Base>

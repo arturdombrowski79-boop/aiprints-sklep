@@ -37,6 +37,8 @@ send_mail($o['email'], "Zamówienie $no przyjęte – potwierdzenie", tpl('potwi
 
 // powiadomienie do pracowni
 $h = "<h2>Nowe zamówienie $no – " . zl($d['total']) . "</h2><p>" . htmlspecialchars($o['name']) . " · " . htmlspecialchars($o['email']) . " · " . htmlspecialchars($o['phone']) . "<br>" . htmlspecialchars($vars['delivery']) . " · " . htmlspecialchars($vars['address']) . ($d['nip'] ? '<br>Faktura: ' . htmlspecialchars($d['firm']) . ', NIP ' . $d['nip'] : '') . "</p><ol>";
-foreach ($d['items'] as $i => $it) $h .= '<li><b>' . htmlspecialchars($it['title']) . "</b> × {$it['qty']} – " . zl($it['price']) . '<br>' . htmlspecialchars(implode(' · ', $it['lines'])) . ($it['text'] ? '<br>Tekst: „' . htmlspecialchars($it['text']) . '”' : '') . ($it['notes'] ? '<br>Uwagi: ' . htmlspecialchars($it['notes']) . '' : '') . ($it['pers'] ? '' : '<br><i>bez personalizacji</i>') . "<br><small>pliki: api/data/files/$no/item-$i.json</small></li>";
-send_mail((string)cfg('mail_shop', 'kontakt@aiprints.pl'), "Nowe zamówienie $no (" . zl($d['total']) . ')', $h . '</ol>');
+foreach ($d['items'] as $i => $it) $h .= '<li><b>' . htmlspecialchars($it['title']) . "</b> × {$it['qty']} – " . zl($it['price']) . '<br>' . htmlspecialchars(implode(' · ', $it['lines'])) . ($it['text'] ? '<br>Tekst: „' . htmlspecialchars($it['text']) . '”' : '') . ($it['notes'] ? '<br>Uwagi: ' . htmlspecialchars($it['notes']) . '' : '') . ($it['pers'] ? '' : '<br><i>bez personalizacji</i>') . "</li>";
+$panel = rtrim((string)cfg('base_url', 'https://aiprints.pl/'), '/') . '/api/panel.php?no=' . rawurlencode($no) . '&k=' . panel_key($no);
+$h .= '</ol><p><a href="' . htmlspecialchars($panel) . '" style="display:inline-block;background:#141210;color:#fff;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:600">Otwórz zamówienie – pliki i wysyłka</a></p><p style="font-size:12px;color:#777">Link jest tylko dla pracowni – nie przekazuj go dalej.</p>';
+send_mail((string)cfg('mail_shop', 'kontakt@aiprints.pl'), "Nowe zamówienie $no (" . zl($d['total']) . ')', $h);
 out(['ok' => true]);

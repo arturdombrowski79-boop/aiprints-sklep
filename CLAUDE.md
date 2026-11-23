@@ -11,7 +11,7 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Wdrożenie: push na `main` → GitHub Actions → rsync SSH na LH.pl (`/home/platne/serwer271550/public_html/aiprints`, port 40022). Sekrety LH_* są tylko w GitHub Secrets.
 - `api/config.php` (klucze Stripe rk_live_/whsec_) istnieje TYLKO na serwerze – nigdy nie commitować, rsync go pomija. Dane zamówień: `api/data/` na serwerze.
 - Skrzynki: kontakt@, zamowienia@ (nadawca maili), reklamacje@, zwroty@, firmy@ (wszystkie @aiprints.pl).
-- Panel `/admin` to na razie podgląd demo (dane w przeglądarce) – prawdziwe zamówienia: mail na mail_shop + Stripe → Payments.
+- Panel zamówienia: link „Otwórz zamówienie – pliki i wysyłka” w mailu do pracowni → `api/panel.php` (klucz HMAC z sekretu webhooka): pobieranie plików klienta, numer przesyłki + mail „Wysłane”, „Gotowe do odbioru”. `/admin` to wciąż podgląd demo.
 
 ## Zasady (obowiązują zawsze)
 - Nigdy nie prosić o hasła, klucze API, dane FTP/SSH w czacie. Klucze wpisuje właściciel sam.

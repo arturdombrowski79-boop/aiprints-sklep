@@ -53,6 +53,13 @@ function m2_area(array $it, string $name = ''): float {
   return max(1.0, round($w * $h / 10000, 2));
 }
 
+// tajny klucz do panelu zamówienia (link w mailu do pracowni); sekret z config.php – nie trzeba nic dodawać
+function panel_key(string $no): string {
+  $sec = (string)(cfg('panel_secret') ?: cfg('stripe_webhook') ?: cfg('stripe_secret'));
+  if ($sec === '') return bin2hex(random_bytes(16)); // bez sekretu panel jest nieczynny
+  return substr(hash_hmac('sha256', 'panel|' . $no, $sec), 0, 32);
+}
+
 function order_no(): string { return 'AP-' . date('ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 4)); }
 
 // ——— Stripe (REST, bez biblioteki) ———

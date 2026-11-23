@@ -101,7 +101,17 @@ import Base from '../layouts/Base.astro';
     function dane() {
       $('view').innerHTML = `<h1 class="hd text-[48px] md:text-[64px]">Adresy i faktura</h1><div class="grid md:grid-cols-2 gap-4 mt-8"><div class="rounded-[26px] bg-white border border-line p-6"><b>Adres dostawy</b><p class="text-mute text-[14px] mt-2">Zapiszemy go przy pierwszym zamówieniu.</p></div><div class="rounded-[26px] bg-white border border-line p-6"><b>Dane do faktury</b><p class="text-mute text-[14px] mt-2">Dla firm, wspólnot i spółdzielni: NIP i adres. Stałym klientom dajemy przelew z terminem.</p></div></div>`;
     }
-    function route() {
+    // statusy z serwera (wysyłka, odbiór) dla zamówień złożonych w tej przeglądarce
+    let synced = false;
+    async function sync() {
+      if (synced) return; synced = true; const A = all(); let ch = false;
+      await Promise.all(A.filter((o) => o.t && !o.demo).map(async (o) => { try {
+        const j = await (await fetch(`api/order.php?no=${encodeURIComponent(o.no)}&t=${encodeURIComponent(o.t)}`, { cache: 'no-store' })).json();
+        if (j.shipping && (j.status === 'shipped' || j.status === 'ready')) { if (o.status < 3) { o.status = 3; ch = true; } o.tracking = j.shipping.tracking || ''; o.delivery = j.status === 'ready' ? 'Gotowe do odbioru w pracowni (Chorzów, ul. Okrężna 98B)' : j.shipping.carrier; ch = true; }
+      } catch (e) { } }));
+      if (ch) { put(A); route(); }
+    }
+    function route() { sync();
       const s = sess(); $('login').classList.toggle('hidden', !!s); $('acct').classList.toggle('hidden', !s); if (!s) return;
       if (!/aiprints\.pl$/.test(location.hostname)) seed(); counts(); $('who').textContent = s;
       const [r, id] = location.hash.slice(1).split('/');
