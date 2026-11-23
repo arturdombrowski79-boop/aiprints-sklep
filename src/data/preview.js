@@ -2,7 +2,7 @@
 export const PREVIEW = {
   'krysztal-zdjecie': { img: 'img/f/krysztal-para.jpg', ratio: '1408/768', photo: { l: 31.2, t: 21.5, w: 39.4, h: 55.5 }, text: { x: 50.8, y: 73.6, size: 1.9, color: '#f4f1ea', blend: 'screen', font: 'serif', ph: 'Anna i Tomek · 2026' } },
   'krysztal-slub': { img: 'img/f/krysztal-para.jpg', ratio: '1408/768', photo: { l: 31.2, t: 21.5, w: 39.4, h: 55.5 }, text: { x: 50.8, y: 73.6, size: 1.9, color: '#f4f1ea', blend: 'screen', font: 'serif', ph: 'Anna i Tomek · 14.06.2026' } },
-  'koperta-drewniana': { img: 'img/f/koperta-drewniana.jpg', ratio: '1408/768', text: { x: 50.6, y: 36.4, size: 2.9, color: '#6e4420', blend: 'multiply', font: 'script', ph: 'Ania' } },
+  'koperta-drewniana': { img: 'img/f/koperta-drewniana.jpg', ratio: '1408/768', text: { x: 31, y: 52, size: 4.2, color: '#6e4420', blend: 'multiply', font: 'script', ph: 'Ania' } },
   'bombka-akryl-zloty': { img: 'img/f/bombka-zlota.jpg', ratio: '1408/768', text: { x: 50.4, y: 60.6, size: 2.6, color: '#7a5a16', blend: 'multiply', font: 'script', ph: 'Zosia' } },
 };
 export const RECIPIENTS = [

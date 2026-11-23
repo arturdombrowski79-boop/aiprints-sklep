@@ -5,3 +5,6 @@ Options -Indexes
 <Files "catalog.json">
   Require all denied
 </Files>
+<IfModule mod_headers.c>
+  Header always set Cache-Control "no-store"
+</IfModule>

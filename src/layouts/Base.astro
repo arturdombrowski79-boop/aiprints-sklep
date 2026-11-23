@@ -7,7 +7,10 @@ import '../styles/global.css';
 import { GA4_ID, META_PIXEL, PROMO } from '../data/config.js';
 const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '' } = Astro.props;
 const site = 'https://aiprints.pl/';
-const fullTitle = title.includes('AiPrints') ? title : `${title} | AiPrints.pl`;
+// SEO: tytuł do ~62 znaków (marka tylko gdy się mieści), opis do ~158 znaków ucięty na zdaniu lub słowie
+const fitT = (t) => { if (t.length <= 66) return t; const parts = t.split(' – '); while (parts.length > 1 && parts.join(' – ').length > 62) parts.pop(); const c = parts.join(' – '); return c.length <= 62 ? c : c.slice(0, 61).replace(/\s+\S*$/, '') + '…'; };
+const fullTitle = title.includes('AiPrints') ? fitT(title) : (title.length + 14 <= 62 ? `${title} | AiPrints.pl` : fitT(title));
+const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <= 158) return d; const cut = d.slice(0, 158); const dot = cut.lastIndexOf('. '); return dot > 90 ? cut.slice(0, dot + 1) : cut.replace(/[\s,;:–-]+\S*$/, '') + '…'; };
 ---
 <!doctype html>
 <html lang="pl">
@@ -15,11 +18,11 @@ const fullTitle = title.includes('AiPrints') ? title : `${title} | AiPrints.pl`;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={fitD(description)} />
   <link rel="canonical" href={site + canonical} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={fitD(description)} />
   <meta property="og:image" content={site + image} />
   <meta property="og:locale" content="pl_PL" />
   <meta name="theme-color" content="#f4f1ec" />

@@ -17,14 +17,14 @@ try {
   foreach ($items as $ix => $it) {
     $qty = max(1, min(999, (int)($it['qty'] ?? 1))); $it['qty'] = $qty;
     $u = unit_price($it); $p = $C['products'][$it['slug']];
-    $title = mb_substr($p['n'] . (!empty($it['opt']) ? ' – ' . $it['opt'] : ''), 0, 120);
+    $title = mb_substr($p['n'] . (!empty($it['opt']) ? ' – ' . $it['opt'] : '') . (!empty($p['m2']) ? ' – ' . (int)$it['w'] . '×' . (int)$it['h'] . ' cm (' . str_replace('.', ',', (string)m2_area($it)) . ' m²)' : ''), 0, 120);
     $desc = mb_substr(implode(' · ', array_map('strval', (array)($it['lines'] ?? []))), 0, 300);
     $lines[] = ['name' => $title, 'desc' => $desc, 'amount' => (int)round($u * 100), 'qty' => $qty];
     $sub += $u * $qty; if (!$p['unit']) $boxable += $qty;
-    $rows[] = ['slug' => $it['slug'], 'title' => $title, 'opt' => $it['opt'] ?? null, 'sides' => $it['sides'] ?? null, 'qty' => $qty, 'price' => $u, 'lines' => (array)($it['lines'] ?? []), 'text' => mb_substr((string)($it['text'] ?? ''), 0, 500), 'notes' => mb_substr((string)($it['notes'] ?? ''), 0, 2000), 'pers' => !empty($it['pers'])];
+    $rows[] = ['slug' => $it['slug'], 'title' => $title, 'opt' => $it['opt'] ?? null, 'sides' => $it['sides'] ?? null, 'qty' => $qty, 'price' => $u, 'lines' => (array)($it['lines'] ?? []), 'text' => mb_substr((string)($it['text'] ?? ''), 0, 500), 'notes' => mb_substr((string)($it['notes'] ?? ''), 0, 2000), 'pers' => !empty($it['pers']), 'w' => (int)($it['w'] ?? 0), 'h' => (int)($it['h'] ?? 0)];
   }
   if (!empty($in['add']['box']) && $boxable) { $lines[] = ['name' => 'Pudełko premium z wkładką', 'desc' => '', 'amount' => $C['add']['box'] * 100, 'qty' => $boxable]; $sub += $C['add']['box'] * $boxable; }
-  if (!empty($in['add']['card'])) { $lines[] = ['name' => 'Kartka z życzeniami', 'desc' => '', 'amount' => $C['add']['card'] * 100, 'qty' => 1]; $sub += $C['add']['card']; }
+  if (!empty($in['add']['card']) && $boxable) { $lines[] = ['name' => 'Kartka z życzeniami', 'desc' => '', 'amount' => $C['add']['card'] * 100, 'qty' => 1]; $sub += $C['add']['card']; }
   $code = strtoupper(trim((string)($in['code'] ?? ''))); $pct = (float)(cfg('codes', [])[$code] ?? 0);
   $disc = r2($sub * $pct / 100); $after = r2($sub - $disc);
   $sk = (string)($in['delivery'] ?? '15.99'); if (!isset($C['ship'][$sk])) $sk = '15.99';

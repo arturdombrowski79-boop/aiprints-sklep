@@ -42,7 +42,15 @@ function unit_price(array $it): float {
   }
   $u = (float)(($it['opt'] ?? null) !== null && isset($p['o'][$it['opt']]) ? $p['o'][$it['opt']] : $p['b']);
   foreach ($p['q'] as $t) if ($qty >= $t['q']) $u = (float)$t['p'];
+  if (!empty($p['m2'])) return r2(r2($u * $k) * m2_area($it, $p['n'])); // cena za sztukę = stawka za m² × powierzchnia
   return r2($u * $k);
+}
+
+// wymiary w cm → powierzchnia w m² (zaokrąglona do 0,01; rozliczamy min. 1 m²)
+function m2_area(array $it, string $name = ''): float {
+  $w = (int)($it['w'] ?? 0); $h = (int)($it['h'] ?? 0);
+  if ($w < 10 || $h < 10 || $w > 5000 || $h > 5000) throw new Exception('Podaj wymiary (szerokość i wysokość w cm): ' . $name);
+  return max(1.0, round($w * $h / 10000, 2));
 }
 
 function order_no(): string { return 'AP-' . date('ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 4)); }

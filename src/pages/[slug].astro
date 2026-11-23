@@ -7,7 +7,7 @@ import Shop from '../components/Shop.astro';
 import Creator from '../components/Creator.astro';
 import { CREATOR } from '../data/creator.js';
 import cat from '../data/catalog.json';
-import { machineText, describe, optionsOf, qtyTiers, B2B } from '../data/copy.js';
+import { machineText, describe, optionsOf, qtyTiers, B2B, isM2 } from '../data/copy.js';
 import { SEASON, LEAD, PREVIEW, BREAK } from '../data/config.js';
 import { PREVIEW as PV, RECIPIENTS } from '../data/preview.js';
 export function getStaticPaths() {
@@ -27,7 +27,7 @@ const C = Object.fromEntries(cat.cats.map((x) => [x.slug, x]));
 const site = 'https://aiprints.pl/';
 let d = {};
 if (kind === 'cat') {
-  const items = cat.products.filter((x) => rec ? (SEASON || x.cat !== 'na-swieta') && new RegExp(re).test(x.slug) : x.cat === c.slug || (x.also || []).includes(c.slug)).map((x) => rec ? { ...x, sub: cat.cats.find((k) => k.slug === x.cat).name } : x).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0));
+  const items = cat.products.filter((x) => rec ? (SEASON || x.cat !== 'na-swieta') && new RegExp(re).test(x.slug) : x.cat === c.slug || ((SEASON || x.cat !== 'na-swieta') && (x.also || []).includes(c.slug))).map((x) => rec ? { ...x, sub: cat.cats.find((k) => k.slug === x.cat).name } : x).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0));
   d = { items, b2b: B2B.includes(c.slug) };
 } else {
   const cc = C[p.cat];
@@ -44,7 +44,7 @@ const schema = kind === 'cat'
 const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
 ---
 {kind === 'cat' ? (
-<Base title={`${c.name} – personalizowane, z pracowni w Chorzowie`} description={c.lead} canonical={`${c.slug}`} schema={schema} active={c.slug}>
+<Base title={`${c.name} – pracownia w Chorzowie`} description={c.lead} canonical={`${c.slug}`} schema={schema} active={c.slug}>
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-8">
     <div class="relative rounded-[40px] overflow-hidden px-7 md:px-14 pt-10 pb-12 md:py-16" style={`background:${({ 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1' })[c.slug] || '#efe7ee'}`}>
       <nav class="text-[13px] text-ink/75 relative z-10" aria-label="Okruszki">{crumbs.map(([n, u], i) => <>{i > 0 && <span class="mx-2">/</span>}<a href={u} class="hover:text-ink">{n}</a></>)}</nav>
@@ -114,7 +114,7 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
             <p id="qok" class="hidden text-emerald-700 text-[14px]">Dziękujemy! Odpiszemy w ciągu 24 h. (W wersji testowej formularz niczego nie wysyła.)</p>
           </form>
         ) : (
-          <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''}>
+          <div class="mt-8 grid gap-6" id="cfg" data-k={K} data-promo={p.promo ? `Promocja −${p.promo.pct}%` : ''} data-slug={p.slug} data-name={p.name} data-img={d.img} data-qt={JSON.stringify(d.qt)} data-unit={p.unit ? '1' : ''} data-m2={kind === 'prod' && isM2(p) ? '1' : ''}>
             {d.opts && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">{d.opts.label}</b>
                 <div class="flex flex-wrap gap-2 mt-3">{d.opts.opts.map((o, i) => <button class="seg opt h-12 px-5 rounded-2xl border border-line bg-white text-[14px] font-medium" aria-pressed={i === 0 ? 'true' : 'false'} data-k={o.k} data-p={o.p ?? ''}>{o.k}{o.p && <span class="sub text-mute font-normal ml-1.5">{fmt(o.p * K)}</span>}</button>)}</div></div>)}
@@ -124,7 +124,7 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
                 <p class="text-[12.5px] text-mute mt-1.5">Sprawdź pisownię – grawer robimy dokładnie według tego tekstu.</p></div>)}
             {p.fields.includes('photo') && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Twoje zdjęcie</b>
-                <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-5 cursor-pointer hover:border-ink transition"><input id="photo" type="file" accept="image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">↑</span><span><b class="block text-[15px] font-medium" id="photoName">Dodaj zdjęcie</b><span class="text-[12.5px] text-mute">JPG lub PNG, najlepiej powyżej 1500 px. Możesz też dosłać je mailem.</span></span></label></div>)}
+                <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-5 cursor-pointer hover:border-ink transition"><input id="photo" type="file" accept="image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">↑</span><span><b class="block text-[15px] font-medium" id="photoName">Dodaj zdjęcie</b><span class="text-[12.5px] text-mute">JPG lub PNG, najlepiej powyżej 1500 px. Możesz też dosłać je mailem.</span></span></label><label class="mt-2.5 flex items-center gap-2.5 text-[13.5px] text-mute cursor-pointer"><input id="later" type="checkbox" class="w-[17px] h-[17px] accent-[#141210]" />Doślę zdjęcie mailem po złożeniu zamówienia</label></div>)}
             {p.fields.includes('logo') && (
               <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Logo</b>
                 <label class="mt-3 flex items-center gap-4 rounded-2xl border-2 border-dashed border-line bg-white px-5 py-4 cursor-pointer hover:border-ink transition"><input id="logo" type="file" accept=".svg,.pdf,.ai,.eps,.png,image/*" class="hidden" /><span class="w-12 h-12 rounded-full bg-paper grid place-items-center text-[20px]">◆</span><span><b class="block text-[15px] font-medium" id="logoName">Dodaj logo</b><span class="text-[12.5px] text-mute">Najlepiej SVG, PDF lub AI. Jeśli nie masz wektora – przerysujemy.</span></span></label></div>)}
@@ -132,6 +132,14 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
               <div><label for="list" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Lista (lokale, nazwiska, goście)</label><textarea id="list" rows="3" placeholder="Każda pozycja w nowej linii albo dołącz plik w uwagach" class="inp mt-3 w-full"></textarea></div>)}
             <div><label for="notes" class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Uwagi do projektu <span class="normal-case tracking-normal font-normal">(opcjonalnie)</span></label><textarea id="notes" rows="2" placeholder="np. czcionka pisana, motyw świąteczny, data na odwrocie" class="inp mt-3 w-full"></textarea></div>
 
+            {kind === 'prod' && isM2(p) && (
+              <div><b class="text-[13px] tracking-[.12em] uppercase text-mute font-semibold">Wymiary</b>
+                <div class="grid grid-cols-2 gap-3 mt-3">
+                  <label class="text-[12.5px] text-mute">Szerokość (cm)<input id="mw" inputmode="numeric" placeholder="np. 250" class="inp mt-1 w-full text-[17px]" /></label>
+                  <label class="text-[12.5px] text-mute">Wysokość (cm)<input id="mh" inputmode="numeric" placeholder="np. 240" class="inp mt-1 w-full text-[17px]" /></label>
+                </div>
+                <p id="mInfo" class="text-[13.5px] mt-2 text-mute">Podaj wymiary – policzymy powierzchnię i cenę. Rozliczamy min. 1 m².</p>
+                <p class="text-[12.5px] text-mute mt-1">Jak mierzyć: zmierz ścianę w kilku miejscach i podaj największy wymiar. Do fototapety dodajemy po 2–3 cm zapasu na docięcie.</p></div>)}
             <div class="flex gap-3 items-stretch">
               <div class="flex items-center rounded-full border border-line bg-white"><button id="qm" class="w-12 h-14 text-[20px]" aria-label="Mniej">−</button><input id="qty" value="1" inputmode="numeric" class="w-10 text-center font-semibold outline-none bg-transparent" aria-label="Ilość" /><button id="qp" class="w-12 h-14 text-[20px]" aria-label="Więcej">+</button></div>
               <button id="add" class="flex-1 h-14 rounded-full bg-ink text-white font-semibold text-[15.5px] hover:scale-[1.01] transition">Dodaj do koszyka · <span id="addP"></span></button>
@@ -177,8 +185,14 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
       const base = +$('price').dataset.base; const qt = JSON.parse(cfg.dataset.qt || '[]');
       let opt = cfg.querySelector('.opt[aria-pressed=true]'); let photoUrl = null;
       const K = document.documentElement.classList.contains('promo-off') ? 1 : (+cfg.dataset.k || 1);
-      const unitPrice = () => { const n = +$('qty').value || 1; let u = opt && opt.dataset.p ? +opt.dataset.p : base; qt.forEach((t) => { if (n >= t.q) u = t.p; }); return Math.round(u * K * 100) / 100; };
-      const upd = () => { const n = Math.max(1, +$('qty').value || 1); $('qty').value = n; const u = unitPrice(); $('addP').textContent = zl(u * n); if ((opt && opt.dataset.p) || (K === 1 && cfg.dataset.k !== '1')) $('price').textContent = zl(u); };
+      const M2 = !!cfg.dataset.m2; const dim = (id) => { const v = Math.round(+String(($(id) || {}).value || '').replace(',', '.')); return v >= 10 && v <= 5000 ? v : 0; };
+      const area = () => { const w = dim('mw'), h = dim('mh'); return w && h ? Math.max(1, Math.round(w * h / 100) / 100) : 0; };
+      const r2 = (v) => Math.round(v * 100) / 100;
+      const unitPrice = () => { const n = +$('qty').value || 1; let u = opt && opt.dataset.p ? +opt.dataset.p : base; qt.forEach((t) => { if (n >= t.q) u = t.p; }); const rate = r2(u * K); return M2 ? r2(rate * (area() || 1)) : rate; };
+      const upd = () => { const n = Math.max(1, +$('qty').value || 1); $('qty').value = n; const u = unitPrice(); $('addP').textContent = zl(u * n);
+        if (M2) { const a = area(), rate = r2((opt && opt.dataset.p ? +opt.dataset.p : base) * K); $('mInfo').innerHTML = a ? `${dim('mw')} × ${dim('mh')} cm = <b>${String(a).replace('.', ',')} m²</b> × ${zl(rate)}/m² = <b>${zl(u)}</b>` : 'Podaj wymiary – policzymy powierzchnię i cenę. Rozliczamy min. 1 m².'; if (opt && opt.dataset.p) $('price').textContent = zl(rate) + '/m²'; return; }
+        if ((opt && opt.dataset.p) || (K === 1 && cfg.dataset.k !== '1')) $('price').textContent = zl(u); };
+      ['mw', 'mh'].forEach((id) => { if ($(id)) $(id).addEventListener('input', upd); });
       cfg.querySelectorAll('.opt').forEach((b) => b.onclick = () => { opt = b; cfg.querySelectorAll('.opt').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); upd(); priceAnim('price'); });
       $('qm').onclick = () => { $('qty').value = Math.max(1, +$('qty').value - 1); upd(); };
       $('qp').onclick = () => { $('qty').value = +$('qty').value + 1; upd(); };
@@ -192,11 +206,14 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
       let logoUrl = null; const lg = $('logo'); if (lg) lg.onchange = () => { const f = lg.files[0]; if (!f) return; $('logoName').textContent = f.name; const r = new FileReader(); r.onload = () => { logoUrl = r.result; }; r.readAsDataURL(f); };
       $('add').onclick = () => {
         const t = $('txt'); if (t && t.dataset.req && !t.value.trim()) { t.focus(); t.classList.add('ring-2', 'ring-red-400'); toast('Wpisz tekst do personalizacji'); return; }
+        if (M2 && !area()) { const e = dim('mw') ? $('mh') : $('mw'); e.focus(); e.classList.add('ring-2', 'ring-red-400'); toast('Podaj szerokość i wysokość w cm'); return; }
+        const later = $('later') && $('later').checked;
+        if (ph && !photoUrl && !later && !(t && t.value.trim())) { toast('Dodaj zdjęcie albo zaznacz, że doślesz je mailem'); ph.closest('div').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
         const n = +$('qty').value, u = unitPrice();
         const hasLogo = !!(lg && lg.files[0]);
-        const pers = !!((t && t.value.trim()) || photoUrl || hasLogo);
-        const lines = [opt ? opt.dataset.k : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
-        addItem({ title: cfg.dataset.name, slug: cfg.dataset.slug, opt: opt ? opt.dataset.k : null, text: t ? t.value.trim() : '', notes: $('notes').value.trim(), lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers, photo: photoUrl, logo: logoUrl }, $("gal"));
+        const pers = !!((t && t.value.trim()) || photoUrl || hasLogo || later || M2);
+        const lines = [opt ? opt.dataset.k : '', M2 ? `${dim('mw')} × ${dim('mh')} cm (${String(area()).replace('.', ',')} m²)` : '', t && t.value.trim() ? `„${t.value.trim()}”` : '', photoUrl ? 'ze zdjęciem' : '', later ? 'zdjęcie dośle mailem' : '', hasLogo ? 'z logo' : '', $('notes').value.trim() ? 'z uwagami' : '', K < 1 ? cfg.dataset.promo : ''].filter(Boolean);
+        addItem({ title: cfg.dataset.name, slug: cfg.dataset.slug, opt: opt ? opt.dataset.k : null, w: M2 ? dim('mw') : undefined, h: M2 ? dim('mh') : undefined, text: t ? t.value.trim() : '', notes: ($('notes').value.trim() + (later ? '\n[Klient dośle zdjęcie mailem]' : '')).trim(), lines, price: u, qty: n, img: photoUrl || cfg.dataset.img, boxable: !cfg.dataset.unit, pers, photo: photoUrl, logo: logoUrl }, $("gal"));
       };
       upd();
     }

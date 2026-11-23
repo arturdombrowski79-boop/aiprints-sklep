@@ -27,3 +27,6 @@ export const optionsOf = (p) => {
   return { label: 'Wariant', opts: seg.split('/').map((s) => ({ k: s.trim(), p: null })).filter((o) => o.k) };
 };
 export const qtyTiers = (t) => [...(t || '').matchAll(/(\d+)\+\s*(\d+)/g)].map((m) => ({ q: +m[1], p: +m[2] }));
+
+// produkty liczone za m² (fototapety, banery, folie): klient podaje wymiary w cm
+export const isM2 = (p) => /zł\s*\/\s*m²/.test(p.priceText || '');

@@ -10,9 +10,9 @@ if (S.disc && typeof S.disc !== 'object') S.disc = false; // stary zapis (zawsze
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
 const ADD = { box: 19, card: 9, exp: 0 };
 const count = () => S.items.reduce((s, i) => s + i.qty, 0);
-const boxable = () => S.items.reduce((s, i) => s + (i.boxable ? i.qty : 0), 0);
+const boxable = () => S.items.reduce((s, i) => s + (i.boxable !== false ? i.qty : 0), 0); // pudełko/kartka tylko do prezentów (nie do towarów na m², banerów itp.)
 function totals() {
-  const sub = S.items.reduce((s, i) => s + i.price * i.qty, 0) + (S.items.length ? (S.add.box ? ADD.box * boxable() : 0) + (S.add.card ? ADD.card : 0) + (S.add.exp ? ADD.exp : 0) : 0);
+  const sub = S.items.reduce((s, i) => s + i.price * i.qty, 0) + (S.items.length ? (S.add.box ? ADD.box * boxable() : 0) + (S.add.card && boxable() ? ADD.card : 0) + (S.add.exp ? ADD.exp : 0) : 0);
   const d = S.disc ? Math.round(sub * S.disc.p) / 100 : 0; return { sub, d, after: sub - d };
 }
 let lenis = null, toastFn = () => { };
@@ -27,8 +27,8 @@ export function renderCart() {
   const box = $('items');
   if (!S.items.length) box.innerHTML = `<div class="text-center text-mute py-16"><div class="font-display text-[34px] text-ink">Pusto tutaj</div><p class="mt-2">Zaprojektuj swój prezent ✨</p></div>`;
   else box.innerHTML = S.items.map((i, ix) => `<div class="flex gap-4 py-4 border-b border-line"><img src="${i.img}" class="w-20 h-20 rounded-2xl object-cover bg-paper2"><div class="flex-1 text-[14px]"><b class="font-semibold">${i.title}</b>${i.pers === false ? '<div class="text-[12px] text-emerald-700">Bez personalizacji · 14 dni na zwrot</div>' : ''}${i.lines.map((l) => `<div class="text-[12.5px] text-mute">${l}</div>`).join('')}<button data-rm="${ix}" class="text-[12px] underline text-mute mt-1">Usuń</button></div><div class="text-right font-semibold text-[14px]">${zl(i.price * i.qty)}<div class="text-[12px] text-mute font-normal">${i.qty} × ${zl(i.price)}</div></div></div>`).join('') +
-    `<div class="text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold mt-5 mb-2">Dodaj do prezentu</div>` +
-    [['box', 'Pudełko premium z wkładką', 'czarne, wkładka z pianki EVA', '+19 zł/szt.'], ['card', 'Kartka z Twoimi życzeniami', 'wydrukujemy i dołożymy', '+9 zł']].map(([k, t, d, p]) =>
+    (boxable() > 0 ? `<div class="text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold mt-5 mb-2">Dodaj do prezentu</div>` : '') +
+    [['box', 'Pudełko premium z wkładką', 'czarne, wkładka z pianki EVA', '+19 zł/szt.'], ['card', 'Kartka z Twoimi życzeniami', 'wydrukujemy i dołożymy', '+9 zł']].filter(() => boxable() > 0).map(([k, t, d, p]) =>
       `<label class="flex items-center gap-3 rounded-2xl border ${S.add[k] ? 'border-ink bg-white' : 'border-line bg-white/60'} px-4 py-3 mb-2 cursor-pointer text-[14px] transition"><input type="checkbox" data-ad="${k}" ${S.add[k] ? 'checked' : ''} class="w-[18px] h-[18px] accent-[#141210]"><span class="flex-1"><b class="font-medium">${t}</b><span class="block text-[12px] text-mute">${d}</span></span><b class="whitespace-nowrap">${p}</b></label>`).join('') +
     `<div class="flex gap-2 mt-3"><input id="code" placeholder="Kod rabatowy" value="${S.disc ? S.disc.c : ''}" class="flex-1 rounded-full border border-line bg-white px-4 py-2.5 text-[14px] outline-none focus:border-ink"><button id="codeB" class="rounded-full border border-ink px-4 text-[14px] font-medium">Użyj</button></div>`;
   const t = totals(); $('sSub').textContent = zl(t.sub); $('rDisc').classList.toggle('hidden', !S.disc); $('rDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('sDisc').textContent = '−' + zl(t.d); $('sTot').textContent = zl(t.after);
@@ -70,7 +70,7 @@ const shipVal = () => { const v = +document.querySelector('[name=d]:checked').va
 function renderCo() {
   const t = totals();
   $('coItems').innerHTML = S.items.map((i) => `<div class="flex gap-3 py-3 border-b border-[#eef1f4]"><img src="${i.img}" class="w-14 h-14 rounded-lg object-cover"><div class="flex-1 text-[13.5px]"><b class="font-semibold">${i.title}</b><div class="text-[12px] text-[#697386]">${i.lines[0] || ''} · ${i.qty} szt.</div></div><b class="text-[13.5px]">${zl(i.price * i.qty)}</b></div>`).join('') +
-    (S.add.box && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386] pt-2"><span>Pudełko premium</span><span>${zl(ADD.box * boxable())}</span></div>` : '') + (S.add.card ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Kartka</span><span>9 zł</span></div>` : '') + (S.add.exp ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Ekspres</span><span>19 zł</span></div>` : '');
+    (S.add.box && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386] pt-2"><span>Pudełko premium</span><span>${zl(ADD.box * boxable())}</span></div>` : '') + (S.add.card && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Kartka</span><span>9 zł</span></div>` : '') + (S.add.exp ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Ekspres</span><span>19 zł</span></div>` : '');
   const s = shipVal(), tot = t.after + s;
   $('cSub').textContent = zl(t.sub); $('cDiscR').classList.toggle('hidden', !S.disc); if ($('cDiscL')) $('cDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('cDisc').textContent = '−' + zl(t.d); $('cShip').textContent = s ? zl(s) : '0 zł'; $('cTot').textContent = zl(tot); $('payT').textContent = 'Zamawiam i płacę ' + zl(tot);
   const P = S.items.filter((i) => i.pers !== false), G = S.items.filter((i) => i.pers === false);
@@ -83,8 +83,8 @@ async function live() { if (LIVE !== null) return LIVE; try { const r = await fe
 async function goStripe(em) {
   const att = {}; for (const [ix, i] of S.items.entries()) { if (i.design) att[ix] = { design: await idbGet(i.design) }; if (i.files) att[ix] = { ...(att[ix] || {}), files: await idbGet(i.files) }; }
   const d = document.querySelector('[name=d]:checked');
-  const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? S.disc.c : '', add: S.add,
-    items: S.items.map((i) => ({ slug: i.slug, opt: i.opt || null, sides: i.sides || null, qty: i.qty, title: i.title, lines: i.lines, text: i.text || '', notes: i.notes || '', pers: i.pers !== false, img: i.img })), att, consent: { tos: true, pers: $('pers').checked } };
+  const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? S.disc.c : '', add: { box: !!(S.add.box && boxable()), card: !!(S.add.card && boxable()) },
+    items: S.items.map((i) => ({ slug: i.slug, opt: i.opt || null, sides: i.sides || null, w: i.w || null, h: i.h || null, qty: i.qty, title: i.title, lines: i.lines, text: i.text || '', notes: i.notes || '', pers: i.pers !== false, img: i.img })), att, consent: { tos: true, pers: $('pers').checked } };
   const r = await fetch('api/checkout.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const j = await r.json().catch(() => ({})); if (!r.ok || !j.url) throw new Error(j.error || 'Nie udało się rozpocząć płatności');
   try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); O.unshift({ no: j.no, date: new Date().toISOString(), email: em, items: S.items.map((i) => ({ title: i.title, lines: i.lines, img: i.img, qty: i.qty, price: i.price, pers: i.pers !== false })), sub: j.sub, ship: j.ship, total: j.total, pay: 'stripe', delivery: body.deliveryName, status: 0, pending: true }); localStorage.setItem('aiprints-orders', JSON.stringify(O)); localStorage.setItem('aiprints-session', em); } catch (e) { }
