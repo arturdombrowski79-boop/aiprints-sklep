@@ -21,16 +21,16 @@ $d['payment'] = ['intent' => $s['payment_intent'] ?? null, 'method' => $s['payme
 db()->prepare("UPDATE orders SET status='paid', paid=?, data=? WHERE no=?")->execute([date('c'), json_encode($d, JSON_UNESCAPED_UNICODE), $no]);
 
 // mail do klienta: potwierdzenie zawarcia umowy na trwałym nośniku + regulamin (i formularz, gdy są produkty bez personalizacji)
-$anyRet = false; $items = [];
+$anyRet = false; $anyPers = false; $items = [];
 foreach ($d['items'] as $it) {
-  if (!$it['pers']) $anyRet = true;
+  if (!$it['pers']) $anyRet = true; else $anyPers = true;
   $items[] = ['{{item.title}}' => htmlspecialchars($it['title']), '{{item.lines}}' => $it['lines'] ? htmlspecialchars(implode(' · ', $it['lines'])) . ' · ' : '', '{{item.qty}}' => (string)$it['qty'], '{{item.price}}' => zl($it['price']), '{{item.sum}}' => zl($it['price'] * $it['qty']),
     '{{item.pers}}' => $it['pers'] ? '<span style="font-size:12.5px;color:#7a5600">✎ Produkt personalizowany – bez prawa odstąpienia (art. 38 ust. 1 pkt 3 u.p.k.)</span>' : '<span style="font-size:12.5px;color:#1f6b46">↺ Bez personalizacji – 14 dni na odstąpienie od umowy</span>'];
 }
 $wd = function (int $n) { $t = time(); while ($n > 0) { $t += 86400; if ((int)date('N', $t) < 6) $n--; } return date('d.m.Y', $t); };
-$vars = ['no' => $no, 'first' => explode(' ', trim($o['name'] ?: 'Kliencie'))[0], 'date' => date('d.m.Y', strtotime($o['created'])), 'pay' => strtoupper((string)($d['payment']['method'] ?? 'online')),
+$vars = ['no' => $no, 'first' => explode(' ', trim($o['name'] ?: 'Kliencie'))[0], 'date' => date('d.m.Y', strtotime($o['created'])), 'pay' => 'online',
   'delivery' => $d['shipName'] . ($d['locker'] ? ' ' . $d['locker'] : ''), 'ship' => zl($d['ship']), 'disc' => zl($d['disc']), 'total' => zl($d['total']), 'address' => $d['address'] ?? ($d['locker'] ? 'Paczkomat ' . $d['locker'] : 'Chorzów, ul. Okrężna 98B'),
-  'proofBy' => $wd(2), 'lead' => '5–10 dni roboczych', 'breakNote' => cfg('break_note', ''), 'items' => $items, 'show_disc' => $d['disc'] > 0, 'show_ret' => $anyRet, 'show_brk' => (bool)cfg('break_note', '')];
+  'proofBy' => $wd(2), 'lead' => '5–10 dni roboczych', 'breakNote' => cfg('break_note', ''), 'items' => $items, 'show_disc' => $d['disc'] > 0, 'show_ret' => $anyRet, 'show_brk' => (bool)cfg('break_note', ''), 'show_prs' => $anyPers, 'show_gen' => !$anyPers];
 $files = ['Regulamin-AiPrints.pdf' => API . '/../docs/regulamin-aiprints.pdf'];
 if ($anyRet) $files['Formularz-odstapienia.pdf'] = API . '/../docs/formularz-odstapienia.pdf';
 send_mail($o['email'], "Zamówienie $no przyjęte – potwierdzenie", tpl('potwierdzenie', $vars), $files, cfg('mail_archive') ?: null);
