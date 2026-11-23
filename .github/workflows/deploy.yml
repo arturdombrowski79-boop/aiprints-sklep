@@ -1,7 +1,7 @@
 # Automatyczne wdrażanie na LH.pl
 # 1) Każda zmiana w gałęzi main: build sklepu (Astro) i test, czy się buduje.
 # 2) Wysyłka na serwer tylko wtedy, gdy w GitHub → Settings → Secrets and variables → Actions
-#    są ustawione: LH_HOST, LH_USER, LH_SSH_KEY (klucz prywatny SSH) i LH_PATH (np. /home/USER/domains/aiprints.pl/public_html/test).
+#    są ustawione: LH_HOST, LH_USER, LH_SSH_KEY (klucz prywatny SSH) i LH_PATH (folder strony aiprints.pl na serwerze); opcjonalnie LH_PORT (domyślnie 22).
 #    Hasła i klucze nie trafiają do repozytorium.
 name: Build i wdrożenie
 on:
@@ -34,9 +34,11 @@ jobs:
           LH_USER: ${{ secrets.LH_USER }}
           LH_PATH: ${{ secrets.LH_PATH }}
           LH_SSH_KEY: ${{ secrets.LH_SSH_KEY }}
+          LH_PORT: ${{ secrets.LH_PORT || '22' }}
         run: |
           mkdir -p ~/.ssh && echo "$LH_SSH_KEY" > ~/.ssh/id_lh && chmod 600 ~/.ssh/id_lh
-          ssh-keyscan -H "$LH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
-          rsync -az --delete --exclude '.well-known' --exclude 'api/config.php' --exclude 'api/data/' -e "ssh -i ~/.ssh/id_lh" prod/ "$LH_USER@$LH_HOST:$LH_PATH/"
+          ssh-keyscan -p "$LH_PORT" -H "$LH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # config.php (klucze Stripe) i dane zamówień zostają na serwerze; blokada .htaccess w api/data jest wysyłana
+          rsync -az --delete --exclude '.well-known' --exclude 'api/config.php' --include 'api/data/.htaccess' --exclude 'api/data/*' -e "ssh -p $LH_PORT -i ~/.ssh/id_lh" prod/ "$LH_USER@$LH_HOST:$LH_PATH/"
     env:
       LH_HOST: ${{ secrets.LH_HOST }}
