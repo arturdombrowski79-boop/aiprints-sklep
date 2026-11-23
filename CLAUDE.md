@@ -13,7 +13,7 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Skrzynki: kontakt@, zamowienia@ (nadawca maili), reklamacje@, zwroty@, firmy@ (wszystkie @aiprints.pl).
 - Panel zamówienia: link „Otwórz zamówienie – pliki i wysyłka” w mailu do pracowni → `api/panel.php` (klucz HMAC z sekretu webhooka): pobieranie plików klienta, numer przesyłki + mail „Wysłane”, „Gotowe do odbioru”. `/admin` to wciąż podgląd demo.
 
-- Katalog PDF (`public/pliki/katalog-aiprints.pdf`, okładka `img/site/katalog-okladka.jpg`): po zmianach cen/produktów `bash tools/build.sh && python3 tools/katalog.py && node tools/katalog-pdf.mjs`, potem build jeszcze raz i commit PDF. Katalog dla firm (ceny netto): `KAT=b2b python3 tools/katalog.py && KAT=b2b node tools/katalog-pdf.mjs` → `public/pliki/katalog-firmy-aiprints.pdf`.
+- Katalog PDF (`public/pliki/katalog-aiprints.pdf`, okładka `img/site/katalog-okladka.jpg`): po zmianach cen/produktów `bash tools/build.sh && python3 tools/katalog.py && node tools/katalog-pdf.mjs`, potem build jeszcze raz i commit PDF. Katalog dla firm (ceny netto): `KAT=b2b python3 tools/katalog.py && KAT=b2b node tools/katalog-pdf.mjs` → `public/pliki/katalog-firmy-aiprints.pdf`. Broszura A5 do druku na Xerox C75 (A4 składane, zszywane): `KAT=b2b FMT=a5 python3 tools/katalog.py && KAT=b2b FMT=a5 node tools/katalog-pdf.mjs && python3 tools/broszura.py` → `public/pliki/druk/` (A4 i SRA3 ze spadem; nie commitowane).
 
 ## Zasady (obowiązują zawsze)
 - Nigdy nie prosić o hasła, klucze API, dane FTP/SSH w czacie. Klucze wpisuje właściciel sam.

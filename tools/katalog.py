@@ -10,6 +10,7 @@ REAL = json.load(open(B + '/src/data/realizacje.json'))
 PAK = json.loads(subprocess.check_output(['node', '-e', "import('./src/data/pakiety.js').then(m=>console.log(JSON.stringify(m.PAKIETY)))"], cwd=B))
 E = lambda s: html.escape(str(s or ''))
 TODAY = datetime.date.today()
+A5 = os.environ.get('FMT') == 'a5'     # FMT=a5 → broszura A5 (A4 składane, zszywane) pod Xerox C75
 B2B = os.environ.get('KAT') == 'b2b'   # KAT=b2b → katalog tylko dla firm (ceny netto), plik katalog-firmy
 def NET(t):
     if not B2B: return t
@@ -48,7 +49,7 @@ def short(t, n=80):
 
 pages = []
 def page(body, cls='', num=True):
-    pages.append((body, cls, num))
+    for b in body.split('</section>SPLIT'): pages.append((b, cls, num))
 
 # ——— 1. okładka ———
 cov = [thumb(x, 900) for x in (['img/realizacje/domix-powstancow-24.jpg', 'img/realizacje/przedszkole-drzwi.jpg', 'img/realizacje/fototapeta-salon.jpg', 'img/realizacje/domix-szobiszowicka-1.jpg', 'img/realizacje/rollup-festyn.jpg', 'img/realizacje/druk-3d-wazon.jpg'] if B2B else ['img/realizacje/domix-powstancow-24.jpg', 'img/f/krysztal-para-sq.jpg', 'img/realizacje/przedszkole-zagladajace-dzieci.jpg', 'img/portfolio/sesja-02.jpg', 'img/realizacje/fototapeta-salon.jpg', 'img/hf/karafka-grawer-sq.jpg'])]
@@ -92,7 +93,7 @@ page(f'''
   </ul></div>
   <img src="{thumb('img/site/pracownia.jpg', 900)}" class="ph tall">
 </div>
-<h3 class="h3">Park maszynowy</h3>
+{'</section>SPLIT<p class="eyebrow">O pracowni (cd.)</p>' if A5 else ''}<h3 class="h3">Park maszynowy</h3>
 <div class="mgrid">{''.join(f'<div class="m"><b>{E(t)}</b><span>{E(d)}</span></div>' for t, d in MACH)}</div>
 ''')
 
@@ -133,8 +134,8 @@ for slug in ORDER:
     c = CN[slug]; items = sorted([p for p in prods if p['cat'] == slug], key=lambda p: -(p.get('score') or 0))
     if not items: continue
     rs = [r for r in REAL if r['g'] == RG.get(slug)][:4]
-    first = 8 if rs else 12
-    chunks = [items[:first]] + [items[i:i + 16] for i in range(first, len(items), 16)]
+    first, per = ((6 if rs else 9), 9) if A5 else ((8 if rs else 12), 16)
+    chunks = [items[:first]] + [items[i:i + per] for i in range(first, len(items), per)]
     for k, ch in enumerate(chunks):
         head = (f'<p class="eyebrow">Katalog · {E(c["name"])}</p><h2 class="h2">{E(c["name"])}</h2><p class="lead sm">{E(c.get("lead"))}</p>'
                 + (f'<div class="rstrip">{"".join(f"<img src=\"{thumb(r["f"])}\">" for r in rs)}</div><p class="cap">Zdjęcia z naszych realizacji</p>' if rs else '')) if k == 0 else f'<p class="eyebrow">Katalog · {E(c["name"])} (cd.)</p>'
@@ -155,8 +156,10 @@ if not B2B: page(f'''<p class="eyebrow">Fotografia · pakiety (cd.)</p><div clas
 
 # ——— 6. realizacje ———
 rr = [r for r in REAL if r['g'] in ('wspolnoty', 'szkoly', 'wielkoformat', 'druk3d')] if B2B else REAL[:]
-for k in range(0, len(rr), 12):
-    ch = rr[k:k + 12]
+if A5: rr = rr[:18]  # 3 pełne strony – broszura bez pustych kartek
+RP = 6 if A5 else 12
+for k in range(0, len(rr), RP):
+    ch = rr[k:k + RP]
     page(('<p class="eyebrow">Realizacje</p><h2 class="h2">Zdjęcia z <em>naszych zleceń</em></h2>' if k == 0 else '<p class="eyebrow">Realizacje (cd.)</p>')
          + f'<div class="rgrid">{"".join(f"<figure><img src=\"{thumb(r["f"], 640)}\"><figcaption>{E(r["t"])}</figcaption></figure>" for r in ch)}</div>')
 
@@ -193,6 +196,32 @@ page(f'''<p class="eyebrow">Zamówienia, dostawa, kontakt</p><h2 class="h2">Jak 
 <p class="note">Katalog ma charakter informacyjny i nie stanowi oferty w rozumieniu Kodeksu cywilnego. {'Ceny netto (+23% VAT)' if B2B else 'Ceny brutto'} według stanu na {DATA}; obowiązują ceny podane w sklepie w chwili zamówienia. Zdjęcia oznaczone jako realizacje pochodzą z naszych zleceń (publikowane za zgodą klientów); pozostałe zdjęcia produktów są poglądowe.</p>
 ''')
 
+A5CSS = """
+@page{size:A5;margin:0}
+.page{width:148mm;height:210mm;padding:11mm 10mm 12mm}
+.pn{left:10mm;right:10mm;bottom:5mm;font-size:6.2pt}
+.eyebrow{font-size:6.4pt}
+.h2{font-size:23pt;margin:2mm 0 3mm}.h3{font-size:15pt;margin:5mm 0 2.5mm}
+.lead{font-size:8.6pt;line-height:1.45}.lead.sm{font-size:8pt;margin-bottom:3mm}
+.note{font-size:6.4pt;margin-top:3.5mm}.cap{font-size:6pt;margin:1mm 0 3mm}
+.two{grid-template-columns:1fr 1fr;gap:5mm}.two.mt{margin-top:5mm}.ph.tall{height:70mm}
+.ticks{margin-top:3.5mm;gap:2mm;font-size:7.6pt}.ticks li{padding-left:4mm}.ticks li:before{top:1.3mm;width:1.7mm;height:1.7mm}
+.mgrid{grid-template-columns:1fr 1fr;gap:2.5mm}.m{padding:2.6mm 3mm}.m b{font-size:7.6pt}.m span{font-size:6.6pt}
+.tbl td{padding:2mm 0}.tbl b{font-size:8.6pt}.tbl span{font-size:7pt}.tbl i{font-size:6.3pt}.tbl .pr{font-size:8.6pt;padding-left:4mm}
+.pgrid{grid-template-columns:repeat(3,1fr);gap:3.5mm 3mm}
+.pc b{font-size:7.4pt;margin-top:1.4mm}.pc .v{font-size:6.2pt;height:8.4mm}.pc .p{font-size:7.6pt}
+.real{font-size:5.4pt}
+.more{left:10mm;right:10mm;bottom:9.5mm;font-size:6.4pt}
+.rstrip{gap:2mm}.rstrip img{height:22mm;border-radius:2mm}
+.rgrid{grid-template-columns:1fr 1fr;gap:3.5mm}.rgrid img{height:45mm}.rgrid figcaption{font-size:6.3pt}
+.bgrid{gap:2.5mm;margin-top:4mm}.bgrid div{padding:2.8mm 3mm}.bgrid b{font-size:8pt}.bgrid span{font-size:6.7pt;line-height:1.4}
+.cta{margin-top:5mm;padding:4.5mm 5mm;border-radius:3mm;gap:4mm}.cta b{font-size:16pt}.cta span{font-size:7.2pt}.ctac{font-size:8.8pt}
+.steps{grid-template-columns:1fr 1fr;gap:2.5mm}.steps div{padding:3mm}.steps span{font-size:18pt}.steps b{font-size:8.4pt}.steps p{font-size:6.8pt}
+.contact p{font-size:7.6pt;margin-bottom:2.2mm}.qrs{gap:3mm;margin-top:8mm}.qrs img{width:26mm;height:26mm}.qrs span{font-size:6.8pt}
+.cov{height:210mm;padding:12mm 11mm 10mm}.cov-logo{height:8mm}.cov-h{font-size:36pt;margin-top:3mm}.cov-lead{font-size:8.2pt;margin-top:4mm}
+.cov-grid{gap:2mm;margin-top:6mm}.cov-foot{margin-top:5mm;font-size:6.6pt}
+.notes{position:absolute;left:10mm;right:10mm;top:26mm;bottom:16mm;background:repeating-linear-gradient(#f6f4f0 0 9.6mm,#d9d4cc 9.6mm 9.8mm)}
+""" if A5 else ''
 # ——— składanie HTML ———
 idx = open(P + '/index.html', encoding='utf-8').read()
 fonts = ''.join(re.findall(r'@font-face\{[^}]*\}', idx))
@@ -249,11 +278,13 @@ em{font-style:normal;color:#c8146e}
 '''
 if B2B:  # współpraca zaraz po usługach
     k = next(i for i, x in enumerate(pages) if 'dla Twoich klientów' in x[0]); pages.insert(3, pages.pop(k))
+if A5:  # broszura zszywana: liczba stron podzielna przez 4 – strony na notatki przed tylną okładką
+    while len(pages) % 4: pages.insert(len(pages) - 1, ('<p class="eyebrow">Notatki</p><div class="notes"></div>', '', True))
 out = []
 n = 0
 for body, cls, num in pages:
     n += 1
     foot = f'<div class="pn"><span>AiPrints.pl · Katalog usług i produktów · {DATA}</span><span>{n}</span></div>' if num else ''
     out.append(f'<section class="page {cls}">{body}{foot}</section>')
-open(P + ('/_katalog-firmy.html' if B2B else '/_katalog.html'), 'w', encoding='utf-8').write(f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Katalog AiPrints.pl</title><style>{CSS}</style></head><body>{"".join(out)}</body></html>')
+open(P + ('/_katalog-firmy' if B2B else '/_katalog') + ('-a5' if A5 else '') + '.html', 'w', encoding='utf-8').write(f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Katalog AiPrints.pl</title><style>{CSS}{A5CSS}</style></head><body>{"".join(out)}</body></html>')
 print('stron', n)

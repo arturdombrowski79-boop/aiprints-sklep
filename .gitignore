@@ -10,3 +10,7 @@ api/config.php
 api/data/*.sqlite*
 api/data/files/
 art/
+
+# broszury do druku (Xerox C75) – generowane lokalnie, nie na stronę
+public/pliki/druk/
+public/pliki/*-a5.pdf
