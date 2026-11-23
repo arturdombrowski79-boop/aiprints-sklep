@@ -402,6 +402,58 @@
 }
 },
 {
+"slug": "fototapeta",
+"name": "Fototapeta na wymiar",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "flizelina bez PCV, z Twojego zdjęcia",
+"priceText": "od 79 zł/m²",
+"price": 79.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 2732.0,
+"xmas": true,
+"img": "img/hf/fototapeta-r1.jpg",
+"fields": [
+"files"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/fototapeta-r1.jpg",
+"img/hf/fototapeta-1.jpg"
+],
+"real": 1,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "files",
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 79.0,
+"regular": 79.0
+}
+},
+{
 "slug": "plakat-mapa-2d",
 "name": "Plakat minimalistyczna mapa miasta",
 "cat": "prezenty-ze-zdjeciem",
@@ -1065,56 +1117,6 @@
 "name": "Na koniec roku −5%",
 "low30": 249.0,
 "regular": 249.0
-}
-},
-{
-"slug": "fototapeta",
-"name": "Fototapeta na wymiar",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Dom i dekoracje",
-"variants": "flizelina bez PCV, z Twojego zdjęcia",
-"priceText": "od 79 zł/m²",
-"price": 79.0,
-"tiers": null,
-"machine": "HP Latex 375",
-"score": 2682.0,
-"xmas": true,
-"img": "img/hf/fototapeta-1.jpg",
-"fields": [
-"files"
-],
-"quote": false,
-"unit": true,
-"gallery": [
-"img/hf/fototapeta-1.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "files",
-"tags": {
-"okazja": [
-"nowy-dom"
-],
-"dla": [],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [
-"druk"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 79.0,
-"regular": 79.0
 }
 },
 {
@@ -2461,6 +2463,73 @@
 }
 },
 {
+"slug": "tablica-wejscie-zarzadca",
+"name": "Tablica z numerem domu i nazwą zarządcy",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "PCV 30×40 + tabliczka 30×8, PCV 40×60 + tabliczka 40×10, LED 230 V 30×40, Solarna 30×40, LED 230 V 40×60, Solarna 40×60",
+"priceText": "od 147,6 zł",
+"price": 147.6,
+"tiers": [
+{
+"k": "PCV 30×40 + tabliczka 30×8",
+"p": 147.6
+},
+{
+"k": "PCV 40×60 + tabliczka 40×10",
+"p": 221.4
+},
+{
+"k": "LED 230 V 30×40",
+"p": 356.7
+},
+{
+"k": "Solarna 30×40",
+"p": 393.6
+},
+{
+"k": "LED 230 V 40×60",
+"p": 479.7
+},
+{
+"k": "Solarna 40×60",
+"p": 516.6
+}
+],
+"machine": "GoArt UV A3",
+"score": 1294.0,
+"xmas": true,
+"img": "img/hf/tablica-wejscie-zarzadca-r1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-wejscie-zarzadca-r1.jpg",
+"img/hf/tablica-wejscie-zarzadca-r2.jpg",
+"img/hf/tablica-wejscie-zarzadca-1.jpg",
+"img/hf/tablica-wejscie-zarzadca-2.jpg"
+],
+"real": 2,
+"also": [],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
 "slug": "numeracja-lokali",
 "name": "Numery lokali i klatek",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -2571,70 +2640,6 @@
 }
 },
 {
-"slug": "tablica-wejscie-zarzadca",
-"name": "Tablica z numerem domu i nazwą zarządcy",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tablice",
-"variants": "PCV 30×40 + tabliczka 30×8, PCV 40×60 + tabliczka 40×10, LED 230 V 30×40, Solarna 30×40, LED 230 V 40×60, Solarna 40×60",
-"priceText": "od 147,6 zł",
-"price": 147.6,
-"tiers": [
-{
-"k": "PCV 30×40 + tabliczka 30×8",
-"p": 147.6
-},
-{
-"k": "PCV 40×60 + tabliczka 40×10",
-"p": 221.4
-},
-{
-"k": "LED 230 V 30×40",
-"p": 356.7
-},
-{
-"k": "Solarna 30×40",
-"p": 393.6
-},
-{
-"k": "LED 230 V 40×60",
-"p": 479.7
-},
-{
-"k": "Solarna 40×60",
-"p": 516.6
-}
-],
-"machine": "GoArt UV A3",
-"score": 1244.0,
-"xmas": true,
-"img": "img/hf/tablica-wejscie-zarzadca-sq.jpg",
-"fields": [
-"logo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/tablica-wejscie-zarzadca-1.jpg",
-"img/hf/tablica-wejscie-zarzadca-2.jpg"
-],
-"also": [],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"akryl"
-]
-}
-},
-{
 "slug": "breloki-klub",
 "name": "Breloki 3D z logo klubu",
 "cat": "dla-firm",
@@ -2736,6 +2741,46 @@
 }
 },
 {
+"slug": "dane-zarzadcy-tabliczka",
+"name": "Tabliczka z danymi zarządcy i numerami awaryjnymi",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "30×40 cm, logo zarządcy, e-mail, telefon, pogotowie (40 zł netto)",
+"priceText": "49,20 zł",
+"price": 49.2,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1230.0,
+"xmas": false,
+"img": "img/hf/dane-zarzadcy-tabliczka-r1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dane-zarzadcy-tabliczka-r1.jpg",
+"img/hf/dane-zarzadcy-tabliczka-1.jpg"
+],
+"real": 1,
+"also": [],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
 "slug": "plakaty-edukacyjne",
 "name": "Plakaty edukacyjne do sal",
 "cat": "szkoly-i-przedszkola",
@@ -2814,6 +2859,84 @@
 }
 },
 {
+"slug": "banery-rollupy",
+"name": "Banery i rollupy",
+"cat": "dla-firm",
+"sub": "Szkoły i kluby",
+"variants": "",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1206.0,
+"xmas": true,
+"img": "img/hf/banery-rollupy-r1.jpg",
+"fields": [
+"logo"
+],
+"quote": true,
+"unit": false,
+"gallery": [
+"img/hf/banery-rollupy-r1.jpg",
+"img/hf/banery-rollupy-1.jpg"
+],
+"real": 1,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "regulamin-porzadku",
+"name": "Regulamin wspólnoty mieszkaniowej",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "tablica 40×60 cm z regulaminem porządku domowego, PCV lub Dibond (60 zł netto)",
+"priceText": "73,80 zł",
+"price": 73.8,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1204.0,
+"xmas": true,
+"img": "img/hf/regulamin-porzadku-r1.jpg",
+"fields": [
+"note"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/regulamin-porzadku-r1.jpg",
+"img/hf/regulamin-porzadku-1.jpg"
+],
+"real": 1,
+"also": [],
+"kind": "ready",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "akryl-nasza-data",
 "name": "Tabliczka „Nasza data” z kalendarzem",
 "cat": "prezenty-ze-zdjeciem",
@@ -2887,6 +3010,52 @@
 ],
 "dla": [],
 "pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-na-okna-przedszkole",
+"name": "Naklejki na okna – zwierzęta, motyle, chmurki",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "folia z białym poddrukiem, wycinane po obrysie, komplet na jedno okno",
+"priceText": "od 249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1197.0,
+"xmas": false,
+"img": "img/hf/naklejki-na-okna-przedszkole-r1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-na-okna-przedszkole-r1.jpg",
+"img/hf/naklejki-na-okna-przedszkole-r2.jpg",
+"img/hf/naklejki-na-okna-przedszkole-r3.jpg",
+"img/hf/naklejki-na-okna-przedszkole-1.jpg",
+"img/hf/naklejki-na-okna-przedszkole-2.jpg",
+"img/hf/naklejki-na-okna-przedszkole-3.jpg"
+],
+"real": 3,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
 "logo"
 ],
 "mat": [
@@ -3097,44 +3266,6 @@
 }
 },
 {
-"slug": "dane-zarzadcy-tabliczka",
-"name": "Tabliczka z danymi zarządcy i numerami awaryjnymi",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Oznakowanie",
-"variants": "30×40 cm, logo zarządcy, e-mail, telefon, pogotowie (40 zł netto)",
-"priceText": "49,20 zł",
-"price": 49.2,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 1180.0,
-"xmas": false,
-"img": "img/hf/dane-zarzadcy-tabliczka-1.jpg",
-"fields": [
-"logo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/dane-zarzadcy-tabliczka-1.jpg"
-],
-"also": [],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"akryl"
-]
-}
-},
-{
 "slug": "segregacja-odpadow",
 "name": "Tablica segregacji odpadów",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -3320,6 +3451,57 @@
 "dla": [],
 "pers": [
 "logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "poduszka-zdjecie",
+"name": "Poduszka ze zdjęciem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "40×40, poszewka z wkładem",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson F500 + prasa",
+"score": 1175.0,
+"xmas": true,
+"img": "img/hf/poduszka-zdjecie-r1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/poduszka-zdjecie-r1.jpg",
+"img/hf/poduszka-zdjecie-1.jpg",
+"img/hf/poduszka-zdjecie-2.jpg",
+"img/hf/poduszka-zdjecie-3.jpg"
+],
+"real": 1,
+"also": [
+"sublimacja"
+],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"rocznica",
+"walentynki",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
 ],
 "mat": [
 "druk"
@@ -3549,6 +3731,104 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "plakaty-grup-przedszkolnych",
+"name": "Plakaty powitalne grup (Pszczółki, Jeżyki, Sówki…)",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "unikalna postać grupy zaprojektowana w AI, 60×60–100×100 cm, folia lub PCV",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "60×60",
+"p": 149.0
+},
+{
+"k": "80×80",
+"p": 199.0
+},
+{
+"k": "100×100",
+"p": 259.0
+}
+],
+"machine": "HP Latex 375",
+"score": 1167.0,
+"xmas": false,
+"img": "img/hf/plakaty-grup-przedszkolnych-r1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakaty-grup-przedszkolnych-r1.jpg",
+"img/hf/plakaty-grup-przedszkolnych-r2.jpg",
+"img/hf/plakaty-grup-przedszkolnych-r3.jpg",
+"img/hf/plakaty-grup-przedszkolnych-1.jpg",
+"img/hf/plakaty-grup-przedszkolnych-2.jpg",
+"img/hf/plakaty-grup-przedszkolnych-3.jpg"
+],
+"real": 3,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "postacie-zagladajace-drzwi",
+"name": "Postacie „zaglądające” przez szklane drzwi",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "chłopiec i dziewczynka wycinani po obrysie, dwustronnie czytelni na szkle",
+"priceText": "349 zł",
+"price": 349.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1164.0,
+"xmas": false,
+"img": "img/hf/postacie-zagladajace-drzwi-r1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/postacie-zagladajace-drzwi-r1.jpg",
+"img/hf/postacie-zagladajace-drzwi-r2.jpg",
+"img/hf/postacie-zagladajace-drzwi-1.jpg",
+"img/hf/postacie-zagladajace-drzwi-2.jpg"
+],
+"real": 2,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -3808,44 +4088,6 @@
 }
 },
 {
-"slug": "banery-rollupy",
-"name": "Banery i rollupy",
-"cat": "dla-firm",
-"sub": "Szkoły i kluby",
-"variants": "",
-"priceText": "wycena",
-"price": null,
-"tiers": null,
-"machine": "HP Latex 375",
-"score": 1156.0,
-"xmas": true,
-"img": "img/hf/banery-rollupy-1.jpg",
-"fields": [
-"logo"
-],
-"quote": true,
-"unit": false,
-"gallery": [
-"img/hf/banery-rollupy-1.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "odblaski-z-logo",
 "name": "Odblaski z logo szkoły lub firmy",
 "cat": "szkoly-i-przedszkola",
@@ -3881,42 +4123,6 @@
 "logo"
 ],
 "mat": []
-}
-},
-{
-"slug": "regulamin-porzadku",
-"name": "Regulamin wspólnoty mieszkaniowej",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tablice",
-"variants": "tablica 40×60 cm z regulaminem porządku domowego, PCV lub Dibond (60 zł netto)",
-"priceText": "73,80 zł",
-"price": 73.8,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 1154.0,
-"xmas": true,
-"img": "img/hf/regulamin-porzadku-1.jpg",
-"fields": [
-"note"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/regulamin-porzadku-1.jpg"
-],
-"also": [],
-"kind": "ready",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"logo"
-],
-"mat": [
-"druk"
-]
 }
 },
 {
@@ -4198,48 +4404,6 @@
 }
 },
 {
-"slug": "naklejki-na-okna-przedszkole",
-"name": "Naklejki na okna – zwierzęta, motyle, chmurki",
-"cat": "szkoly-i-przedszkola",
-"sub": "Sale i korytarze",
-"variants": "folia z białym poddrukiem, wycinane po obrysie, komplet na jedno okno",
-"priceText": "od 249 zł",
-"price": 249.0,
-"tiers": null,
-"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
-"score": 1147.0,
-"xmas": false,
-"img": "img/hf/naklejki-na-okna-przedszkole-1.jpg",
-"fields": [
-"text",
-"list"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/naklejki-na-okna-przedszkole-1.jpg",
-"img/hf/naklejki-na-okna-przedszkole-2.jpg",
-"img/hf/naklejki-na-okna-przedszkole-3.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "tabliczka-opinie-sciana",
 "name": "Tabliczka ścienna „Oceń nas” na dystansach",
 "cat": "dla-firm",
@@ -4274,6 +4438,45 @@
 "mat": [
 "akryl"
 ]
+}
+},
+{
+"slug": "grafika-drzwi-wejsciowe",
+"name": "Grafika na drzwi i nadświetle wejścia",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "projekt z postacią i nazwą placówki w cenie, folia z laminatem, montaż na miejscu",
+"priceText": "od 690 zł",
+"price": 690.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1145.0,
+"xmas": false,
+"img": "img/hf/grafika-drzwi-wejsciowe-r1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/grafika-drzwi-wejsciowe-r1.jpg",
+"img/hf/grafika-drzwi-wejsciowe-1.jpg"
+],
+"real": 1,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "b2b",
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -4842,6 +5045,49 @@
 }
 },
 {
+"slug": "kalendarz-scienny-zdjecia",
+"name": "Kalendarz ścienny z własnych zdjęć",
+"cat": "dla-fotografow",
+"sub": "Odbitki i powiększenia",
+"variants": "A3, 13 stron, papier 250 g, spirala, dowolny miesiąc startowy",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1133.0,
+"xmas": false,
+"img": "img/hf/kalendarz-scienny-zdjecia-r1.jpg",
+"fields": [
+"files",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kalendarz-scienny-zdjecia-r1.jpg",
+"img/hf/kalendarz-scienny-zdjecia-1.jpg"
+],
+"real": 1,
+"also": [],
+"kind": "files",
+"many": "13 zdjęć (12 miesięcy + okładka)",
+"tags": {
+"okazja": [
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "magnes-na-samochod",
 "name": "Magnes na samochód",
 "cat": "druk-wielkoformatowy",
@@ -5071,55 +5317,6 @@
 ],
 "mat": [
 "akryl"
-]
-}
-},
-{
-"slug": "poduszka-zdjecie",
-"name": "Poduszka ze zdjęciem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Dom i dekoracje",
-"variants": "40×40, poszewka z wkładem",
-"priceText": "49 zł",
-"price": 49.0,
-"tiers": null,
-"machine": "Epson F500 + prasa",
-"score": 1125.0,
-"xmas": true,
-"img": "img/hf/poduszka-zdjecie-sq.jpg",
-"fields": [
-"photo"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/poduszka-zdjecie-1.jpg",
-"img/hf/poduszka-zdjecie-2.jpg",
-"img/hf/poduszka-zdjecie-3.jpg"
-],
-"also": [
-"sublimacja"
-],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"rocznica",
-"walentynki",
-"dzien-mamy",
-"dzien-babci"
-],
-"dla": [
-"mama",
-"babcia-dziadek",
-"dla-niej"
-],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [
-"druk"
 ]
 }
 },
@@ -5478,59 +5675,6 @@
 }
 },
 {
-"slug": "plakaty-grup-przedszkolnych",
-"name": "Plakaty powitalne grup (Pszczółki, Jeżyki, Sówki…)",
-"cat": "szkoly-i-przedszkola",
-"sub": "Sale i korytarze",
-"variants": "unikalna postać grupy zaprojektowana w AI, 60×60–100×100 cm, folia lub PCV",
-"priceText": "od 149 zł",
-"price": 149.0,
-"tiers": [
-{
-"k": "60×60",
-"p": 149.0
-},
-{
-"k": "80×80",
-"p": 199.0
-},
-{
-"k": "100×100",
-"p": 259.0
-}
-],
-"machine": "HP Latex 375",
-"score": 1117.0,
-"xmas": false,
-"img": "img/hf/plakaty-grup-przedszkolnych-1.jpg",
-"fields": [
-"photo"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/plakaty-grup-przedszkolnych-1.jpg",
-"img/hf/plakaty-grup-przedszkolnych-2.jpg",
-"img/hf/plakaty-grup-przedszkolnych-3.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "fototapeta-sala",
 "name": "Fototapeta do sali i korytarza",
 "cat": "szkoly-i-przedszkola",
@@ -5649,44 +5793,6 @@
 "mat": [
 "druk"
 ]
-}
-},
-{
-"slug": "postacie-zagladajace-drzwi",
-"name": "Postacie „zaglądające” przez szklane drzwi",
-"cat": "szkoly-i-przedszkola",
-"sub": "Wejście i ogrodzenie",
-"variants": "chłopiec i dziewczynka wycinani po obrysie, dwustronnie czytelni na szkle",
-"priceText": "349 zł",
-"price": 349.0,
-"tiers": null,
-"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
-"score": 1114.0,
-"xmas": false,
-"img": "img/hf/postacie-zagladajace-drzwi-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/postacie-zagladajace-drzwi-1.jpg",
-"img/hf/postacie-zagladajace-drzwi-2.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": []
 }
 },
 {
@@ -6737,43 +6843,6 @@
 }
 },
 {
-"slug": "grafika-drzwi-wejsciowe",
-"name": "Grafika na drzwi i nadświetle wejścia",
-"cat": "szkoly-i-przedszkola",
-"sub": "Wejście i ogrodzenie",
-"variants": "projekt z postacią i nazwą placówki w cenie, folia z laminatem, montaż na miejscu",
-"priceText": "od 690 zł",
-"price": 690.0,
-"tiers": null,
-"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
-"score": 1095.0,
-"xmas": false,
-"img": "img/hf/grafika-drzwi-wejsciowe-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/grafika-drzwi-wejsciowe-1.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "b2b",
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": []
-}
-},
-{
 "slug": "tabliczka-na-krzyz",
 "name": "Tabliczka na krzyż i tymczasowy pomnik",
 "cat": "cmentarz-i-pogrzeb",
@@ -7686,47 +7755,6 @@
 "dla": [],
 "pers": [
 "logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
-"slug": "kalendarz-scienny-zdjecia",
-"name": "Kalendarz ścienny z własnych zdjęć",
-"cat": "dla-fotografow",
-"sub": "Odbitki i powiększenia",
-"variants": "A3, 13 stron, papier 250 g, spirala, dowolny miesiąc startowy",
-"priceText": "99 zł",
-"price": 99.0,
-"tiers": null,
-"machine": "Epson SureLab D1000 (DryLab)",
-"score": 1083.0,
-"xmas": false,
-"img": "img/hf/kalendarz-scienny-zdjecia-1.jpg",
-"fields": [
-"files",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/kalendarz-scienny-zdjecia-1.jpg"
-],
-"also": [],
-"kind": "files",
-"many": "13 zdjęć (12 miesięcy + okładka)",
-"tags": {
-"okazja": [
-"dzien-babci"
-],
-"dla": [
-"babcia-dziadek"
-],
-"pers": [
-"zdjecie",
-"imie"
 ],
 "mat": [
 "druk"
@@ -9299,6 +9327,95 @@
 ],
 "mat": [
 "drewno"
+]
+}
+},
+{
+"slug": "koszulka-z-nadrukiem",
+"name": "Koszulka z własnym nadrukiem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Odzież i kubki",
+"variants": "9 kolorów, S–3XL, nadruk przód i tył",
+"priceText": "69 zł",
+"price": 69,
+"tiers": null,
+"machine": "DTF + prasa",
+"score": 1055.0,
+"xmas": false,
+"img": "img/hf/koszulka-z-nadrukiem-r1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/koszulka-z-nadrukiem-r1.jpg",
+"img/hf/koszulka-z-nadrukiem-1.jpg"
+],
+"real": 1,
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"tata",
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kubek-z-nadrukiem",
+"name": "Kubek ceramiczny z nadrukiem",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Odzież i kubki",
+"variants": "330 ml, 5 kolorów, zdjęcie, logo lub tekst",
+"priceText": "45 zł",
+"price": 45,
+"tiers": null,
+"machine": "Sublimacja / GoArt UV A3",
+"score": 1055.0,
+"xmas": false,
+"img": "img/hf/kubek-z-nadrukiem-r1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/kubek-z-nadrukiem-r1.jpg",
+"img/hf/kubek-z-nadrukiem-1.jpg"
+],
+"real": 1,
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"mama",
+"tata",
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },
@@ -10914,48 +11031,6 @@
 }
 },
 {
-"slug": "koszulka-z-nadrukiem",
-"name": "Koszulka z własnym nadrukiem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Odzież i kubki",
-"variants": "9 kolorów, S–3XL, nadruk przód i tył",
-"priceText": "69 zł",
-"price": 69,
-"tiers": null,
-"machine": "DTF + prasa",
-"score": 1005.0,
-"xmas": false,
-"img": "img/hf/koszulka-z-nadrukiem-1.jpg",
-"fields": [],
-"quote": false,
-"unit": false,
-"creatorOnly": true,
-"gallery": [
-"img/hf/koszulka-z-nadrukiem-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"tata",
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "bluza-z-nadrukiem",
 "name": "Bluza z kapturem z własnym nadrukiem",
 "cat": "prezenty-ze-zdjeciem",
@@ -10983,49 +11058,6 @@
 "firma"
 ],
 "dla": [
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
-"slug": "kubek-z-nadrukiem",
-"name": "Kubek ceramiczny z nadrukiem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Odzież i kubki",
-"variants": "330 ml, 5 kolorów, zdjęcie, logo lub tekst",
-"priceText": "45 zł",
-"price": 45,
-"tiers": null,
-"machine": "Sublimacja / GoArt UV A3",
-"score": 1005.0,
-"xmas": false,
-"img": "img/hf/kubek-z-nadrukiem-1.jpg",
-"fields": [],
-"quote": false,
-"unit": false,
-"creatorOnly": true,
-"gallery": [
-"img/hf/kubek-z-nadrukiem-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"mama",
-"tata",
 "przyjaciel",
 "pracownik"
 ],
@@ -11072,6 +11104,41 @@
 ],
 "mat": [
 "akryl"
+]
+}
+},
+{
+"slug": "druk-3d-z-pliku",
+"name": "Druk 3D z Twojego pliku",
+"cat": "wydruki-3d",
+"sub": "Na zamówienie",
+"variants": "PLA, PET-G, ASA, ABS, PLA-CF, TPU; pliki STL, 3MF, STEP, OBJ; pojedyncze sztuki i małe serie",
+"priceText": "wycena",
+"price": null,
+"tiers": null,
+"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
+"score": 53.0,
+"xmas": false,
+"img": "img/hf/druk-3d-z-pliku-r1.jpg",
+"fields": [],
+"quote": true,
+"unit": false,
+"kind": "service",
+"gallery": [
+"img/hf/druk-3d-z-pliku-r1.jpg",
+"img/hf/druk-3d-z-pliku-1.jpg"
+],
+"real": 1,
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk",
+"3d"
 ]
 }
 },
@@ -11332,39 +11399,6 @@
 "imie"
 ],
 "mat": []
-}
-},
-{
-"slug": "druk-3d-z-pliku",
-"name": "Druk 3D z Twojego pliku",
-"cat": "wydruki-3d",
-"sub": "Na zamówienie",
-"variants": "PLA, PET-G, ASA, ABS, PLA-CF, TPU; pliki STL, 3MF, STEP, OBJ; pojedyncze sztuki i małe serie",
-"priceText": "wycena",
-"price": null,
-"tiers": null,
-"machine": "Bambu (H2C, X1C, A2L, A1 mini)",
-"score": 3.0,
-"xmas": false,
-"img": "img/hf/druk-3d-z-pliku-1.jpg",
-"fields": [],
-"quote": true,
-"unit": false,
-"kind": "service",
-"gallery": [
-"img/hf/druk-3d-z-pliku-1.jpg"
-],
-"also": [],
-"tags": {
-"okazja": [],
-"dla": [],
-"pers": [
-"imie"
-],
-"mat": [
-"druk",
-"3d"
-]
 }
 },
 {

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import Ph from '../components/Ph.astro';
+import Realizacje from '../components/Realizacje.astro';
 import Gallery from '../components/Gallery.astro';
 import Shop from '../components/Shop.astro';
 import Creator from '../components/Creator.astro';
@@ -26,6 +27,7 @@ const cr = kind === 'prod' ? CREATOR[p.slug] : null;
 const crOnly = kind === 'prod' && !!p.creatorOnly;
 const C = Object.fromEntries(cat.cats.map((x) => [x.slug, x]));
 const site = 'https://aiprints.pl/';
+const RG = { 'szkoly-i-przedszkola': ['szkoly', 'Realizacje dla przedszkoli i szkół'], 'druk-wielkoformatowy': ['wielkoformat', 'Realizacje – druk wielkoformatowy'], 'prezenty-ze-zdjeciem': ['zdjecia', 'Realizacje – prezenty ze zdjęciem'], 'sublimacja': ['zdjecia', 'Realizacje – sublimacja i nadruk'], 'wydruki-3d': ['druk3d', 'Realizacje – druk 3D'] };
 const HT = kind !== 'prod' ? [0, 0] : p.kind === 'ready' ? [1, 3] : p.kind === 'files' ? [2, 7] : [5, 10]; // dni robocze wykonania
 let d = {};
 if (kind === 'cat') {
@@ -74,13 +76,15 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
   {c.slug === 'wspolnoty-i-spoldzielnie' && (() => { const pk = ['tablica-wejscie-zarzadca', 'regulamin-porzadku', 'telefony-alarmowe', 'tabliczki-skrzynki'].map((s) => cat.products.find((x) => x.slug === s)).filter(Boolean); return (
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-14">
     <div class="reveal rounded-[32px] bg-white border border-line p-7 md:p-10">
-      <div class="flex flex-wrap items-end justify-between gap-4"><div><p class="text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Przykładowy komplet dla jednego budynku</p><h2 class="font-display text-[36px] md:text-[48px] leading-none mt-3">Wejście, klatka i skrzynki – w jednym stylu</h2></div><a href="kontakt.html#wycena" class="btn btn-ink">Wyceń oznakowanie budynku →</a></div>
+      <div class="flex flex-wrap items-end justify-between gap-4"><div><p class="text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Komplet dla jednego budynku</p><h2 class="font-display text-[36px] md:text-[48px] leading-none mt-3">Wejście, klatka i skrzynki – w jednym stylu</h2></div><a href="kontakt.html#wycena" class="btn btn-ink">Wyceń oznakowanie budynku →</a></div>
       <p class="text-mute text-[15px] leading-relaxed mt-4 max-w-[760px]">Tak wygląda typowe zamówienie dla jednej wspólnoty: tablica z adresem i danymi zarządcy przy wejściu, regulamin porządku domowego i numery alarmowe na klatce oraz tabliczki na skrzynki według listy lokali. Projektujemy wszystko w jednym stylu z logo zarządcy, a przy kolejnych budynkach zmieniamy tylko adres. Montaż na Śląsku – na życzenie.</p>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">{pk.map((x, i) => <a href={`${x.slug}.html`} class="group"><div class="relative rounded-[22px] overflow-hidden bg-paper aspect-[4/3]">{x.img && <img src={x.img} alt={x.name} loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" />}<span class="absolute left-3 top-3 w-8 h-8 rounded-full bg-white grid place-items-center text-[13px] font-semibold">{i + 1}</span></div><b class="block font-medium text-[15px] mt-3">{x.name}</b><span class="text-[13.5px] text-mute">{x.priceText}</span></a>)}</div>
-      <p class="text-[12.5px] text-mute mt-5">Zdjęcia poglądowe. Cały komplet wycenimy w 24 h – podaj adres budynku, liczbę klatek i lokali; dla zarządców faktura z terminem płatności.</p>
+      <p class="text-[12.5px] text-mute mt-5">Cały komplet wycenimy w 24 h – podaj adres budynku, liczbę klatek i lokali; dla zarządców faktura z terminem płatności.</p>
     </div>
   </section>); })()}
 
+  {c.slug === 'wspolnoty-i-spoldzielnie' && <Realizacje g="wspolnoty" title="Realizacja: oznakowanie budynków DOMIX" lead="Dla DOMIX Zarządzanie Nieruchomościami wykonujemy oznakowanie wspólnot w Chorzowie i Gliwicach: tablice adresowe przy wejściu z danymi zarządcy, regulaminy porządku domowego i tablice informacyjne – wszystko w jednym stylu, z logo i kontaktem zarządcy." more={false} />}
+  {RG[c.slug] && <Realizacje g={RG[c.slug][0]} title={RG[c.slug][1]} limit={8} />}
   <Shop items={d.items} subs={c.subs} cslug={c.slug} />
 
 

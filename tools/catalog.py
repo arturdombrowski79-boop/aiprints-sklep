@@ -127,6 +127,11 @@ for p in prods:
     if g: p['img']=g['card']; p['gallery']=g['gallery']; p['score']+=1000
     elif p['img'] and '/f/' in p['img']: p['gallery']=[p['img'].replace('-sq','')]; p['score']+=900
     else: p['gallery']=[p['img']] if p['img'] else []
+# prawdziwe zdjęcia realizacji (src/data/real-photos.json) – jako pierwsze w galerii i na karcie produktu
+REAL=json.load(open(B+'/src/data/real-photos.json'))
+for p in prods:
+    r=REAL.get(p['slug'])
+    if r: p['gallery']=r+[g for g in p['gallery'] if g not in r]; p['img']=r[0]; p['real']=len(r); p['score']+=50
 import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]

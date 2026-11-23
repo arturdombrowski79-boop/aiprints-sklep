@@ -17,7 +17,8 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Nigdy nie prosić o hasła, klucze API, dane FTP/SSH w czacie. Klucze wpisuje właściciel sam.
 - Regulamin – ostateczne potwierdzenie przez kancelarię; podatki/faktury – księgowa.
 - Licencje: nie kopiować projektów ani zdjęć konkurencji; bez zdjęć marketingowych xTool; pliki Atomm/MakerWorld tylko z licencją komercyjną; Adobe Stock na produktach tylko z licencją Extended. Bez logotypów marek (Apple, Netflix, Spotify, Google…).
-- Nie publikować danych klientów ze zdjęć realizacji (np. cennik ZALUNI – tylko ceny; DOMIX, WAGO nie używać).
+- Nie publikować danych klientów ze zdjęć realizacji (np. cennik ZALUNI – tylko ceny; WAGO nie używać). DOMIX: właściciel ma zgodę (23.11.2026) – zdjęcia tablic w realizacjach bez zmian.
+- Realizacje (prawdziwe zdjęcia): `src/data/realizacje.json` (galeria /realizacje) i `src/data/real-photos.json` (pierwsze zdjęcia produktów). Zdjęcia dzieci tylko za zgodą rodziców (właściciel potwierdził dla obecnych).
 - Laser: nigdy nie ciąć pianki PU ani PVC.
 - Logowanie bez haseł (link lub kod).
 - Bez obietnic dostawy na święta. Przerwa 21.12–7.01.

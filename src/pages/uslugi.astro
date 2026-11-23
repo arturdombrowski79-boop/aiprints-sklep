@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Realizacje from '../components/Realizacje.astro';
 import cat from '../data/catalog.json';
 // najniższa cena „od” liczona z produktów w sklepie (ceny brutto) – zawsze aktualna z katalogu
 const from = (fn) => { const v = cat.products.filter((p) => p.price && !p.quote && p.cat !== 'na-swieta' && fn(p)).map((p) => (p.tiers ? p.tiers[0].p : p.price)); return v.length ? Math.min(...v) : null; };
@@ -69,6 +70,7 @@ for (const m of MACH) m.prods = m.svc ? cat.products.filter((p) => p.cat === 'se
         </div>
       </a>))}
   </section>
+  <Realizacje title="Nasze realizacje" lead="Prawdziwe zdjęcia zleceń z pracowni – oznakowanie budynków, grafiki dla przedszkoli, druk wielkoformatowy, prezenty ze zdjęciem i druk 3D." limit={8} />
   <section id="maszyny" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 scroll-mt-24">
     <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">Park maszynowy</p>
     <h2 class="reveal font-display text-[44px] md:text-[64px] leading-none mt-4">Co zrobimy na naszych maszynach</h2>

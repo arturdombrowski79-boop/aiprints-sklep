@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Realizacje from '../components/Realizacje.astro';
+const G = [
+  ['wspolnoty', 'Oznakowanie dla zarządców i wspólnot', 'Tablice adresowe z danymi zarządcy, regulaminy i tablice informacyjne – w jednym stylu dla wszystkich budynków zarządcy.'],
+  ['szkoly', 'Przedszkola i szkoły', 'Grafiki na drzwi i okna, oklejanie witryn, postacie „zaglądające” i plakaty grup – projektujemy i montujemy.'],
+  ['wielkoformat', 'Druk wielkoformatowy', 'Fototapety na wymiar, roll-upy, banery i plakaty z drukarki HP Latex.'],
+  ['zdjecia', 'Prezenty ze zdjęciem', 'Kubki, poduszki, kalendarze i odzież z Waszymi zdjęciami i imionami.'],
+  ['druk3d', 'Druk 3D', 'Dekoracje, figurki i części z drukarek Bambu Lab.'],
+];
+---
+<Base title="Realizacje – zdjęcia naszych zleceń | AiPrints.pl Chorzów" description="Prawdziwe zdjęcia realizacji pracowni AiPrints.pl: oznakowanie budynków dla zarządców, grafiki dla przedszkoli, fototapety, roll-upy, kubki i poduszki ze zdjęciem, druk 3D." canonical="realizacje" active="realizacje">
+  <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-14">
+    <p class="reveal text-[12px] tracking-[.22em] uppercase text-gold font-semibold">Pracownia w Chorzowie</p>
+    <h1 class="reveal hd text-[52px] md:text-[88px] mt-5 max-w-[1000px]">Nasze <em class="text-gold">realizacje</em>.</h1>
+    <p class="reveal text-[18px] text-mute leading-relaxed mt-7 max-w-[640px]">Prawdziwe zdjęcia zleceń z naszej pracowni – bez wizualizacji. Publikujemy je za zgodą klientów.</p>
+    <nav class="reveal flex flex-wrap gap-2 mt-8">{G.map(([g, t]) => <a href={`#r-${g}`} class="px-4 py-2 rounded-full border border-line bg-white text-[13.5px] hover:border-ink">{t}</a>)}</nav>
+  </section>
+  {G.map(([g, t, l]) => <Realizacje g={g} title={t} lead={l} limit={40} more={false} id={`r-${g}`} />)}
+  <section class="max-w-[960px] mx-auto px-5 md:px-10 mt-24 text-center"><a href="kontakt.html#wycena" class="btn btn-ink">Zapytaj o podobne zlecenie →</a></section>
+</Base>

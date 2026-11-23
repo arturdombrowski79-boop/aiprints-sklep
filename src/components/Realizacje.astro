@@ -1,0 +1,17 @@
+---
+// Prawdziwe zdjęcia naszych realizacji (src/data/realizacje.json), filtrowane po grupie.
+import R from '../data/realizacje.json';
+const { g = null, title = 'Nasze realizacje', lead = '', limit = 12, more = true, id = 'realizacje' } = Astro.props;
+const items = R.filter((r) => !g || (Array.isArray(g) ? g.includes(r.g) : r.g === g)).slice(0, limit);
+---
+{items.length > 0 && (
+<section id={id} class="max-w-[1360px] mx-auto px-5 md:px-10 mt-20 scroll-mt-24">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div><p class="reveal text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Zdjęcia z naszych zleceń</p><h2 class="reveal font-display text-[40px] md:text-[56px] leading-none mt-3">{title}</h2>{lead && <p class="reveal text-mute text-[15px] leading-relaxed mt-4 max-w-[720px]">{lead}</p>}</div>
+    {more && <a href="realizacje.html" class="reveal text-[14px] font-semibold">Wszystkie realizacje →</a>}
+  </div>
+  <div class="columns-2 md:columns-3 lg:columns-4 gap-4 mt-8">
+    {items.map((r) => (
+      <figure class="reveal break-inside-avoid mb-4"><a href={r.f} target="_blank" rel="noopener"><img src={r.f} width={r.w} height={r.h} alt={r.t} loading="lazy" decoding="async" class="w-full h-auto rounded-[20px]" /></a><figcaption class="text-[12.5px] text-mute leading-snug mt-2">{r.t}</figcaption></figure>))}
+  </div>
+</section>)}
