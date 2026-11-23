@@ -78,8 +78,8 @@ function renderCo() {
   $('retInfo').classList.toggle('hidden', !G.length); $('retInfo').textContent = G.length ? `Bez personalizacji: ${G.map((i) => i.title).join(', ')} – możesz odstąpić od umowy w ciągu 14 dni od odbioru, bez podania przyczyny.` : '';
 }
 // tryb produkcyjny: serwer PHP na LH.pl + Stripe Checkout. Bez serwera (podgląd) – symulacja płatności.
-let LIVE = null, SERVER = false;
-async function live() { if (LIVE !== null) return LIVE; try { const r = await fetch('api/ping.php', { cache: 'no-store' }); const j = await r.json(); SERVER = !!(j && j.ok); LIVE = !!(j && j.ok && j.stripe); } catch (e) { LIVE = false; } return LIVE; }
+let LIVE = null, SERVER = false, TEST = false;
+async function live() { if (LIVE !== null) return LIVE; try { const r = await fetch('api/ping.php', { cache: 'no-store' }); const j = await r.json(); SERVER = !!(j && j.ok); LIVE = !!(j && j.ok && j.stripe); TEST = !!(j && j.test); } catch (e) { LIVE = false; } return LIVE; }
 async function goStripe(em) {
   const att = {}; for (const [ix, i] of S.items.entries()) { if (i.design) att[ix] = { design: await idbGet(i.design) }; if (i.files) att[ix] = { ...(att[ix] || {}), files: await idbGet(i.files) }; }
   const d = document.querySelector('[name=d]:checked');
@@ -90,7 +90,7 @@ async function goStripe(em) {
   try { const O = JSON.parse(localStorage.getItem('aiprints-orders') || '[]'); O.unshift({ no: j.no, date: new Date().toISOString(), email: em, items: S.items.map((i) => ({ title: i.title, lines: i.lines, img: i.img, qty: i.qty, price: i.price, pers: i.pers !== false })), sub: j.sub, ship: j.ship, total: j.total, pay: 'stripe', delivery: body.deliveryName, status: 0, pending: true }); localStorage.setItem('aiprints-orders', JSON.stringify(O)); localStorage.setItem('aiprints-session', em); } catch (e) { }
   location.href = j.url;
 }
-export function openCo() { const b = document.getElementById('brk'); $('coBrk').classList.toggle('hidden', !b || b.hidden); $('co').classList.add('on'); $('coForm').classList.remove('hidden'); $('ok').classList.add('hidden'); lenis && lenis.stop(); document.body.style.overflow = 'hidden'; renderCo(); $('co').scrollTop = 0; live().then((on) => { if (SERVER && !on) { $('liveNote').classList.remove('hidden'); $('liveNote').innerHTML = 'Płatności online uruchamiamy w ciągu kilku dni. Do tego czasu zamów mailem: <b>kontakt@aiprints.pl</b> lub telefonicznie: <b>609 040 274</b> – odpowiemy z podsumowaniem i numerem konta.'; $('demoPay').classList.add('hidden'); $('walletRow').classList.add('hidden'); $('pay').disabled = true; $('pay').style.opacity = .4; return; } $('liveNote').classList.toggle('hidden', !on); $('demoPay').classList.toggle('hidden', on); $('walletRow').classList.toggle('hidden', on); }); }
+export function openCo() { const b = document.getElementById('brk'); $('coBrk').classList.toggle('hidden', !b || b.hidden); $('co').classList.add('on'); $('coForm').classList.remove('hidden'); $('ok').classList.add('hidden'); lenis && lenis.stop(); document.body.style.overflow = 'hidden'; renderCo(); $('co').scrollTop = 0; live().then((on) => { $('testBadge').classList.toggle('hidden', SERVER && !TEST); if (SERVER && !on) { $('liveNote').classList.remove('hidden'); $('liveNote').innerHTML = 'Płatności online uruchamiamy w ciągu kilku dni. Do tego czasu zamów mailem: <b>kontakt@aiprints.pl</b> lub telefonicznie: <b>609 040 274</b> – odpowiemy z podsumowaniem i numerem konta.'; $('demoPay').classList.add('hidden'); $('walletRow').classList.add('hidden'); $('pay').disabled = true; $('pay').style.opacity = .4; return; } $('liveNote').classList.toggle('hidden', !on); $('demoPay').classList.toggle('hidden', on); $('walletRow').classList.toggle('hidden', on); }); }
 function closeCo() { $('co').classList.remove('on'); document.body.style.overflow = ''; lenis && lenis.start(); }
 
 export function initCart(opts) {
