@@ -25,6 +25,36 @@ urls.sort(key=lambda u:(u!='',u))
 open('prod/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>https://aiprints.pl/{u}</loc></url>\n' for u in urls)+'</urlset>\n')
 print('prod',len(urls),'adresów w sitemap')
 PY
+# lekkie zdjęcia: srcset z wersjami WebP (tools/webp.py) – mniejsze pliki na telefonach
+python3 - <<'PY'
+import glob,re,os
+def fix(m):
+    tag=m.group(0)
+    if 'srcset=' in tag: return tag
+    src=re.search(r'src="([^"]+\.jpg)"',tag)
+    if not src: return tag
+    u=src.group(1); p='prod/'+re.sub(r'^(/[^/]*?/)?(?=img/)','',u.lstrip('/')) if 'img/' in u else None
+    if not p: return tag
+    p='prod/'+u[u.index('img/'):]
+    base=p[:-4]; w4=os.path.exists(base+'-480w.webp'); w9=os.path.exists(base+'-960w.webp')
+    if not w4: return tag
+    ub=u[:-4]; ss=f'{ub}-480w.webp 480w'+(f', {ub}-960w.webp 960w' if w9 else '')+f', {u} 1200w'
+    sz='(max-width: 640px) 50vw, 420px' if 'loading="lazy"' in tag else '(max-width: 640px) 100vw, 640px'
+    return tag[:-1].rstrip('/').rstrip()+f' srcset="{ss}" sizes="{sz}" decoding="async">'
+n=0
+for f in glob.glob('prod/*.html'):
+    s=open(f,encoding='utf-8').read(); t=re.sub(r'<img\b[^>]*>',fix,s)
+    if t!=s: open(f,'w',encoding='utf-8').write(t); n+=1
+print('srcset w',n,'plikach')
+# wczesne wczytanie głównej czcionki (tekst w pierwszym widoku pojawia się szybciej)
+fs=sorted(os.path.basename(x) for x in glob.glob('prod/assets/inter-tight-latin*-wght-normal*.woff2'))
+B=os.environ.get('BASE','/')
+pre=''.join(f'<link rel="preload" href="{B}assets/{x}" as="font" type="font/woff2" crossorigin>' for x in fs)
+if pre:
+    for f in glob.glob('prod/*.html'):
+        s=open(f,encoding='utf-8').read()
+        if 'rel="preload" href="'+B+'assets/inter-tight' not in s: open(f,'w',encoding='utf-8').write(s.replace('<head>','<head>'+pre,1))
+PY
 cp tools/WDROZENIE.txt prod/
 # backend: płatności Stripe, maile, odstąpienia (PHP na LH.pl). config.php z kluczami tworzysz tylko na serwerze.
 mkdir -p prod/api/data && cp api/*.php api/.htaccess prod/api/ && cp api/data/.htaccess prod/api/data/ && rm -f prod/api/config.php

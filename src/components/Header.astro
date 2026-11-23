@@ -22,7 +22,6 @@ const PAGES = [
   { h: 'fotografia.html', n: 'Fotografia', d: 'Zdjęcia do dokumentów, sesje, dron', k: 'fotografia zdjecia do dokumentow sesja dron fotograf' },
   { h: 'druk-cyfrowy.html', n: 'Druk cyfrowy', d: 'Dyplomy, zaproszenia, broszury, wizytówki', k: 'druk cyfrowy wizytowki ulotki zaproszenia dyplomy broszury' },
 ];
-const idx = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ s: p.slug, n: p.name, c: C[p.cat].name, p: p.priceText, i: p.img || `img/ph/${p.cat}.svg` }));
 const nav = [['uslugi', 'Usługi'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
 const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
 const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.facets.dla]];
@@ -92,7 +91,6 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
     <div id="qres" class="max-h-[60vh] overflow-auto p-2"></div>
   </div>
 </div>
-<script id="sidx" type="application/json" set:html={JSON.stringify(idx)}></script>
 <script id="spages" type="application/json" set:html={JSON.stringify(PAGES)}></script>
 <style>
   .dd .ddm { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(6px); transition: opacity .2s, transform .25s, visibility 0s .25s; }
@@ -101,7 +99,8 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
 </style>
 <script>
   const $ = (i) => document.getElementById(i);
-  const idx = JSON.parse($('sidx').textContent);
+  let idx = [], idxP = null;
+  const loadIdx = () => idxP || (idxP = fetch('search-index.json').then((r) => r.json()).then((d) => { idx = d; render($('q').value); }).catch(() => { idxP = null; }));
   const pages = JSON.parse($('spages').textContent);
   const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
   const open = (el) => { el.classList.add('on'); document.body.style.overflow = 'hidden'; };
@@ -117,7 +116,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
   });
   const hdr = $('hdr'); const onS = () => hdr.classList.toggle('sc', scrollY > 10); addEventListener('scroll', onS, { passive: true }); onS();
   $('burger').onclick = () => open($('mnav')); $('mclose').onclick = () => close($('mnav'));
-  const os = () => { open($('srch')); setTimeout(() => $('q').focus(), 50); render($('q').value); };
+  const os = () => { open($('srch')); setTimeout(() => $('q').focus(), 50); render($('q').value); loadIdx(); };
   $('srchBtn').onclick = os; $('srchBtn2').onclick = os; window.openSearch = os;
   $('srch').onclick = (e) => { if (e.target === $('srch')) close($('srch')); };
   addEventListener('keydown', (e) => { if (e.key === 'Escape') close($('srch')); if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); os(); } });

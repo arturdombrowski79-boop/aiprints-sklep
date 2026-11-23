@@ -11407,7 +11407,7 @@
 "machine": "Summa S3",
 "score": 37.0,
 "xmas": true,
-"img": "img/p/folia-mrozona-z-logo.jpg",
+"img": "img/p/folia-mrozona-z-logo-480w..jpg",
 "fields": [
 "logo",
 "text"
@@ -11415,7 +11415,7 @@
 "quote": false,
 "unit": false,
 "gallery": [
-"img/p/folia-mrozona-z-logo.jpg"
+"img/p/folia-mrozona-z-logo-480w..jpg"
 ],
 "also": [],
 "kind": "b2b",

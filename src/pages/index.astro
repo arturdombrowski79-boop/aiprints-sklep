@@ -7,17 +7,17 @@ import { SEASON, PROMO, BREAK, SOCIAL } from '../data/config.js';
 import { RECIPIENTS } from '../data/preview.js';
 const P = cat.products;
 const by = (s) => P.find((p) => p.slug === s);
-const best = ['krysztal-zdjecie', 'naszyjnik-grawer', 'deska-do-krojenia', 'karafka-grawer', 'numer-domu', 'mapa-nieba', 'niesmiertelnik', 'akryl-piosenka', 'adresowka-psa', 'szklanki-whisky', 'poduszka-zdjecie', 'koperta-drewniana'].map(by).filter(Boolean);
+const best = ['krysztal-zdjecie', 'naszyjnik-grawer', 'deska-do-krojenia', 'karafka-grawer', 'numer-domu', 'mapa-nieba', 'niesmiertelnik', 'akryl-piosenka'].map(by).filter(Boolean);
 const hp = by('krysztal-zdjecie'); const hpBase = hp.tiers ? hp.tiers[0].p : hp.price;
 const zl0 = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
-const promo = P.filter((p) => p.promo && p.img).slice(0, 8);
+const promo = P.filter((p) => p.promo && p.img).slice(0, 4);
 const pUntil = new Date(PROMO.until).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' });
 const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const tint = { 'druk-wielkoformatowy': '#e4ebf2', 'dla-fotografow': '#ecebe7', 'sublimacja': '#ece9f4', 'szkoly-i-przedszkola': '#e6f1ea', 'cmentarz-i-pogrzeb': '#ececec', 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1', 'sesje-i-zdjecia': '#efe9e2', 'wydruki-3d': '#e3eef0' };
 const pick = { 'sesje-i-zdjecia': 'hf/sesja-rodzinna-1', 'wydruki-3d': 'hf/druk-3d-z-pliku-1', 'druk-wielkoformatowy': 'hf/baner-reklamowy-1', 'dla-fotografow': 'hf/fine-art-bawelna-1', 'sublimacja': 'hf/koszulka-sportowa-sublimacja-1', 'szkoly-i-przedszkola': 'hf/plakaty-grup-przedszkolnych-1', 'cmentarz-i-pogrzeb': 'hf/zdjecie-nagrobne-porcelana-1', 'prezenty-ze-zdjeciem': 'f/krysztal-para-sq', 'prezenty-z-grawerem': 'f/koperta-drewniana-sq', 'slub-i-okazje': 'hf/kieliszki-para-1', 'dla-firm': 'hf/termos-logo-sq', 'wspolnoty-i-spoldzielnie': 'hf/tablica-wejscie-zarzadca-sq', 'salony-beauty': 'hf/logo-lustro-1', 'na-swieta': 'bombka/glowne' };
 const schema = { '@context': 'https://schema.org', '@graph': [
   { '@type': 'Organization', name: 'AiPrints.pl', url: 'https://aiprints.pl/', sameAs: Object.values(SOCIAL).filter(Boolean), logo: 'https://aiprints.pl/img/logo.svg', telephone: '+48609040274', email: 'kontakt@aiprints.pl' },
-  { '@type': 'LocalBusiness', name: 'AiPrints.pl – pracownia druku i graweru', image: 'https://aiprints.pl/img/site/pracownia.jpg', telephone: '+48609040274', address: { '@type': 'PostalAddress', streetAddress: 'ul. Okrężna 98B', postalCode: '41-500', addressLocality: 'Chorzów', addressCountry: 'PL' }, openingHours: 'Mo-Fr 09:00-17:00', priceRange: '$$' },
+  { '@type': 'LocalBusiness', '@id': 'https://aiprints.pl/#pracownia', url: 'https://aiprints.pl/', name: 'AiPrints.pl – pracownia druku i graweru', geo: { '@type': 'GeoCoordinates', latitude: 50.319089, longitude: 18.949541 }, hasMap: 'https://www.google.com/maps/place/?q=place_id:ChIJxS3jtSfTFkcRKZ--r8yWHqA', areaServed: ['Chorzów', 'Katowice', 'Ruda Śląska', 'Świętochłowice', 'Siemianowice Śląskie', 'Bytom', 'Śląsk'], email: 'kontakt@aiprints.pl', image: 'https://aiprints.pl/img/site/pracownia.jpg', telephone: '+48609040274', address: { '@type': 'PostalAddress', streetAddress: 'ul. Okrężna 98B', postalCode: '41-500', addressLocality: 'Chorzów', addressCountry: 'PL' }, openingHours: 'Mo-Fr 09:00-17:00', priceRange: '$$' },
   { '@type': 'WebSite', name: 'AiPrints.pl', url: 'https://aiprints.pl/' }] };
 const faq = [
   ['Czy zobaczę projekt przed produkcją?', 'Tak. Do 2 dni roboczych od zamówienia wysyłamy podgląd na e-mail. Produkcję zaczynamy dopiero po Twojej akceptacji, a poprawki przed akceptacją są bezpłatne.'],
@@ -115,7 +115,7 @@ const materials = [['Drewno bukowe', 'url(img/hf/deska-do-krojenia-1.jpg) 30% 60
     </div>
   </section>
 
-  <Realizacje title="Nasze realizacje" lead="Prawdziwe zdjęcia z naszych zleceń: oznakowanie budynków dla zarządców, grafiki dla przedszkoli, fototapety, prezenty ze zdjęciem i druk 3D." limit={8} />
+  <Realizacje title="Nasze realizacje" lead="Prawdziwe zdjęcia z naszych zleceń: oznakowanie budynków dla zarządców, grafiki dla przedszkoli, fototapety, prezenty ze zdjęciem i druk 3D." limit={6} />
   <!-- dla kogo -->
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24">
     <div class="rounded-[34px] bg-white border border-line px-7 md:px-10 py-8 flex flex-wrap items-center gap-x-8 gap-y-5">
@@ -148,19 +148,6 @@ const materials = [['Drewno bukowe', 'url(img/hf/deska-do-krojenia-1.jpg) 30% 60
     <div id="rail" class="rail flex gap-4 overflow-x-auto mt-12 px-5 md:px-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))] pb-4 scroll-px-5 md:scroll-px-[max(2.5rem,calc((100vw-1360px)/2+2.5rem))]">
       {best.map((p) => <div class="shrink-0 w-[72vw] sm:w-[300px] lg:w-[330px]"><Card p={p} c={p.cat} /></div>)}
       <a href="prezenty-ze-zdjeciem.html" class="shrink-0 w-[72vw] sm:w-[300px] lg:w-[330px] aspect-square rounded-[26px] bg-ink text-white p-8 flex flex-col justify-between"><span class="eyebrow !text-ye">Cały sklep</span><b class="hd text-[48px]">Zobacz wszystkie 180+ produktów →</b></a>
-    </div>
-  </section>
-
-  <!-- lookbook bento -->
-  <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-32">
-    <div class="flex items-end justify-between gap-6 flex-wrap"><div><h2 class="hd text-[52px] md:text-[80px] reveal">Tak wyglądają<br />u Was w domu</h2></div><p class="reveal text-ink/65 max-w-[380px]">Każdy z tych przedmiotów robimy z imieniem, datą albo zdjęciem, które nam przyślesz.</p></div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-[300px_300px_300px] gap-3 md:gap-4 mt-12">
-      {[['naszyjnik-grawer', 'img/hf/naszyjnik-grawer-3.jpg', 'Naszyjnik z imieniem', 'col-span-2 row-span-2 aspect-square lg:aspect-auto'], ['numer-domu', 'img/hf/numer-domu-3.jpg', 'Numer domu', 'col-span-2 aspect-[4/3] lg:aspect-auto'], ['karafka-grawer', 'img/hf/karafka-grawer-3.jpg', 'Karafka w pudełku', 'aspect-square lg:aspect-auto'], ['sylwetka-psa', 'img/hf/sylwetka-psa-2.jpg', 'Sylwetka pupila', 'aspect-square lg:aspect-auto'], ['mapa-nieba', 'img/hf/mapa-nieba-3.jpg', 'Mapa nieba', 'col-span-2 aspect-[4/3] lg:aspect-auto'], ['akryl-piosenka', 'img/hf/akryl-piosenka-2.jpg', 'Akryl ze zdjęciem', 'col-span-2 aspect-[4/3] lg:aspect-auto']].map(([s2, im, t, c]) => (
-        <a href={`${s2}.html`} class={`sv group relative rounded-[28px] overflow-hidden bg-paper2 ${c}`}>
-          <img src={im} alt={t} loading="lazy" class="parallax absolute inset-0 w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-          <span class="absolute left-4 bottom-4 right-4 flex items-center justify-between text-white"><b class="text-[15px] font-semibold [text-shadow:0_1px_8px_rgba(0,0,0,.45)]">{t}</b><span class="w-9 h-9 rounded-full bg-white text-ink grid place-items-center text-[14px] translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition">→</span></span>
-        </a>))}
     </div>
   </section>
 
@@ -212,7 +199,7 @@ const materials = [['Drewno bukowe', 'url(img/hf/deska-do-krojenia-1.jpg) 30% 60
   <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) })} />
   <script>
     import gsap from 'gsap';
-    gsap.from('.h-in', { y: 40, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .08, delay: .1 });
+    gsap.from('.h-in', { y: 28, duration: 1.1, ease: 'expo.out', stagger: .08, delay: .1 });
     const cards = [...document.querySelectorAll('.card-s')];
     const rail = document.getElementById('rail'); document.querySelectorAll('[data-rail]').forEach((b) => b.onclick = () => rail.scrollBy({ left: +b.dataset.rail * rail.clientWidth * .8, behavior: 'smooth' }));
     const hi = document.getElementById('heroIn'), hn = document.getElementById('heroName'); hi.addEventListener('input', () => { hn.textContent = hi.value.trim() || 'Ania'; }); const demo = ['Ania', 'Tomek', 'Babcia Zosia', 'Kuba']; let di = 0; const iv = setInterval(() => { if (hi.value) return clearInterval(iv); di = (di + 1) % demo.length; hn.textContent = demo[di]; }, 2200); hi.addEventListener('focus', () => clearInterval(iv));
