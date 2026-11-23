@@ -24,7 +24,7 @@ import Doc from '../layouts/Doc.astro';
     </div>
     <div id="wdDone" class="hidden"><b class="text-[18px]">✓ Oświadczenie przyjęte</b><p class="text-[14.5px] mt-2">Wysłaliśmy potwierdzenie na <b id="wdDoneEm"></b> z adresem do odesłania. Produkt odeślij w ciągu 14 dni na: AiPrints.pl, ul. Okrężna 98B, 41-500 Chorzów. Pieniądze zwrócimy w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności (możemy wstrzymać zwrot do czasu otrzymania produktu lub dowodu jego odesłania).</p></div>
   </div>
-  <p class="text-[13.5px]">Produktów personalizowanych ta funkcja nie obejmuje – szczegóły niżej. Oświadczenie możesz też wysłać mailem na <a href="mailto:reklamacje@aiprints.pl">reklamacje@aiprints.pl</a> lub pocztą, np. na <a href="docs/formularz-odstapienia.pdf" download>wzorze formularza (PDF)</a>.</p>
+  <p class="text-[13.5px]">Produktów personalizowanych ta funkcja nie obejmuje – szczegóły niżej. Oświadczenie możesz też wysłać mailem na <a href="mailto:zwroty@aiprints.pl">zwroty@aiprints.pl</a> lub pocztą, np. na <a href="docs/formularz-odstapienia.pdf" download>wzorze formularza (PDF)</a>.</p>
 
   <h2>Produkty personalizowane</h2>
   <p>Większość naszych produktów robimy według Twojego projektu – z imieniem, zdjęciem, logo albo projektem z kreatora. Dla takich produktów nie przysługuje prawo odstąpienia od umowy zawartej na odległość (art. 38 ust. 1 pkt 3 ustawy o prawach konsumenta). Wybór samego koloru czy rozmiaru bez Twojej treści nie jest personalizacją. W koszyku i w mailu z potwierdzeniem przy każdym produkcie zaznaczamy, czy jest personalizowany. Przed produkcją zawsze wysyłamy podgląd do akceptacji.</p>
@@ -36,7 +36,7 @@ import Doc from '../layouts/Doc.astro';
   <h2>Dokumenty do pobrania</h2>
   <ul><li><a href="docs/regulamin-aiprints.pdf" download>Regulamin sklepu (PDF)</a> – ta sama wersja, którą dostajesz w załączniku do potwierdzenia zamówienia.</li><li><a href="docs/formularz-odstapienia.pdf" download>Wzór formularza odstąpienia od umowy (PDF)</a></li></ul>
   <h3>Wzór formularza odstąpienia od umowy</h3>
-  <p style="border:1px solid var(--color-line);border-radius:16px;padding:20px;background:#fff">Adresat: AiPrints.pl Artur Dombrowski, ul. Okrężna 98B, 41-500 Chorzów, reklamacje@aiprints.pl<br /><br />Ja/My(*) niniejszym informuję/informujemy(*) o moim/naszym odstąpieniu od umowy sprzedaży następujących rzeczy: …………<br />Data zawarcia umowy / odbioru(*): …………<br />Imię i nazwisko konsumenta(-ów): …………<br />Adres konsumenta(-ów): …………<br />Podpis (tylko jeżeli formularz jest przesyłany w wersji papierowej): …………<br />Data: …………<br /><small>(*) Niepotrzebne skreślić.</small></p>
+  <p style="border:1px solid var(--color-line);border-radius:16px;padding:20px;background:#fff">Adresat: AiPrints.pl Artur Dombrowski, ul. Okrężna 98B, 41-500 Chorzów, zwroty@aiprints.pl<br /><br />Ja/My(*) niniejszym informuję/informujemy(*) o moim/naszym odstąpieniu od umowy sprzedaży następujących rzeczy: …………<br />Data zawarcia umowy / odbioru(*): …………<br />Imię i nazwisko konsumenta(-ów): …………<br />Adres konsumenta(-ów): …………<br />Podpis (tylko jeżeli formularz jest przesyłany w wersji papierowej): …………<br />Data: …………<br /><small>(*) Niepotrzebne skreślić.</small></p>
   <script>
     const $ = (i) => document.getElementById(i);
     const q = new URLSearchParams(location.search); if (q.get('nr')) $('wdNo').value = q.get('nr'); if (q.get('em')) $('wdEm').value = q.get('em');
@@ -48,7 +48,7 @@ import Doc from '../layouts/Doc.astro';
       if (part && o) $('wdItems').innerHTML = o.items.map((i, ix) => `<label class="flex gap-2 items-center ${i.pers ? 'opacity-50' : ''}"><input type="checkbox" value="${ix}" ${i.pers ? 'disabled' : ''}/> ${i.title} · ${i.qty} szt.${i.pers ? ' <span class="text-mute">(personalizowany – nie podlega zwrotowi)</span>' : ''}</label>`).join('');
     }
     document.querySelectorAll('[name=wdScope]').forEach((r) => (r.onchange = scope)); $('wdNo').onchange = scope;
-    let data = null; const alertBox = (m) => { $('wdErr').textContent = m || 'Nie udało się wysłać – napisz na reklamacje@aiprints.pl'; $('wdErr').classList.remove('hidden'); $('wdConfirm').classList.add('hidden'); $('wdForm').classList.remove('hidden'); };
+    let data = null; const alertBox = (m) => { $('wdErr').textContent = m || 'Nie udało się wysłać – napisz na zwroty@aiprints.pl'; $('wdErr').classList.remove('hidden'); $('wdConfirm').classList.add('hidden'); $('wdForm').classList.remove('hidden'); };
     $('wdForm').onsubmit = (e) => {
       e.preventDefault(); const ok = $('wdNo').value.trim() && /^\S+@\S+\.\S+$/.test($('wdEm').value.trim()) && $('wdName').value.trim();
       $('wdErr').classList.toggle('hidden', !!ok); if (!ok) return;
