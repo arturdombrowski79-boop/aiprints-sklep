@@ -11,7 +11,7 @@ export const machineText = (m) => {
   if (!t.length) t.push(['Pracownia AiPrints.pl', 'Projekt, produkcja i pakowanie w naszej pracowni w Chorzowie.']);
   return t;
 };
-export const B2B = ['dla-firm', 'wspolnoty-i-spoldzielnie', 'salony-beauty'];
+export const B2B = ['dla-firm', 'wspolnoty-i-spoldzielnie', 'salony-beauty', 'druk-wielkoformatowy', 'szkoly-i-przedszkola'];
 export function describe(p, catName) {
   const b2b = B2B.includes(p.cat);
   const a = `${p.name}${p.variants ? ' – ' + p.variants.charAt(0).toLowerCase() + p.variants.slice(1) : ''}.`;
@@ -21,7 +21,7 @@ export function describe(p, catName) {
   return [a, b];
 }
 export const optionsOf = (p) => {
-  if (p.tiers) return { label: 'Rozmiar', opts: p.tiers.map((t) => ({ k: t.k, p: t.p })) };
+  if (p.tiers) return { label: p.tiers.every((t) => /^[SML]$/.test(t.k)) ? 'Rozmiar' : 'Wariant', opts: p.tiers.map((t) => ({ k: t.k, p: t.p })) };
   const seg = (p.variants || '').split(',').map((s) => s.trim()).find((s) => s.includes('/') && s.length < 48);
   if (!seg) return null;
   return { label: 'Wariant', opts: seg.split('/').map((s) => ({ k: s.trim(), p: null })).filter((o) => o.k) };

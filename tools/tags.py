@@ -24,7 +24,7 @@ OKAZJE = [
  ]),
  ('Inne okazje', [
   ('nowy-dom', 'Nowy dom i parapetówka', r'numer-domu|tabliczka-adres|deska|napis-scienny|tabliczka-drzwi|zegar|jelen|mapa-miasta|plakat-mapa|fototapeta|podkladki|wycieraczk'),
-  ('pamiatka', 'Pamiątka i upamiętnienie', r'znicz|krysztal-pamiatkowy|krysztal-pupil|litofania|lupek|portret-pupila|pupil-figurka|fotoksiazka|odbitki'),
+  ('pamiatka', 'Pamiątka i upamiętnienie', r'nagrob|porcelan|tabliczka-na-krzyz|lampion|kamien-pamieci|portret-na-pogrzeb|obrazki-pamiatkowe|klepsydr|szarfa|podziekowania-za-udzial|znicz|krysztal-pamiatkowy|krysztal-pupil|litofania|lupek|portret-pupila|pupil-figurka|fotoksiazka|odbitki'),
   ('firma', 'Dla firmy i klientów', r'.'),
  ]),
 ]
@@ -32,14 +32,14 @@ DLA = [
  ('Rodzina', [
   ('mama', 'Mamy', r'kubek-z-nadrukiem|naszyjnik|bransolet|krysztal-zdjecie|swieca|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|akryl-led|fotoksiazka|tumbler|deska'),
   ('tata', 'Taty', r'kubek-z-nadrukiem|koszulka-z|karafka|whisky|kufel|deska|niesmiertelnik|brelok-drewno|tablica-rejestracyjna|kubek-termiczny|etui-grawer'),
-  ('babcia-dziadek', 'Babci i dziadka', r'krysztal-zdjecie|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|fotoksiazka|kalendarz|magnesy|obraz|puzzle-zdjecie'),
-  ('dziecko', 'Dziecka', r'inicjal|bidon|ksiazeczka|nauka-imienia|naklejki-scienne|lamibook|smok|kliker|puzzle-imie|brelok-3d|figurka|ruchomy|dioram|kalendarz-adwentowy'),
+  ('babcia-dziadek', 'Babci i dziadka', r'koc-ze|kafel|retusz|kalendarz-scienny|krysztal-zdjecie|poduszka|zdjecie-na|lupek|litofania|szklo-ramka|fotoksiazka|kalendarz|magnesy|obraz|puzzle-zdjecie'),
+  ('dziecko', 'Dziecka', r'koc-ze|recznik|inicjal|bidon|ksiazeczka|nauka-imienia|naklejki-scienne|lamibook|smok|kliker|puzzle-imie|brelok-3d|figurka|ruchomy|dioram|kalendarz-adwentowy'),
  ]),
  ('Ukochani i przyjaciele', [
   ('dla-niej', 'Dla niej', r'naszyjnik|bransolet|krysztal-zdjecie|swieca|poduszka|akryl-piosenka|akryl-polaroid|zdjecie-na|lupek|etui-telefon|puzzle-akryl|litofania|szklo-ramka|kieliszki|tumbler'),
   ('dla-niego', 'Dla niego', r'kufel|whisky|karafka|deska|brelok-drewno|niesmiertelnik|tablica-rejestracyjna|etui-grawer|kubek-termiczny|skrzynka-wino|okleiny'),
   ('para', 'Dla pary', r'krysztal-zdjecie|krysztal-slub|mapa-nieba|mapa-poznalismy|nasza-data|piosenka|kieliszki|puzzle-akryl|maz-zona|okladka|akryl-bilet|akryl-plakat'),
-  ('przyjaciel', 'Przyjaciółki i przyjaciela', r'nadrukiem|akryl-polaroid|odbitki|magnesy|brelok|kubek|tumbler|swieca|okladka|puzzle-zdjecie|etui'),
+  ('przyjaciel', 'Przyjaciółki i przyjaciela', r'skarpetki|kubek-magiczny|podkladka-pod-mysz|nadrukiem|akryl-polaroid|odbitki|magnesy|brelok|kubek|tumbler|swieca|okladka|puzzle-zdjecie|etui'),
  ]),
  ('Okolicznościowe', [
   ('nauczyciel', 'Nauczyciela', r'dyplom|dlugopisy|kubek-termiczny|statuetka|deska|brelok-drewno'),
@@ -62,13 +62,13 @@ PERS = [
 ]
 MAT = [
  ('drewno', 'Drewno i sklejka', r'drewn|deska|sklejk|dab|jelen|napis-scienny|inicjal|puzzle-imie|nauka-imienia|pudelko|skrzynka|podkladki|dyplom|kartka-drewniana|koperta|maz-zona|inicjaly-scianka|numery-stol-podstawka|zegar'),
- ('szklo', 'Szkło i kryształ', r'kryszt|szklank|whisky|karafka|kieliszki|kufel|szklo|swieca|statuetka-krysztal|znicz'),
+ ('szklo', 'Szkło i kryształ', r'lampion|porcelan|kafel|kryszt|szklank|whisky|karafka|kieliszki|kufel|szklo|swieca|statuetka-krysztal|znicz'),
  ('akryl', 'Akryl, plexi i lustro', r'akryl|plexi|lustr|winietki|topper|ihs-litery|logo-na|szyld-okragly|numery-stol-lustro|tablica-|plan-stolow|ksiega-gosci|napis-recepcja|tabliczk|wizytownik|cennik|dekoracje|podziekowania|stojak|statuetka-3'),
  ('metal', 'Metal i stal', r'naszyjnik|bransolet|niesmiertelnik|adresowka|medal|termos|kubek-termiczny|tumbler|bidon|dlugopisy|fotopanel|plakietki-qr-grawer|dystanse|numer-domu|etui-grawer|lusterko'),
- ('druk', 'Druk, papier i folia', r'nadrukiem|druk|plakat|kalendarz|fotoksiazka|odbitki|wizytowk|ulotki|voucher|bony|certyfikat|skrypt|notesy|terminarzyki|karty-stalego|naklejk|foli|okleiny|fototapet|obraz|banery|rollup|magnesy|puzzle-zdjecie|ksiazeczka|lamibook|regulamin|witryna|godziny|lokal|pchac|piktogram|zaproszenia|poduszka|okladka|portret|mapa-nieba|fine-art'),
+ ('druk', 'Druk, papier i folia', r'baner|siatka|potykacz|magnes|litery-z-folii|z-folii|napis-na|wydruk|odbitki|powieksz|fine-art|digigraphie|portfolio|kalendarz|klepsydr|obrazki|podziekowania|plakat|dyplom|naklejki|nadrukiem|druk|plakat|kalendarz|fotoksiazka|odbitki|wizytowk|ulotki|voucher|bony|certyfikat|skrypt|notesy|terminarzyki|karty-stalego|naklejk|foli|okleiny|fototapet|obraz|banery|rollup|magnesy|puzzle-zdjecie|ksiazeczka|lamibook|regulamin|witryna|godziny|lokal|pchac|piktogram|zaproszenia|poduszka|okladka|portret|mapa-nieba|fine-art'),
  ('3d', 'Druk 3D', r'3d|flexi|smok|figurk|kliker|szkielet|dioram|litofan|choinka|balwanek|breloki-klub|kalendarz-adwentowy'),
 ]
-FIRMA_CATS = {'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie'}
+FIRMA_CATS = {'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie', 'druk-wielkoformatowy', 'szkoly-i-przedszkola'}
 
 def tag(p):
     s = p['slug'] + ' ' + p['name'].lower()

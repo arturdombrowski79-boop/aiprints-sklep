@@ -20,13 +20,12 @@
 "color": "#2f4a6b",
 "subs": [
 "Dla dzieci",
-"Dla fotografów",
 "Dom i dekoracje",
 "Odzież i kubki",
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 37
+"count": 36
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -49,10 +48,9 @@
 "color": "#8a6a5a",
 "subs": [
 "Komunia i chrzest",
-"Pamiątki",
 "Ślub i wesele"
 ],
-"count": 24
+"count": 22
 },
 {
 "slug": "dla-firm",
@@ -64,10 +62,9 @@
 "Projekty i grafika",
 "QR, opinie i social media",
 "Szkoły i kluby",
-"Upominki z logo",
-"Witryny i folie"
+"Upominki z logo"
 ],
-"count": 46
+"count": 32
 },
 {
 "slug": "wspolnoty-i-spoldzielnie",
@@ -75,12 +72,14 @@
 "lead": "Tablice przy wejściu, regulaminy, numeracja lokali i tabliczki na skrzynki – w jednym stylu dla wszystkich budynków zarządcy.",
 "color": "#3d5a4f",
 "subs": [
+"Montaż",
 "Oznakowanie",
 "Pakiety",
+"Ppoż. i bezpieczeństwo",
 "Tablice",
 "Tabliczki i numeracja"
 ],
-"count": 9
+"count": 16
 },
 {
 "slug": "salony-beauty",
@@ -92,14 +91,74 @@
 "Szyldy i logo"
 ],
 "count": 29
+},
+{
+"slug": "druk-wielkoformatowy",
+"name": "Druk wielkoformatowy i folie",
+"lead": "Banery, siatki, folie, naklejki po obrysie, oklejanie witryn i aut oraz litery z plotera. Drukujemy na HP Latex 375, tniemy na Summa S3.",
+"color": "#1f3b57",
+"subs": [
+"Banery i flagi",
+"Folie i naklejki",
+"Litery i napisy z folii",
+"Plakaty i tablice",
+"Witryny i folie"
+],
+"count": 50
+},
+{
+"slug": "dla-fotografow",
+"name": "Fine art i fotografia",
+"lead": "Wydruki muzealne na papierach bawełnianych (Epson P9500), odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.",
+"color": "#3b3a36",
+"subs": [
+"Fine art",
+"Odbitki i powiększenia"
+],
+"count": 24
+},
+{
+"slug": "sublimacja",
+"name": "Sublimacja",
+"lead": "Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).",
+"color": "#4a3f6b",
+"subs": [
+"Gadżety",
+"Tekstylia"
+],
+"count": 19
+},
+{
+"slug": "szkoly-i-przedszkola",
+"name": "Szkoły i przedszkola",
+"lead": "Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.",
+"color": "#2f6b4f",
+"subs": [
+"Dyplomy i odzież",
+"Sale i korytarze",
+"Wejście i ogrodzenie"
+],
+"count": 16
+},
+{
+"slug": "cmentarz-i-pogrzeb",
+"name": "Pamięć i pogrzeb",
+"lead": "Zdjęcia nagrobne na porcelanie, tabliczki, klepsydry, portrety i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.",
+"color": "#3a3a3a",
+"subs": [
+"Na cmentarz",
+"Na pogrzeb",
+"Pamiątki"
+],
+"count": 12
 }
 ],
 "products": [
 {
 "slug": "fine-art-druk",
 "name": "Wydruk fine art / Digigraphie",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Dla fotografów",
+"cat": "dla-fotografow",
+"sub": "Fine art",
 "variants": "do 112 cm szerokości, kalibracja na Eizo",
 "priceText": "od 249 zł",
 "price": 249.0,
@@ -116,6 +175,7 @@
 "gallery": [
 "img/hf/fine-art-druk-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny"
@@ -164,6 +224,7 @@
 "img/hf/karafka-grawer-2.jpg",
 "img/hf/karafka-grawer-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -196,34 +257,54 @@
 }
 },
 {
-"slug": "numeracja-lokali",
-"name": "Numery lokali i klatek",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tabliczki i numeracja",
-"variants": "plexi, aluminium, cyfry 3D, komplet budynku",
-"priceText": "od 15 zł/szt.",
-"price": 15.0,
-"tiers": null,
-"machine": "xTool X1 (CO₂)",
-"score": 2789.0,
-"xmas": true,
-"img": "img/hf/numeracja-lokali-1.jpg",
+"slug": "plakat-wielkoformatowy",
+"name": "Plakat wielkoformatowy A2–B0",
+"cat": "druk-wielkoformatowy",
+"sub": "Plakaty i tablice",
+"variants": "papier satynowy 200 g lub blueback do naklejania, wydruk w 24 h",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "A2",
+"p": 29.0
+},
+{
+"k": "A1",
+"p": 45.0
+},
+{
+"k": "B1",
+"p": 55.0
+},
+{
+"k": "A0",
+"p": 69.0
+},
+{
+"k": "B0",
+"p": 89.0
+}
+],
+"machine": "HP Latex 375",
+"score": 2764.0,
+"xmas": false,
+"img": "img/hf/plakat-wielkoformatowy-1.jpg",
 "fields": [
-"text",
-"list"
+"photo"
 ],
 "quote": false,
-"unit": true,
+"unit": false,
 "gallery": [
-"img/hf/numeracja-lokali-1.jpg"
+"img/hf/plakat-wielkoformatowy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
-"imie",
 "logo"
 ],
 "mat": [
@@ -238,8 +319,8 @@
 "k": 0.95,
 "until": "2026-12-31",
 "name": "Na koniec roku −5%",
-"low30": 15.0,
-"regular": 15.0
+"low30": 29.0,
+"regular": 29.0
 }
 },
 {
@@ -265,6 +346,7 @@
 "img/hf/termos-logo-1.jpg",
 "img/hf/termos-logo-2.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -294,54 +376,6 @@
 }
 },
 {
-"slug": "tablica-wejscie-zarzadca",
-"name": "Tablica przy wejściu z danymi zarządcy",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tablice",
-"variants": "aluminium szczotkowane / dibond / plexi, A4–A3, logo, telefony, dystanse",
-"priceText": "od 189 zł",
-"price": 189.0,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 2744.0,
-"xmas": true,
-"img": "img/hf/tablica-wejscie-zarzadca-sq.jpg",
-"fields": [
-"logo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/tablica-wejscie-zarzadca-1.jpg",
-"img/hf/tablica-wejscie-zarzadca-2.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"akryl"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 189.0,
-"regular": 189.0
-}
-},
-{
 "slug": "plakat-mapa-2d",
 "name": "Plakat minimalistyczna mapa miasta",
 "cat": "prezenty-ze-zdjeciem",
@@ -361,6 +395,9 @@
 "unit": false,
 "gallery": [
 "img/hf/plakat-mapa-2d-1.jpg"
+],
+"also": [
+"dla-fotografow"
 ],
 "tags": {
 "okazja": [
@@ -388,53 +425,6 @@
 }
 },
 {
-"slug": "tabliczki-skrzynki",
-"name": "Tabliczki na skrzynki pocztowe, komplet",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tabliczki i numeracja",
-"variants": "plexi/laminat grawerski, wg listy lokali",
-"priceText": "od 6 zł/szt.",
-"price": 6.0,
-"tiers": null,
-"machine": "xTool X1 (CO₂)",
-"score": 2727.0,
-"xmas": true,
-"img": "img/hf/tabliczki-skrzynki-1.jpg",
-"fields": [
-"text",
-"list"
-],
-"quote": false,
-"unit": true,
-"gallery": [
-"img/hf/tabliczki-skrzynki-1.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"akryl"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 6.0,
-"regular": 6.0
-}
-},
-{
 "slug": "odbitki-polaroid",
 "name": "Zdjęcia w stylu polaroid, 24 szt.",
 "cat": "prezenty-ze-zdjeciem",
@@ -454,6 +444,9 @@
 "unit": false,
 "gallery": [
 "img/hf/odbitki-polaroid-1.jpg"
+],
+"also": [
+"dla-fotografow"
 ],
 "tags": {
 "okazja": [
@@ -505,6 +498,7 @@
 "gallery": [
 "img/hf/akryl-polaroid-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -556,6 +550,7 @@
 "gallery": [
 "img/hf/krysztal-pupil-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -609,6 +604,7 @@
 "gallery": [
 "img/hf/swieca-szklo-imie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -644,7 +640,7 @@
 {
 "slug": "krysztal-pamiatkowy",
 "name": "Kryształ pamiątkowy 3D",
-"cat": "slub-i-okazje",
+"cat": "cmentarz-i-pogrzeb",
 "sub": "Pamiątki",
 "variants": "serce / blok",
 "priceText": "229 zł",
@@ -662,6 +658,7 @@
 "gallery": [
 "img/hf/krysztal-pamiatkowy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "rocznica",
@@ -715,6 +712,7 @@
 "img/hf/naszyjnik-grawer-2.jpg",
 "img/hf/naszyjnik-grawer-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -767,6 +765,7 @@
 "gallery": [
 "img/hf/bransoletka-stal-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -799,6 +798,64 @@
 }
 },
 {
+"slug": "wydruk-wystawowy",
+"name": "Wydruk wystawowy na piance lub Dibond",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "fotografia na piance 5 mm lub Dibond 3 mm, laminat mat, zawieszka",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "50×70",
+"p": 149.0
+},
+{
+"k": "70×100",
+"p": 249.0
+},
+{
+"k": "100×150",
+"p": 449.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 2695.0,
+"xmas": false,
+"img": "img/hf/wydruk-wystawowy-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wydruk-wystawowy-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 149.0,
+"regular": 149.0
+}
+},
+{
 "slug": "lupek-zdjecie",
 "name": "Zdjęcie na łupku",
 "cat": "prezenty-ze-zdjeciem",
@@ -818,6 +875,9 @@
 "unit": false,
 "gallery": [
 "img/hf/lupek-zdjecie-1.jpg"
+],
+"also": [
+"sublimacja"
 ],
 "tags": {
 "okazja": [
@@ -851,6 +911,74 @@
 }
 },
 {
+"slug": "fine-art-bawelna",
+"name": "Wydruk fine art na papierze bawełnianym",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "Hahnemühle Photo Rag, Canson Baryta, Ilford Gold Fibre; 12 tuszów pigmentowych, A4–B0",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": [
+{
+"k": "A4",
+"p": 49.0
+},
+{
+"k": "A3",
+"p": 79.0
+},
+{
+"k": "A2",
+"p": 139.0
+},
+{
+"k": "A1",
+"p": 219.0
+},
+{
+"k": "A0",
+"p": 349.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 2687.0,
+"xmas": false,
+"img": "img/hf/fine-art-bawelna-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-bawelna-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 49.0,
+"regular": 49.0
+}
+},
+{
 "slug": "statuetka-krysztal",
 "name": "Statuetka kryształowa z grawerem",
 "cat": "dla-firm",
@@ -871,6 +999,7 @@
 "gallery": [
 "img/hf/statuetka-krysztal-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -921,6 +1050,9 @@
 "gallery": [
 "img/hf/fototapeta-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -947,94 +1079,6 @@
 }
 },
 {
-"slug": "oznakowanie-piwnic",
-"name": "Oznakowanie piwnic i pomieszczeń",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Oznakowanie",
-"variants": "tabliczki: piwnica, suszarnia, rowerownia, węzeł cieplny",
-"priceText": "od 25 zł/szt.",
-"price": 25.0,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 2681.0,
-"xmas": true,
-"img": "img/hf/oznakowanie-piwnic-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": true,
-"gallery": [
-"img/hf/oznakowanie-piwnic-1.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 25.0,
-"regular": 25.0
-}
-},
-{
-"slug": "znaki-zakazu",
-"name": "Znaki zakazu i informacyjne",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Oznakowanie",
-"variants": "zakaz palenia, monitoring, zakaz wstępu; naklejki lub PCV",
-"priceText": "od 19 zł/szt.",
-"price": 19.0,
-"tiers": null,
-"machine": "HP Latex 375 + Summa S3",
-"score": 2677.0,
-"xmas": true,
-"img": "img/hf/znaki-zakazu-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": true,
-"gallery": [
-"img/hf/znaki-zakazu-1.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 19.0,
-"regular": 19.0
-}
-},
-{
 "slug": "puzzle-akryl-serce",
 "name": "Puzzle akrylowe ze zdjęciem",
 "cat": "prezenty-ze-zdjeciem",
@@ -1055,6 +1099,7 @@
 "gallery": [
 "img/hf/puzzle-akryl-serce-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -1106,6 +1151,7 @@
 "gallery": [
 "img/hf/tablica-nauka-imienia-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "chrzest",
@@ -1155,6 +1201,7 @@
 "gallery": [
 "img/hf/tabliczki-pomieszczenia-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1201,6 +1248,7 @@
 "gallery": [
 "img/f/krysztal-para.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub",
@@ -1232,57 +1280,6 @@
 }
 },
 {
-"slug": "tablica-ogloszen",
-"name": "Tablica ogłoszeń z nadrukiem i logo",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tablice",
-"variants": "korkowa / magnetyczna z ramką, nagłówek UV",
-"priceText": "od 229 zł",
-"price": 229.0,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 2660.0,
-"xmas": true,
-"img": "img/hf/tablica-ogloszen-1.jpg",
-"fields": [
-"logo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/tablica-ogloszen-1.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"akryl",
-"druk"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 229.0,
-"regular": 229.0
-}
-},
-{
 "slug": "logo-lustro",
 "name": "Logo ze złotego lustra dla salonu",
 "cat": "salony-beauty",
@@ -1303,6 +1300,7 @@
 "gallery": [
 "img/hf/logo-lustro-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1328,53 +1326,6 @@
 }
 },
 {
-"slug": "regulamin-porzadku",
-"name": "Regulamin porządku domowego",
-"cat": "wspolnoty-i-spoldzielnie",
-"sub": "Tablice",
-"variants": "A3/A2, dibond lub plexi, tekst od zarządcy",
-"priceText": "od 149 zł",
-"price": 149.0,
-"tiers": null,
-"machine": "GoArt UV A3",
-"score": 2654.0,
-"xmas": true,
-"img": "img/hf/regulamin-porzadku-1.jpg",
-"fields": [
-"logo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/regulamin-porzadku-1.jpg"
-],
-"tags": {
-"okazja": [
-"firma"
-],
-"dla": [],
-"pers": [
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 149.0,
-"regular": 149.0
-}
-},
-{
 "slug": "statuetka-3-kody",
 "name": "Statuetka social media, 3 kody",
 "cat": "dla-firm",
@@ -1395,6 +1346,7 @@
 "gallery": [
 "img/hf/statuetka-3-kody-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1443,6 +1395,9 @@
 "gallery": [
 "img/hf/fotopanel-aluminium-1.jpg"
 ],
+"also": [
+"sublimacja"
+],
 "tags": {
 "okazja": [
 "urodziny"
@@ -1469,6 +1424,63 @@
 }
 },
 {
+"slug": "wydruk-w-ramie",
+"name": "Wydruk w ramie z passe-partout",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "rama drewniana czarna / biała / dąb, passe-partout bezkwasowe, szkło antyrefleks",
+"priceText": "od 179 zł",
+"price": 179.0,
+"tiers": [
+{
+"k": "30×40",
+"p": 179.0
+},
+{
+"k": "40×50",
+"p": 229.0
+},
+{
+"k": "50×70",
+"p": 329.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 2646.0,
+"xmas": false,
+"img": "img/hf/wydruk-w-ramie-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wydruk-w-ramie-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 179.0,
+"regular": 179.0
+}
+},
+{
 "slug": "lusterko-logo",
 "name": "Lusterko kosmetyczne z logo",
 "cat": "salony-beauty",
@@ -1490,6 +1502,7 @@
 "gallery": [
 "img/hf/lusterko-logo-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1538,6 +1551,9 @@
 "img/hf/mapa-nieba-2.jpg",
 "img/hf/mapa-nieba-3.jpg"
 ],
+"also": [
+"dla-fotografow"
+],
 "tags": {
 "okazja": [
 "urodziny",
@@ -1568,6 +1584,98 @@
 }
 },
 {
+"slug": "koc-ze-zdjeciem",
+"name": "Koc polarowy ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "130×150 cm, miękki polar, kolaż do 12 zdjęć",
+"priceText": "199 zł",
+"price": 199.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 2639.0,
+"xmas": false,
+"img": "img/hf/koc-ze-zdjeciem-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/koc-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"babcia-dziadek",
+"dziecko"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 199.0,
+"regular": 199.0
+}
+},
+{
+"slug": "kubek-magiczny",
+"name": "Kubek magiczny ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "czarny, po nalaniu gorącego napoju pojawia się zdjęcie",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 2628.0,
+"xmas": false,
+"img": "img/hf/kubek-magiczny-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kubek-magiczny-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": [],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 59.0,
+"regular": 59.0
+}
+},
+{
 "slug": "jelen-sklejka",
 "name": "Jeleń geometryczny na ścianę",
 "cat": "prezenty-z-grawerem",
@@ -1588,6 +1696,7 @@
 "gallery": [
 "img/hf/jelen-sklejka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -1633,6 +1742,7 @@
 "gallery": [
 "img/hf/numery-stol-podstawka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -1691,6 +1801,7 @@
 "gallery": [
 "img/f/krysztal-para.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -1750,6 +1861,7 @@
 "gallery": [
 "img/hf/tablica-rejestracyjna-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "dzien-taty"
@@ -1799,6 +1911,7 @@
 "gallery": [
 "img/hf/podziekowania-rodzice-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub",
@@ -1811,7 +1924,8 @@
 "imie"
 ],
 "mat": [
-"akryl"
+"akryl",
+"druk"
 ],
 "promo": [
 "5"
@@ -1847,6 +1961,7 @@
 "gallery": [
 "img/hf/napis-recepcja-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1894,6 +2009,7 @@
 "gallery": [
 "img/hf/zestaw-higieniczny-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1939,6 +2055,7 @@
 "gallery": [
 "img/hf/wc-komplet-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -1985,6 +2102,7 @@
 "gallery": [
 "img/hf/wizytowki-lakier-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2031,6 +2149,7 @@
 "gallery": [
 "img/hf/numery-stol-lustro-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -2056,6 +2175,118 @@
 }
 },
 {
+"slug": "portfolio-box",
+"name": "Portfolio box ze zdjęciami z sesji",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "lniane pudełko z grawerem + 20 odbitek 15×21 na papierze fine art",
+"priceText": "249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "Epson SureColor P9500 + xTool X1 (CO₂)",
+"score": 2594.0,
+"xmas": false,
+"img": "img/hf/portfolio-box-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/portfolio-box-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+],
+"promo": [
+"5"
+]
+},
+"promo": {
+"pct": 5.0,
+"k": 0.95,
+"until": "2026-12-31",
+"name": "Na koniec roku −5%",
+"low30": 249.0,
+"regular": 249.0
+}
+},
+{
+"slug": "znaki-ppoz",
+"name": "Znaki ppoż. i ewakuacyjne",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Ppoż. i bezpieczeństwo",
+"variants": "gaśnica, hydrant, przeciwpożarowy wyłącznik prądu, główny zawór gazu, wyjście ewakuacyjne; fotoluminescencyjne (15 zł netto)",
+"priceText": "18.45 zł/szt",
+"price": 45.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 2305.0,
+"xmas": false,
+"img": "img/hf/znaki-ppoz-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/znaki-ppoz-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "numery-pieter",
+"name": "Numery pięter",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "15×15 cm, ten sam styl co tablica przy wejściu (15 zł netto)",
+"priceText": "18.45 zł/szt",
+"price": 45.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1864.0,
+"xmas": false,
+"img": "img/hf/numery-pieter-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/numery-pieter-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
 "slug": "krysztal-zimowy-led",
 "name": "Kryształ zimowy 3D + LED",
 "cat": "na-swieta",
@@ -2076,6 +2307,7 @@
 "gallery": [
 "img/hf/krysztal-zimowy-led-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2087,6 +2319,250 @@
 "mat": [
 "szklo",
 "3d"
+]
+}
+},
+{
+"slug": "siatka-mesh",
+"name": "Siatka mesh na ogrodzenie i rusztowanie",
+"cat": "druk-wielkoformatowy",
+"sub": "Banery i flagi",
+"variants": "siatka 270 g przepuszcza wiatr, oczka, opcjonalnie linki",
+"priceText": "79 zł/m²",
+"price": 79.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1318.0,
+"xmas": false,
+"img": "img/hf/siatka-mesh-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/siatka-mesh-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "baner-reklamowy",
+"name": "Baner reklamowy z oczkami",
+"cat": "druk-wielkoformatowy",
+"sub": "Banery i flagi",
+"variants": "frontlit 510 g, zgrzew i oczka co 50 cm, druk lateksowy odporny na UV i deszcz",
+"priceText": "69 zł/m²",
+"price": 69.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1295.0,
+"xmas": false,
+"img": "img/hf/baner-reklamowy-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/baner-reklamowy-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "numeracja-lokali",
+"name": "Numery lokali i klatek",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "plexi, aluminium, cyfry 3D, komplet budynku",
+"priceText": "od 15 zł/szt.",
+"price": 15.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1289.0,
+"xmas": true,
+"img": "img/hf/numeracja-lokali-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/numeracja-lokali-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "folia-samoprzylepna-druk",
+"name": "Wydruk na folii samoprzylepnej",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "folia monomer lub polimer, laminat mat / połysk, docięcie na wymiar",
+"priceText": "79 zł/m²",
+"price": 79.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1279.0,
+"xmas": false,
+"img": "img/hf/folia-samoprzylepna-druk-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/folia-samoprzylepna-druk-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "folia-owv-witryna",
+"name": "Folia perforowana OWV na witrynę",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "z zewnątrz grafika, od środka widać ulicę; laminat, montaż na miejscu",
+"priceText": "99 zł/m²",
+"price": 99.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1274.0,
+"xmas": false,
+"img": "img/hf/folia-owv-witryna-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/folia-owv-witryna-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tablica-wejscie-zarzadca",
+"name": "Tablica z numerem domu i nazwą zarządcy",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "PCV 30×40 + tabliczka 30×8, PCV 40×60 + tabliczka 40×10, LED 230 V 30×40, Solarna 30×40, LED 230 V 40×60, Solarna 40×60",
+"priceText": "od 147,6 zł",
+"price": 147.6,
+"tiers": [
+{
+"k": "PCV 30×40 + tabliczka 30×8",
+"p": 147.6
+},
+{
+"k": "PCV 40×60 + tabliczka 40×10",
+"p": 221.4
+},
+{
+"k": "LED 230 V 30×40",
+"p": 356.7
+},
+{
+"k": "Solarna 30×40",
+"p": 393.6
+},
+{
+"k": "LED 230 V 40×60",
+"p": 479.7
+},
+{
+"k": "Solarna 40×60",
+"p": 516.6
+}
+],
+"machine": "GoArt UV A3",
+"score": 1244.0,
+"xmas": true,
+"img": "img/hf/tablica-wejscie-zarzadca-sq.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-wejscie-zarzadca-1.jpg",
+"img/hf/tablica-wejscie-zarzadca-2.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -2111,6 +2587,7 @@
 "gallery": [
 "img/hf/breloki-klub-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2123,6 +2600,143 @@
 ],
 "mat": [
 "3d"
+]
+}
+},
+{
+"slug": "tablica-pcv-dibond",
+"name": "Tablica PCV lub Dibond z nadrukiem",
+"cat": "druk-wielkoformatowy",
+"sub": "Plakaty i tablice",
+"variants": "PCV 3–5 mm lub Dibond 3 mm, druk UV / folia z laminatem, otwory lub taśma",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": [
+{
+"k": "A3",
+"p": 49.0
+},
+{
+"k": "A2",
+"p": 89.0
+},
+{
+"k": "50×70",
+"p": 129.0
+},
+{
+"k": "100×70",
+"p": 219.0
+},
+{
+"k": "120×80",
+"p": 299.0
+}
+],
+"machine": "HP Latex 375 / GoArt UV A3",
+"score": 1236.0,
+"xmas": false,
+"img": "img/hf/tablica-pcv-dibond-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-pcv-dibond-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"akryl",
+"druk"
+]
+}
+},
+{
+"slug": "plakaty-edukacyjne",
+"name": "Plakaty edukacyjne do sal",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "alfabet, tabliczka mnożenia, układ słoneczny, mapa; B1 na PCV lub papierze",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1229.0,
+"xmas": false,
+"img": "img/hf/plakaty-edukacyjne-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakaty-edukacyjne-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tabliczki-skrzynki",
+"name": "Tabliczki na skrzynki pocztowe, komplet",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tabliczki i numeracja",
+"variants": "plexi/laminat grawerski, wg listy lokali",
+"priceText": "od 6 zł/szt.",
+"price": 6.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1227.0,
+"xmas": true,
+"img": "img/hf/tabliczki-skrzynki-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/tabliczki-skrzynki-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -2148,6 +2762,7 @@
 "gallery": [
 "img/hf/akryl-nasza-data-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2165,6 +2780,77 @@
 ],
 "mat": [
 "akryl",
+"druk"
+]
+}
+},
+{
+"slug": "potykacz-a1",
+"name": "Potykacz reklamowy A1 z wydrukiem",
+"cat": "druk-wielkoformatowy",
+"sub": "Plakaty i tablice",
+"variants": "stojak aluminiowy dwustronny, 2 plakaty A1 z laminatem, wymiana plakatów od 59 zł",
+"priceText": "349 zł",
+"price": 349.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1198.0,
+"xmas": false,
+"img": "img/hf/potykacz-a1-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/potykacz-a1-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-po-obrysie",
+"name": "Naklejki wycinane po obrysie",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "folia biała lub przezroczysta, laminat, dowolny kształt, od 10 szt.",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1192.0,
+"xmas": false,
+"img": "img/hf/naklejki-po-obrysie-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-po-obrysie-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
 "druk"
 ]
 }
@@ -2189,6 +2875,9 @@
 "unit": false,
 "gallery": [
 "img/hf/puzzle-zdjecie-1.jpg"
+],
+"also": [
+"sublimacja"
 ],
 "tags": {
 "okazja": [
@@ -2229,6 +2918,9 @@
 "gallery": [
 "img/hf/portret-pupila-plakat-1.jpg"
 ],
+"also": [
+"dla-fotografow"
+],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2246,6 +2938,232 @@
 "akryl",
 "druk"
 ]
+}
+},
+{
+"slug": "oznakowanie-piwnic",
+"name": "Oznakowanie piwnic i pomieszczeń",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "piwnica, rozdzielnia, rowerownia, wózkownia 10×20 cm, miejsce parkingowe 15×15 cm (15 zł netto)",
+"priceText": "18.45 zł/szt",
+"price": 45.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1181.0,
+"xmas": true,
+"img": "img/hf/oznakowanie-piwnic-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/oznakowanie-piwnic-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "dane-zarzadcy-tabliczka",
+"name": "Tabliczka z danymi zarządcy i numerami awaryjnymi",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "30×40 cm, logo zarządcy, e-mail, telefon, pogotowie (40 zł netto)",
+"priceText": "49.2 zł",
+"price": 2.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1180.0,
+"xmas": false,
+"img": "img/hf/dane-zarzadcy-tabliczka-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dane-zarzadcy-tabliczka-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "segregacja-odpadow",
+"name": "Tablica segregacji odpadów",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "30×40 cm, papier, szkło, metale i tworzywa, bio, zmieszane (40 zł netto)",
+"priceText": "49.2 zł",
+"price": 2.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1180.0,
+"xmas": false,
+"img": "img/hf/segregacja-odpadow-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/segregacja-odpadow-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "baner-blockout",
+"name": "Baner dwustronny blockout",
+"cat": "druk-wielkoformatowy",
+"sub": "Banery i flagi",
+"variants": "nieprzezierny, druk z dwóch stron, do zawieszenia w przestrzeni",
+"priceText": "119 zł/m²",
+"price": 119.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1180.0,
+"xmas": false,
+"img": "img/hf/baner-blockout-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/baner-blockout-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "litery-z-folii",
+"name": "Litery i napisy z folii",
+"cat": "druk-wielkoformatowy",
+"sub": "Litery i napisy z folii",
+"variants": "folia Oracal 641/651 w 40 kolorach, wysokość od 2 cm, z folią transportową do łatwego naklejenia",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": null,
+"machine": "Summa S3 (ploter tnący)",
+"score": 1180.0,
+"xmas": false,
+"img": "img/hf/litery-z-folii-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/litery-z-folii-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "znaki-zakazu",
+"name": "Znaki zakazu i informacyjne na klatkę",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Oznakowanie",
+"variants": "Zakaz palenia 15×20, Zakaz pozostawiania przedmiotów 20×30, Obiekt monitorowany 20×30",
+"priceText": "od 18,45 zł",
+"price": 18.45,
+"tiers": [
+{
+"k": "Zakaz palenia 15×20",
+"p": 18.45
+},
+{
+"k": "Zakaz pozostawiania przedmiotów 20×30",
+"p": 30.75
+},
+{
+"k": "Obiekt monitorowany 20×30",
+"p": 36.9
+}
+],
+"machine": "HP Latex 375 + Summa S3",
+"score": 1177.0,
+"xmas": true,
+"img": "img/hf/znaki-zakazu-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/znaki-zakazu-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -2269,6 +3187,7 @@
 "gallery": [
 "img/hf/bony-podarunkowe-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2305,6 +3224,7 @@
 "img/hf/szklanki-whisky-2.jpg",
 "img/hf/szklanki-whisky-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2322,6 +3242,41 @@
 ],
 "mat": [
 "szklo"
+]
+}
+},
+{
+"slug": "logo-z-folii-na-szybe",
+"name": "Logo i godziny otwarcia z folii na szybę",
+"cat": "druk-wielkoformatowy",
+"sub": "Litery i napisy z folii",
+"variants": "folia biała, złota, szroniona lub w kolorze firmy; projekt i montaż na życzenie",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Summa S3 (ploter tnący)",
+"score": 1173.0,
+"xmas": false,
+"img": "img/hf/logo-z-folii-na-szybe-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/logo-z-folii-na-szybe-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },
@@ -2347,6 +3302,7 @@
 "gallery": [
 "img/hf/pakiet-budynek-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2380,6 +3336,7 @@
 "gallery": [
 "img/hf/choinka-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2412,6 +3369,7 @@
 "gallery": [
 "img/hf/balwanek-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -2420,6 +3378,42 @@
 ],
 "mat": [
 "3d"
+]
+}
+},
+{
+"slug": "wydruk-backlit",
+"name": "Wydruk backlit do kasetonu i podświetleń",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "folia lub tkanina backlit, równomierne podświetlenie bez prześwitów",
+"priceText": "129 zł/m²",
+"price": 129.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1168.0,
+"xmas": false,
+"img": "img/hf/wydruk-backlit-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/wydruk-backlit-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },
@@ -2444,6 +3438,7 @@
 "gallery": [
 "img/hf/brelok-akryl-zdjecie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2484,6 +3479,7 @@
 "gallery": [
 "img/hf/bidon-dziecko-uv-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2521,6 +3517,7 @@
 "gallery": [
 "img/hf/kufel-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2537,6 +3534,55 @@
 ],
 "mat": [
 "szklo"
+]
+}
+},
+{
+"slug": "tablica-ogloszen",
+"name": "Tablica ogłoszeń korkowa w ramie",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "Korkowa 60×90, Korkowa 70×100, Korkowa 90×120",
+"priceText": "od 221,4 zł",
+"price": 221.4,
+"tiers": [
+{
+"k": "Korkowa 60×90",
+"p": 221.4
+},
+{
+"k": "Korkowa 70×100",
+"p": 270.6
+},
+{
+"k": "Korkowa 90×120",
+"p": 307.5
+}
+],
+"machine": "GoArt UV A3",
+"score": 1160.0,
+"xmas": true,
+"img": "img/hf/tablica-ogloszen-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-ogloszen-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -2562,6 +3608,7 @@
 "img/hf/deska-do-krojenia-1.jpg",
 "img/hf/deska-do-krojenia-2.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2607,12 +3654,51 @@
 "gallery": [
 "img/hf/banery-rollupy-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "regulamin-porzadku",
+"name": "Regulamin wspólnoty mieszkaniowej",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Tablice",
+"variants": "tablica 40×60 cm z regulaminem porządku domowego, PCV lub Dibond (60 zł netto)",
+"priceText": "73.8 zł",
+"price": 8.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1154.0,
+"xmas": true,
+"img": "img/hf/regulamin-porzadku-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/regulamin-porzadku-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
 "logo"
 ],
 "mat": [
@@ -2641,6 +3727,7 @@
 "gallery": [
 "img/hf/tabliczki-domofon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2678,6 +3765,7 @@
 "img/hf/niesmiertelnik-2.jpg",
 "img/hf/niesmiertelnik-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2717,6 +3805,7 @@
 "gallery": [
 "img/hf/akryl-bilet-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2755,6 +3844,9 @@
 "gallery": [
 "img/hf/okladka-magazynu-1.jpg"
 ],
+"also": [
+"dla-fotografow"
+],
 "tags": {
 "okazja": [
 "urodziny",
@@ -2768,6 +3860,44 @@
 "pers": [
 "zdjecie",
 "imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "baner-rekrutacja",
+"name": "Baner na ogrodzenie – rekrutacja i dzień otwarty",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "3×1 m, oczka, projekt w cenie",
+"priceText": "249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1151.0,
+"xmas": false,
+"img": "img/hf/baner-rekrutacja-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/baner-rekrutacja-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
 ],
 "mat": [
 "druk"
@@ -2796,6 +3926,7 @@
 "gallery": [
 "img/hf/butelka-personalizacja-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2807,6 +3938,84 @@
 "logo"
 ],
 "mat": []
+}
+},
+{
+"slug": "napis-na-samochod",
+"name": "Napis na samochód z folii",
+"cat": "druk-wielkoformatowy",
+"sub": "Litery i napisy z folii",
+"variants": "folia samochodowa 5–7 lat, numer telefonu, strona www, nazwa firmy",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Summa S3 (ploter tnący)",
+"score": 1149.0,
+"xmas": false,
+"img": "img/hf/napis-na-samochod-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napis-na-samochod-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-na-okna-przedszkole",
+"name": "Naklejki na okna – zwierzęta, motyle, chmurki",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "folia z białym poddrukiem, wycinane po obrysie, komplet na jedno okno",
+"priceText": "od 249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1147.0,
+"xmas": false,
+"img": "img/hf/naklejki-na-okna-przedszkole-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-na-okna-przedszkole-1.jpg",
+"img/hf/naklejki-na-okna-przedszkole-2.jpg",
+"img/hf/naklejki-na-okna-przedszkole-3.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
 }
 },
 {
@@ -2830,6 +4039,7 @@
 "gallery": [
 "img/hf/tabliczka-opinie-sciana-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2842,6 +4052,39 @@
 "mat": [
 "akryl"
 ]
+}
+},
+{
+"slug": "instrukcja-ppoz",
+"name": "Instrukcja postępowania na wypadek pożaru",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Ppoż. i bezpieczeństwo",
+"variants": "A4 lub A3, PCV lub płyta fotoluminescencyjna, zgodna z PN (30 zł netto)",
+"priceText": "36.9 zł",
+"price": 9.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1144.0,
+"xmas": false,
+"img": "img/hf/instrukcja-ppoz-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/instrukcja-ppoz-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -2865,6 +4108,7 @@
 "gallery": [
 "img/hf/stojak-opinie-qr-nfc-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2900,6 +4144,7 @@
 "gallery": [
 "img/hf/inicjal-dziecko-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "chrzest",
@@ -2938,6 +4183,7 @@
 "gallery": [
 "img/hf/tabliczka-drzwi-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -2974,6 +4220,7 @@
 "gallery": [
 "img/hf/zdjecie-na-drewnie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3015,6 +4262,7 @@
 "gallery": [
 "img/hf/kartka-drewniana-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3052,6 +4300,7 @@
 "gallery": [
 "img/hf/tabliczka-adres-dystanse-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3088,6 +4337,7 @@
 "gallery": [
 "img/hf/pudelko-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3126,6 +4376,7 @@
 "gallery": [
 "img/hf/vouchery-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3136,6 +4387,132 @@
 ],
 "mat": [
 "druk"
+]
+}
+},
+{
+"slug": "digigraphie-edycja",
+"name": "Edycja limitowana Digigraphie by Epson",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "numerowana seria, certyfikat autentyczności, papier muzealny",
+"priceText": "od 129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "Epson SureColor P9500",
+"score": 1136.0,
+"xmas": false,
+"img": "img/hf/digigraphie-edycja-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/digigraphie-edycja-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "odbitki-drylab",
+"name": "Odbitki fotograficzne DryLab",
+"cat": "dla-fotografow",
+"sub": "Odbitki i powiększenia",
+"variants": "papier błyszczący, matowy lub luster, od 1 szt., wydruk w 24 h",
+"priceText": "od 1,2 zł/szt",
+"price": 1.2,
+"tiers": [
+{
+"k": "10×15",
+"p": 1.2
+},
+{
+"k": "13×18",
+"p": 2.0
+},
+{
+"k": "15×21",
+"p": 3.0
+},
+{
+"k": "20×30",
+"p": 6.0
+}
+],
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1136.0,
+"xmas": false,
+"img": "img/hf/odbitki-drylab-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/odbitki-drylab-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"pamiatka"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "tablica-urzedowa-szkola",
+"name": "Tablica urzędowa szkoły z godłem",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "60×40 cm, stal szczotkowana lub akryl, dystanse, wzór zgodny z przepisami",
+"priceText": "449 zł",
+"price": 449.0,
+"tiers": null,
+"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"score": 1135.0,
+"xmas": false,
+"img": "img/hf/tablica-urzedowa-szkola-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-urzedowa-szkola-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -3161,6 +4538,167 @@
 "gallery": [
 "img/hf/tabliczka-scienna-qr-1.jpg"
 ],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "powiekszenia-zdjec",
+"name": "Powiększenia zdjęć do 60×90",
+"cat": "dla-fotografow",
+"sub": "Odbitki i powiększenia",
+"variants": "papier fotograficzny satyna lub fine art, przycięte do formatu",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "30×40",
+"p": 29.0
+},
+{
+"k": "40×60",
+"p": 49.0
+},
+{
+"k": "50×70",
+"p": 69.0
+},
+{
+"k": "60×90",
+"p": 99.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 1134.0,
+"xmas": false,
+"img": "img/hf/powiekszenia-zdjec-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/powiekszenia-zdjec-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "magnes-na-samochod",
+"name": "Magnes na samochód",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "folia magnetyczna 0,8 mm z nadrukiem i laminatem, para na drzwi",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1130.0,
+"xmas": false,
+"img": "img/hf/magnes-na-samochod-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/magnes-na-samochod-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "naklejki-wycinane-logo",
+"name": "Naklejki wycinane z logo (bez tła)",
+"cat": "druk-wielkoformatowy",
+"sub": "Litery i napisy z folii",
+"variants": "folia jednokolorowa, 10–100 szt., na auto, laptop, skrzynkę",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Summa S3 (ploter tnący)",
+"score": 1130.0,
+"xmas": false,
+"img": "img/hf/naklejki-wycinane-logo-1.jpg",
+"fields": [
+"logo",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-wycinane-logo-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "telefony-alarmowe",
+"name": "Tabliczka „Telefony alarmowe”",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Ppoż. i bezpieczeństwo",
+"variants": "A4: 112, 997, 998, 999 + numer awaryjny administracji (20 zł netto)",
+"priceText": "24.6 zł",
+"price": 6.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1128.0,
+"xmas": false,
+"img": "img/hf/telefony-alarmowe-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/telefony-alarmowe-1.jpg"
+],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3197,6 +4735,7 @@
 "gallery": [
 "img/hf/ksiazeczka-dziecko-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3238,6 +4777,9 @@
 "img/hf/numer-domu-2.jpg",
 "img/hf/numer-domu-3.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
@@ -3274,6 +4816,7 @@
 "gallery": [
 "img/hf/akryl-obrys-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny"
@@ -3310,6 +4853,9 @@
 "img/hf/poduszka-zdjecie-1.jpg",
 "img/hf/poduszka-zdjecie-2.jpg",
 "img/hf/poduszka-zdjecie-3.jpg"
+],
+"also": [
+"sublimacja"
 ],
 "tags": {
 "okazja": [
@@ -3354,6 +4900,7 @@
 "gallery": [
 "img/hf/etui-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3394,6 +4941,7 @@
 "gallery": [
 "img/hf/napis-scienny-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -3428,6 +4976,7 @@
 "gallery": [
 "img/hf/kieliszki-para-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3448,6 +4997,42 @@
 ],
 "mat": [
 "szklo"
+]
+}
+},
+{
+"slug": "tabliczka-nagrobna-grawer",
+"name": "Tabliczka nagrobna z grawerem",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
+"variants": "stal nierdzewna lub granit, imię, daty i sentencja, mocowanie na klej",
+"priceText": "od 129 zł",
+"price": 129.0,
+"tiers": null,
+"machine": "xTool X1 (MOPA 60 W)",
+"score": 1122.0,
+"xmas": false,
+"img": "img/hf/tabliczka-nagrobna-grawer-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-nagrobna-grawer-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"grawer",
+"imie"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -3473,6 +5058,7 @@
 "gallery": [
 "img/hf/zegar-diy-komplet-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -3483,6 +5069,43 @@
 ],
 "mat": [
 "drewno"
+]
+}
+},
+{
+"slug": "tabliczki-sale-komplet",
+"name": "Tabliczki na drzwi sal – komplet",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "numer, nazwa sali i piktogram, jeden styl dla całej szkoły, 10 szt.",
+"priceText": "390 zł",
+"price": 390.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1121.0,
+"xmas": false,
+"img": "img/hf/tabliczki-sale-komplet-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczki-sale-komplet-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -3507,6 +5130,7 @@
 "gallery": [
 "img/hf/smok-flexi-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3544,6 +5168,7 @@
 "gallery": [
 "img/hf/figurka-swieta-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3557,6 +5182,132 @@
 ],
 "mat": [
 "3d"
+]
+}
+},
+{
+"slug": "napis-na-sciane-folia",
+"name": "Napis na ścianę z folii (cytat, imię)",
+"cat": "druk-wielkoformatowy",
+"sub": "Litery i napisy z folii",
+"variants": "folia matowa do ścian, wysokość liter dobierzemy do miejsca",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "Summa S3 (ploter tnący)",
+"score": 1119.0,
+"xmas": false,
+"img": "img/hf/napis-na-sciane-folia-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/napis-na-sciane-folia-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "plakaty-grup-przedszkolnych",
+"name": "Plakaty powitalne grup (Pszczółki, Jeżyki, Sówki…)",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "unikalna postać grupy zaprojektowana w AI, 60×60–100×100 cm, folia lub PCV",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "60×60",
+"p": 149.0
+},
+{
+"k": "80×80",
+"p": 199.0
+},
+{
+"k": "100×100",
+"p": 259.0
+}
+],
+"machine": "HP Latex 375",
+"score": 1117.0,
+"xmas": false,
+"img": "img/hf/plakaty-grup-przedszkolnych-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/plakaty-grup-przedszkolnych-1.jpg",
+"img/hf/plakaty-grup-przedszkolnych-2.jpg",
+"img/hf/plakaty-grup-przedszkolnych-3.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fototapeta-sala",
+"name": "Fototapeta do sali i korytarza",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "projekt tematyczny w cenie (las, kosmos, ocean), zmywalna, bez PVC",
+"priceText": "99 zł/m²",
+"price": 99.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1115.0,
+"xmas": false,
+"img": "img/hf/fototapeta-sala-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/fototapeta-sala-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },
@@ -3581,6 +5332,7 @@
 "gallery": [
 "img/hf/etui-telefon-uv-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny"
@@ -3619,6 +5371,9 @@
 "gallery": [
 "img/hf/naklejki-scienne-dziecko-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "chrzest",
@@ -3634,6 +5389,43 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "postacie-zagladajace-drzwi",
+"name": "Postacie „zaglądające” przez szklane drzwi",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "chłopiec i dziewczynka wycinani po obrysie, dwustronnie czytelni na szkle",
+"priceText": "349 zł",
+"price": 349.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1114.0,
+"xmas": false,
+"img": "img/hf/postacie-zagladajace-drzwi-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/postacie-zagladajace-drzwi-1.jpg",
+"img/hf/postacie-zagladajace-drzwi-2.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -3657,6 +5449,7 @@
 "gallery": [
 "img/hf/dystanse-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3692,6 +5485,7 @@
 "gallery": [
 "img/hf/kliker-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3705,6 +5499,155 @@
 ],
 "mat": [
 "3d"
+]
+}
+},
+{
+"slug": "baner-tekstylny",
+"name": "Baner tekstylny i flaga reklamowa",
+"cat": "druk-wielkoformatowy",
+"sub": "Banery i flagi",
+"variants": "tkanina poliestrowa, obszycie, tunel lub oczka; nie gniecie się",
+"priceText": "109 zł/m²",
+"price": 109.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1110.0,
+"xmas": false,
+"img": "img/hf/baner-tekstylny-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/baner-tekstylny-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "koszulka-sportowa-sublimacja",
+"name": "Koszulka sportowa z pełnym nadrukiem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "poliester oddychający, nadruk na całości: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1110.0,
+"xmas": false,
+"img": "img/hf/koszulka-sportowa-sublimacja-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/koszulka-sportowa-sublimacja-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "podkladka-pod-mysz",
+"name": "Podkładka pod mysz ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "23×19 cm, guma antypoślizgowa, obszyta krawędź",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1110.0,
+"xmas": false,
+"img": "img/hf/podkladka-pod-mysz-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/podkladka-pod-mysz-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "tablica-dla-rodzicow",
+"name": "Tablica informacyjna dla rodziców",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "korkowa w ramie aluminiowej, nadrukowany nagłówek z nazwą grupy lub placówki",
+"priceText": "249 zł",
+"price": 249.0,
+"tiers": null,
+"machine": "HP Latex 375",
+"score": 1110.0,
+"xmas": false,
+"img": "img/hf/tablica-dla-rodzicow-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-dla-rodzicow-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -3730,6 +5673,7 @@
 "gallery": [
 "img/hf/tumbler-uv-kolor-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3774,6 +5718,7 @@
 "gallery": [
 "img/hf/ruchomy-szkielet-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3793,7 +5738,7 @@
 {
 "slug": "naklejki-promocyjne",
 "name": "Naklejki promocyjne (SALE, nowa kolekcja, 2. produkt taniej)",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "koła, napisy, kolory",
 "priceText": "od 16 zł",
@@ -3811,6 +5756,7 @@
 "gallery": [
 "img/hf/naklejki-promocyjne-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3823,6 +5769,167 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "recznik-ze-zdjeciem",
+"name": "Ręcznik ze zdjęciem lub imieniem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "70×140 cm, mikrofibra z bawełnianym spodem",
+"priceText": "119 zł",
+"price": 119.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1103.0,
+"xmas": false,
+"img": "img/hf/recznik-ze-zdjeciem-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/recznik-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"dziecko"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "zdjecie-nagrobne-porcelana",
+"name": "Zdjęcie nagrobne na porcelanie",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
+"variants": "owal lub prostokąt 9×12 / 13×18 cm, odporne na mróz i słońce, klej do kamienia w zestawie",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "9×12",
+"p": 149.0
+},
+{
+"k": "13×18",
+"p": 199.0
+}
+],
+"machine": "Epson SureColor F500 + prasa",
+"score": 1103.0,
+"xmas": false,
+"img": "img/hf/zdjecie-nagrobne-porcelana-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zdjecie-nagrobne-porcelana-1.jpg"
+],
+"also": [
+"sublimacja"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci",
+"pamiatka"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"szklo"
+]
+}
+},
+{
+"slug": "naklejki-podlogowe-gry",
+"name": "Naklejki podłogowe – gry ruchowe",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
+"variants": "klasy, ścieżka sensoryczna, twister; folia antypoślizgowa z laminatem",
+"priceText": "od 390 zł",
+"price": 390.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1102.0,
+"xmas": false,
+"img": "img/hf/naklejki-podlogowe-gry-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/naklejki-podlogowe-gry-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "szarfa-na-wieniec",
+"name": "Szarfa na wieniec z napisem",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na pogrzeb",
+"variants": "satyna 10 lub 15 cm, napis złoty, srebrny lub czarny, długość do 2 m",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1102.0,
+"xmas": false,
+"img": "img/hf/szarfa-na-wieniec-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/szarfa-na-wieniec-1.jpg"
+],
+"also": [
+"sublimacja"
+],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
 }
 },
 {
@@ -3847,6 +5954,7 @@
 "gallery": [
 "img/hf/akryl-plakat-filmowy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -3887,6 +5995,9 @@
 "gallery": [
 "img/hf/rollup-salon-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
@@ -3921,6 +6032,7 @@
 "gallery": [
 "img/hf/szyld-okragly-logo-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3937,7 +6049,7 @@
 {
 "slug": "folia-mrozona-wymiar",
 "name": "Folia mrożona na szybę na wymiar",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "matowa, mleczna",
 "priceText": "od 69 zł/m²",
@@ -3955,6 +6067,7 @@
 "gallery": [
 "img/hf/folia-mrozona-wymiar-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -3990,6 +6103,7 @@
 "gallery": [
 "img/hf/karty-stalego-klienta-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4002,6 +6116,42 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "kamien-pamieci-pupil",
+"name": "Kamień pamięci dla zwierzaka",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Pamiątki",
+"variants": "łupek 20×15 cm z grawerem imienia i łapki, do ogrodu",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 1098.0,
+"xmas": false,
+"img": "img/hf/kamien-pamieci-pupil-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kamien-pamieci-pupil-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [
+"psiarze",
+"kociarze"
+],
+"pers": [
+"imie"
+],
+"mat": []
 }
 },
 {
@@ -4026,6 +6176,7 @@
 "gallery": [
 "img/hf/tabliczka-logo-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4062,6 +6213,7 @@
 "gallery": [
 "img/hf/szyld-czarny-nazwa-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4072,6 +6224,49 @@
 "logo"
 ],
 "mat": []
+}
+},
+{
+"slug": "dyplomy-ukonczenia-przedszkola",
+"name": "Dyplomy ukończenia przedszkola ze zdjęciem grupy",
+"cat": "szkoly-i-przedszkola",
+"sub": "Dyplomy i odzież",
+"variants": "A4, karton 300 g, imię dziecka na każdym, 25 szt.",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1097.0,
+"xmas": false,
+"img": "img/hf/dyplomy-ukonczenia-przedszkola-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dyplomy-ukonczenia-przedszkola-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [
+"pracownik"
+],
+"pers": [
+"grawer",
+"imie",
+"logo"
+],
+"mat": [
+"drewno",
+"druk"
+]
 }
 },
 {
@@ -4096,6 +6291,7 @@
 "gallery": [
 "img/hf/winietki-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -4132,6 +6328,7 @@
 "gallery": [
 "img/hf/logo-na-sciane-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4139,6 +6336,78 @@
 "dla": [],
 "pers": [
 "logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "grafika-drzwi-wejsciowe",
+"name": "Grafika na drzwi i nadświetle wejścia",
+"cat": "szkoly-i-przedszkola",
+"sub": "Wejście i ogrodzenie",
+"variants": "projekt z postacią i nazwą placówki w cenie, folia z laminatem, montaż na miejscu",
+"priceText": "od 690 zł",
+"price": 690.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1095.0,
+"xmas": false,
+"img": "img/hf/grafika-drzwi-wejsciowe-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/grafika-drzwi-wejsciowe-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "tabliczka-na-krzyz",
+"name": "Tabliczka na krzyż i tymczasowy pomnik",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
+"variants": "aluminium lub akryl z nadrukiem UV, ze zdjęciem lub bez, wykonanie w 24 h",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1094.0,
+"xmas": false,
+"img": "img/hf/tabliczka-na-krzyz-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-na-krzyz-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"imie"
 ],
 "mat": [
 "akryl"
@@ -4168,6 +6437,7 @@
 "gallery": [
 "img/hf/skrzynka-wino-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4207,6 +6477,7 @@
 "gallery": [
 "img/hf/bombka-zdjecie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -4241,6 +6512,7 @@
 "gallery": [
 "img/hf/logo-na-lade-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4276,6 +6548,7 @@
 "gallery": [
 "img/hf/zaproszenia-akryl-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -4311,6 +6584,9 @@
 "gallery": [
 "img/hf/naklejki-okragle-logo-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
@@ -4318,6 +6594,122 @@
 "dla": [],
 "pers": [
 "logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kafel-ze-zdjeciem",
+"name": "Kafel ceramiczny ze zdjęciem i stojakiem",
+"cat": "sublimacja",
+"sub": "Gadżety",
+"variants": "20×20 cm, połysk, stojak drewniany",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1091.0,
+"xmas": false,
+"img": "img/hf/kafel-ze-zdjeciem-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kafel-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"szklo",
+"akryl"
+]
+}
+},
+{
+"slug": "flaga-szal-kibica",
+"name": "Flaga i szal kibica z nadrukiem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "flaga 100×150 cm z tunelem lub szal satynowy, kolory klubu",
+"priceText": "od 79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1091.0,
+"xmas": false,
+"img": "img/hf/flaga-szal-kibica-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/flaga-szal-kibica-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "klepsydry",
+"name": "Klepsydry (nekrologi)",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na pogrzeb",
+"variants": "A4 lub A3, 10 szt., wzór z krzyżem, gałązką lub bez symboli, gotowe w 24 h",
+"priceText": "59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1091.0,
+"xmas": false,
+"img": "img/hf/klepsydry-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/klepsydry-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"imie"
 ],
 "mat": [
 "druk"
@@ -4344,6 +6736,10 @@
 "unit": false,
 "gallery": [
 "img/hf/magnesy-zdjecia-1.jpg"
+],
+"also": [
+"sublimacja",
+"dla-fotografow"
 ],
 "tags": {
 "okazja": [
@@ -4386,6 +6782,7 @@
 "gallery": [
 "img/hf/stojak-wizytowki-qr-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4422,6 +6819,7 @@
 "gallery": [
 "img/hf/puzzle-imie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4460,6 +6858,7 @@
 "gallery": [
 "img/hf/kubek-termiczny-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4485,7 +6884,7 @@
 {
 "slug": "witryna-logo-tel-qr",
 "name": "Naklejka na witrynę: logo, telefon, QR",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "biała/złota/kolor",
 "priceText": "95 zł",
@@ -4503,6 +6902,7 @@
 "gallery": [
 "img/hf/witryna-logo-tel-qr-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4537,6 +6937,7 @@
 "gallery": [
 "img/hf/medalik-ihs-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "komunia",
@@ -4578,6 +6979,7 @@
 "img/hf/akryl-piosenka-2.jpg",
 "img/hf/akryl-piosenka-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4618,6 +7020,7 @@
 "gallery": [
 "img/hf/mapa-poznalismy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4656,6 +7059,7 @@
 "gallery": [
 "img/hf/ihs-litery-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "komunia",
@@ -4667,6 +7071,121 @@
 ],
 "mat": [
 "akryl"
+]
+}
+},
+{
+"slug": "reprodukcja-obrazu",
+"name": "Reprodukcja obrazu i grafiki (giclée)",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "skan lub zdjęcie pracy, korekta barw, wydruk na płótnie lub papierze akwarelowym",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "Epson SureColor P9500",
+"score": 1085.0,
+"xmas": false,
+"img": "img/hf/reprodukcja-obrazu-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/reprodukcja-obrazu-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "portret-na-pogrzeb",
+"name": "Portret na pogrzeb ze sztalugą",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na pogrzeb",
+"variants": "fotografia 40×50 cm na piance z czarną ramką + sztaluga, retusz zdjęcia",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "Epson SureColor P9500",
+"score": 1085.0,
+"xmas": false,
+"img": "img/hf/portret-na-pogrzeb-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/portret-na-pogrzeb-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "lampion-ze-zdjeciem",
+"name": "Lampion nagrobny ze zdjęciem",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
+"variants": "szkło z nadrukiem UV lub grawerem, imię i daty",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1085.0,
+"xmas": false,
+"img": "img/hf/lampion-ze-zdjeciem-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/lampion-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"pamiatka"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"szklo"
 ]
 }
 },
@@ -4691,6 +7210,7 @@
 "gallery": [
 "img/hf/litofania-lampka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4735,12 +7255,94 @@
 "gallery": [
 "img/hf/wizytowki-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
 ],
 "dla": [],
 "pers": [
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "kalendarz-scienny-zdjecia",
+"name": "Kalendarz ścienny z własnych zdjęć",
+"cat": "dla-fotografow",
+"sub": "Odbitki i powiększenia",
+"variants": "A3, 13 stron, papier 250 g, spirala, dowolny miesiąc startowy",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1083.0,
+"xmas": false,
+"img": "img/hf/kalendarz-scienny-zdjecia-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kalendarz-scienny-zdjecia-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"dzien-babci"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fartuch-z-nadrukiem",
+"name": "Fartuch kuchenny z nadrukiem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "poliester z wiązaniem, imię, logo lokalu lub zabawny napis",
+"priceText": "69 zł",
+"price": 69.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1082.0,
+"xmas": false,
+"img": "img/hf/fartuch-z-nadrukiem-1.jpg",
+"fields": [
+"logo",
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fartuch-z-nadrukiem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
 "logo"
 ],
 "mat": [
@@ -4769,6 +7371,7 @@
 "gallery": [
 "img/hf/plakietki-qr-nfc-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4802,6 +7405,7 @@
 "gallery": [
 "img/hf/tabliczka-wc-kwadrat-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4837,6 +7441,7 @@
 "gallery": [
 "img/hf/topper-bok-tortu-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -4871,6 +7476,7 @@
 "gallery": [
 "img/hf/brelok-3d-imie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -4889,6 +7495,72 @@
 "mat": [
 "3d"
 ]
+}
+},
+{
+"slug": "torba-ze-zdjeciem",
+"name": "Torba ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "torba na zakupy 38×42 cm, nadruk dwustronny",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1078.0,
+"xmas": false,
+"img": "img/hf/torba-ze-zdjeciem-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/torba-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "retusz-starych-zdjec",
+"name": "Retusz i odnowienie starych zdjęć",
+"cat": "dla-fotografow",
+"sub": "Odbitki i powiększenia",
+"variants": "skan, usunięcie rys i plam, odtworzenie kolorów, wydruk 20×30",
+"priceText": "od 79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1077.0,
+"xmas": false,
+"img": "img/hf/retusz-starych-zdjec-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/retusz-starych-zdjec-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
 }
 },
 {
@@ -4912,6 +7584,7 @@
 "gallery": [
 "img/hf/szyld-okragly-led-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4928,8 +7601,8 @@
 {
 "slug": "tabliczka-przedszkole",
 "name": "Tabliczki na sale w przedszkolu",
-"cat": "dla-firm",
-"sub": "Szkoły i kluby",
+"cat": "szkoly-i-przedszkola",
+"sub": "Sale i korytarze",
 "variants": "",
 "priceText": "69 zł",
 "price": 69.0,
@@ -4946,6 +7619,7 @@
 "gallery": [
 "img/hf/tabliczka-przedszkole-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -4963,7 +7637,7 @@
 {
 "slug": "godziny-otwarcia",
 "name": "Naklejka z godzinami otwarcia",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "z logo / bez logo, biała/złota",
 "priceText": "od 59 zł",
@@ -4981,6 +7655,7 @@
 "gallery": [
 "img/hf/godziny-otwarcia-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5015,6 +7690,7 @@
 "gallery": [
 "img/hf/ulotki-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5050,6 +7726,7 @@
 "gallery": [
 "img/hf/dlugopisy-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5088,6 +7765,7 @@
 "gallery": [
 "img/hf/diorama-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5101,6 +7779,48 @@
 ],
 "mat": [
 "3d"
+]
+}
+},
+{
+"slug": "obrazki-pamiatkowe-pogrzeb",
+"name": "Obrazki pamiątkowe ze zdjęciem i modlitwą",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na pogrzeb",
+"variants": "7×11 cm, karton 300 g, 50 szt.",
+"priceText": "99 zł",
+"price": 99.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1074.0,
+"xmas": false,
+"img": "img/hf/obrazki-pamiatkowe-pogrzeb-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/obrazki-pamiatkowe-pogrzeb-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-babci",
+"pamiatka"
+],
+"dla": [
+"babcia-dziadek"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
 ]
 }
 },
@@ -5125,6 +7845,7 @@
 "gallery": [
 "img/hf/brelok-drewno-skora-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5169,6 +7890,7 @@
 "gallery": [
 "img/hf/topper-tort-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -5205,6 +7927,7 @@
 "gallery": [
 "img/hf/tabliczki-drzwi-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5241,6 +7964,7 @@
 "gallery": [
 "img/hf/akryl-led-zdjecie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5281,6 +8005,7 @@
 "img/hf/sylwetka-psa-1.jpg",
 "img/hf/sylwetka-psa-2.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [
@@ -5295,8 +8020,8 @@
 {
 "slug": "znicz-zdjecie",
 "name": "Znicz ze zdjęciem",
-"cat": "slub-i-okazje",
-"sub": "Pamiątki",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
 "variants": "",
 "priceText": "99 zł",
 "price": 99.0,
@@ -5313,6 +8038,7 @@
 "gallery": [
 "img/hf/znicz-zdjecie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "pamiatka"
@@ -5348,6 +8074,7 @@
 "gallery": [
 "img/hf/ksiega-gosci-tabliczka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -5382,6 +8109,7 @@
 "gallery": [
 "img/hf/tablica-komunia-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "komunia"
@@ -5416,6 +8144,7 @@
 "gallery": [
 "img/hf/stojak-wifi-qr-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5431,9 +8160,78 @@
 }
 },
 {
+"slug": "reklama-na-auto",
+"name": "Reklama na samochód – oklejenie drzwi i tyłu",
+"cat": "druk-wielkoformatowy",
+"sub": "Folie i naklejki",
+"variants": "folia wylewana + laminat, projekt w cenie, montaż w pracowni",
+"priceText": "od 590 zł",
+"price": 590.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 1070.0,
+"xmas": false,
+"img": "img/hf/reklama-na-auto-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/reklama-na-auto-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
+}
+},
+{
+"slug": "koszulki-absolwent",
+"name": "Koszulki i bluzy dla klasy absolwentów",
+"cat": "szkoly-i-przedszkola",
+"sub": "Dyplomy i odzież",
+"variants": "nazwiska całej klasy na plecach, rok, logo szkoły; od 10 szt.",
+"priceText": "od 59 zł",
+"price": 59.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1069.0,
+"xmas": false,
+"img": "img/hf/koszulki-absolwent-1.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/koszulki-absolwent-1.jpg"
+],
+"also": [
+"sublimacja"
+],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"logo"
+],
+"mat": []
+}
+},
+{
 "slug": "folia-mrozona-logo",
 "name": "Folia mrożona z wyciętym logo",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "mleczna, logo wycięte",
 "priceText": "95 zł",
@@ -5451,6 +8249,7 @@
 "gallery": [
 "img/hf/folia-mrozona-logo-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5485,6 +8284,7 @@
 "gallery": [
 "img/hf/terminarzyki-wizyt-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5519,6 +8319,7 @@
 "gallery": [
 "img/hf/bombka-dab-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -5554,6 +8355,7 @@
 "img/hf/adresowka-psa-2.jpg",
 "img/hf/adresowka-psa-3.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [
@@ -5589,6 +8391,7 @@
 "gallery": [
 "img/hf/mapa-miasta-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5606,8 +8409,8 @@
 {
 "slug": "dyplom-drewniany",
 "name": "Statuetki i dyplomy na koniec roku",
-"cat": "dla-firm",
-"sub": "Szkoły i kluby",
+"cat": "szkoly-i-przedszkola",
+"sub": "Dyplomy i odzież",
 "variants": "",
 "priceText": "89 zł",
 "price": 89.0,
@@ -5624,6 +8427,7 @@
 "gallery": [
 "img/hf/dyplom-drewniany-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5637,14 +8441,15 @@
 "logo"
 ],
 "mat": [
-"drewno"
+"drewno",
+"druk"
 ]
 }
 },
 {
 "slug": "lokal-wynajem",
 "name": "Naklejka „Lokal do wynajęcia”",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "z telefonem",
 "priceText": "59 zł",
@@ -5663,6 +8468,7 @@
 "gallery": [
 "img/hf/lokal-wynajem-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5698,6 +8504,7 @@
 "gallery": [
 "img/hf/certyfikaty-szkolen-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5708,6 +8515,81 @@
 "logo"
 ],
 "mat": [
+"druk"
+]
+}
+},
+{
+"slug": "wydruk-probny",
+"name": "Wydruk próbny i dopasowanie barw (proof)",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "próbka A4 na wybranym papierze, porównanie z monitorem, profil ICC do pobrania",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "Epson SureColor P9500",
+"score": 1062.0,
+"xmas": false,
+"img": "img/hf/wydruk-probny-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wydruk-probny-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "podziekowania-za-udzial",
+"name": "Podziękowania za udział w pogrzebie",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na pogrzeb",
+"variants": "karty składane z kopertą, 25 szt., treść do wyboru",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "Epson SureLab D1000 (DryLab)",
+"score": 1062.0,
+"xmas": false,
+"img": "img/hf/podziekowania-za-udzial-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/podziekowania-za-udzial-1.jpg"
+],
+"also": [
+"dla-fotografow"
+],
+"tags": {
+"okazja": [
+"slub",
+"podziekowania",
+"pamiatka"
+],
+"dla": [
+"goscie"
+],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl",
 "druk"
 ]
 }
@@ -5734,6 +8616,7 @@
 "gallery": [
 "img/hf/inicjaly-scianka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub",
@@ -5753,10 +8636,44 @@
 }
 },
 {
+"slug": "skarpetki-ze-zdjeciem",
+"name": "Skarpetki ze zdjęciem",
+"cat": "sublimacja",
+"sub": "Tekstylia",
+"variants": "twarz psa, kota albo partnera na skarpetkach; rozmiary 36–46",
+"priceText": "49 zł",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1060.0,
+"xmas": false,
+"img": "img/hf/skarpetki-ze-zdjeciem-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/skarpetki-ze-zdjeciem-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "medale-grawer",
 "name": "Medale z grawerem",
-"cat": "dla-firm",
-"sub": "Szkoły i kluby",
+"cat": "szkoly-i-przedszkola",
+"sub": "Dyplomy i odzież",
 "variants": "",
 "priceText": "wycena",
 "price": null,
@@ -5773,6 +8690,7 @@
 "gallery": [
 "img/hf/medale-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5793,7 +8711,7 @@
 {
 "slug": "folia-mrozona-nadruk",
 "name": "Folia mrożona z nadrukiem",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "kolor / skala szarości",
 "priceText": "109 zł",
@@ -5811,6 +8729,7 @@
 "gallery": [
 "img/hf/folia-mrozona-nadruk-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -5851,6 +8770,9 @@
 "img/hf/obraz-plotno-2.jpg",
 "img/hf/obraz-plotno-3.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5889,6 +8811,7 @@
 "gallery": [
 "img/hf/podkladki-zestaw-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -5926,6 +8849,7 @@
 "gallery": [
 "img/hf/napis-pudelko-koperty-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -5962,6 +8886,9 @@
 "gallery": [
 "img/hf/szklo-ramka-zdjecie-1.jpg"
 ],
+"also": [
+"sublimacja"
+],
 "tags": {
 "okazja": [
 "urodziny",
@@ -5985,7 +8912,7 @@
 {
 "slug": "pchac-ciagnac",
 "name": "Naklejki „Pchać / Ciągnąć”",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "białe, złote, czarne",
 "priceText": "15 zł",
@@ -6003,6 +8930,7 @@
 "gallery": [
 "img/hf/pchac-ciagnac-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6037,6 +8965,9 @@
 "unit": false,
 "gallery": [
 "img/hf/kalendarz-biurkowy-1.jpg"
+],
+"also": [
+"dla-fotografow"
 ],
 "tags": {
 "okazja": [
@@ -6075,6 +9006,7 @@
 "gallery": [
 "img/hf/napisy-maz-zona-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -6111,6 +9043,7 @@
 "gallery": [
 "img/hf/ihs-kolo-scianka-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "komunia",
@@ -6144,6 +9077,9 @@
 "gallery": [
 "img/hf/naklejki-paczki-qr-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
@@ -6156,6 +9092,41 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "montaz-oznakowania",
+"name": "Montaż oznakowania w budynku",
+"cat": "wspolnoty-i-spoldzielnie",
+"sub": "Montaż",
+"variants": "montaż od 50 zł netto, dojazd 20 zł netto za lokalizację, Śląsk",
+"priceText": "od 61.5 zł",
+"price": 5.0,
+"tiers": null,
+"machine": "—",
+"score": 1048.0,
+"xmas": false,
+"img": "img/hf/montaz-oznakowania-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/montaz-oznakowania-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [
+"firma"
+],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -6179,6 +9150,7 @@
 "gallery": [
 "img/hf/plakietki-qr-grawer-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6215,6 +9187,7 @@
 "gallery": [
 "img/hf/piktogram-wc-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6250,6 +9223,7 @@
 "gallery": [
 "img/hf/piktogramy-info-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6286,6 +9260,7 @@
 "gallery": [
 "img/hf/pakiet-social-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6317,6 +9292,9 @@
 "unit": false,
 "gallery": [
 "img/hf/folia-mrozona-salon-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
 ],
 "tags": {
 "okazja": [
@@ -6351,6 +9329,9 @@
 "unit": false,
 "gallery": [
 "img/hf/naklejki-qr-social-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
 ],
 "tags": {
 "okazja": [
@@ -6387,6 +9368,7 @@
 "gallery": [
 "img/hf/kalendarz-2027-a3-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -6424,6 +9406,7 @@
 "gallery": [
 "img/hf/akryl-blok-zdjecie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny"
@@ -6459,6 +9442,7 @@
 "gallery": [
 "img/hf/cennik-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6495,6 +9479,7 @@
 "gallery": [
 "img/hf/zegar-z-logo-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -6530,6 +9515,7 @@
 "gallery": [
 "img/hf/tablica-inicjaly-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub",
@@ -6570,6 +9556,7 @@
 "gallery": [
 "img/hf/cyfry-zegar-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -6604,6 +9591,7 @@
 "gallery": [
 "img/hf/topper-ihs-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub",
@@ -6640,6 +9628,7 @@
 "gallery": [
 "img/hf/logo-gotowe-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6672,6 +9661,7 @@
 "gallery": [
 "img/hf/plan-stolow-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -6706,6 +9696,7 @@
 "gallery": [
 "img/hf/tablica-witamy-gosci-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -6740,6 +9731,7 @@
 "gallery": [
 "img/hf/notesy-logo-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6776,6 +9768,7 @@
 "gallery": [
 "img/hf/szyld-ramka-znaki-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6808,6 +9801,7 @@
 "gallery": [
 "img/hf/wizytownik-lustro-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6842,6 +9836,7 @@
 "gallery": [
 "img/hf/fotoksiazka-a5-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "okragle-urodziny",
@@ -6884,6 +9879,7 @@
 "gallery": [
 "img/hf/logo-indywidualne-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6898,7 +9894,7 @@
 {
 "slug": "zestaw-montazowy",
 "name": "Zestaw do montażu folii na mokro + rakla",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "rakla z filcem, spryskiwacz, płyn",
 "priceText": "69 zł",
@@ -6916,6 +9912,7 @@
 "gallery": [
 "img/hf/zestaw-montazowy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6952,6 +9949,7 @@
 "gallery": [
 "img/hf/pakiet-startowy-salon-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -6987,6 +9985,7 @@
 "gallery": [
 "img/hf/kalendarz-adwentowy-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "dzien-babci"
@@ -7026,6 +10025,7 @@
 "gallery": [
 "img/hf/lamibook-imie-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "chrzest",
@@ -7063,6 +10063,7 @@
 "gallery": [
 "img/f/bombka-zlota.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny"
@@ -7097,6 +10098,7 @@
 "gallery": [
 "img/hf/dekoracje-lustrzane-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -7129,6 +10131,7 @@
 "gallery": [
 "img/hf/pupil-figurka-3d-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -7169,6 +10172,9 @@
 "gallery": [
 "img/hf/okleiny-motocross-1.jpg"
 ],
+"also": [
+"druk-wielkoformatowy"
+],
 "tags": {
 "okazja": [
 "firma"
@@ -7204,6 +10210,7 @@
 "gallery": [
 "img/hf/indeksy-wskazowki-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "nowy-dom"
@@ -7238,6 +10245,7 @@
 "gallery": [
 "img/hf/skrypt-szkoleniowy-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -7273,6 +10281,7 @@
 "gallery": [
 "img/hf/strona-one-page-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -7287,7 +10296,7 @@
 {
 "slug": "folia-dekor-kropki",
 "name": "Folie dekoracyjne: kropki, paski",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "mrożone",
 "priceText": "od 15 zł",
@@ -7305,6 +10314,7 @@
 "gallery": [
 "img/hf/folia-dekor-kropki-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -7317,6 +10327,37 @@
 "mat": [
 "druk"
 ]
+}
+},
+{
+"slug": "mechanizm-cichy",
+"name": "Cichy mechanizm kwarcowy",
+"cat": "prezenty-z-grawerem",
+"sub": "Zegary ścienne",
+"variants": "gwint 9 / 11 / 14 / 24 mm",
+"priceText": "19 zł",
+"price": 19.0,
+"tiers": null,
+"machine": "zakup",
+"score": 1012.0,
+"xmas": true,
+"img": "img/hf/mechanizm-cichy-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/mechanizm-cichy-1.jpg"
+],
+"also": [],
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
 }
 },
 {
@@ -7340,6 +10381,7 @@
 "gallery": [
 "img/f/koperta-drewniana.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [],
 "dla": [],
@@ -7372,6 +10414,7 @@
 "gallery": [
 "img/hf/koszulka-z-nadrukiem-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -7412,6 +10455,7 @@
 "gallery": [
 "img/hf/bluza-z-nadrukiem-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -7451,6 +10495,7 @@
 "gallery": [
 "img/hf/kubek-z-nadrukiem-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "urodziny",
@@ -7493,6 +10538,7 @@
 "gallery": [
 "img/hf/tablica-powitalna-1.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "slub"
@@ -7509,7 +10555,7 @@
 {
 "slug": "folia-mrozona-zlote-logo",
 "name": "Folia mrożona ze złotym logo i napisami",
-"cat": "dla-firm",
+"cat": "druk-wielkoformatowy",
 "sub": "Witryny i folie",
 "variants": "złota folia na mrożonej",
 "priceText": "109 zł",
@@ -7528,6 +10574,7 @@
 "gallery": [
 "img/p/folia-mrozona-z-logo.jpg"
 ],
+"also": [],
 "tags": {
 "okazja": [
 "firma"
@@ -7540,34 +10587,6 @@
 "mat": [
 "druk"
 ]
-}
-},
-{
-"slug": "mechanizm-cichy",
-"name": "Cichy mechanizm kwarcowy",
-"cat": "prezenty-z-grawerem",
-"sub": "Zegary ścienne",
-"variants": "gwint 9 / 11 / 14 / 24 mm",
-"priceText": "19 zł",
-"price": 19.0,
-"tiers": null,
-"machine": "zakup",
-"score": 12.0,
-"xmas": true,
-"img": null,
-"fields": [
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [],
-"tags": {
-"okazja": [],
-"dla": [],
-"pers": [
-"imie"
-],
-"mat": []
 }
 }
 ],

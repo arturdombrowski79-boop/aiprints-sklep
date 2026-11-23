@@ -6,7 +6,7 @@ const C = Object.fromEntries(cat.cats.map((c) => [c.slug, c]));
 const cats = cat.cats.filter((c) => SEASON || c.slug !== 'na-swieta');
 const thumb = (s) => (cat.products.find((p) => p.cat === s && p.img) || {}).img || `img/ph/${s}.svg`;
 const idx = cat.products.filter((p) => SEASON || p.cat !== 'na-swieta').map((p) => ({ s: p.slug, n: p.name, c: C[p.cat].name, p: p.priceText, i: p.img || `img/ph/${p.cat}.svg` }));
-const nav = [['prezenty-ze-zdjeciem', 'Ze zdjęciem'], ['prezenty-z-grawerem', 'Z grawerem'], ['dla-firm', 'Dla firm'], ['wspolnoty-i-spoldzielnie', 'Wspólnoty']];
+const nav = [['prezenty-ze-zdjeciem', 'Ze zdjęciem'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
 const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
 const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.facets.dla]];
 ---
@@ -19,7 +19,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
     <a href="index.html" aria-label="AiPrints.pl – strona główna" class="shrink-0"><img src="img/logo.svg" alt="AiPrints.pl" width="150" height="50" class="h-[42px] w-auto" /></a>
     <nav class="hidden xl:flex items-center gap-1 text-[14.5px]" aria-label="Główne menu">
       <div class="dd relative">
-        <button class="h-10 px-3.5 rounded-full hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">Sklep <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
+        <button class="h-10 px-3.5 rounded-full whitespace-nowrap hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">Sklep <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
         <div class="ddm absolute left-0 top-full pt-3">
           <div class="w-[720px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,17,16,.14)] p-3 grid grid-cols-3 gap-1.5">
             {cats.map((c) => (
@@ -33,7 +33,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
       </div>
       {MEGA.map(([k, t, gs]) => (
       <div class="dd relative">
-        <button class="h-10 px-3.5 rounded-full hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">{t} <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
+        <button class="h-10 px-3.5 rounded-full whitespace-nowrap hover:bg-black/[.04] flex items-center gap-1.5 font-medium" aria-expanded="false">{t} <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></button>
         <div class="ddm absolute left-0 top-full pt-3">
           <div class="w-[860px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,17,16,.14)] p-7 grid gap-6" style={`grid-template-columns:repeat(${gs.length},minmax(0,1fr))`}>
             {gs.map(([g, os]) => <div><p class="text-[11px] uppercase tracking-[.14em] text-mute mb-3">{g}</p>{os.filter(([v]) => cntF(k, v)).map(([v, n]) => <a href={`sklep.html?${k}=${v}`} class="block py-1.5 text-[14.5px] hover:text-acc transition">{n}</a>)}</div>)}
@@ -41,7 +41,7 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
           </div>
         </div>
       </div>))}
-      {nav.map(([h, t]) => <a href={`${h}.html`} class={`h-10 px-3.5 rounded-full grid place-items-center hover:bg-black/[.04] transition ${active === h ? 'bg-black/[.05] font-semibold' : 'text-ink/80'}`}>{t}</a>)}
+      {nav.map(([h, t]) => <a href={`${h}.html`} class={`h-10 px-3.5 rounded-full grid place-items-center whitespace-nowrap hover:bg-black/[.04] transition ${active === h ? 'bg-black/[.05] font-semibold' : 'text-ink/80'}`}>{t}</a>)}
     </nav>
     <div class="ml-auto flex items-center gap-1.5">
       <button id="srchBtn" class="hidden md:flex items-center gap-3 h-11 w-[260px] rounded-full border border-line bg-white/70 px-4 text-[14px] text-mute hover:border-ink/30 transition" aria-label="Szukaj">

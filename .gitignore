@@ -9,3 +9,4 @@ prod/
 api/config.php
 api/data/*.sqlite*
 api/data/files/
+art/

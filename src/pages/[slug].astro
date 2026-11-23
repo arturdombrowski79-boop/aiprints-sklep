@@ -27,7 +27,7 @@ const C = Object.fromEntries(cat.cats.map((x) => [x.slug, x]));
 const site = 'https://aiprints.pl/';
 let d = {};
 if (kind === 'cat') {
-  const items = cat.products.filter((x) => rec ? (SEASON || x.cat !== 'na-swieta') && new RegExp(re).test(x.slug) : x.cat === c.slug).map((x) => rec ? { ...x, sub: cat.cats.find((k) => k.slug === x.cat).name } : x).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0));
+  const items = cat.products.filter((x) => rec ? (SEASON || x.cat !== 'na-swieta') && new RegExp(re).test(x.slug) : x.cat === c.slug || (x.also || []).includes(c.slug)).map((x) => rec ? { ...x, sub: cat.cats.find((k) => k.slug === x.cat).name } : x).sort((a, b) => (b.img ? 1 : 0) - (a.img ? 1 : 0));
   d = { items, b2b: B2B.includes(c.slug) };
 } else {
   const cc = C[p.cat];
