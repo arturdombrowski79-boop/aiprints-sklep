@@ -100,7 +100,7 @@ export function initCart(opts) {
   $('coBack').onclick = closeCo; $('again').onclick = closeCo;
   $$('[name=d]').forEach((r) => r.onchange = () => { $('lkBox').classList.toggle('hidden', !/Paczkomat/.test(document.querySelector('[name=d]:checked').closest('label').textContent)); renderCo(); });
   let pm = 'blik';
-  $$('[data-p]').forEach((b) => b.onclick = () => { pm = b.dataset.p; $$('[data-p]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); $$('.pane').forEach((p) => p.classList.toggle('hidden', p.id !== 'p-' + pm)); });
+  $$('#co [data-p]').forEach((b) => b.onclick = () => { pm = b.dataset.p; $$('#co [data-p]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); $$('.pane').forEach((p) => p.classList.toggle('hidden', p.id !== 'p-' + pm)); });
   $('blik').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });
   $$('[data-x]').forEach((b) => b.onclick = () => pay('wallet'));
   $('pay').onclick = () => pay(pm);
