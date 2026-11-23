@@ -95,7 +95,7 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
 
 </Base>
 ) : (
-<Base title={`${p.name}${p.price ? ' – ' + (p.tiers ? 'od ' + p.tiers[0].p + ' zł' : p.priceText) : ''}`} description={`${d.desc[0]} Robimy w pracowni w Chorzowie, podgląd przed produkcją, wysyłka w całej Polsce.`.slice(0, 300)} canonical={p.slug} schema={schema} image={d.img} active={p.cat}>
+<Base title={`${p.name}${p.price ? ' – ' + (p.promo ? 'od ' + String((Math.round((p.tiers ? p.tiers[0].p : p.price) * p.promo.k * 100) / 100).toFixed(2)).replace('.', ',').replace(',00', '') + ' zł (−' + p.promo.pct + '%)' : p.tiers ? 'od ' + p.tiers[0].p + ' zł' : p.priceText) : ''}`} description={`${d.desc[0]} Robimy w pracowni w Chorzowie, podgląd przed produkcją, wysyłka w całej Polsce.`.slice(0, 300)} canonical={p.slug} schema={schema} image={d.img} active={p.cat}>
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-10">
     <nav class="text-[13px] text-mute" aria-label="Okruszki">{crumbs.map(([n, u], i) => <>{i > 0 && <span class="mx-2">/</span>}<a href={u} class="hover:text-ink">{n}</a></>)}</nav>
     <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 mt-6">
