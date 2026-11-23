@@ -26,7 +26,7 @@ import Uploader from '../components/Uploader.astro';
         if (!r.ok) throw 0;
         $('tyAcc').href = 'konto.html#zamowienie/' + o.no;
         $('tyItems').innerHTML = o.items.map((i) => `<div class="flex justify-between rounded-2xl bg-white border border-line px-4 py-3 text-[14.5px]"><span>${i.title} × ${i.qty}${i.pers ? '' : ' <span class="text-emerald-700 text-[12px]">· 14 dni na zwrot</span>'}</span><b>${zl(i.price * i.qty)}</b></div>`).join('') + `<div class="flex justify-between px-4 pt-2 text-[16px]"><b>Razem</b><b>${zl(o.total)}</b></div>`;
-        if (o.status === 'paid') { $('tyMsg').innerHTML = `Płatność za zamówienie <b>${o.no}</b> przyjęta. Potwierdzenie wysłaliśmy na <b>${o.email}</b>.`; mark(o.no, 0); }
+        if (o.status === 'paid') { $('tyMsg').innerHTML = `Płatność za zamówienie <b>${o.no}</b> przyjęta. Potwierdzenie wysłaliśmy na <b>${o.email}</b>.`; mark(o.no, 0); try { if (!localStorage.getItem('px-' + o.no)) { localStorage.setItem('px-' + o.no, '1'); window.track && track('Purchase', { value: +o.total, no: o.no, ids: (o.items || []).map((i) => i.title), n: (o.items || []).reduce((a, i) => a + (+i.qty || 1), 0) }); } } catch (e) { } }
         else if (o.status === 'failed') $('tyMsg').textContent = 'Płatność nie doszła do skutku. Spróbuj ponownie albo napisz do nas.';
         else { $('tyMsg').innerHTML = `Zamówienie <b>${o.no}</b> przyjęte – czekamy na potwierdzenie płatności z banku${tries > 5 ? ' (przy przelewie może to potrwać do kilku godzin, damy znać mailem)' : '…'}`; if (tries++ < 20) setTimeout(check, 3000); }
       } catch (e) { $('tyMsg').textContent = 'Zamówienie przyjęte. Potwierdzenie przyjdzie e-mailem.'; }

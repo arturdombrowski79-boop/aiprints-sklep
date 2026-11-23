@@ -209,6 +209,7 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
     const q = $('quote');
     if (q) bindQuote(q, $('qok'), q.dataset.about);
     const cfg = $('cfg');
+    if (cfg) window.track && track('ViewContent', { ids: [cfg.dataset.slug], name: cfg.dataset.name, value: +(($('price') || {}).dataset || {}).base || undefined });
     if (cfg) {
       const base = +$('price').dataset.base; const qt = JSON.parse(cfg.dataset.qt || '[]');
       let opt = cfg.querySelector('.opt[aria-pressed=true]'); let photoUrl = null;
