@@ -42,9 +42,11 @@ IMG={'krysztal-zdjecie':'f/krysztal-para-sq','krysztal-slub':'f/krysztal-para-sq
 imgs={f[:-4] for f in os.listdir(B+'/public/img/p')}
 def toks(s): return set(t for t in re.split(r'[-_ ]',s.lower()) if len(t)>2)
 def price(t):
-    m=re.findall(r'(\d+(?:,\d+)?)\s*(?:zł|/|\s|$)',t.replace(' ',' '))
-    if not m or 'wycena' in t: return None
-    return float(m[0].replace(',','.'))
+    # „od 1 490 zł”, „49.2 zł”, „18,45 zł/szt”, „99 zł (2 szt.)” → pierwsza kwota w tekście
+    t=re.sub(r'(?<=\d)[ \u00a0](?=\d{3}\b)','',t)
+    if 'wycena' in t: return None
+    m=re.search(r'(\d+(?:[.,]\d+)?)',t)
+    return float(m.group(1).replace(',','.')) if m else None
 def tiers(t):
     m=re.findall(r'\b([SML])\s+(\d+)',t)
     return [{'k':k,'p':int(p)} for k,p in m] if len(m)>=2 else None
@@ -91,6 +93,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
             if src=='warianty': r['warianty']=', '.join(t['k'] for t in vt)
             else: r['warianty']=r['warianty']
             r['nasza_cena']='od '+(('%g'%vt[0]['p']).replace('.',','))+' zł'+('/szt' if re.search('odbitk',r['slug']) else '')
+    r['nasza_cena']=re.sub(r'(\d+)\.(\d{1,2})(?=\s*zł)',lambda m:m.group(1)+','+m.group(2).ljust(2,'0'),r['nasza_cena'])
     p=price(r['nasza_cena'])
     unit=bool(re.search(r'/szt|/m²|/ 50|od \d+ szt',r['nasza_cena']))
     prods.append(dict(slug=r['slug'],name=r['nazwa'],cat=cat,sub=sub,variants=r['warianty'],priceText=r['nasza_cena'],price=p,tiers=vt or tiers(r['nasza_cena']),
