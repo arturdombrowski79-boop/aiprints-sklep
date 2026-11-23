@@ -6,13 +6,14 @@ export const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ','
 const KEY = 'aiprints-cart-v1';
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch (e) { return null; } };
 const S = load() || { items: [], add: { box: false, card: false, exp: false }, disc: false };
+if (S.disc && typeof S.disc !== 'object') S.disc = false; // stary zapis (zawsze WITAMY10)
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
 const ADD = { box: 19, card: 9, exp: 0 };
 const count = () => S.items.reduce((s, i) => s + i.qty, 0);
 const boxable = () => S.items.reduce((s, i) => s + (i.boxable ? i.qty : 0), 0);
 function totals() {
   const sub = S.items.reduce((s, i) => s + i.price * i.qty, 0) + (S.items.length ? (S.add.box ? ADD.box * boxable() : 0) + (S.add.card ? ADD.card : 0) + (S.add.exp ? ADD.exp : 0) : 0);
-  const d = S.disc ? Math.round(sub * 10) / 100 : 0; return { sub, d, after: sub - d };
+  const d = S.disc ? Math.round(sub * S.disc.p) / 100 : 0; return { sub, d, after: sub - d };
 }
 let lenis = null, toastFn = () => { };
 export function thumb(dataUrl) {
@@ -29,15 +30,23 @@ export function renderCart() {
     `<div class="text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold mt-5 mb-2">Dodaj do prezentu</div>` +
     [['box', 'Pudełko premium z wkładką', 'czarne, wkładka z pianki EVA', '+19 zł/szt.'], ['card', 'Kartka z Twoimi życzeniami', 'wydrukujemy i dołożymy', '+9 zł']].map(([k, t, d, p]) =>
       `<label class="flex items-center gap-3 rounded-2xl border ${S.add[k] ? 'border-ink bg-white' : 'border-line bg-white/60'} px-4 py-3 mb-2 cursor-pointer text-[14px] transition"><input type="checkbox" data-ad="${k}" ${S.add[k] ? 'checked' : ''} class="w-[18px] h-[18px] accent-[#141210]"><span class="flex-1"><b class="font-medium">${t}</b><span class="block text-[12px] text-mute">${d}</span></span><b class="whitespace-nowrap">${p}</b></label>`).join('') +
-    `<div class="flex gap-2 mt-3"><input id="code" placeholder="Kod rabatowy (test: WITAMY10)" value="${S.disc ? 'WITAMY10' : ''}" class="flex-1 rounded-full border border-line bg-white px-4 py-2.5 text-[14px] outline-none focus:border-ink"><button id="codeB" class="rounded-full border border-ink px-4 text-[14px] font-medium">Użyj</button></div>`;
-  const t = totals(); $('sSub').textContent = zl(t.sub); $('rDisc').classList.toggle('hidden', !S.disc); $('sDisc').textContent = '−' + zl(t.d); $('sTot').textContent = zl(t.after);
+    `<div class="flex gap-2 mt-3"><input id="code" placeholder="Kod rabatowy" value="${S.disc ? S.disc.c : ''}" class="flex-1 rounded-full border border-line bg-white px-4 py-2.5 text-[14px] outline-none focus:border-ink"><button id="codeB" class="rounded-full border border-ink px-4 text-[14px] font-medium">Użyj</button></div>`;
+  const t = totals(); $('sSub').textContent = zl(t.sub); $('rDisc').classList.toggle('hidden', !S.disc); $('rDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('sDisc').textContent = '−' + zl(t.d); $('sTot').textContent = zl(t.after);
   const left = Math.max(0, 199 - t.after), pct = Math.min(100, t.after / 199 * 100);
   $('fs').innerHTML = `${left > 0 ? `Brakuje <b>${zl(left)}</b> do darmowej dostawy` : '🎉 Masz <b>darmową dostawę</b>'}<div class="h-1.5 rounded-full bg-paper2 mt-2 overflow-hidden"><div id="fsBar" class="h-full rounded-full bg-gradient-to-r from-gold to-gold2 transition-all duration-700" style="width:0"></div></div>`;
   requestAnimationFrame(() => requestAnimationFrame(() => { const b = $('fsBar'); if (b) b.style.width = pct + '%'; }));
   $('toCo').disabled = !S.items.length; $('toCo').style.opacity = S.items.length ? 1 : .4;
   box.querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { S.items.splice(+b.dataset.rm, 1); save(); renderCart(); });
   box.querySelectorAll('[data-ad]').forEach((c) => c.onchange = () => { S.add[c.dataset.ad] = c.checked; save(); renderCart(); });
-  const cb = $('codeB'); if (cb) cb.onclick = () => { S.disc = $('code').value.trim().toUpperCase() === 'WITAMY10'; save(); toastFn(S.disc ? 'Kod WITAMY10: −10% ✓' : 'Nieprawidłowy kod'); renderCart(); };
+  const cb = $('codeB'); if (cb) cb.onclick = () => checkCode($('code').value);
+}
+// kod rabatowy sprawdza serwer (api/code.php, kody w api/config.php); bez serwera (podgląd) – kod demo WITAMY10
+async function checkCode(v) {
+  const c = String(v || '').trim().toUpperCase(); if (!c) { S.disc = false; save(); renderCart(); return; }
+  let p = 0; await live();
+  if (SERVER) { try { const r = await fetch('api/code.php?c=' + encodeURIComponent(c), { cache: 'no-store' }); const j = await r.json(); p = +j.pct || 0; } catch (e) { } }
+  else p = c === 'WITAMY10' ? 10 : 0;
+  S.disc = p ? { c, p } : false; save(); toastFn(p ? `Kod ${c}: −${p}% ✓` : 'Nieprawidłowy kod'); renderCart();
 }
 export function addRaw(items) { items.forEach((i) => S.items.push(i)); save(); renderCart(); openCart(); }
 export function openCart() { renderCart(); $('drawer').classList.add('on'); $('scrim').classList.add('on'); if (innerWidth < 1024) lenis && lenis.stop(); }
@@ -63,7 +72,7 @@ function renderCo() {
   $('coItems').innerHTML = S.items.map((i) => `<div class="flex gap-3 py-3 border-b border-[#eef1f4]"><img src="${i.img}" class="w-14 h-14 rounded-lg object-cover"><div class="flex-1 text-[13.5px]"><b class="font-semibold">${i.title}</b><div class="text-[12px] text-[#697386]">${i.lines[0] || ''} · ${i.qty} szt.</div></div><b class="text-[13.5px]">${zl(i.price * i.qty)}</b></div>`).join('') +
     (S.add.box && boxable() ? `<div class="flex justify-between text-[13px] text-[#697386] pt-2"><span>Pudełko premium</span><span>${zl(ADD.box * boxable())}</span></div>` : '') + (S.add.card ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Kartka</span><span>9 zł</span></div>` : '') + (S.add.exp ? `<div class="flex justify-between text-[13px] text-[#697386]"><span>Ekspres</span><span>19 zł</span></div>` : '');
   const s = shipVal(), tot = t.after + s;
-  $('cSub').textContent = zl(t.sub); $('cDiscR').classList.toggle('hidden', !S.disc); $('cDisc').textContent = '−' + zl(t.d); $('cShip').textContent = s ? zl(s) : '0 zł'; $('cTot').textContent = zl(tot); $('payT').textContent = 'Zamawiam i płacę ' + zl(tot);
+  $('cSub').textContent = zl(t.sub); $('cDiscR').classList.toggle('hidden', !S.disc); if ($('cDiscL')) $('cDiscL').textContent = S.disc ? 'Rabat ' + S.disc.c : ''; $('cDisc').textContent = '−' + zl(t.d); $('cShip').textContent = s ? zl(s) : '0 zł'; $('cTot').textContent = zl(tot); $('payT').textContent = 'Zamawiam i płacę ' + zl(tot);
   const P = S.items.filter((i) => i.pers !== false), G = S.items.filter((i) => i.pers === false);
   $('persBox').classList.toggle('hidden', !P.length); $('persList').textContent = P.length === S.items.length ? (P.length > 1 ? 'wszystkie produkty z tego zamówienia' : 'ten produkt') : P.map((i) => i.title).join(', ');
   $('retInfo').classList.toggle('hidden', !G.length); $('retInfo').textContent = G.length ? `Bez personalizacji: ${G.map((i) => i.title).join(', ')} – możesz odstąpić od umowy w ciągu 14 dni od odbioru, bez podania przyczyny.` : '';
@@ -74,7 +83,7 @@ async function live() { if (LIVE !== null) return LIVE; try { const r = await fe
 async function goStripe(em) {
   const att = {}; for (const [ix, i] of S.items.entries()) { if (i.design) att[ix] = { design: await idbGet(i.design) }; if (i.files) att[ix] = { ...(att[ix] || {}), files: await idbGet(i.files) }; }
   const d = document.querySelector('[name=d]:checked');
-  const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? 'WITAMY10' : '', add: S.add,
+  const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? S.disc.c : '', add: S.add,
     items: S.items.map((i) => ({ slug: i.slug, opt: i.opt || null, sides: i.sides || null, qty: i.qty, title: i.title, lines: i.lines, text: i.text || '', notes: i.notes || '', pers: i.pers !== false, img: i.img })), att, consent: { tos: true, pers: $('pers').checked } };
   const r = await fetch('api/checkout.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const j = await r.json().catch(() => ({})); if (!r.ok || !j.url) throw new Error(j.error || 'Nie udało się rozpocząć płatności');
