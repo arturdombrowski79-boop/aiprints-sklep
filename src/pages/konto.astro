@@ -39,7 +39,9 @@ import Base from '../layouts/Base.astro';
     import { toast } from '../scripts/common.js';
     const $ = (i) => document.getElementById(i);
     const KEY = 'aiprints-orders';
-    const get = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
+    // zamówienia nieopłacone (płatność przerwana w Stripe) nie są pokazywane
+    const all = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
+    const get = () => all().filter((o) => !o.pending);
     const put = (o) => { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) { } };
     const sess = () => { try { return localStorage.getItem('aiprints-session'); } catch (e) { return null; } };
     const STEPS = ['Opłacone', 'Projekt zaakceptowany', 'W produkcji', 'Wysłane', 'Doręczone'];
@@ -88,7 +90,7 @@ import Base from '../layouts/Base.astro';
           <p class="text-[13px] text-mute mt-3">${({ blik: 'BLIK', card: 'Karta', p24: 'Przelewy24', wallet: 'Apple Pay / Google Pay' })[o.pay] || 'Płatność online'} · ${o.delivery}</p>
         </div>
       </div>`;
-      const save = (fn) => { const A = get(); const x = A.find((y) => y.no === no); fn(x); put(A); counts(); order(no); };
+      const save = (fn) => { const A = all(); const x = A.find((y) => y.no === no); fn(x); put(A); counts(); order(no); };
       $('acc') && ($('acc').onclick = () => save((x) => { x.status = 2; x.fix = null; (x.log ||= []).push({ t: new Date().toISOString(), m: 'Klient zaakceptował projekt' }); toast('Dziękujemy! Projekt przekazany do produkcji'); }));
       $('fix') && ($('fix').onclick = () => $('fixBox').classList.toggle('hidden'));
       $('fixS') && ($('fixS').onclick = () => save((x) => { x.fix = $('fixT').value.trim() || 'Proszę o poprawkę'; x.proof = null; (x.log ||= []).push({ t: new Date().toISOString(), m: 'Klient poprosił o poprawkę: ' + x.fix }); toast('Uwagi wysłane – nowa wersja projektu w ciągu 2 dni roboczych'); }));
@@ -101,7 +103,7 @@ import Base from '../layouts/Base.astro';
     }
     function route() {
       const s = sess(); $('login').classList.toggle('hidden', !!s); $('acct').classList.toggle('hidden', !s); if (!s) return;
-      seed(); counts(); $('who').textContent = s;
+      if (!/aiprints\.pl$/.test(location.hostname)) seed(); counts(); $('who').textContent = s;
       const [r, id] = location.hash.slice(1).split('/');
       if (r === 'zamowienie') order(id); else if (r === 'akceptacja') { list(true); nav(r); } else if (r === 'dane') { dane(); nav(r); } else { list(); nav('zamowienia'); }
       scrollTo(0, 0);
