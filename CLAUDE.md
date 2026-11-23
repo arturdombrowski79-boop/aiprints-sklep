@@ -5,7 +5,7 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 
 ## Jak to działa
 - Astro (statyczny) + Tailwind v4 + GSAP; kreator Fabric.js. Build: `bash tools/build.sh` → `prod/`.
-- Katalog produktów: `data/baza-produktow.csv` → `tools/catalog.py`. Nowe produkty: `tools/new_products.py`. Zdjęcia: `public/img/hf/<slug>-1.jpg` (1200×900).
+- Katalog produktów: `data/baza-produktow.csv` → `tools/catalog.py`. Nowe produkty: `tools/new_products.py`. Zdjęcia: `public/img/hf/<slug>-1.jpg` (1200×900). Po dodaniu zdjęć: `python3 tools/webp.py` (wersje WebP 480/960 – build dopisuje srcset).
 - Promocja: `PROMO` w `src/data/config.js` (Omnibus: `data/price-history.json`, najniższa cena z 30 dni). Przerwa w pracowni: `BREAK`.
 - Płatności: Stripe Checkout, backend PHP w `api/` (bez SDK). Ceny liczone na serwerze z `api/catalog.json`.
 - Wdrożenie: push na `main` → GitHub Actions → rsync SSH na LH.pl (`/home/platne/serwer271550/public_html/aiprints`, port 40022). Sekrety LH_* są tylko w GitHub Secrets.
