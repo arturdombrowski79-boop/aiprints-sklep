@@ -6,6 +6,7 @@ export const PREVIEW = '2 dni robocze';     // do kiedy wysyłamy podgląd proje
 export const BREAK = { show: '2026-12-01', from: '2026-12-21', to: '2027-01-07', resume: '8 stycznia' };
 // Statystyki i reklamy – wpisz identyfikatory, gdy założysz konta. Puste = nic się nie ładuje.
 export const GA4_ID = '';      // np. 'G-XXXXXXXXXX' (Google Analytics 4 / Google Ads przez gtag)
+export const ADS_ID = 'AW-18592432895';  // tag Google Ads (konwersja „Zakup” = wejście na /dziekujemy)
 export const META_PIXEL = '1459923272271488';  // np. '123456789012345'
 
 // Promocja (Omnibus): przy obniżce pokazujemy najniższą cenę z 30 dni przed jej startem – liczona z data/price-history.json.

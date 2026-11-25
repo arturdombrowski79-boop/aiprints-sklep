@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import CartCheckout from '../components/CartCheckout.astro';
 import '../styles/fonts.css';
 import '../styles/global.css';
-import { GA4_ID, META_PIXEL, PROMO } from '../data/config.js';
+import { GA4_ID, ADS_ID, META_PIXEL, PROMO } from '../data/config.js';
 const { title, description, schema = null, canonical = '', image = 'img/site/og-aiprints.jpg', active = '', noindex = false } = Astro.props;
 const site = 'https://aiprints.pl/';
 // SEO: tytuł do ~62 znaków (marka tylko gdy się mieści), opis do ~158 znaków ucięty na zdaniu lub słowie
@@ -34,13 +34,15 @@ const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <=
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   <!-- Consent Mode v2: domyślnie brak zgody; nic nie śledzi przed decyzją klienta -->
   <script is:inline define:vars={{ PU: PROMO.until }}>if (Date.now() > new Date(PU + 'T23:59:59+01:00').getTime()) document.documentElement.classList.add('promo-off');</script>
-  <script is:inline define:vars={{ GA4_ID, META_PIXEL }}>
+  <script is:inline define:vars={{ GA4_ID, ADS_ID, META_PIXEL }}>
     window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } window.gtag = gtag;
     gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
     window.__ids = { ga: GA4_ID, px: META_PIXEL };
     window.applyConsent = function (c) {
       gtag('consent', 'update', { analytics_storage: c.stat ? 'granted' : 'denied', ad_storage: c.ads ? 'granted' : 'denied', ad_user_data: c.ads ? 'granted' : 'denied', ad_personalization: c.ads ? 'granted' : 'denied' });
-      if ((c.stat || c.ads) && GA4_ID && !window.__ga) { window.__ga = 1; var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID; document.head.appendChild(s); gtag('js', new Date()); gtag('config', GA4_ID); }
+      var gid = (c.stat && GA4_ID) || (c.ads && ADS_ID); if (gid && !window.__ga) { window.__ga = 1; var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gid; document.head.appendChild(s); gtag('js', new Date()); }
+      if (c.stat && GA4_ID && !window.__gaC) { window.__gaC = 1; gtag('config', GA4_ID); }
+      if (c.ads && ADS_ID && !window.__adsC) { window.__adsC = 1; gtag('config', ADS_ID); }
       if (c.ads && META_PIXEL && !window.fbq) { !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', META_PIXEL); fbq('track', 'PageView'); }
     };
     // zdarzenia sklepu: działają tylko, gdy użytkownik zgodził się na marketing (fbq) / statystyki (GA4)
