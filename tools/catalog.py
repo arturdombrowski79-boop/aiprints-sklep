@@ -39,7 +39,7 @@ IMG={'krysztal-zdjecie':'f/krysztal-para-sq','krysztal-slub':'f/krysztal-para-sq
  'pakiet-budynek':'p/tablica-ze-stali-nierdzewnej','etui-telefon-uv':None,'tablica-powitalna':'p/tablica-dibond','plan-stolow':'p/tablica-dibond','zaproszenia':'p/zaproszenia',
  'kalendarz-biurkowy':'p/kalendarz-scienny-a3-2027','plakat-mapa-2d':None,'mapa-nieba':None,'wizytowki-lakier':'p/wizytowki-300-g','magnesy-zdjecia':'p/odbitki-10-15-do-15-21',
  'akryl-led-zdjecie':'p/tabliczka-akrylowa-led','kartka-drewniana':'p/nadruk-uv-na-drewnie','fotoksiazka-a5':'p/zdjecia-z-sesji-w-etui'}
-imgs={f[:-4] for f in os.listdir(B+'/public/img/p')}
+imgs={f[:-4] for f in os.listdir(B+'/public/img/p') if f.endswith('.jpg') and not re.search(r'-\d+w\.', f)}
 def toks(s): return set(t for t in re.split(r'[-_ ]',s.lower()) if len(t)>2)
 def price(t):
     # „od 1 490 zł”, „49.2 zł”, „18,45 zł/szt”, „99 zł (2 szt.)” → pierwsza kwota w tekście
