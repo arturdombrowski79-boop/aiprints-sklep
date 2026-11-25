@@ -77,13 +77,30 @@ const MEGA = [['okazja', 'Okazje', cat.facets.okazja], ['dla', 'Dla kogo', cat.f
 
 <div id="mnav" class="scrim fixed inset-0 z-50 bg-paper overflow-auto">
   <div class="flex justify-between items-center px-5 h-[76px]"><img src="img/logo.svg" alt="AiPrints.pl" class="h-10 w-auto" /><button id="mclose" class="w-11 h-11 rounded-full hover:bg-black/5 text-[26px]" aria-label="Zamknij">×</button></div>
-  <nav class="px-6 pb-10 grid gap-1">
-    {cats.map((c) => <a href={`${c.slug}.html`} class="hd text-[42px] py-1.5 border-b border-line">{c.name}</a>)}
-    <div class="grid grid-cols-2 gap-2 mt-6">
-      {[['sklep', 'Znajdź prezent'], ['uslugi', 'Usługi'], ['pracownia', 'Pracownia'], ['kontakt', 'Kontakt'], ['dostawa-i-platnosci', 'Dostawa'], ['zwroty-i-reklamacje', 'Reklamacje']].map(([h, t]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3.5 text-[15px] font-medium">{t}</a>)}
+  <nav class="px-6 pb-10">
+    <div class="grid grid-cols-2 gap-2 p-1 rounded-full bg-black/5" role="tablist">
+      <button type="button" data-mt="s" class="mt h-11 rounded-full text-[15px] font-semibold bg-white shadow" aria-selected="true">Sklep</button>
+      <button type="button" data-mt="u" class="mt h-11 rounded-full text-[15px] font-semibold" aria-selected="false">Usługi</button>
     </div>
+    <div data-mp="s"><div class="grid gap-1 mt-4">
+      {cats.map((c) => <a href={`${c.slug}.html`} class="hd text-[34px] py-1.5 border-b border-line">{c.name}</a>)}
+    </div></div>
+    <div data-mp="u" class="hidden"><div class="grid gap-2 mt-4">
+      {[['druk-dla-artystow', 'Fine art – Digigraphie by Epson', 'Wydruki muzealne dla fotografów i artystów'], ['fototapeta', 'Fototapety na wymiar', 'Druk HP Latex, montaż na Śląsku'], ['druk-wielkoformatowy', 'Banery, folie, naklejki', 'Druk wielkoformatowy i cięcie po obrysie'], ['grawer-laserowy', 'Grawer i cięcie laserem', 'Szkło, drewno, metal, akryl'], ['druk-cyfrowy', 'Druk cyfrowy', 'Ulotki, broszury, dyplomy, kalendarze'], ['druk-3d', 'Druk 3D', 'Części, prototypy, figurki'], ['fotografia', 'Fotografia', 'Sesje, produkty, architektura'], ['dla-firm', 'Dla firm', 'Szyldy, gadżety, oznakowanie'], ['wspolnoty-i-spoldzielnie', 'Wspólnoty i spółdzielnie', 'Tablice i oznakowanie budynków'], ['szkoly-i-przedszkola', 'Szkoły i przedszkola', 'Grafiki, tabliczki, dyplomy'], ['uslugi', 'Wszystkie usługi i maszyny', 'Pełna lista tego, co robimy']].map(([h, t, d]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3"><b class="block text-[16px] font-semibold">{t}</b><span class="text-[13px] text-mute">{d}</span></a>)}
+    </div></div>
+    <div class="grid grid-cols-2 gap-2 mt-6">
+      {[['sklep', 'Znajdź prezent'], ['pracownia', 'Pracownia'], ['kontakt', 'Kontakt'], ['dostawa-i-platnosci', 'Dostawa'], ['realizacje', 'Realizacje'], ['zwroty-i-reklamacje', 'Reklamacje']].map(([h, t]) => <a href={`${h}.html`} class="rounded-2xl bg-white border border-line px-4 py-3.5 text-[15px] font-medium">{t}</a>)}
+    </div>
+    <div class="grid grid-cols-2 gap-2 mt-3"><a href="tel:+48609040274" class="h-12 rounded-full bg-ink text-white font-semibold grid place-items-center">Zadzwoń</a><a href="https://wa.me/48609040274" class="h-12 rounded-full border border-ink font-semibold grid place-items-center">WhatsApp</a></div>
   </nav>
 </div>
+
+<script>
+  document.querySelectorAll('#mnav .mt').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('#mnav .mt').forEach((x) => { const on = x === b; x.setAttribute('aria-selected', String(on)); x.classList.toggle('bg-white', on); x.classList.toggle('shadow', on); });
+    document.querySelectorAll('#mnav [data-mp]').forEach((p) => p.classList.toggle('hidden', p.dataset.mp !== b.dataset.mt));
+  }));
+</script>
 
 <div id="srch" class="scrim fixed inset-0 z-[55] bg-black/35 backdrop-blur-sm grid place-items-start justify-center pt-[12vh] px-4">
   <div class="w-full max-w-[660px] rounded-[28px] bg-white shadow-2xl overflow-hidden">
