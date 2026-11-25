@@ -117,7 +117,7 @@
 "Fine art",
 "Odbitki i powiększenia"
 ],
-"count": 26
+"count": 25
 },
 {
 "slug": "sublimacja",
@@ -128,7 +128,7 @@
 "Gadżety",
 "Tekstylia"
 ],
-"count": 24
+"count": 23
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -145,14 +145,14 @@
 {
 "slug": "cmentarz-i-pogrzeb",
 "name": "Pamięć i pogrzeb",
-"lead": "Zdjęcia nagrobne na porcelanie, tabliczki, klepsydry, portrety i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.",
+"lead": "Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.",
 "color": "#3a3a3a",
 "subs": [
 "Na cmentarz",
 "Na pogrzeb",
 "Pamiątki"
 ],
-"count": 12
+"count": 11
 },
 {
 "slug": "sesje-i-zdjecia",
@@ -2947,7 +2947,7 @@
 "priceText": "79 zł",
 "price": 79.0,
 "tiers": null,
-"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"machine": "GoArt UV A3",
 "score": 1203.0,
 "xmas": true,
 "img": "img/hf/akryl-nasza-data-1.jpg",
@@ -4398,7 +4398,7 @@
 "priceText": "79 zł",
 "price": 79.0,
 "tiers": null,
-"machine": "GoArt UV A3 + xTool X1 (CO₂)",
+"machine": "GoArt UV A3",
 "score": 1152.0,
 "xmas": true,
 "img": "img/hf/akryl-bilet-1.jpg",
@@ -6564,42 +6564,6 @@
 }
 },
 {
-"slug": "szarfa-na-wieniec",
-"name": "Szarfa na wieniec z napisem",
-"cat": "cmentarz-i-pogrzeb",
-"sub": "Na pogrzeb",
-"variants": "satyna 10 lub 15 cm, napis złoty, srebrny lub czarny, długość do 2 m",
-"priceText": "49 zł",
-"price": 49.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 1102.0,
-"xmas": false,
-"img": "img/hf/szarfa-na-wieniec-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/szarfa-na-wieniec-1.jpg"
-],
-"also": [
-"sublimacja"
-],
-"kind": "gift",
-"tags": {
-"okazja": [
-"pamiatka"
-],
-"dla": [],
-"pers": [
-"imie"
-],
-"mat": []
-}
-},
-{
 "slug": "przypinki-buttony",
 "name": "Przypinki (buttony) z własnym projektem",
 "cat": "szkoly-i-przedszkola",
@@ -6787,6 +6751,41 @@
 ],
 "mat": [
 "druk"
+]
+}
+},
+{
+"slug": "tabliczka-krzyz-pleksi",
+"name": "Tabliczka na krzyż z pleksi – tarcza",
+"cat": "cmentarz-i-pogrzeb",
+"sub": "Na cmentarz",
+"variants": "biała pleksi z czarnym nadrukiem UV, klasyczny kształt tarczy z krzyżem, imię i nazwisko, wiek, data śmierci i sentencja, opcjonalnie zdjęcie, otwory na wkręty, wykonanie w 24 h",
+"priceText": "79 zł",
+"price": 79.0,
+"tiers": null,
+"machine": "GoArt UV A3",
+"score": 1100.0,
+"xmas": false,
+"img": "img/hf/tabliczka-krzyz-pleksi-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-krzyz-pleksi-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
 ]
 }
 },
@@ -7843,46 +7842,6 @@
 "dla": [
 "babcia-dziadek"
 ],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
-"slug": "portret-na-pogrzeb",
-"name": "Portret na pogrzeb ze sztalugą",
-"cat": "cmentarz-i-pogrzeb",
-"sub": "Na pogrzeb",
-"variants": "fotografia 40×50 cm na piance z czarną ramką + sztaluga, retusz zdjęcia",
-"priceText": "149 zł",
-"price": 149.0,
-"tiers": null,
-"machine": "Epson SureColor P9500",
-"score": 1085.0,
-"xmas": false,
-"img": "img/hf/portret-na-pogrzeb-1.jpg",
-"fields": [
-"photo"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/portret-na-pogrzeb-1.jpg"
-],
-"also": [
-"dla-fotografow"
-],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"pamiatka"
-],
-"dla": [],
 "pers": [
 "zdjecie",
 "imie"

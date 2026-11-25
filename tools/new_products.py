@@ -77,6 +77,7 @@ NEW = [
  ('Cmentarz i pogrzeb', 'obrazki-pamiatkowe-pogrzeb', 'Obrazki pamiątkowe ze zdjęciem i modlitwą', '7×11 cm, karton 300 g, 50 szt.', '99 zł', D1000, 99, 18, 30, 3, ''),
  ('Cmentarz i pogrzeb', 'podziekowania-za-udzial', 'Podziękowania za udział w pogrzebie', 'karty składane z kopertą, 25 szt., treść do wyboru', '89 zł', D1000, 89, 20, 30, 3, ''),
  ('Cmentarz i pogrzeb', 'szarfa-na-wieniec', 'Szarfa na wieniec z napisem', 'satyna 10 lub 15 cm, napis złoty, srebrny lub czarny, długość do 2 m', '49 zł', F500, 49, 8, 15, 4, ''),
+ ('Cmentarz i pogrzeb', 'tabliczka-krzyz-pleksi', 'Tabliczka na krzyż z pleksi – tarcza', 'biała pleksi z czarnym nadrukiem UV, klasyczny kształt tarczy z krzyżem, imię i nazwisko, wiek, data śmierci i sentencja, opcjonalnie zdjęcie, otwory na wkręty, wykonanie w 24 h', '79 zł', UV, 79, 12, 25, 4, 'dodane 25.11.2026 na prośbę właściciela; kształt wycinany laserem CO₂ z pleksi (akryl), nigdy z PVC'),
  ('Cmentarz i pogrzeb', 'lampion-ze-zdjeciem', 'Lampion nagrobny ze zdjęciem', 'szkło z nadrukiem UV lub grawerem, imię i daty', '89 zł', UV, 89, 25, 20, 3, ''),
  ('Cmentarz i pogrzeb', 'kamien-pamieci-pupil', 'Kamień pamięci dla zwierzaka', 'łupek 20×15 cm z grawerem imienia i łapki, do ogrodu', '69 zł', CO2, 69, 15, 15, 3, ''),
  # ——— zarządcy nieruchomości (ceny z cennika netto, w sklepie brutto) ———

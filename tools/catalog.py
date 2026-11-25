@@ -13,7 +13,7 @@ CATS=[
  ('dla-fotografow','Fine art i fotografia','Wydruki muzealne na papierach bawełnianych (Epson P9500), odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
  ('sublimacja','Sublimacja','Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
- ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki, klepsydry, portrety i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
+ ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
  ('sesje-i-zdjecia','Fotografia i sesje','Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.','#4a4038'),
  ('wydruki-3d','Druk 3D na zamówienie','Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU – z Twojego pliku albo według szkicu. Także w kilku kolorach naraz.','#2f5560'),
 ]
@@ -57,7 +57,9 @@ def fields(r):
     if re.search(r'imi|grawer|napis|dedyk|tabli|numer|inicja|data|tekst|bombk|zawiesz|adresów|piosenk',s) or not f: f.append('text')
     if re.search(r'lista|komplet|skrzyn|lokal|winiet',s): f.append('list')
     return f
-seen=set(); prods=[]
+# produkty ukryte w sklepie (zostają w CSV i historii cen); 25.11.2026 – właściciel nie wykonuje szarf ani sztalug
+HIDDEN={'szarfa-na-wieniec','portret-na-pogrzeb'}
+seen=set(HIDDEN); prods=[]
 order={r['slug']:i for i,r in enumerate(rows)}
 for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie')):
     if r['slug'] in seen: continue
