@@ -19,4 +19,4 @@ export const PROMO = {
 };
 
 // profile w mediach społecznościowych (puste = ukryte); używane w stopce, na stronie kontakt i w danych dla Google (sameAs)
-export const SOCIAL = { facebook: 'https://www.facebook.com/AIPrintsPL/', instagram: '', tiktok: '', youtube: '' };
+export const SOCIAL = { facebook: 'https://www.facebook.com/AIPrintsPL/', instagram: 'https://www.instagram.com/aiprints.pl/', tiktok: 'https://www.tiktok.com/@aiprints.pl', youtube: 'https://www.youtube.com/@aiprintspl' };

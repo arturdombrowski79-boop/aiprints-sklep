@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SOCIAL } from '../data/config.js';
 ---
 <Base title="Kontakt i wycena" description="Kontakt z pracownią AiPrints.pl w Chorzowie: telefon 609 040 274, kontakt@aiprints.pl. Wycena dla firm, wspólnot i spółdzielni w 24 h." canonical="kontakt" active="kontakt">
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-14 grid lg:grid-cols-[1fr_1.15fr] gap-14">
@@ -10,6 +11,7 @@ import Base from '../layouts/Base.astro';
         {[['Telefon i WhatsApp', '+48 609 040 274', 'tel:+48609040274'], ['Ogólne pytania', 'kontakt@aiprints.pl', 'mailto:kontakt@aiprints.pl'], ['Firmy i wspólnoty', 'firmy@aiprints.pl', 'mailto:firmy@aiprints.pl'], ['Reklamacje', 'reklamacje@aiprints.pl', 'mailto:reklamacje@aiprints.pl'], ['Pełna oferta', 'Katalog PDF do pobrania', 'pliki/katalog-aiprints.pdf'], ['Dla firm i wspólnot', 'Katalog B2B – ceny netto', 'pliki/katalog-firmy-aiprints.pdf']].map(([t, v, h]) => <a href={h} class="reveal rounded-[24px] bg-white border border-line px-6 py-5 flex justify-between items-center hover:border-ink transition"><span><span class="block text-[12.5px] text-mute">{t}</span><b class="text-[18px] font-medium">{v}</b></span><span>→</span></a>)}
       </div>
       <address class="reveal not-italic text-[14px] text-mute mt-8 leading-relaxed">AiPrints.pl Artur Dombrowski<br />Pracownia: ul. Okrężna 98B, 41-500 Chorzów (pn–pt 9:00–17:00)<br />Adres do doręczeń: ul. Okrężna 146, 41-500 Chorzów<br />NIP 6262579694 · REGON 526091225</address>
+      <p class="reveal text-[14px] text-mute mt-4">Obserwuj nas: {[['Facebook', SOCIAL.facebook], ['Instagram', SOCIAL.instagram], ['TikTok', SOCIAL.tiktok], ['YouTube', SOCIAL.youtube]].filter(([, u]) => u).map(([n, u], i) => <>{i > 0 && ' · '}<a class="underline hover:text-ink" href={u} target="_blank" rel="noopener">{n}</a></>)}</p>
     </div>
     <form id="wycena" class="reveal rounded-[34px] bg-white border border-line p-7 md:p-9 grid gap-3 self-start scroll-mt-28">
       <b class="font-display text-[36px] leading-none">Zapytanie o wycenę</b>
