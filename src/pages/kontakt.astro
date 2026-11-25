@@ -25,6 +25,35 @@ import Base from '../layouts/Base.astro';
       <p id="wok" class="text-[14px]" aria-live="polite"></p>
     </form>
   </section>
+  <section id="dojazd" class="max-w-[1360px] mx-auto px-5 md:px-10 pt-16 scroll-mt-28">
+    <div class="reveal flex flex-wrap items-end justify-between gap-4">
+      <h2 class="hd text-[40px] md:text-[64px]">Jak do nas trafić</h2>
+      <p class="text-[14px] text-mute max-w-[420px]">Pracownia: ul. Okrężna 98B, 41-500 Chorzów. Odbiór osobisty i wizyty pn–pt 9:00–17:00, po wcześniejszym umówieniu: <a class="underline" href="tel:+48609040274">609 040 274</a>.</p>
+    </div>
+    <div id="mapBox" class="reveal relative mt-6 rounded-[34px] overflow-hidden border border-line bg-[#e9ecef] min-h-[440px] md:min-h-0 md:aspect-[21/8]">
+      <div id="mapCover" class="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center p-6" style="background:radial-gradient(circle at 50% 45%,#fff 0,#e9ecef 70%)">
+        <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path fill="#d93025" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        <b class="font-display text-[28px] leading-none">AiPrints.pl · Okrężna 98B, Chorzów</b>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button id="mapLoad" type="button" class="h-12 px-6 rounded-full bg-ink text-white font-semibold">Pokaż mapę Google</button>
+          <a class="h-12 px-6 rounded-full border border-ink inline-flex items-center font-semibold" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=AiPrints.pl%2C%20Okr%C4%99%C5%BCna%2098B%2C%20Chorz%C3%B3w&destination_place_id=ChIJxS3jtSfTFkcRKZ--r8yWHqA">Wyznacz trasę ↗</a>
+        </div>
+        <p class="text-[12.5px] text-mute max-w-[460px]">Mapa ładuje się z serwerów Google dopiero po kliknięciu – Google może wtedy zapisać swoje pliki cookies.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const mb = document.getElementById('mapLoad');
+    if (mb) mb.onclick = () => {
+      const f = document.createElement('iframe');
+      f.title = 'Mapa dojazdu do pracowni AiPrints.pl';
+      f.src = 'https://www.google.com/maps?q=AiPrints.pl%2C%20Okr%C4%99%C5%BCna%2098B%2C%2041-500%20Chorz%C3%B3w&z=16&hl=pl&output=embed';
+      f.className = 'absolute inset-0 w-full h-full border-0';
+      f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+      document.getElementById('mapBox').appendChild(f);
+      document.getElementById('mapCover').remove();
+    };
+  </script>
   <script>
     import { bindQuote } from '../scripts/contact.js';
     const f = document.getElementById('wycena'); const ab = new URLSearchParams(location.search).get('temat');
