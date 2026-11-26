@@ -141,7 +141,7 @@ async function upload(files) {
 // ——— interfejs ———
 function status(t) { $('c3Stat').textContent = t || ''; }
 async function load(fileList) {
-  const files = [...fileList].slice(0, 8); if (!files.length) return;
+  const files = [...fileList].slice(0, 8); if (!files.length) return; if (!files[0].name.match(/^[a-z0-9-]+\.(3mf|stl)$/)) $('c3Credit').classList.add('hidden');
   if (files.some((f) => f.size > CFG.maxMB * 1048576)) return fail(`Plik może mieć najwyżej ${CFG.maxMB} MB – większy wyślij do wyceny formularzem poniżej.`);
   S.err = ''; S.busy = true; S.srv = null; S.id = null; S.preview = false; $('c3Empty').classList.add('hidden'); $('c3Panel').classList.remove('opacity-40', 'pointer-events-none'); status('Wczytuję model…'); render();
   try {
@@ -189,6 +189,17 @@ function snapshot() { try { three.r.render(three.scene, three.cam); return three
 export function initCalc3d() {
   const drop = $('c3Drop'), inp = $('c3In');
   inp.onchange = () => { load(inp.files); inp.value = ''; };
+  // gotowe projekty z galerii: pobierz plik z naszego serwera i wczytaj jak wgrany
+  document.querySelectorAll('.c3Gal').forEach((b) => b.onclick = async () => {
+    status('Wczytuję projekt…'); $('c3Empty').classList.add('hidden');
+    try {
+      const r = await fetch(b.dataset.file); if (!r.ok) throw new Error('Nie udało się pobrać projektu.');
+      const f = new File([await r.blob()], b.dataset.file.split('/').pop());
+      await load([f]);
+      const c = $('c3Credit'); c.innerHTML = `Model „${b.dataset.title}” – autor: ${b.dataset.author}, licencja ${b.dataset.license === 'CC0' ? 'Public Domain (CC0)' : 'Creative Commons BY 4.0'}, <a class="underline" href="https://makerworld.com/pl/models/${b.dataset.mw}" target="_blank" rel="noopener">MakerWorld</a>.`; c.classList.remove('hidden');
+      document.getElementById('c3Drop').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (e) { fail(e.message); }
+  });
   $('c3In2').onchange = () => { load($('c3In2').files); $('c3In2').value = ''; };
   ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('ring-2', 'ring-ink'); }));
   ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('ring-2', 'ring-ink'); }));

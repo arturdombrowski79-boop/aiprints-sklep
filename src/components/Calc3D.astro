@@ -1,6 +1,10 @@
 ---
 // Kalkulator druku 3D – wgranie STL/3MF, podgląd, kolory, rozmiar, dysza, ilość, cena, koszyk (src/scripts/calc3d.js).
 import CFG from '../data/druk3d.json';
+import GAL from '../data/druk3d-galeria.json';
+import fs from 'node:fs';
+// gotowe modele: tylko te, których plik i miniatura są w public/
+const gal = GAL.map((g) => ({ ...g, file: ['3mf', 'stl'].map((e) => `pliki/3d/${g.slug}.${e}`).find((f) => fs.existsSync('public/' + f)) })).filter((g) => g.file && fs.existsSync(`public/img/3d/${g.slug}.jpg`));
 const nz = Object.entries(CFG.nozzles);
 const groups = [...new Set(CFG.materials.map((m) => m.group))];
 const gp = (m) => (Math.round(CFG.perGram * Math.max(1, m.eur / CFG.baseEur) * 100) / 100).toFixed(2).replace('.', ',');
@@ -9,7 +13,18 @@ const gp = (m) => (Math.round(CFG.perGram * Math.max(1, m.eur / CFG.baseEur) * 1
   <p class="reveal text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold">Kalkulator · cena od razu</p>
   <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none mt-3">Wgraj plik – <em class="text-gold">policzymy cenę</em></h2>
   <p class="reveal text-mute mt-4 max-w-[680px]">STL lub 3MF z Twojego komputera, Printables czy MakerWorld. Wybierz kolor, rozmiar i dokładność – cenę widzisz od razu i możesz zamówić. Kilka plików STL albo 3MF z kolorami z Bambu Studio = wydruk wielokolorowy (do {CFG.maxColors} kolorów).</p>
-  <div class="grid lg:grid-cols-[1.25fr_1fr] gap-5 mt-10 items-start">
+  {gal.length > 0 && (
+    <div class="mt-9">
+      <div class="flex items-end justify-between gap-4"><b class="text-[17px]">Nie masz pliku? Wybierz gotowy projekt</b><span class="text-[12.5px] text-mute hidden sm:block">Modele na wolnej licencji – kliknij, a policzymy cenę</span></div>
+      <div class="flex gap-3 overflow-x-auto pb-3 mt-3 snap-x [scrollbar-width:thin]">
+        {gal.map((g) => (
+          <button type="button" class="c3Gal shrink-0 snap-start w-[132px] text-left rounded-2xl bg-white border border-line overflow-hidden hover:border-ink transition" data-file={g.file} data-title={g.title} data-author={g.author} data-license={g.license} data-mw={g.mw}>
+            <img src={`img/3d/${g.slug}.jpg`} alt={g.title} width="132" height="132" loading="lazy" class="w-[132px] h-[132px] object-cover bg-paper2" />
+            <span class="block px-2.5 py-2 text-[12.5px] leading-tight min-h-[44px]">{g.title}</span>
+          </button>))}
+      </div>
+    </div>)}
+  <div class="grid lg:grid-cols-[1.25fr_1fr] gap-5 mt-6 items-start">
     <div>
       <div id="c3Drop" class="relative rounded-[30px] bg-white border border-line overflow-hidden aspect-[4/3] transition">
         <div id="c3View" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,#fff,#f1ede6)]"></div>
@@ -24,6 +39,7 @@ const gp = (m) => (Math.round(CFG.perGram * Math.max(1, m.eur / CFG.baseEur) * 1
         <span id="c3Name" class="truncate"></span>
         <label class="underline cursor-pointer whitespace-nowrap">Wgraj inny plik<input id="c3In2" type="file" multiple accept=".stl,.3mf" class="sr-only"></label>
       </div>
+      <p id="c3Credit" class="hidden text-[12px] text-mute mt-1"></p>
       <p id="c3Stat" class="text-[13px] text-gold mt-1 min-h-[20px]" aria-live="polite"></p>
       <p id="c3Err" class="hidden text-[14px] text-red-700 mt-2" role="alert"></p>
     </div>
