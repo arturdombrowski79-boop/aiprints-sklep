@@ -24,7 +24,7 @@ try {
     $lines[] = ['name' => $title, 'desc' => $desc, 'amount' => (int)round($u * 100), 'qty' => $qty];
     $sub += $u * $qty; if (!$p['unit']) $boxable += $qty;
     $rows[] = ['slug' => $it['slug'], 'title' => $title, 'opt' => $it['opt'] ?? null, 'sides' => $it['sides'] ?? null, 'qty' => $qty, 'price' => $u, 'lines' => (array)($it['lines'] ?? []), 'text' => mb_substr((string)($it['text'] ?? ''), 0, 500), 'notes' => mb_substr((string)($it['notes'] ?? ''), 0, 2000), 'pers' => !empty($it['pers']), 'kind' => $p['kind'] ?? 'gift', 'w' => (int)($it['w'] ?? 0), 'h' => (int)($it['h'] ?? 0)];
-    if ($it['slug'] === 'druk-3d-z-pliku') { $o = (array)$it['p3d']; $rows[count($rows) - 1] = array_merge(end($rows), ['lines' => [$desc], 'pers' => true, 'p3d' => ['id' => (string)$o['id'], 'scale' => (float)$o['scale'], 'nozzle' => (string)$o['nozzle'], 'colors' => array_map('strval', (array)$o['colors'])]]); }
+    if ($it['slug'] === 'druk-3d-z-pliku') { $o = (array)$it['p3d']; $rows[count($rows) - 1] = array_merge(end($rows), ['lines' => [$desc], 'pers' => true, 'p3d' => ['id' => (string)$o['id'], 'scale' => (float)$o['scale'], 'nozzle' => (string)$o['nozzle'], 'material' => (string)($o['material'] ?? ''), 'colors' => array_map('strval', (array)$o['colors'])]]); }
   }
   if (!empty($in['add']['box']) && $boxable) { $lines[] = ['name' => 'Pudełko premium z wkładką', 'desc' => '', 'amount' => $C['add']['box'] * 100, 'qty' => $boxable]; $sub += $C['add']['box'] * $boxable; }
   if (!empty($in['add']['card']) && $boxable) { $lines[] = ['name' => 'Kartka z życzeniami', 'desc' => '', 'amount' => $C['add']['card'] * 100, 'qty' => 1]; $sub += $C['add']['card']; }

@@ -23,6 +23,10 @@ $e3 = p3d_estimate($big, ['scale' => 1, 'nozzle' => '0.8', 'colors' => ['c', 'c'
 ok('check: nieznany kolor', p3d_check($big, ['scale' => 1, 'colors' => ['zzz', 'c']], $cfg) !== '');
 ok('check: zła liczba kolorów', p3d_check($big, ['scale' => 1, 'colors' => ['c']], $cfg) !== '');
 ok('check: za duży', p3d_check(['bbox' => [400, 10, 10], 'slots' => 1], ['scale' => 1, 'colors' => ['c']], $cfg) !== '');
+ok('check: CF tylko czarny', p3d_check($big, ['scale' => 1, 'material' => 'pa6-cf', 'colors' => ['c', 'k']], $cfg) !== '');
+ok('check: marmur nie w PETG', p3d_check($big, ['scale' => 1, 'material' => 'petg', 'colors' => ['mb', 'k']], $cfg) !== '');
+ok('check: nieznany materiał', p3d_check($big, ['scale' => 1, 'material' => 'xxx', 'colors' => ['c', 'k']], $cfg) !== '');
+$ea = p3d_estimate($big, ['scale' => 1, 'nozzle' => '0.4', 'colors' => ['k', 'k'], 'material' => 'asa', 'qty' => 1], $cfg); ok('ASA droższy od PLA', $ea['unit'] > $e1['unit'], [$ea, $e1]);
 ok('check: poprawny', p3d_check($big, ['scale' => 1, 'colors' => ['c', 'm']], $cfg) === '');
 // zgodność z JS
 $js = json_decode(shell_exec('node ' . escapeshellarg(__DIR__ . '/test-p3d.mjs') . ' --dump'), true);

@@ -2,6 +2,8 @@
 // Kalkulator druku 3D – wgranie STL/3MF, podgląd, kolory, rozmiar, dysza, ilość, cena, koszyk (src/scripts/calc3d.js).
 import CFG from '../data/druk3d.json';
 const nz = Object.entries(CFG.nozzles);
+const groups = [...new Set(CFG.materials.map((m) => m.group))];
+const gp = (m) => (Math.round(CFG.perGram * Math.max(1, m.eur / CFG.baseEur) * 100) / 100).toFixed(2).replace('.', ',');
 ---
 <section id="kalkulator" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24 scroll-mt-24">
   <p class="reveal text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold">Kalkulator · cena od razu</p>
@@ -26,7 +28,13 @@ const nz = Object.entries(CFG.nozzles);
       <p id="c3Err" class="hidden text-[14px] text-red-700 mt-2" role="alert"></p>
     </div>
     <div id="c3Panel" class="rounded-[30px] bg-white border border-line p-6 md:p-7 opacity-40 pointer-events-none transition">
-      <div id="c3Colors"><div class="text-[13px] font-medium mb-1.5">Kolor</div><p class="text-[13px] text-mute">PLA – CMYK, light CMYK, biały i marmurkowe</p></div>
+      <label class="block text-[13px] font-medium mb-5">Materiał
+        <select id="c3Mat" class="mt-1.5 w-full rounded-2xl border border-line px-4 h-11 text-[15px] bg-white outline-none focus:border-ink">
+          {groups.map((g) => <optgroup label={g}>{CFG.materials.filter((m) => m.group === g).map((m) => <option value={m.id}>{m.name} · {gp(m)} zł/g</option>)}</optgroup>)}
+        </select>
+        <span id="c3MatHint" class="block text-[12.5px] text-mute font-normal mt-1.5">{CFG.materials[0].hint}</span>
+      </label>
+      <div id="c3Colors"><div class="text-[13px] font-medium mb-1.5">Kolor</div><p class="text-[13px] text-mute">Podstawowe, CMYK, light CMYK i marmurkowe</p></div>
       <div class="grid grid-cols-2 gap-3 mt-5">
         <label class="text-[13px] font-medium">Skala (%)<input id="c3Scale" type="number" min="10" max="1000" step="1" value="100" class="mt-1.5 w-full rounded-2xl border border-line px-4 h-11 text-[15px] outline-none focus:border-ink"></label>
         <label class="text-[13px] font-medium">Najdłuższy bok (mm)<input id="c3Long" type="number" min="5" max="320" step="1" class="mt-1.5 w-full rounded-2xl border border-line px-4 h-11 text-[15px] outline-none focus:border-ink"></label>
@@ -53,7 +61,7 @@ const nz = Object.entries(CFG.nozzles);
       <p id="c3Warn" class="hidden text-[13.5px] text-red-700 mt-3" role="alert"></p>
       <p id="c3Note" class="text-[12.5px] text-mute mt-2"></p>
       <button id="c3Add" type="button" disabled class="mt-5 w-full rounded-full bg-ink text-white h-13 py-3.5 text-[15px] font-medium disabled:opacity-40 disabled:cursor-not-allowed">Do koszyka</button>
-      <p class="text-[12px] text-mute mt-3 leading-relaxed">Cena brutto, liczona automatycznie z pliku (PLA, wypełnienie 15%). Przed drukiem sprawdzamy każdy model – jeśli wymaga nietypowo dużo podpór albo poprawek, skontaktujemy się przed realizacją. Maks. {CFG.max.join(' × ')} mm. Zamawiając, potwierdzasz, że masz prawo do wydruku tego modelu.</p>
+      <p class="text-[12px] text-mute mt-3 leading-relaxed">Cena brutto, liczona automatycznie z pliku (wypełnienie 15%, 2 ścianki – jak standardowy profil Bambu Studio). Przed drukiem sprawdzamy każdy model – jeśli wymaga nietypowo dużo podpór albo poprawek, skontaktujemy się przed realizacją. Maks. {CFG.max.join(' × ')} mm. Zamawiając, potwierdzasz, że masz prawo do wydruku tego modelu.</p>
     </div>
   </div>
 </section>

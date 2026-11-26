@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 import { unzipSync, strFromU8 } from 'three/examples/jsm/libs/fflate.module.js';
 import CFG from '../data/druk3d.json';
-import { meshStats, mergeStats, estimate, check, fmtH } from './p3d-core.js';
+import { meshStats, mergeStats, estimate, check, fmtH, material } from './p3d-core.js';
 import { addItem } from './cart.js';
 
 const $ = (id) => document.getElementById(id);
@@ -16,15 +16,29 @@ const PAL = Object.fromEntries(CFG.colors.map((c) => [c.id, c]));
 // ——— odczyt plików ———
 function mat3mf(s) { const a = s ? s.trim().split(/\s+/).map(Number) : []; return a.length === 12 ? a : [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]; }
 function mul(a, b) { const r = []; for (let i = 0; i < 4; i++) for (let j = 0; j < 3; j++) r[i * 3 + j] = (i < 3 ? 0 : b[9 + j]) + a[i * 3] * b[j] + a[i * 3 + 1] * b[3 + j] + a[i * 3 + 2] * b[6 + j]; return r; }
+// kolor trójkąta malowanego w Bambu Studio / PrusaSlicer (atrybut paint_color): zapis drzewa podziału, czytany od końca.
+// Zwraca numer filamentu dominujący w liściach (0 = kolor obiektu).
+function paintState(str) {
+  let i = str.length - 1, nib = 0, bit = 4; const cnt = {};
+  const getBit = () => { if (bit === 4) { nib = i >= 0 ? parseInt(str[i--], 16) || 0 : 0; bit = 0; } return (nib >> bit++) & 1; };
+  const nibble = () => { let v = 0; for (let k = 0; k < 4; k++) v |= getBit() << k; return v; };
+  const node = (depth) => {
+    const code = nibble(), split = code & 3;
+    if (split) { const n = split + 1; for (let k = 0; k < n && depth < 40; k++) node(depth + 1); return; }
+    const st = (code & 12) === 12 ? nibble() + 3 : code >> 2; cnt[st] = (cnt[st] || 0) + 1 / (1 << Math.min(depth * 2, 30));
+  };
+  try { node(0); } catch (e) { return 0; }
+  let best = 0, bv = -1; for (const k in cnt) if (cnt[k] > bv) { bv = cnt[k]; best = +k; } return best;
+}
 function readModel(xml) {
   const doc = new DOMParser().parseFromString(xml, 'application/xml'); const objs = {}, build = [];
   const unit = { micron: 0.001, centimeter: 10, inch: 25.4, foot: 304.8, meter: 1000 }[doc.documentElement.getAttribute('unit')] || 1;
   for (const o of doc.getElementsByTagNameNS('*', 'object')) {
-    const v = [], t = []; let paint = false;
+    const v = [], t = [], pc = []; let paint = false;
     for (const e of o.getElementsByTagNameNS('*', 'vertex')) v.push(+e.getAttribute('x'), +e.getAttribute('y'), +e.getAttribute('z'));
-    for (const e of o.getElementsByTagNameNS('*', 'triangle')) { t.push(+e.getAttribute('v1'), +e.getAttribute('v2'), +e.getAttribute('v3')); if (!paint && e.getAttribute('paint_color')) paint = true; }
+    for (const e of o.getElementsByTagNameNS('*', 'triangle')) { t.push(+e.getAttribute('v1'), +e.getAttribute('v2'), +e.getAttribute('v3')); const p = e.getAttribute('paint_color'); if (p) { paint = true; pc[t.length / 3 - 1] = paintState(p); } }
     const comp = [...o.getElementsByTagNameNS('*', 'component')].map((c) => [c.getAttribute('objectid'), c.getAttribute('p:path') || c.getAttributeNS('http://schemas.microsoft.com/3dmanufacturing/production/2015/06', 'path'), mat3mf(c.getAttribute('transform'))]);
-    objs[o.getAttribute('id')] = { v, t, comp, paint };
+    objs[o.getAttribute('id')] = { v, t, comp, paint, pc };
   }
   for (const it of doc.getElementsByTagNameNS('*', 'item')) build.push([it.getAttribute('objectid'), mat3mf(it.getAttribute('transform'))]);
   return { objs, build, unit };
@@ -46,7 +60,11 @@ function parse3mf(buf, name) {
     if (o.t.length) {
       painted = painted || o.paint; const pos = new Float32Array(o.t.length * 3);
       for (let i = 0; i < o.t.length; i++) { const k = o.t[i] * 3, x = o.v[k], y = o.v[k + 1], zz = o.v[k + 2]; pos[i * 3] = (x * M[0] + y * M[3] + zz * M[6] + M[9]) * main.unit; pos[i * 3 + 1] = (x * M[1] + y * M[4] + zz * M[7] + M[10]) * main.unit; pos[i * 3 + 2] = (x * M[2] + y * M[5] + zz * M[8] + M[11]) * main.unit; }
-      parts.push({ name: label, ext: extr, pos });
+      if (!o.paint) parts.push({ name: label, ext: extr, pos });
+      else { // malowany: osobna siatka dla każdego filamentu
+        const by = {}; for (let f = 0; f < o.t.length / 3; f++) { const e = o.pc[f] || extr; (by[e] || (by[e] = [])).push(f); }
+        for (const e in by) { const L = by[e], q = new Float32Array(L.length * 9); L.forEach((f, j) => q.set(pos.subarray(f * 9, f * 9 + 9), j * 9)); parts.push({ name: label, ext: +e, pos: q, paint: true }); }
+      }
     }
     for (const [cid, cp, cm] of o.comp) walk(cp || path, cid, mul(cm, M), extr, label);
   };
@@ -76,7 +94,7 @@ function nearest(hex) {
 }
 
 // ——— stan ———
-const S = { files: [], model: null, stats: null, srv: null, id: null, colors: [], scale: 1, nozzle: '0.4', qty: 1, busy: false, err: '', preview: false };
+const S = { files: [], model: null, stats: null, srv: null, id: null, colors: [], material: 'pla', scale: 1, nozzle: '0.4', qty: 1, busy: false, err: '', preview: false };
 let three = null;
 
 function initThree() {
@@ -128,7 +146,7 @@ async function load(fileList) {
   S.err = ''; S.busy = true; S.srv = null; S.id = null; S.preview = false; $('c3Empty').classList.add('hidden'); $('c3Panel').classList.remove('opacity-40', 'pointer-events-none'); status('Wczytuję model…'); render();
   try {
     const model = await readFiles(files); S.files = files; S.model = model;
-    S.stats = mergeStats(model.parts.map((p) => meshStats(p.pos))); S.stats.slots = model.colors.length;
+    S.stats = mergeStats(model.parts.map((p) => ({ ...meshStats(p.pos), paint: !!p.paint }))); S.stats.slots = model.colors.length;
     S.colors = model.colors.map((h, i) => nearest(h) || ['w', 'k', 'c', 'm', 'y', 'lc', 'lm', 'ly'][i] || 'w');
     S.scale = 1; const big = Math.max(...S.stats.bbox.map((v, i) => v / CFG.max[i])); if (big > 1) S.scale = Math.floor(100 / big) / 100; // za duży – zmniejsz do pola roboczego
     show(model); render();
@@ -148,11 +166,11 @@ function render() {
   $('c3Name').textContent = S.files.map((f) => f.name).join(', ');
   $('c3Err').textContent = S.err; $('c3Err').classList.toggle('hidden', !S.err);
   if (!has) { $('c3Add').disabled = true; return; }
-  const o = { scale: S.scale, nozzle: S.nozzle, colors: S.colors, qty: S.qty };
+  const o = { scale: S.scale, nozzle: S.nozzle, colors: S.colors, qty: S.qty, material: S.material }; const MT = material(CFG, S.material), PALM = CFG.colors.filter((c) => (!MT.colors || MT.colors.includes(c.id)) && (!c.marble || MT.group === 'PLA'));
   // kolory części
   const slots = S.colors.map((_, i) => i), byslot = (i) => [...new Set(S.model.parts.filter((p) => p.slot === i).map((p) => p.name))];
-  $('c3Colors').innerHTML = (slots.length > 1 ? `<p class="text-[12.5px] text-mute mb-2">${slots.length} części w różnych kolorach – druk wielokolorowy na Bambu Lab H2C.${S.model.painted ? ' Model malowany w Bambu Studio – podgląd pokazuje jeden kolor.' : ''}</p>` : '') +
-    slots.map((i) => `<div class="mb-3"><div class="text-[13px] font-medium mb-1.5">${slots.length > 1 ? `Kolor ${i + 1}: <span class="text-mute font-normal">${byslot(i).slice(0, 3).join(', ') || 'część ' + (i + 1)}</span>` : 'Kolor'} – <span class="text-mute font-normal">${PAL[S.colors[i]].name}</span></div><div class="flex flex-wrap gap-1.5">${CFG.colors.map((c) => `<button type="button" data-sl="${i}" data-c="${c.id}" title="${c.name}${c.marble ? ' (+20% za materiał)' : ''}" aria-label="${c.name}" aria-pressed="${S.colors[i] === c.id}" class="w-8 h-8 rounded-full border-2 transition ${S.colors[i] === c.id ? 'border-ink scale-110' : 'border-white shadow-[0_0_0_1px_rgba(0,0,0,.12)]'}" style="background:${c.marble ? `linear-gradient(135deg,${c.hex} 0 40%,#fff 45%,${c.hex} 52% 70%,#999 74%,${c.hex} 78%)` : c.hex}"></button>`).join('')}</div></div>`).join('');
+  $('c3Colors').innerHTML = (slots.length > 1 ? `<p class="text-[12.5px] text-mute mb-2">${slots.length} ${S.model.painted ? 'kolory z Bambu Studio' : 'części w różnych kolorach'} – druk wielokolorowy (do ${CFG.maxColors} kolorów). Kliknij kolor, a model w podglądzie się zmieni.</p>` : '') +
+    slots.map((i) => `<div class="mb-3"><div class="text-[13px] font-medium mb-1.5">${slots.length > 1 ? `Kolor ${i + 1}: <span class="text-mute font-normal">${(S.model.painted ? '' : byslot(i).slice(0, 3).join(', ')) || (S.model.colors[i] ? `<i class="inline-block w-3 h-3 rounded-full align-[-1px] border border-line" style="background:${S.model.colors[i]}"></i> w pliku` : 'część ' + (i + 1))}</span>` : 'Kolor'} – <span class="text-mute font-normal">${PAL[S.colors[i]].name}</span></div><div class="flex flex-wrap gap-1.5">${PALM.map((c) => `<button type="button" data-sl="${i}" data-c="${c.id}" title="${c.name}${c.marble ? ' – PLA marmurkowy (+20% za materiał)' : ''}" aria-label="${c.name}" aria-pressed="${S.colors[i] === c.id}" class="w-8 h-8 rounded-full border-2 transition ${S.colors[i] === c.id ? 'border-ink scale-110' : 'border-white shadow-[0_0_0_1px_rgba(0,0,0,.12)]'}" style="background:${c.marble ? `linear-gradient(135deg,${c.hex} 0 40%,#fff 45%,${c.hex} 52% 70%,#999 74%,${c.hex} 78%)` : c.hex}"></button>`).join('')}</div></div>`).join('');
   $('c3Colors').querySelectorAll('[data-sl]').forEach((b) => b.onclick = () => { S.colors[+b.dataset.sl] = b.dataset.c; paint(); render(); });
   $('c3Scale').value = Math.round(S.scale * 100); $('c3Long').value = Math.round(Math.max(...st.bbox) * S.scale);
   document.querySelectorAll('[name=c3Nz]').forEach((r) => { r.checked = r.value === S.nozzle; });
@@ -177,15 +195,17 @@ export function initCalc3d() {
   drop.addEventListener('drop', (e) => load(e.dataTransfer.files));
   $('c3Scale').onchange = () => { const v = Math.max(10, Math.min(1000, +$('c3Scale').value || 100)); S.scale = v / 100; render(); };
   $('c3Long').onchange = () => { const st = S.srv || S.stats; if (!st) return; const v = +$('c3Long').value; if (v > 0) S.scale = Math.max(0.1, Math.min(10, v / Math.max(...st.bbox))); render(); };
+  $('c3Mat').onchange = () => { S.material = $('c3Mat').value; const m = material(CFG, S.material); $('c3MatHint').textContent = m.hint || '';
+    S.colors = S.colors.map((c) => (m.colors && !m.colors.includes(c) ? m.colors[0] : PAL[c].marble && m.group !== 'PLA' ? 'w' : c)); paint(); render(); };
   document.querySelectorAll('[name=c3Nz]').forEach((r) => r.onchange = () => { S.nozzle = r.value; render(); });
   $('c3Minus').onclick = () => { S.qty = Math.max(1, S.qty - 1); render(); }; $('c3Plus').onclick = () => { S.qty = Math.min(CFG.maxQty, S.qty + 1); render(); };
   $('c3Qty').onchange = () => { S.qty = Math.max(1, Math.min(CFG.maxQty, Math.round(+$('c3Qty').value || 1))); render(); };
   $('c3Add').onclick = () => {
-    const st = S.srv || S.stats; const o = { scale: S.scale, nozzle: S.nozzle, colors: [...S.colors], qty: S.qty }; if (check(st, o, CFG)) return;
+    const st = S.srv || S.stats; const o = { scale: S.scale, nozzle: S.nozzle, colors: [...S.colors], qty: S.qty, material: S.material }; if (check(st, o, CFG)) return; const MT = material(CFG, S.material);
     const e = estimate(st, o, CFG); const cols = [...new Set(S.colors)].map((c) => PAL[c].name);
     addItem({ slug: 'druk-3d-z-pliku', title: 'Druk 3D z Twojego pliku', price: e.unit, qty: S.qty, img: snapshot(), boxable: false, pers: true,
-      lines: [S.files.map((f) => f.name).join(', '), (cols.length > 1 ? 'PLA wielokolor: ' : 'PLA ') + cols.join(', '), `Dysza ${S.nozzle.replace('.', ',')} mm · ${e.size.map((v) => num(v)).join(' × ')} mm`, `≈ ${e.grams} g · ≈ ${fmtH(e.hours)}`],
-      p3d: { id: S.id, scale: S.scale, nozzle: S.nozzle, colors: [...S.colors] } }, three.r.domElement);
+      lines: [S.files.map((f) => f.name).join(', '), MT.name + (cols.length > 1 ? ' wielokolor: ' : ' ') + cols.join(', '), `Dysza ${S.nozzle.replace('.', ',')} mm · ${e.size.map((v) => num(v)).join(' × ')} mm`, `≈ ${e.grams} g · ≈ ${fmtH(e.hours)}`],
+      p3d: { id: S.id, scale: S.scale, nozzle: S.nozzle, material: S.material, colors: [...S.colors] } }, three.r.domElement);
   };
   render();
 }

@@ -125,6 +125,7 @@ function p3d_stats(array $files): array {
     'parts' => array_map(fn($p) => ['name' => mb_substr($p['name'], 0, 80), 'slot' => $p['slot']], $parts)];
 }
 
+function p3d_material(array $cfg, string $id): array { foreach ($cfg['materials'] as $m) if ($m['id'] === $id) return $m; return $cfg['materials'][0]; }
 // ——— wycena (jak estimate() w p3d-core.js) ———
 function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $cfg ??= p3d_cfg(); $s = (float)($o['scale'] ?? 1) ?: 1.0; $nz = $cfg['nozzles'][(string)($o['nozzle'] ?? '0.4')] ?? $cfg['nozzles']['0.4'];
@@ -132,9 +133,10 @@ function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $V = $st['vol'] * $s ** 3; $A = $st['area'] * $s ** 2; $H = $st['bbox'][2] * $s;
   $shell = min($V, $A * $nz['wall']); $inner = max(0, $V - $shell) * $cfg['infill']; $ext = ($shell + $inner) * $cfg['supportK'];
   $used = array_values(array_unique(array_map('strval', (array)($o['colors'] ?? [])))); $multi = count($used) > 1; $pal = array_column($cfg['colors'], null, 'id');
-  $grams = $ext / 1000 * $cfg['density']; $hours = ($ext / $nz['flow'] + ($H / $nz['layer']) * $cfg['layerSec']) / 3600 + $cfg['warmMin'] / 60;
+  $mt = p3d_material($cfg, (string)($o['material'] ?? ''));
+  $grams = $ext / 1000 * ($mt['density'] ?? $cfg['density']); $hours = ($mt['timeK'] ?? 1) * (($shell / $nz['flow'] + $inner / ($nz['flowInfill'] ?? $nz['flow'])) * $cfg['supportK'] + ($H / $nz['layer']) * $cfg['layerSec']) / 3600 + $cfg['warmMin'] / 60;
   $marble = false; foreach ($used as $id) if (!empty($pal[$id]['marble'])) $marble = true;
-  $mat = $grams * $cfg['perGram'] * ($marble ? $cfg['marbleK'] : 1);
+  $mat = $grams * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']) * ($marble ? $cfg['marbleK'] : 1);
   if ($multi) { $mat *= $cfg['multi']['matK']; $hours *= $cfg['multi']['timeK']; $grams *= $cfg['multi']['matK']; }
   $extra = $multi ? (count($used) - 1) * $cfg['multi']['perColor'] : 0;
   $unit = round(max($cfg['minUnit'], $mat + $hours * $cfg['perHour'] + $extra + $cfg['start'] / $qty) + 1e-9, 2);
@@ -146,7 +148,9 @@ function p3d_check(array $st, array $o, ?array $cfg = null): string {
   if ($s < 0.1 || $s > 10) return 'Skala musi być między 10% a 1000%.';
   foreach ($size as $i => $v) if ($v > $cfg['max'][$i] + 0.01) return 'Model jest za duży (' . implode(' × ', array_map(fn($v) => (int)round($v), $size)) . ' mm). Maksymalnie ' . implode(' × ', $cfg['max']) . ' mm.';
   if (max($size) < $cfg['minSize']) return 'Model jest za mały – najdłuższy bok musi mieć co najmniej 5 mm.';
-  if (!$c || count($c) !== (int)$st['slots'] || array_diff($c, $pal)) return 'Wybierz kolor dla każdej części.';
+  if (($o['material'] ?? '') !== '' && !in_array($o['material'], array_column($cfg['materials'], 'id'), true)) return 'Wybierz materiał.';
+  $mt = p3d_material($cfg, (string)($o['material'] ?? ''));
+  if (!$c || count($c) !== (int)$st['slots'] || array_diff($c, $pal) || (!empty($mt['colors']) && array_diff($c, $mt['colors'])) || ($mt['group'] !== 'PLA' && array_intersect($c, array_column(array_filter($cfg['colors'], fn($x) => !empty($x['marble'])), 'id')))) return 'Wybierz kolor dla każdej części.';
   if (count(array_unique($c)) > $cfg['maxColors']) return 'Najwięcej ' . $cfg['maxColors'] . ' kolorów w jednym wydruku.';
   return '';
 }
@@ -167,7 +171,8 @@ function p3d_line(array $it): array {
   $o = (array)($it['p3d'] ?? []); $st = p3d_load((string)($o['id'] ?? '')); $o['qty'] = $it['qty'] ?? 1; $e = p3d_estimate($st, $o); $cfg = p3d_cfg();
   $pal = array_column($cfg['colors'], 'name', 'id'); $cols = array_map(fn($c) => $pal[$c] ?? $c, (array)$o['colors']);
   $byslot = []; foreach ($st['parts'] as $p) $byslot[$p['slot']][] = $p['name'];
-  $cdesc = count($cols) === 1 ? 'PLA ' . $cols[0] : 'PLA wielokolor: ' . implode(', ', array_map(fn($i, $c) => $c . ' (' . implode('/', array_unique($byslot[$i] ?? ['kolor ' . ($i + 1)])) . ')', array_keys($cols), $cols));
+  $mn = p3d_material($cfg, (string)($o['material'] ?? ''))['name'];
+  $cdesc = count($cols) === 1 ? "$mn " . $cols[0] : "$mn wielokolor: " . implode(', ', array_map(fn($i, $c) => $c . ' (' . implode('/', array_unique($byslot[$i] ?? ['kolor ' . ($i + 1)])) . ')', array_keys($cols), $cols));
   $file = implode(', ', (array)($st['files'] ?? []));
   $desc = mb_substr("$file · $cdesc · dysza " . str_replace('.', ',', (string)($o['nozzle'] ?? '0.4')) . ' mm · skala ' . round(((float)($o['scale'] ?? 1)) * 100) . '% · ' . implode('×', array_map(fn($v) => str_replace('.', ',', (string)$v), $e['size'])) . ' mm · ok. ' . $e['grams'] . ' g · ok. ' . p3d_fmt_h($e['hours']) . ($st['approx'] ? ' · siatka nieszczelna – sprawdzić' : '') . ($st['painted'] ? ' · malowany w Bambu Studio' : ''), 0, 480);
   return [mb_substr('Druk 3D z pliku – ' . ($st['files'][0] ?? 'model'), 0, 120), $desc];

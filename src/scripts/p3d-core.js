@@ -12,12 +12,12 @@ export function meshStats(pos) {
     const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx; area += Math.sqrt(nx * nx + ny * ny + nz * nz) / 2;
     for (let k = 0; k < 9; k++) { const d = k % 3, v = pos[i + k]; if (v < mn[d]) mn[d] = v; if (v > mx[d]) mx[d] = v; }
   }
-  return { vol: Math.abs(vol), area, min: mn, max: mx };
+  return { vol: Math.abs(vol), sv: vol, area, min: mn, max: mx };
 }
 // łączy statystyki części w jedną bryłę (części drukowane razem)
 export function mergeStats(list) {
   const mn = [0, 1, 2].map((d) => Math.min(...list.map((s) => s.min[d]))), mx = [0, 1, 2].map((d) => Math.max(...list.map((s) => s.max[d])));
-  const bbox = mx.map((v, d) => v - mn[d]); let vol = list.reduce((a, s) => a + s.vol, 0); const area = list.reduce((a, s) => a + s.area, 0);
+  const bbox = mx.map((v, d) => v - mn[d]); let vol = list.reduce((a, s) => a + (s.paint ? 0 : s.vol), 0) + Math.abs(list.reduce((a, s) => a + (s.paint ? s.sv : 0), 0)); /* części malowane = kawałki jednej bryły */ const area = list.reduce((a, s) => a + s.area, 0);
   const bv = bbox[0] * bbox[1] * bbox[2]; let approx = false;
   if (bv > 0 && vol < bv * 0.02) { vol = bv * 0.3; approx = true; } // siatka nieszczelna – szacunek z wymiarów
   return { vol, area, bbox, approx };
@@ -28,22 +28,28 @@ export function estimate(stats, opts, cfg) {
   const s = +opts.scale || 1, nz = cfg.nozzles[opts.nozzle] || cfg.nozzles['0.4'], qty = Math.max(1, Math.min(cfg.maxQty, Math.round(+opts.qty || 1)));
   const V = stats.vol * s ** 3, A = stats.area * s ** 2, H = stats.bbox[2] * s;
   const shell = Math.min(V, A * nz.wall), inner = Math.max(0, V - shell) * cfg.infill, ext = (shell + inner) * cfg.supportK;
-  const used = [...new Set(opts.colors)], multi = used.length > 1, pal = Object.fromEntries(cfg.colors.map((c) => [c.id, c]));
-  let grams = ext / 1000 * cfg.density, hours = (ext / nz.flow + (H / nz.layer) * cfg.layerSec) / 3600 + cfg.warmMin / 60;
-  let mat = grams * cfg.perGram * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
+  // czas: ścianki drukują się wolniej niż wypełnienie (kalibracja na Bambu Studio)
+  const used = [...new Set(opts.colors)], multi = used.length > 1, pal = Object.fromEntries(cfg.colors.map((c) => [c.id, c])), mt = material(cfg, opts.material);
+  let grams = ext / 1000 * (mt.density || cfg.density), hours = (mt.timeK || 1) * ((shell / nz.flow + inner / (nz.flowInfill || nz.flow)) * cfg.supportK + (H / nz.layer) * cfg.layerSec) / 3600 + cfg.warmMin / 60;
+  let mat = grams * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur) * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
   if (multi) { mat *= cfg.multi.matK; hours *= cfg.multi.timeK; grams *= cfg.multi.matK; }
   const extra = multi ? (used.length - 1) * cfg.multi.perColor : 0;
   const unit = r2(Math.max(cfg.minUnit, mat + hours * cfg.perHour + extra + cfg.start / qty));
   return { grams: Math.round(grams), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length };
 }
 
+export const material = (cfg, id) => cfg.materials.find((m) => m.id === id) || cfg.materials[0];
+// cena materiału za gram dla klienta
+export const gramPrice = (cfg, m) => Math.round(cfg.perGram * Math.max(1, m.eur / cfg.baseEur) * 100) / 100;
 // sprawdzenie zamówienia (to samo robi serwer); zwraca komunikat błędu albo ''
 export function check(stats, opts, cfg) {
   const s = +opts.scale || 1, size = stats.bbox.map((v) => v * s), pal = new Set(cfg.colors.map((c) => c.id));
   if (s < 0.1 || s > 10) return 'Skala musi być między 10% a 1000%.';
   if (size.some((v, i) => v > cfg.max[i] + 0.01)) return `Model jest za duży (${size.map((v) => Math.round(v)).join(' × ')} mm). Maksymalnie ${cfg.max.join(' × ')} mm – zmniejsz skalę albo napisz do nas.`;
   if (Math.max(...size) < cfg.minSize) return 'Model jest za mały – najdłuższy bok musi mieć co najmniej 5 mm.';
-  if (!opts.colors.length || opts.colors.length !== stats.slots || opts.colors.some((c) => !pal.has(c))) return 'Wybierz kolor dla każdej części.';
+  if (opts.material && !cfg.materials.some((m) => m.id === opts.material)) return 'Wybierz materiał.';
+  const mt = material(cfg, opts.material);
+  if (!opts.colors.length || opts.colors.length !== stats.slots || opts.colors.some((c) => !pal.has(c) || (mt.colors && !mt.colors.includes(c)) || (mt.group !== 'PLA' && cfg.colors.find((x) => x.id === c).marble))) return 'Wybierz kolor dla każdej części.';
   if (new Set(opts.colors).size > cfg.maxColors) return `Najwięcej ${cfg.maxColors} kolorów w jednym wydruku.`;
   return '';
 }
