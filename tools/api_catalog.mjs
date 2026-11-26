@@ -11,5 +11,7 @@ for (const p of cat.products) {
   P[p.slug] = { n: p.name, b: p.tiers ? p.tiers[0].p : p.price, o: o ? Object.fromEntries(o.opts.filter((x) => x.p).map((x) => [x.k, x.p])) : {}, q: qtyTiers(p.priceText), unit: !!p.unit, m2: isM2(p), kind: p.kind || 'gift',
     k: p.promo ? p.promo.k : 1, until: p.promo ? p.promo.until : null, cr: cr ? Object.fromEntries(cr.sides.map((s) => [s.id, s.extra || 0])) : null };
 }
+// kalkulator druku 3D – cenę liczy api/p3d-lib.php z pliku modelu
+P['druk-3d-z-pliku'] = { n: 'Druk 3D z Twojego pliku', b: 0, o: {}, q: [], unit: true, m2: false, kind: 'service', k: 1, until: null, cr: null };
 writeFileSync(out, JSON.stringify({ built: new Date().toISOString(), add: { box: 19, card: 9 }, ship: { '15.99': 'InPost Paczkomat 24/7', '19.99': 'Kurier DPD', '0': 'Odbiór w pracowni' }, free: 199, products: P }));
 console.log('api catalog', Object.keys(P).length);

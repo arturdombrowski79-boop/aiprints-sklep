@@ -32,6 +32,7 @@ function zl(float $v): string { $s = number_format($v, 2, ',', ' '); return (str
 
 // Cena jednostkowa liczona tak samo jak w sklepie (strona produktu / kreator), z promocją ważną w dniu zakupu.
 function unit_price(array $it): float {
+  if (($it['slug'] ?? '') === 'druk-3d-z-pliku') { require_once __DIR__ . '/p3d-lib.php'; return p3d_unit_price($it); } // kalkulator druku 3D
   $p = catalog()['products'][$it['slug'] ?? ''] ?? null; if (!$p) throw new Exception('Produkt niedostępny: ' . ($it['title'] ?? ''));
   $k = ($p['until'] && date('Y-m-d') <= $p['until']) ? (float)$p['k'] : 1.0;
   $qty = max(1, (int)($it['qty'] ?? 1));

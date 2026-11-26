@@ -57,7 +57,7 @@ if pre:
 PY
 cp tools/WDROZENIE.txt prod/
 # backend: płatności Stripe, maile, odstąpienia (PHP na LH.pl). config.php z kluczami tworzysz tylko na serwerze.
-mkdir -p prod/api/data && cp api/*.php api/.htaccess prod/api/ && cp api/data/.htaccess prod/api/data/ && rm -f prod/api/config.php
+mkdir -p prod/api/data && cp api/*.php api/.htaccess prod/api/ && cp api/data/.htaccess prod/api/data/ && cp src/data/druk3d.json prod/api/ && rm -f prod/api/config.php
 node tools/api_catalog.mjs prod/api/catalog.json >/dev/null && node tools/emails.mjs prod/api/emails >/dev/null && node tools/feeds.mjs prod/feed
 if [ "${BASE:-/}" != "/" ]; then sed -i "s#ErrorDocument 404 /404.html#ErrorDocument 404 ${BASE}404.html#" prod/.htaccess; fi
 if [ -d /home/claude ] && command -v zip >/dev/null; then rm -f /home/claude/AiPrints-sklep-do-wgrania.zip && (cd prod && zip -qr /home/claude/AiPrints-sklep-do-wgrania.zip .); fi

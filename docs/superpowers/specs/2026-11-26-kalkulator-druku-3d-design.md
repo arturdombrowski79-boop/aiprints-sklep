@@ -19,14 +19,23 @@ pokrywa materiał i czas maszyny.
 - Na żywo: waga (g), szacowany czas druku, cena za sztukę i razem.
 - „Do koszyka” → zwykły koszyk → Stripe Checkout. Plik trafia do zamówienia i do panelu pracowni.
 
-Poza zakresem (na teraz): STEP/OBJ, inne materiały (PETG, ASA…), wielokolor z 3MF (drukujemy
-jednym kolorem wybranym przez klienta), cięcie modelu na części, slicer na serwerze.
+**Wielokolor (H2C, do 8 kolorów – dwa AMS po 4):**
+- kilka plików STL naraz – każdy plik to część w osobnym kolorze (składane w podglądzie
+  w ich współrzędnych), klient wybiera kolor każdej części;
+- 3MF z Bambu Studio / MakerWorld – odczytujemy części i przypisane sloty filamentu
+  (oraz liczbę kolorów malowanych pędzlem), klient podmienia każdy slot na kolor z palety;
+  malowanie pędzlem – podgląd uproszczony, liczba kolorów dokładna;
+- więcej niż 1 kolor → limit pola roboczego H2C.
+
+Poza zakresem (na teraz): STEP/OBJ, inne materiały (PETG, ASA…), cięcie modelu na części,
+slicer na serwerze.
 
 ## Cennik (zatwierdzony kierunek, brutto)
 - materiał PLA **0,25 zł/g** (koszt Artura 55 zł/kg); marmurkowe ×1,2
 - czas drukarki **4 zł/h**
 - opłata startowa **6 zł / model** (pozycję)
 - minimum **10 zł za sztukę**
+- wielokolor: **+5 zł za każdy dodatkowy kolor**, czas ×1,3, materiał +15% (przepłukania)
 - wszystkie stawki w jednym pliku konfiguracyjnym (`src/data/druk3d.json`, kopiowany do API)
 
 Przykłady: 5 g/0,5 h → 10 zł · 50 g/3 h → 30,50 zł · 150 g/7 h → 71,50 zł · 500 g/20 h → 211 zł.
