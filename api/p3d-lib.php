@@ -157,10 +157,10 @@ function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $cfg ??= p3d_cfg(); $s = (float)($o['scale'] ?? 1) ?: 1.0; $nz = $cfg['nozzles'][(string)($o['nozzle'] ?? '0.4')] ?? $cfg['nozzles']['0.4'];
   $qty = max(1, min((int)$cfg['maxQty'], (int)round((float)($o['qty'] ?? 1))));
   $V = $st['vol'] * $s ** 3; $A = $st['area'] * $s ** 2; $H = $st['bbox'][2] * $s;
-  $shell = min($V, $A * $nz['wall']); $inner = max(0, $V - $shell) * $cfg['infill']; $ext = ($shell + $inner) * $cfg['supportK'];
+  $ext = min($V * $cfg['fillCap'], $V * $cfg['infill'] + $A * $nz['wall']) * $cfg['supportK']; // mm³ tworzywa
   $used = array_values(array_unique(array_map('strval', (array)($o['colors'] ?? [])))); $multi = count($used) > 1; $pal = array_column($cfg['colors'], null, 'id');
   $mt = p3d_material($cfg, (string)($o['material'] ?? ''));
-  $grams = $ext / 1000 * ($mt['density'] ?? $cfg['density']); $hours = ($mt['timeK'] ?? 1) * (($shell / $nz['flow'] + $inner / ($nz['flowInfill'] ?? $nz['flow'])) * $cfg['supportK'] + ($H / $nz['layer']) * $cfg['layerSec']) / 3600 + $cfg['warmMin'] / 60;
+  $grams = $ext / 1000 * ($mt['density'] ?? $cfg['density']); $hours = ($mt['timeK'] ?? 1) * ($A / 1000 * $nz['areaMin'] + ($H / $nz['layer']) * $cfg['layerSec'] / 60) / 60 + $cfg['warmMin'] / 60;
   $marble = false; foreach ($used as $id) if (!empty($pal[$id]['marble'])) $marble = true;
   $mat = $grams * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']) * ($marble ? $cfg['marbleK'] : 1);
   $changes = 0;

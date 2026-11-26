@@ -48,10 +48,10 @@ export function zMask(parts, bin = 0.1) {
 export function estimate(stats, opts, cfg) {
   const s = +opts.scale || 1, nz = cfg.nozzles[opts.nozzle] || cfg.nozzles['0.4'], qty = Math.max(1, Math.min(cfg.maxQty, Math.round(+opts.qty || 1)));
   const V = stats.vol * s ** 3, A = stats.area * s ** 2, H = stats.bbox[2] * s;
-  const shell = Math.min(V, A * nz.wall), inner = Math.max(0, V - shell) * cfg.infill, ext = (shell + inner) * cfg.supportK;
+  const ext = Math.min(V * cfg.fillCap, V * cfg.infill + A * nz.wall) * cfg.supportK; // mm³ tworzywa
   // czas: ścianki drukują się wolniej niż wypełnienie (kalibracja na Bambu Studio)
   const used = [...new Set(opts.colors)], multi = used.length > 1, pal = Object.fromEntries(cfg.colors.map((c) => [c.id, c])), mt = material(cfg, opts.material);
-  let grams = ext / 1000 * (mt.density || cfg.density), hours = (mt.timeK || 1) * ((shell / nz.flow + inner / (nz.flowInfill || nz.flow)) * cfg.supportK + (H / nz.layer) * cfg.layerSec) / 3600 + cfg.warmMin / 60;
+  let grams = ext / 1000 * (mt.density || cfg.density), hours = (mt.timeK || 1) * (A / 1000 * nz.areaMin + (H / nz.layer) * cfg.layerSec / 60) / 60 + cfg.warmMin / 60;
   let mat = grams * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur) * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
   let changes = 0;
   if (multi && stats.zm && stats.zm.length) { // zmiany filamentu: czas i materiał na przepłukanie

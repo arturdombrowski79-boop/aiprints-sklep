@@ -14,26 +14,24 @@
     "changeG": 0.55
   },
   "density": 1.24,
-  "infill": 0.293,
-  "supportK": 1.04,
+  "infill": 0.224,
+  "supportK": 1.03,
   "warmMin": 7,
-  "layerSec": 2,
+  "layerSec": 10,
   "nozzles": {
     "0.4": {
       "name": "0,4 mm – Dokładnie",
       "hint": "warstwa 0,2 mm, gładsza powierzchnia, drobne detale",
-      "wall": 0.61,
-      "flow": 2.86,
+      "wall": 0.91,
       "layer": 0.2,
-      "flowInfill": 16
+      "areaMin": 1.34
     },
     "0.8": {
       "name": "0,8 mm – Szybko",
       "hint": "warstwa 0,4 mm, widoczne warstwy, krócej i taniej",
       "wall": 1.1,
-      "flow": 6.5,
       "layer": 0.4,
-      "flowInfill": 30
+      "areaMin": 0.75
     }
   },
   "max": [
@@ -328,5 +326,7 @@
       "hint": "Najwyższa wytrzymałość i odporność na temperaturę."
     }
   ],
-  "_materialy": "eur = cena szpuli 1 kg w sklepie Bambu (26.11.2026). Cena za gram dla klienta = perGram × max(1, eur / baseEur). timeK – wolniejszy druk. colors – dozwolone kolory (CF tylko czarny)."
+  "_materialy": "eur = cena szpuli 1 kg w sklepie Bambu (26.11.2026). Cena za gram dla klienta = perGram × max(1, eur / baseEur). timeK – wolniejszy druk. colors – dozwolone kolory (CF tylko czarny).",
+  "fillCap": 0.86,
+  "_wzor": "objętość druku = min(V×fillCap, V×infill + A×wall) × supportK; czas [min] = A/1000×areaMin + warstwy×layerSec/60 + warmMin (+ zmiany filamentu). Dopasowane do: bombka (X1C), Grinch (A2L), nawijak kabli S/M/L (A1 mini) – 26.11.2026."
 }
