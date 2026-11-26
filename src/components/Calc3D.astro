@@ -1,0 +1,63 @@
+---
+// Kalkulator druku 3D – wgranie STL/3MF, podgląd, kolory, rozmiar, dysza, ilość, cena, koszyk (src/scripts/calc3d.js).
+import CFG from '../data/druk3d.json';
+const nz = Object.entries(CFG.nozzles);
+---
+<section id="kalkulator" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-24 scroll-mt-24">
+  <p class="reveal text-[11.5px] tracking-[.16em] uppercase text-gold font-semibold">Kalkulator · cena od razu</p>
+  <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none mt-3">Wgraj plik – <em class="text-gold">policzymy cenę</em></h2>
+  <p class="reveal text-mute mt-4 max-w-[680px]">STL lub 3MF z Twojego komputera, Printables czy MakerWorld. Wybierz kolor, rozmiar i dokładność – cenę widzisz od razu i możesz zamówić. Kilka plików STL albo 3MF z kolorami z Bambu Studio = wydruk wielokolorowy (do {CFG.maxColors} kolorów).</p>
+  <div class="grid lg:grid-cols-[1.25fr_1fr] gap-5 mt-10 items-start">
+    <div>
+      <div id="c3Drop" class="relative rounded-[30px] bg-white border border-line overflow-hidden aspect-[4/3] transition">
+        <div id="c3View" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,#fff,#f1ede6)]"></div>
+        <div id="c3Empty" class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" class="text-gold" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg>
+          <b class="text-[19px] mt-4">Przeciągnij tutaj plik STL lub 3MF</b>
+          <p class="text-mute text-[14px] mt-1">do {CFG.maxMB} MB · kilka plików STL = kilka kolorów</p>
+          <label class="mt-5 inline-flex items-center rounded-full bg-ink text-white px-6 h-12 cursor-pointer text-[15px] font-medium">Wybierz plik<input id="c3In" type="file" multiple accept=".stl,.3mf" class="sr-only"></label>
+        </div>
+      </div>
+      <div class="flex items-center justify-between gap-3 mt-3 text-[13px] text-mute min-h-[24px]">
+        <span id="c3Name" class="truncate"></span>
+        <label class="underline cursor-pointer whitespace-nowrap">Wgraj inny plik<input id="c3In2" type="file" multiple accept=".stl,.3mf" class="sr-only"></label>
+      </div>
+      <p id="c3Stat" class="text-[13px] text-gold mt-1 min-h-[20px]" aria-live="polite"></p>
+      <p id="c3Err" class="hidden text-[14px] text-red-700 mt-2" role="alert"></p>
+    </div>
+    <div id="c3Panel" class="rounded-[30px] bg-white border border-line p-6 md:p-7 opacity-40 pointer-events-none transition">
+      <div id="c3Colors"><div class="text-[13px] font-medium mb-1.5">Kolor</div><p class="text-[13px] text-mute">PLA – CMYK, light CMYK, biały i marmurkowe</p></div>
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <label class="text-[13px] font-medium">Skala (%)<input id="c3Scale" type="number" min="10" max="1000" step="1" value="100" class="mt-1.5 w-full rounded-2xl border border-line px-4 h-11 text-[15px] outline-none focus:border-ink"></label>
+        <label class="text-[13px] font-medium">Najdłuższy bok (mm)<input id="c3Long" type="number" min="5" max="320" step="1" class="mt-1.5 w-full rounded-2xl border border-line px-4 h-11 text-[15px] outline-none focus:border-ink"></label>
+      </div>
+      <div class="text-[13px] font-medium mt-5 mb-1.5">Dysza</div>
+      <div class="grid grid-cols-2 gap-2">
+        {nz.map(([k, n]) => (
+          <label class="relative rounded-2xl border border-line px-4 py-3 cursor-pointer has-[:checked]:border-ink has-[:checked]:bg-paper2/60">
+            <input type="radio" name="c3Nz" value={k} checked={k === '0.4'} class="sr-only">
+            <b class="block text-[14px]">{n.name}</b><span class="block text-[12px] text-mute leading-snug mt-0.5">{n.hint}</span>
+          </label>))}
+      </div>
+      <div class="flex items-center justify-between mt-5">
+        <span class="text-[13px] font-medium">Ilość sztuk</span>
+        <div class="flex items-center rounded-full border border-line"><button id="c3Minus" type="button" class="w-10 h-10 text-[18px]" aria-label="Mniej">−</button><input id="c3Qty" type="number" min="1" max={CFG.maxQty} value="1" class="w-12 text-center text-[15px] outline-none bg-transparent" aria-label="Ilość"><button id="c3Plus" type="button" class="w-10 h-10 text-[18px]" aria-label="Więcej">+</button></div>
+      </div>
+      <dl class="grid grid-cols-2 gap-y-1.5 text-[14px] mt-6 pt-5 border-t border-line">
+        <dt class="text-mute">Wymiary</dt><dd id="c3Size" class="text-right">–</dd>
+        <dt class="text-mute">Waga</dt><dd id="c3G" class="text-right">–</dd>
+        <dt class="text-mute">Czas druku</dt><dd id="c3T" class="text-right">–</dd>
+        <dt class="text-mute">Cena za sztukę</dt><dd id="c3U" class="text-right font-semibold">–</dd>
+      </dl>
+      <div class="flex items-end justify-between mt-4"><span class="text-[13px] text-mute">Razem</span><b id="c3Sum" class="font-display text-[40px] leading-none">–</b></div>
+      <p id="c3Warn" class="hidden text-[13.5px] text-red-700 mt-3" role="alert"></p>
+      <p id="c3Note" class="text-[12.5px] text-mute mt-2"></p>
+      <button id="c3Add" type="button" disabled class="mt-5 w-full rounded-full bg-ink text-white h-13 py-3.5 text-[15px] font-medium disabled:opacity-40 disabled:cursor-not-allowed">Do koszyka</button>
+      <p class="text-[12px] text-mute mt-3 leading-relaxed">Cena brutto, liczona automatycznie z pliku (PLA, wypełnienie 15%). Przed drukiem sprawdzamy każdy model – jeśli wymaga nietypowo dużo podpór albo poprawek, skontaktujemy się przed realizacją. Maks. {CFG.max.join(' × ')} mm. Zamawiając, potwierdzasz, że masz prawo do wydruku tego modelu.</p>
+    </div>
+  </div>
+</section>
+<script>
+  import { initCalc3d } from '../scripts/calc3d.js';
+  initCalc3d();
+</script>

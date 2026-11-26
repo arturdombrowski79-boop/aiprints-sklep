@@ -5,6 +5,7 @@ import QuoteForm from '../components/QuoteForm.astro';
 import Faq from '../components/Faq.astro';
 import Realizacje from '../components/Realizacje.astro';
 import Card from '../components/Card.astro';
+import Calc3D from '../components/Calc3D.astro';
 import cat from '../data/catalog.json';
 const M = [
   ['PLA', 'Najłatwiejszy i najdokładniejszy', 'Figurki, makiety, ozdoby, prototypy wizualne, gadżety. Duży wybór kolorów i wykończeń (mat, jedwab, marmur). Mięknie już w ok. 55–60 °C – nie do auta latem ani blisko źródeł ciepła.'],
@@ -17,13 +18,14 @@ const M = [
 const prods = cat.products.filter((p) => p.cat === 'wydruki-3d' || (p.also || []).includes('wydruki-3d')).filter((p) => p.cat !== 'na-swieta').slice(0, 8);
 const faq = [
   ['Jakie pliki przyjmujecie?', 'STL, 3MF, STEP, OBJ. Nie masz pliku? Wyślij zdjęcie części z wymiarami albo szkic – ocenimy, czy możemy ją zaprojektować i wydrukować.'],
-  ['Ile kosztuje wydruk?', 'Cena zależy od materiału, ilości tworzywa i czasu druku. Po otrzymaniu pliku podamy dokładną cenę i termin – zwykle w ciągu 24 h w dni robocze.'],
+  ['Ile kosztuje wydruk?', 'Dla plików STL i 3MF z PLA cenę policzy kalkulator na tej stronie – od razu, z wagą i czasem druku. Liczymy materiał (0,25 zł/g), czas drukarki (4 zł/h) i 6 zł przygotowania, minimum 10 zł za sztukę. Inne materiały i pliki STEP/OBJ wyceniamy po przesłaniu – zwykle w ciągu 24 h w dni robocze.'],
   ['Czy drukujecie w kilku kolorach?', 'Tak – na drukarkach z automatycznym podawaniem kilku filamentów drukujemy elementy wielokolorowe w jednym wydruku (np. logo, napisy, figurki).'],
   ['Jaki materiał wybrać?', 'Do dekoracji – PLA. Do części używanych na co dzień – PET-G. Na zewnątrz – ASA. Do ciepła i uderzeń – ABS. Do sztywnych, lekkich elementów – PLA-CF. Do elementów giętkich – TPU. Jeśli nie wiesz, opisz zastosowanie – doradzimy.'],
 ];
 ---
 <Base title="Druk 3D na zamówienie Chorzów – PLA, PET-G, ASA, ABS, TPU" description="Druk 3D na zamówienie w Chorzowie: części zamienne, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU. Wydruk z Twojego pliku STL/3MF albo według szkicu." canonical="druk-3d" active="druk-3d">
-  <ServiceHero eyebrow="Druk 3D · Bambu Lab · 6 materiałów" title={'Wydrukujemy to <em class="text-gold">w 3D</em>.'} lead="Część zamienna, prototyp, obudowa, figurka czy seria gadżetów z logo – z Twojego pliku albo według zdjęcia i wymiarów. Drukujemy na drukarkach Bambu Lab, także w kilku kolorach naraz." img="img/hf/druk-3d-z-pliku-1.jpg" alt="Wydruki 3D z różnych materiałów na stole w pracowni" cta="Wyślij plik do wyceny" shop="wydruki-3d.html" shopLabel="Gotowe wydruki 3D" />
+  <ServiceHero eyebrow="Druk 3D · Bambu Lab · 6 materiałów" title={'Wydrukujemy to <em class="text-gold">w 3D</em>.'} lead="Część zamienna, prototyp, obudowa, figurka czy seria gadżetów z logo – z Twojego pliku albo według zdjęcia i wymiarów. Drukujemy na drukarkach Bambu Lab, także w kilku kolorach naraz." img="img/hf/druk-3d-z-pliku-1.jpg" alt="Wydruki 3D z różnych materiałów na stole w pracowni" cta="Wyceń plik w kalkulatorze" href="#kalkulator" shop="wydruki-3d.html" shopLabel="Gotowe wydruki 3D" />
+  <Calc3D />
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Materiały</h2>
     <p class="reveal text-mute mt-4 max-w-[640px]">Dobieramy tworzywo do zastosowania – nie do tego, co akurat jest w drukarce.</p>
