@@ -152,12 +152,5 @@
   "h": 1024,
   "t": "Koszulka z imieniem – nadruk na plecach",
   "g": "zdjecia"
- },
- {
-  "f": "img/realizacje/druk-3d-figurka.jpg",
-  "w": 768,
-  "h": 1024,
-  "t": "Figurka wydrukowana w 3D z pliku klienta, ręcznie malowana",
-  "g": "druk3d"
  }
 ]
