@@ -156,7 +156,8 @@ KIND_FILES={'odbitki-drylab','powiekszenia-zdjec','fine-art-druk','fine-art-bawe
   'reprodukcja-obrazu','retusz-starych-zdjec','wydruk-probny','plakat-wielkoformatowy','siatka-mesh','baner-reklamowy','baner-blockout','baner-tekstylny',
   'wydruk-backlit','folia-samoprzylepna-druk','folia-owv-witryna','tablica-pcv-dibond','naklejki-po-obrysie','fototapeta','fotoksiazka-a5',
   'kalendarz-scienny-zdjecia','kalendarz-2027-a3','kalendarz-biurkowy','odbitki-polaroid','magnesy-zdjecia','koc-ze-zdjeciem','portfolio-box',
-  'obraz-plotno','fotopanel-aluminium','folia-mrozona-nadruk','potykacz-a1','obrazki-pamiatkowe-pogrzeb','naklejki-promocyjne'}
+  'obraz-plotno','fotopanel-aluminium','folia-mrozona-nadruk','potykacz-a1','obrazki-pamiatkowe-pogrzeb','naklejki-promocyjne',
+  'druk-cyfrowy-arkusz','druk-uv-na-plycie'}
 KIND_B2B_CATS={'dla-firm','salony-beauty','druk-wielkoformatowy','wspolnoty-i-spoldzielnie','szkoly-i-przedszkola'}
 # ile zdjęć zwykle potrzeba (opis przy polu plików)
 MANY={'fotoksiazka-a5':'24–48 zdjęć','kalendarz-scienny-zdjecia':'13 zdjęć (12 miesięcy + okładka)','kalendarz-2027-a3':'13 zdjęć','kalendarz-biurkowy':'13 zdjęć',

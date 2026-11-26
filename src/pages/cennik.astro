@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import cat from '../data/catalog.json';
+// Cennik podstawowy druku – ceny brutto prosto z katalogu sklepu (zmiana ceny w CSV = zmiana tutaj).
+const P = Object.fromEntries(cat.products.map((p) => [p.slug, p]));
+const zl = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
+const T = [
+  ['Druk cyfrowy i ksero', 'Xerox C75, do formatu SRA3 (32 × 45 cm). Cena za arkusz, druk jednostronny. Ksero w tej samej cenie, dwustronnie ×1,6. W pracowni od 50 arkuszy −20%, od 200 arkuszy −35%.', ['druk-cyfrowy-arkusz']],
+  ['Druk UV na płytach', 'Druk bezpośredni UV do formatu 30×40 cm; większe tablice to wydruk lateksowy z laminatem naklejony na płytę. Akryl drukujemy z białym podkładem.', ['druk-uv-na-plycie']],
+  ['Plakaty, powiększenia i zdjęcia', 'Plakaty na HP Latex 375, zdjęcia i fine art na Epson P9500, odbitki z minilabu DryLab.', ['plakat-wielkoformatowy', 'powiekszenia-zdjec', 'odbitki-drylab', 'fine-art-bawelna']],
+  ['Druk wielkoformatowy na metry', 'Ceny za m², docięcie i wykończenie w cenie.', ['baner-reklamowy', 'siatka-mesh', 'folia-samoprzylepna-druk', 'folia-owv-witryna', 'wydruk-backlit']],
+];
+---
+<Base title="Cennik druku – ksero, druk cyfrowy, PCV, Dibond, plakaty | Chorzów" description="Cennik druku w Chorzowie: ksero i druk cyfrowy A4, A3, SRA3, druk UV na PCV 5 mm, Dibond 3 mm i akrylu, plakaty, powiększenia zdjęć, banery i folie. Ceny brutto." canonical="cennik" active="cennik">
+  <section class="max-w-[1100px] mx-auto px-5 pt-32 pb-10">
+    <p class="text-[13px] uppercase tracking-[.14em] text-mute">Cennik · ceny brutto</p>
+    <h1 class="font-display text-[40px] md:text-[56px] leading-[1.05] mt-3">Cennik druku</h1>
+    <p class="text-[17px] text-mute mt-4 max-w-[680px]">Ceny za gotowy plik (PDF, JPG, PNG). Przygotowanie lub poprawki projektu wyceniamy osobno. Możesz zamówić online albo przyjść do pracowni: ul. Okrężna 98B, Chorzów, pn–pt 9–17, tel. <a class="underline" href="tel:+48609040274">609 040 274</a>.</p>
+  </section>
+  {T.map(([h, d, slugs]) => (
+    <section class="max-w-[1100px] mx-auto px-5 pb-12">
+      <h2 class="font-display text-[28px]">{h}</h2>
+      <p class="text-mute text-[15px] mt-1 mb-5 max-w-[760px]">{d}</p>
+      <div class="grid md:grid-cols-2 gap-5">
+        {slugs.filter((s) => P[s]).map((s) => { const p = P[s]; return (
+          <div class="rounded-3xl border border-line bg-white p-5">
+            <div class="flex items-baseline justify-between gap-3"><h3 class="font-medium text-[17px]">{p.name}</h3><a class="text-[14px] underline whitespace-nowrap" href={`${s}.html`}>Zamów →</a></div>
+            {p.tiers && p.tiers.length ? (
+              <table class="w-full text-[15px] mt-3">{p.tiers.map((t) => <tr class="border-t border-line"><td class="py-1.5 pr-3">{t.k}</td><td class="py-1.5 text-right font-medium whitespace-nowrap">{zl(t.p)}</td></tr>)}</table>
+            ) : <p class="mt-3 text-[15px]"><b>{p.priceText}</b> <span class="text-mute">· {p.variants}</span></p>}
+          </div>
+        ); })}
+      </div>
+    </section>
+  ))}
+  <section class="max-w-[1100px] mx-auto px-5 pb-20 text-[14px] text-mute">Nie ma tu tego, czego szukasz? <a class="underline" href="kontakt.html#wycena">Wyślij zapytanie</a> – odpowiadamy w ciągu 24 h w dni robocze. Pełna oferta: <a class="underline" href="pliki/katalog-aiprints.pdf">katalog PDF</a>.</section>
+</Base>
