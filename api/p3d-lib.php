@@ -44,6 +44,20 @@ function p3d_mul(array $a, array $b): array { // najpierw a, potem b
   return $r;
 }
 
+// kolor trójkąta malowanego (atrybut paint_color, zapis drzewa podziału czytany od końca) – jak paintState() w calc3d.js
+function p3d_paint_state(string $str): int {
+  static $memo = []; if (isset($memo[$str])) return $memo[$str];
+  $i = strlen($str) - 1; $nib = 0; $bit = 4; $cnt = [];
+  $getBit = function () use (&$i, &$nib, &$bit, $str) { if ($bit === 4) { $nib = $i >= 0 ? (int)hexdec($str[$i--]) : 0; $bit = 0; } return ($nib >> $bit++) & 1; };
+  $nibble = function () use ($getBit) { $v = 0; for ($k = 0; $k < 4; $k++) $v |= $getBit() << $k; return $v; };
+  $node = function (int $d) use (&$node, $nibble, &$cnt) { $code = $nibble(); $split = $code & 3;
+    if ($split) { for ($k = 0; $k <= $split && $d < 40; $k++) $node($d + 1); return; }
+    $st = ($code & 12) === 12 ? $nibble() + 3 : $code >> 2; $cnt[$st] = ($cnt[$st] ?? 0) + 1 / (1 << min($d * 2, 30)); };
+  $node(0); arsort($cnt); $r = (int)array_key_first($cnt);
+  if (count($memo) < 50000) $memo[$str] = $r; return $r;
+}
+const P3D_BIN = 0.1; // mm – rozdzielczość mapy kolorów w osi Z (do liczenia zmian filamentu)
+
 // czyta obiekty z pliku .model: [id => ['v'=>[], 't'=>[], 'comp'=>[[objectid, path, transform]], 'paint'=>bool]]
 function p3d_read_model(string $xml, float &$unit): array {
   $r = new XMLReader(); $r->XML($xml, null, LIBXML_PARSEHUGE | LIBXML_NONET); $objs = []; $cur = null; $build = [];
@@ -51,9 +65,9 @@ function p3d_read_model(string $xml, float &$unit): array {
     if ($r->nodeType !== XMLReader::ELEMENT) continue;
     switch ($r->localName) {
       case 'model': $u = $r->getAttribute('unit'); $unit = ['micron' => 0.001, 'centimeter' => 10, 'inch' => 25.4, 'foot' => 304.8, 'meter' => 1000][$u] ?? 1; break;
-      case 'object': $cur = (string)$r->getAttribute('id'); $objs[$cur] = ['v' => [], 't' => [], 'comp' => [], 'paint' => false]; break;
+      case 'object': $cur = (string)$r->getAttribute('id'); $objs[$cur] = ['v' => [], 't' => [], 'comp' => [], 'paint' => false, 'pc' => []]; break;
       case 'vertex': if ($cur !== null) array_push($objs[$cur]['v'], (float)$r->getAttribute('x'), (float)$r->getAttribute('y'), (float)$r->getAttribute('z')); break;
-      case 'triangle': if ($cur !== null) { array_push($objs[$cur]['t'], (int)$r->getAttribute('v1'), (int)$r->getAttribute('v2'), (int)$r->getAttribute('v3')); if (!$objs[$cur]['paint'] && ($r->getAttribute('paint_color') ?? '') !== '') $objs[$cur]['paint'] = true; } break;
+      case 'triangle': if ($cur !== null) { array_push($objs[$cur]['t'], (int)$r->getAttribute('v1'), (int)$r->getAttribute('v2'), (int)$r->getAttribute('v3')); $pcs = $r->getAttribute('paint_color') ?? ''; if ($pcs !== '') { $objs[$cur]['paint'] = true; $objs[$cur]['pc'][count($objs[$cur]['t']) / 3 - 1] = $pcs; } } break;
       case 'component': if ($cur !== null) $objs[$cur]['comp'][] = [(string)$r->getAttribute('objectid'), $r->getAttribute('p:path') ?? $r->getAttributeNs('path', 'http://schemas.microsoft.com/3dmanufacturing/production/2015/06'), p3d_mat($r->getAttribute('transform'))]; break;
       case 'item': $build[] = [(string)$r->getAttribute('objectid'), p3d_mat($r->getAttribute('transform'))]; break;
     }
@@ -84,8 +98,11 @@ function p3d_3mf_stats(string $path, string $name): array {
       $acc = new P3dAcc(); $v = $o['v']; $t = $o['t']; $painted = $painted || $o['paint']; $nt = count($t); $tris += $nt / 3;
       if ($tris > 3000000) throw new Exception('Model ma zbyt wiele trójkątów – napisz do nas.');
       $tp = function (int $i) use ($v, $M) { $x = $v[3 * $i]; $y = $v[3 * $i + 1]; $zz = $v[3 * $i + 2]; return [$x * $M[0] + $y * $M[3] + $zz * $M[6] + $M[9], $x * $M[1] + $y * $M[4] + $zz * $M[7] + $M[10], $x * $M[2] + $y * $M[5] + $zz * $M[8] + $M[11]]; };
-      for ($i = 0; $i < $nt; $i += 3) { $a = $tp($t[$i]); $b = $tp($t[$i + 1]); $c = $tp($t[$i + 2]); $acc->tri($a[0], $a[1], $a[2], $b[0], $b[1], $b[2], $c[0], $c[1], $c[2]); }
-      $parts[] = $acc->out($label, $extr);
+      $occ = []; $pc = $o['pc'];
+      for ($i = 0; $i < $nt; $i += 3) { $a = $tp($t[$i]); $b = $tp($t[$i + 1]); $c = $tp($t[$i + 2]); $acc->tri($a[0], $a[1], $a[2], $b[0], $b[1], $b[2], $c[0], $c[1], $c[2]);
+        if ($o['paint']) { $f = intdiv($i, 3); $e = isset($pc[$f]) ? (p3d_paint_state($pc[$f]) ?: $extr) : $extr;
+          $b0 = (int)floor(min($a[2], $b[2], $c[2]) / P3D_BIN); $b1 = (int)floor(max($a[2], $b[2], $c[2]) / P3D_BIN); for ($q = $b0; $q <= $b1; $q++) $occ[$e][$q] = 1; } }
+      $out = $acc->out($label, $extr); if ($occ) $out['occ'] = $occ; $parts[] = $out;
     }
     foreach ($o['comp'] as [$cid, $cpath, $cm]) $walk($cpath ?: $path, $cid, p3d_mul($cm, $M), $extr, $label);
   };
@@ -108,7 +125,7 @@ function p3d_stats(array $files): array {
     $used = array_values(array_unique(array_column($r['parts'], 'slot'))); sort($used);
     if ($painted && count($r['fil']) > 1) $used = range(1, min(8, count($r['fil'])));
     $map = array_flip($used);
-    foreach ($r['parts'] as $p) { $p['slot'] = $map[$p['slot']] ?? 0; $parts[] = $p; }
+    foreach ($r['parts'] as $p) { if (isset($p['occ'])) { $o2 = []; foreach ($p['occ'] as $e => $bins) $o2[$map[$e] ?? 0] = $bins; $p['occ'] = $o2; } $p['slot'] = $map[$p['slot']] ?? 0; $parts[] = $p; }
     foreach ($used as $e) $colors[] = (string)($r['fil'][$e - 1] ?? '');
   } else {
     foreach ($files as $i => [$path, $name]) {
@@ -121,7 +138,16 @@ function p3d_stats(array $files): array {
   $bbox = array_map(fn($d) => $mx[$d] - $mn[$d], [0, 1, 2]); $vol = array_sum(array_column($parts, 'vol')); $area = array_sum(array_column($parts, 'area'));
   $bv = $bbox[0] * $bbox[1] * $bbox[2]; $approx = false; if ($bv > 0 && $vol < $bv * 0.02) { $vol = $bv * 0.3; $approx = true; }
   $slots = max(1, count($colors));
-  return ['vol' => $vol, 'area' => $area, 'bbox' => $bbox, 'approx' => $approx, 'slots' => $slots, 'colors' => $colors, 'painted' => $painted,
+  // mapa kolorów w osi Z: dla każdego pasa 0,1 mm maska bitowa slotów, które tam występują
+  $zm = [];
+  if ($slots > 1) {
+    $z0 = (int)floor($mn[2] / P3D_BIN); $nb = min(4000, (int)floor($mx[2] / P3D_BIN) - $z0 + 1); $zm = array_fill(0, max(1, $nb), 0);
+    foreach ($parts as $p) {
+      if (isset($p['occ'])) { foreach ($p['occ'] as $sl => $bins) foreach ($bins as $q => $_) { $k = $q - $z0; if ($k >= 0 && $k < $nb) $zm[$k] |= 1 << $sl; } }
+      else { $a = (int)floor($p['min'][2] / P3D_BIN) - $z0; $b = (int)floor($p['max'][2] / P3D_BIN) - $z0; for ($k = max(0, $a); $k <= min($nb - 1, $b); $k++) $zm[$k] |= 1 << $p['slot']; }
+    }
+  }
+  return ['zm' => $zm, 'zb' => P3D_BIN, 'vol' => $vol, 'area' => $area, 'bbox' => $bbox, 'approx' => $approx, 'slots' => $slots, 'colors' => $colors, 'painted' => $painted,
     'parts' => array_map(fn($p) => ['name' => mb_substr($p['name'], 0, 80), 'slot' => $p['slot']], $parts)];
 }
 
@@ -137,10 +163,15 @@ function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $grams = $ext / 1000 * ($mt['density'] ?? $cfg['density']); $hours = ($mt['timeK'] ?? 1) * (($shell / $nz['flow'] + $inner / ($nz['flowInfill'] ?? $nz['flow'])) * $cfg['supportK'] + ($H / $nz['layer']) * $cfg['layerSec']) / 3600 + $cfg['warmMin'] / 60;
   $marble = false; foreach ($used as $id) if (!empty($pal[$id]['marble'])) $marble = true;
   $mat = $grams * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']) * ($marble ? $cfg['marbleK'] : 1);
-  if ($multi) { $mat *= $cfg['multi']['matK']; $hours *= $cfg['multi']['timeK']; $grams *= $cfg['multi']['matK']; }
+  $changes = 0;
+  if ($multi && !empty($st['zm'])) { // zmiany filamentu: czas i materiał na przepłukanie
+    $changes = (int)round(p3d_changes($st, array_map('strval', (array)$o['colors']), $s, $nz['layer']) * $cfg['multi']['changeK']);
+    $hours += $changes * $cfg['multi']['changeSec'] / 3600; $purge = $changes * $cfg['multi']['changeG']; $grams += $purge;
+    $mat += $purge * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']);
+  } elseif ($multi) { $mat *= $cfg['multi']['matK']; $hours *= $cfg['multi']['timeK']; $grams *= $cfg['multi']['matK']; }
   $extra = $multi ? (count($used) - 1) * $cfg['multi']['perColor'] : 0;
   $unit = round(max($cfg['minUnit'], $mat + $hours * $cfg['perHour'] + $extra + $cfg['start'] / $qty) + 1e-9, 2);
-  return ['grams' => (int)round($grams), 'hours' => $hours, 'unit' => $unit, 'qty' => $qty, 'size' => array_map(fn($v) => round($v * $s, 1), $st['bbox']), 'colors' => count($used)];
+  return ['grams' => (int)round($grams), 'hours' => $hours, 'unit' => $unit, 'qty' => $qty, 'size' => array_map(fn($v) => round($v * $s, 1), $st['bbox']), 'colors' => count($used), 'changes' => $changes];
 }
 
 function p3d_check(array $st, array $o, ?array $cfg = null): string {
@@ -187,4 +218,19 @@ function p3d_attach(string $id, string $up, int $ix): void {
     copy($f, "$up/poz" . ($ix + 1) . '-' . substr(trim($base, '._-') ?: 'model', 0, 80) . '.' . strtolower(pathinfo($f, PATHINFO_EXTENSION)));
   }
   touch($dir); // przedłuża życie modelu (sprzątanie po 7 dniach)
+}
+
+// liczba zmian filamentu: warstwa po warstwie, kolory obecne w warstwie (sloty zamienione na wybrane kolory)
+function p3d_changes(array $st, array $colors, float $scale, float $layer): int {
+  $zm = $st['zm'] ?? []; if (!$zm || count(array_unique($colors)) < 2) return 0;
+  $bh = ($st['zb'] ?? P3D_BIN) * $scale; $n = (int)ceil(count($zm) * $bh / $layer); $last = null; $ch = 0;
+  for ($l = 0; $l < $n; $l++) {
+    $a = (int)floor($l * $layer / $bh); $b = min(count($zm) - 1, (int)floor((($l + 1) * $layer - 1e-9) / $bh)); $m = 0;
+    for ($q = $a; $q <= $b; $q++) $m |= $zm[$q];
+    $set = []; for ($sl = 0; $sl < count($colors); $sl++) if ($m >> $sl & 1) $set[$colors[$sl]] = 1;
+    $k = count($set); if (!$k) continue;
+    if ($last === null) { $ch += $k - 1; } else { $ch += $k - (isset($set[$last]) ? 1 : 0); }
+    $keys = array_keys($set); $last = $k > 1 ? end($keys) === $last ? $keys[0] : end($keys) : $keys[0];
+  }
+  return $ch;
 }

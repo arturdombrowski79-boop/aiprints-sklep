@@ -23,6 +23,27 @@ export function mergeStats(list) {
   return { vol, area, bbox, approx };
 }
 
+// liczba zmian filamentu – jak p3d_changes() w PHP
+export function countChanges(st, colors, scale, layer) {
+  const zm = st.zm || []; if (!zm.length || new Set(colors).size < 2) return 0;
+  const bh = (st.zb || 0.1) * scale, n = Math.ceil(zm.length * bh / layer); let last = null, ch = 0;
+  for (let l = 0; l < n; l++) {
+    const a = Math.floor(l * layer / bh), b = Math.min(zm.length - 1, Math.floor(((l + 1) * layer - 1e-9) / bh)); let m = 0;
+    for (let q = a; q <= b; q++) m |= zm[q];
+    const set = []; for (let sl = 0; sl < colors.length; sl++) if ((m >> sl) & 1 && !set.includes(colors[sl])) set.push(colors[sl]);
+    const k = set.length; if (!k) continue;
+    ch += last === null ? k - 1 : k - (set.includes(last) ? 1 : 0);
+    last = k > 1 ? (set[k - 1] === last ? set[0] : set[k - 1]) : set[0];
+  }
+  return ch;
+}
+// mapa kolorów w osi Z z trójkątów części [{pos, slot}] (pasy 0,1 mm, maska slotów) – podgląd przed odpowiedzią serwera
+export function zMask(parts, bin = 0.1) {
+  let z0 = Infinity, z1 = -Infinity; for (const p of parts) for (let i = 2; i < p.pos.length; i += 3) { const z = p.pos[i]; if (z < z0) z0 = z; if (z > z1) z1 = z; }
+  const b0 = Math.floor(z0 / bin), nb = Math.min(4000, Math.floor(z1 / bin) - b0 + 1), zm = new Array(Math.max(1, nb)).fill(0);
+  for (const p of parts) { const bit = 1 << p.slot; for (let i = 0; i < p.pos.length; i += 9) { const za = p.pos[i + 2], zb = p.pos[i + 5], zc = p.pos[i + 8]; const a = Math.floor(Math.min(za, zb, zc) / bin) - b0, b = Math.floor(Math.max(za, zb, zc) / bin) - b0; for (let k = Math.max(0, a); k <= Math.min(nb - 1, b); k++) zm[k] |= bit; } }
+  return zm;
+}
 // stats: {vol mm³, area mm², bbox [x,y,z] mm}; opts: {scale (1 = 100%), nozzle '0.4'|'0.8', colors: [id…] (po jednym na slot), qty}
 export function estimate(stats, opts, cfg) {
   const s = +opts.scale || 1, nz = cfg.nozzles[opts.nozzle] || cfg.nozzles['0.4'], qty = Math.max(1, Math.min(cfg.maxQty, Math.round(+opts.qty || 1)));
@@ -32,10 +53,14 @@ export function estimate(stats, opts, cfg) {
   const used = [...new Set(opts.colors)], multi = used.length > 1, pal = Object.fromEntries(cfg.colors.map((c) => [c.id, c])), mt = material(cfg, opts.material);
   let grams = ext / 1000 * (mt.density || cfg.density), hours = (mt.timeK || 1) * ((shell / nz.flow + inner / (nz.flowInfill || nz.flow)) * cfg.supportK + (H / nz.layer) * cfg.layerSec) / 3600 + cfg.warmMin / 60;
   let mat = grams * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur) * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
-  if (multi) { mat *= cfg.multi.matK; hours *= cfg.multi.timeK; grams *= cfg.multi.matK; }
+  let changes = 0;
+  if (multi && stats.zm && stats.zm.length) { // zmiany filamentu: czas i materiał na przepłukanie
+    changes = Math.round(countChanges(stats, opts.colors, s, nz.layer) * cfg.multi.changeK);
+    hours += changes * cfg.multi.changeSec / 3600; const purge = changes * cfg.multi.changeG; grams += purge; mat += purge * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur);
+  } else if (multi) { mat *= cfg.multi.matK; hours *= cfg.multi.timeK; grams *= cfg.multi.matK; }
   const extra = multi ? (used.length - 1) * cfg.multi.perColor : 0;
   const unit = r2(Math.max(cfg.minUnit, mat + hours * cfg.perHour + extra + cfg.start / qty));
-  return { grams: Math.round(grams), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length };
+  return { grams: Math.round(grams), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length, changes };
 }
 
 export const material = (cfg, id) => cfg.materials.find((m) => m.id === id) || cfg.materials[0];

@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 import { unzipSync, strFromU8 } from 'three/examples/jsm/libs/fflate.module.js';
 import CFG from '../data/druk3d.json';
-import { meshStats, mergeStats, estimate, check, fmtH, material } from './p3d-core.js';
+import { meshStats, mergeStats, estimate, check, fmtH, material, zMask } from './p3d-core.js';
 import { addItem } from './cart.js';
 
 const $ = (id) => document.getElementById(id);
@@ -146,7 +146,7 @@ async function load(fileList) {
   S.err = ''; S.busy = true; S.srv = null; S.id = null; S.preview = false; $('c3Empty').classList.add('hidden'); $('c3Panel').classList.remove('opacity-40', 'pointer-events-none'); status('Wczytuję model…'); render();
   try {
     const model = await readFiles(files); S.files = files; S.model = model;
-    S.stats = mergeStats(model.parts.map((p) => ({ ...meshStats(p.pos), paint: !!p.paint }))); S.stats.slots = model.colors.length;
+    S.stats = mergeStats(model.parts.map((p) => ({ ...meshStats(p.pos), paint: !!p.paint }))); S.stats.slots = model.colors.length; if (S.stats.slots > 1) { S.stats.zm = zMask(model.parts); S.stats.zb = 0.1; }
     S.colors = model.colors.map((h, i) => nearest(h) || ['w', 'k', 'c', 'm', 'y', 'lc', 'lm', 'ly'][i] || 'w');
     S.scale = 1; const big = Math.max(...S.stats.bbox.map((v, i) => v / CFG.max[i])); if (big > 1) S.scale = Math.floor(100 / big) / 100; // za duży – zmniejsz do pola roboczego
     show(model); render();

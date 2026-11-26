@@ -8,7 +8,10 @@
   "multi": {
     "perColor": 5,
     "timeK": 1.2,
-    "matK": 1.25
+    "matK": 1.25,
+    "changeK": 0.37,
+    "changeSec": 70,
+    "changeG": 0.55
   },
   "density": 1.24,
   "infill": 0.293,
@@ -154,7 +157,7 @@
       "marble": true
     }
   ],
-  "_kalibracja": "26.11.2026: pallina_custom.stl (80×94×3,8 mm), H2C, 2 kolory: Bambu Studio 10,50 g model + 0,54 g wieża, 50 min 41 s druku + 5 min przygotowania. X1C: 1 kolor 10,68 g, 45 min 27 s + 7 min 15 s; 2 kolory (AMS) 13,23 g z przepłukaniem i wieżą, 54 min 15 s + 7 min 15 s. A2L/H2C: Pallina grinch 3MF (60×61×87 mm, 3 kolory malowane, podpory): 50,46 g model + 4,56 g podpory + 21,67 g przepłukania + 9,84 g wieża, 2 h 26 min + 5 min, 46 zmian filamentu. Wzór: ścianki 0,61 mm, efektywne wypełnienie 29,3%, ścianki 2,86 mm³/s, wypełnienie 16 mm³/s.",
+  "_kalibracja": "26.11.2026: pallina_custom.stl (80×94×3,8 mm), H2C, 2 kolory: Bambu Studio 10,50 g model + 0,54 g wieża, 50 min 41 s druku + 5 min przygotowania. X1C: 1 kolor 10,68 g, 45 min 27 s + 7 min 15 s; 2 kolory (AMS) 13,23 g z przepłukaniem i wieżą, 54 min 15 s + 7 min 15 s. A2L/H2C: Pallina grinch 3MF (60×61×87 mm, 3 kolory malowane, podpory): 50,46 g model + 4,56 g podpory + 21,67 g przepłukania + 9,84 g wieża, 2 h 26 min + 5 min, 46 zmian filamentu. Wzór: ścianki 0,61 mm, efektywne wypełnienie 29,3%, ścianki 2,86 mm³/s, wypełnienie 16 mm³/s. Zmiany filamentu: liczone z mapy kolorów w osi Z × changeK (Grinch: 46 zmian w Bambu Studio), 70 s i 0,55 g (przepłukanie + wieża) na zmianę; piernikowy domek: 187 zmian, 79 g przepłukań + 19 g wieży, 6 h 14 min.",
   "baseEur": 9,
   "materials": [
     {
