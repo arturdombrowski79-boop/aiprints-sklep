@@ -37,7 +37,7 @@ try {
     $files = []; foreach (glob("$dir/*.{stl,3mf}", GLOB_BRACE) ?: [] as $f) { $k = (int)basename($f); $files[$k] = [$f, (string)@file_get_contents("$dir/$k.name") ?: basename($f)]; }
     ksort($files); $files = array_values($files); if (!$files) fail('Nie przesłano pliku.');
     $st = p3d_stats($files); $st['files'] = array_column($files, 1); $st['at'] = date('c');
-    file_put_contents("$dir/stats.json", json_encode($st, JSON_UNESCAPED_UNICODE)); out(['id' => basename($dir), 'stats' => $st]);
+    file_put_contents("$dir/stats.json", json_encode($st, JSON_UNESCAPED_UNICODE)); ev_bump('calc3d'); out(['id' => basename($dir), 'stats' => $st]);
   }
   fail('Nieznana akcja');
 } catch (Throwable $e) { error_log('p3d: ' . $e->getMessage()); fail($e->getMessage(), 422); }

@@ -50,7 +50,7 @@ async function checkCode(v) {
   S.disc = p ? { c, p } : false; save(); toastFn(p ? `Kod ${c}: −${p}% ✓` : 'Nieprawidłowy kod'); renderCart();
 }
 export function addRaw(items) { items.forEach((i) => S.items.push(i)); save(); renderCart(); openCart(); }
-export function openCart() { renderCart(); $('drawer').classList.add('on'); $('scrim').classList.add('on'); if (innerWidth < 1024) lenis && lenis.stop(); }
+export function openCart() { window.ev && ev('cart'); renderCart(); $('drawer').classList.add('on'); $('scrim').classList.add('on'); if (innerWidth < 1024) lenis && lenis.stop(); }
 export function closeCart() { $('drawer').classList.remove('on'); $('scrim').classList.remove('on'); lenis && lenis.start(); }
 
 // pliki klienta (zdjęcie, logo) w pełnej rozdzielczości – w IndexedDB, w koszyku tylko identyfikator
@@ -99,6 +99,7 @@ function renderCo() {
 let LIVE = null, SERVER = false, TEST = false;
 async function live() { if (LIVE !== null) return LIVE; try { const r = await fetch('api/ping.php', { cache: 'no-store' }); const j = await r.json(); SERVER = !!(j && j.ok); LIVE = !!(j && j.ok && j.stripe); TEST = !!(j && j.test); } catch (e) { LIVE = false; } return LIVE; }
 async function goStripe(em) {
+  window.ev && ev('pay');
   const att = {}; for (const [ix, i] of S.items.entries()) { if (i.design) att[ix] = { design: await idbGet(i.design) }; if (i.files) att[ix] = { ...(att[ix] || {}), files: await idbGet(i.files) }; }
   const d = document.querySelector('[name=d]:checked');
   const body = { email: em, name: $('cName').value.trim(), phone: $('cTel').value.trim(), delivery: d.value, deliveryName: d.closest('label').querySelector('b').textContent, locker: ($('lk').value || '').trim().toUpperCase(), nip: ($('nip').value || '').trim(), firm: ($('firm').value || '').trim(), code: S.disc ? S.disc.c : '', add: { box: !!(S.add.box && boxable()), card: !!(S.add.card && boxable()) },

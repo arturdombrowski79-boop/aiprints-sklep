@@ -47,9 +47,27 @@ const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <=
     };
     // zdarzenia sklepu: działają tylko, gdy użytkownik zgodził się na marketing (fbq) / statystyki (GA4)
     window.track = function (ev, d) { d = d || {}; try {
+      var k = { ViewContent: 'product', AddToCart: 'add', InitiateCheckout: 'checkout', Purchase: 'paid' }[ev]; if (k && window.ev) window.ev(k, k === 'product' || k === 'add' ? (d.ids || [])[0] : '');
       if (window.fbq) fbq('track', ev, { currency: 'PLN', value: d.value, content_ids: d.ids, content_type: 'product', content_name: d.name, num_items: d.n });
       if (window.__ga) gtag('event', { ViewContent: 'view_item', AddToCart: 'add_to_cart', InitiateCheckout: 'begin_checkout', Purchase: 'purchase' }[ev] || ev, { currency: 'PLN', value: d.value, transaction_id: d.no, items: (d.ids || []).map(function (i) { return { item_id: i }; }) });
     } catch (e) {} };
+    // anonimowe liczniki sklepu (api/ev.php): bez ciasteczek i bez IP – tylko dzienne sumy zdarzeń
+    window.ev = function (e, p) { try {
+      if (navigator.webdriver || localStorage.getItem('aiprints-nostat')) return;
+      var b = JSON.stringify({ e: e, p: p || location.pathname, s: window.__src || 'int' });
+      if (!(navigator.sendBeacon && navigator.sendBeacon('/api/ev.php', new Blob([b], { type: 'text/plain' })))) fetch('/api/ev.php', { method: 'POST', body: b, keepalive: true });
+    } catch (x) {} };
+    (function () { try {
+      var u = new URLSearchParams(location.search); if (u.has('nostat')) localStorage.setItem('aiprints-nostat', '1');
+      var r = document.referrer, h = ''; try { h = r ? new URL(r).hostname : ''; } catch (x) {}
+      var own = h && h.replace(/^www\./, '') === location.hostname.replace(/^www\./, '');
+      if (own) { window.__src = 'int'; ev('view'); return; }
+      var m = (u.get('utm_medium') || '').toLowerCase();
+      window.__src = (u.has('gclid') || u.has('gbraid') || u.has('wbraid') || /cpc|ppc|paid/.test(m)) ? 'ads'
+        : (u.has('fbclid') || u.has('ttclid') || /facebook|instagram|tiktok|fb\.|t\.co|linkedin|youtube/.test(h) || m === 'social') ? 'social'
+        : /google\.|bing\.|duckduckgo|yahoo|ecosia|onet|wp\.pl|interia/.test(h) ? 'search' : h ? 'other' : 'direct';
+      ev('entry');
+    } catch (x) {} })();
     try { var c = JSON.parse(localStorage.getItem('aiprints-consent')); if (c) applyConsent(c); } catch (e) {}
     // Tryb uzyskiwania zgody Google (Consent Mode v2): tag ładuje się zawsze, ale bez zgody nie zapisuje plików cookie
     // i wysyła tylko anonimowe sygnały (Google Ads widzi tag i może modelować konwersje). Zgody nadal ustawia baner.

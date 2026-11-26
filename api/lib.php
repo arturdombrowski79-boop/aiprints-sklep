@@ -119,3 +119,18 @@ function too_big(array $it): bool {
   if (!$d) return false;
   return in_array($slug, $RIGID, true) ? max($d) > 60 : min($d) > 60;
 }
+
+// ——— anonimowe statystyki (bez ciasteczek, bez IP): dzienne liczniki zdarzeń ———
+function ev_bump(string $e, string $p = '', string $s = 'srv'): void {
+  try {
+    $db = db(); $db->exec('CREATE TABLE IF NOT EXISTS ev (day TEXT, e TEXT, p TEXT, s TEXT, n INTEGER, PRIMARY KEY (day, e, p, s))');
+    $k = [date('Y-m-d'), $e, $p, $s];
+    $db->prepare('INSERT OR IGNORE INTO ev VALUES (?,?,?,?,0)')->execute($k);
+    $db->prepare('UPDATE ev SET n=n+1 WHERE day=? AND e=? AND p=? AND s=?')->execute($k);
+  } catch (Throwable $t) { }
+}
+// tajny klucz do strony statystyk (link przychodzi mailem na skrzynkę pracowni)
+function stats_key(): string {
+  $sec = (string)(cfg('panel_secret') ?: cfg('stripe_webhook') ?: cfg('stripe_secret'));
+  return $sec === '' ? bin2hex(random_bytes(16)) : substr(hash_hmac('sha256', 'stats|v1', $sec), 0, 32);
+}

@@ -33,4 +33,5 @@ $html = '<h2>Zapytanie' . ($about ? ': ' . $e($about) : '') . '</h2><p><b>' . $e
 $ok = send_mail($to, 'Zapytanie' . ($about ? ' – ' . $about : '') . ' – ' . $name, $html, $att, null, $email);
 db()->prepare('INSERT INTO contacts VALUES (?,?,?,?)')->execute([date('c'), $ip, $email, $about]);
 if (!$ok) fail('Nie udało się wysłać – napisz na kontakt@aiprints.pl albo zadzwoń: 609 040 274.', 500);
+ev_bump('contact', mb_substr((string)($about ?? ''), 0, 60));
 out(['ok' => true]);
