@@ -48,7 +48,7 @@ $funnel = [
   ['Opłacone zamówienia', $paid],
 ];
 $max = max(1, ...array_column($funnel, 1));
-$SRC = ['ads' => 'Reklama Google', 'search' => 'Wyszukiwarka (bezpłatnie)', 'social' => 'Facebook / Instagram / TikTok', 'direct' => 'Wpisany adres / zakładka', 'other' => 'Inne strony', 'int' => 'wewnętrzne'];
+$SRC = ['ads' => 'Reklamy płatne (Google, ChatGPT)', 'search' => 'Wyszukiwarka (bezpłatnie)', 'social' => 'Facebook / Instagram / TikTok', 'direct' => 'Wpisany adres / zakładka', 'other' => 'Inne strony', 'int' => 'wewnętrzne'];
 $ST = ['pending' => 'czeka na płatność', 'paid' => 'opłacone', 'shipped' => 'wysłane', 'ready' => 'gotowe do odbioru', 'failed' => 'płatność nieudana', 'expired' => 'nieopłacone (porzucone)'];
 
 // wyceny 3D (pliki trzymane 7 dni)
@@ -77,7 +77,7 @@ $tbl = function (array $head, array $rows) use ($esc) {
 <div class="c"><h2>Skąd przychodzą klienci</h2>
 <?= $tbl(['Źródło', 'Wejścia'], array_map(fn($r) => [$SRC[$r['s']] ?? $r['s'], $r['n']], $q("SELECT s, SUM(n) n FROM ev WHERE day>=? AND e='entry' GROUP BY s ORDER BY n DESC", [$from]))) ?></div>
 
-<div class="c"><h2>Na które strony wchodzą z reklamy Google</h2>
+<div class="c"><h2>Na które strony wchodzą z reklam</h2>
 <?= $tbl(['Strona', 'Wejścia'], array_map(fn($r) => [$r['p'], $r['n']], $q("SELECT p, SUM(n) n FROM ev WHERE day>=? AND e='entry' AND s='ads' GROUP BY p ORDER BY n DESC LIMIT 20", [$from]))) ?></div>
 
 <div class="c"><h2>Najczęściej oglądane strony</h2>
