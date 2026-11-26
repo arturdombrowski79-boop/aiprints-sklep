@@ -51,6 +51,10 @@ const fitD = (d) => { d = (d || '').replace(/\s+/g, ' ').trim(); if (d.length <=
       if (window.__ga) gtag('event', { ViewContent: 'view_item', AddToCart: 'add_to_cart', InitiateCheckout: 'begin_checkout', Purchase: 'purchase' }[ev] || ev, { currency: 'PLN', value: d.value, transaction_id: d.no, items: (d.ids || []).map(function (i) { return { item_id: i }; }) });
     } catch (e) {} };
     try { var c = JSON.parse(localStorage.getItem('aiprints-consent')); if (c) applyConsent(c); } catch (e) {}
+    // Tryb uzyskiwania zgody Google (Consent Mode v2): tag ładuje się zawsze, ale bez zgody nie zapisuje plików cookie
+    // i wysyła tylko anonimowe sygnały (Google Ads widzi tag i może modelować konwersje). Zgody nadal ustawia baner.
+    if (ADS_ID && !window.__ga) { window.__ga = 1; var s0 = document.createElement('script'); s0.async = true; s0.src = 'https://www.googletagmanager.com/gtag/js?id=' + ADS_ID; document.head.appendChild(s0); gtag('js', new Date()); }
+    if (ADS_ID && !window.__adsC) { window.__adsC = 1; gtag('config', ADS_ID); }
   </script>
 </head>
 <body>
