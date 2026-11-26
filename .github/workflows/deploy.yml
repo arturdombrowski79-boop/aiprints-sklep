@@ -40,5 +40,17 @@ jobs:
           ssh-keyscan -p "$LH_PORT" -H "$LH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           # config.php (klucze Stripe) i dane zamówień zostają na serwerze; blokada .htaccess w api/data jest wysyłana
           rsync -az --delete --exclude '.well-known' --exclude 'api/config.php' --include 'api/data/.htaccess' --exclude 'api/data/*' -e "ssh -p $LH_PORT -i ~/.ssh/id_lh" prod/ "$LH_USER@$LH_HOST:$LH_PATH/"
+      - name: Wyślij plik produktów do OpenAI Ads (SFTP)
+        if: ${{ env.OAI_SFTP_PASSWORD != '' }}
+        env:
+          OAI_SFTP_PASSWORD: ${{ secrets.OPENAI_SFTP_PASSWORD }}
+          OAI_HOST: sftp-prod3.commerce.openai.com
+          OAI_USER: oaiproductfeedprod3.sftp6cda51b26abb49b6bc715efa83bd0512
+        run: |
+          sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq sshpass >/dev/null
+          echo "put prod/feed/openai.csv catalog.csv" > /tmp/oai.batch
+          SSHPASS="$OAI_SFTP_PASSWORD" sshpass -e sftp -P 443 -oBatchMode=no -o StrictHostKeyChecking=accept-new -b /tmp/oai.batch "$OAI_USER@$OAI_HOST" || echo "::warning::Nie udało się wysłać pliku do OpenAI"
+        continue-on-error: true
     env:
       LH_HOST: ${{ secrets.LH_HOST }}
+      OAI_SFTP_PASSWORD: ${{ secrets.OPENAI_SFTP_PASSWORD }}

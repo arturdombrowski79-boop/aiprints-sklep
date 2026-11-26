@@ -32,4 +32,7 @@ ${rows.map((r) => `<item><g:id>${x(r.id)}</g:id><title>${x(r.title)}</title><des
 // Meta (Facebook, Instagram) – ten sam plik przyjmuje też katalog TikTok
 writeFileSync(OUT + '/meta.csv', ['id,title,description,availability,condition,price,sale_price,sale_price_effective_date,link,image_link,additional_image_link,brand,product_type,custom_label_0',
   ...rows.map((r) => [r.id, r.title, r.description, 'in stock', 'new', r.price, r.sale, r.saleDates, r.link, r.image, r.extra.join(','), 'AiPrints.pl', r.type, r.custom].map(csv).join(','))].join('\n') + '\n');
+// OpenAI Ads (ChatGPT) – CSV wg specyfikacji OpenAI, wysyłany przez SFTP w GitHub Actions (hasło tylko w Secrets)
+writeFileSync(OUT + '/openai.csv', ['item_id,title,description,url,brand,image_url,price,availability,seller_name,seller_url,return_policy,target_countries,store_country,is_eligible_search,is_eligible_checkout,is_ads_eligible',
+  ...rows.map((r) => [r.id, r.title, r.description, r.link, 'AiPrints.pl', r.image, r.sale || r.price, 'in_stock', 'AiPrints.pl', S, S + 'zwroty-i-reklamacje', 'PL', 'PL', 'true', 'false', 'true'].map(csv).join(','))].join('\n') + '\n');
 console.log('feeds:', rows.length, 'produktów');
