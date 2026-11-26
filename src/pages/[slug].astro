@@ -45,15 +45,21 @@ const bc = { '@type': 'BreadcrumbList', itemListElement: crumbs.map(([n, u], i) 
 const schema = kind === 'cat'
   ? { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'CollectionPage', name: c.name, description: c.lead }] }
   : { '@context': 'https://schema.org', '@graph': [bc, { '@type': 'Product', name: p.name, description: d.desc.join(' '), image: site + d.img, sku: p.slug, brand: { '@type': 'Brand', name: 'AiPrints.pl' }, ...(p.price ? { offers: { '@type': 'Offer', price: ((p.tiers ? p.tiers[0].p : p.price) * K).toFixed(2), ...(p.promo ? { priceValidUntil: p.promo.until } : {}), priceCurrency: 'PLN', availability: 'https://schema.org/InStock', url: site + p.slug + '.html', seller: { '@type': 'Organization', name: 'AiPrints.pl' }, shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: '15.99', currency: 'PLN' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'PL' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: HT[0], maxValue: HT[1], unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'DAY' } } } } } : {}) }] };
+// SEO kategorii usługowych: tytuł/H1/opis pod frazy, których szukają klienci (Katowice, Chorzów, Śląsk)
+const SEO = {
+  'druk-wielkoformatowy': { t: 'Wydruki wielkoformatowe Katowice i Chorzów', h: 'Wydruki wielkoformatowe', d: 'Wydruki wielkoformatowe na HP Latex w Chorzowie, blisko Katowic: banery, fototapety na wymiar, plakaty, zdjęcia wielkoformatowe, naklejki i folie. Podgląd przed drukiem, odbiór lub wysyłka.' },
+  'dla-fotografow': { t: 'Zdjęcia fine art i wielkoformatowe – Katowice', h: 'Zdjęcia fine art i wielkoformatowe', d: 'Wydruki zdjęć fine art na papierach bawełnianych (Epson SureColor P9500, Digigraphie®) i zdjęcia wielkoformatowe do 160 cm. Pracownia w Chorzowie, 10 minut od Katowic.' },
+  'wydruki-3d': { t: 'Wydruki 3D na zamówienie – Katowice, Chorzów', h: 'Wydruki 3D', d: 'Gotowe wydruki 3D i druk 3D na zamówienie z Twojego pliku STL/3MF – kalkulator ceny online. PLA, PETG, ASA, TPU, wielokolor do 8 kolorów. Pracownia w Chorzowie.' },
+};
 const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
 ---
 {kind === 'cat' ? (
-<Base title={`${c.name} – pracownia w Chorzowie`} description={c.lead} canonical={`${c.slug}`} schema={schema} active={c.slug}>
+<Base title={SEO[c.slug]?.t || `${c.name} – pracownia w Chorzowie`} description={SEO[c.slug]?.d || c.lead} canonical={`${c.slug}`} schema={schema} active={c.slug}>
   <section class="max-w-[1360px] mx-auto px-5 md:px-10 pt-8">
     <div class="relative rounded-[40px] overflow-hidden px-7 md:px-14 pt-10 pb-12 md:py-16" style={`background:${({ 'prezenty-ze-zdjeciem': '#e9eef5', 'prezenty-z-grawerem': '#f1e7da', 'slub-i-okazje': '#f3e9ea', 'dla-firm': '#e7e7e4', 'wspolnoty-i-spoldzielnie': '#e3ece7', 'salony-beauty': '#f4e6ee', 'na-swieta': '#f2e4e1' })[c.slug] || '#efe7ee'}`}>
       <nav class="text-[13px] text-ink/75 relative z-10" aria-label="Okruszki">{crumbs.map(([n, u], i) => <>{i > 0 && <span class="mx-2">/</span>}<a href={u} class="hover:text-ink">{n}</a></>)}</nav>
       <div class="relative z-10 max-w-[620px] mt-8">
-        <h1 class="hd text-[60px] md:text-[96px]">{c.name}</h1>
+        <h1 class="hd text-[60px] md:text-[96px]">{SEO[c.slug]?.h || c.name}</h1>
         <p class="text-[17px] text-ink/65 leading-relaxed mt-6 max-w-[520px]">{c.lead}</p>
       </div>
       <div class="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-[40%] h-[86%]">
