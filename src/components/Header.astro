@@ -17,10 +17,12 @@ const PAGES = [
   { h: 'zwroty-i-reklamacje.html', n: 'Zwroty i reklamacje', d: '', k: 'zwrot zwroty reklamacja reklamacje' },
   { h: 'regulamin.html', n: 'Regulamin sklepu', d: '', k: 'regulamin zasady' },
   { h: 'grawer-laserowy.html', n: 'Grawer i cięcie laserowe', d: 'CO₂ · MOPA · UV', k: 'grawer grawerowanie laser ciecie laserowe' },
-  { h: 'druk-3d.html', n: 'Druk 3D na zamówienie', d: 'Od 1 sztuki, z Twojego pliku', k: 'druk 3d drukarka 3d prototyp czesci stl' },
+  { h: 'druk-3d.html#kalkulator', n: 'Kalkulator druku 3D – cena od razu', d: 'Wgraj STL lub 3MF albo wybierz gotowy model', k: 'kalkulator kalkulatory druku druk 3d cena ceny koszt wycena wycenic policz ile kosztuje stl 3mf wydruk wydruki gotowe modele gotowce' },
+  { h: 'druk-3d.html', n: 'Druk 3D na zamówienie', d: 'Od 1 sztuki, z Twojego pliku', k: 'druk 3d drukarka 3d prototyp czesci zamienne stl wydruki' },
+  { h: 'fototapeta.html', n: 'Kalkulator fototapety – cena za m²', d: 'Wpisz wymiary ściany, cena od razu', k: 'kalkulator kalkulatory fototapeta fototapety tapeta cena wymiary m2 metr' },
   { h: 'druk-dla-artystow.html', n: 'Fine art i Digigraphie®', d: 'Edycje dla artystów i fotografów', k: 'fine art digigraphie artysta wydruk muzealny giclee' },
   { h: 'fotografia.html', n: 'Fotografia', d: 'Zdjęcia do dokumentów, sesje, dron', k: 'fotografia zdjecia do dokumentow sesja dron fotograf' },
-  { h: 'druk-cyfrowy.html', n: 'Druk cyfrowy', d: 'Dyplomy, zaproszenia, broszury, wizytówki', k: 'druk cyfrowy wizytowki ulotki zaproszenia dyplomy broszury' },
+  { h: 'druk-cyfrowy.html', n: 'Druk cyfrowy', d: 'Dyplomy, zaproszenia, broszury, wizytówki', k: 'druk cyfrowy wizytowki ulotki zaproszenia dyplomy broszury ksero kserowanie kopie skan skanowanie drukowanie prace dyplomowe magisterskie licencjackie' },
 ];
 const nav = [['uslugi', 'Usługi'], ['druk-wielkoformatowy', 'Druk i reklama'], ['dla-firm', 'Dla firm']];
 const cntF = (k, v) => cat.products.filter((p) => (SEASON || p.cat !== 'na-swieta') && p.tags[k].includes(v)).length;
