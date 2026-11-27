@@ -25,7 +25,7 @@
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 37
+"count": 36
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -122,13 +122,24 @@
 {
 "slug": "sublimacja",
 "name": "Sublimacja",
-"lead": "Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).",
+"lead": "Kubki, koce, ręczniki, poduszki, puzzle i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).",
 "color": "#4a3f6b",
 "subs": [
 "Gadżety",
 "Tekstylia"
 ],
-"count": 23
+"count": 20
+},
+{
+"slug": "koszulki-i-odziez",
+"name": "Koszulki i odzież z nadrukiem",
+"lead": "Koszulki, bluzy i fartuchy z logo i imieniem – folia flex albo pełny nadruk sublimacyjny. Zaprojektuj w kreatorze albo przyślij logo, a przygotujemy projekt do akceptacji.",
+"color": "#2b2b2b",
+"subs": [
+"Folia flex",
+"Sublimacja – pełny nadruk"
+],
+"count": 8
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -1024,25 +1035,24 @@
 "name": "Zdjęcie na łupku",
 "cat": "prezenty-ze-zdjeciem",
 "sub": "Prezenty ze zdjęciem",
-"variants": "20×20 / 20×30, stojak",
+"variants": "20×20 / 20×30, stojak, grawer laserowy",
 "priceText": "99 zł",
 "price": 99.0,
 "tiers": null,
-"machine": "Epson F500 + prasa",
+"machine": "xTool X1 (CO₂)",
 "score": 2693.0,
 "xmas": true,
 "img": "img/hf/lupek-zdjecie-1.jpg",
 "fields": [
-"photo"
+"photo",
+"text"
 ],
 "quote": false,
 "unit": false,
 "gallery": [
 "img/hf/lupek-zdjecie-1.jpg"
 ],
-"also": [
-"sublimacja"
-],
+"also": [],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -5444,6 +5454,152 @@
 }
 },
 {
+"slug": "koszulka-firmowa-flex",
+"name": "Koszulka firmowa z logo – folia flex",
+"cat": "koszulki-i-odziez",
+"sub": "Folia flex",
+"variants": "bawełna 150–180 g, 9 kolorów, S–3XL; logo z folii flex na przodzie lub plecach (do A4), kolor folii do wyboru; trwałe po praniu w 40°C",
+"priceText": "49 zł (5+ 42, 10+ 37, 25+ 32)",
+"price": 49.0,
+"tiers": null,
+"machine": "Folia flex + prasa termotransferowa",
+"score": 1140.0,
+"xmas": false,
+"img": "img/hf/koszulka-firmowa-flex-sq.jpg",
+"fields": [
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/koszulka-firmowa-flex-1.jpg",
+"img/hf/koszulka-firmowa-flex-2.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "koszulka-logo-imie-flex",
+"name": "Koszulka dla zespołu – logo i imię, folia flex",
+"cat": "koszulki-i-odziez",
+"sub": "Folia flex",
+"variants": "logo na plecach i małe logo z imieniem na piersi, każda koszulka z innym imieniem; bawełna, 9 kolorów, S–3XL; idealna dla salonów i firm",
+"priceText": "69 zł (5+ 59, 10+ 52, 25+ 47)",
+"price": 69.0,
+"tiers": null,
+"machine": "Folia flex + prasa termotransferowa",
+"score": 1140.0,
+"xmas": false,
+"img": "img/hf/koszulka-logo-imie-flex-sq.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/koszulka-logo-imie-flex-1.jpg",
+"img/hf/koszulka-logo-imie-flex-2.jpg",
+"img/hf/koszulka-logo-imie-flex-3.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "bluza-firmowa-flex",
+"name": "Bluza firmowa z logo – folia flex",
+"cat": "koszulki-i-odziez",
+"sub": "Folia flex",
+"variants": "bluza z kapturem lub bez, 280 g, logo na piersi i plecach z folii flex, opcjonalnie imię",
+"priceText": "119 zł (5+ 105, 10+ 95)",
+"price": 119.0,
+"tiers": null,
+"machine": "Folia flex + prasa termotransferowa",
+"score": 1140.0,
+"xmas": false,
+"img": "img/hf/bluza-firmowa-flex-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bluza-firmowa-flex-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fartuch-firmowy-flex",
+"name": "Fartuch firmowy z logo – folia flex",
+"cat": "koszulki-i-odziez",
+"sub": "Folia flex",
+"variants": "fartuch bawełniany lub poliestrowy dla kawiarni, salonu, sklepu; logo i imię z folii flex",
+"priceText": "59 zł (5+ 52, 10+ 47)",
+"price": 59.0,
+"tiers": null,
+"machine": "Folia flex + prasa termotransferowa",
+"score": 1140.0,
+"xmas": false,
+"img": "img/hf/fartuch-firmowy-flex-1.jpg",
+"fields": [
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fartuch-firmowy-flex-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "kartka-drewniana",
 "name": "Drewniana kartka świąteczna z logo",
 "cat": "dla-firm",
@@ -6752,8 +6908,8 @@
 {
 "slug": "koszulka-sportowa-sublimacja",
 "name": "Koszulka sportowa z pełnym nadrukiem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-i-odziez",
+"sub": "Sublimacja – pełny nadruk",
 "variants": "poliester oddychający, nadruk na całości: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
 "priceText": "89 zł",
 "price": 89.0,
@@ -6771,7 +6927,9 @@
 "gallery": [
 "img/hf/koszulka-sportowa-sublimacja-1.jpg"
 ],
-"also": [],
+"also": [
+"sublimacja"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -8036,48 +8194,6 @@
 "mat": [
 "szklo",
 "akryl"
-]
-}
-},
-{
-"slug": "flaga-szal-kibica",
-"name": "Flaga i szal kibica z nadrukiem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
-"variants": "flaga 100×150 cm z tunelem lub szal satynowy, kolory klubu",
-"priceText": "od 79 zł",
-"price": 79.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 1091.0,
-"xmas": false,
-"img": "img/hf/flaga-szal-kibica-1.jpg",
-"fields": [
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/flaga-szal-kibica-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
 ]
 }
 },
@@ -9589,7 +9705,8 @@
 "img/hf/koszulki-absolwent-1.jpg"
 ],
 "also": [
-"sublimacja"
+"sublimacja",
+"koszulki-i-odziez"
 ],
 "kind": "b2b",
 "tags": {
@@ -10277,17 +10394,19 @@
 "machine": "DTF + prasa",
 "score": 1055.0,
 "xmas": false,
-"img": "img/hf/koszulka-z-nadrukiem-r1.jpg",
+"img": "img/realizacje/koszulki-viktoria-plecy.jpg",
 "fields": [],
 "quote": false,
 "unit": false,
 "creatorOnly": true,
 "gallery": [
-"img/hf/koszulka-z-nadrukiem-r1.jpg",
+"img/realizacje/koszulki-viktoria-plecy.jpg",
 "img/hf/koszulka-z-nadrukiem-1.jpg"
 ],
 "real": 1,
-"also": [],
+"also": [
+"koszulki-i-odziez"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -10389,51 +10508,6 @@
 ],
 "mat": [
 "drewno"
-]
-}
-},
-{
-"slug": "szklo-ramka-zdjecie",
-"name": "Szklana ramka ze zdjęciem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Pamiątki ze zdjęciem",
-"variants": "szkło do sublimacji, kilka kształtów",
-"priceText": "59 zł",
-"price": 59.0,
-"tiers": null,
-"machine": "Epson F500 + prasa",
-"score": 1052.0,
-"xmas": true,
-"img": "img/hf/szklo-ramka-zdjecie-1.jpg",
-"fields": [
-"photo"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/szklo-ramka-zdjecie-1.jpg"
-],
-"also": [
-"sublimacja"
-],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"dzien-mamy",
-"dzien-babci"
-],
-"dla": [
-"mama",
-"babcia-dziadek",
-"dla-niej"
-],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [
-"szklo"
 ]
 }
 },
@@ -12022,7 +12096,9 @@
 "gallery": [
 "img/hf/bluza-z-nadrukiem-1.jpg"
 ],
-"also": [],
+"also": [
+"koszulki-i-odziez"
+],
 "kind": "gift",
 "tags": {
 "okazja": [

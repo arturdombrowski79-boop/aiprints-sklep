@@ -1,5 +1,19 @@
 [
  {
+  "f": "img/realizacje/koszulki-viktoria-imie.jpg",
+  "w": 768,
+  "h": 1024,
+  "t": "Koszulki dla zespołu Salonu Fryzjerskiego Viktoria – imię na piersi, logo na plecach, folia flex",
+  "g": "odziez"
+ },
+ {
+  "f": "img/realizacje/koszulki-viktoria-plecy.jpg",
+  "w": 768,
+  "h": 1024,
+  "t": "Logo salonu na plecach – biała folia flex na czarnej bawełnie",
+  "g": "odziez"
+ },
+ {
   "f": "img/realizacje/domix-powstancow-24.jpg",
   "w": 768,
   "h": 1024,
@@ -144,13 +158,6 @@
   "w": 1024,
   "h": 768,
   "t": "Poduszki ze zdjęciami – sublimacja",
-  "g": "zdjecia"
- },
- {
-  "f": "img/realizacje/koszulka-imie.jpg",
-  "w": 768,
-  "h": 1024,
-  "t": "Koszulka z imieniem – nadruk na plecach",
   "g": "zdjecia"
  }
 ]

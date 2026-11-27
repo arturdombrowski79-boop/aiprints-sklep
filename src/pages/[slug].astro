@@ -30,7 +30,7 @@ const cr = kind === 'prod' ? CREATOR[p.slug] : null;
 const crOnly = kind === 'prod' && !!p.creatorOnly;
 const C = Object.fromEntries(cat.cats.map((x) => [x.slug, x]));
 const site = 'https://aiprints.pl/';
-const RG = { 'szkoly-i-przedszkola': ['szkoly', 'Realizacje dla przedszkoli i szkół'], 'druk-wielkoformatowy': ['wielkoformat', 'Realizacje – druk wielkoformatowy'], 'prezenty-ze-zdjeciem': ['zdjecia', 'Realizacje – prezenty ze zdjęciem'], 'sublimacja': ['zdjecia', 'Realizacje – sublimacja i nadruk'], 'wydruki-3d': ['druk3d', 'Realizacje – druk 3D'] };
+const RG = { 'szkoly-i-przedszkola': ['szkoly', 'Realizacje dla przedszkoli i szkół'], 'druk-wielkoformatowy': ['wielkoformat', 'Realizacje – druk wielkoformatowy'], 'prezenty-ze-zdjeciem': ['zdjecia', 'Realizacje – prezenty ze zdjęciem'], 'sublimacja': ['zdjecia', 'Realizacje – sublimacja i nadruk'], 'koszulki-i-odziez': ['odziez', 'Realizacje – koszulki i odzież z nadrukiem'], 'wydruki-3d': ['druk3d', 'Realizacje – druk 3D'] };
 const HT = kind !== 'prod' ? [0, 0] : p.kind === 'ready' ? [1, 3] : p.kind === 'files' ? [2, 7] : [5, 10]; // dni robocze wykonania
 let d = {};
 if (kind === 'cat') {
@@ -94,9 +94,9 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
 
   {c.slug === 'wspolnoty-i-spoldzielnie' && <Realizacje g="wspolnoty" title="Realizacja: oznakowanie budynków DOMIX" lead="Dla DOMIX Zarządzanie Nieruchomościami wykonujemy oznakowanie wspólnot w Chorzowie i Gliwicach: tablice adresowe przy wejściu z danymi zarządcy, regulaminy porządku domowego i tablice informacyjne – wszystko w jednym stylu, z logo i kontaktem zarządcy." more={false} />}
   {c.slug === 'cmentarz-i-pogrzeb' && <RolkaVideo src="video/rolka-pamiec.mp4" poster="video/rolka-pamiec.jpg" label="Film: tabliczki i pamiątki na grób z pracowni AiPrints.pl" title="Pamięć, która zostaje" lead="Tabliczki na krzyż i nagrobek, zdjęcia na porcelanie i pamiątki z grawerem – robimy je spokojnie i z szacunkiem, a projekt zawsze pokazujemy przed wykonaniem." />}
-  {RG[c.slug] && <Realizacje g={RG[c.slug][0]} title={RG[c.slug][1]} limit={8} />}
   {c.slug === 'dla-fotografow' && <FineArtCennik />}
   <Shop items={d.items} subs={c.subs} cslug={c.slug} />
+  {RG[c.slug] && <Realizacje g={RG[c.slug][0]} title={RG[c.slug][1]} limit={6} compact />}
   {c.slug === 'dla-fotografow' && <section id="wycena-fine-art" class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Druk fine art / papier na zamówienie" title="Wycena wydruku fine art" hint="Papier, format (lub wymiar w cm), liczba egzemplarzy, czy ma być edycja Digigraphie®. Możesz od razu dołączyć plik." accept="image/*,.tif,.tiff,.psd,.pdf,.zip" /></section>}
 
 

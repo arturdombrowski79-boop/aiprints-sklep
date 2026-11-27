@@ -30,6 +30,8 @@ const one = (img, area, mm, o = {}) => ({ bg: BG, mask: true, ...o, sides: [{ id
 export const CREATOR = {
   'koszulka-z-nadrukiem': tee,
   'bluza-z-nadrukiem': hoodie,
+  // 28.11: odzież z folii flex i sublimacja – kreator do własnego projektu (flex = jeden kolor folii; projekt i tak idzie do akceptacji)
+  'koszulka-firmowa-flex': tee, 'koszulka-logo-imie-flex': tee, 'bluza-firmowa-flex': hoodie, 'koszulka-sportowa-sublimacja': tee,
   'kubek-z-nadrukiem': { mock: true, colors: MUG, mode: 'print', sides: [{ id: 'front', name: 'Przód', img: 'img/mk/kubek.webp', area: [13, 28, 46, 42], mm: [90, 80] }] },
   'tumbler-uv-kolor': tumbler('print'),
   'termos-logo': tumbler('laser'),

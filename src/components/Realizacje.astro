@@ -1,10 +1,21 @@
 ---
 // Prawdziwe zdjęcia naszych realizacji (src/data/realizacje.json), filtrowane po grupie.
 import R from '../data/realizacje.json';
-const { g = null, title = 'Nasze realizacje', lead = '', limit = 12, more = true, id = 'realizacje' } = Astro.props;
+const { g = null, title = 'Nasze realizacje', lead = '', limit = 12, more = true, id = 'realizacje', compact = false } = Astro.props;
 const items = R.filter((r) => !g || (Array.isArray(g) ? g.includes(r.g) : r.g === g)).slice(0, limit);
 ---
-{items.length > 0 && (
+{items.length > 0 && compact && (
+<section id={id} class="max-w-[1360px] mx-auto px-5 md:px-10 mt-16 scroll-mt-24">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div><p class="text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Zdjęcia z naszych zleceń</p><h2 class="font-display text-[28px] md:text-[34px] leading-none mt-2">{title}</h2></div>
+    {more && <a href="realizacje.html" class="text-[14px] font-semibold">Wszystkie realizacje →</a>}
+  </div>
+  <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 mt-5">
+    {items.map((r) => (
+      <figure><a href={r.f} target="_blank" rel="noopener" class="block aspect-square overflow-hidden rounded-[14px] bg-paper"><img src={r.f} width={r.w} height={r.h} alt={r.t} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.04] transition duration-500" /></a><figcaption class="text-[11.5px] text-mute leading-snug mt-1.5 line-clamp-2">{r.t}</figcaption></figure>))}
+  </div>
+</section>)}
+{items.length > 0 && !compact && (
 <section id={id} class="max-w-[1360px] mx-auto px-5 md:px-10 mt-20 scroll-mt-24">
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div><p class="reveal text-[12px] tracking-[.2em] uppercase text-gold font-semibold">Zdjęcia z naszych zleceń</p><h2 class="reveal font-display text-[40px] md:text-[56px] leading-none mt-3">{title}</h2>{lead && <p class="reveal text-mute text-[15px] leading-relaxed mt-4 max-w-[720px]">{lead}</p>}</div>

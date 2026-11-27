@@ -11,7 +11,8 @@ CATS=[
  ('salony-beauty','Salony beauty','Szyldy z lustra, bony podarunkowe, stojaki QR i komplet oznakowania gabinetu.','#a06a7a'),
  ('druk-wielkoformatowy','Druk wielkoformatowy i folie','Banery, siatki, folie, naklejki po obrysie, oklejanie witryn i aut oraz litery z plotera. Drukujemy na HP Latex 375, tniemy na Summa S3.','#1f3b57'),
  ('dla-fotografow','Fine art i fotografia','Druk pigmentowy fine art (giclée) na papierach bawełnianych Hahnemühle i Canson – Epson P9500, edycje Digigraphie®, odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
- ('sublimacja','Sublimacja','Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
+ ('sublimacja','Sublimacja','Kubki, koce, ręczniki, poduszki, puzzle i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
+ ('koszulki-i-odziez','Koszulki i odzież z nadrukiem','Koszulki, bluzy i fartuchy z logo i imieniem – folia flex albo pełny nadruk sublimacyjny. Zaprojektuj w kreatorze albo przyślij logo, a przygotujemy projekt do akceptacji.','#2b2b2b'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
  ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
  ('sesje-i-zdjecia','Fotografia i sesje','Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.','#4a4038'),
@@ -23,7 +24,7 @@ SUB2CAT={'Na święta':'na-swieta','Pamiątki ze zdjęciem':'prezenty-ze-zdjecie
  'Witryny i folie':'druk-wielkoformatowy','Oznakowanie pomieszczeń':'dla-firm','QR, opinie i social media':'dla-firm','Projekty i grafika':'dla-firm','Wspólnoty, szkoły, sport':'dla-firm',
  'Wspólnoty i spółdzielnie':'wspolnoty-i-spoldzielnie','Druk dla salonów':'salony-beauty',
  'Druk wielkoformatowy':'druk-wielkoformatowy','Ploter tnący':'druk-wielkoformatowy','Fine art i fotografia':'dla-fotografow',
- 'Sublimacja':'sublimacja','Szkoły i przedszkola':'szkoly-i-przedszkola','Cmentarz i pogrzeb':'cmentarz-i-pogrzeb'}
+ 'Sublimacja':'sublimacja','Koszulki i odzież':'koszulki-i-odziez','Szkoły i przedszkola':'szkoly-i-przedszkola','Cmentarz i pogrzeb':'cmentarz-i-pogrzeb'}
 SUBNAME={'Wspólnoty, szkoły, sport':'Szkoły i kluby','Prezenty':None,'Salony beauty i firmy':None,'Pamięć':'Pamiątki'}
 SALON=re.compile(r'salon|lustr|bony|higien|recepc|szyld|wizytown|lusterk|dystans|logo-na|gabinet',re.I)
 FIRMA=re.compile(r'termos|statuet|kartka-drewn|pudelko|skrzynka|butelka',re.I)
@@ -58,7 +59,7 @@ def fields(r):
     if re.search(r'lista|komplet|skrzyn|lokal|winiet',s): f.append('list')
     return f
 # produkty ukryte w sklepie (zostają w CSV i historii cen); 25.11.2026 – właściciel nie wykonuje szarf ani sztalug
-HIDDEN={'szarfa-na-wieniec','portret-na-pogrzeb'}
+HIDDEN={'szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
 seen=set(HIDDEN); prods=[]
 order={r['slug']:i for i,r in enumerate(rows)}
 for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie')):
@@ -78,6 +79,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     if cat=='szkoly-i-przedszkola': sub='Wejście i ogrodzenie' if re.search('drzwi|rekrutacja|urzedowa',sl) else 'Dyplomy i odzież' if re.search('dyplom|koszulk',sl) else 'Sale i korytarze'
     if cat=='cmentarz-i-pogrzeb': sub='Na pogrzeb' if re.search('klepsydr|portret|obrazki|podziekowania|szarfa',sl) else 'Pamiątki' if re.search('krysztal|pupil',sl) else 'Na cmentarz'
     if cat=='dla-fotografow': sub='Odbitki i powiększenia' if re.search('odbitk|powieksz|kalendarz|retusz',sl) else 'Fine art'
+    if cat=='koszulki-i-odziez': sub='Folia flex' if 'flex' in sl else 'Sublimacja – pełny nadruk'
     if cat=='sublimacja': sub='Tekstylia' if re.search('koszul|koc|recznik|fartuch|torba|flaga|skarpet',sl) else 'Gadżety'
     if cat=='wspolnoty-i-spoldzielnie' and re.search('ppoz|alarmow',sl): sub='Ppoż. i bezpieczeństwo'
     if sl=='montaz-oznakowania': sub='Montaż'
@@ -143,6 +145,7 @@ import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]
     if 'F500' in m: a.append('sublimacja')
+    if p['slug'] in ('koszulka-z-nadrukiem','bluza-z-nadrukiem','koszulki-absolwent'): a.append('koszulki-i-odziez')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     if 'Bambu' in m: a.append('wydruki-3d')

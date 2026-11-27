@@ -1735,5 +1735,32 @@
    "img/hf/dekoracja-warstwowa-kwiat-3.jpg"
   ],
   "card": "img/hf/dekoracja-warstwowa-kwiat-sq.jpg"
+ },
+ "koszulka-firmowa-flex": {
+  "gallery": [
+   "img/hf/koszulka-firmowa-flex-1.jpg",
+   "img/hf/koszulka-firmowa-flex-2.jpg"
+  ],
+  "card": "img/hf/koszulka-firmowa-flex-sq.jpg"
+ },
+ "koszulka-logo-imie-flex": {
+  "gallery": [
+   "img/hf/koszulka-logo-imie-flex-1.jpg",
+   "img/hf/koszulka-logo-imie-flex-2.jpg",
+   "img/hf/koszulka-logo-imie-flex-3.jpg"
+  ],
+  "card": "img/hf/koszulka-logo-imie-flex-sq.jpg"
+ },
+ "bluza-firmowa-flex": {
+  "gallery": [
+   "img/hf/bluza-firmowa-flex-1.jpg"
+  ],
+  "card": "img/hf/bluza-firmowa-flex-1.jpg"
+ },
+ "fartuch-firmowy-flex": {
+  "gallery": [
+   "img/hf/fartuch-firmowy-flex-1.jpg"
+  ],
+  "card": "img/hf/fartuch-firmowy-flex-1.jpg"
  }
 }
