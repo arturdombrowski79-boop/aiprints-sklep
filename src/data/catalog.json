@@ -11427,13 +11427,15 @@
 "machine": "GoArt UV A3 / HP Latex 375",
 "score": 198.0,
 "xmas": false,
-"img": null,
+"img": "img/hf/druk-uv-na-plycie-1.jpg",
 "fields": [
 "files"
 ],
 "quote": false,
 "unit": false,
-"gallery": [],
+"gallery": [
+"img/hf/druk-uv-na-plycie-1.jpg"
+],
 "also": [],
 "kind": "files",
 "tags": {
@@ -11499,13 +11501,15 @@
 "machine": "Xerox C75",
 "score": 120.0,
 "xmas": false,
-"img": null,
+"img": "img/hf/druk-cyfrowy-arkusz-1.jpg",
 "fields": [
 "files"
 ],
 "quote": false,
 "unit": false,
-"gallery": [],
+"gallery": [
+"img/hf/druk-cyfrowy-arkusz-1.jpg"
+],
 "also": [],
 "kind": "files",
 "tags": {

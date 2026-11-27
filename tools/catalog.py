@@ -126,6 +126,9 @@ for slug,name,cat,sub,var,mach in [
     pt=SVC_PRICE.get(slug,'wycena')
     prods.append(dict(slug=slug,name=name,cat=cat,sub=sub,variants=var,priceText=pt,price=price(pt),tiers=None,machine=mach,score=3.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=True,unit=False,kind='service'))
 GAL=json.load(open(B+'/src/data/gallery.json'))
+# bez wpisu w gallery.json: zdjęcie img/hf/<slug>-1.jpg, jeśli istnieje (inaczej feed Google dostaje pusty image_link)
+for p in prods:
+    if not p.get('img') and os.path.exists(B+f"/public/img/hf/{p['slug']}-1.jpg"): p['img']=f"img/hf/{p['slug']}-1.jpg"
 for p in prods:
     g=GAL.get(p['slug'])
     if g: p['img']=g['card']; p['gallery']=g['gallery']; p['score']+=1000
