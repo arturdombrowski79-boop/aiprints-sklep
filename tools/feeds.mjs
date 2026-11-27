@@ -1,4 +1,5 @@
 // Feedy produktów: Google Merchant Center (RSS 2.0) i katalog Meta/Instagram/TikTok (CSV).
+// return_policy_label „personalizowane” (wszystko poza kind=ready) → w Merchant Center wyjątek: bez zwrotów (art. 38 pkt 3 u.p.k.).
 // Adresy po wdrożeniu: https://aiprints.pl/feed/google.xml, https://aiprints.pl/feed/meta.csv
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { describe } from '../src/data/copy.js';
@@ -26,7 +27,7 @@ for (const p of cat.products) {
 // Google Merchant Center
 writeFileSync(OUT + '/google.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel><title>AiPrints.pl</title><link>${S}</link><description>Prezenty personalizowane, grawer i druk – pracownia w Chorzowie</description>
-${rows.map((r) => `<item><g:id>${x(r.id)}</g:id><title>${x(r.title)}</title><description>${x(r.description)}</description><link>${x(r.link)}</link><g:image_link>${x(r.image)}</g:image_link>${r.extra.map((e) => `<g:additional_image_link>${x(e)}</g:additional_image_link>`).join('')}<g:availability>in_stock</g:availability><g:min_handling_time>${r.custom === 'ready' ? 1 : r.custom === 'files' ? 2 : 5}</g:min_handling_time><g:max_handling_time>${r.custom === 'ready' ? 3 : r.custom === 'files' ? 7 : 10}</g:max_handling_time><g:price>${r.price}</g:price>${r.sale ? `<g:sale_price>${r.sale}</g:sale_price><g:sale_price_effective_date>${r.saleDates}</g:sale_price_effective_date>` : ''}<g:brand>AiPrints.pl</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists><g:product_type>${x(r.type)}</g:product_type><g:is_bundle>no</g:is_bundle><g:custom_label_0>${x(r.custom)}</g:custom_label_0></item>`).join('\n')}
+${rows.map((r) => `<item><g:id>${x(r.id)}</g:id><title>${x(r.title)}</title><description>${x(r.description)}</description><link>${x(r.link)}</link><g:image_link>${x(r.image)}</g:image_link>${r.extra.map((e) => `<g:additional_image_link>${x(e)}</g:additional_image_link>`).join('')}<g:availability>in_stock</g:availability><g:min_handling_time>${r.custom === 'ready' ? 1 : r.custom === 'files' ? 2 : 5}</g:min_handling_time><g:max_handling_time>${r.custom === 'ready' ? 3 : r.custom === 'files' ? 7 : 10}</g:max_handling_time><g:price>${r.price}</g:price>${r.sale ? `<g:sale_price>${r.sale}</g:sale_price><g:sale_price_effective_date>${r.saleDates}</g:sale_price_effective_date>` : ''}<g:brand>AiPrints.pl</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists><g:product_type>${x(r.type)}</g:product_type><g:is_bundle>no</g:is_bundle><g:custom_label_0>${x(r.custom)}</g:custom_label_0>${r.custom !== 'ready' ? '<g:return_policy_label>personalizowane</g:return_policy_label>' : ''}</item>`).join('\n')}
 </channel></rss>
 `);
 // Meta (Facebook, Instagram) – ten sam plik przyjmuje też katalog TikTok
