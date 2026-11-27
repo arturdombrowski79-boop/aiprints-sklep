@@ -1,0 +1,24 @@
+---
+// Pionowy film (rolka) obok krótkiego tekstu: odtwarza się bez dźwięku po przewinięciu, dźwięk po kliknięciu.
+const { src, poster, title, lead, label, cta, href } = Astro.props;
+---
+<section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28 grid md:grid-cols-[1fr_minmax(260px,380px)] gap-8 md:gap-14 items-center">
+  <div class="reveal">
+    <span class="text-[12.5px] font-semibold tracking-[.18em] text-mute">FILM Z PRACOWNI</span>
+    <h2 class="font-display text-[40px] md:text-[56px] leading-[1.02] mt-2">{title}</h2>
+    <p class="text-mute text-[16px] leading-relaxed mt-4 max-w-[560px]">{lead}</p>
+    {cta && <a href={href} class="btn btn-ink mt-6">{cta}</a>}
+  </div>
+  <figure class="reveal relative rounded-[28px] overflow-hidden bg-ink aspect-[9/16] w-full max-w-[380px] mx-auto">
+    <video class="rv absolute inset-0 w-full h-full object-cover" muted loop playsinline preload="none" poster={poster} aria-label={label}><source src={src} type="video/mp4" /></video>
+    <button type="button" class="rvs absolute right-3 bottom-3 rounded-full bg-black/60 text-white text-[13px] font-semibold px-3.5 h-9 backdrop-blur">🔇 Włącz dźwięk</button>
+  </figure>
+</section>
+<script>
+  const slow = (navigator.connection && navigator.connection.saveData) || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('figure video.rv').forEach((v) => {
+    const b = v.parentElement.querySelector('.rvs');
+    if (!slow) new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: 0.35 }).observe(v);
+    b.addEventListener('click', () => { v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play().catch(() => {}); } b.textContent = v.muted ? '🔇 Włącz dźwięk' : '🔊 Wycisz'; });
+  });
+</script>

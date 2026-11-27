@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Card from '../components/Card.astro';
 import Ph from '../components/Ph.astro';
 import Realizacje from '../components/Realizacje.astro';
+import RolkaVideo from '../components/RolkaVideo.astro';
 import Gallery from '../components/Gallery.astro';
 import Shop from '../components/Shop.astro';
 import Creator from '../components/Creator.astro';
@@ -90,6 +91,7 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
   </section>); })()}
 
   {c.slug === 'wspolnoty-i-spoldzielnie' && <Realizacje g="wspolnoty" title="Realizacja: oznakowanie budynków DOMIX" lead="Dla DOMIX Zarządzanie Nieruchomościami wykonujemy oznakowanie wspólnot w Chorzowie i Gliwicach: tablice adresowe przy wejściu z danymi zarządcy, regulaminy porządku domowego i tablice informacyjne – wszystko w jednym stylu, z logo i kontaktem zarządcy." more={false} />}
+  {c.slug === 'cmentarz-i-pogrzeb' && <RolkaVideo src="video/rolka-pamiec.mp4" poster="video/rolka-pamiec.jpg" label="Film: tabliczki i pamiątki na grób z pracowni AiPrints.pl" title="Pamięć, która zostaje" lead="Tabliczki na krzyż i nagrobek, zdjęcia na porcelanie i pamiątki z grawerem – robimy je spokojnie i z szacunkiem, a projekt zawsze pokazujemy przed wykonaniem." />}
   {RG[c.slug] && <Realizacje g={RG[c.slug][0]} title={RG[c.slug][1]} limit={8} />}
   <Shop items={d.items} subs={c.subs} cslug={c.slug} />
 
