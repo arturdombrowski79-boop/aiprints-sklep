@@ -2,6 +2,8 @@
 // Po każdej nowej rolce dopisz NA GÓRZE listy temat z produktami z filmu (slugi z catalog.json).
 // link: strona usługi z opisem; slugs: produkty do kupienia od razu.
 export const BIO = [
+  { t: 'Nowości z grawera', sub: 'wizytówki metalowe, kryształy, medale od 29 zł', date: '28.11', link: 'grawer-laserowy',
+    slugs: ['wizytowki-metalowe', 'moneta-pamiatkowa', 'otwieracz-karta', 'zawieszka-krysztal-choinka', 'krysztal-pupil', 'krysztal-slub', 'niesmiertelnik', 'medale-grawer'] },
   { t: 'Druk 3D z Twojego pliku', sub: 'wgraj plik – cena od razu, odbiór w paczkomacie', date: '26.11', link: 'druk-3d', slugs: [] },
   { t: 'Fine art i odbitki', sub: 'Epson P9500 · Hahnemühle · EIZO', date: '27.11', link: 'druk-dla-artystow',
     slugs: ['fine-art-imprime', 'fine-art-bawelna', 'odbitki-drylab', 'powiekszenia-zdjec'] },
