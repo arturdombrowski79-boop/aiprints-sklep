@@ -25,7 +25,7 @@
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 36
+"count": 37
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -106,7 +106,7 @@
 "Plakaty i tablice",
 "Witryny i folie"
 ],
-"count": 52
+"count": 53
 },
 {
 "slug": "dla-fotografow",
@@ -12163,6 +12163,40 @@
 "akryl",
 "druk"
 ]
+}
+},
+{
+"slug": "tapeta-samoprzylepna-pasy",
+"name": "Tapeta samoprzylepna – pojedyncze pasy i kształty wycinane",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "samoprzylepna folia ścienna Easy Stick z Twoim wzorem lub zdjęciem: pojedynczy pas na wymiar albo elementy wycięte po obrysie (liście, księżyc, imię); przyklejasz bez kleju i wody, można odkleić",
+"priceText": "75 zł/m²",
+"price": 75.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 158.0,
+"xmas": false,
+"img": "img/hf/tapeta-samoprzylepna-pasy-1.jpg",
+"fields": [
+"files"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/tapeta-samoprzylepna-pasy-1.jpg"
+],
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "files",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
 }
 },
 {

@@ -65,7 +65,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     if r['slug'] in seen: continue
     seen.add(r['slug'])
     k=r['kategoria']
-    if k in ('Dom i dekoracje','Dla dzieci') and re.search(r'zdj|foto|fototapet|plakat|mapa',r['slug']+r['nazwa'].lower()): cat='prezenty-ze-zdjeciem'; sub=k
+    if k in ('Dom i dekoracje','Dla dzieci') and re.search(r'zdj|foto|fototapet|tapeta|plakat|mapa',r['slug']+r['nazwa'].lower()): cat='prezenty-ze-zdjeciem'; sub=k
     elif k=='Prezenty': cat='prezenty-ze-zdjeciem' if re.search(r'zdj|foto|polaroid|puzzle|obraz|mapa|plakat|etui-telefon|magnes|litofan|tumbler',r['slug']+r['nazwa'].lower()) else 'prezenty-z-grawerem'; sub='Prezenty ze zdjęciem' if cat=='prezenty-ze-zdjeciem' else 'Grawer'
     elif k=='Salony beauty i firmy':
         cat='salony-beauty' if SALON.search(r['slug']) and not FIRMA.search(r['slug']) else 'dla-firm'; sub='Szyldy i logo' if cat=='salony-beauty' else 'Upominki z logo'
@@ -157,7 +157,7 @@ KIND_READY={'mechanizm-cichy','indeksy-wskazowki','zestaw-montazowy','pchac-ciag
   'instrukcja-ppoz','tablica-ogloszen','regulamin-porzadku','zegar-diy-komplet','napisy-maz-zona','topper-ihs','ihs-litery','medalik-ihs'}
 KIND_FILES={'odbitki-drylab','powiekszenia-zdjec','fine-art-druk','fine-art-bawelna','fine-art-imprime','wydruk-w-ramie','wydruk-wystawowy','digigraphie-edycja',
   'reprodukcja-obrazu','retusz-starych-zdjec','wydruk-probny','plakat-wielkoformatowy','siatka-mesh','baner-reklamowy','baner-blockout','baner-tekstylny',
-  'wydruk-backlit','folia-samoprzylepna-druk','folia-owv-witryna','tablica-pcv-dibond','naklejki-po-obrysie','fototapeta','fotoksiazka-a5',
+  'wydruk-backlit','folia-samoprzylepna-druk','folia-owv-witryna','tablica-pcv-dibond','naklejki-po-obrysie','fototapeta','tapeta-samoprzylepna-pasy','fotoksiazka-a5',
   'kalendarz-scienny-zdjecia','kalendarz-2027-a3','kalendarz-biurkowy','odbitki-polaroid','magnesy-zdjecia','koc-ze-zdjeciem','portfolio-box',
   'obraz-plotno','fotopanel-aluminium','folia-mrozona-nadruk','potykacz-a1','obrazki-pamiatkowe-pogrzeb','naklejki-promocyjne',
   'druk-cyfrowy-arkusz','druk-uv-na-plycie'}

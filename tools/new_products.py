@@ -107,6 +107,7 @@ NEW = [
  ('Prezenty', 'moneta-pamiatkowa', 'Moneta pamiątkowa z grawerem', 'Ø ok. 40 mm, grawer z dwóch stron: imiona, data, logo; na ślub, chrzest, jubileusz firmy, dla klubu. Dla firm od 20 szt. – 19 zł/szt. (cynk), zapytaj o wycenę', 'Cynkowa=39 | Mosiężna=59', MOPA, 59, 21, 15, 3, 'cynk ok. 8,50 zł, mosiądz ok. 21 zł'),
  ('Prezenty', 'otwieracz-karta', 'Otwieracz-karta z grawerem', 'czarna stal w rozmiarze karty 85×54 mm, mieści się w portfelu; grawer imienia, dedykacji lub logo. Od 10 szt. – 25 zł/szt., zapytaj o wycenę', '39 zł', MOPA, 39, 5, 10, 3, 'gadżet firmowy, prezent dla niego'),
  ('Dom i dekoracje', 'zawieszka-krysztal-choinka', 'Kryształowa zawieszka z imieniem', 'kryształ K5 w kształcie diamentu, grawer imienia i daty w środku szkła, ze wstążką – na choinkę, do okna albo do auta', '39 zł', 'xTool X1 (UV 5 W, grawer w szkle)', 39, 14, 15, 3, 'mały zapas (3 szt.)'),
+ ('Dom i dekoracje', 'tapeta-samoprzylepna-pasy', 'Tapeta samoprzylepna – pojedyncze pasy i kształty wycinane', 'samoprzylepna folia ścienna Easy Stick z Twoim wzorem lub zdjęciem: pojedynczy pas na wymiar albo elementy wycięte po obrysie (liście, księżyc, imię); przyklejasz bez kleju i wody, można odkleić', '75 zł/m²', LATEX + ' + ' + SUMMA, 150, 40, 25, 4, 'cena od Artura 28.11: ok. 75 zł/m² brutto'),
 ]
 UPDATE = {
  'krysztal-pupil': ('Kryształ 3D z pupilem', 'grawer zdjęcia pupila w środku kryształu K9; kształt prostokątny lub kość; podstawka LED na zapytanie', 'Prostokąt 5×5×8 cm=229 | Kształt kości=259'),
