@@ -9,6 +9,7 @@ export function bindQuote(form, okEl, about) {
       const r = await fetch('api/contact.php', { method: 'POST', body: fd }); let j = {}; try { j = await r.json(); } catch (x) { }
       if (!r.ok || j.error) throw new Error(j.error || 'Nie udało się wysłać.');
       form.querySelectorAll('input:not([type=checkbox]):not([type=hidden]),textarea').forEach((i) => (i.value = ''));
+      if (window.lead) window.lead('form');
       okEl.textContent = 'Dziękujemy! Zapytanie dotarło – odpiszemy w ciągu 24 h w dni robocze.'; okEl.className = 'text-emerald-700 text-[14px]';
     } catch (err) { okEl.textContent = (err.message || 'Nie udało się wysłać.') + ' Możesz też napisać na kontakt@aiprints.pl lub zadzwonić: 609 040 274.'; okEl.className = 'text-red-700 text-[14px]'; }
     btn.disabled = false; btn.textContent = t;
