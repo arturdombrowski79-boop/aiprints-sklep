@@ -31,7 +31,8 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Publikacja: YouTube Shorts (YouTube Studio), Instagram + Facebook jedną rolką (Meta Business Suite → Utwórz rolkę, „AiPrints.pl i aiprints.pl”), TikTok (TikTok Studio, zaznaczać „Treść wygenerowana przez AI”, gdy są ujęcia AI). Zawsze opis + hashtagi; bez linku w opisie IG/TikTok („link w bio”).
 - Wgrywanie pliku z wbudowanej przeglądarki: mp4 w `public/pliki/rolki/` (nagłówek CORS w .htaccess) → pobrać w karcie aiprints.pl, przenieść kawałkami (≤100 KB) do karty serwisu, podmienić `HTMLInputElement.prototype.click` dla input[type=file] i kliknąć „Dodaj film”.
 - Facebook: limit 8 postów z linkiem / miesiąc (nawet tekst „AiPrints.pl” w poście się liczy).
-- Lektor: Higgsfield `text2speech_v2`, wariant elevenlabs, głos Arthur `30fc8796-ceb6-4a66-b3a7-4a145ef7f346`. Na końcu „ej aj prints kropka pe el”. Prawdziwa pracownia i prawdziwe maszyny – bez wymyślonych wnętrz.
+- Lektor: głos Artura – klon „Artur AiPrints” w Higgsfield (`voice_type: element`, `voice_id: d77fe341-a514-4897-8092-00cb474c6df9`): `text2speech_v2`, wariant elevenlabs, albo `voice_change` na nagraniu Artura (usuwa pogłos, zachowuje tempo). Zapasowo głos Arthur `30fc8796-ceb6-4a66-b3a7-4a145ef7f346` (preset). Na końcu „ej aj prints kropka pe el”. Prawdziwa pracownia i prawdziwe maszyny – bez wymyślonych wnętrz.
+- Filmy z iPhone'a są HDR (HLG, BT.2020 10 bit): przed montażem przeliczać na SDR (zscale → linear npl=100 → tonemap=hable → bt709), inaczej obraz jest wyblakły.
 - Wizytówka Google: filmy max 30 s.
 
 ## Fine art – frazy (stan 27.11.2026)
