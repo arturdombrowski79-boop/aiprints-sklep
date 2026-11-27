@@ -152,7 +152,7 @@ for p in prods:
 KIND_READY={'mechanizm-cichy','indeksy-wskazowki','zestaw-montazowy','pchac-ciagnac','folia-dekor-kropki','dystanse','piktogram-wc','piktogramy-info',
   'cyfry-zegar','dekoracje-lustrzane','smok-flexi','kliker-3d','ruchomy-szkielet','znaki-ppoz','znaki-zakazu','oznakowanie-piwnic','segregacja-odpadow',
   'instrukcja-ppoz','tablica-ogloszen','regulamin-porzadku','zegar-diy-komplet','napisy-maz-zona','topper-ihs','ihs-litery','medalik-ihs'}
-KIND_FILES={'odbitki-drylab','powiekszenia-zdjec','fine-art-druk','fine-art-bawelna','wydruk-w-ramie','wydruk-wystawowy','digigraphie-edycja',
+KIND_FILES={'odbitki-drylab','powiekszenia-zdjec','fine-art-druk','fine-art-bawelna','fine-art-imprime','wydruk-w-ramie','wydruk-wystawowy','digigraphie-edycja',
   'reprodukcja-obrazu','retusz-starych-zdjec','wydruk-probny','plakat-wielkoformatowy','siatka-mesh','baner-reklamowy','baner-blockout','baner-tekstylny',
   'wydruk-backlit','folia-samoprzylepna-druk','folia-owv-witryna','tablica-pcv-dibond','naklejki-po-obrysie','fototapeta','fotoksiazka-a5',
   'kalendarz-scienny-zdjecia','kalendarz-2027-a3','kalendarz-biurkowy','odbitki-polaroid','magnesy-zdjecia','koc-ze-zdjeciem','portfolio-box',

@@ -117,7 +117,7 @@
 "Fine art",
 "Odbitki i powiększenia"
 ],
-"count": 25
+"count": 26
 },
 {
 "slug": "sublimacja",
@@ -998,75 +998,6 @@
 "name": "Na koniec roku −5%",
 "low30": 99.0,
 "regular": 99.0
-}
-},
-{
-"slug": "fine-art-bawelna",
-"name": "Wydruk fine art na papierze bawełnianym",
-"cat": "dla-fotografow",
-"sub": "Fine art",
-"variants": "Hahnemühle Photo Rag Baryta 315 g, ImPrime Premium MC230 lub ImPrime 260 Bright White (inne papiery fine art na zamówienie); 12 tuszów pigmentowych, A4–B0",
-"priceText": "od 49 zł",
-"price": 49.0,
-"tiers": [
-{
-"k": "A4",
-"p": 49.0
-},
-{
-"k": "A3",
-"p": 79.0
-},
-{
-"k": "A2",
-"p": 139.0
-},
-{
-"k": "A1",
-"p": 219.0
-},
-{
-"k": "A0",
-"p": 349.0
-}
-],
-"machine": "Epson SureColor P9500",
-"score": 2687.0,
-"xmas": false,
-"img": "img/hf/fine-art-bawelna-1.jpg",
-"fields": [
-"files"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/fine-art-bawelna-1.jpg"
-],
-"also": [],
-"kind": "files",
-"tags": {
-"okazja": [
-"urodziny"
-],
-"dla": [],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [
-"druk"
-],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 49.0,
-"regular": 49.0
 }
 },
 {
@@ -3189,6 +3120,64 @@
 }
 },
 {
+"slug": "fine-art-bawelna",
+"name": "Wydruk fine art na Hahnemühle Photo Rag Baryta",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 315 g, powierzchnia barytowa – papier certyfikowany Digigraphie; 12 tuszów pigmentowych, A4–A0",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "A4",
+"p": 29.0
+},
+{
+"k": "A3",
+"p": 42.0
+},
+{
+"k": "A2",
+"p": 99.0
+},
+{
+"k": "A1",
+"p": 179.0
+},
+{
+"k": "A0",
+"p": 339.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 1187.0,
+"xmas": false,
+"img": "img/hf/fine-art-bawelna-1.jpg",
+"fields": [
+"files"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-bawelna-1.jpg"
+],
+"also": [],
+"kind": "files",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "tabliczka-aluminium-zdjecie",
 "name": "Tabliczka aluminiowa ze zdjęciem do ogrodu i na zewnątrz",
 "cat": "sublimacja",
@@ -4547,6 +4536,64 @@
 "logo"
 ],
 "mat": []
+}
+},
+{
+"slug": "fine-art-imprime",
+"name": "Wydruk fine art na papierze matowym ImPrime",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "ImPrime Premium MC230 (mat) lub ImPrime 260 Bright White; 12 tuszów pigmentowych, A4–A0",
+"priceText": "od 15 zł",
+"price": 15.0,
+"tiers": [
+{
+"k": "A4",
+"p": 15.0
+},
+{
+"k": "A3",
+"p": 23.0
+},
+{
+"k": "A2",
+"p": 39.0
+},
+{
+"k": "A1",
+"p": 69.0
+},
+{
+"k": "A0",
+"p": 129.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 1150.0,
+"xmas": false,
+"img": "img/hf/fine-art-imprime-1.jpg",
+"fields": [
+"files"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-imprime-1.jpg"
+],
+"also": [],
+"kind": "files",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
 }
 },
 {
