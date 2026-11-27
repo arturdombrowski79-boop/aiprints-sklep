@@ -34,6 +34,10 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Lektor: Higgsfield `text2speech_v2`, wariant elevenlabs, głos Arthur `30fc8796-ceb6-4a66-b3a7-4a145ef7f346`. Na końcu „ej aj prints kropka pe el”. Prawdziwa pracownia i prawdziwe maszyny – bez wymyślonych wnętrz.
 - Wizytówka Google: filmy max 30 s.
 
+## Fine art – frazy (stan 27.11.2026)
+- W reklamach, opisach, SEO i hashtagach fine art zawsze używać też: „druk pigmentowy”, „giclée”, „fine art”, „Digigraphie®”, „papier bawełniany”, „Hahnemühle”, „Epson P9500”. Hashtagi: #drukpigmentowy #fineart #giclee #digigraphie #hahnemuhle #wydrukfineart #drukartystyczny.
+- Cennik papierów: komponent `FineArtCennik.astro` na /dla-fotografow (ceny z catalog.json: fine-art-bawelna, fine-art-imprime). Proces/Digigraphie/EIZO: /druk-dla-artystow.
+
 ## Bezpieczeństwo API
 - `rate_limit()` w `api/lib.php` (IP jako skrót, 24 h): checkout 30/h, odstąpienie 5/h, kody 30/h, kalkulator 3D 40/h; kontakt ma własny limit 6/h. Modele 3D: limit 8 GB na dysku, 3MF max 600 MB po rozpakowaniu.
 - Dane strukturalne: bez zmyślonych opinii (review/aggregateRating tylko z prawdziwych).

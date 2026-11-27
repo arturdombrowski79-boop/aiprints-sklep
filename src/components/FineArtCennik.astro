@@ -1,0 +1,92 @@
+---
+// Druk pigmentowy fine art: cennik papierów (ceny z catalog.json – te same, które liczy serwer), przewodnik po papierach, FAQ pod frazy SEO.
+import cat from '../data/catalog.json';
+import Faq from './Faq.astro';
+const P = (s) => cat.products.find((p) => p.slug === s);
+const zl = (v) => (v == null ? '–' : String(v).replace('.', ',').replace(/,0+$/, '') + ' zł');
+const F = ['A4', 'A3', 'A2', 'A1', 'A0'];
+const tier = (p, k) => p?.tiers?.find((t) => t.k === k)?.p;
+const baryta = P('fine-art-bawelna');
+const imprime = P('fine-art-imprime');
+const rows = [
+  { name: 'Hahnemühle Photo Rag Baryta', spec: '315 g/m² · 100% bawełna · baryt z połyskiem', tag: 'Digigraphie®', p: baryta, href: 'fine-art-bawelna.html' },
+  { name: 'ImPrime Premium MC230 / 260 Bright White', spec: '230–260 g/m² · mat, gładki, jasna biel', tag: 'ekonomiczny', p: imprime, href: 'fine-art-imprime.html' },
+];
+const order = [
+  ['Hahnemühle Photo Rag', '308 g · bawełna, gładki mat', 'Digigraphie®'],
+  ['Hahnemühle William Turner', '310 g · bawełna, faktura akwareli', 'Digigraphie®'],
+  ['Canson Infinity Rag Photographique', '310 g · bawełna, gładki mat', 'Digigraphie®'],
+  ['Canson Infinity Arches BFK Rives', '310 g · bawełna, papier graficzny', 'Digigraphie®'],
+  ['Epson Fine Art Cotton Textured Natural', '300 g · bawełna, delikatna faktura', 'Digigraphie®'],
+  ['mediaJET Museum Natural Silk / White Smooth', '300 g · wystawy i portfolio', 'ekonomiczny'],
+];
+const guide = [
+  ['Czarno-białe i portret klasyczny', 'Photo Rag Baryta – głęboka czerń i połysk jak w odbitce srebrowej.'],
+  ['Krajobraz, przyroda, kolor', 'Photo Rag Baryta albo gładki mat bawełniany (Photo Rag, Rag Photographique) – bez odblasków na ścianie.'],
+  ['Reprodukcja akwareli, grafiki, rysunku', 'William Turner albo Arches BFK Rives – faktura papieru jak w oryginale.'],
+  ['Reprodukcja obrazu olejnego', 'Płótno ImPrime naciągnięte na krosno.'],
+  ['Plakat, ilustracja, wydruk próbny', 'ImPrime Premium MC230 – mat w dobrej cenie.'],
+];
+const extra = [P('digigraphie-edycja'), P('wydruk-probny'), P('reprodukcja-obrazu'), P('wydruk-w-ramie'), P('wydruk-wystawowy')].filter(Boolean);
+const faq = [
+  ['Co to jest druk pigmentowy (giclée)?', 'To druk atramentowy tuszami pigmentowymi zamiast barwnikowych. Drobiny pigmentu leżą na powierzchni papieru i są dużo odporniejsze na światło niż barwniki, dlatego wydruki pigmentowe na papierach muzealnych zachowują kolor przez dziesięciolecia. Giclée to nazwa, której galerie używają dla takiego wydruku fine art.'],
+  ['Na czym drukujecie fine art?', 'Na Epson SureColor P9500 – 44-calowej drukarce z 12 tuszami pigmentowymi UltraChrome PRO12, z osobną czernią do papierów matowych i błyszczących. Kolor sprawdzamy wcześniej na monitorze EIZO ColorEdge CG319X z profilem wybranego papieru.'],
+  ['Jaki plik przygotować?', 'Najlepiej TIFF lub JPG w najwyższej jakości, w Adobe RGB albo sRGB, w rozdzielczości 240–300 dpi w docelowym rozmiarze. Nie wyostrzaj pod druk i nie konwertuj do CMYK – profil papieru nakładamy w pracowni.'],
+  ['Czym różni się Photo Rag Baryta od papieru matowego?', 'Baryta ma lekki połysk i najgłębszą czerń – wygląda jak klasyczna odbitka. Mat bawełniany nie odbija światła, daje miękkie przejścia i spokojny charakter, dobrze wygląda za szkłem i w jasnych wnętrzach.'],
+  ['Czy mogę najpierw zobaczyć próbkę?', 'Tak. Wydruk próbny (fragment 1:1 lub A4 na docelowym papierze) kosztuje od 39 zł. Możesz też przyjść do pracowni w Chorzowie i obejrzeć papiery oraz swój plik na monitorze EIZO.'],
+  ['Czy drukujecie limitowane edycje z certyfikatem?', 'Tak – edycje Digigraphie® by Epson: numeracja, podpis artysty, tłoczona pieczęć i certyfikat autentyczności dla każdego egzemplarza, na papierze z listy zatwierdzonej przez Epson.'],
+];
+---
+<section id="cennik-fine-art" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-14">
+  <div class="reveal rounded-[34px] bg-ink text-white p-8 md:p-12">
+    <p class="text-gold text-[13px] tracking-[0.14em] uppercase">Druk pigmentowy fine art · giclée</p>
+    <h2 class="font-display text-[40px] md:text-[60px] leading-[1.02] mt-3 max-w-[900px]">Wybierz papier i format – cena od razu</h2>
+    <p class="text-white/75 leading-relaxed mt-5 max-w-[760px]">Drukujemy na Epson SureColor P9500 12 tuszami pigmentowymi UltraChrome PRO12. Każdy plik oglądamy na skalibrowanym monitorze EIZO ColorEdge CG319X z profilem ICC wybranego papieru. Ceny dotyczą jednego wydruku z Twojego pliku, z przygotowaniem koloru – bez dopłat za profil i bez minimalnego zamówienia.</p>
+    <div class="md:hidden mt-8 grid gap-3">
+      {rows.map((r) => (
+        <div class="rounded-[22px] border border-white/15 p-5">
+          <b class="font-semibold">{r.name}</b> <span class="text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-gold">{r.tag}</span>
+          <span class="block text-white/55 text-[13px] mt-1">{r.spec}</span>
+          <div class="grid grid-cols-5 gap-1 mt-4 text-center">{F.map((f) => <div><span class="block text-white/50 text-[11px]">{f}</span><span class="block text-[14px] tabular-nums mt-1">{zl(tier(r.p, f))}</span></div>)}</div>
+          <a href={r.href} class="mt-4 grid place-items-center h-11 rounded-full bg-white text-ink font-semibold">Zamów</a>
+        </div>))}
+      <a href="#wycena-fine-art" class="rounded-[22px] border border-white/15 p-5 block"><b class="font-semibold">Papiery na zamówienie</b><span class="block text-white/55 text-[13px] mt-1">Hahnemühle Photo Rag i William Turner, Canson Infinity, Epson Fine Art Cotton, mediaJET – wycena zwykle w 24 h →</span></a>
+    </div>
+    <div class="hidden md:block mt-8 overflow-x-auto rounded-[24px] border border-white/15">
+      <table class="w-full min-w-[720px] text-[14.5px]">
+        <thead><tr class="text-white/60 text-[12px] tracking-[0.1em] uppercase"><th class="text-left font-normal p-4">Papier</th>{F.map((f) => <th class="font-normal p-4 text-right">{f}</th>)}<th class="p-4"></th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class="border-t border-white/15">
+              <td class="p-4"><b class="font-semibold">{r.name}</b> <span class="ml-1 text-[11px] px-2 py-0.5 rounded-full bg-white/10 text-gold whitespace-nowrap">{r.tag}</span><span class="block text-white/55 text-[13px] mt-1">{r.spec}</span></td>
+              {F.map((f) => <td class="p-4 text-right tabular-nums whitespace-nowrap">{zl(tier(r.p, f))}</td>)}
+              <td class="p-4 text-right"><a href={r.href} class="inline-grid place-items-center h-10 px-5 rounded-full bg-white text-ink font-semibold whitespace-nowrap">Zamów</a></td>
+            </tr>))}
+          <tr class="border-t border-white/15"><td class="p-4" colspan="6"><b class="font-semibold">Papiery na zamówienie</b> <span class="text-white/55 text-[13px]">– Hahnemühle Photo Rag i William Turner, Canson Infinity, Epson Fine Art Cotton, mediaJET: cena w wycenie (zwykle w 24 h)</span></td><td class="p-4 text-right"><a href="#wycena-fine-art" class="inline-grid place-items-center h-10 px-5 rounded-full border border-white/40 font-semibold whitespace-nowrap">Wycena</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-white/55 text-[13px] mt-4">Formaty niestandardowe i panoramy do 112 cm szerokości – cena za m² w wycenie. Wysyłka w sztywnej tubie lub kartonie, odbiór w pracowni w Chorzowie.</p>
+  </div>
+</section>
+
+<section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-14 grid lg:grid-cols-2 gap-4">
+  <div class="reveal rounded-[30px] bg-white border border-line p-7 md:p-9">
+    <h2 class="font-display text-[32px] md:text-[40px] leading-tight">Który papier wybrać?</h2>
+    <ul class="mt-5 space-y-4">{guide.map(([t, d]) => <li class="text-[14.5px] leading-relaxed"><b class="font-semibold">{t}</b><span class="block text-mute">{d}</span></li>)}</ul>
+    <p class="text-mute text-[13.5px] mt-6">Nie masz pewności? Zamów <a class="underline underline-offset-4 text-ink" href="wydruk-probny.html">wydruk próbny</a> – fragment pracy na dwóch papierach obok siebie.</p>
+  </div>
+  <div class="reveal rounded-[30px] bg-white border border-line p-7 md:p-9">
+    <h2 class="font-display text-[32px] md:text-[40px] leading-tight">Papiery na zamówienie</h2>
+    <ul class="mt-5 divide-y divide-line">{order.map(([t, s, g]) => <li class="py-3 flex justify-between gap-4 text-[14.5px]"><span><b class="font-semibold">{t}</b><span class="block text-mute text-[13.5px]">{s}</span></span><span class="text-[12px] text-gold font-semibold whitespace-nowrap">{g}</span></li>)}</ul>
+    <p class="text-mute text-[13.5px] mt-5">Digigraphie® – papier z listy zatwierdzonej przez Epson do certyfikowanych edycji. <a class="underline underline-offset-4 text-ink" href="druk-dla-artystow.html">Jak drukujemy edycje Digigraphie →</a></p>
+  </div>
+</section>
+
+<section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-14">
+  <div class="reveal grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+    {extra.map((p) => <a href={`${p.slug}.html`} class="rounded-[24px] bg-white border border-line p-5 hover:border-ink transition"><b class="font-medium text-[15px] leading-snug block">{p.name}</b><span class="text-[13.5px] text-mute">{p.priceText}</span></a>)}
+  </div>
+</section>
+
+<Faq items={faq} title="Druk pigmentowy – pytania" />

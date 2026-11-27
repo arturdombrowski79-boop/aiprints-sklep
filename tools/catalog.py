@@ -10,7 +10,7 @@ CATS=[
  ('wspolnoty-i-spoldzielnie','Wspólnoty i spółdzielnie','Tablice przy wejściu, regulaminy, numeracja lokali i tabliczki na skrzynki – w jednym stylu dla wszystkich budynków zarządcy.','#3d5a4f'),
  ('salony-beauty','Salony beauty','Szyldy z lustra, bony podarunkowe, stojaki QR i komplet oznakowania gabinetu.','#a06a7a'),
  ('druk-wielkoformatowy','Druk wielkoformatowy i folie','Banery, siatki, folie, naklejki po obrysie, oklejanie witryn i aut oraz litery z plotera. Drukujemy na HP Latex 375, tniemy na Summa S3.','#1f3b57'),
- ('dla-fotografow','Fine art i fotografia','Wydruki muzealne na papierach bawełnianych (Epson P9500), odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
+ ('dla-fotografow','Fine art i fotografia','Druk pigmentowy fine art (giclée) na papierach bawełnianych Hahnemühle i Canson – Epson P9500, edycje Digigraphie®, odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
  ('sublimacja','Sublimacja','Koszulki sportowe, koce, ręczniki, kubki i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
  ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),

@@ -10,6 +10,8 @@ import Creator from '../components/Creator.astro';
 import { CREATOR } from '../data/creator.js';
 import cat from '../data/catalog.json';
 import Pakiety from '../components/Pakiety.astro';
+import FineArtCennik from '../components/FineArtCennik.astro';
+import QuoteForm from '../components/QuoteForm.astro';
 import { machineText, describe, optionsOf, qtyTiers, B2B, isM2 } from '../data/copy.js';
 import { SEASON, LEAD, PREVIEW, BREAK, PROMO } from '../data/config.js';
 import { PREVIEW as PV, RECIPIENTS } from '../data/preview.js';
@@ -49,7 +51,7 @@ const schema = kind === 'cat'
 // SEO kategorii usługowych: tytuł/H1/opis pod frazy, których szukają klienci (Katowice, Chorzów, Śląsk)
 const SEO = {
   'druk-wielkoformatowy': { t: 'Wydruki wielkoformatowe Katowice i Chorzów', h: 'Wydruki wielkoformatowe', d: 'Wydruki wielkoformatowe na HP Latex w Chorzowie, blisko Katowic: banery, fototapety na wymiar, plakaty, zdjęcia wielkoformatowe, naklejki i folie. Podgląd przed drukiem, odbiór lub wysyłka.' },
-  'dla-fotografow': { t: 'Zdjęcia fine art i wielkoformatowe – Katowice', h: 'Zdjęcia fine art i wielkoformatowe', d: 'Wydruki zdjęć fine art na papierach bawełnianych (Epson SureColor P9500, Digigraphie®) i zdjęcia wielkoformatowe do 160 cm. Pracownia w Chorzowie, 10 minut od Katowic.' },
+  'dla-fotografow': { t: 'Druk fine art i druk pigmentowy (giclée) – Katowice, Chorzów', h: 'Druk fine art i fotografia', d: 'Druk pigmentowy fine art (giclée) na papierach Hahnemühle i Canson: Epson SureColor P9500, 12 tuszów pigmentowych, soft proof na EIZO, edycje Digigraphie®. Cennik papierów A4–A0 online. Chorzów, 10 minut od Katowic.' },
   'wydruki-3d': { t: 'Wydruki 3D na zamówienie – Katowice, Chorzów', h: 'Wydruki 3D', d: 'Gotowe wydruki 3D i druk 3D na zamówienie z Twojego pliku STL/3MF – kalkulator ceny online. PLA, PETG, ASA, TPU, wielokolor do 8 kolorów. Pracownia w Chorzowie.' },
 };
 const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' zł';
@@ -93,12 +95,14 @@ const fmt = (v) => (Math.round(v * 100) / 100).toFixed(2).replace('.', ',').repl
   {c.slug === 'wspolnoty-i-spoldzielnie' && <Realizacje g="wspolnoty" title="Realizacja: oznakowanie budynków DOMIX" lead="Dla DOMIX Zarządzanie Nieruchomościami wykonujemy oznakowanie wspólnot w Chorzowie i Gliwicach: tablice adresowe przy wejściu z danymi zarządcy, regulaminy porządku domowego i tablice informacyjne – wszystko w jednym stylu, z logo i kontaktem zarządcy." more={false} />}
   {c.slug === 'cmentarz-i-pogrzeb' && <RolkaVideo src="video/rolka-pamiec.mp4" poster="video/rolka-pamiec.jpg" label="Film: tabliczki i pamiątki na grób z pracowni AiPrints.pl" title="Pamięć, która zostaje" lead="Tabliczki na krzyż i nagrobek, zdjęcia na porcelanie i pamiątki z grawerem – robimy je spokojnie i z szacunkiem, a projekt zawsze pokazujemy przed wykonaniem." />}
   {RG[c.slug] && <Realizacje g={RG[c.slug][0]} title={RG[c.slug][1]} limit={8} />}
+  {c.slug === 'dla-fotografow' && <FineArtCennik />}
   <Shop items={d.items} subs={c.subs} cslug={c.slug} />
+  {c.slug === 'dla-fotografow' && <section id="wycena-fine-art" class="max-w-[960px] mx-auto px-5 md:px-10 mt-28"><QuoteForm about="Druk fine art / papier na zamówienie" title="Wycena wydruku fine art" hint="Papier, format (lub wymiar w cm), liczba egzemplarzy, czy ma być edycja Digigraphie®. Możesz od razu dołączyć plik." accept="image/*,.tif,.tiff,.psd,.pdf,.zip" /></section>}
 
 
   <section class="max-w-[68ch] mx-auto px-6 mt-24 text-mute leading-relaxed text-[15px]">
     <h2 class="font-display text-[34px] text-ink leading-tight">{c.name} z pracowni AiPrints.pl</h2>
-    <p class="mt-4">{c.lead} Każdy produkt z tej kategorii robimy w naszej pracowni przy ul. Okrężnej 98B w Chorzowie – grawerujemy laserem, drukujemy w technologii UV i w 3D. Przed produkcją dostajesz projekt do akceptacji, a gotowe zamówienie wysyłamy Paczkomatem InPost lub kurierem w całej Polsce. Możesz też odebrać je osobiście.</p>
+    {c.slug === 'dla-fotografow' ? <p class="mt-4">Wydruki fine art drukujemy techniką pigmentową (giclée) na Epson SureColor P9500 z 12 tuszami UltraChrome PRO12 – na papierach bawełnianych Hahnemühle i Canson Infinity, papierze barytowym i płótnie. Każdy plik przygotowujemy na skalibrowanym monitorze EIZO z profilem ICC papieru, a na życzenie robimy wydruk próbny. Dla artystów drukujemy limitowane edycje Digigraphie® by Epson z certyfikatem. Odbitki i powiększenia robimy na laboratoryjnej drukarce Epson SureLab D1000L. Pracownia mieści się przy ul. Okrężnej 98B w Chorzowie, 10 minut od Katowic – wydruki wysyłamy w tubie lub kartonie w całej Polsce.</p> : <p class="mt-4">{c.lead} Każdy produkt z tej kategorii robimy w naszej pracowni przy ul. Okrężnej 98B w Chorzowie – grawerujemy laserem, drukujemy w technologii UV i w 3D. Przed produkcją dostajesz projekt do akceptacji, a gotowe zamówienie wysyłamy Paczkomatem InPost lub kurierem w całej Polsce. Możesz też odebrać je osobiście.</p>}
   </section>
 
 </Base>
