@@ -4,6 +4,7 @@ require __DIR__ . '/lib.php';
 require_once __DIR__ . '/p3d-lib.php';
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') fail('Metoda niedozwolona', 405);
 if (!cfg('stripe_secret')) fail('Płatności nie są jeszcze włączone', 503);
+rate_limit('checkout', 30);
 $raw = file_get_contents('php://input'); if (strlen((string)$raw) > 60 * 1024 * 1024) fail('Zbyt duże pliki – napisz do nas, prześlemy link do wgrania', 413);
 $in = json_decode((string)$raw, true); if (!is_array($in)) fail('Nieprawidłowe dane');
 $email = filter_var(trim((string)($in['email'] ?? '')), FILTER_VALIDATE_EMAIL); if (!$email) fail('Podaj poprawny e-mail');

@@ -11,6 +11,9 @@ $cfg = p3d_cfg(); $a = (string)($_GET['a'] ?? '');
 
 try {
   if ($a === 'new') {
+    rate_limit('p3d', 40);
+    $used = 0; foreach (glob(API . '/data/models/*/*') ?: [] as $f) $used += (int)@filesize($f);
+    if ($used > 8 * 1073741824) fail('Kalkulator jest chwilowo przeciążony – wyślij plik formularzem do wyceny.', 503);
     // sprzątanie modeli starszych niż 7 dni (bez zamówienia)
     foreach (glob(API . '/data/models/*', GLOB_ONLYDIR) ?: [] as $d) if (filemtime($d) < time() - P3D_KEEP_DAYS * 86400) { array_map('unlink', glob("$d/*") ?: []); @rmdir($d); }
     $id = bin2hex(random_bytes(16)); mkdir(p3d_dir($id), 0750, true); out(['id' => $id]);

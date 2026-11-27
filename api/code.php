@@ -2,6 +2,7 @@
 // Sprawdzenie kodu rabatowego – kody (procent) są tylko w api/config.php → 'codes'.
 require __DIR__ . '/lib.php';
 header('Cache-Control: no-store');
+rate_limit('code', 30);
 usleep(300000); // spowalnia zgadywanie kodów
 $c = strtoupper(trim((string)($_GET['c'] ?? '')));
 $pct = ($c !== '' && strlen($c) <= 40) ? (float)(cfg('codes', [])[$c] ?? 0) : 0;

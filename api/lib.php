@@ -129,6 +129,17 @@ function ev_bump(string $e, string $p = '', string $s = 'srv'): void {
     $db->prepare('UPDATE ev SET n=n+1 WHERE day=? AND e=? AND p=? AND s=?')->execute($k);
   } catch (Throwable $t) { }
 }
+// limit żądań z jednego IP (ochrona przed zalewaniem formularzy, maili i dysku); IP trzymamy tylko jako skrót, 24 h
+function rate_limit(string $act, int $max, int $per = 3600): void {
+  try {
+    $db = db(); $db->exec('CREATE TABLE IF NOT EXISTS hits (act TEXT, ip TEXT, at INTEGER)');
+    $ip = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . '|' . (string)cfg('stripe_webhook', 'x')); $now = time();
+    if (random_int(1, 50) === 1) $db->prepare('DELETE FROM hits WHERE at < ?')->execute([$now - 86400]);
+    $n = $db->prepare('SELECT COUNT(*) FROM hits WHERE act=? AND ip=? AND at > ?'); $n->execute([$act, $ip, $now - $per]);
+    if ((int)$n->fetchColumn() >= $max) fail('Zbyt wiele prób w krótkim czasie – spróbuj za chwilę albo zadzwoń: 609 040 274.', 429);
+    $db->prepare('INSERT INTO hits VALUES (?,?,?)')->execute([$act, $ip, $now]);
+  } catch (PDOException $e) { }
+}
 // tajny klucz do strony statystyk (link przychodzi mailem na skrzynkę pracowni)
 function stats_key(): string {
   $sec = (string)(cfg('panel_secret') ?: cfg('stripe_webhook') ?: cfg('stripe_secret'));

@@ -80,6 +80,8 @@ function p3d_3mf_stats(string $path, string $name): array {
   $files = []; $mainPath = null;
   for ($i = 0; $i < $z->numFiles; $i++) { $n = $z->getNameIndex($i); if (preg_match('~\.model$~i', $n)) { $files['/' . ltrim($n, '/')] = true; if (preg_match('~^/?3D/3dmodel\.model$~i', $n)) $mainPath = '/' . ltrim($n, '/'); } }
   if (!$mainPath) throw new Exception('W pliku 3MF brakuje modelu: ' . $name);
+  $unz = 0; for ($i = 0; $i < $z->numFiles; $i++) $unz += (int)($z->statIndex($i)['size'] ?? 0);
+  if ($unz > 600 * 1048576) throw new Exception('Plik 3MF po rozpakowaniu jest za duży (ponad 600 MB): ' . $name);
   $cache = []; $get = function (string $p) use ($z, &$cache) { if (!isset($cache[$p])) { $u = 1.0; $xml = $z->getFromName(ltrim($p, '/')); if ($xml === false) throw new Exception('Uszkodzony plik 3MF'); [$o] = p3d_read_model($xml, $u); $cache[$p] = $o; } return $cache[$p]; };
   $unit = 1.0; [$mainObjs, $build] = p3d_read_model((string)$z->getFromName(ltrim($mainPath, '/')), $unit); $cache[$mainPath] = $mainObjs;
   // przypisanie filamentów (Bambu Studio / OrcaSlicer)
