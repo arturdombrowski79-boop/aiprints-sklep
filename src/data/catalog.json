@@ -490,17 +490,20 @@
 "machine": "HP Latex 375",
 "score": 2732.0,
 "xmas": true,
-"img": "img/hf/fototapeta-r1.jpg",
+"img": "img/hf/fototapeta-r2.jpg",
 "fields": [
 "files"
 ],
 "quote": false,
 "unit": true,
 "gallery": [
+"img/hf/fototapeta-r2.jpg",
+"img/hf/fototapeta-r3.jpg",
 "img/hf/fototapeta-r1.jpg",
+"img/hf/fototapeta-r4.jpg",
 "img/hf/fototapeta-1.jpg"
 ],
-"real": 1,
+"real": 4,
 "also": [
 "druk-wielkoformatowy"
 ],
@@ -12156,6 +12159,42 @@
 }
 },
 {
+"slug": "tapeta-samoprzylepna-pasy",
+"name": "Tapeta samoprzylepna – pojedyncze pasy i kształty wycinane",
+"cat": "prezenty-ze-zdjeciem",
+"sub": "Dom i dekoracje",
+"variants": "samoprzylepna folia ścienna Easy Stick z Twoim wzorem lub zdjęciem: pojedynczy pas na wymiar albo elementy wycięte po obrysie (liście, księżyc, imię); przyklejasz bez kleju i wody, można odkleić",
+"priceText": "75 zł/m²",
+"price": 75.0,
+"tiers": null,
+"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
+"score": 208.0,
+"xmas": false,
+"img": "img/hf/tapeta-samoprzylepna-pasy-r1.jpg",
+"fields": [
+"files"
+],
+"quote": false,
+"unit": true,
+"gallery": [
+"img/hf/tapeta-samoprzylepna-pasy-r1.jpg",
+"img/hf/tapeta-samoprzylepna-pasy-1.jpg"
+],
+"real": 1,
+"also": [
+"druk-wielkoformatowy"
+],
+"kind": "files",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "druk-uv-na-plycie",
 "name": "Druk UV na płycie PCV, Dibond lub akrylu",
 "cat": "druk-wielkoformatowy",
@@ -12239,40 +12278,6 @@
 "akryl",
 "druk"
 ]
-}
-},
-{
-"slug": "tapeta-samoprzylepna-pasy",
-"name": "Tapeta samoprzylepna – pojedyncze pasy i kształty wycinane",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Dom i dekoracje",
-"variants": "samoprzylepna folia ścienna Easy Stick z Twoim wzorem lub zdjęciem: pojedynczy pas na wymiar albo elementy wycięte po obrysie (liście, księżyc, imię); przyklejasz bez kleju i wody, można odkleić",
-"priceText": "75 zł/m²",
-"price": 75.0,
-"tiers": null,
-"machine": "HP Latex 375 + Summa S3 (ploter tnący)",
-"score": 158.0,
-"xmas": false,
-"img": "img/hf/tapeta-samoprzylepna-pasy-1.jpg",
-"fields": [
-"files"
-],
-"quote": false,
-"unit": true,
-"gallery": [
-"img/hf/tapeta-samoprzylepna-pasy-1.jpg"
-],
-"also": [
-"druk-wielkoformatowy"
-],
-"kind": "files",
-"tags": {
-"okazja": [],
-"dla": [],
-"pers": [
-"imie"
-],
-"mat": []
 }
 },
 {

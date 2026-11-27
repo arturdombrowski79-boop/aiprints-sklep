@@ -27,7 +27,10 @@
   "img/hf/grafika-drzwi-wejsciowe-r1.jpg"
  ],
  "fototapeta": [
-  "img/hf/fototapeta-r1.jpg"
+  "img/hf/fototapeta-r2.jpg",
+  "img/hf/fototapeta-r3.jpg",
+  "img/hf/fototapeta-r1.jpg",
+  "img/hf/fototapeta-r4.jpg"
  ],
  "banery-rollupy": [
   "img/hf/banery-rollupy-r1.jpg"
@@ -46,5 +49,8 @@
  ],
  "koszulka-z-nadrukiem": [
   "img/realizacje/koszulki-viktoria-plecy.jpg"
+ ],
+ "tapeta-samoprzylepna-pasy": [
+  "img/hf/tapeta-samoprzylepna-pasy-r1.jpg"
  ]
 }
