@@ -35,6 +35,7 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Lektor: głos Artura – klon „Artur AiPrints” w Higgsfield (`voice_type: element`, `voice_id: d77fe341-a514-4897-8092-00cb474c6df9`): `text2speech_v2`, wariant elevenlabs, albo `voice_change` na nagraniu Artura (usuwa pogłos, zachowuje tempo). Zapasowo głos Arthur `30fc8796-ceb6-4a66-b3a7-4a145ef7f346` (preset). Na końcu „ej aj prints kropka pe el”. Prawdziwa pracownia i prawdziwe maszyny – bez wymyślonych wnętrz.
 - Filmy z iPhone'a są HDR (HLG, BT.2020 10 bit): przed montażem przeliczać na SDR (zscale → linear npl=100 → tonemap=hable → bt709), inaczej obraz jest wyblakły.
 - Proporcje montażu (Artur, 27.11): realne ujęcia procesu (grawer, maszyna) krótko – ok. 4–5 s na początku i krótko na końcu; ładne ujęcia produktów dłużej (1,5–3 s każdy, cena na planszy), lektor wymienia produkt, gdy jest na ekranie.
+- Miniatury YouTube Shorts: `tools/yt-miniatury.js` (1080×1920, logo + zdjęcie produktu + hasło, pomarańcz #E85D24) → `public/pliki/rolki/miniatury/<id>.jpg` → w YT Studio input `#file-loader` + Zapisz. 28.11 ustawione dla 7 publicznych Shorts; każdemu nowemu Shortowi robić miniaturę.
 - Wizytówka Google: filmy max 30 s.
 - Link w bio: strona `/bio` (`src/pages/bio.astro`, dane `src/data/bio.js`) – po każdej nowej rolce dopisać temat z produktami NA GÓRZE listy. Linki: TikTok/Instagram `https://aiprints.pl/bio?utm_source=tiktok|instagram&utm_medium=bio` (ustawia się w aplikacji mobilnej), YouTube – pierwszy link kanału (ustawiony 27.11.2026).
 
