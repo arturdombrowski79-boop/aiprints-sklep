@@ -43,3 +43,13 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 ## Bezpieczeństwo API
 - `rate_limit()` w `api/lib.php` (IP jako skrót, 24 h): checkout 30/h, odstąpienie 5/h, kody 30/h, kalkulator 3D 40/h; kontakt ma własny limit 6/h. Modele 3D: limit 8 GB na dysku, 3MF max 600 MB po rozpakowaniu.
 - Dane strukturalne: bez zmyślonych opinii (review/aggregateRating tylko z prawdziwych).
+
+## Reklamy, wizytówka i SEO – stan 27.11.2026 (czytaj na starcie sesji)
+- Google Ads (ocid 8685864612, tag AW-18592432895): PMax „Pracownia AiPrints.pl Chorzów” 20 zł/dzień (miasta Śląska) + Search „Wyszukiwarka – druk zdjęć, fine art, naklejki, folia, 3D” 15 zł/dzień (25 km od Okrężnej 98B). 27.11: +35 słów (wyrażenia) w 5 grupach, 32 wykluczenia. Konwersje: „Zakup” (/dziekujemy) i „Kontakt – telefon, WhatsApp, formularz” (`ADS_LEAD` w config.js, `window.lead()` w Base.astro). Budżetów nie zmieniać bez zgody. Weryfikacja reklamodawcy – Artur do 27.12.2026.
+- Meta: konto reklamowe 362150420589780; kampanie: Prezenty świąteczne rolka (do 20.12), Fototapety i naklejki, Ruch w witrynie (do 6.12).
+- TikTok: promocje 3D i fine art („Więcej obserwujących”, ~5 €/dzień); weryfikacja firmy odrzucona (wybrano KRS) – ponowić przez CEIDG.
+- Wizytówka Google (location 14539092192061111941): 5,0 / 12 opinii, kategoria główna Drukarnia, 10 produktów (linki sprawdzone), usługi (także dopisane przez Google – Artur potwierdził, że wszystkie OK), godziny pn–pt 9–17, przerwa 21.12–7.01 wpisana 27.11. Link do opinii: https://g.page/r/CSmfvq_Mlh6gEBM/review (stopka + maile „Wysłane” i „Gotowe do odbioru”). Odpowiedzi na opinie i wpisy – tylko po akceptacji Artura.
+- Search Console: właściwość URL https://aiprints.pl/ (konto kontakt@), sitemap odczytana 26.11. Analiza zapytań (dużo wyświetleń, mało kliknięć) – w połowie grudnia.
+- Merchant Center: BRAK konta (27.11) – Artur zakłada na kontakt@aiprints.pl; potem podpiąć feed https://aiprints.pl/feed/google.xml (258 produktów, bez g:shipping – dostawę ustawić w koncie), zwroty, połączyć z wizytówką i Ads, dopiero potem PMax na produkty.
+- NAP: tylko „AiPrints.pl, ul. Okrężna 98B, 41-500 Chorzów, 609 040 274”. Okrężna 146 = wyłącznie adres do doręczeń. Stare adresy (146, Powstańców 24/LU2) na evstudio.pl i GoWork – Artur poprawia.
+- Strona główna: pasek „Widziałeś nas na TikToku?” → /bio. Do zrobienia: mocniejsze strony kategorii (kryształy 3D, prezenty ze zdjęciem, grawer, fine art, dla firm), alt zdjęć, szybkość na telefonie.
