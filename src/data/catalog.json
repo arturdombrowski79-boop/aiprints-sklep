@@ -11666,35 +11666,10 @@
 "name": "Ażurowa ozdoba choinkowa z imieniem – 6 kształtów",
 "cat": "prezenty-z-grawerem",
 "sub": "Dom i dekoracje",
-"variants": "sklejka 3 mm, ok. 9 cm, grawer imienia, ażurowe kropki, zawieszka",
-"priceText": "od 25 zł",
+"variants": "sklejka 3 mm, ok. 9 cm, grawer imienia, ażurowe kropki, zawieszka, kształt do wyboru – bombka, choinka, serce, gwiazdka, dzwonek, skarpeta (wpisz w uwagach)",
+"priceText": "25 zł (3+ 22, 10+ 17, 30+ 12)",
 "price": 25.0,
-"tiers": [
-{
-"k": "Bombka",
-"p": 25.0
-},
-{
-"k": "Choinka",
-"p": 25.0
-},
-{
-"k": "Serce",
-"p": 25.0
-},
-{
-"k": "Gwiazdka",
-"p": 25.0
-},
-{
-"k": "Dzwonek",
-"p": 25.0
-},
-{
-"k": "Skarpeta",
-"p": 25.0
-}
-],
+"tiers": null,
 "machine": "xTool X1 (CO₂)",
 "score": 150.0,
 "xmas": false,
