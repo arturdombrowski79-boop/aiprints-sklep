@@ -39,7 +39,7 @@
 "Zegary ścienne",
 "Zwierzaki"
 ],
-"count": 41
+"count": 51
 },
 {
 "slug": "slub-i-okazje",
@@ -50,7 +50,7 @@
 "Komunia i chrzest",
 "Ślub i wesele"
 ],
-"count": 22
+"count": 23
 },
 {
 "slug": "dla-firm",
@@ -11658,6 +11658,523 @@
 "mat": [
 "akryl",
 "druk"
+]
+}
+},
+{
+"slug": "ozdoba-choinkowa-imie-ksztalty",
+"name": "Ażurowa ozdoba choinkowa z imieniem – 6 kształtów",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3 mm, ok. 9 cm, grawer imienia, ażurowe kropki, zawieszka",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "Bombka",
+"p": 25.0
+},
+{
+"k": "Choinka",
+"p": 25.0
+},
+{
+"k": "Serce",
+"p": 25.0
+},
+{
+"k": "Gwiazdka",
+"p": 25.0
+},
+{
+"k": "Dzwonek",
+"p": 25.0
+},
+{
+"k": "Skarpeta",
+"p": 25.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/ozdoba-choinkowa-imie-ksztalty-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/ozdoba-choinkowa-imie-ksztalty-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "bombka-nasze-pierwsze-swieta",
+"name": "Bombka „Nasze pierwsze Święta” z nazwiskiem i rokiem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3 mm, ok. 10 × 11,6 cm, grawer nazwiska i roku, wycinane śnieżynki",
+"priceText": "39 zł",
+"price": 39.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/bombka-nasze-pierwsze-swieta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bombka-nasze-pierwsze-swieta-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "bombka-dwuwarstwowa-pierwsze-swieta",
+"name": "Bombka dwuwarstwowa „Nasze pierwsze Święta” / „Pierwsze Święta jako Pan i Pani”",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "2 warstwy sklejki, ok. 10 × 11,6 cm, środek z grawerem nazwiska i roku",
+"priceText": "od 45 zł",
+"price": 45.0,
+"tiers": [
+{
+"k": "Nasze pierwsze Święta",
+"p": 45.0
+},
+{
+"k": "Pierwsze Święta jako Pan i Pani",
+"p": 45.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/bombka-dwuwarstwowa-pierwsze-swieta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/bombka-dwuwarstwowa-pierwsze-swieta-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "stojak-na-wino-swiateczny",
+"name": "Świąteczny stojak na wino z nazwiskiem",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3–4 mm, wys. 33 cm, na wino i szampana; wzory: Mikołaj, renifer, bałwanek, choinka, aniołek, tabliczka z nazwiskiem",
+"priceText": "od 65 zł",
+"price": 65.0,
+"tiers": [
+{
+"k": "Mikołaj",
+"p": 65.0
+},
+{
+"k": "Renifer",
+"p": 65.0
+},
+{
+"k": "Bałwanek",
+"p": 65.0
+},
+{
+"k": "Choinka",
+"p": 65.0
+},
+{
+"k": "Aniołek „Cicha noc”",
+"p": 65.0
+},
+{
+"k": "Tabliczka z nazwiskiem",
+"p": 69.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/stojak-na-wino-swiateczny-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/stojak-na-wino-swiateczny-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "zawieszki-na-prezent-12",
+"name": "Zawieszki na prezent „Od Mikołaja”, „Dla Ciebie”, „Wesołych Świąt” – komplet 12 szt.",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3 mm, ok. 6 cm, z otworem na wstążkę; kształt: okrągła koronka, sześciokąt z choinką, falisty brzeg",
+"priceText": "od 35 zł",
+"price": 35.0,
+"tiers": [
+{
+"k": "12 szt.",
+"p": 35.0
+},
+{
+"k": "24 szt.",
+"p": 59.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/zawieszki-na-prezent-12-1.jpg",
+"fields": [
+"text",
+"list"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zawieszki-na-prezent-12-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "tabliczka-listy-do-mikolaja",
+"name": "Tabliczka na stół „Listy do Świętego Mikołaja”",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3–4 mm, 20 × 15 cm, ze stopką, grawer",
+"priceText": "45 zł",
+"price": 45.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/tabliczka-listy-do-mikolaja-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tabliczka-listy-do-mikolaja-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "wianek-na-drzwi-wesolych-swiat",
+"name": "Wianek na drzwi z napisem „Wesołych Świąt” – 30 cm",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "sklejka 3 mm, ażurowy wieniec z liśćmi i napisem; także „Rodzinne Święta”, „Szczęśliwego Nowego Roku”, „Witamy”",
+"priceText": "od 79 zł",
+"price": 79.0,
+"tiers": [
+{
+"k": "Wesołych Świąt",
+"p": 79.0
+},
+{
+"k": "Rodzinne Święta",
+"p": 79.0
+},
+{
+"k": "Szczęśliwego Nowego Roku",
+"p": 79.0
+},
+{
+"k": "Witamy",
+"p": 79.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/wianek-na-drzwi-wesolych-swiat-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/wianek-na-drzwi-wesolych-swiat-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "tablica-warstwowa-pierwsze-swieta",
+"name": "Tablica warstwowa „Nasze pierwsze Święta” z nazwiskiem – 5 warstw",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "5 warstw sklejki, Ø 26,7 cm, każda warstwa w innym odcieniu, grawer nazwiska i roku, zawieszka",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/tablica-warstwowa-pierwsze-swieta-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-warstwowa-pierwsze-swieta-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tablica-warstwowa-wesolych-swiat",
+"name": "Tablica warstwowa „Wesołych Świąt” z nazwiskiem – sześciokąt, 5 warstw",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "5 warstw sklejki, 24 × 27,6 cm, grawer nazwiska rodziny i roku",
+"priceText": "149 zł",
+"price": 149.0,
+"tiers": null,
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/tablica-warstwowa-wesolych-swiat-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-warstwowa-wesolych-swiat-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "tablica-warstwowa-okolicznosciowa",
+"name": "Tablica warstwowa na okazję – 5 warstw, z imieniem i datą",
+"cat": "slub-i-okazje",
+"sub": "Ślub i wesele",
+"variants": "5 warstw sklejki ok. 27 cm; okazje: Babcia, Dziadek, Mama, Tata, Roczek, Chrzest, Komunia, Bierzmowanie, Młoda Para, Rocznica ślubu, Srebrne i Złote Gody, Osiemnastka",
+"priceText": "od 149 zł",
+"price": 149.0,
+"tiers": [
+{
+"k": "Babcia (serce)",
+"p": 149.0
+},
+{
+"k": "Dziadek",
+"p": 149.0
+},
+{
+"k": "Mama (serce)",
+"p": 149.0
+},
+{
+"k": "Tata",
+"p": 149.0
+},
+{
+"k": "Roczek",
+"p": 149.0
+},
+{
+"k": "Pamiątka Chrztu",
+"p": 149.0
+},
+{
+"k": "Pierwsza Komunia",
+"p": 149.0
+},
+{
+"k": "Bierzmowanie",
+"p": 149.0
+},
+{
+"k": "Młoda Para",
+"p": 149.0
+},
+{
+"k": "Rocznica ślubu",
+"p": 149.0
+},
+{
+"k": "Srebrne Gody",
+"p": 149.0
+},
+{
+"k": "Złote Gody",
+"p": 149.0
+},
+{
+"k": "Osiemnastka",
+"p": 149.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/tablica-warstwowa-okolicznosciowa-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/tablica-warstwowa-okolicznosciowa-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"akryl"
+]
+}
+},
+{
+"slug": "dekoracja-warstwowa-kwiat",
+"name": "Dekoracja warstwowa z drewna – kwiat, słonecznik, mandala",
+"cat": "prezenty-z-grawerem",
+"sub": "Dom i dekoracje",
+"variants": "5–8 warstw sklejki, ok. 26–28 cm, każda warstwa w innym odcieniu; ozdoba na ścianę",
+"priceText": "od 129 zł",
+"price": 129.0,
+"tiers": [
+{
+"k": "Kwiat",
+"p": 129.0
+},
+{
+"k": "Słonecznik",
+"p": 129.0
+},
+{
+"k": "Mandala",
+"p": 139.0
+}
+],
+"machine": "xTool X1 (CO₂)",
+"score": 150.0,
+"xmas": false,
+"img": "img/hf/dekoracja-warstwowa-kwiat-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/dekoracja-warstwowa-kwiat-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": [
+"drewno"
 ]
 }
 },
