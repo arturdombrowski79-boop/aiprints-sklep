@@ -1657,5 +1657,83 @@
    "img/hf/krysztal-slub-2.jpg"
   ],
   "card": "img/f/krysztal-para-sq.jpg"
+ },
+ "ozdoba-choinkowa-imie-ksztalty": {
+  "gallery": [
+   "img/hf/ozdoba-choinkowa-imie-ksztalty-1.jpg",
+   "img/hf/ozdoba-choinkowa-imie-ksztalty-2.jpg"
+  ],
+  "card": "img/hf/ozdoba-choinkowa-imie-ksztalty-sq.jpg"
+ },
+ "bombka-nasze-pierwsze-swieta": {
+  "gallery": [
+   "img/hf/bombka-nasze-pierwsze-swieta-1.jpg",
+   "img/hf/bombka-nasze-pierwsze-swieta-2.jpg"
+  ],
+  "card": "img/hf/bombka-nasze-pierwsze-swieta-sq.jpg"
+ },
+ "bombka-dwuwarstwowa-pierwsze-swieta": {
+  "gallery": [
+   "img/hf/bombka-dwuwarstwowa-pierwsze-swieta-1.jpg",
+   "img/hf/bombka-dwuwarstwowa-pierwsze-swieta-2.jpg"
+  ],
+  "card": "img/hf/bombka-dwuwarstwowa-pierwsze-swieta-sq.jpg"
+ },
+ "stojak-na-wino-swiateczny": {
+  "gallery": [
+   "img/hf/stojak-na-wino-swiateczny-1.jpg",
+   "img/hf/stojak-na-wino-swiateczny-2.jpg"
+  ],
+  "card": "img/hf/stojak-na-wino-swiateczny-sq.jpg"
+ },
+ "zawieszki-na-prezent-12": {
+  "gallery": [
+   "img/hf/zawieszki-na-prezent-12-1.jpg",
+   "img/hf/zawieszki-na-prezent-12-2.jpg"
+  ],
+  "card": "img/hf/zawieszki-na-prezent-12-sq.jpg"
+ },
+ "tabliczka-listy-do-mikolaja": {
+  "gallery": [
+   "img/hf/tabliczka-listy-do-mikolaja-1.jpg",
+   "img/hf/tabliczka-listy-do-mikolaja-2.jpg"
+  ],
+  "card": "img/hf/tabliczka-listy-do-mikolaja-sq.jpg"
+ },
+ "wianek-na-drzwi-wesolych-swiat": {
+  "gallery": [
+   "img/hf/wianek-na-drzwi-wesolych-swiat-1.jpg",
+   "img/hf/wianek-na-drzwi-wesolych-swiat-2.jpg"
+  ],
+  "card": "img/hf/wianek-na-drzwi-wesolych-swiat-sq.jpg"
+ },
+ "tablica-warstwowa-pierwsze-swieta": {
+  "gallery": [
+   "img/hf/tablica-warstwowa-pierwsze-swieta-1.jpg",
+   "img/hf/tablica-warstwowa-pierwsze-swieta-2.jpg"
+  ],
+  "card": "img/hf/tablica-warstwowa-pierwsze-swieta-sq.jpg"
+ },
+ "tablica-warstwowa-wesolych-swiat": {
+  "gallery": [
+   "img/hf/tablica-warstwowa-wesolych-swiat-1.jpg",
+   "img/hf/tablica-warstwowa-wesolych-swiat-2.jpg"
+  ],
+  "card": "img/hf/tablica-warstwowa-wesolych-swiat-sq.jpg"
+ },
+ "tablica-warstwowa-okolicznosciowa": {
+  "gallery": [
+   "img/hf/tablica-warstwowa-okolicznosciowa-1.jpg",
+   "img/hf/tablica-warstwowa-okolicznosciowa-2.jpg"
+  ],
+  "card": "img/hf/tablica-warstwowa-okolicznosciowa-sq.jpg"
+ },
+ "dekoracja-warstwowa-kwiat": {
+  "gallery": [
+   "img/hf/dekoracja-warstwowa-kwiat-1.jpg",
+   "img/hf/dekoracja-warstwowa-kwiat-2.jpg",
+   "img/hf/dekoracja-warstwowa-kwiat-3.jpg"
+  ],
+  "card": "img/hf/dekoracja-warstwowa-kwiat-sq.jpg"
  }
 }
