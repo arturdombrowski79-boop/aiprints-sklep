@@ -26,3 +26,14 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 - Bez obietnic dostawy na święta. Przerwa 21.12–7.01.
 - Allegro: tylko odczyt. Nie rozwiązywać CAPTCHA.
 - Commity kończą się linią Co-Authored-By zgodnie z instrukcją sesji.
+
+## Rolki i social media (stan 27.11.2026)
+- Publikacja: YouTube Shorts (YouTube Studio), Instagram + Facebook jedną rolką (Meta Business Suite → Utwórz rolkę, „AiPrints.pl i aiprints.pl”), TikTok (TikTok Studio, zaznaczać „Treść wygenerowana przez AI”, gdy są ujęcia AI). Zawsze opis + hashtagi; bez linku w opisie IG/TikTok („link w bio”).
+- Wgrywanie pliku z wbudowanej przeglądarki: mp4 w `public/pliki/rolki/` (nagłówek CORS w .htaccess) → pobrać w karcie aiprints.pl, przenieść kawałkami (≤100 KB) do karty serwisu, podmienić `HTMLInputElement.prototype.click` dla input[type=file] i kliknąć „Dodaj film”.
+- Facebook: limit 8 postów z linkiem / miesiąc (nawet tekst „AiPrints.pl” w poście się liczy).
+- Lektor: Higgsfield `text2speech_v2`, wariant elevenlabs, głos Arthur `30fc8796-ceb6-4a66-b3a7-4a145ef7f346`. Na końcu „ej aj prints kropka pe el”. Prawdziwa pracownia i prawdziwe maszyny – bez wymyślonych wnętrz.
+- Wizytówka Google: filmy max 30 s.
+
+## Bezpieczeństwo API
+- `rate_limit()` w `api/lib.php` (IP jako skrót, 24 h): checkout 30/h, odstąpienie 5/h, kody 30/h, kalkulator 3D 40/h; kontakt ma własny limit 6/h. Modele 3D: limit 8 GB na dysku, 3MF max 600 MB po rozpakowaniu.
+- Dane strukturalne: bez zmyślonych opinii (review/aggregateRating tylko z prawdziwych).
