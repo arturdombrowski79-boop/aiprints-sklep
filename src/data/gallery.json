@@ -18,7 +18,8 @@
   "gallery": [
    "img/hf/niesmiertelnik-1.jpg",
    "img/hf/niesmiertelnik-2.jpg",
-   "img/hf/niesmiertelnik-3.jpg"
+   "img/hf/niesmiertelnik-3.jpg",
+   "img/hf/niesmiertelnik-4.jpg"
   ],
   "card": "img/hf/niesmiertelnik-sq.jpg"
  },
@@ -151,7 +152,8 @@
  },
  "krysztal-pupil": {
   "gallery": [
-   "img/hf/krysztal-pupil-1.jpg"
+   "img/hf/krysztal-pupil-1.jpg",
+   "img/hf/krysztal-pupil-2.jpg"
   ],
   "card": "img/hf/krysztal-pupil-1.jpg"
  },
@@ -829,9 +831,10 @@
  },
  "medale-grawer": {
   "gallery": [
+   "img/hf/medale-grawer-2.jpg",
    "img/hf/medale-grawer-1.jpg"
   ],
-  "card": "img/hf/medale-grawer-1.jpg"
+  "card": "img/hf/medale-grawer-2.jpg"
  },
  "folia-mrozona-nadruk": {
   "gallery": [
@@ -1623,5 +1626,36 @@
    "img/hf/fine-art-imprime-1.jpg"
   ],
   "card": "img/hf/fine-art-imprime-1.jpg"
+ },
+ "wizytowki-metalowe": {
+  "gallery": [
+   "img/hf/wizytowki-metalowe-1.jpg"
+  ],
+  "card": "img/hf/wizytowki-metalowe-1.jpg"
+ },
+ "moneta-pamiatkowa": {
+  "gallery": [
+   "img/hf/moneta-pamiatkowa-1.jpg"
+  ],
+  "card": "img/hf/moneta-pamiatkowa-1.jpg"
+ },
+ "otwieracz-karta": {
+  "gallery": [
+   "img/hf/otwieracz-karta-1.jpg"
+  ],
+  "card": "img/hf/otwieracz-karta-1.jpg"
+ },
+ "zawieszka-krysztal-choinka": {
+  "gallery": [
+   "img/hf/zawieszka-krysztal-choinka-1.jpg"
+  ],
+  "card": "img/hf/zawieszka-krysztal-choinka-1.jpg"
+ },
+ "krysztal-slub": {
+  "gallery": [
+   "img/f/krysztal-para.jpg",
+   "img/hf/krysztal-slub-2.jpg"
+  ],
+  "card": "img/f/krysztal-para-sq.jpg"
  }
 }
