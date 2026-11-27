@@ -8,7 +8,7 @@ import Card from '../components/Card.astro';
 import cat from '../data/catalog.json';
 // oficjalne logo programu – wgrać plik od Epson jako public/img/site/digigraphie.svg (albo .png); do tego czasu nazwa tekstem
 const logo = ['svg', 'png'].map((e) => `img/site/digigraphie.${e}`).find((f) => existsSync(new URL(`../../public/${f}`, import.meta.url)));
-const prods = ['digigraphie-edycja', 'fine-art-druk', 'fine-art-bawelna', 'fine-art-imprime', 'reprodukcja-obrazu', 'wydruk-probny', 'wydruk-w-ramie', 'wydruk-wystawowy', 'portfolio-box'].map((s) => cat.products.find((p) => p.slug === s)).filter(Boolean);
+const prods = ['digigraphie-edycja', 'fine-art-druk', 'fine-art-bawelna', 'fine-art-imprime', 'odbitki-drylab', 'powiekszenia-zdjec', 'reprodukcja-obrazu', 'wydruk-probny', 'wydruk-w-ramie', 'wydruk-wystawowy', 'portfolio-box'].map((s) => cat.products.find((p) => p.slug === s)).filter(Boolean);
 const steps = [
   ['Konsultacja', 'Rozmawiamy o pracy, nakładzie edycji, papierze i formacie. Możesz przyjść z oryginałem albo przysłać plik.'],
   ['Plik lub reprodukcja', 'Przyjmujemy pliki w pełnej rozdzielczości (TIFF, PSD, PDF). Obrazy i grafiki możemy zreprodukować w pracowni.'],
@@ -23,6 +23,14 @@ const eizo = [
   ['99% Adobe RGB', 'pełna przestrzeń barw druku fine art, 98% DCI-P3'],
   ['Samokalibracja', 'wbudowany czujnik pilnuje koloru bez udziału człowieka'],
   ['Soft proof', 'podgląd na profilu ICC wybranego papieru przed wydrukiem'],
+];
+// porównanie odbitek: bez nazw konkretnych sieci (reklama porównawcza – tylko obiektywne, sprawdzalne cechy); dane D1000: karta katalogowa Epson SL-D1000
+const prints = [
+  ['Kolory', 'Zwykle 3 barwniki z taśmy (żółty, purpurowy, niebieskozielony) + warstwa ochronna.', '6 tuszów Epson UltraChrome, w tym jasny cyjan i jasna magenta – gładsze przejścia na skórze, niebie i w cieniach.'],
+  ['Szczegół', 'Gładki obraz, ale wyostrzenie i kolor ustawione fabrycznie, jednakowo dla każdego zdjęcia.', '1440×720 dpi i krople od 2,5 pl – ostre włosy, rzęsy i drobny tekst.'],
+  ['Kontrola koloru', 'Automat drukuje to, co dostał, albo „poprawia” wszystko jednakowo.', 'Zdjęcia przegląda człowiek na skalibrowanym monitorze EIZO; na życzenie poprawiamy ekspozycję, balans bieli i kadr.'],
+  ['Papier', 'Najczęściej do wyboru połysk albo mat.', 'Papiery fotograficzne Epson: błyszczący, luster (półmat, bez odcisków palców) i matowy.'],
+  ['Formaty', 'Kilka standardowych rozmiarów.', '10×15 do 20×30 od ręki; powiększenia do 60×90 i fine art do 112 cm szerokości na Epson P9500.'],
 ];
 const papersHere = [
   ['Hahnemühle Photo Rag Baryta', '315 g/m² · 100% bawełna, powierzchnia barytowa z połyskiem – głęboka czerń, klasyczny wygląd odbitki srebrowej. Certyfikowany do edycji Digigraphie®.'],
@@ -78,6 +86,16 @@ const faq = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
       {steps.map(([t, d], i) => (<article class="reveal rounded-[30px] bg-white border border-line p-7"><span class="font-display text-[48px] leading-none text-gold/60">0{i + 1}</span><h3 class="font-display text-[26px] leading-tight mt-3">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></article>))}
     </div>
+  </section>
+  <section id="odbitki" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <p class="reveal text-gold text-[13px] tracking-[0.14em] uppercase">Odbitki Epson SureLab D1000L</p>
+    <h2 class="reveal font-display text-[40px] md:text-[56px] leading-[1.02] mt-3 max-w-[900px]">Dlaczego nasze 10×15 wygląda lepiej niż zdjęcie z automatu?</h2>
+    <p class="reveal text-mute max-w-[760px] leading-relaxed mt-5">Automaty „od ręki” w sklepach drukują najczęściej metodą termosublimacji: szybko i wygodnie, ale z trzech barwników i bez człowieka, który spojrzy na zdjęcie. My drukujemy odbitki na laboratoryjnej drukarce Epson SureLab D1000L, a każde zamówienie przechodzi przez skalibrowany monitor. Różnicę widać najbardziej na twarzach, niebie i w ciemnych partiach zdjęcia.</p>
+    <div class="reveal mt-10 overflow-hidden rounded-[30px] border border-line bg-white">
+      <div class="hidden md:grid grid-cols-[180px_1fr_1fr] text-[13px] tracking-[0.1em] uppercase text-mute border-b border-line"><span class="p-5"></span><span class="p-5">Typowy automat „od ręki”</span><span class="p-5 text-ink font-semibold">AiPrints.pl · Epson D1000L</span></div>
+      {prints.map(([t, a, b]) => <div class="grid md:grid-cols-[180px_1fr_1fr] border-b border-line last:border-0 text-[14.5px] leading-relaxed"><b class="p-5 pb-1 md:pb-5 font-semibold">{t}</b><p class="px-5 md:p-5 text-mute"><span class="md:hidden text-[12px] uppercase tracking-[0.08em]">Automat: </span>{a}</p><p class="p-5 pt-2 md:pt-5"><span class="md:hidden text-[12px] uppercase tracking-[0.08em] text-mute">U nas: </span>{b}</p></div>)}
+    </div>
+    <p class="reveal text-mute text-[14px] mt-5">Odbitki 10×15 od 1,20 zł, 13×18 od 2 zł, 20×30 od 6 zł – wydruk zwykle w 24 h, odbiór w pracowni w Chorzowie albo wysyłka. <a class="underline underline-offset-4 text-ink" href="odbitki-drylab.html">Zamów odbitki</a></p>
   </section>
   <section id="papiery" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Papiery</h2>
