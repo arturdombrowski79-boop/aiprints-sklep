@@ -32,7 +32,7 @@ NEW = [
  ('Ploter tnący', 'napis-na-samochod', 'Napis na samochód z folii', 'folia samochodowa 5–7 lat, numer telefonu, strona www, nazwa firmy', '69 zł', SUMMA, 89, 10, 20, 4, ''),
  ('Ploter tnący', 'napis-na-sciane-folia', 'Napis na ścianę z folii (cytat, imię)', 'folia matowa do ścian, wysokość liter dobierzemy do miejsca', '89 zł', SUMMA, 89, 10, 25, 4, ''),
  # ——— fine art i fotografia ———
- ('Fine art i fotografia', 'fine-art-bawelna', 'Wydruk fine art na papierze bawełnianym', 'Hahnemühle Photo Rag, Canson Baryta, Ilford Gold Fibre; 12 tuszów pigmentowych, A4–B0', 'A4=49 | A3=79 | A2=139 | A1=219 | A0=349', P9500, 139, 35, 20, 4, 'Epson P9500 44", profil ICC pod papier'),
+ ('Fine art i fotografia', 'fine-art-bawelna', 'Wydruk fine art na papierze bawełnianym', 'Hahnemühle Photo Rag Baryta 315 g, ImPrime Premium MC230 lub ImPrime 260 Bright White (inne papiery fine art na zamówienie); 12 tuszów pigmentowych, A4–B0', 'A4=49 | A3=79 | A2=139 | A1=219 | A0=349', P9500, 139, 35, 20, 4, 'Epson P9500 44", profil ICC pod papier'),
  ('Fine art i fotografia', 'digigraphie-edycja', 'Edycja limitowana Digigraphie by Epson', 'numerowana seria, certyfikat autentyczności, papier muzealny', 'od 129 zł', P9500, 390, 90, 60, 3, 'dla artystów i fotografów'),
  ('Fine art i fotografia', 'wydruk-wystawowy', 'Wydruk wystawowy na piance lub Dibond', 'fotografia na piance 5 mm lub Dibond 3 mm, laminat mat, zawieszka', '50×70=149 | 70×100=249 | 100×150=449', P9500, 249, 80, 30, 4, ''),
  ('Fine art i fotografia', 'odbitki-drylab', 'Odbitki fotograficzne DryLab', 'papier błyszczący, matowy lub luster, od 1 szt., wydruk w 24 h', '10×15=1.2 | 13×18=2 | 15×21=3 | 20×30=6', D1000, 60, 15, 15, 5, 'Epson SureLab D1000'),

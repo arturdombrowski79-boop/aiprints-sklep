@@ -17,9 +17,24 @@ const steps = [
   ['Edycja', 'Drukujemy na Epson SureColor P9500 (do 44 cali) pigmentowymi tuszami UltraChrome. Każdy egzemplarz sprawdzamy w świetle o standardowej temperaturze barwowej.'],
   ['Certyfikacja', 'Przy edycji Digigraphie®: numeracja i podpis artysty, tłoczona pieczęć oraz certyfikat autentyczności dla każdego egzemplarza.'],
 ];
+// papiery: „na miejscu” – od Artura (27.11.2026); „na zamówienie” – linie dostępne u dostawcy (sprawdzone 27.11.2026)
+const papersHere = [
+  ['Hahnemühle Photo Rag Baryta', '315 g/m² · 100% bawełna, powierzchnia barytowa z połyskiem – głęboka czerń, klasyczny wygląd odbitki srebrowej.'],
+  ['ImPrime Premium MC230', '230 g/m² · matowy, gładki – plakaty, ilustracje, grafiki i wydruki próbne.'],
+  ['ImPrime 260 Bright White', '260 g/m² · jasna biel, wyraźny kontrast – fotografia i wydruki wystawowe.'],
+  ['Płótno ImPrime', 'do obrazów na krośnie i reprodukcji malarstwa.'],
+  ['Epson (SureLab D1000L)', 'papiery fotograficzne Epson w rolce i arkusze Epson Archival Matte – odbitki i powiększenia.'],
+];
+const papersOrder = [
+  ['Hahnemühle', 'Photo Rag, Photo Rag Ultra Smooth, FineArt Baryta, William Turner, Museum Etching, Platinum Rag, Bamboo, Hemp, Agave'],
+  ['Canson Infinity', 'Baryta Photographique II, Arches BFK Rives'],
+  ['Ilford Galerie', 'Fine Art Smooth, Fine Art Textured Silk'],
+  ['Epson', 'Fine Art Cotton Textured Natural'],
+  ['Awagami (papiery japońskie)', 'Bamboo, Kozo, Unryu'],
+];
 const faq = [
   ['Czym Digigraphie różni się od zwykłego wydruku fine art?', 'Digigraphie® to program Epson dla limitowanych edycji: wydruk na certyfikowanej drukarce Epson, tuszami UltraChrome, na papierze z listy zatwierdzonych, numerowany i podpisany przez artystę, z tłoczoną pieczęcią i certyfikatem. Kolekcjoner dostaje potwierdzenie, że kupuje oryginalny egzemplarz z ograniczonej serii.'],
-  ['Na jakich papierach drukujecie?', 'Na papierach fine art bawełnianych i alfa-celulozowych – matowych, satynowych i barytowych – m.in. Hahnemühle, Canson, Ilford i Epson. Do edycji Digigraphie używamy wyłącznie papierów zatwierdzonych w programie. Pomożemy dobrać papier do pracy – możesz zamówić wydruk próbny.'],
+  ['Na jakich papierach drukujecie?', 'Na miejscu mamy Hahnemühle Photo Rag Baryta 315 g, ImPrime Premium MC230, ImPrime 260 Bright White i płótno ImPrime, a do odbitek na Epson SureLab D1000L papiery Epson w rolce i Epson Archival Matte. Inne papiery fine art (Hahnemühle, Canson Infinity, Ilford, Epson, Awagami) sprowadzamy na zamówienie – czas i cenę podamy w wycenie. Do edycji Digigraphie używamy wyłącznie papierów zatwierdzonych w programie. Pomożemy dobrać papier – możesz zamówić wydruk próbny.'],
   ['Czy zrobicie reprodukcję mojego obrazu?', 'Tak – reprodukujemy obrazy, rysunki i grafiki, a następnie drukujemy je w wybranym formacie. Wycenę podamy po obejrzeniu pracy (rozmiar, faktura, technika).'],
   ['Ile to trwa?', 'Wydruk próbny zwykle w 2–3 dni robocze, cała edycja po akceptacji próbki – zależnie od nakładu i formatu.'],
   ['Czy wystawiacie fakturę?', 'Tak, dla artystów, galerii i fotografów wystawiamy faktury VAT.'],
@@ -34,7 +49,7 @@ const faq = [
       <p class="text-white/75 leading-relaxed mt-4">Dla kolekcjonera to dowód, że kupuje egzemplarz z ograniczonej, kontrolowanej serii – a nie kolejną kopię.</p>
     </div>
     <div class="grid sm:grid-cols-2 gap-4">
-      {[['Epson SureColor P9500', 'Drukarka wielkoformatowa do 44 cali (112 cm) z pigmentowymi tuszami UltraChrome – głęboka czerń, szeroki gamut i trwałość na dziesięciolecia.'], ['EIZO ColorEdge CG319X', '31-calowy monitor 4K z kalibracją sprzętową i wbudowanym czujnikiem – kolor na ekranie zgadza się z wydrukiem.'], ['Papiery muzealne', 'Bawełniane i alfa-celulozowe, matowe, satynowe i barytowe. Dobierzemy papier do techniki i charakteru pracy.'], ['Wydruk próbny', 'Zanim wydrukujemy edycję, akceptujesz próbkę na docelowym papierze.']].map(([t, d]) => (
+      {[['Epson SureColor P9500', 'Drukarka wielkoformatowa do 44 cali (112 cm) z pigmentowymi tuszami UltraChrome – głęboka czerń, szeroki gamut i trwałość na dziesięciolecia.'], ['EIZO ColorEdge CG319X', '31-calowy monitor 4K z kalibracją sprzętową i wbudowanym czujnikiem – kolor na ekranie zgadza się z wydrukiem.'], ['Papiery muzealne', 'Na miejscu Hahnemühle Photo Rag Baryta, papiery i płótno ImPrime; inne papiery fine art sprowadzamy na zamówienie. Dobierzemy papier do techniki i charakteru pracy.'], ['Wydruk próbny', 'Zanim wydrukujemy edycję, akceptujesz próbkę na docelowym papierze.']].map(([t, d]) => (
         <div class="reveal rounded-[28px] bg-white border border-line p-6"><h3 class="font-display text-[24px] leading-tight">{t}</h3><p class="text-mute text-[14px] leading-relaxed mt-2">{d}</p></div>))}
     </div>
   </section>
@@ -42,6 +57,14 @@ const faq = [
     <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Jak pracujemy</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
       {steps.map(([t, d], i) => (<article class="reveal rounded-[30px] bg-white border border-line p-7"><span class="font-display text-[48px] leading-none text-gold/60">0{i + 1}</span><h3 class="font-display text-[26px] leading-tight mt-3">{t}</h3><p class="text-mute text-[14.5px] leading-relaxed mt-2">{d}</p></article>))}
+    </div>
+  </section>
+  <section id="papiery" class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28">
+    <h2 class="reveal font-display text-[44px] md:text-[60px] leading-none">Papiery</h2>
+    <p class="reveal text-mute max-w-[720px] leading-relaxed mt-4">Papiery z pierwszej listy mamy w pracowni. Pozostałe sprowadzamy na zamówienie – dostępny format, czas realizacji i cenę podamy w wycenie. Nie wiesz, który wybrać? Zamów wydruk próbny.</p>
+    <div class="grid lg:grid-cols-2 gap-4 mt-10">
+      <div class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[28px] leading-tight">Na miejscu</h3><ul class="mt-4 space-y-3">{papersHere.map(([t, d]) => <li class="text-[14.5px] leading-relaxed"><b class="font-semibold">{t}</b> <span class="text-mute">– {d}</span></li>)}</ul></div>
+      <div class="reveal rounded-[30px] bg-white border border-line p-7"><h3 class="font-display text-[28px] leading-tight">Na zamówienie</h3><ul class="mt-4 space-y-3">{papersOrder.map(([t, d]) => <li class="text-[14.5px] leading-relaxed"><b class="font-semibold">{t}</b> <span class="text-mute">– {d}</span></li>)}</ul><p class="text-mute text-[13px] leading-relaxed mt-5">Część papierów jest dostępna tylko w wybranych formatach arkuszy lub rolek.</p></div>
     </div>
   </section>
   {prods.length > 0 && <section class="max-w-[1360px] mx-auto px-5 md:px-10 mt-28"><h2 class="reveal font-display text-[40px] md:text-[52px] leading-none">Zamów online</h2><div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 mt-8">{prods.map((p) => <Card p={p} c={p.cat} />)}</div></section>}
