@@ -20,7 +20,7 @@ for f in glob.glob('prod/*.html'):
     s=s.replace('href="favicon.ico"','href="'+BASE+'favicon.ico"')
     open(f,'w',encoding='utf-8').write(s)
     n=os.path.basename(f)[:-5]
-    if n not in ('404','admin','konto','dziekujemy','pliki'): urls.append('' if n=='index' else n)
+    if n not in ('404','admin','konto','dziekujemy','pliki','bio'): urls.append('' if n=='index' else n)
 urls.sort(key=lambda u:(u!='',u))
 open('prod/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>https://aiprints.pl/{u}</loc></url>\n' for u in urls)+'</urlset>\n')
 print('prod',len(urls),'adresów w sitemap')

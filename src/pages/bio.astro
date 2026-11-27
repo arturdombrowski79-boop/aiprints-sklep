@@ -1,0 +1,38 @@
+---
+// „Link w bio” – jedna strona z produktami z ostatnich filmów (TikTok, Instagram, YouTube). Treść: src/data/bio.js
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import cat from '../data/catalog.json';
+import { BIO } from '../data/bio.js';
+const find = (s) => cat.products.find((p) => p.slug === s && !p.hidden);
+const groups = BIO.map((g) => ({ ...g, prods: g.slugs.map(find).filter(Boolean) }));
+const quick = [
+  ['Sklep', '/sklep'],
+  ['Zadzwoń', 'tel:+48609040274'],
+  ['WhatsApp', 'https://wa.me/48609040274'],
+  ['Napisz', '/kontakt#wycena'],
+];
+---
+<Base title="AiPrints.pl – z naszych filmów" description="Produkty z filmów AiPrints.pl: fine art i odbitki, druk 3D, pamięć i pogrzeb, prezenty ze zdjęciem, fototapety. Pracownia w Chorzowie." canonical="bio" noindex={true}>
+  <section class="max-w-[720px] mx-auto px-4 pt-10 md:pt-16 text-center">
+    <h1 class="font-display text-[40px] md:text-[52px] leading-[1.02]">Z naszych filmów</h1>
+    <p class="text-mute leading-relaxed mt-3">Pracownia w Chorzowie, ul. Okrężna 98B. Wszystko robimy u siebie, a projekt pokazujemy przed produkcją.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-6">
+      {quick.map(([t, h], i) => <a href={h} class={`h-12 rounded-2xl grid place-items-center text-[15px] font-semibold border ${i === 0 ? 'bg-ink text-white border-ink' : 'bg-white border-line'}`}>{t}</a>)}
+    </div>
+  </section>
+  {groups.map((g) => (
+    <section class="max-w-[1100px] mx-auto px-4 mt-12">
+      <div class="flex items-end justify-between gap-4 border-b border-line pb-3">
+        <div>
+          <p class="text-[12px] tracking-[0.12em] uppercase text-mute">Film z {g.date}</p>
+          <h2 class="font-display text-[30px] md:text-[38px] leading-none mt-1">{g.t}</h2>
+          <p class="text-mute text-[14px] mt-1">{g.sub}</p>
+        </div>
+        <a href={g.link} class="shrink-0 text-[14px] font-semibold underline underline-offset-4">Zobacz →</a>
+      </div>
+      {g.prods.length > 0 && <div class="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-8 mt-6">{g.prods.map((p) => <Card p={p} c={p.cat} />)}</div>}
+    </section>
+  ))}
+  <p class="max-w-[720px] mx-auto px-4 mt-14 text-center text-mute text-[14px]">Nie widzisz swojego produktu? <a class="underline underline-offset-4 text-ink" href="/sklep">Cały sklep</a> · tel. <a class="underline underline-offset-4 text-ink" href="tel:+48609040274">609 040 274</a></p>
+</Base>
