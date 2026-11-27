@@ -53,7 +53,7 @@ function parse3mf(buf, name) {
   if (ms) { const d = new DOMParser().parseFromString(strFromU8(z[ms]), 'application/xml'); for (const o of d.querySelectorAll('config > object')) { const id = o.getAttribute('id');
     for (const m of o.querySelectorAll(':scope > metadata')) { if (m.getAttribute('key') === 'extruder') ext[id] = +m.getAttribute('value'); if (m.getAttribute('key') === 'name') names[id] = m.getAttribute('value'); }
     for (const p of o.querySelectorAll(':scope > part')) for (const m of p.querySelectorAll('metadata')) { if (m.getAttribute('key') === 'extruder') partExt[id + '/' + p.getAttribute('id')] = +m.getAttribute('value'); if (m.getAttribute('key') === 'name') names[id + '/' + p.getAttribute('id')] = m.getAttribute('value'); } } }
-  let fil = []; const ps = key('Metadata/project_settings.config'); if (ps) { try { fil = JSON.parse(strFromU8(z[ps])).filament_colour || []; } catch (e) { } }
+  let fil = [], supOff = false, tree = false; const ps = key('Metadata/project_settings.config'); if (ps) { try { const j = JSON.parse(strFromU8(z[ps])); fil = j.filament_colour || []; supOff = String(j.enable_support ?? '1') === '0'; tree = String(j.support_type || '').startsWith('tree'); } catch (e) { } }
   const parts = []; let painted = false;
   const walk = (path, oid, M, extr, label) => {
     const o = get(path)[oid]; if (!o) return;
@@ -77,7 +77,7 @@ function parse3mf(buf, name) {
   let used = [...new Set(parts.map((p) => p.ext))].sort((a, b) => a - b);
   if (painted && fil.length > 1) used = Array.from({ length: Math.min(8, fil.length) }, (_, i) => i + 1);
   const map = Object.fromEntries(used.map((e, i) => [e, i]));
-  return { parts: parts.map((p) => ({ name: p.name, slot: map[p.ext] ?? 0, pos: p.pos })), colors: used.map((e) => fil[e - 1] || ''), painted };
+  return { parts: parts.map((p) => ({ name: p.name, slot: map[p.ext] ?? 0, pos: p.pos })), colors: used.map((e) => fil[e - 1] || ''), painted, supOff, tree };
 }
 async function readFiles(files) {
   if (files.length === 1 && /\.3mf$/i.test(files[0].name)) return parse3mf(await files[0].arrayBuffer(), files[0].name);
@@ -146,7 +146,7 @@ async function load(fileList) {
   S.err = ''; S.busy = true; S.srv = null; S.id = null; S.preview = false; $('c3Empty').classList.add('hidden'); $('c3Panel').classList.remove('opacity-40', 'pointer-events-none'); status('Wczytuję model…'); render();
   try {
     const model = await readFiles(files); S.files = files; S.model = model;
-    S.stats = mergeStats(model.parts.map((p) => ({ ...meshStats(p.pos), paint: !!p.paint }))); S.stats.slots = model.colors.length; if (S.stats.slots > 1) { S.stats.zm = zMask(model.parts); S.stats.zb = 0.1; }
+    S.stats = mergeStats(model.parts.map((p) => ({ ...meshStats(p.pos), paint: !!p.paint }))); S.stats.slots = model.colors.length; S.stats.supOff = !!model.supOff; S.stats.tree = !!model.tree; if (S.stats.slots > 1) { S.stats.zm = zMask(model.parts); S.stats.zb = 0.1; }
     S.colors = model.colors.map((h, i) => nearest(h) || ['w', 'k', 'c', 'm', 'y', 'lc', 'lm', 'ly'][i] || 'w');
     S.scale = 1; const big = Math.max(...S.stats.bbox.map((v, i) => v / CFG.max[i])); if (big > 1) S.scale = Math.floor(100 / big) / 100; // za duży – zmniejsz do pola roboczego
     show(model); render();
@@ -177,7 +177,7 @@ function render() {
   $('c3Qty').value = S.qty;
   const err = check(st, o, CFG); const e = estimate(st, o, CFG);
   $('c3Size').textContent = e.size.map((v) => num(v)).join(' × ') + ' mm';
-  $('c3G').textContent = '≈ ' + e.grams + ' g'; $('c3T').textContent = '≈ ' + fmtH(e.hours) + (S.qty > 1 ? ' / szt.' : '');
+  $('c3G').textContent = '≈ ' + e.grams + ' g' + (e.sup ? ` (w tym podpory ≈ ${e.sup} g)` : ''); $('c3T').textContent = '≈ ' + fmtH(e.hours) + (S.qty > 1 ? ' / szt.' : '');
   $('c3U').textContent = zl(e.unit); $('c3Sum').textContent = zl(e.unit * S.qty);
   $('c3Note').textContent = st.approx ? 'Siatka modelu nie jest szczelna – wagę oszacowaliśmy z wymiarów; sprawdzimy plik przed drukiem.' : '';
   $('c3Warn').textContent = err; $('c3Warn').classList.toggle('hidden', !err);

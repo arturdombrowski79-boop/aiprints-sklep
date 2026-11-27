@@ -209,7 +209,8 @@
       "colors": [
         "k"
       ],
-      "hint": "Sztywny, matowy czarny – części techniczne."
+      "hint": "Sztywny, matowy czarny – części techniczne.",
+      "special": true
     },
     {
       "id": "abs",
@@ -218,7 +219,8 @@
       "eur": 9,
       "density": 1.05,
       "timeK": 1.1,
-      "hint": "Odporny na temperaturę (ok. 90°C) i uderzenia – obudowy, części do auta."
+      "hint": "Odporny na temperaturę (ok. 90°C) i uderzenia – obudowy, części do auta.",
+      "special": true
     },
     {
       "id": "asa",
@@ -227,7 +229,8 @@
       "eur": 14.99,
       "density": 1.07,
       "timeK": 1.1,
-      "hint": "Jak ABS, ale odporny na UV – na zewnątrz."
+      "hint": "Jak ABS, ale odporny na UV – na zewnątrz.",
+      "special": true
     },
     {
       "id": "abs-gf",
@@ -236,7 +239,8 @@
       "eur": 19.19,
       "density": 1.08,
       "timeK": 1.15,
-      "hint": "Sztywniejszy ABS – uchwyty, wsporniki."
+      "hint": "Sztywniejszy ABS – uchwyty, wsporniki.",
+      "special": true
     },
     {
       "id": "asa-cf",
@@ -248,7 +252,8 @@
       "colors": [
         "k"
       ],
-      "hint": "Sztywny, odporny na UV, czarny mat."
+      "hint": "Sztywny, odporny na UV, czarny mat.",
+      "special": true
     },
     {
       "id": "tpu",
@@ -257,7 +262,8 @@
       "eur": 20.99,
       "density": 1.22,
       "timeK": 2,
-      "hint": "Gumowy i giętki – uszczelki, nakładki, odbojniki."
+      "hint": "Gumowy i giętki – uszczelki, nakładki, odbojniki.",
+      "special": true
     },
     {
       "id": "tpu-soft",
@@ -266,7 +272,8 @@
       "eur": 26.39,
       "density": 1.22,
       "timeK": 2.4,
-      "hint": "Bardziej miękki – podkładki, chwytaki."
+      "hint": "Bardziej miękki – podkładki, chwytaki.",
+      "special": true
     },
     {
       "id": "pa6-gf",
@@ -275,7 +282,8 @@
       "eur": 37.79,
       "density": 1.23,
       "timeK": 1.2,
-      "hint": "Bardzo wytrzymały i odporny na temperaturę."
+      "hint": "Bardzo wytrzymały i odporny na temperaturę.",
+      "special": true
     },
     {
       "id": "pa6-cf",
@@ -287,7 +295,8 @@
       "colors": [
         "k"
       ],
-      "hint": "Lekki, sztywny i wytrzymały – części maszyn."
+      "hint": "Lekki, sztywny i wytrzymały – części maszyn.",
+      "special": true
     },
     {
       "id": "paht-cf",
@@ -299,7 +308,8 @@
       "colors": [
         "k"
       ],
-      "hint": "Nylon wysokotemperaturowy – pod maskę, przy silniku."
+      "hint": "Nylon wysokotemperaturowy – pod maskę, przy silniku.",
+      "special": true
     },
     {
       "id": "pet-cf",
@@ -311,7 +321,8 @@
       "colors": [
         "k"
       ],
-      "hint": "Sztywny, stabilny wymiarowo, mało chłonie wilgoć."
+      "hint": "Sztywny, stabilny wymiarowo, mało chłonie wilgoć.",
+      "special": true
     },
     {
       "id": "ppa-cf",
@@ -323,10 +334,29 @@
       "colors": [
         "k"
       ],
-      "hint": "Najwyższa wytrzymałość i odporność na temperaturę."
+      "hint": "Najwyższa wytrzymałość i odporność na temperaturę.",
+      "special": true
     }
   ],
   "_materialy": "eur = cena szpuli 1 kg w sklepie Bambu (26.11.2026). Cena za gram dla klienta = perGram × max(1, eur / baseEur). timeK – wolniejszy druk. colors – dozwolone kolory (CF tylko czarny).",
   "fillCap": 0.86,
-  "_wzor": "objętość druku = min(V×fillCap, V×infill + A×wall) × supportK; czas [min] = A/1000×areaMin + warstwy×layerSec/60 + warmMin (+ zmiany filamentu). Dopasowane do: bombka (X1C), Grinch (A2L), nawijak kabli S/M/L (A1 mini) – 26.11.2026."
+  "_wzor": "objętość druku = min(V×fillCap, V×infill + A×wall) × supportK; czas [min] = A/1000×areaMin + warstwy×layerSec/60 + warmMin (+ zmiany filamentu). Dopasowane do: bombka (X1C), Grinch (A2L), nawijak kabli S/M/L (A1 mini) – 26.11.2026.",
+  "support": {
+    "_": "podpory: objętość pod nawisami > 45° (mm³) × density; drzewiaste × treeK; max capK × objętość modelu; czas hourPerG h/g; zdejmowanie labor zł/g. Kalibracja: Adik.3mf (H2C, ASA, 17,6 g podpór) 27.11.2026",
+    "density": 0.184,
+    "treeK": 0.6,
+    "capK": 0.8,
+    "hourPerG": 0.07,
+    "labor": 0.4
+  },
+  "long": {
+    "_": "po pierwszych `after` godzinach druku stawka perHour (zł/h)",
+    "after": 2,
+    "perHour": 10
+  },
+  "special": {
+    "_": "materiały specjalne (ABS, ASA, TPU, z włóknem): podgrzewana komora, zużycie dyszy – stawka za czas × hourK, przygotowanie start zł",
+    "hourK": 1.5,
+    "start": 15
+  }
 }

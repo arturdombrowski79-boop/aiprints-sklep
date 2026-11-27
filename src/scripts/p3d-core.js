@@ -4,15 +4,16 @@ export const r2 = (v) => Math.round((v + 1e-9) * 100) / 100;
 
 // statystyki siatki z trójkątów (Float32Array: x,y,z × 3 wierzchołki na trójkąt)
 export function meshStats(pos) {
-  let vol = 0, area = 0; const mn = [Infinity, Infinity, Infinity], mx = [-Infinity, -Infinity, -Infinity];
+  let vol = 0, area = 0, ov = 0, oa = 0; const mn = [Infinity, Infinity, Infinity], mx = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < pos.length; i += 9) {
     const ax = pos[i], ay = pos[i + 1], az = pos[i + 2], bx = pos[i + 3], by = pos[i + 4], bz = pos[i + 5], cx = pos[i + 6], cy = pos[i + 7], cz = pos[i + 8];
     vol += (ax * (by * cz - bz * cy) - ay * (bx * cz - bz * cx) + az * (bx * cy - by * cx)) / 6;
     const ux = bx - ax, uy = by - ay, uz = bz - az, vx = cx - ax, vy = cy - ay, vz = cz - az;
-    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx; area += Math.sqrt(nx * nx + ny * ny + nz * nz) / 2;
+    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx, ln = Math.sqrt(nx * nx + ny * ny + nz * nz); area += ln / 2;
+    if (ln > 0 && nz < -0.7071 * ln) { const pa = -nz / 2; oa += pa; ov += pa * (az + bz + cz) / 3; } // nawis > 45° – pod nim podpory
     for (let k = 0; k < 9; k++) { const d = k % 3, v = pos[i + k]; if (v < mn[d]) mn[d] = v; if (v > mx[d]) mx[d] = v; }
   }
-  return { vol: Math.abs(vol), sv: vol, area, min: mn, max: mx };
+  return { vol: Math.abs(vol), sv: vol, area, ov, oa, min: mn, max: mx };
 }
 // łączy statystyki części w jedną bryłę (części drukowane razem)
 export function mergeStats(list) {
@@ -20,7 +21,8 @@ export function mergeStats(list) {
   const bbox = mx.map((v, d) => v - mn[d]); let vol = list.reduce((a, s) => a + (s.paint ? 0 : s.vol), 0) + Math.abs(list.reduce((a, s) => a + (s.paint ? s.sv : 0), 0)); /* części malowane = kawałki jednej bryły */ const area = list.reduce((a, s) => a + s.area, 0);
   const bv = bbox[0] * bbox[1] * bbox[2]; let approx = false;
   if (bv > 0 && vol < bv * 0.02) { vol = bv * 0.3; approx = true; } // siatka nieszczelna – szacunek z wymiarów
-  return { vol, area, bbox, approx };
+  const sup = Math.max(0, list.reduce((a, s) => a + (s.ov || 0), 0) - mn[2] * list.reduce((a, s) => a + (s.oa || 0), 0)); // objętość pod nawisami (mm³)
+  return { vol, area, sup, bbox, approx };
 }
 
 // liczba zmian filamentu – jak p3d_changes() w PHP
@@ -49,18 +51,23 @@ export function estimate(stats, opts, cfg) {
   const s = +opts.scale || 1, nz = cfg.nozzles[opts.nozzle] || cfg.nozzles['0.4'], qty = Math.max(1, Math.min(cfg.maxQty, Math.round(+opts.qty || 1)));
   const V = stats.vol * s ** 3, A = stats.area * s ** 2, H = stats.bbox[2] * s;
   const ext = Math.min(V * cfg.fillCap, V * cfg.infill + A * nz.wall) * cfg.supportK; // mm³ tworzywa
-  // czas: ścianki drukują się wolniej niż wypełnienie (kalibracja na Bambu Studio)
   const used = [...new Set(opts.colors)], multi = used.length > 1, pal = Object.fromEntries(cfg.colors.map((c) => [c.id, c])), mt = material(cfg, opts.material);
-  let grams = ext / 1000 * (mt.density || cfg.density), hours = (mt.timeK || 1) * (A / 1000 * nz.areaMin + (H / nz.layer) * cfg.layerSec / 60) / 60 + cfg.warmMin / 60;
-  let mat = grams * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur) * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
+  const dens = mt.density || cfg.density, priceK = Math.max(1, mt.eur / cfg.baseEur), sp = cfg.support;
+  // podpory: objętość pod nawisami > 45° × gęstość podpór (0, gdy projekt 3MF ma podpory wyłączone)
+  const supV = stats.supOff ? 0 : Math.min((stats.sup || 0) * s ** 3 * sp.density * (stats.tree ? sp.treeK : 1), V * sp.capK), supG = supV / 1000 * dens;
+  let grams = ext / 1000 * dens + supG, hours = (mt.timeK || 1) * (A / 1000 * nz.areaMin + (H / nz.layer) * cfg.layerSec / 60) / 60 + cfg.warmMin / 60 + supG * sp.hourPerG;
+  let mat = grams * cfg.perGram * priceK * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
   let changes = 0;
   if (multi && stats.zm && stats.zm.length) { // zmiany filamentu: czas i materiał na przepłukanie
     changes = Math.round(countChanges(stats, opts.colors, s, nz.layer) * cfg.multi.changeK);
-    hours += changes * cfg.multi.changeSec / 3600; const purge = changes * cfg.multi.changeG; grams += purge; mat += purge * cfg.perGram * Math.max(1, mt.eur / cfg.baseEur);
+    hours += changes * cfg.multi.changeSec / 3600; const purge = changes * cfg.multi.changeG; grams += purge; mat += purge * cfg.perGram * priceK;
   } else if (multi) { mat *= cfg.multi.matK; hours *= cfg.multi.timeK; grams *= cfg.multi.matK; }
   const extra = multi ? (used.length - 1) * cfg.multi.perColor : 0;
-  const unit = r2(Math.max(cfg.minUnit, mat + hours * cfg.perHour + extra + cfg.start / qty));
-  return { grams: Math.round(grams), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length, changes };
+  // czas maszyny: do longAfter h stawka podstawowa, dłużej – wyższa; materiały specjalne (komora, zużycie dyszy) × specialK
+  const L = cfg.long, machine = (Math.min(hours, L.after) * cfg.perHour + Math.max(0, hours - L.after) * L.perHour) * (mt.special ? cfg.special.hourK : 1);
+  const start = mt.special ? cfg.special.start : cfg.start;
+  const unit = r2(Math.max(cfg.minUnit, mat + machine + supG * sp.labor + extra + start / qty));
+  return { grams: Math.round(grams), sup: Math.round(supG), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length, changes };
 }
 
 export const material = (cfg, id) => cfg.materials.find((m) => m.id === id) || cfg.materials[0];

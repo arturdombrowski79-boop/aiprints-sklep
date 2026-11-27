@@ -6,14 +6,15 @@ function p3d_cfg(): array { static $c = null; $f = API . '/druk3d.json'; if (!is
 
 // ——— statystyki siatki ———
 final class P3dAcc {
-  public float $vol = 0, $area = 0; public array $mn = [INF, INF, INF], $mx = [-INF, -INF, -INF];
+  public float $vol = 0, $area = 0, $ov = 0, $oa = 0; public array $mn = [INF, INF, INF], $mx = [-INF, -INF, -INF];
   public function tri(float $ax, float $ay, float $az, float $bx, float $by, float $bz, float $cx, float $cy, float $cz): void {
     $this->vol += ($ax * ($by * $cz - $bz * $cy) - $ay * ($bx * $cz - $bz * $cx) + $az * ($bx * $cy - $by * $cx)) / 6;
     $ux = $bx - $ax; $uy = $by - $ay; $uz = $bz - $az; $vx = $cx - $ax; $vy = $cy - $ay; $vz = $cz - $az;
-    $nx = $uy * $vz - $uz * $vy; $ny = $uz * $vx - $ux * $vz; $nz = $ux * $vy - $uy * $vx; $this->area += sqrt($nx * $nx + $ny * $ny + $nz * $nz) / 2;
+    $nx = $uy * $vz - $uz * $vy; $ny = $uz * $vx - $ux * $vz; $nz = $ux * $vy - $uy * $vx; $ln = sqrt($nx * $nx + $ny * $ny + $nz * $nz); $this->area += $ln / 2;
+    if ($ln > 0 && $nz < -0.7071 * $ln) { $pa = -$nz / 2; $this->oa += $pa; $this->ov += $pa * ($az + $bz + $cz) / 3; } // nawis > 45° – pod nim podpory
     foreach ([[$ax, $ay, $az], [$bx, $by, $bz], [$cx, $cy, $cz]] as $p) for ($d = 0; $d < 3; $d++) { if ($p[$d] < $this->mn[$d]) $this->mn[$d] = $p[$d]; if ($p[$d] > $this->mx[$d]) $this->mx[$d] = $p[$d]; }
   }
-  public function out(string $name, int $slot): array { return ['name' => $name, 'slot' => $slot, 'vol' => abs($this->vol), 'area' => $this->area, 'min' => $this->mn, 'max' => $this->mx]; }
+  public function out(string $name, int $slot): array { return ['name' => $name, 'slot' => $slot, 'vol' => abs($this->vol), 'area' => $this->area, 'ov' => $this->ov, 'oa' => $this->oa, 'min' => $this->mn, 'max' => $this->mx]; }
 }
 
 function p3d_stl_stats(string $path, string $name, int $slot): array {
@@ -92,7 +93,7 @@ function p3d_3mf_stats(string $path, string $name): array {
       foreach ($o->metadata as $m) { if ((string)$m['key'] === 'extruder') $ext[$oid] = (int)$m['value']; if ((string)$m['key'] === 'name') $names[$oid] = (string)$m['value']; }
       foreach ($o->part as $p) foreach ($p->metadata as $m) { if ((string)$m['key'] === 'extruder') $partExt[$oid . '/' . (string)$p['id']] = (int)$m['value']; if ((string)$m['key'] === 'name') $names[$oid . '/' . (string)$p['id']] = (string)$m['value']; } }
   }
-  $fil = []; if (($ps = $z->getFromName('Metadata/project_settings.config')) !== false) { $j = json_decode($ps, true); if (is_array($j['filament_colour'] ?? null)) $fil = $j['filament_colour']; }
+  $fil = []; $supOff = false; $tree = false; if (($ps = $z->getFromName('Metadata/project_settings.config')) !== false) { $j = json_decode($ps, true); if (is_array($j['filament_colour'] ?? null)) $fil = $j['filament_colour']; $supOff = (string)($j['enable_support'] ?? '1') === '0'; $tree = str_starts_with((string)($j['support_type'] ?? ''), 'tree'); }
   $parts = []; $painted = false; $tris = 0;
   $walk = function (string $path, string $oid, array $M, int $extr, string $label) use (&$walk, $get, &$parts, &$painted, &$tris) {
     $objs = $get($path); $o = $objs[$oid] ?? null; if (!$o) return;
@@ -115,15 +116,15 @@ function p3d_3mf_stats(string $path, string $name): array {
   }
   $z->close();
   if (!$parts) throw new Exception('W pliku 3MF nie znaleziono siatki: ' . $name);
-  if ($unit != 1.0) foreach ($parts as &$p) { $p['vol'] *= $unit ** 3; $p['area'] *= $unit ** 2; $p['min'] = array_map(fn($v) => $v * $unit, $p['min']); $p['max'] = array_map(fn($v) => $v * $unit, $p['max']); } unset($p);
-  return ['parts' => $parts, 'painted' => $painted, 'fil' => $fil];
+  if ($unit != 1.0) foreach ($parts as &$p) { $p['vol'] *= $unit ** 3; $p['area'] *= $unit ** 2; $p['ov'] *= $unit ** 3; $p['oa'] *= $unit ** 2; $p['min'] = array_map(fn($v) => $v * $unit, $p['min']); $p['max'] = array_map(fn($v) => $v * $unit, $p['max']); } unset($p);
+  return ['parts' => $parts, 'painted' => $painted, 'fil' => $fil, 'supOff' => $supOff, 'tree' => $tree];
 }
 
 // statystyki całego zlecenia z listy plików [[ścieżka, nazwa]]
 function p3d_stats(array $files): array {
-  $parts = []; $colors = []; $painted = false;
+  $parts = []; $colors = []; $painted = false; $supOff = false; $tree = false;
   if (count($files) === 1 && preg_match('~\.3mf$~i', $files[0][1])) {
-    $r = p3d_3mf_stats($files[0][0], $files[0][1]); $painted = $r['painted'];
+    $r = p3d_3mf_stats($files[0][0], $files[0][1]); $painted = $r['painted']; $supOff = $r['supOff']; $tree = $r['tree'];
     $used = array_values(array_unique(array_column($r['parts'], 'slot'))); sort($used);
     if ($painted && count($r['fil']) > 1) $used = range(1, min(8, count($r['fil'])));
     $map = array_flip($used);
@@ -138,6 +139,7 @@ function p3d_stats(array $files): array {
   $mn = [0, 1, 2]; $mx = [0, 1, 2];
   foreach ([0, 1, 2] as $d) { $mn[$d] = min(array_map(fn($p) => $p['min'][$d], $parts)); $mx[$d] = max(array_map(fn($p) => $p['max'][$d], $parts)); }
   $bbox = array_map(fn($d) => $mx[$d] - $mn[$d], [0, 1, 2]); $vol = array_sum(array_column($parts, 'vol')); $area = array_sum(array_column($parts, 'area'));
+  $sup = max(0.0, array_sum(array_column($parts, 'ov')) - $mn[2] * array_sum(array_column($parts, 'oa'))); // objętość „powietrza” pod nawisami (mm³)
   $bv = $bbox[0] * $bbox[1] * $bbox[2]; $approx = false; if ($bv > 0 && $vol < $bv * 0.02) { $vol = $bv * 0.3; $approx = true; }
   $slots = max(1, count($colors));
   // mapa kolorów w osi Z: dla każdego pasa 0,1 mm maska bitowa slotów, które tam występują
@@ -149,7 +151,7 @@ function p3d_stats(array $files): array {
       else { $a = (int)floor($p['min'][2] / P3D_BIN) - $z0; $b = (int)floor($p['max'][2] / P3D_BIN) - $z0; for ($k = max(0, $a); $k <= min($nb - 1, $b); $k++) $zm[$k] |= 1 << $p['slot']; }
     }
   }
-  return ['zm' => $zm, 'zb' => P3D_BIN, 'vol' => $vol, 'area' => $area, 'bbox' => $bbox, 'approx' => $approx, 'slots' => $slots, 'colors' => $colors, 'painted' => $painted,
+  return ['zm' => $zm, 'zb' => P3D_BIN, 'vol' => $vol, 'area' => $area, 'sup' => $sup, 'supOff' => $supOff, 'tree' => $tree, 'bbox' => $bbox, 'approx' => $approx, 'slots' => $slots, 'colors' => $colors, 'painted' => $painted,
     'parts' => array_map(fn($p) => ['name' => mb_substr($p['name'], 0, 80), 'slot' => $p['slot']], $parts)];
 }
 
@@ -161,19 +163,22 @@ function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $V = $st['vol'] * $s ** 3; $A = $st['area'] * $s ** 2; $H = $st['bbox'][2] * $s;
   $ext = min($V * $cfg['fillCap'], $V * $cfg['infill'] + $A * $nz['wall']) * $cfg['supportK']; // mm³ tworzywa
   $used = array_values(array_unique(array_map('strval', (array)($o['colors'] ?? [])))); $multi = count($used) > 1; $pal = array_column($cfg['colors'], null, 'id');
-  $mt = p3d_material($cfg, (string)($o['material'] ?? ''));
-  $grams = $ext / 1000 * ($mt['density'] ?? $cfg['density']); $hours = ($mt['timeK'] ?? 1) * ($A / 1000 * $nz['areaMin'] + ($H / $nz['layer']) * $cfg['layerSec'] / 60) / 60 + $cfg['warmMin'] / 60;
+  $mt = p3d_material($cfg, (string)($o['material'] ?? '')); $dens = $mt['density'] ?? $cfg['density']; $priceK = max(1, $mt['eur'] / $cfg['baseEur']); $sp = $cfg['support'];
+  $supV = !empty($st['supOff']) ? 0 : min(($st['sup'] ?? 0) * $s ** 3 * $sp['density'] * (!empty($st['tree']) ? $sp['treeK'] : 1), $V * $sp['capK']); $supG = $supV / 1000 * $dens;
+  $grams = $ext / 1000 * $dens + $supG; $hours = ($mt['timeK'] ?? 1) * ($A / 1000 * $nz['areaMin'] + ($H / $nz['layer']) * $cfg['layerSec'] / 60) / 60 + $cfg['warmMin'] / 60 + $supG * $sp['hourPerG'];
   $marble = false; foreach ($used as $id) if (!empty($pal[$id]['marble'])) $marble = true;
-  $mat = $grams * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']) * ($marble ? $cfg['marbleK'] : 1);
+  $mat = $grams * $cfg['perGram'] * $priceK * ($marble ? $cfg['marbleK'] : 1);
   $changes = 0;
   if ($multi && !empty($st['zm'])) { // zmiany filamentu: czas i materiał na przepłukanie
     $changes = (int)round(p3d_changes($st, array_map('strval', (array)$o['colors']), $s, $nz['layer']) * $cfg['multi']['changeK']);
     $hours += $changes * $cfg['multi']['changeSec'] / 3600; $purge = $changes * $cfg['multi']['changeG']; $grams += $purge;
-    $mat += $purge * $cfg['perGram'] * max(1, $mt['eur'] / $cfg['baseEur']);
+    $mat += $purge * $cfg['perGram'] * $priceK;
   } elseif ($multi) { $mat *= $cfg['multi']['matK']; $hours *= $cfg['multi']['timeK']; $grams *= $cfg['multi']['matK']; }
   $extra = $multi ? (count($used) - 1) * $cfg['multi']['perColor'] : 0;
-  $unit = round(max($cfg['minUnit'], $mat + $hours * $cfg['perHour'] + $extra + $cfg['start'] / $qty) + 1e-9, 2);
-  return ['grams' => (int)round($grams), 'hours' => $hours, 'unit' => $unit, 'qty' => $qty, 'size' => array_map(fn($v) => round($v * $s, 1), $st['bbox']), 'colors' => count($used), 'changes' => $changes];
+  $L = $cfg['long']; $machine = (min($hours, $L['after']) * $cfg['perHour'] + max(0, $hours - $L['after']) * $L['perHour']) * (!empty($mt['special']) ? $cfg['special']['hourK'] : 1);
+  $start = !empty($mt['special']) ? $cfg['special']['start'] : $cfg['start'];
+  $unit = round(max($cfg['minUnit'], $mat + $machine + $supG * $sp['labor'] + $extra + $start / $qty) + 1e-9, 2);
+  return ['grams' => (int)round($grams), 'sup' => (int)round($supG), 'hours' => $hours, 'unit' => $unit, 'qty' => $qty, 'size' => array_map(fn($v) => round($v * $s, 1), $st['bbox']), 'colors' => count($used), 'changes' => $changes];
 }
 
 function p3d_check(array $st, array $o, ?array $cfg = null): string {
