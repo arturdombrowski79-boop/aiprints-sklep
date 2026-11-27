@@ -38,7 +38,7 @@ Prezenty personalizowane (grawer, druk UV, kryształy 3D), druk wielkoformatowy 
 
 ## Fine art – frazy (stan 27.11.2026)
 - W reklamach, opisach, SEO i hashtagach fine art zawsze używać też: „druk pigmentowy”, „giclée”, „fine art”, „Digigraphie®”, „papier bawełniany”, „Hahnemühle”, „Epson P9500”. Hashtagi: #drukpigmentowy #fineart #giclee #digigraphie #hahnemuhle #wydrukfineart #drukartystyczny.
-- Cennik papierów: komponent `FineArtCennik.astro` na /dla-fotografow (ceny z catalog.json: fine-art-bawelna, fine-art-imprime). Proces/Digigraphie/EIZO: /druk-dla-artystow.
+- Cennik papierów: `FineArtCennik.astro` na /dla-fotografow – karty papierów z opisem, zdjęciem i ceną A4–A0 (opisy w `src/data/fineart-papers.js`, ceny z catalog.json; 10 papierów = 10 produktów `fine-art-*`). Ceny papierów: koszt roli 44" z centrumpapieru.pl (27.11.2026) → cena proporcjonalna do Photo Rag Baryta (skrypt w opisie commita). Proces/Digigraphie/EIZO: /druk-dla-artystow.
 
 ## Bezpieczeństwo API
 - `rate_limit()` w `api/lib.php` (IP jako skrót, 24 h): checkout 30/h, odstąpienie 5/h, kody 30/h, kalkulator 3D 40/h; kontakt ma własny limit 6/h. Modele 3D: limit 8 GB na dysku, 3MF max 600 MB po rozpakowaniu.

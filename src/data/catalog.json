@@ -117,7 +117,7 @@
 "Fine art",
 "Odbitki i powiększenia"
 ],
-"count": 26
+"count": 34
 },
 {
 "slug": "sublimacja",
@@ -11448,6 +11448,470 @@
 ],
 "mat": [
 "akryl",
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-photo-rag",
+"name": "Wydruk fine art na Hahnemühle Photo Rag 308",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 308 g, gładki mat – najpopularniejszy papier fine art; Digigraphie; 12 tuszów pigmentowych, A4–A0",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "A4",
+"p": 29.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 89.0
+},
+{
+"k": "A1",
+"p": 169.0
+},
+{
+"k": "A0",
+"p": 309.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-photo-rag-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-photo-rag-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-william-turner",
+"name": "Wydruk fine art na Hahnemühle William Turner 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 310 g, wyraźna faktura papieru akwarelowego, naturalna biel bez wybielaczy; Digigraphie; A4–A0",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "A4",
+"p": 29.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 89.0
+},
+{
+"k": "A1",
+"p": 169.0
+},
+{
+"k": "A0",
+"p": 319.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-william-turner-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-william-turner-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-german-etching",
+"name": "Wydruk fine art na Hahnemühle German Etching 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "alfa-celuloza, 310 g, aksamitna faktura papieru graficznego, ciepła biel; Digigraphie; A4–A0",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "A4",
+"p": 25.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 79.0
+},
+{
+"k": "A1",
+"p": 149.0
+},
+{
+"k": "A0",
+"p": 289.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-german-etching-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-german-etching-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-rag-photographique",
+"name": "Wydruk fine art na Canson Infinity Rag Photographique 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 310 g, gładki mat, jasna biel – wierne detale; Digigraphie; A4–A0",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "A4",
+"p": 25.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 79.0
+},
+{
+"k": "A1",
+"p": 149.0
+},
+{
+"k": "A0",
+"p": 289.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-rag-photographique-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-rag-photographique-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-bfk-rives",
+"name": "Wydruk fine art na Canson Infinity Arches BFK Rives 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 310 g, klasyczny francuski papier graficzny z delikatną fakturą; Digigraphie; A4–A0",
+"priceText": "od 29 zł",
+"price": 29.0,
+"tiers": [
+{
+"k": "A4",
+"p": 29.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 89.0
+},
+{
+"k": "A1",
+"p": 169.0
+},
+{
+"k": "A0",
+"p": 319.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-bfk-rives-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-bfk-rives-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-baryta-photographique",
+"name": "Wydruk fine art na Canson Infinity Baryta Photographique Satin 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "alfa-celuloza z warstwą barytu, 310 g, satynowy połysk i głęboka czerń; Digigraphie; A4–A0",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "A4",
+"p": 25.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 79.0
+},
+{
+"k": "A1",
+"p": 149.0
+},
+{
+"k": "A0",
+"p": 279.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-baryta-photographique-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-baryta-photographique-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-platine-fibre-rag",
+"name": "Wydruk fine art na Canson Infinity Platine Fibre Rag 310",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna z barytem, 310 g, satyna o wyglądzie odbitki platynowej, bez wybielaczy; Digigraphie; A4–A0",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "A4",
+"p": 25.0
+},
+{
+"k": "A3",
+"p": 39.0
+},
+{
+"k": "A2",
+"p": 79.0
+},
+{
+"k": "A1",
+"p": 149.0
+},
+{
+"k": "A0",
+"p": 289.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-platine-fibre-rag-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-platine-fibre-rag-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
+"slug": "fine-art-epson-cotton",
+"name": "Wydruk fine art na Epson Fine Art Cotton 300",
+"cat": "dla-fotografow",
+"sub": "Fine art",
+"variants": "100% bawełna, 300 g, faktura (Textured) albo gładki (Smooth), biel naturalna lub jasna; Digigraphie; A4–A0",
+"priceText": "od 25 zł",
+"price": 25.0,
+"tiers": [
+{
+"k": "A4",
+"p": 25.0
+},
+{
+"k": "A3",
+"p": 35.0
+},
+{
+"k": "A2",
+"p": 69.0
+},
+{
+"k": "A1",
+"p": 129.0
+},
+{
+"k": "A0",
+"p": 239.0
+}
+],
+"machine": "Epson SureColor P9500",
+"score": 140.0,
+"xmas": false,
+"img": "img/hf/fine-art-epson-cotton-1.jpg",
+"fields": [
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fine-art-epson-cotton-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
 "druk"
 ]
 }
