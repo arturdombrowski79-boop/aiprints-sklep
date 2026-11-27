@@ -2,6 +2,10 @@
 // Te same szablony eksportuje tools/emails.mjs do katalogu emails/ (HTML z polami {{…}}) dla backendu PHP na LH.pl.
 // Nadawca: zamowienia@aiprints.pl, odpowiedź (Reply-To): kontakt@aiprints.pl. Kopia każdego maila → archiwum (dowód doręczenia).
 
+// link do opinii w wizytówce Google (Menedżer profilu → Poproś o opinie)
+export const GOOGLE_REVIEW = 'https://g.page/r/CSmfvq_Mlh6gEBM/review';
+const greview = `<p style="font-size:13.5px;color:#5c6064">Po odbiorze będziemy wdzięczni za krótką opinię w Google – każda pomaga małej pracowni: <a href="${GOOGLE_REVIEW}" style="color:#121110">dodaj opinię</a>.</p>`;
+
 export const SELLER = 'AiPrints.pl Artur Dombrowski, ul. Okrężna 98B, 41-500 Chorzów, NIP 6262579694 · kontakt@aiprints.pl · tel. 609 040 274';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -56,12 +60,12 @@ ${btn(`https://aiprints.pl/konto#zamowienie/${d.no}`, 'Akceptuję albo zgłaszam
   wyslane: {
     name: 'Paczka wysłana (tracking)', when: 'po nadaniu w Apaczce',
     subject: (d) => `Twoja paczka jest w drodze – ${d.no}`,
-    body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Paczka wyjechała z pracowni</h1><p>${esc(d.carrier)} · numer przesyłki <b>${esc(d.tracking)}</b></p>${btn(d.trackUrl, 'Śledź przesyłkę')}<p style="font-size:13.5px;color:#5c6064">Przy odbiorze sprawdź paczkę. Jeśli coś jest uszkodzone, zrób zdjęcie i napisz na reklamacje@aiprints.pl – wymienimy produkt.</p>`,
+    body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Paczka wyjechała z pracowni</h1><p>${esc(d.carrier)} · numer przesyłki <b>${esc(d.tracking)}</b></p>${btn(d.trackUrl, 'Śledź przesyłkę')}<p style="font-size:13.5px;color:#5c6064">Przy odbiorze sprawdź paczkę. Jeśli coś jest uszkodzone, zrób zdjęcie i napisz na reklamacje@aiprints.pl – wymienimy produkt.</p>${greview}`,
   },
   odbior: {
     name: 'Gotowe do odbioru', when: 'przy odbiorze w pracowni, gdy zamówienie jest gotowe',
     subject: (d) => `Zamówienie ${d.no} gotowe do odbioru`,
-    body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Gotowe – zapraszamy po odbiór</h1><p>Cześć ${esc(d.first)}! Zamówienie <b>${d.no}</b> czeka na Ciebie w pracowni: <b>Chorzów, ul. Okrężna 98B</b>.</p><p style="font-size:14px">Przed przyjazdem zadzwoń: <b>609 040 274</b> – upewnimy się, że ktoś będzie na miejscu. Przy odbiorze podaj numer zamówienia.</p>`,
+    body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Gotowe – zapraszamy po odbiór</h1><p>Cześć ${esc(d.first)}! Zamówienie <b>${d.no}</b> czeka na Ciebie w pracowni: <b>Chorzów, ul. Okrężna 98B</b>.</p><p style="font-size:14px">Przed przyjazdem zadzwoń: <b>609 040 274</b> – upewnimy się, że ktoś będzie na miejscu. Przy odbiorze podaj numer zamówienia.</p>${greview}`,
   },
   faktura: {
     name: 'Faktura', when: 'po wystawieniu (program do faktur / KSeF)', attach: ['Faktura-{{nr}}.pdf'],
