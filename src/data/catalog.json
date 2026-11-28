@@ -24,7 +24,7 @@
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 37
+"count": 39
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -64,7 +64,7 @@
 "Szkoły i kluby",
 "Upominki z logo"
 ],
-"count": 34
+"count": 36
 },
 {
 "slug": "wspolnoty-i-spoldzielnie",
@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 29
+"count": 34
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -141,7 +141,7 @@
 "Sale i korytarze",
 "Wejście i ogrodzenie"
 ],
-"count": 18
+"count": 20
 },
 {
 "slug": "cmentarz-i-pogrzeb",
@@ -5557,6 +5557,44 @@
 }
 },
 {
+"slug": "worek-na-kapcie-imie",
+"name": "Worek na kapcie i strój WF z imieniem",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Tekstylia do domu",
+"variants": "worek ze sznurkiem 34×42 cm, poliester, imię dziecka i obrazek (dinozaur, jednorożec, auto…) albo zdjęcie – do przedszkola i szkoły",
+"priceText": "39 zł (10+ 32, 25+ 27)",
+"price": 39.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1140.0,
+"xmas": false,
+"img": "img/hf/worek-na-kapcie-imie-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/worek-na-kapcie-imie-1.jpg"
+],
+"also": [
+"szkoly-i-przedszkola"
+],
+"alsoSub": {
+"szkoly-i-przedszkola": "Dyplomy i odzież"
+},
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "kartka-drewniana",
 "name": "Drewniana kartka świąteczna z logo",
 "cat": "dla-firm",
@@ -6160,6 +6198,69 @@
 }
 },
 {
+"slug": "zdjecie-na-kamieniu",
+"name": "Zdjęcie na kamieniu",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "płytka kamienna z naturalną krawędzią, na stojaku: 15×15 / 15×20 / serce / okrągła Ø14",
+"priceText": "od 69 zł",
+"price": 69.0,
+"tiers": [
+{
+"k": "15×15",
+"p": 69.0
+},
+{
+"k": "15×20",
+"p": 79.0
+},
+{
+"k": "serce",
+"p": 79.0
+},
+{
+"k": "okrągła Ø14",
+"p": 79.0
+}
+],
+"machine": "Epson SureColor F500 + prasa",
+"score": 1130.0,
+"xmas": false,
+"img": "img/hf/zdjecie-na-kamieniu-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zdjecie-na-kamieniu-1.jpg"
+],
+"also": [
+"prezenty-ze-zdjeciem"
+],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem"
+},
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"dzien-mamy",
+"dzien-babci"
+],
+"dla": [
+"mama",
+"babcia-dziadek",
+"dla-niej"
+],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "telefony-alarmowe",
 "name": "Tabliczka „Telefony alarmowe”",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -6357,6 +6458,48 @@
 "mat": [
 "metal"
 ]
+}
+},
+{
+"slug": "zawieszka-zapachowa-auto",
+"name": "Zawieszka zapachowa do auta ze zdjęciem lub logo",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "filc zapachowy z nadrukiem dwustronnym, prostokąt, serce lub koło, kilka zapachów – na prezent i jako gadżet firmowy",
+"priceText": "19 zł (10+ 12, 50+ 8, 100+ 6)",
+"price": 19.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1125.0,
+"xmas": false,
+"img": "img/hf/zawieszka-zapachowa-auto-1.jpg",
+"fields": [
+"photo",
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zawieszka-zapachowa-auto-1.jpg"
+],
+"also": [
+"prezenty-ze-zdjeciem",
+"dla-firm"
+],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem",
+"dla-firm": "Upominki z logo"
+},
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"imie",
+"logo"
+],
+"mat": []
 }
 },
 {
@@ -6726,6 +6869,108 @@
 ],
 "mat": [
 "druk"
+]
+}
+},
+{
+"slug": "kubek-dziecko-nietlukacy",
+"name": "Kubek nietłukący dla dziecka z imieniem",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Kubki",
+"variants": "polimerowy kubek 300 ml, lekki i bezpieczny, imię i obrazek albo zdjęcie – do przedszkola i na prezent",
+"priceText": "39 zł (10+ 33, 25+ 29)",
+"price": 39.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1120.0,
+"xmas": false,
+"img": "img/hf/kubek-dziecko-nietlukacy-1.jpg",
+"fields": [
+"photo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/kubek-dziecko-nietlukacy-1.jpg"
+],
+"also": [
+"szkoly-i-przedszkola"
+],
+"alsoSub": {
+"szkoly-i-przedszkola": "Dyplomy i odzież"
+},
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny"
+],
+"dla": [
+"przyjaciel"
+],
+"pers": [
+"imie"
+],
+"mat": []
+}
+},
+{
+"slug": "statuetka-akrylowa-zdjecie",
+"name": "Statuetka akrylowa ze zdjęciem lub podziękowaniem",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "akryl 2 cm z pełnokolorowym nadrukiem: koło 10×10 / prostokąt 9×13 / diament 10×16,5 – dla pracownika, trenera, nauczyciela, na jubileusz",
+"priceText": "od 99 zł",
+"price": 99.0,
+"tiers": [
+{
+"k": "koło",
+"p": 99.0
+},
+{
+"k": "prostokąt",
+"p": 119.0
+},
+{
+"k": "diament",
+"p": 139.0
+}
+],
+"machine": "Epson SureColor F500 + prasa",
+"score": 1120.0,
+"xmas": false,
+"img": "img/hf/statuetka-akrylowa-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/statuetka-akrylowa-zdjecie-1.jpg"
+],
+"also": [
+"dla-firm"
+],
+"alsoSub": {
+"dla-firm": "Upominki z logo"
+},
+"kind": "gift",
+"tags": {
+"okazja": [
+"koniec-roku",
+"firma"
+],
+"dla": [
+"nauczyciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"akryl"
 ]
 }
 },

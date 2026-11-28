@@ -1792,5 +1792,35 @@
    "img/hf/podkladki-pod-kubek-zdjecie-1.jpg"
   ],
   "card": "img/hf/podkladki-pod-kubek-zdjecie-1.jpg"
+ },
+ "worek-na-kapcie-imie": {
+  "gallery": [
+   "img/hf/worek-na-kapcie-imie-1.jpg"
+  ],
+  "card": "img/hf/worek-na-kapcie-imie-1.jpg"
+ },
+ "kubek-dziecko-nietlukacy": {
+  "gallery": [
+   "img/hf/kubek-dziecko-nietlukacy-1.jpg"
+  ],
+  "card": "img/hf/kubek-dziecko-nietlukacy-1.jpg"
+ },
+ "zdjecie-na-kamieniu": {
+  "gallery": [
+   "img/hf/zdjecie-na-kamieniu-1.jpg"
+  ],
+  "card": "img/hf/zdjecie-na-kamieniu-1.jpg"
+ },
+ "zawieszka-zapachowa-auto": {
+  "gallery": [
+   "img/hf/zawieszka-zapachowa-auto-1.jpg"
+  ],
+  "card": "img/hf/zawieszka-zapachowa-auto-1.jpg"
+ },
+ "statuetka-akrylowa-zdjecie": {
+  "gallery": [
+   "img/hf/statuetka-akrylowa-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/statuetka-akrylowa-zdjecie-1.jpg"
  }
 }

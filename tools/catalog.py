@@ -24,7 +24,7 @@ def nsub(sl):
     if sl.startswith('mis-') or sl.startswith('podkladk'): return 'Gadżety'
     if re.search('koszul|bluz|fartuch|odziez|komin',sl): return 'Koszulki i odzież'
     if re.search('kubek|kubk|tumbler',sl): return 'Kubki'
-    if re.search('koc-|recznik|poduszk|torba|skarpet|mis-',sl): return 'Tekstylia do domu'
+    if re.search('koc-|recznik|poduszk|torba|skarpet|mis-|worek',sl): return 'Tekstylia do domu'
     return 'Gadżety'
 SUB2CAT={'Na święta':'na-swieta','Pamiątki ze zdjęciem':'prezenty-ze-zdjeciem','Dla fotografów':'dla-fotografow',
  'Zwierzaki':'prezenty-z-grawerem','Dla dzieci':'prezenty-z-grawerem','Dom i dekoracje':'prezenty-z-grawerem','Zegary ścienne':'prezenty-z-grawerem',
@@ -152,14 +152,18 @@ import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]
     if ('F500' in m and p['slug']!='zdjecie-nagrobne-porcelana') or p['slug'] in ('koszulki-absolwent','tumbler-uv-kolor','etui-telefon-uv'): a.append(NADRUK)
-    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','podkladki-pod-kubek-zdjecie'): a.append('prezenty-ze-zdjeciem')
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','podkladki-pod-kubek-zdjecie','zdjecie-na-kamieniu','zawieszka-zapachowa-auto'): a.append('prezenty-ze-zdjeciem')
+    if p['slug'] in ('worek-na-kapcie-imie','kubek-dziecko-nietlukacy'): a.append('szkoly-i-przedszkola')
+    if p['slug'] in ('statuetka-akrylowa-zdjecie','zawieszka-zapachowa-auto'): a.append('dla-firm')
     if p['slug']=='kubek-z-nadrukiem': a.append('prezenty-ze-zdjeciem')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     if 'Bambu' in m: a.append('wydruki-3d')
     p['also']=[x for x in a if x!=p['cat']]
     if NADRUK in p['also']: p['alsoSub']={NADRUK:nsub(p['slug'])}
-    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','kubek-z-nadrukiem','podkladki-pod-kubek-zdjecie'): p.setdefault('alsoSub',{})['prezenty-ze-zdjeciem']='Prezenty ze zdjęciem'
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','kubek-z-nadrukiem','podkladki-pod-kubek-zdjecie','zdjecie-na-kamieniu','zawieszka-zapachowa-auto'): p.setdefault('alsoSub',{})['prezenty-ze-zdjeciem']='Prezenty ze zdjęciem'
+    if p['slug'] in ('worek-na-kapcie-imie','kubek-dziecko-nietlukacy'): p.setdefault('alsoSub',{})['szkoly-i-przedszkola']='Dyplomy i odzież'
+    if p['slug'] in ('statuetka-akrylowa-zdjecie','zawieszka-zapachowa-auto'): p.setdefault('alsoSub',{})['dla-firm']='Upominki z logo'
 # ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
 # gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
 # files – usługa z plików klienta (odbitki, druk fine art, banery, folie z gotowej grafiki), wiele i duże pliki
