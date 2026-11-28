@@ -72,7 +72,7 @@ $tbl = function (array $head, array $rows) use ($esc) {
 <?php foreach ($funnel as $i => [$t, $n]): $prev = $i ? $funnel[$i - 1][1] : 0; ?>
 <tr><td style="width:38%"><?= $esc($t) ?></td><td class="n" style="width:10%"><b><?= $n ?></b></td><td><div class="bar" style="width:<?= max(1, round($n / $max * 100)) ?>%"></div></td><td class="n m" style="width:14%"><?= $i && $prev ? round($n / $prev * 100) . '% z poprz.' : '' ?></td></tr>
 <?php endforeach; ?></table>
-<p class="m">Porzucone na płatności: <b><?= $ost['expired'] + $ost['failed'] ?></b> · czeka na płatność: <b><?= $ost['pending'] ?></b> · wyceny w kalkulatorze 3D: <b><?= $sum('calc3d') ?></b> · zapytania z formularzy: <b><?= $sum('contact') ?></b></p></div>
+<p class="m">Porzucone na płatności: <b><?= $ost['expired'] + $ost['failed'] ?></b> · czeka na płatność: <b><?= $ost['pending'] ?></b> · wyceny w kalkulatorze 3D: <b><?= $sum('calc3d') ?></b> · zapytania z formularzy: <b><?= $sum('contact') ?></b><?php $db->exec('CREATE TABLE IF NOT EXISTS subscribers (email TEXT PRIMARY KEY, status TEXT, token TEXT, src TEXT, consent TEXT, created TEXT, confirmed TEXT, unsub TEXT, iph TEXT, synced TEXT)'); $nl = $q("SELECT status, COUNT(*) n FROM subscribers GROUP BY status"); $nlc = array_column($nl, 'n', 'status'); ?> · newsletter: <b><?= (int)($nlc['confirmed'] ?? 0) ?></b> potwierdzonych<?= !empty($nlc['pending']) ? ' (+' . (int)$nlc['pending'] . ' czeka na kliknięcie)' : '' ?><?= !empty($nlc['unsub']) ? ', wypisanych: ' . (int)$nlc['unsub'] : '' ?></p></div>
 
 <div class="c"><h2>Skąd przychodzą klienci</h2>
 <?= $tbl(['Źródło', 'Wejścia'], array_map(fn($r) => [$SRC[$r['s']] ?? $r['s'], $r['n']], $q("SELECT s, SUM(n) n FROM ev WHERE day>=? AND e='entry' GROUP BY s ORDER BY n DESC", [$from]))) ?></div>

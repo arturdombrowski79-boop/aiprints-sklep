@@ -13,6 +13,14 @@ import { SEASON, SOCIAL } from '../data/config.js';
         <img src="img/logo-white.svg" alt="AiPrints.pl" class="h-11 w-auto" />
         <p class="mt-5 text-[14px] leading-relaxed max-w-[320px]">Pracownia druku, graweru i druku 3D w Chorzowie. Każdy produkt robimy u siebie, na własnych maszynach, i przed produkcją pokazujemy projekt do akceptacji.</p>
         <p class="mt-6 text-[13px] text-[#9aa0a6]">BLIK · Visa · Mastercard · Apple Pay · Google Pay · Przelewy24</p>
+        <form id="nlForm" class="mt-8 max-w-[360px]" novalidate>
+          <b class="text-white text-[13px] tracking-[.14em] uppercase">Newsletter</b>
+          <p class="mt-3 text-[14px] leading-relaxed">Nowości z pracowni i pomysły na prezenty, 1–2 razy w miesiącu. Na start <b class="text-white">−10% na pierwsze zamówienie</b>.</p>
+          <div class="mt-4 flex gap-2"><input id="nlEmail" type="email" required autocomplete="email" placeholder="Twój e-mail" aria-label="Twój e-mail" class="flex-1 min-w-0 h-12 rounded-full bg-white/10 border border-white/15 px-5 text-white placeholder:text-white/40 text-[14.5px] focus:outline-none focus:border-white/50" /><button class="h-12 px-5 rounded-full bg-white text-ink font-semibold text-[14px] shrink-0">Zapisz</button></div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <label class="mt-3 flex gap-2 items-start text-[12px] leading-snug text-[#9aa0a6]"><input id="nlOk" type="checkbox" class="mt-0.5 accent-white" /><span>Chcę dostawać newsletter AiPrints.pl na podany e-mail. Zgodę mogę wycofać w każdej chwili. <a href="polityka-prywatnosci.html#newsletter" class="underline">Więcej</a></span></label>
+          <p id="nlMsg" class="mt-3 text-[13.5px] text-white hidden" role="status"></p>
+        </form>
       </div>
       <div>
         <b class="text-white text-[13px] tracking-[.14em] uppercase">Sklep</b>
@@ -72,3 +80,23 @@ import { SEASON, SOCIAL } from '../data/config.js';
   document.getElementById('ckMore').onclick = () => more(true);
   document.getElementById('ckSet').onclick = () => { const c = get() || {}; document.getElementById('ckStat').checked = !!c.stat; document.getElementById('ckAds').checked = !!c.ads; more(true); ck.classList.remove('hidden'); ck.querySelector('input:not([disabled])').focus(); };
 </script>
+<script>
+  (() => {
+    const f = document.getElementById('nlForm'); if (!f) return; const m = document.getElementById('nlMsg');
+    const say = (t) => { m.textContent = t; m.classList.remove('hidden'); };
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault(); const email = document.getElementById('nlEmail').value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return say('Wpisz poprawny adres e-mail.');
+      if (!document.getElementById('nlOk').checked) return say('Zaznacz zgodę na newsletter.');
+      const b = f.querySelector('button'); b.disabled = true;
+      try {
+        const r = await fetch('api/newsletter.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, src: 'stopka', website: f.website.value }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || 'Nie udało się zapisać – spróbuj za chwilę.');
+        say(j.already ? 'Ten adres jest już na liście – dziękujemy!' : 'Prawie gotowe! Sprawdź skrzynkę i kliknij link, żeby potwierdzić zapis.');
+        f.querySelector('.flex').classList.add('hidden');
+      } catch (x) { say(location.hostname === 'localhost' ? 'Podgląd lokalny – zapis działa tylko na aiprints.pl.' : x.message); b.disabled = false; }
+    });
+  })();
+</script>
+

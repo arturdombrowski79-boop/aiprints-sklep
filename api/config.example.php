@@ -13,4 +13,11 @@ return [
   'mail_shop'      => 'kontakt@aiprints.pl',  // powiadomienia o nowych zamówieniach
   'mail_archive'   => '',            // np. archiwum@aiprints.pl – ukryta kopia każdego maila do klienta (dowód doręczenia)
   'codes'          => [],            // kody rabatowe, np. ['WITAMY10' => 10] (procent)
+  // newsletter (api/newsletter.php): kod powitalny musi być też w 'codes' powyżej
+  'nl_code'        => 'WITAMY10',
+  // program do wysyłki – wpisz JEDEN z kluczy (potwierdzeni subskrybenci trafiają tam automatycznie)
+  'mailerlite_key' => '',            // MailerLite → Integrations → API → Generate new token
+  'mailerlite_group' => '',          // ID grupy „Newsletter AiPrints” (opcjonalnie)
+  'brevo_key'      => '',            // Brevo → SMTP & API → API Keys
+  'brevo_list'     => '',            // ID listy (liczba, opcjonalnie)
 ];

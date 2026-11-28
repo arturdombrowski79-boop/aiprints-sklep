@@ -83,6 +83,14 @@ ${btn(`https://aiprints.pl/konto#zamowienie/${d.no}`, 'Akceptuję albo zgłaszam
     body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Oświadczenie przyjęte</h1><p>${d.date} otrzymaliśmy Twoje oświadczenie o odstąpieniu od umowy w zamówieniu <b>${d.no}</b> w zakresie: <b>${esc(d.scope)}</b>.</p>
 ${box('<b>Odeślij produkt</b> w ciągu 14 dni na adres: AiPrints.pl, ul. Okrężna 98B, 41-500 Chorzów. Koszt odesłania pokrywasz Ty, chyba że regulamin stanowi inaczej.<br><br><b>Zwrot pieniędzy</b> – w ciągu 14 dni od dziś, tą samą metodą płatności. Możemy wstrzymać zwrot do czasu otrzymania produktu lub dowodu jego odesłania.')}`,
   },
+  newsletter: {
+    name: 'Newsletter – potwierdź zapis', when: 'po zapisie w stopce lub zaznaczeniu zgody w kasie (double opt-in)',
+    subject: () => 'Potwierdź zapis do newslettera AiPrints.pl',
+    body: (d) => `<h1 style="font-size:24px;margin:10px 0 8px">Jeszcze jedno kliknięcie</h1><p>Ktoś (mamy nadzieję, że Ty) zapisał ten adres do newslettera pracowni AiPrints.pl w Chorzowie. Kliknij, żeby potwierdzić – bez tego nie wyślemy Ci żadnej wiadomości.</p>
+${btn(d.confirmUrl, 'Potwierdzam zapis')}
+${box(`<b>Co dostaniesz:</b> nowości z pracowni, pomysły na prezenty przed okazjami i rabaty tylko dla subskrybentów – zwykle 1–2 maile w miesiącu.<br><br><b>Na start:</b> po potwierdzeniu dostaniesz kod <b>${esc(d.welcome)}</b> – ${esc(d.welcomePct)}% rabatu na pierwsze zamówienie.`)}
+<p style="font-size:13px;color:#5c6064">Jeśli to nie Ty – zignoruj tę wiadomość, nic nie zapiszemy na stałe. Z newslettera wypiszesz się w każdej chwili jednym kliknięciem w stopce każdego maila. Administratorem danych jest AiPrints.pl Artur Dombrowski – szczegóły w <a href="https://aiprints.pl/polityka-prywatnosci" style="color:#121110">polityce prywatności</a>.</p>`,
+  },
   reklamacja: {
     name: 'Reklamacja przyjęta', when: 'po zgłoszeniu reklamacji',
     subject: (d) => `Reklamacja ${d.rma} przyjęta – zamówienie ${d.no}`,
@@ -97,6 +105,7 @@ export const SAMPLE = {
   breakNote: 'Pracownia ma przerwę 21.12–7.01. Zamówienia z tego okresu realizujemy od 8 stycznia.',
   items: [{ title: 'Etui na telefon z Twoim zdjęciem (druk UV)', lines: ['projekt z kreatora', 'Pudrowy róż'], qty: 1, price: 59, pers: true }, { title: 'Tumbler 20 oz – Brick Red', lines: ['bez graweru'], qty: 1, price: 79, pers: false }],
   proofImg: 'https://aiprints.pl/img/hf/etui-telefon-uv-1.jpg', carrier: 'InPost', tracking: '620123456789012345678901', upload: 'https://aiprints.pl/pliki?no=AP-26042&t=abc', trackUrl: 'https://inpost.pl/sledzenie-przesylek?number=620123456789012345678901',
+  confirmUrl: 'https://aiprints.pl/api/newsletter.php?a=ok&t=abc', welcome: 'WITAMY10', welcomePct: 10,
   invoice: 'FV 42/11/2026', ksef: '—', reviewUrl: 'https://aiprints.pl/opinia?t=…', scope: 'Tumbler 20 oz – Brick Red', rma: 'R-2611-07', answerBy: '7.12.2026',
 };
 

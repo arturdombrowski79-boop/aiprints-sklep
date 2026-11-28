@@ -146,3 +146,21 @@ function stats_key(): string {
   $sec = (string)(cfg('panel_secret') ?: cfg('stripe_webhook') ?: cfg('stripe_secret'));
   return $sec === '' ? bin2hex(random_bytes(16)) : substr(hash_hmac('sha256', 'stats|v1', $sec), 0, 32);
 }
+
+// ——— newsletter: zapis z potwierdzeniem mailowym (używa api/newsletter.php i checkout.php) ———
+function nl_subscribe(string $email, string $src): string {
+  $email = mb_strtolower(trim($email));
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 160) return 'bad';
+  $db = db(); $db->exec('CREATE TABLE IF NOT EXISTS subscribers (email TEXT PRIMARY KEY, status TEXT, token TEXT, src TEXT, consent TEXT, created TEXT, confirmed TEXT, unsub TEXT, iph TEXT, synced TEXT)');
+  $st = $db->prepare('SELECT * FROM subscribers WHERE email=?'); $st->execute([$email]); $s = $st->fetch();
+  if ($s && $s['status'] === 'confirmed') return 'already';
+  if ($s && $s['status'] === 'pending' && strtotime((string)$s['created']) > time() - 600) return 'sent'; // nie zasypujemy skrzynki
+  $tok = bin2hex(random_bytes(16)); $iph = substr(hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . stats_key()), 0, 16);
+  $consent = 'Chcę otrzymywać newsletter AiPrints.pl (nowości, pomysły na prezenty, rabaty) na podany adres e-mail. Zgodę mogę wycofać w każdej chwili.';
+  $db->prepare('INSERT OR REPLACE INTO subscribers (email, status, token, src, consent, created, iph) VALUES (?,?,?,?,?,?,?)')->execute([$email, 'pending', $tok, $src, $consent, date('c'), $iph]);
+  $base = rtrim((string)cfg('base_url', 'https://aiprints.pl/'), '/'); $code = (string)cfg('nl_code', 'WITAMY10');
+  $html = tpl('newsletter', ['confirmUrl' => $base . '/api/newsletter.php?a=ok&t=' . $tok, 'welcome' => $code, 'welcomePct' => (string)(int)(cfg('codes', [])[$code] ?? 10)]);
+  if (!send_mail($email, 'Potwierdź zapis do newslettera AiPrints.pl', $html)) return 'mailfail';
+  ev_bump('nl', $src);
+  return 'sent';
+}

@@ -50,6 +50,7 @@ try {
   db()->prepare('INSERT INTO orders (no, created, email, name, phone, status, total, data, token) VALUES (?,?,?,?,?,?,?,?,?)')
     ->execute([$no, date('c'), $email, mb_substr((string)($in['name'] ?? ''), 0, 120), mb_substr((string)($in['phone'] ?? ''), 0, 40), 'pending', $total, json_encode($data, JSON_UNESCAPED_UNICODE), $token]);
 
+  if (!empty($in['consent']['news'])) { try { nl_subscribe($email, 'kasa'); } catch (Throwable $e) { } } // zgoda dobrowolna – mail z potwierdzeniem (double opt-in)
   $base = rtrim((string)cfg('base_url', 'https://aiprints.pl/'), '/') . '/';
   $q = ['mode' => 'payment', 'currency' => 'pln', 'locale' => 'pl', 'integration_identifier' => 'aiprints-sklep-kqzwtrmb', 'customer_email' => $email, 'client_reference_id' => $no, 'metadata' => ['no' => $no],
     'payment_intent_data' => ['description' => "Zamówienie $no", 'metadata' => ['no' => $no]],
