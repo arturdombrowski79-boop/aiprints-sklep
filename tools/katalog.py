@@ -105,7 +105,7 @@ U = [
   ('Druk cyfrowy (Xerox C75)', 'Prace dyplomowe, zaproszenia, wizytówki, ulotki, broszury zszywane – do SRA3.', od(mach('Xerox')), 'aiprints.pl/druk-cyfrowy'),
   ('Druk wielkoformatowy i folie', 'Banery, siatki, fototapety, folie na witryny, naklejki po obrysie, litery z folii.', od(inc('druk-wielkoformatowy')), 'aiprints.pl/druk-wielkoformatowy'),
   ('Fine art i Digigraphie®', 'Wydruki muzealne, reprodukcje, edycje limitowane z certyfikatem, odbitki.', od(lambda p: inc('dla-fotografow')(p) and re.search('fine-art|digigraphie|wydruk', p['slug'])), 'aiprints.pl/druk-dla-artystow'),
-  ('Sublimacja', 'Koszulki sportowe, kubki, koce, poduszki, fotopanele – nadruk, który nie schodzi.', od(inc('sublimacja')), 'aiprints.pl/sublimacja'),
+  ('Koszulki, kubki i gadżety', 'Koszulki z logo i imieniem, kubki, koce, poduszki – nadruk, który nie schodzi.', od(inc('koszulki-kubki-gadzety')), 'aiprints.pl/koszulki-kubki-gadzety'),
   ('Druk 3D na zamówienie', 'Części zamienne, prototypy, figurki i gadżety z 6 materiałów.', od(inc('wydruki-3d')), 'aiprints.pl/druk-3d'),
   ('Szyldy i oznakowanie firm', 'Szyldy z plexi i lustra, logo na ścianę, tabliczki, stojaki QR, upominki z logo.', od(inc('dla-firm')), 'aiprints.pl/dla-firm'),
   ('Salony beauty', 'Szyldy, cenniki, bony, wizytówki, oznakowanie gabinetu i oznakowanie higieniczne.', od(inc('salony-beauty')), 'aiprints.pl/salony-beauty'),
@@ -123,9 +123,9 @@ page(f'''
 ''')
 
 # ——— 4. kategorie produktów ———
-ORDER = ['wspolnoty-i-spoldzielnie', 'dla-firm', 'salony-beauty', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'wydruki-3d'] if B2B else ['prezenty-ze-zdjeciem', 'prezenty-z-grawerem', 'slub-i-okazje', 'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'dla-fotografow', 'sublimacja', 'cmentarz-i-pogrzeb', 'wydruki-3d']
+ORDER = ['wspolnoty-i-spoldzielnie', 'dla-firm', 'salony-beauty', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'wydruki-3d'] if B2B else ['prezenty-ze-zdjeciem', 'prezenty-z-grawerem', 'slub-i-okazje', 'dla-firm', 'salony-beauty', 'wspolnoty-i-spoldzielnie', 'szkoly-i-przedszkola', 'druk-wielkoformatowy', 'dla-fotografow', 'koszulki-kubki-gadzety', 'cmentarz-i-pogrzeb', 'wydruki-3d']
 CN = {c['slug']: c for c in cat['cats']}
-RG = {'wspolnoty-i-spoldzielnie': 'wspolnoty', 'szkoly-i-przedszkola': 'szkoly', 'druk-wielkoformatowy': 'wielkoformat', 'prezenty-ze-zdjeciem': 'zdjecia', 'sublimacja': 'zdjecia', 'wydruki-3d': 'druk3d'}
+RG = {'wspolnoty-i-spoldzielnie': 'wspolnoty', 'szkoly-i-przedszkola': 'szkoly', 'druk-wielkoformatowy': 'wielkoformat', 'prezenty-ze-zdjeciem': 'zdjecia', 'koszulki-kubki-gadzety': 'odziez', 'wydruki-3d': 'druk3d'}
 def card(p):
     real = p.get('real')
     return f'''<div class="pc"><div class="pi"><img src="{thumb(p.get('img') or '')}">{'<span class="real">Realizacja</span>' if real else ''}</div>

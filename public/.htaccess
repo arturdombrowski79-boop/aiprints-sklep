@@ -8,6 +8,7 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://aiprints.pl%{REQUEST_URI} [L,R=301]
 # stare adresy (poprzednia strona) -> odpowiedniki w sklepie
 RewriteRule ^images/ /fototapeta [L,R=301]
+RewriteRule ^(sublimacja|koszulki-i-odziez)(\.html)?/?$ /koszulki-kubki-gadzety [L,R=301]
 RewriteRule ^fototapety(-chorzow)?/?$ /fototapeta [L,R=301]
 RewriteRule ^grawer(-chorzow)?/?$ /grawer-laserowy [L,R=301]
 RewriteRule ^grawer-laserowy-chorzow/?$ /grawer-laserowy [L,R=301]

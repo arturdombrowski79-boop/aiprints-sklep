@@ -21,11 +21,10 @@
 "subs": [
 "Dla dzieci",
 "Dom i dekoracje",
-"Odzież i kubki",
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 36
+"count": 34
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -120,26 +119,17 @@
 "count": 34
 },
 {
-"slug": "sublimacja",
-"name": "Sublimacja",
-"lead": "Kubki, koce, ręczniki, poduszki, puzzle i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).",
-"color": "#4a3f6b",
+"slug": "koszulki-kubki-gadzety",
+"name": "Koszulki, kubki i gadżety z nadrukiem",
+"lead": "Koszulki i bluzy z logo lub imieniem, kubki, koce, ręczniki, poduszki i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.",
+"color": "#3d3a55",
 "subs": [
-"Gadżety",
-"Tekstylia"
+"Koszulki i odzież",
+"Kubki",
+"Tekstylia do domu",
+"Gadżety"
 ],
-"count": 20
-},
-{
-"slug": "koszulki-i-odziez",
-"name": "Koszulki i odzież z nadrukiem",
-"lead": "Koszulki, bluzy i fartuchy z logo i imieniem – folia flex albo pełny nadruk sublimacyjny. Zaprojektuj w kreatorze albo przyślij logo, a przygotujemy projekt do akceptacji.",
-"color": "#2b2b2b",
-"subs": [
-"Folia flex",
-"Sublimacja – pełny nadruk"
-],
-"count": 8
+"count": 28
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -1411,8 +1401,11 @@
 "img/hf/fotopanel-aluminium-1.jpg"
 ],
 "also": [
-"sublimacja"
+"koszulki-kubki-gadzety"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Gadżety"
+},
 "kind": "files",
 "tags": {
 "okazja": [
@@ -1605,8 +1598,8 @@
 {
 "slug": "koc-ze-zdjeciem",
 "name": "Koc polarowy ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Tekstylia do domu",
 "variants": "130×150 cm, miękki polar, kolaż do 12 zdjęć",
 "priceText": "199 zł",
 "price": 199.0,
@@ -1653,8 +1646,8 @@
 {
 "slug": "kubek-magiczny",
 "name": "Kubek magiczny ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Gadżety",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Kubki",
 "variants": "czarny, po nalaniu gorącego napoju pojawia się zdjęcie",
 "priceText": "59 zł",
 "price": 59.0,
@@ -3089,8 +3082,11 @@
 "img/hf/puzzle-zdjecie-1.jpg"
 ],
 "also": [
-"sublimacja"
+"koszulki-kubki-gadzety"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Gadżety"
+},
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -3215,7 +3211,7 @@
 {
 "slug": "tabliczka-aluminium-zdjecie",
 "name": "Tabliczka aluminiowa ze zdjęciem do ogrodu i na zewnątrz",
-"cat": "sublimacja",
+"cat": "koszulki-kubki-gadzety",
 "sub": "Gadżety",
 "variants": "aluminium ChromaLuxe Outdoor, odporne na słońce i deszcz, 20×25 lub 28×36 cm",
 "priceText": "od 149 zł",
@@ -3602,8 +3598,11 @@
 ],
 "real": 1,
 "also": [
-"sublimacja"
+"koszulki-kubki-gadzety"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Tekstylia do domu"
+},
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -4125,8 +4124,8 @@
 {
 "slug": "kubek-zloty-rant",
 "name": "Kubek ze złotym rantem i uchem ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Gadżety",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Kubki",
 "variants": "porcelana z powłoką, złoty rant i ucho, pudełko prezentowe",
 "priceText": "69 zł",
 "price": 69.0,
@@ -4318,8 +4317,11 @@
 "img/hf/odblaski-z-logo-1.jpg"
 ],
 "also": [
-"sublimacja"
+"koszulki-kubki-gadzety"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Gadżety"
+},
 "kind": "b2b",
 "tags": {
 "okazja": [
@@ -5459,8 +5461,8 @@
 {
 "slug": "koszulka-firmowa-flex",
 "name": "Koszulka firmowa z logo – folia flex",
-"cat": "koszulki-i-odziez",
-"sub": "Folia flex",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "bawełna 150–180 g, 9 kolorów, S–3XL; logo z folii flex na przodzie lub plecach (do A4), kolor folii do wyboru; trwałe po praniu w 40°C",
 "priceText": "49 zł (5+ 42, 10+ 37, 25+ 32)",
 "price": 49.0,
@@ -5495,8 +5497,8 @@
 {
 "slug": "koszulka-logo-imie-flex",
 "name": "Koszulka dla zespołu – logo i imię, folia flex",
-"cat": "koszulki-i-odziez",
-"sub": "Folia flex",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "logo na plecach i małe logo z imieniem na piersi, każda koszulka z innym imieniem; bawełna, 9 kolorów, S–3XL; idealna dla salonów i firm",
 "priceText": "69 zł (5+ 59, 10+ 52, 25+ 47)",
 "price": 69.0,
@@ -5533,8 +5535,8 @@
 {
 "slug": "bluza-firmowa-flex",
 "name": "Bluza firmowa z logo – folia flex",
-"cat": "koszulki-i-odziez",
-"sub": "Folia flex",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "bluza z kapturem lub bez, 280 g, logo na piersi i plecach z folii flex, opcjonalnie imię",
 "priceText": "119 zł (5+ 105, 10+ 95)",
 "price": 119.0,
@@ -5569,8 +5571,8 @@
 {
 "slug": "fartuch-firmowy-flex",
 "name": "Fartuch firmowy z logo – folia flex",
-"cat": "koszulki-i-odziez",
-"sub": "Folia flex",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "fartuch bawełniany lub poliestrowy dla kawiarni, salonu, sklepu; logo i imię z folii flex",
 "priceText": "59 zł (5+ 52, 10+ 47)",
 "price": 59.0,
@@ -6734,7 +6736,12 @@
 "gallery": [
 "img/hf/etui-telefon-uv-1.jpg"
 ],
-"also": [],
+"also": [
+"koszulki-kubki-gadzety"
+],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Gadżety"
+},
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -6911,8 +6918,8 @@
 {
 "slug": "koszulka-sportowa-sublimacja",
 "name": "Koszulka sportowa z pełnym nadrukiem",
-"cat": "koszulki-i-odziez",
-"sub": "Sublimacja – pełny nadruk",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "poliester oddychający, nadruk na całości: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
 "priceText": "89 zł",
 "price": 89.0,
@@ -6930,9 +6937,7 @@
 "gallery": [
 "img/hf/koszulka-sportowa-sublimacja-1.jpg"
 ],
-"also": [
-"sublimacja"
-],
+"also": [],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -6956,7 +6961,7 @@
 {
 "slug": "podkladka-pod-mysz",
 "name": "Podkładka pod mysz ze zdjęciem",
-"cat": "sublimacja",
+"cat": "koszulki-kubki-gadzety",
 "sub": "Gadżety",
 "variants": "23×19 cm, guma antypoślizgowa, obszyta krawędź",
 "priceText": "39 zł",
@@ -7048,7 +7053,12 @@
 "gallery": [
 "img/hf/tumbler-uv-kolor-1.jpg"
 ],
-"also": [],
+"also": [
+"koszulki-kubki-gadzety"
+],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Kubki"
+},
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -7076,8 +7086,8 @@
 {
 "slug": "mis-z-koszulka",
 "name": "Miś z koszulką ze zdjęciem lub imieniem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
 "variants": "pluszowy miś 25 cm, koszulka z nadrukiem do zdjęcia",
 "priceText": "69 zł",
 "price": 69.0,
@@ -7186,8 +7196,8 @@
 {
 "slug": "recznik-ze-zdjeciem",
 "name": "Ręcznik ze zdjęciem lub imieniem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Tekstylia do domu",
 "variants": "70×140 cm, mikrofibra z bawełnianym spodem",
 "priceText": "119 zł",
 "price": 119.0,
@@ -7249,9 +7259,7 @@
 "gallery": [
 "img/hf/zdjecie-nagrobne-porcelana-1.jpg"
 ],
-"also": [
-"sublimacja"
-],
+"also": [],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -7767,8 +7775,8 @@
 {
 "slug": "kubek-szklany-nadruk",
 "name": "Kubek szklany matowy ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Gadżety",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Kubki",
 "variants": "szkło satynowe 330 ml, nadruk widoczny pod światło",
 "priceText": "55 zł",
 "price": 55.0,
@@ -8164,7 +8172,7 @@
 {
 "slug": "kafel-ze-zdjeciem",
 "name": "Kafel ceramiczny ze zdjęciem i stojakiem",
-"cat": "sublimacja",
+"cat": "koszulki-kubki-gadzety",
 "sub": "Gadżety",
 "variants": "20×20 cm, połysk, stojak drewniany",
 "priceText": "69 zł",
@@ -8260,9 +8268,12 @@
 "img/hf/magnesy-zdjecia-1.jpg"
 ],
 "also": [
-"sublimacja",
+"koszulki-kubki-gadzety",
 "dla-fotografow"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Gadżety"
+},
 "kind": "files",
 "many": "9 zdjęć",
 "tags": {
@@ -8773,8 +8784,8 @@
 {
 "slug": "fartuch-z-nadrukiem",
 "name": "Fartuch kuchenny z nadrukiem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "poliester z wiązaniem, imię, logo lokalu lub zabawny napis",
 "priceText": "69 zł",
 "price": 69.0,
@@ -8970,8 +8981,8 @@
 {
 "slug": "torba-ze-zdjeciem",
 "name": "Torba ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Tekstylia do domu",
 "variants": "torba na zakupy 38×42 cm, nadruk dwustronny",
 "priceText": "49 zł",
 "price": 49.0,
@@ -9708,9 +9719,11 @@
 "img/hf/koszulki-absolwent-1.jpg"
 ],
 "also": [
-"sublimacja",
-"koszulki-i-odziez"
+"koszulki-kubki-gadzety"
 ],
+"alsoSub": {
+"koszulki-kubki-gadzety": "Koszulki i odzież"
+},
 "kind": "b2b",
 "tags": {
 "okazja": [
@@ -10189,8 +10202,8 @@
 {
 "slug": "skarpetki-ze-zdjeciem",
 "name": "Skarpetki ze zdjęciem",
-"cat": "sublimacja",
-"sub": "Tekstylia",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Tekstylia do domu",
 "variants": "twarz psa, kota albo partnera na skarpetkach; rozmiary 36–46",
 "priceText": "49 zł",
 "price": 49.0,
@@ -10388,8 +10401,8 @@
 {
 "slug": "koszulka-z-nadrukiem",
 "name": "Koszulka z własnym nadrukiem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Odzież i kubki",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "9 kolorów, S–3XL, nadruk przód i tył",
 "priceText": "69 zł",
 "price": 69,
@@ -10407,9 +10420,7 @@
 "img/hf/koszulka-z-nadrukiem-1.jpg"
 ],
 "real": 1,
-"also": [
-"koszulki-i-odziez"
-],
+"also": [],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -10434,8 +10445,8 @@
 {
 "slug": "kubek-z-nadrukiem",
 "name": "Kubek ceramiczny z nadrukiem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Odzież i kubki",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Kubki",
 "variants": "330 ml, 5 kolorów, zdjęcie, logo lub tekst",
 "priceText": "45 zł",
 "price": 45,
@@ -10453,7 +10464,9 @@
 "img/hf/kubek-z-nadrukiem-1.jpg"
 ],
 "real": 1,
-"also": [],
+"also": [
+"prezenty-ze-zdjeciem"
+],
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -12082,8 +12095,8 @@
 {
 "slug": "bluza-z-nadrukiem",
 "name": "Bluza z kapturem z własnym nadrukiem",
-"cat": "prezenty-ze-zdjeciem",
-"sub": "Odzież i kubki",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
 "variants": "9 kolorów, S–3XL, przód i tył",
 "priceText": "149 zł",
 "price": 149,
@@ -12099,9 +12112,7 @@
 "gallery": [
 "img/hf/bluza-z-nadrukiem-1.jpg"
 ],
-"also": [
-"koszulki-i-odziez"
-],
+"also": [],
 "kind": "gift",
 "tags": {
 "okazja": [

@@ -11,20 +11,28 @@ CATS=[
  ('salony-beauty','Salony beauty','Szyldy z lustra, bony podarunkowe, stojaki QR i komplet oznakowania gabinetu.','#a06a7a'),
  ('druk-wielkoformatowy','Druk wielkoformatowy i folie','Banery, siatki, folie, naklejki po obrysie, oklejanie witryn i aut oraz litery z plotera. Drukujemy na HP Latex 375, tniemy na Summa S3.','#1f3b57'),
  ('dla-fotografow','Fine art i fotografia','Druk pigmentowy fine art (giclée) na papierach bawełnianych Hahnemühle i Canson – Epson P9500, edycje Digigraphie®, odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
- ('sublimacja','Sublimacja','Kubki, koce, ręczniki, poduszki, puzzle i gadżety z pełnym nadrukiem – trwałym, bo farba wnika w materiał (Epson F500).','#4a3f6b'),
- ('koszulki-i-odziez','Koszulki i odzież z nadrukiem','Koszulki, bluzy i fartuchy z logo i imieniem – folia flex albo pełny nadruk sublimacyjny. Zaprojektuj w kreatorze albo przyślij logo, a przygotujemy projekt do akceptacji.','#2b2b2b'),
+ ('koszulki-kubki-gadzety','Koszulki, kubki i gadżety z nadrukiem','Koszulki i bluzy z logo lub imieniem, kubki, koce, ręczniki, poduszki i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.','#3d3a55'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
  ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
  ('sesje-i-zdjecia','Fotografia i sesje','Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.','#4a4038'),
  ('wydruki-3d','Druk 3D na zamówienie','Części, prototypy, figurki i gadżety z PLA, PET-G, ASA, ABS, PLA-CF i TPU – z Twojego pliku albo według szkicu. Także w kilku kolorach naraz.','#2f5560'),
 ]
+# 28.11: jedna kategoria „Koszulki, kubki i gadżety z nadrukiem” (zamiast „Sublimacja” – klient szuka produktu, nie technologii)
+NADRUK='koszulki-kubki-gadzety'
+NSUBS=['Koszulki i odzież','Kubki','Tekstylia do domu','Gadżety']
+def nsub(sl):
+    if sl.startswith('mis-'): return 'Gadżety'
+    if re.search('koszul|bluz|fartuch|odziez',sl): return 'Koszulki i odzież'
+    if re.search('kubek|kubk|tumbler',sl): return 'Kubki'
+    if re.search('koc-|recznik|poduszk|torba|skarpet|mis-',sl): return 'Tekstylia do domu'
+    return 'Gadżety'
 SUB2CAT={'Na święta':'na-swieta','Pamiątki ze zdjęciem':'prezenty-ze-zdjeciem','Dla fotografów':'dla-fotografow',
  'Zwierzaki':'prezenty-z-grawerem','Dla dzieci':'prezenty-z-grawerem','Dom i dekoracje':'prezenty-z-grawerem','Zegary ścienne':'prezenty-z-grawerem',
  'Ślub i wesele':'slub-i-okazje','Komunia i chrzest':'slub-i-okazje','Pamięć':'cmentarz-i-pogrzeb',
  'Witryny i folie':'druk-wielkoformatowy','Oznakowanie pomieszczeń':'dla-firm','QR, opinie i social media':'dla-firm','Projekty i grafika':'dla-firm','Wspólnoty, szkoły, sport':'dla-firm',
  'Wspólnoty i spółdzielnie':'wspolnoty-i-spoldzielnie','Druk dla salonów':'salony-beauty',
  'Druk wielkoformatowy':'druk-wielkoformatowy','Ploter tnący':'druk-wielkoformatowy','Fine art i fotografia':'dla-fotografow',
- 'Sublimacja':'sublimacja','Koszulki i odzież':'koszulki-i-odziez','Szkoły i przedszkola':'szkoly-i-przedszkola','Cmentarz i pogrzeb':'cmentarz-i-pogrzeb'}
+ 'Sublimacja':'koszulki-kubki-gadzety','Koszulki i odzież':'koszulki-kubki-gadzety','Szkoły i przedszkola':'szkoly-i-przedszkola','Cmentarz i pogrzeb':'cmentarz-i-pogrzeb'}
 SUBNAME={'Wspólnoty, szkoły, sport':'Szkoły i kluby','Prezenty':None,'Salony beauty i firmy':None,'Pamięć':'Pamiątki'}
 SALON=re.compile(r'salon|lustr|bony|higien|recepc|szyld|wizytown|lusterk|dystans|logo-na|gabinet',re.I)
 FIRMA=re.compile(r'termos|statuet|kartka-drewn|pudelko|skrzynka|butelka',re.I)
@@ -79,8 +87,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
     if cat=='szkoly-i-przedszkola': sub='Wejście i ogrodzenie' if re.search('drzwi|rekrutacja|urzedowa',sl) else 'Dyplomy i odzież' if re.search('dyplom|koszulk',sl) else 'Sale i korytarze'
     if cat=='cmentarz-i-pogrzeb': sub='Na pogrzeb' if re.search('klepsydr|portret|obrazki|podziekowania|szarfa',sl) else 'Pamiątki' if re.search('krysztal|pupil',sl) else 'Na cmentarz'
     if cat=='dla-fotografow': sub='Odbitki i powiększenia' if re.search('odbitk|powieksz|kalendarz|retusz',sl) else 'Fine art'
-    if cat=='koszulki-i-odziez': sub='Folia flex' if 'flex' in sl else 'Sublimacja – pełny nadruk'
-    if cat=='sublimacja': sub='Tekstylia' if re.search('koszul|koc|recznik|fartuch|torba|flaga|skarpet',sl) else 'Gadżety'
+    if cat=='koszulki-kubki-gadzety': sub=nsub(sl)
     if cat=='wspolnoty-i-spoldzielnie' and re.search('ppoz|alarmow',sl): sub='Ppoż. i bezpieczeństwo'
     if sl=='montaz-oznakowania': sub='Montaż'
     if cat=='na-swieta': sub='Bombki' if 'bombk' in r['slug'] else 'Kryształy' if 'kryszt' in r['slug'] else 'Kalendarze 2027' if 'kalend' in r['slug'] else 'Ozdoby 3D'
@@ -110,7 +117,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
 for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadrukiem',69,'9 kolorów, S–3XL, nadruk przód i tył','DTF + prasa'),
     ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
     ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
-    prods.append(dict(slug=slug,name=name,cat='prezenty-ze-zdjeciem',sub='Odzież i kubki',variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
+    prods.append(dict(slug=slug,name=name,cat=NADRUK,sub=nsub(slug),variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
 # usługi (formularz zapytania / rezerwacji zamiast koszyka); ceny „od” = najtańszy pakiet z src/data/pakiety.js
 SVC_PRICE={'zdjecia-do-dokumentow':'30 zł','sesja-portretowa':'od 249 zł','sesja-rodzinna':'od 499 zł','sesja-plenerowa':'od 549 zł',
   'fotografia-produktowa':'od 35 zł/zdjęcie','fotografia-architektury':'od 449 zł','zdjecia-z-drona':'od 399 zł'}
@@ -144,12 +151,13 @@ for p in prods:
 import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]
-    if 'F500' in m: a.append('sublimacja')
-    if p['slug'] in ('koszulka-z-nadrukiem','bluza-z-nadrukiem','koszulki-absolwent'): a.append('koszulki-i-odziez')
+    if ('F500' in m and p['slug']!='zdjecie-nagrobne-porcelana') or p['slug'] in ('koszulki-absolwent','tumbler-uv-kolor','etui-telefon-uv'): a.append(NADRUK)
+    if p['slug']=='kubek-z-nadrukiem': a.append('prezenty-ze-zdjeciem')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     if 'Bambu' in m: a.append('wydruki-3d')
     p['also']=[x for x in a if x!=p['cat']]
+    if NADRUK in p['also']: p['alsoSub']={NADRUK:nsub(p['slug'])}
 # ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
 # gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
 # files – usługa z plików klienta (odbitki, druk fine art, banery, folie z gotowej grafiki), wiele i duże pliki
@@ -215,7 +223,7 @@ if PR and PR['on'] and PR['start']<=TODAY.isoformat()<=PR['until']:
     print('promocja aktywna:',sum('promo' in p for p in prods),'produktów do',PR['until'])
 else: print('promocja nieaktywna')
 prods.sort(key=lambda p:-p['score'])
-cats=[dict(slug=s,name=n,lead=l,color=c,subs=sorted({p['sub'] for p in prods if p['cat']==s}),count=sum(p['cat']==s or s in p.get('also',[]) for p in prods)) for s,n,l,c in CATS]
+cats=[dict(slug=s,name=n,lead=l,color=c,subs=[x for x in NSUBS if any((p['cat']==s and p['sub']==x) or p.get('alsoSub',{}).get(s)==x for p in prods)] if s==NADRUK else sorted({p['sub'] for p in prods if p['cat']==s}),count=sum(p['cat']==s or s in p.get('also',[]) for p in prods)) for s,n,l,c in CATS]
 json.dump(dict(cats=cats,products=prods,facets=facets()),open(B+'/src/data/catalog.json','w'),ensure_ascii=False,indent=0)
 for c in cats: print(c['slug'],c['count'],c['subs'])
 print(len(prods),'z ceną',sum(p['price'] is not None for p in prods),'ze zdjęciem',sum(bool(p['img']) for p in prods))
