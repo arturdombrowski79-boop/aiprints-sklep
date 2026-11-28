@@ -168,16 +168,16 @@ function p3d_estimate(array $st, array $o, ?array $cfg = null): array {
   $grams = $ext / 1000 * $dens + $supG; $hours = ($mt['timeK'] ?? 1) * ($A / 1000 * $nz['areaMin'] + ($H / $nz['layer']) * $cfg['layerSec'] / 60) / 60 + $cfg['warmMin'] / 60 + $supG * $sp['hourPerG'];
   $marble = false; foreach ($used as $id) if (!empty($pal[$id]['marble'])) $marble = true;
   $mat = $grams * $cfg['perGram'] * $priceK * ($marble ? $cfg['marbleK'] : 1);
-  $changes = 0;
+  $changes = 0; $chH = 0.0; $chCost = 0.0;
   if ($multi && !empty($st['zm'])) { // zmiany filamentu: czas i materiał na przepłukanie
     $changes = (int)round(p3d_changes($st, array_map('strval', (array)$o['colors']), $s, $nz['layer']) * $cfg['multi']['changeK']);
-    $hours += $changes * $cfg['multi']['changeSec'] / 3600; $purge = $changes * $cfg['multi']['changeG']; $grams += $purge;
-    $mat += $purge * $cfg['perGram'] * $priceK;
+    $chH = $changes * $cfg['multi']['changeSec'] / 3600; $purge = $changes * $cfg['multi']['changeG']; $grams += $purge; // do opisu (czas, waga)
+    $chCost = min((float)($cfg['multi']['changeCap'] ?? 1e9), $changes * (float)($cfg['multi']['perChange'] ?? 0));
   } elseif ($multi) { $mat *= $cfg['multi']['matK']; $hours *= $cfg['multi']['timeK']; $grams *= $cfg['multi']['matK']; }
   $extra = $multi ? (count($used) - 1) * $cfg['multi']['perColor'] : 0;
   $L = $cfg['long']; $machine = (min($hours, $L['after']) * $cfg['perHour'] + max(0, $hours - $L['after']) * $L['perHour']) * (!empty($mt['special']) ? $cfg['special']['hourK'] : 1);
   $start = !empty($mt['special']) ? $cfg['special']['start'] : $cfg['start'];
-  $unit = round(max($cfg['minUnit'], $mat + $machine + $supG * $sp['labor'] + $extra + $start / $qty) + 1e-9, 2);
+  $unit = round(max($cfg['minUnit'], $mat + $machine + $supG * $sp['labor'] + $extra + $chCost + $start / $qty) + 1e-9, 2); $hours += $chH;
   return ['grams' => (int)round($grams), 'sup' => (int)round($supG), 'hours' => $hours, 'unit' => $unit, 'qty' => $qty, 'size' => array_map(fn($v) => round($v * $s, 1), $st['bbox']), 'colors' => count($used), 'changes' => $changes];
 }
 

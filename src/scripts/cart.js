@@ -73,6 +73,9 @@ const shipVal = () => { const v = +document.querySelector('[name=d]:checked').va
 // dostawa: cena przy każdej metodzie (z darmową dostawą), paczkomat wyłączony dla dużych wydruków
 function syncShip() {
   const free = totals().after >= 199, big = S.items.some(tooBig);
+  const only3d = S.items.length > 0 && S.items.every((i) => i.slug === 'druk-3d-z-pliku');
+  // tańszy paczkomat (9,99 zł) tylko gdy w koszyku są same wydruki 3D – wtedy zamiast zwykłego paczkomatu
+  $$('[name=d]').forEach((r) => { const lab = r.closest('label'); const hide = r.value === '9.99' ? !only3d : (r.value === '15.99' && only3d); lab.classList.toggle('hidden', hide); if (hide && r.checked) { const alt = $$('[name=d]').find((x) => x.value === (r.value === '9.99' ? '15.99' : '9.99')); if (alt) alt.checked = true; } });
   $$('[name=d]').forEach((r) => {
     const v = +r.value, lab = r.closest('label'), pr = lab.querySelector('[data-pr]'), isL = v > 0 && /Paczkomat/.test(lab.textContent);
     pr.innerHTML = v > 0 && free ? `<s class="font-normal text-[#8792a2] mr-1.5">${zl(v)}</s>0 zł` : (v ? zl(v) : '0 zł');

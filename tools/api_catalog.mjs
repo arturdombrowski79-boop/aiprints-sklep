@@ -13,5 +13,5 @@ for (const p of cat.products) {
 }
 // kalkulator druku 3D – cenę liczy api/p3d-lib.php z pliku modelu
 P['druk-3d-z-pliku'] = { n: 'Druk 3D z Twojego pliku', b: 0, o: {}, q: [], unit: true, m2: false, kind: 'service', k: 1, until: null, cr: null };
-writeFileSync(out, JSON.stringify({ built: new Date().toISOString(), add: { box: 19, card: 9 }, ship: { '15.99': 'InPost Paczkomat 24/7', '19.99': 'Kurier DPD', '0': 'Odbiór w pracowni' }, free: 199, products: P }));
+writeFileSync(out, JSON.stringify({ built: new Date().toISOString(), add: { box: 19, card: 9 }, ship: { '9.99': 'InPost Paczkomat 24/7 – wydruki 3D', '15.99': 'InPost Paczkomat 24/7', '19.99': 'Kurier DPD', '0': 'Odbiór w pracowni' }, free: 199, products: P }));
 console.log('api catalog', Object.keys(P).length);

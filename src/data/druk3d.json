@@ -1,362 +1,365 @@
 {
-  "_info": "Cennik kalkulatora druku 3D (ceny brutto). Po zmianie: build + push. Serwer czyta kopię z api/druk3d.json.",
-  "perGram": 0.25,
-  "perHour": 4,
-  "start": 6,
-  "minUnit": 10,
-  "marbleK": 1.2,
-  "multi": {
-    "perColor": 5,
-    "timeK": 1.2,
-    "matK": 1.25,
-    "changeK": 0.37,
-    "changeSec": 70,
-    "changeG": 0.55
+ "_info": "Cennik kalkulatora druku 3D (ceny brutto). Po zmianie: build + push. Serwer czyta kopię z api/druk3d.json.",
+ "perGram": 0.25,
+ "perHour": 4,
+ "start": 6,
+ "minUnit": 10,
+ "marbleK": 1.2,
+ "multi": {
+  "perColor": 3,
+  "timeK": 1.2,
+  "matK": 1.25,
+  "changeK": 0.37,
+  "changeSec": 70,
+  "changeG": 0.55,
+  "perChange": 0.06,
+  "changeCap": 8,
+  "_": "28.11.2026 (ceny jak konkurencja, Allegro/sklepy: zawieszka 4–5 cm w kilku kolorach 12–25 zł, designerskie do 37 zł): zmiany filamentu NIE liczą się do czasu maszyny ani materiału w cenie – zamiast tego perChange zł za zmianę, maks. changeCap zł; perColor zł za każdy kolejny kolor. Czas i gramy w opisie nadal z przepłukaniem."
+ },
+ "density": 1.24,
+ "infill": 0.224,
+ "supportK": 1.03,
+ "warmMin": 7,
+ "layerSec": 10,
+ "nozzles": {
+  "0.4": {
+   "name": "0,4 mm – Dokładnie",
+   "hint": "warstwa 0,2 mm, gładsza powierzchnia, drobne detale",
+   "wall": 0.91,
+   "layer": 0.2,
+   "areaMin": 1.34
   },
-  "density": 1.24,
-  "infill": 0.224,
-  "supportK": 1.03,
-  "warmMin": 7,
-  "layerSec": 10,
-  "nozzles": {
-    "0.4": {
-      "name": "0,4 mm – Dokładnie",
-      "hint": "warstwa 0,2 mm, gładsza powierzchnia, drobne detale",
-      "wall": 0.91,
-      "layer": 0.2,
-      "areaMin": 1.34
-    },
-    "0.8": {
-      "name": "0,8 mm – Szybko",
-      "hint": "warstwa 0,4 mm, widoczne warstwy, krócej i taniej",
-      "wall": 1.1,
-      "layer": 0.4,
-      "areaMin": 0.75
-    }
-  },
-  "max": [
-    320,
-    320,
-    320
-  ],
-  "minSize": 5,
-  "maxColors": 8,
-  "maxQty": 50,
-  "maxMB": 100,
-  "colors": [
-    {
-      "id": "w",
-      "name": "Biały",
-      "hex": "#f5f4f0",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "r",
-      "name": "Czerwony",
-      "hex": "#d42a2f",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "o",
-      "name": "Pomarańczowy",
-      "hex": "#f08a24",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "g",
-      "name": "Zielony",
-      "hex": "#2e9a47",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "b",
-      "name": "Niebieski",
-      "hex": "#1f4fd1",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "v",
-      "name": "Fioletowy",
-      "hex": "#7b3fa8",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "br",
-      "name": "Brązowy",
-      "hex": "#7a4b2a",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "be",
-      "name": "Beżowy",
-      "hex": "#e9c9a6",
-      "group": "Podstawowe"
-    },
-    {
-      "id": "c",
-      "name": "Cyan",
-      "hex": "#00a7e1",
-      "group": "CMYK"
-    },
-    {
-      "id": "m",
-      "name": "Magenta",
-      "hex": "#e5007e",
-      "group": "CMYK"
-    },
-    {
-      "id": "y",
-      "name": "Żółty",
-      "hex": "#ffe500",
-      "group": "CMYK"
-    },
-    {
-      "id": "k",
-      "name": "Czarny",
-      "hex": "#1d1d1f",
-      "group": "CMYK"
-    },
-    {
-      "id": "lc",
-      "name": "Jasny cyan",
-      "hex": "#8fd6f2",
-      "group": "Light CMYK"
-    },
-    {
-      "id": "lm",
-      "name": "Jasna magenta",
-      "hex": "#f6a3cd",
-      "group": "Light CMYK"
-    },
-    {
-      "id": "ly",
-      "name": "Jasny żółty",
-      "hex": "#fff3a1",
-      "group": "Light CMYK"
-    },
-    {
-      "id": "lk",
-      "name": "Szary",
-      "hex": "#9b9b9b",
-      "group": "Light CMYK"
-    },
-    {
-      "id": "mb",
-      "name": "Marmur jasny",
-      "hex": "#dedbd4",
-      "group": "Marmurkowe",
-      "marble": true
-    },
-    {
-      "id": "md",
-      "name": "Marmur ciemny",
-      "hex": "#55534f",
-      "group": "Marmurkowe",
-      "marble": true
-    }
-  ],
-  "_kalibracja": "26.11.2026: pallina_custom.stl (80×94×3,8 mm), H2C, 2 kolory: Bambu Studio 10,50 g model + 0,54 g wieża, 50 min 41 s druku + 5 min przygotowania. X1C: 1 kolor 10,68 g, 45 min 27 s + 7 min 15 s; 2 kolory (AMS) 13,23 g z przepłukaniem i wieżą, 54 min 15 s + 7 min 15 s. A2L/H2C: Pallina grinch 3MF (60×61×87 mm, 3 kolory malowane, podpory): 50,46 g model + 4,56 g podpory + 21,67 g przepłukania + 9,84 g wieża, 2 h 26 min + 5 min, 46 zmian filamentu. Wzór: ścianki 0,61 mm, efektywne wypełnienie 29,3%, ścianki 2,86 mm³/s, wypełnienie 16 mm³/s. Zmiany filamentu: liczone z mapy kolorów w osi Z × changeK (Grinch: 46 zmian w Bambu Studio), 70 s i 0,55 g (przepłukanie + wieża) na zmianę; piernikowy domek: 187 zmian, 79 g przepłukań + 19 g wieży, 6 h 14 min.",
-  "baseEur": 9,
-  "materials": [
-    {
-      "id": "pla",
-      "name": "PLA Basic",
-      "group": "PLA",
-      "eur": 9,
-      "density": 1.24,
-      "hint": "Najpopularniejszy – sztywny, gładki. Dekoracje, figurki, prototypy."
-    },
-    {
-      "id": "pla-matte",
-      "name": "PLA Matte",
-      "group": "PLA",
-      "eur": 9,
-      "density": 1.31,
-      "hint": "Matowa powierzchnia, mniej widoczne warstwy."
-    },
-    {
-      "id": "pla-silk",
-      "name": "PLA Silk+",
-      "group": "PLA",
-      "eur": 9,
-      "density": 1.32,
-      "hint": "Jedwabisty połysk – wazony, ozdoby."
-    },
-    {
-      "id": "pla-tr",
-      "name": "PLA Translucent",
-      "group": "PLA",
-      "eur": 10.59,
-      "density": 1.25,
-      "hint": "Półprzezroczysty – lampki, lampiony."
-    },
-    {
-      "id": "petg",
-      "name": "PETG",
-      "group": "PETG",
-      "eur": 8.47,
-      "density": 1.25,
-      "timeK": 1.1,
-      "hint": "Wytrzymały, odporny na wilgoć i temperaturę do ok. 70°C."
-    },
-    {
-      "id": "petg-cf",
-      "name": "PETG-CF (z włóknem węglowym)",
-      "group": "PETG",
-      "eur": 17.48,
-      "density": 1.25,
-      "timeK": 1.15,
-      "colors": [
-        "k"
-      ],
-      "hint": "Sztywny, matowy czarny – części techniczne.",
-      "special": true
-    },
-    {
-      "id": "abs",
-      "name": "ABS",
-      "group": "ABS / ASA",
-      "eur": 9,
-      "density": 1.05,
-      "timeK": 1.1,
-      "hint": "Odporny na temperaturę (ok. 90°C) i uderzenia – obudowy, części do auta.",
-      "special": true
-    },
-    {
-      "id": "asa",
-      "name": "ASA",
-      "group": "ABS / ASA",
-      "eur": 14.99,
-      "density": 1.07,
-      "timeK": 1.1,
-      "hint": "Jak ABS, ale odporny na UV – na zewnątrz.",
-      "special": true
-    },
-    {
-      "id": "abs-gf",
-      "name": "ABS-GF (z włóknem szklanym)",
-      "group": "ABS / ASA",
-      "eur": 19.19,
-      "density": 1.08,
-      "timeK": 1.15,
-      "hint": "Sztywniejszy ABS – uchwyty, wsporniki.",
-      "special": true
-    },
-    {
-      "id": "asa-cf",
-      "name": "ASA-CF (z włóknem węglowym)",
-      "group": "ABS / ASA",
-      "eur": 23.39,
-      "density": 1.12,
-      "timeK": 1.15,
-      "colors": [
-        "k"
-      ],
-      "hint": "Sztywny, odporny na UV, czarny mat.",
-      "special": true
-    },
-    {
-      "id": "tpu",
-      "name": "TPU 95A (elastyczny)",
-      "group": "TPU – elastyczne",
-      "eur": 20.99,
-      "density": 1.22,
-      "timeK": 2,
-      "hint": "Gumowy i giętki – uszczelki, nakładki, odbojniki.",
-      "special": true
-    },
-    {
-      "id": "tpu-soft",
-      "name": "TPU 85A / 90A (miękki)",
-      "group": "TPU – elastyczne",
-      "eur": 26.39,
-      "density": 1.22,
-      "timeK": 2.4,
-      "hint": "Bardziej miękki – podkładki, chwytaki.",
-      "special": true
-    },
-    {
-      "id": "pa6-gf",
-      "name": "PA6-GF (nylon z włóknem szklanym)",
-      "group": "Techniczne",
-      "eur": 37.79,
-      "density": 1.23,
-      "timeK": 1.2,
-      "hint": "Bardzo wytrzymały i odporny na temperaturę.",
-      "special": true
-    },
-    {
-      "id": "pa6-cf",
-      "name": "PA6-CF (nylon z włóknem węglowym)",
-      "group": "Techniczne",
-      "eur": 26.99,
-      "density": 1.14,
-      "timeK": 1.2,
-      "colors": [
-        "k"
-      ],
-      "hint": "Lekki, sztywny i wytrzymały – części maszyn.",
-      "special": true
-    },
-    {
-      "id": "paht-cf",
-      "name": "PAHT-CF",
-      "group": "Techniczne",
-      "eur": 32.39,
-      "density": 1.06,
-      "timeK": 1.2,
-      "colors": [
-        "k"
-      ],
-      "hint": "Nylon wysokotemperaturowy – pod maskę, przy silniku.",
-      "special": true
-    },
-    {
-      "id": "pet-cf",
-      "name": "PET-CF",
-      "group": "Techniczne",
-      "eur": 29.39,
-      "density": 1.29,
-      "timeK": 1.2,
-      "colors": [
-        "k"
-      ],
-      "hint": "Sztywny, stabilny wymiarowo, mało chłonie wilgoć.",
-      "special": true
-    },
-    {
-      "id": "ppa-cf",
-      "name": "PPA-CF",
-      "group": "Techniczne",
-      "eur": 93.59,
-      "density": 1.17,
-      "timeK": 1.25,
-      "colors": [
-        "k"
-      ],
-      "hint": "Najwyższa wytrzymałość i odporność na temperaturę.",
-      "special": true
-    }
-  ],
-  "_materialy": "eur = cena szpuli 1 kg w sklepie Bambu (26.11.2026). Cena za gram dla klienta = perGram × max(1, eur / baseEur). timeK – wolniejszy druk. colors – dozwolone kolory (CF tylko czarny).",
-  "fillCap": 0.86,
-  "_wzor": "objętość druku = min(V×fillCap, V×infill + A×wall) × supportK; czas [min] = A/1000×areaMin + warstwy×layerSec/60 + warmMin (+ zmiany filamentu). Dopasowane do: bombka (X1C), Grinch (A2L), nawijak kabli S/M/L (A1 mini) – 26.11.2026.",
-  "support": {
-    "_": "podpory: objętość pod nawisami > 45° (mm³) × density; drzewiaste × treeK; max capK × objętość modelu; czas hourPerG h/g; zdejmowanie labor zł/g. Kalibracja: Adik.3mf (H2C, ASA, 17,6 g podpór) 27.11.2026",
-    "density": 0.184,
-    "treeK": 0.6,
-    "capK": 0.8,
-    "hourPerG": 0.07,
-    "labor": 0.4
-  },
-  "long": {
-    "_": "po pierwszych `after` godzinach druku stawka perHour (zł/h)",
-    "after": 2,
-    "perHour": 10
-  },
-  "special": {
-    "_": "materiały specjalne (ABS, ASA, TPU, z włóknem): podgrzewana komora, zużycie dyszy – stawka za czas × hourK, przygotowanie start zł",
-    "hourK": 1.5,
-    "start": 15
+  "0.8": {
+   "name": "0,8 mm – Szybko",
+   "hint": "warstwa 0,4 mm, widoczne warstwy, krócej i taniej",
+   "wall": 1.1,
+   "layer": 0.4,
+   "areaMin": 0.75
   }
+ },
+ "max": [
+  320,
+  320,
+  320
+ ],
+ "minSize": 5,
+ "maxColors": 8,
+ "maxQty": 50,
+ "maxMB": 100,
+ "colors": [
+  {
+   "id": "w",
+   "name": "Biały",
+   "hex": "#f5f4f0",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "r",
+   "name": "Czerwony",
+   "hex": "#d42a2f",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "o",
+   "name": "Pomarańczowy",
+   "hex": "#f08a24",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "g",
+   "name": "Zielony",
+   "hex": "#2e9a47",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "b",
+   "name": "Niebieski",
+   "hex": "#1f4fd1",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "v",
+   "name": "Fioletowy",
+   "hex": "#7b3fa8",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "br",
+   "name": "Brązowy",
+   "hex": "#7a4b2a",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "be",
+   "name": "Beżowy",
+   "hex": "#e9c9a6",
+   "group": "Podstawowe"
+  },
+  {
+   "id": "c",
+   "name": "Cyan",
+   "hex": "#00a7e1",
+   "group": "CMYK"
+  },
+  {
+   "id": "m",
+   "name": "Magenta",
+   "hex": "#e5007e",
+   "group": "CMYK"
+  },
+  {
+   "id": "y",
+   "name": "Żółty",
+   "hex": "#ffe500",
+   "group": "CMYK"
+  },
+  {
+   "id": "k",
+   "name": "Czarny",
+   "hex": "#1d1d1f",
+   "group": "CMYK"
+  },
+  {
+   "id": "lc",
+   "name": "Jasny cyan",
+   "hex": "#8fd6f2",
+   "group": "Light CMYK"
+  },
+  {
+   "id": "lm",
+   "name": "Jasna magenta",
+   "hex": "#f6a3cd",
+   "group": "Light CMYK"
+  },
+  {
+   "id": "ly",
+   "name": "Jasny żółty",
+   "hex": "#fff3a1",
+   "group": "Light CMYK"
+  },
+  {
+   "id": "lk",
+   "name": "Szary",
+   "hex": "#9b9b9b",
+   "group": "Light CMYK"
+  },
+  {
+   "id": "mb",
+   "name": "Marmur jasny",
+   "hex": "#dedbd4",
+   "group": "Marmurkowe",
+   "marble": true
+  },
+  {
+   "id": "md",
+   "name": "Marmur ciemny",
+   "hex": "#55534f",
+   "group": "Marmurkowe",
+   "marble": true
+  }
+ ],
+ "_kalibracja": "26.11.2026: pallina_custom.stl (80×94×3,8 mm), H2C, 2 kolory: Bambu Studio 10,50 g model + 0,54 g wieża, 50 min 41 s druku + 5 min przygotowania. X1C: 1 kolor 10,68 g, 45 min 27 s + 7 min 15 s; 2 kolory (AMS) 13,23 g z przepłukaniem i wieżą, 54 min 15 s + 7 min 15 s. A2L/H2C: Pallina grinch 3MF (60×61×87 mm, 3 kolory malowane, podpory): 50,46 g model + 4,56 g podpory + 21,67 g przepłukania + 9,84 g wieża, 2 h 26 min + 5 min, 46 zmian filamentu. Wzór: ścianki 0,61 mm, efektywne wypełnienie 29,3%, ścianki 2,86 mm³/s, wypełnienie 16 mm³/s. Zmiany filamentu: liczone z mapy kolorów w osi Z × changeK (Grinch: 46 zmian w Bambu Studio), 70 s i 0,55 g (przepłukanie + wieża) na zmianę; piernikowy domek: 187 zmian, 79 g przepłukań + 19 g wieży, 6 h 14 min.",
+ "baseEur": 9,
+ "materials": [
+  {
+   "id": "pla",
+   "name": "PLA Basic",
+   "group": "PLA",
+   "eur": 9,
+   "density": 1.24,
+   "hint": "Najpopularniejszy – sztywny, gładki. Dekoracje, figurki, prototypy."
+  },
+  {
+   "id": "pla-matte",
+   "name": "PLA Matte",
+   "group": "PLA",
+   "eur": 9,
+   "density": 1.31,
+   "hint": "Matowa powierzchnia, mniej widoczne warstwy."
+  },
+  {
+   "id": "pla-silk",
+   "name": "PLA Silk+",
+   "group": "PLA",
+   "eur": 9,
+   "density": 1.32,
+   "hint": "Jedwabisty połysk – wazony, ozdoby."
+  },
+  {
+   "id": "pla-tr",
+   "name": "PLA Translucent",
+   "group": "PLA",
+   "eur": 10.59,
+   "density": 1.25,
+   "hint": "Półprzezroczysty – lampki, lampiony."
+  },
+  {
+   "id": "petg",
+   "name": "PETG",
+   "group": "PETG",
+   "eur": 8.47,
+   "density": 1.25,
+   "timeK": 1.1,
+   "hint": "Wytrzymały, odporny na wilgoć i temperaturę do ok. 70°C."
+  },
+  {
+   "id": "petg-cf",
+   "name": "PETG-CF (z włóknem węglowym)",
+   "group": "PETG",
+   "eur": 17.48,
+   "density": 1.25,
+   "timeK": 1.15,
+   "colors": [
+    "k"
+   ],
+   "hint": "Sztywny, matowy czarny – części techniczne.",
+   "special": true
+  },
+  {
+   "id": "abs",
+   "name": "ABS",
+   "group": "ABS / ASA",
+   "eur": 9,
+   "density": 1.05,
+   "timeK": 1.1,
+   "hint": "Odporny na temperaturę (ok. 90°C) i uderzenia – obudowy, części do auta.",
+   "special": true
+  },
+  {
+   "id": "asa",
+   "name": "ASA",
+   "group": "ABS / ASA",
+   "eur": 14.99,
+   "density": 1.07,
+   "timeK": 1.1,
+   "hint": "Jak ABS, ale odporny na UV – na zewnątrz.",
+   "special": true
+  },
+  {
+   "id": "abs-gf",
+   "name": "ABS-GF (z włóknem szklanym)",
+   "group": "ABS / ASA",
+   "eur": 19.19,
+   "density": 1.08,
+   "timeK": 1.15,
+   "hint": "Sztywniejszy ABS – uchwyty, wsporniki.",
+   "special": true
+  },
+  {
+   "id": "asa-cf",
+   "name": "ASA-CF (z włóknem węglowym)",
+   "group": "ABS / ASA",
+   "eur": 23.39,
+   "density": 1.12,
+   "timeK": 1.15,
+   "colors": [
+    "k"
+   ],
+   "hint": "Sztywny, odporny na UV, czarny mat.",
+   "special": true
+  },
+  {
+   "id": "tpu",
+   "name": "TPU 95A (elastyczny)",
+   "group": "TPU – elastyczne",
+   "eur": 20.99,
+   "density": 1.22,
+   "timeK": 2,
+   "hint": "Gumowy i giętki – uszczelki, nakładki, odbojniki.",
+   "special": true
+  },
+  {
+   "id": "tpu-soft",
+   "name": "TPU 85A / 90A (miękki)",
+   "group": "TPU – elastyczne",
+   "eur": 26.39,
+   "density": 1.22,
+   "timeK": 2.4,
+   "hint": "Bardziej miękki – podkładki, chwytaki.",
+   "special": true
+  },
+  {
+   "id": "pa6-gf",
+   "name": "PA6-GF (nylon z włóknem szklanym)",
+   "group": "Techniczne",
+   "eur": 37.79,
+   "density": 1.23,
+   "timeK": 1.2,
+   "hint": "Bardzo wytrzymały i odporny na temperaturę.",
+   "special": true
+  },
+  {
+   "id": "pa6-cf",
+   "name": "PA6-CF (nylon z włóknem węglowym)",
+   "group": "Techniczne",
+   "eur": 26.99,
+   "density": 1.14,
+   "timeK": 1.2,
+   "colors": [
+    "k"
+   ],
+   "hint": "Lekki, sztywny i wytrzymały – części maszyn.",
+   "special": true
+  },
+  {
+   "id": "paht-cf",
+   "name": "PAHT-CF",
+   "group": "Techniczne",
+   "eur": 32.39,
+   "density": 1.06,
+   "timeK": 1.2,
+   "colors": [
+    "k"
+   ],
+   "hint": "Nylon wysokotemperaturowy – pod maskę, przy silniku.",
+   "special": true
+  },
+  {
+   "id": "pet-cf",
+   "name": "PET-CF",
+   "group": "Techniczne",
+   "eur": 29.39,
+   "density": 1.29,
+   "timeK": 1.2,
+   "colors": [
+    "k"
+   ],
+   "hint": "Sztywny, stabilny wymiarowo, mało chłonie wilgoć.",
+   "special": true
+  },
+  {
+   "id": "ppa-cf",
+   "name": "PPA-CF",
+   "group": "Techniczne",
+   "eur": 93.59,
+   "density": 1.17,
+   "timeK": 1.25,
+   "colors": [
+    "k"
+   ],
+   "hint": "Najwyższa wytrzymałość i odporność na temperaturę.",
+   "special": true
+  }
+ ],
+ "_materialy": "eur = cena szpuli 1 kg w sklepie Bambu (26.11.2026). Cena za gram dla klienta = perGram × max(1, eur / baseEur). timeK – wolniejszy druk. colors – dozwolone kolory (CF tylko czarny).",
+ "fillCap": 0.86,
+ "_wzor": "objętość druku = min(V×fillCap, V×infill + A×wall) × supportK; czas [min] = A/1000×areaMin + warstwy×layerSec/60 + warmMin (+ zmiany filamentu). Dopasowane do: bombka (X1C), Grinch (A2L), nawijak kabli S/M/L (A1 mini) – 26.11.2026.",
+ "support": {
+  "_": "podpory: objętość pod nawisami > 45° (mm³) × density; drzewiaste × treeK; max capK × objętość modelu; czas hourPerG h/g; zdejmowanie labor zł/g. Kalibracja: Adik.3mf (H2C, ASA, 17,6 g podpór) 27.11.2026",
+  "density": 0.184,
+  "treeK": 0.6,
+  "capK": 0.8,
+  "hourPerG": 0.07,
+  "labor": 0.4
+ },
+ "long": {
+  "_": "po pierwszych `after` godzinach druku stawka perHour (zł/h)",
+  "after": 2,
+  "perHour": 10
+ },
+ "special": {
+  "_": "materiały specjalne (ABS, ASA, TPU, z włóknem): podgrzewana komora, zużycie dyszy – stawka za czas × hourK, przygotowanie start zł",
+  "hourK": 1.5,
+  "start": 15
+ }
 }

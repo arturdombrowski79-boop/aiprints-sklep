@@ -57,16 +57,17 @@ export function estimate(stats, opts, cfg) {
   const supV = stats.supOff ? 0 : Math.min((stats.sup || 0) * s ** 3 * sp.density * (stats.tree ? sp.treeK : 1), V * sp.capK), supG = supV / 1000 * dens;
   let grams = ext / 1000 * dens + supG, hours = (mt.timeK || 1) * (A / 1000 * nz.areaMin + (H / nz.layer) * cfg.layerSec / 60) / 60 + cfg.warmMin / 60 + supG * sp.hourPerG;
   let mat = grams * cfg.perGram * priceK * (used.some((id) => pal[id] && pal[id].marble) ? cfg.marbleK : 1);
-  let changes = 0;
+  let changes = 0, chH = 0, chCost = 0;
   if (multi && stats.zm && stats.zm.length) { // zmiany filamentu: czas i materiał na przepłukanie
     changes = Math.round(countChanges(stats, opts.colors, s, nz.layer) * cfg.multi.changeK);
-    hours += changes * cfg.multi.changeSec / 3600; const purge = changes * cfg.multi.changeG; grams += purge; mat += purge * cfg.perGram * priceK;
+    chH = changes * cfg.multi.changeSec / 3600; const purge = changes * cfg.multi.changeG; grams += purge; // do opisu (czas, waga)
+    chCost = Math.min(cfg.multi.changeCap ?? Infinity, changes * (cfg.multi.perChange || 0));
   } else if (multi) { mat *= cfg.multi.matK; hours *= cfg.multi.timeK; grams *= cfg.multi.matK; }
   const extra = multi ? (used.length - 1) * cfg.multi.perColor : 0;
   // czas maszyny: do longAfter h stawka podstawowa, dłużej – wyższa; materiały specjalne (komora, zużycie dyszy) × specialK
   const L = cfg.long, machine = (Math.min(hours, L.after) * cfg.perHour + Math.max(0, hours - L.after) * L.perHour) * (mt.special ? cfg.special.hourK : 1);
   const start = mt.special ? cfg.special.start : cfg.start;
-  const unit = r2(Math.max(cfg.minUnit, mat + machine + supG * sp.labor + extra + start / qty));
+  const unit = r2(Math.max(cfg.minUnit, mat + machine + supG * sp.labor + extra + chCost + start / qty)); hours += chH;
   return { grams: Math.round(grams), sup: Math.round(supG), hours, unit, qty, size: stats.bbox.map((v) => Math.round(v * s * 10) / 10), colors: used.length, changes };
 }
 

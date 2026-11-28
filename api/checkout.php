@@ -32,6 +32,8 @@ try {
   $code = strtoupper(trim((string)($in['code'] ?? ''))); $pct = (float)(cfg('codes', [])[$code] ?? 0);
   $disc = r2($sub * $pct / 100); $after = r2($sub - $disc);
   $sk = (string)($in['delivery'] ?? '15.99'); if (!isset($C['ship'][$sk])) $sk = '15.99';
+  $only3d = true; foreach ($items as $it) if (($it['slug'] ?? '') !== 'druk-3d-z-pliku') $only3d = false;
+  if ($sk === '9.99' && !$only3d) $sk = '15.99'; // tańszy paczkomat tylko dla samych wydruków 3D
   $ship = ($after >= $C['free'] && (float)$sk > 0) ? 0.0 : (float)$sk; $total = r2($after + $ship);
   $locker = preg_replace('/[^A-Z0-9-]/', '', strtoupper((string)($in['locker'] ?? '')));
   $big = false; foreach ($items as $it) if (too_big($it)) $big = true;
