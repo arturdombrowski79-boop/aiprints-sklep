@@ -117,6 +117,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
 for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadrukiem (zdjęcie, kolorowy nadruk)',69,'biała, poliester w dotyku jak bawełna, S–3XL, nadruk przód i tył do 40×60 cm','Epson SureColor F500 + prasa'),
     ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
     ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
+    if slug in HIDDEN: continue
     prods.append(dict(slug=slug,name=name,cat=NADRUK,sub=nsub(slug),variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
 # usługi (formularz zapytania / rezerwacji zamiast koszyka); ceny „od” = najtańszy pakiet z src/data/pakiety.js
 SVC_PRICE={'zdjecia-do-dokumentow':'30 zł','sesja-portretowa':'od 249 zł','sesja-rodzinna':'od 499 zł','sesja-plenerowa':'od 549 zł',
@@ -187,7 +188,7 @@ for p in prods:
     s_=p['slug']
     if p.get('kind')=='service': continue
     if s_ in KIND_READY: p['kind']='ready'; p['fields']=['note']
-    elif s_ in KIND_FILES:
+    elif s_ in KIND_FILES or s_.startswith('fine-art-'):
         p['kind']='files'; p['fields']=['files']+(['text'] if s_ in ('obrazki-pamiatkowe-pogrzeb','kalendarz-scienny-zdjecia','kalendarz-2027-a3') else [])
     elif p.get('creator'): p['kind']='gift'
     elif p['cat'] in KIND_B2B_CATS: p['kind']='b2b'

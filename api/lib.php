@@ -37,7 +37,8 @@ function unit_price(array $it): float {
   $k = ($p['until'] && date('Y-m-d') <= $p['until']) ? (float)$p['k'] : 1.0;
   $qty = max(1, (int)($it['qty'] ?? 1));
   if (!empty($it['sides']) && $p['cr']) { // projekt z kreatora: cena bazowa (z promocją) + dopłata za drugą stronę
-    $u = r2($p['b'] * $k); $sides = array_values(array_intersect(array_keys($p['cr']), (array)$it['sides']));
+    $b = (float)$p['b']; foreach ($p['q'] as $t) if ($qty >= $t['q']) $b = (float)$t['p']; // rabaty ilościowe także w kreatorze
+    $u = r2($b * $k); $sides = array_values(array_intersect(array_keys($p['cr']), (array)$it['sides']));
     if (count($sides) > 1) foreach ($sides as $s) $u += (float)$p['cr'][$s];
     return r2($u);
   }

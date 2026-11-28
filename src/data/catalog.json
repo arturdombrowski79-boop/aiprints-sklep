@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 34
+"count": 33
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -12395,47 +12395,6 @@
 }
 },
 {
-"slug": "bluza-z-nadrukiem",
-"name": "Bluza z kapturem z własnym nadrukiem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Koszulki i odzież",
-"variants": "9 kolorów, S–3XL, przód i tył",
-"priceText": "149 zł",
-"price": 149,
-"tiers": null,
-"machine": "DTF + prasa",
-"score": 1005.0,
-"xmas": false,
-"img": "img/hf/bluza-z-nadrukiem-1.jpg",
-"fields": [],
-"quote": false,
-"unit": false,
-"creatorOnly": true,
-"gallery": [
-"img/hf/bluza-z-nadrukiem-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "tablica-powitalna",
 "name": "Tablica powitalna plexi 60×80 + sztaluga",
 "cat": "slub-i-okazje",
@@ -12628,7 +12587,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-photo-rag-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12636,7 +12595,7 @@
 "img/hf/fine-art-photo-rag-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12686,7 +12645,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-william-turner-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12694,7 +12653,7 @@
 "img/hf/fine-art-william-turner-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12744,7 +12703,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-german-etching-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12752,7 +12711,7 @@
 "img/hf/fine-art-german-etching-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12802,7 +12761,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-rag-photographique-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12810,7 +12769,7 @@
 "img/hf/fine-art-rag-photographique-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12860,7 +12819,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-bfk-rives-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12868,7 +12827,7 @@
 "img/hf/fine-art-bfk-rives-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12918,7 +12877,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-baryta-photographique-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12926,7 +12885,7 @@
 "img/hf/fine-art-baryta-photographique-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -12976,7 +12935,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-platine-fibre-rag-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -12984,7 +12943,7 @@
 "img/hf/fine-art-platine-fibre-rag-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"
@@ -13034,7 +12993,7 @@
 "xmas": false,
 "img": "img/hf/fine-art-epson-cotton-1.jpg",
 "fields": [
-"text"
+"files"
 ],
 "quote": false,
 "unit": false,
@@ -13042,7 +13001,7 @@
 "img/hf/fine-art-epson-cotton-1.jpg"
 ],
 "also": [],
-"kind": "gift",
+"kind": "files",
 "tags": {
 "okazja": [
 "urodziny"

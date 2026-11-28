@@ -2,6 +2,8 @@
 // Kreator produktu: tekst, czcionki, logo/zdjęcie, emotki, grafiki, kolor produktu, strony.
 const { p, cfg } = Astro.props;
 const price = Math.round((p.tiers ? p.tiers[0].p : (p.price || 0)) * (p.promo ? p.promo.k : 1) * 100) / 100;
+// rabaty ilościowe z ceny „49 zł (5+ 42, 10+ 37)” – te same progi liczy serwer (api/lib.php unit_price)
+const qT = [...String(p.priceText || '').matchAll(/(\d+)\+\s*(\d+(?:,\d+)?)/g)].map((m) => ({ q: +m[1], p: Math.round(parseFloat(m[2].replace(',', '.')) * (p.promo ? p.promo.k : 1) * 100) / 100 }));
 const T = [['tekst', 'Tekst', 'M5 5h14M12 5v14M9 19h6'], ['obraz', 'Logo / zdjęcie', 'M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4M15 9h.01'], ['emoji', 'Emotki', 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18M8.5 14.5s1.3 2 3.5 2 3.5-2 3.5-2M9 9.5h.01M15 9.5h.01'], ['grafiki', 'Grafiki', 'M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z'], ['produkt', 'Produkt', 'M8 4 4 7l2 3 2-1v11h8V9l2 1 2-3-4-3a4 4 0 0 1-8 0']];
 ---
 <link rel="stylesheet" href="creator/fonts.css" />
@@ -12,7 +14,7 @@ const T = [['tekst', 'Tekst', 'M5 5h14M12 5v14M9 19h6'], ['obraz', 'Logo / zdję
 <p class="text-[13px] text-mute mt-2 text-center">Tekst, czcionki, Twoje logo, emotki i grafiki – widzisz efekt na produkcie.</p>
 
 <div id="cr" class="hidden fixed inset-0 z-[95] bg-[#eceeef] text-ink flex-col" role="dialog" aria-modal="true" aria-label={`Kreator: ${p.name}`}
-  data-cfg={JSON.stringify(cfg)} data-name={p.name} data-price={price} data-slug={p.slug}>
+  data-cfg={JSON.stringify(cfg)} data-name={p.name} data-price={price} data-q={JSON.stringify(qT)} data-slug={p.slug}>
   <header class="h-16 shrink-0 bg-white border-b border-line flex items-center gap-2 px-3 md:px-5">
     <button id="crClose" class="w-10 h-10 rounded-full hover:bg-paper grid place-items-center" aria-label="Zamknij kreator"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <b class="truncate text-[15px] md:text-[16px]">{p.name}</b>

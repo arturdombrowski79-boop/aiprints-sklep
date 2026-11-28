@@ -12,7 +12,7 @@ const FONTS = [
 const COLORS = ['#121110', '#ffffff', '#d1196f', '#00a6dd', '#ffd23f', '#c8102e', '#e8641e', '#1f4d3a', '#3aa655', '#1f2a44', '#7b3fa0', '#8a6a3b', '#c9a24f', '#9aa0a6'];
 const QUICK = ['Twoje imię', 'Najlepsza Mama', 'Najlepszy Tata', 'Babcia & Dziadek', 'Wszystkiego najlepszego!', 'Team', '2026'];
 
-let el, cfg, S, cv, mockImg, view, area, assets, hist = [], fut = [], lock = false, saveT, P = 0;
+let el, cfg, S, cv, mockImg, view, area, assets, hist = [], fut = [], lock = false, saveT, P = 0, QT = [];
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const side = () => cfg.sides[S.side];
@@ -20,7 +20,7 @@ const mono = () => cfg.mode !== 'print';
 const KEY = () => 'aiprints-cr-' + el.dataset.slug;
 
 export async function openCreator() {
-  el = $('cr'); cfg = JSON.parse(el.dataset.cfg); P = +el.dataset.price || 0;
+  el = $('cr'); cfg = JSON.parse(el.dataset.cfg); P = +el.dataset.price || 0; QT = JSON.parse(el.dataset.q || '[]');
   if (!S) {
     let saved = null; try { saved = JSON.parse(localStorage.getItem(KEY())); } catch (e) { }
     S = saved || { side: 0, color: cfg.colors ? cfg.colors[0][1] : null, size: cfg.sizes ? cfg.sizes[1] : null, qty: 1, sides: {} };
@@ -256,7 +256,7 @@ function sides() {
 async function go(i) { if (i === S.side) return; S.sides[side().id] = cv.toObject(['kind']); S.side = i; cv.discardActiveObject(); await loadSide(); if (!$('crPanel').classList.contains('hidden')) { const t = el.querySelector('[data-tab][aria-pressed=true]'); t && tab(t.dataset.tab); } }
 function qty(n) { S.qty = Math.max(1, Math.min(999, n)); $('crQty').value = S.qty; price(); persist(); }
 const used = () => cfg.sides.filter((s) => (s.id === side().id ? cv.getObjects().length : S.sides[s.id]?.objects?.length));
-function unit() { const u = used(); return P + (u.length > 1 ? u.reduce((a, s) => a + (s.extra || 0), 0) : 0); }
+function unit() { const u = used(); let b = P; QT.forEach((t) => { if (S.qty >= t.q) b = t.p; }); return b + (u.length > 1 ? u.reduce((a, s) => a + (s.extra || 0), 0) : 0); }
 function price() { const u = unit(); $('crPrice').textContent = zl(u * S.qty); $('crPriceNote').textContent = S.qty > 1 ? `${zl(u)} / szt.` : used().length > 1 ? 'nadruk z dwóch stron' : 'z VAT'; }
 
 // ——— do koszyka ———
