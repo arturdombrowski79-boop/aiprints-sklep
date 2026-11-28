@@ -16,3 +16,6 @@ Do zrobienia:
 4. Kategoria w sklepie: puchary, medale, statuetki, dyplomy, tabliczki na puchary. Konfigurator z tekstem i logo, rabaty ilościowe (kluby, szkoły, zawody, firmy), ekspresowy termin.
 5. SEO i reklama: landing „Puchary i medale Chorzów” (+ Katowice, Ruda Śl., Bytom), produkty i usługi na wizytówce Google, temat w Google Ads, rolka.
 6. Lista klientów B2B: kluby sportowe, szkoły i przedszkola, MOSiR, organizatorzy turniejów i biegów, firmy (jubileusze, nagrody pracownicze).
+
+## Przegląd wszystkich produktów (od 29.11.2026)
+Plan i lista nowych produktów z cenami do akceptacji: `docs/sesje/2026-11-28-sublimacja-laser-fineart.md` (sekcja „NA JUTRO”). Przy każdym produkcie: czy robimy, cena, zdjęcie (AI czy prawdziwe), opis.
