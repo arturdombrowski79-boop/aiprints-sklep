@@ -1762,5 +1762,17 @@
    "img/hf/fartuch-firmowy-flex-1.jpg"
   ],
   "card": "img/hf/fartuch-firmowy-flex-1.jpg"
+ },
+ "zegar-scienny-zdjecie": {
+  "gallery": [
+   "img/hf/zegar-scienny-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/zegar-scienny-zdjecie-1.jpg"
+ },
+ "fotoblok-mdf-zdjecie": {
+  "gallery": [
+   "img/hf/fotoblok-mdf-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/fotoblok-mdf-zdjecie-1.jpg"
  }
 }

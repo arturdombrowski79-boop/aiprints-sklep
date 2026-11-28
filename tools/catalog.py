@@ -67,7 +67,7 @@ def fields(r):
     if re.search(r'lista|komplet|skrzyn|lokal|winiet',s): f.append('list')
     return f
 # produkty ukryte w sklepie (zostają w CSV i historii cen); 25.11.2026 – właściciel nie wykonuje szarf ani sztalug
-HIDDEN={'koc-ze-zdjeciem','recznik-ze-zdjeciem','fartuch-z-nadrukiem','koszulka-sportowa-sublimacja','szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
+HIDDEN={'bluza-z-nadrukiem','koc-ze-zdjeciem','recznik-ze-zdjeciem','fartuch-z-nadrukiem','koszulka-sportowa-sublimacja','szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
 seen=set(HIDDEN); prods=[]
 order={r['slug']:i for i,r in enumerate(rows)}
 for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie')):
@@ -114,7 +114,7 @@ for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie'
         quote=p is None or cat in('wspolnoty-i-spoldzielnie',) and 'pakiet' in r['slug'], unit=unit))
 
 # produkty z kreatorem (odzież i kubki) – projekt robi klient w kreatorze
-for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadrukiem',69,'9 kolorów, S–3XL, nadruk przód i tył','DTF + prasa'),
+for slug,name,pr,var,mach in [('koszulka-z-nadrukiem','Koszulka z własnym nadrukiem (zdjęcie, kolorowy nadruk)',69,'biała, poliester w dotyku jak bawełna, S–3XL, nadruk przód i tył do 40×60 cm','Epson SureColor F500 + prasa'),
     ('bluza-z-nadrukiem','Bluza z kapturem z własnym nadrukiem',149,'9 kolorów, S–3XL, przód i tył','DTF + prasa'),
     ('kubek-z-nadrukiem','Kubek ceramiczny z nadrukiem',45,'330 ml, 5 kolorów, zdjęcie, logo lub tekst','Sublimacja / GoArt UV A3')]:
     prods.append(dict(slug=slug,name=name,cat=NADRUK,sub=nsub(slug),variants=var,priceText=f'{pr} zł',price=pr,tiers=None,machine=mach,score=5.0,xmas=False,img=f'img/hf/{slug}-1.jpg',fields=[],quote=False,unit=False,creatorOnly=True))
@@ -152,12 +152,14 @@ import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]
     if ('F500' in m and p['slug']!='zdjecie-nagrobne-porcelana') or p['slug'] in ('koszulki-absolwent','tumbler-uv-kolor','etui-telefon-uv'): a.append(NADRUK)
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie'): a.append('prezenty-ze-zdjeciem')
     if p['slug']=='kubek-z-nadrukiem': a.append('prezenty-ze-zdjeciem')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     if 'Bambu' in m: a.append('wydruki-3d')
     p['also']=[x for x in a if x!=p['cat']]
     if NADRUK in p['also']: p['alsoSub']={NADRUK:nsub(p['slug'])}
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','kubek-z-nadrukiem'): p.setdefault('alsoSub',{})['prezenty-ze-zdjeciem']='Prezenty ze zdjęciem'
 # ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
 # gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
 # files – usługa z plików klienta (odbitki, druk fine art, banery, folie z gotowej grafiki), wiele i duże pliki

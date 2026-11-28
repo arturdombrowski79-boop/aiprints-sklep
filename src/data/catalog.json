@@ -24,7 +24,7 @@
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 34
+"count": 36
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 24
+"count": 26
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -6592,6 +6592,57 @@
 }
 },
 {
+"slug": "fotoblok-mdf-zdjecie",
+"name": "Fotoblok ze zdjęciem na stojąco",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "płyta MDF 6 mm z połyskiem, czarne krawędzie, podpórka: 13×18 / 20×25 / 30×40 cm",
+"priceText": "od 49 zł",
+"price": 49.0,
+"tiers": [
+{
+"k": "13×18",
+"p": 49.0
+},
+{
+"k": "20×25",
+"p": 69.0
+},
+{
+"k": "30×40",
+"p": 99.0
+}
+],
+"machine": "Epson SureColor F500 + prasa",
+"score": 1120.0,
+"xmas": false,
+"img": "img/hf/fotoblok-mdf-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/fotoblok-mdf-zdjecie-1.jpg"
+],
+"also": [
+"prezenty-ze-zdjeciem"
+],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem"
+},
+"kind": "gift",
+"tags": {
+"okazja": [],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": []
+}
+},
+{
 "slug": "napis-na-sciane-folia",
 "name": "Napis na ścianę z folii (cytat, imię)",
 "cat": "druk-wielkoformatowy",
@@ -7416,6 +7467,48 @@
 ],
 "mat": [
 "akryl"
+]
+}
+},
+{
+"slug": "zegar-scienny-zdjecie",
+"name": "Zegar ścienny ze zdjęciem",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "okrągły Ø 30 cm, płyta MDF, cichy mechanizm płynący, zdjęcie lub kolaż",
+"priceText": "89 zł",
+"price": 89.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1100.0,
+"xmas": false,
+"img": "img/hf/zegar-scienny-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/zegar-scienny-zdjecie-1.jpg"
+],
+"also": [
+"prezenty-ze-zdjeciem"
+],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem"
+},
+"kind": "gift",
+"tags": {
+"okazja": [
+"nowy-dom"
+],
+"dla": [],
+"pers": [
+"zdjecie",
+"imie"
+],
+"mat": [
+"drewno"
 ]
 }
 },
@@ -10228,50 +10321,6 @@
 }
 },
 {
-"slug": "koszulka-z-nadrukiem",
-"name": "Koszulka z własnym nadrukiem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Koszulki i odzież",
-"variants": "9 kolorów, S–3XL, nadruk przód i tył",
-"priceText": "69 zł",
-"price": 69,
-"tiers": null,
-"machine": "DTF + prasa",
-"score": 1055.0,
-"xmas": false,
-"img": "img/realizacje/koszulki-viktoria-plecy.jpg",
-"fields": [],
-"quote": false,
-"unit": false,
-"creatorOnly": true,
-"gallery": [
-"img/realizacje/koszulki-viktoria-plecy.jpg",
-"img/hf/koszulka-z-nadrukiem-1.jpg"
-],
-"real": 1,
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"tata",
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "kubek-z-nadrukiem",
 "name": "Kubek ceramiczny z nadrukiem",
 "cat": "koszulki-kubki-gadzety",
@@ -10296,6 +10345,9 @@
 "also": [
 "prezenty-ze-zdjeciem"
 ],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem"
+},
 "kind": "gift",
 "tags": {
 "okazja": [
@@ -11918,6 +11970,48 @@
 ],
 "mat": [
 "drewno"
+]
+}
+},
+{
+"slug": "koszulka-z-nadrukiem",
+"name": "Koszulka z własnym nadrukiem (zdjęcie, kolorowy nadruk)",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
+"variants": "biała, poliester w dotyku jak bawełna, S–3XL, nadruk przód i tył do 40×60 cm",
+"priceText": "69 zł",
+"price": 69,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1005.0,
+"xmas": false,
+"img": "img/hf/koszulka-z-nadrukiem-1.jpg",
+"fields": [],
+"quote": false,
+"unit": false,
+"creatorOnly": true,
+"gallery": [
+"img/hf/koszulka-z-nadrukiem-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"tata",
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
 ]
 }
 },

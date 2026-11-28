@@ -28,7 +28,7 @@ const STEEL = '#3d4043', WOOD = '#4a2a12';
 const one = (img, area, mm, o = {}) => ({ bg: BG, mask: true, ...o, sides: [{ id: 'front', name: o.name || 'Przód', img: 'img/mk/' + img + '.webp', area, mm, ...(o.clip ? { clip: o.clip } : {}) }] });
 
 export const CREATOR = {
-  'koszulka-z-nadrukiem': tee,
+  'koszulka-z-nadrukiem': { ...tee, colors: [['Biały', '#ffffff']] }, // 28.11: sublimacja – tylko biała poliestrowa, nadruk do 40×60 cm
   'bluza-z-nadrukiem': hoodie,
   // 28.11: odzież z folii flex i sublimacja – kreator do własnego projektu (flex = jeden kolor folii; projekt i tak idzie do akceptacji)
   'koszulka-firmowa-flex': tee, 'koszulka-logo-imie-flex': tee, 'bluza-firmowa-flex': hoodie, 'koszulka-sportowa-sublimacja': tee,
