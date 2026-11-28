@@ -1774,5 +1774,23 @@
    "img/hf/fotoblok-mdf-zdjecie-1.jpg"
   ],
   "card": "img/hf/fotoblok-mdf-zdjecie-1.jpg"
+ },
+ "komin-na-szyje-nadruk": {
+  "gallery": [
+   "img/hf/komin-na-szyje-nadruk-1.jpg"
+  ],
+  "card": "img/hf/komin-na-szyje-nadruk-1.jpg"
+ },
+ "sciereczka-okulary-nadruk": {
+  "gallery": [
+   "img/hf/sciereczka-okulary-nadruk-1.jpg"
+  ],
+  "card": "img/hf/sciereczka-okulary-nadruk-1.jpg"
+ },
+ "podkladki-pod-kubek-zdjecie": {
+  "gallery": [
+   "img/hf/podkladki-pod-kubek-zdjecie-1.jpg"
+  ],
+  "card": "img/hf/podkladki-pod-kubek-zdjecie-1.jpg"
  }
 }

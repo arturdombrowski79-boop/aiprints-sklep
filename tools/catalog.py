@@ -21,8 +21,8 @@ CATS=[
 NADRUK='koszulki-kubki-gadzety'
 NSUBS=['Koszulki i odzież','Kubki','Tekstylia do domu','Gadżety']
 def nsub(sl):
-    if sl.startswith('mis-'): return 'Gadżety'
-    if re.search('koszul|bluz|fartuch|odziez',sl): return 'Koszulki i odzież'
+    if sl.startswith('mis-') or sl.startswith('podkladk'): return 'Gadżety'
+    if re.search('koszul|bluz|fartuch|odziez|komin',sl): return 'Koszulki i odzież'
     if re.search('kubek|kubk|tumbler',sl): return 'Kubki'
     if re.search('koc-|recznik|poduszk|torba|skarpet|mis-',sl): return 'Tekstylia do domu'
     return 'Gadżety'
@@ -152,14 +152,14 @@ import sys; sys.path.insert(0,B+'/tools'); from tags import tag, facets
 for p in prods:
     m=p['machine'] or ''; a=[]
     if ('F500' in m and p['slug']!='zdjecie-nagrobne-porcelana') or p['slug'] in ('koszulki-absolwent','tumbler-uv-kolor','etui-telefon-uv'): a.append(NADRUK)
-    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie'): a.append('prezenty-ze-zdjeciem')
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','podkladki-pod-kubek-zdjecie'): a.append('prezenty-ze-zdjeciem')
     if p['slug']=='kubek-z-nadrukiem': a.append('prezenty-ze-zdjeciem')
     if re.search('P9500|D1000|fine art',m+p['slug']): a.append('dla-fotografow')
     if re.search('Latex|Summa',m): a.append('druk-wielkoformatowy')
     if 'Bambu' in m: a.append('wydruki-3d')
     p['also']=[x for x in a if x!=p['cat']]
     if NADRUK in p['also']: p['alsoSub']={NADRUK:nsub(p['slug'])}
-    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','kubek-z-nadrukiem'): p.setdefault('alsoSub',{})['prezenty-ze-zdjeciem']='Prezenty ze zdjęciem'
+    if p['slug'] in ('zegar-scienny-zdjecie','fotoblok-mdf-zdjecie','kubek-z-nadrukiem','podkladki-pod-kubek-zdjecie'): p.setdefault('alsoSub',{})['prezenty-ze-zdjeciem']='Prezenty ze zdjęciem'
 # ——— rodzaj produktu: decyduje o polach, dodatkach prezentowych, zwrotach i tekstach „co dalej” ———
 # gift  – prezent personalizowany (tekst/zdjęcie), podgląd do akceptacji, pudełko i kartka
 # files – usługa z plików klienta (odbitki, druk fine art, banery, folie z gotowej grafiki), wiele i duże pliki

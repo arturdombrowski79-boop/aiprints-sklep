@@ -24,7 +24,7 @@
 "Pamiątki ze zdjęciem",
 "Prezenty ze zdjęciem"
 ],
-"count": 36
+"count": 37
 },
 {
 "slug": "prezenty-z-grawerem",
@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 26
+"count": 29
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -6117,6 +6117,49 @@
 }
 },
 {
+"slug": "komin-na-szyje-nadruk",
+"name": "Komin na szyję z nadrukiem (logo lub zdjęcie)",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Koszulki i odzież",
+"variants": "wielofunkcyjny komin z poliestru, nadruk na całości – logo klubu, firmy, wzór lub zdjęcie",
+"priceText": "39 zł (10+ 29, 25+ 24, 50+ 19)",
+"price": 39.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1130.0,
+"xmas": false,
+"img": "img/hf/komin-na-szyje-nadruk-1.jpg",
+"fields": [
+"photo",
+"logo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/komin-na-szyje-nadruk-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "telefony-alarmowe",
 "name": "Tabliczka „Telefony alarmowe”",
 "cat": "wspolnoty-i-spoldzielnie",
@@ -6643,6 +6686,50 @@
 }
 },
 {
+"slug": "sciereczka-okulary-nadruk",
+"name": "Ściereczka do okularów z nadrukiem",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "mikrofibra 15×18 cm, pełny kolor – logo, zdjęcie lub napis – dla optyków, firm i na prezent",
+"priceText": "15 zł (10+ 9, 50+ 6, 100+ 4,5)",
+"price": 15.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1120.0,
+"xmas": false,
+"img": "img/hf/sciereczka-okulary-nadruk-1.jpg",
+"fields": [
+"photo",
+"logo",
+"text"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/sciereczka-okulary-nadruk-1.jpg"
+],
+"also": [],
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"firma"
+],
+"dla": [
+"przyjaciel",
+"pracownik"
+],
+"pers": [
+"zdjecie",
+"imie",
+"logo"
+],
+"mat": [
+"druk"
+]
+}
+},
+{
 "slug": "napis-na-sciane-folia",
 "name": "Napis na ścianę z folii (cytat, imię)",
 "cat": "druk-wielkoformatowy",
@@ -6988,6 +7075,53 @@
 ],
 "mat": [
 "akryl"
+]
+}
+},
+{
+"slug": "podkladki-pod-kubek-zdjecie",
+"name": "Podkładki pod kubek ze zdjęciami – 4 sztuki",
+"cat": "koszulki-kubki-gadzety",
+"sub": "Gadżety",
+"variants": "MDF z połyskiem, kwadratowe lub okrągłe Ø 9,5 cm, korek od spodu, 4 różne zdjęcia",
+"priceText": "49 zł (3+ 44, 10+ 39)",
+"price": 49.0,
+"tiers": null,
+"machine": "Epson SureColor F500 + prasa",
+"score": 1110.0,
+"xmas": false,
+"img": "img/hf/podkladki-pod-kubek-zdjecie-1.jpg",
+"fields": [
+"photo"
+],
+"quote": false,
+"unit": false,
+"gallery": [
+"img/hf/podkladki-pod-kubek-zdjecie-1.jpg"
+],
+"also": [
+"prezenty-ze-zdjeciem"
+],
+"alsoSub": {
+"prezenty-ze-zdjeciem": "Prezenty ze zdjęciem"
+},
+"kind": "gift",
+"tags": {
+"okazja": [
+"urodziny",
+"nowy-dom"
+],
+"dla": [
+"przyjaciel",
+"kuchnia"
+],
+"pers": [
+"zdjecie",
+"grawer",
+"imie"
+],
+"mat": [
+"drewno"
 ]
 }
 },
