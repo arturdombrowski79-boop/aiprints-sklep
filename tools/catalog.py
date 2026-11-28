@@ -67,7 +67,7 @@ def fields(r):
     if re.search(r'lista|komplet|skrzyn|lokal|winiet',s): f.append('list')
     return f
 # produkty ukryte w sklepie (zostają w CSV i historii cen); 25.11.2026 – właściciel nie wykonuje szarf ani sztalug
-HIDDEN={'koc-ze-zdjeciem','recznik-ze-zdjeciem','szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
+HIDDEN={'koc-ze-zdjeciem','recznik-ze-zdjeciem','fartuch-z-nadrukiem','koszulka-sportowa-sublimacja','szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
 seen=set(HIDDEN); prods=[]
 order={r['slug']:i for i,r in enumerate(rows)}
 for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie')):

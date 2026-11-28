@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 26
+"count": 24
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -6868,49 +6868,6 @@
 }
 },
 {
-"slug": "koszulka-sportowa-sublimacja",
-"name": "Koszulka sportowa z kolorowym nadrukiem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Koszulki i odzież",
-"variants": "poliester oddychający, nadruk przód i tył do 40×60 cm: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
-"priceText": "89 zł",
-"price": 89.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 1110.0,
-"xmas": false,
-"img": "img/hf/koszulka-sportowa-sublimacja-1.jpg",
-"fields": [
-"text",
-"list"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/koszulka-sportowa-sublimacja-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
 "slug": "podkladka-pod-mysz",
 "name": "Podkładka pod mysz ze zdjęciem",
 "cat": "koszulki-kubki-gadzety",
@@ -8690,50 +8647,6 @@
 ],
 "dla": [],
 "pers": [
-"logo"
-],
-"mat": [
-"druk"
-]
-}
-},
-{
-"slug": "fartuch-z-nadrukiem",
-"name": "Fartuch kuchenny z nadrukiem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Koszulki i odzież",
-"variants": "poliester z wiązaniem, imię, logo lokalu lub zabawny napis",
-"priceText": "69 zł",
-"price": 69.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 1082.0,
-"xmas": false,
-"img": "img/hf/fartuch-z-nadrukiem-1.jpg",
-"fields": [
-"logo",
-"text",
-"list"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/fartuch-z-nadrukiem-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [
-"urodziny",
-"firma"
-],
-"dla": [
-"przyjaciel",
-"pracownik"
-],
-"pers": [
-"zdjecie",
-"imie",
 "logo"
 ],
 "mat": [
