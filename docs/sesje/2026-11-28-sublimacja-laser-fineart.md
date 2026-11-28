@@ -75,3 +75,29 @@ W sklepie jest ok. 310 produktów w 14 kategoriach. Tylko 14 ma prawdziwe zdjęc
 6. **Szkoły i przedszkola** (18), **Wspólnoty** (16), **Cmentarz i pogrzeb** (11), **Sesje** (7), **Druk 3D**.
 
 Przy każdym produkcie sprawdzamy: czy go robimy (maszyna, rozmiar, materiał), cenę, zdjęcie (AI czy prawdziwe), opis. Na koniec: produkty do ukrycia, ceny do zmiany, zdjęcia do zrobienia w pracowni.
+
+---
+
+## Nocny przegląd strony i sklepu (28.11, ok. 2:00–3:00)
+
+**Co sprawdziłem:**
+- 345 stron otwartych w przeglądarce (komputer i telefon 390 px): **0 błędów JavaScript**, żadna strona nie przewija się w bok.
+- Linki i obrazki we wszystkich stronach, katalogu, galeriach, realizacjach, kreatorze i CSS: **0 brakujących**.
+- Sitemap (338 adresów), feed Google Merchant (292 produkty, 360 zdjęć): wszystko istnieje.
+- **Koszyk: każdy z 292 produktów dodany do koszyka** (z wariantem, ilością, wymiarami), a cena w koszyku porównana z ceną liczoną przez serwer płatności: **0 różnic** (w tym 11 produktów liczonych za m² i promocja −5%).
+- Kreatory (koszulki, bluza flex, kubek, etui, tumbler): otwierają się, dodają do koszyka.
+- Kasa: formularz, dostawa (paczkomat / kurier / odbiór), płatności – działa. Na żywo backend płatności odpowiada: Stripe w trybie produkcyjnym.
+- Bezpieczeństwo na żywo: `api/config.php`, `api/data/`, `.git`, `api/catalog.json` zablokowane (403); stare adresy przekierowują (301).
+- PHP: brak błędów składni w `api/`.
+- Wyszukiwarka: działa, znajduje nowe produkty.
+
+**Znalezione i naprawione (wdrożone):**
+1. **10 papierów fine art** (Photo Rag, William Turner, Baryta…) miało pole „Tekst do personalizacji” i dopisek o grawerze zamiast wgrywania pliku do druku. Teraz mają „Twoje pliki” jak zwykły druk fine art.
+2. **Rabaty ilościowe nie działały w kreatorze** – np. 10 koszulek firmowych z flexu przez kreator kosztowało 49 zł/szt. zamiast 37 zł. Poprawione w sklepie i na serwerze płatności (te same progi).
+3. **Ukryta bluza DTF dalej była w kategorii i w Google Merchant** (produkty z kreatorem omijały listę ukrytych). Usunięta.
+4. **Okienko cookies zasłaniało przycisk „Przejdź do kasy”** w koszyku na komputerze (nowy klient musiał je najpierw zamknąć). Teraz chowa się, gdy koszyk lub kasa są otwarte, i wraca po zamknięciu.
+
+**Do decyzji / uwagi (nic nie zmieniałem):**
+- Jeśli klient doda produkt z kreatora, a potem zwiększy ilość w koszyku, koszyk pokaże starą cenę za sztukę, a serwer policzy już cenę z rabatem (klient zapłaci mniej niż widział – bez szkody dla klienta, ale warto kiedyś ujednolicić).
+- Na stronie są tylko 14 produktów z prawdziwymi zdjęciami – reszta to wizualizacje. Do przejrzenia przy jutrzejszym przeglądzie produktów.
+- Formularza kontaktowego i prawdziwej płatności nie testowałem na żywo (wysłałoby maile / utworzyło zamówienie).
