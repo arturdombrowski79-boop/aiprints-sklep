@@ -11,7 +11,7 @@ CATS=[
  ('salony-beauty','Salony beauty','Szyldy z lustra, bony podarunkowe, stojaki QR i komplet oznakowania gabinetu.','#a06a7a'),
  ('druk-wielkoformatowy','Druk wielkoformatowy i folie','Banery, siatki, folie, naklejki po obrysie, oklejanie witryn i aut oraz litery z plotera. Drukujemy na HP Latex 375, tniemy na Summa S3.','#1f3b57'),
  ('dla-fotografow','Fine art i fotografia','Druk pigmentowy fine art (giclée) na papierach bawełnianych Hahnemühle i Canson – Epson P9500, edycje Digigraphie®, odbitki DryLab, powiększenia, oprawa i retusz starych zdjęć.','#3b3a36'),
- ('koszulki-kubki-gadzety','Koszulki, kubki i gadżety z nadrukiem','Koszulki i bluzy z logo lub imieniem, kubki, koce, ręczniki, poduszki i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.','#3d3a55'),
+ ('koszulki-kubki-gadzety','Koszulki, kubki i gadżety z nadrukiem','Koszulki i bluzy z logo lub imieniem, kubki, poduszki, torby i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.','#3d3a55'),
  ('szkoly-i-przedszkola','Szkoły i przedszkola','Od grafiki na drzwiach i banerów na ogrodzenie po plakaty grup, naklejki na okna i tabliczki sal. Projekt w cenie.','#2f6b4f'),
  ('cmentarz-i-pogrzeb','Pamięć i pogrzeb','Zdjęcia nagrobne na porcelanie, tabliczki na krzyż z pleksi, klepsydry i obrazki pamiątkowe. Pilne zamówienia wykonujemy w 24 h.','#3a3a3a'),
  ('sesje-i-zdjecia','Fotografia i sesje','Zdjęcia do dokumentów, sesje portretowe, rodzinne i plenerowe, fotografia produktowa, architektury i z drona. Termin i zakres ustalamy indywidualnie.','#4a4038'),
@@ -67,7 +67,7 @@ def fields(r):
     if re.search(r'lista|komplet|skrzyn|lokal|winiet',s): f.append('list')
     return f
 # produkty ukryte w sklepie (zostają w CSV i historii cen); 25.11.2026 – właściciel nie wykonuje szarf ani sztalug
-HIDDEN={'szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
+HIDDEN={'koc-ze-zdjeciem','recznik-ze-zdjeciem','szarfa-na-wieniec','portret-na-pogrzeb','flaga-szal-kibica','szklo-ramka-zdjecie'}  # 28.11: flaga i szklana ramka – Artur ich nie robi
 seen=set(HIDDEN); prods=[]
 order={r['slug']:i for i,r in enumerate(rows)}
 for r in sorted(rows,key=lambda r:(r['kategoria']!='Wspólnoty i spółdzielnie')):

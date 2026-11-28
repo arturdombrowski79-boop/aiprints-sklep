@@ -121,7 +121,7 @@
 {
 "slug": "koszulki-kubki-gadzety",
 "name": "Koszulki, kubki i gadżety z nadrukiem",
-"lead": "Koszulki i bluzy z logo lub imieniem, kubki, koce, ręczniki, poduszki i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.",
+"lead": "Koszulki i bluzy z logo lub imieniem, kubki, poduszki, torby i gadżety ze zdjęciem. Zaprojektuj sam w kreatorze albo przyślij zdjęcie lub logo – przygotujemy projekt do akceptacji.",
 "color": "#3d3a55",
 "subs": [
 "Koszulki i odzież",
@@ -129,7 +129,7 @@
 "Tekstylia do domu",
 "Gadżety"
 ],
-"count": 28
+"count": 26
 },
 {
 "slug": "szkoly-i-przedszkola",
@@ -1593,54 +1593,6 @@
 "name": "Na koniec roku −5%",
 "low30": 99.0,
 "regular": 99.0
-}
-},
-{
-"slug": "koc-ze-zdjeciem",
-"name": "Koc polarowy ze zdjęciem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Tekstylia do domu",
-"variants": "130×150 cm, miękki polar, kolaż do 12 zdjęć",
-"priceText": "199 zł",
-"price": 199.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 2639.0,
-"xmas": false,
-"img": "img/hf/koc-ze-zdjeciem-1.jpg",
-"fields": [
-"files"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/koc-ze-zdjeciem-1.jpg"
-],
-"also": [],
-"kind": "files",
-"many": "do 12 zdjęć do kolażu",
-"tags": {
-"okazja": [],
-"dla": [
-"babcia-dziadek",
-"dziecko"
-],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": [],
-"promo": [
-"5"
-]
-},
-"promo": {
-"pct": 5.0,
-"k": 0.95,
-"until": "2026-12-31",
-"name": "Na koniec roku −5%",
-"low30": 199.0,
-"regular": 199.0
 }
 },
 {
@@ -6917,10 +6869,10 @@
 },
 {
 "slug": "koszulka-sportowa-sublimacja",
-"name": "Koszulka sportowa z pełnym nadrukiem",
+"name": "Koszulka sportowa z kolorowym nadrukiem",
 "cat": "koszulki-kubki-gadzety",
 "sub": "Koszulki i odzież",
-"variants": "poliester oddychający, nadruk na całości: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
+"variants": "poliester oddychający, nadruk przód i tył do 40×60 cm: numer, nazwisko, herb; komplety dla drużyn od 10 szt. taniej",
 "priceText": "89 zł",
 "price": 89.0,
 "tiers": null,
@@ -7191,42 +7143,6 @@
 "mat": [
 "druk"
 ]
-}
-},
-{
-"slug": "recznik-ze-zdjeciem",
-"name": "Ręcznik ze zdjęciem lub imieniem",
-"cat": "koszulki-kubki-gadzety",
-"sub": "Tekstylia do domu",
-"variants": "70×140 cm, mikrofibra z bawełnianym spodem",
-"priceText": "119 zł",
-"price": 119.0,
-"tiers": null,
-"machine": "Epson SureColor F500 + prasa",
-"score": 1103.0,
-"xmas": false,
-"img": "img/hf/recznik-ze-zdjeciem-1.jpg",
-"fields": [
-"photo",
-"text"
-],
-"quote": false,
-"unit": false,
-"gallery": [
-"img/hf/recznik-ze-zdjeciem-1.jpg"
-],
-"also": [],
-"kind": "gift",
-"tags": {
-"okazja": [],
-"dla": [
-"dziecko"
-],
-"pers": [
-"zdjecie",
-"imie"
-],
-"mat": []
 }
 },
 {
